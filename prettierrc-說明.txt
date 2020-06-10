@@ -1,0 +1,4 @@
+  "singleQuote": true,    // 單引號字串
+  "trailingComma": "es5", // 尾巴的逗號  自動添加 "xxx": "123" ,
+  "semi": false           // 語句結尾必須要分號 “;”
+

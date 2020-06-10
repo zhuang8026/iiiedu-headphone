@@ -1,0 +1,53 @@
+//btn
+$btn-color-r: #CB4042;
+$btn-color-l: #070321; // 紫色 非常深 rwd 使用
+$btn-color-l: #211E55; 
+$btn-color-s: #4E4F97;
+$link-hover-color-l: #211E55;
+$link-hover-color-s: #4E4F97;
+
+//bgc
+$bg-c: #fff;        // 白
+$bg-theme: #FAFAFA; // 淡
+$bg-btn-s: #F3F4ED; // 中
+$bg-btn-l: #ADADAD; // 深
+
+//border
+$border-color-l: #211E55;
+$border-color-s: #4E4F97;
+
+// font
+$font-color-l: #211E55;
+$font-color-s: #2C3E50;
+$font-color-m: #8B8B8B;
+$font-color-x: #FAFAFA;
+$font-color-w: #fff;
+
+//font size
+$font-size-12: 12px;
+$font-size-14: $font-size-12 + 2;
+$font-size-16: $font-size-14 + 2;
+
+// font weith
+$font-w: 300;
+
+//icon size
+$icon-size-18: 18px;
+$icon-size-24: 24px;
+$icon-size-45: 45px;
+
+// logo-size
+$logo-size: 35px;
+
+//z-index 
+$navbar-z-index: 1000;
+$tabbar-z-index: 1000;
+$backtop-z-index: 1100;
+$search-z-index: 1200;
+$product-z-index: 1200;
+$search-popup-z-index: $search-z-index + 10;
+$category-popup-z-index: $search-z-index - 10;
+
+//size
+$navbar-height: 90px;
+$tabbar-height: 60px;

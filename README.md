@@ -1,12 +1,10 @@
-# 資策會大專題-第六組 #
+# 資策會 MFEE07 React 技術支持
 
-* 主題：耳機購物平台
-* 基礎技術支持：html sass
-* 前端技術支持：react.js + redux + javascript + jquery 
-* 後端技術支持：node.js + MySql
-* 版本控制技術：git (github & bitbucket)
-* 編輯器技術支持：VsCode
+我們運用了 react + node.js + mysql 技術製作 購物平台，功能包括： 會員管理 / 賣家管理/ 購物車系統/ 願望清單系統/ 比較系統/ 部落格系統/ 結帳系統
 
-### 如何啟動項目? ###
+### 如何聲請使用? ###
 
-* 編輯器技術支持：VsCode
+* 圖片不合法，完全只是demo使用
+* 這是2.0 Version / bug 修復
+* 可購買 code 版權
+* [聯繫方式](https://treefonts.com/)
