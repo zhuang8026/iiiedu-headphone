@@ -8,7 +8,7 @@
     text-align: end;
     padding: 40px;
     background-color: #fff;
-    overflow: hidden;
+    overflow: auto;
     visibility: hidden;
     z-index: 9999;
     -webkit-backface-visibility: hidden;
@@ -19,10 +19,13 @@
     -webkit-transition: all .6s cubic-bezier(.77,0,.175,1);
     -o-transition: all .6s cubic-bezier(.77,0,.175,1);
     transition: all .6s cubic-bezier(.77,0,.175,1);
+    &::-webkit-scrollbar {
+        display: none;
+    }
     .side-menu-close {
         position: absolute;
         z-index: 10;
-        svg {
+        i {
             font-size: 24px;
             transition: 0.3s ease-out;
             color: #211E55;

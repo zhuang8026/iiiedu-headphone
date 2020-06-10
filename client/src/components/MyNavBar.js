@@ -1,6 +1,10 @@
 // 函式元件
 import React, { Fragment } from 'react';
 import { Link, NavLink, withRouter } from 'react-router-dom'
+import OtisPng from '../assets/img/Otis.png';
+
+import akg from '../asset/img/akg.png';
+
 
 
 
@@ -15,7 +19,7 @@ function MyNavBar(props) {
                 <div className="nav-containers">
                     <div className="nav-left">
                         <figure>
-                            <img src="./asset/img/Otis.png" alt="logo" />
+                            <img src={OtisPng} alt="logo" />
                         </figure>
                     </div>
                     <div className="nav-right">

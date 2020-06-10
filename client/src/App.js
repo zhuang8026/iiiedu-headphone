@@ -1,8 +1,8 @@
 import React ,{ Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect  } from "react-router-dom"
 
-import MyNavBar from '../src/components/MyNavBar';
-import MyMenu from '../src/components/MyMenu';
+import MyNavBar from './components/MyNavBar';
+import MyMenu from './components/MyMenu';
 
 
 function App() {
@@ -30,8 +30,10 @@ function App() {
   return (
     <Router>
         <Fragment>
-            <MyNavBar/>
-            <MyMenu/>
+            <header>
+              <MyNavBar/>
+              <MyMenu/>
+            </header>
         </Fragment>
     </Router>
   );
