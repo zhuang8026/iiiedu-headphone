@@ -16,10 +16,6 @@ import {NavItemsAir} from './config';
 
 function MyNavBar(props) {
 
-    useEffect(()=>{
-
-    },[])
-
     return (
         <Fragment>
             {/* navbar */}
@@ -221,7 +217,7 @@ function MyNavBar(props) {
                                             <span className="otis-wishlist-widget-icon">
                                                 <i className="iconfont icon-like"></i>
                                             </span>
-                                            <span className="otis-wishlist-widget-count">0</span>
+                                            <span className="otis-wishlist-widget-count"> 0 </span>
                                         </a>
                                         <input
                                             type="hidden"
@@ -245,7 +241,7 @@ function MyNavBar(props) {
                                                 <span className="otis-sc-opener-icon">
                                                     <i className="iconfont icon-cart"></i>
                                                 </span>
-                                                <span className="otis-sc-opener-count">5</span>
+                                                <span className="otis-sc-opener-count"> 5 </span>
                                             </a>
                                         </div>
                                     </div>
