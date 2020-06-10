@@ -1,14 +1,25 @@
 // 函式元件
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { Link, NavLink, withRouter } from 'react-router-dom'
-import OtisPng from '../assets/img/Otis.png';
 
-import akg from '../asset/img/akg.png';
+// scss
+import './_nav.scss'
 
+// logo 
+import OtisGif from "../../assets/img/Otis.gif";
 
+// nav img 
+import {NavItems} from './config';
+import {NavIcon} from './config';
+import {NavItemsAir} from './config';
 
 
 function MyNavBar(props) {
+
+    useEffect(()=>{
+
+    },[])
+
     return (
         <Fragment>
             {/* navbar */}
@@ -19,7 +30,7 @@ function MyNavBar(props) {
                 <div className="nav-containers">
                     <div className="nav-left">
                         <figure>
-                            <img src={OtisPng} alt="logo" />
+                            <img src={OtisGif} alt="logo" />
                         </figure>
                     </div>
                     <div className="nav-right">
@@ -37,89 +48,52 @@ function MyNavBar(props) {
                                         </a>
                                         <div className="inner hidden-meau">
                                             <ul>
-                                                <li className="nav-menu-object nav-menu-border ">
-                                                    <img src="./asset/img/akg.png" alt="AKG" />
-                                                    <a href="#"><span>AKG</span></a>
-                                                </li>
-                                                <li className="nav-menu-object nav-menu-border ">
-                                                    <img src="./asset/img/at.png" alt="Audio-Technica" />
-                                                    <a href="#"><span>Audio-Technica</span></a>
-                                                </li>
-                                                <li className="nav-menu-object nav-menu-border ">
-                                                    <img src="./asset/img/b&O.png" alt="Bang & Olufsen" />
-                                                    <a href="#"><span>Bang & Olufsen</span></a>
-                                                </li>
-                                                <li className="nav-menu-object nav-menu-border ">
-                                                    <img src="./asset/img/beat.png" alt="Beats pro" />
-                                                    <a href="#"><span>Beats pro</span></a>
-                                                </li>
-                                                <li className="nav-menu-object nav-menu-border ">
-                                                    <img src="./asset/img/shure.png" alt="Shure" />
-                                                    <a href="#"><span>Shure</span></a>
-                                                </li>
-                                                <li className="nav-menu-object nav-menu-border ">
-                                                    <img src="./asset/img/sony.png" alt="SONY" />
-                                                    <a href="#"><span>SONY</span></a>
-                                                </li>
-                                                <li className="nav-menu-object nav-menu-border ">
-                                                    <img src="./asset/img/SEN.png" alt="SENNHEISER" />
-                                                    <a href="#"><span>SENNHEISER</span></a>
-                                                </li>
+                                            { NavIcon.map((data, index)=>{
+                                                return (
+                                                    <li className="nav-menu-object nav-menu-border" key={index}>
+                                                        <img src={data.picUrl} alt="AKG" />
+                                                        <a href={data.linkUrl}><span>{data.name}</span></a>
+                                                    </li>
+                                                )
+                                            }) }
                                             </ul>
-                                            {/* <div className="meau_img">
-                                                <a href="#"><img src="./asset/items_img/SRH1840-01.png" alt="SRH1840"><span>SRH1840-01</span></a>
-                                                <a href="#"><img src="./asset/items_img/SRH240A-01.png" alt="SRH240A"><span>SRH240A-01</span></a>
-                                                <a href="#"><img src="./asset/items_img/SRH940-02.png" alt="SRH940"><span>SRH940-02</span></a>
-                                                <a href="#"><img src="./asset/items_img/MDR-XB950N1-01.png" alt="XB950N1"><span>MDR-XB950N1-01</span></a>
-                                                <a href="#"><img src="./asset/items_img/MDR-Z7M2-01.png" alt="MDR-Z7M2-01"><span>MDR-Z7M2-01</span></a>
-                                                <a href="#"><img src="./asset/items_img/WH-H810-01.png" alt="WH-H810-01"><span>WH-H810-01</span></a>
-                                            </div> */}
+                                            <div className="meau_img">
+                                                { NavItems.map((data, index)=>{
+                                                    return (
+                                                        <a href={data.linkUrl} key={index}>
+                                                            <img src={data.picUrl} alt={data.name}/>
+                                                            <span>{data.name}</span>
+                                                        </a>
+                                                    )
+                                                }) }
+                                            </div>
                                         </div>
                                     </li>
                                     <li>
                                         <a href="#" className="meaulist">
-                                        <span>耳戴式耳機</span>
+                                            <span>耳戴式耳機</span>
                                         </a>
                                         <div className="inner hidden-meau">
                                             <ul>
-                                                <li className="nav-menu-object nav-menu-border ">
-                                                    <img src="./asset/img/akg.png" alt="AKG" />
-                                                    <a href="#"><span>AKG</span></a>
-                                                </li>
-                                                <li className="nav-menu-object nav-menu-border ">
-                                                    <img src="./asset/img/at.png" alt="Audio-Technica" />
-                                                    <a href="#"><span>Audio-Technica</span></a>
-                                                </li>
-                                                <li className="nav-menu-object nav-menu-border ">
-                                                    <img src="./asset/img/b&O.png" alt="Bang & Olufsen" />
-                                                    <a href="#"><span>Bang & Olufsen</span></a>
-                                                </li>
-                                                <li className="nav-menu-object nav-menu-border ">
-                                                    <img src="./asset/img/beat.png" alt="Beats pro" />
-                                                    <a href="#"><span>Beats pro</span></a>
-                                                </li>
-                                                <li className="nav-menu-object nav-menu-border ">
-                                                    <img src="./asset/img/shure.png" alt="Shure" />
-                                                    <a href="#"><span>Shure</span></a>
-                                                </li>
-                                                <li className="nav-menu-object nav-menu-border ">
-                                                    <img src="./asset/img/sony.png" alt="SONY" />
-                                                    <a href="#"><span>SONY</span></a>
-                                                </li>
-                                                <li className="nav-menu-object nav-menu-border ">
-                                                    <img src="./asset/img/SEN.png" alt="SENNHEISER" />
-                                                    <a href="#"><span>SENNHEISER</span></a>
-                                                </li>
-                                                
+                                                { NavIcon.map((data, index)=>{
+                                                    return (
+                                                        <li className="nav-menu-object nav-menu-border" key={index}>
+                                                            <img src={data.picUrl} alt="AKG" />
+                                                            <a href={data.linkUrl}><span>{data.name}</span></a>
+                                                        </li>
+                                                    )
+                                                }) }
                                             </ul>
-                                            {/* <div className="meau_img">
-                                                <a href="#"><img src="./asset/items_img/Beoplay_E8-01.png" alt="Beoplay_E8-01"><span>Beoplay_E8-01</span></a>
-                                                <a href="#"><img src="./asset/items_img/Beoplay_E8_3rd_Gen-02.png" alt="Beoplay_E8_3rd_Gen-02"><span>Beoplay_E8_3rd_Gen-02</span</a>
-                                                <a href="#"><img src="./asset/items_img/Beoplay_E8_2.0-01.png" alt="Beoplay_E8_2.0-01"><span>Beoplay_E8_2.0-01</span</a>
-                                                <a href="#"><img src="./asset/items_img/SE846-04.png" alt="SE846-04"><span>SE846-04</span</a>
-                                                <a href="#"><img src="./asset/items_img/Beoplay_H3-03.png" alt="eoplay_H3-03"><span>eoplay_H3-03</span</a>
-                                                <a href="#"><img src="./asset/items_img/Beoplay_E4-01.png" alt="Beoplay_E4-01"><span>Beoplay_E4-01</span</a>
-                                            </div> */}
+                                            <div className="meau_img">
+                                                { NavItemsAir.map((data, index)=>{
+                                                    return (
+                                                        <a href={data.linkUrl} key={index}>
+                                                            <img src={data.picUrl} alt={data.name}/>
+                                                            <span>{data.name}</span>
+                                                        </a>
+                                                    )
+                                                }) }
+                                            </div>
                                         </div>
                                     </li>
                                     <li>
@@ -128,35 +102,14 @@ function MyNavBar(props) {
                                         </a>
                                         <div className="inner hidden-meau">
                                             <ul>
-                                                <li className="nav-menu-object nav-menu-border ">
-                                                    <img src="./asset/img/akg.png" alt="AKG" />
-                                                    <a href="#"><span>AKG</span></a>
-                                                </li>
-                                                <li className="nav-menu-object nav-menu-border ">
-                                                    <img src="./asset/img/at.png" alt="Audio-Technica" />
-                                                    <a href="#"><span>Audio-Technica</span></a>
-                                                </li>
-                                                <li className="nav-menu-object nav-menu-border ">
-                                                    <img src="./asset/img/b&O.png" alt="Bang & Olufsen" />
-                                                    <a href="#"><span>Bang & Olufsen</span></a>
-                                                </li>
-                                                <li className="nav-menu-object nav-menu-border ">
-                                                    <img src="./asset/img/beat.png" alt="Beats pro" />
-                                                    <a href="#"><span>Beats pro</span></a>
-                                                </li>
-                                                <li className="nav-menu-object nav-menu-border ">
-                                                    <img src="./asset/img/shure.png" alt="Shure" />
-                                                    <a href="#"><span>Shure</span></a>
-                                                </li>
-                                                <li className="nav-menu-object nav-menu-border ">
-                                                    <img src="./asset/img/sony.png" alt="SONY" />
-                                                    <a href="#"><span>SONY</span></a>
-                                                </li>
-                                                <li className="nav-menu-object nav-menu-border ">
-                                                    <img src="./asset/img/SEN.png" alt="SENNHEISER" />
-                                                    <a href="#"><span>SENNHEISER</span></a>
-                                                </li>
-                                                
+                                                { NavIcon.map((data, index)=>{
+                                                    return (
+                                                        <li className="nav-menu-object nav-menu-border" key={index}>
+                                                            <img src={data.picUrl} alt="AKG" />
+                                                            <a href={data.linkUrl}><span>{data.name}</span></a>
+                                                        </li>
+                                                    )
+                                                }) }
                                             </ul>
                                             {/* <div className="meau_img">
                                                 <a href="#"><img src="./asset/items_img/Beoplay_E8-01.png" alt="Beoplay_E8-01"><span>Beoplay_E8-01</span></a>
@@ -175,31 +128,31 @@ function MyNavBar(props) {
                                         <div className="inner hidden-meau">
                                         <ul>
                                             <li className="nav-menu-object">
-                                                <i className="fas fa-gift"></i>
+                                                <i className="iconfont icon-gift"></i>
                                                 <a href=""><span>禮物卡</span></a>
                                             </li>
                                             <li className="nav-menu-object">
-                                                <i className="fas fa-user-shield"></i>
+                                                <i className="iconfont icon-card"></i>
                                                 <a href=""><span>保固卡</span></a>
                                             </li>
                                             <li className="nav-menu-object">
-                                                <i className="fas fa-smile"></i>
+                                                <i className="iconfont icon-user_2"></i>
                                                 <a href=""><span>關於我們</span></a>
                                             </li>
                                             <li className="nav-menu-object">
-                                                <i className="fas fa-headset"></i>
+                                                <i className="iconfont icon-message"></i>
                                                 <a href=""><span>聯係我們</span></a>
                                             </li>
                                             <li className="nav-menu-object">
-                                                <i className="fas fa-store"></i>
+                                                <i className="iconfont icon-location"></i>
                                                 <a href=""><span>商店定位</span></a>
                                             </li>
                                             <li className="nav-menu-object">
-                                                <i className="fas fa-question-circle"></i>
+                                                <i className="iconfont icon-warning"></i>
                                                 <a href=""><span>常見問題</span></a>
                                             </li>
                                             <li className="nav-menu-object">
-                                                <i className="fas fa-user-tag"></i>
+                                                <i className="iconfont icon-geren"></i>
                                                 <a href=""><span>我們的客戶</span></a>
                                             </li>
                                         </ul>
@@ -212,11 +165,11 @@ function MyNavBar(props) {
                                         <div className="inner hidden-meau">
                                         <ul>
                                             <li className="nav-menu-object">
-                                                <i className="fab fa-blogger"></i>
+                                                <i className="iconfont icon-blog"></i>
                                                 <a href="#" type="button"><span>所有 Blog</span></a>
                                             </li>
                                             <li className="nav-menu-object">
-                                                <i className="fab fa-blogger"></i>
+                                                <i className="iconfont icon-blog"></i>
                                                 <a href="#" type="button"><span>我的 Blog</span></a>
                                             </li>
                                         </ul>

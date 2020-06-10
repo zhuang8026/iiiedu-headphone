@@ -2,9 +2,12 @@
 import React, { Fragment } from 'react';
 import { Link, NavLink, withRouter } from 'react-router-dom'
 
-import OtisGif from '../assets/img/Otis.gif';
-import Otispng from '../assets/img/Otis.png';
-import ticket from '../assets/img/ticket.png';
+import OtisGif from "../../assets/img/Otis.gif";
+import Otispng from '../../assets/img/Otis.png';
+import ticket from '../../assets/img/ticket.png';
+
+// scss
+import './_menu.scss'
 
 function MyNavBar(props) {
     return (

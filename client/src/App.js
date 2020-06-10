@@ -1,8 +1,8 @@
 import React ,{ Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect  } from "react-router-dom"
 
-import MyNavBar from './components/MyNavBar';
-import MyMenu from './components/MyMenu';
+import MyNavBar from './components/Navbar';
+import MyMenu from './components/NavbarMenu';
 
 
 function App() {
