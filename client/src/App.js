@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect  } from "react-router-
 
 import MyNavBar from './components/Navbar';
 import MyMenu from './components/NavbarMenu';
+import MyFooter from './components/Footer';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
               <MyNavBar/>
               <MyMenu/>
             </header>
+            <MyFooter/>
         </Fragment>
     </Router>
   );
