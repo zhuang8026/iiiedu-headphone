@@ -76,34 +76,34 @@ header {
                         -webkit-box-sizing: border-box;
                         box-sizing: border-box;
                         span {
-                        display: inline-block;
-                        letter-spacing: 0.2em;
-                        position: relative;
-                        vertical-align: top;
+                            display: inline-block;
+                            letter-spacing: 0.2em;
+                            position: relative;
+                            vertical-align: top;
                         }
                         span::after {
-                        content: "";
-                        display: block;
-                        height: 1px;
-                        width: 100%;
-                        position: absolute;
-                        left: 0;
-                        bottom: 0;
-                        background-color: #000;
-                        -webkit-transform: scaleX(0);
-                        -ms-transform: scaleX(0);
-                        transform: scaleX(0);
-                        -webkit-transform-origin: 100% 50%;
-                        -ms-transform-origin: 100% 50%;
-                        transform-origin: 100% 50%;
-                        -webkit-transition: -webkit-transform 0.3s
-                            cubic-bezier(0.85, 0.26, 0.17, 1);
-                        -o-transition: transform 0.3s
-                            cubic-bezier(0.85, 0.26, 0.17, 1);
-                        transition: transform 0.3s cubic-bezier(0.85, 0.26, 0.17, 1);
-                        transition: transform 0.3s cubic-bezier(0.85, 0.26, 0.17, 1),
-                            -webkit-transform 0.3s cubic-bezier(0.85, 0.26, 0.17, 1);
-                        }
+                            content: "";
+                            display: block;
+                            height: 1px;
+                            width: 100%;
+                            position: absolute;
+                            left: 0;
+                            bottom: -6px;
+                            background-color: $border-color-s;
+                            -webkit-transform: scaleX(0);
+                            -ms-transform: scaleX(0);
+                            transform: scaleX(0);
+                            -webkit-transform-origin: 100% 50%;
+                            -ms-transform-origin: 100% 50%;
+                            transform-origin: 100% 50%;
+                            -webkit-transition: -webkit-transform 0.3s
+                                cubic-bezier(0.85, 0.26, 0.17, 1);
+                            -o-transition: transform 0.3s
+                                cubic-bezier(0.85, 0.26, 0.17, 1);
+                            transition: transform 0.3s cubic-bezier(0.85, 0.26, 0.17, 1);
+                            transition: transform 0.3s cubic-bezier(0.85, 0.26, 0.17, 1),
+                                -webkit-transform 0.3s cubic-bezier(0.85, 0.26, 0.17, 1);
+                            }
                     }
                     .meaulist:hover span::after {
                         transform: scaleX(1);
@@ -200,6 +200,10 @@ header {
                         max-height: 3000px;
                         opacity: 1;
                         visibility: visible;
+                    }
+
+                    &:hover a span {
+                        color: $border-color-s;
                     }
                 }
             }

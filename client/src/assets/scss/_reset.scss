@@ -11,6 +11,7 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
+
   box-sizing: border-box;
 
   padding: 0;
@@ -110,8 +111,4 @@ sup {
 
 sub {
   bottom: -0.25em;
-}
-
-a,p,span,h1,h2,h3,h4,h5,h6,i {
-  color: $font-color-s;
 }
