@@ -1,6 +1,8 @@
 // 函式元件
-import React, { Fragment, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink, withRouter } from 'react-router-dom'
+
+import Complete from './FooterInput.js';
 
 // scss
 import './_footer.scss'
@@ -15,7 +17,6 @@ import OtisGift from "../../assets/img/gift.png";
 
 
 function MyFooter(props) {
-
     return (
         <footer>
             <div class="footer_content">
@@ -27,7 +28,8 @@ function MyFooter(props) {
                             <form action="" method="post" class="" novalidate="novalidate">
                                 <div class="pc_email">
                                     <span>
-                                        <input type="email" name="your_email" id="your_email" size="40" placeholder="輸入郵件"/>
+                                        {/* <input type="email" name="your_email" id="your_email" size="40" placeholder="輸入郵件"/> */}
+                                        <Complete/>
                                     </span>
                                     <button class="button_submit" type="submit">
                                         <span>發送</span>
