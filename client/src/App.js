@@ -6,46 +6,60 @@ import MyNavBar from './components/Navbar';
 import MyMenu from './components/NavbarMenu';
 import MyFooter from './components/Footer';
 
-// main
-import HomeSlider from './components/HomeSlider';
+import WiHome from './pages/Home'
+import YyProduct from './pages/Product'
+import WiAbout from './pages/About'
+import YongBlog from './pages/BLog'
 
 function App() {
-  useEffect(()=>{
-    let shop_btn = document.getElementById('shopping');
-    let side_menu = document.getElementsByClassName('header-side-menu')[0]; 
-    let page_cover = document.getElementsByClassName('nav-page-cover')[0]; 
-    let menu_close = document.getElementsByClassName('side-menu-close')[0]; 
-    shop_btn.addEventListener('click',()=>{
-        side_menu.classList.add('header-side-menu-active');
-        page_cover.classList.add('nav-page-cover-active');
-        
-    });
-    page_cover.addEventListener('click',()=>{
-        side_menu.classList.remove('header-side-menu-active');
-        page_cover.classList.remove('nav-page-cover-active');
-        
-    });
-    menu_close.addEventListener('click',()=>{
-        side_menu.classList.remove('header-side-menu-active');
-        page_cover.classList.remove('nav-page-cover-active');
-        
-    });
-  },[])
+    return (
+        <Router>
+            <Fragment>
+                <header>
+                    <MyNavBar/>
+                    <MyMenu/>
+                </header>
+                <Switch>
+                    <Route exact path="/">
+                        <WiHome />
+                    </Route>
 
-  return (
-    <Router>
-        <Fragment>
-            <header>
-              <MyNavBar/>
-              <MyMenu/>
-            </header>
-            <main>
-              <HomeSlider/>
-            </main>
-            <MyFooter/>
-        </Fragment>
-    </Router>
-  );
+                    <Route path="/YyProduct">
+                        <YyProduct />
+                    </Route>
+
+                    <Route path="/YyProduct">
+                        <YyProduct />
+                    </Route>
+
+                    <Route path="/YyProduct">
+                        <YyProduct />
+                    </Route>
+
+                    <Route path="/WiAbout">
+                        <WiAbout />
+                    </Route>
+
+                    <Route path="/YongBlog">
+                        <YongBlog />
+                    </Route>
+
+                    {/* ProtectdRoute */}
+                    {/* <ProtectedRoute path="/todoapp">
+                        <TodoApp todos={todos} setTodos={setTodos} isAuth={auth}/>
+                    </ProtectedRoute> */}
+
+                    {/* 404 必须放在最后一个 */}
+                    {/* Redirect 重新導向 / 需要先引入 */}
+                    <Route path="/404">
+                        {/* <NotFoundPage404/> */}
+                    </Route>
+                    <Redirect to="/404" />
+                </Switch>
+                <MyFooter/>
+            </Fragment>
+        </Router>
+    );
 }
 
 export default App;

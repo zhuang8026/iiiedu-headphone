@@ -1,5 +1,5 @@
 // 頭戴耳機 品牌
-export const swiperImg = [
+export const SwiperImg = [
     {
         linkUrl: 'https://treefonts.com/',
         picUrl: require('../../assets/img/bg_1.jpg'),

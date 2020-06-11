@@ -1,4 +1,4 @@
-https://kidjp85.github.io/
+https://react-id-swiper.ashernguyen.site/
 
 https://www.npmjs.com/package/react-id-swiper
 
@@ -9,17 +9,17 @@ https://www.npmjs.com/package/react-id-swiper
 --------------------------------------------------------
 For version <=2.3.2
 css *
-import 'react-id-swiper/lib/styles/css/swiper.css'
+  import 'react-id-swiper/lib/styles/css/swiper.css'
 scss *
-import 'react-id-swiper/lib/styles/scss/swiper.scss'
+  import 'react-id-swiper/lib/styles/scss/swiper.scss'
 
 For version >=3.0.0
 css *
-import 'swiper/css/swiper.css'
+  import 'swiper/css/swiper.css'
 scss *
-import 'swiper/swiper.scss'
+  import 'swiper/swiper.scss'
 less *
-import 'swiper/swiper.less'
+  import 'swiper/swiper.less'
 
 --------------------------------------------------------
 Default * 

@@ -1,32 +1,36 @@
-// 函式元件
-import React, { Fragment,useEffect } from 'react';
-import { Link, NavLink, withRouter } from 'react-router-dom'
-
-import {swiperImg} from './config';
-
-// Swiper
+import React from 'react';
 import Swiper from 'react-id-swiper';
-// scss
-import 'swiper/swiper.scss'
 
 // scss
-// import './_menu.scss'
+import 'swiper/css/swiper.css'
+import './_swiperImg.scss'
 
-function HomeSlider(props) {
+import {SwiperImg} from './config.js';
 
+const SpaceBetweenSlides = () => {
+    const params = {
+        spaceBetween: 30,
+        effect: 'fade',
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            dynamicBullets: true
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+        }
+    }
     return (
-        <Fragment>
-            <Swiper>
-                { swiperImg.map((data, index)=>{
-                    return (
-                        <a href={data.linkUrl} key={index}>
-                            <img src={data.picUrl} />
-                        </a>
-                    )
-                }) }
-            </Swiper>
-        </Fragment>
+    <Swiper {...params}>
+        { SwiperImg.map((data, index)=>{
+            return (
+                <div>
+                    <img src={data.picUrl} alt="AKG"/>
+                </div>
+            )
+        }) }
+    </Swiper>
     )
-
-}
-export default withRouter(HomeSlider);
+};
+export default SpaceBetweenSlides;

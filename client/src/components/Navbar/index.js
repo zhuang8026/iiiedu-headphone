@@ -34,12 +34,12 @@ function MyNavBar(props) {
                             <nav>
                                 <ul className="menu-otis-menu">
                                     <li>
-                                        <a href="#" className="meaulist">
+                                        <a href="/" className="meaulist">
                                             <span>首頁</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" className="meaulist">
+                                        <a href="/YyProduct" className="meaulist">
                                             <span>頭戴式耳機</span>
                                         </a>
                                         <div className="inner hidden-meau">
@@ -66,7 +66,7 @@ function MyNavBar(props) {
                                         </div>
                                     </li>
                                     <li>
-                                        <a href="#" className="meaulist">
+                                        <a href="/YyProduct" className="meaulist">
                                             <span>耳戴式耳機</span>
                                         </a>
                                         <div className="inner hidden-meau">
@@ -93,7 +93,7 @@ function MyNavBar(props) {
                                         </div>
                                     </li>
                                     <li>
-                                        <a href="#" className="meaulist">
+                                        <a href="/YyProduct" className="meaulist">
                                             <span>揚聲器</span>
                                         </a>
                                         <div className="inner hidden-meau">
@@ -118,7 +118,7 @@ function MyNavBar(props) {
                                         </div>
                                     </li>
                                     <li>
-                                        <a href="#" className="meaulist">
+                                        <a href="/WiAbout" className="meaulist">
                                             <span>關於我們</span>
                                         </a>
                                         <div className="inner hidden-meau">
@@ -155,7 +155,7 @@ function MyNavBar(props) {
                                         </div>
                                     </li>
                                     <li>
-                                        <a href="#" className="meaulist">
+                                        <a href="/YongBlog" className="meaulist">
                                             <span>BLOG</span>
                                         </a>
                                         <div className="inner hidden-meau">
