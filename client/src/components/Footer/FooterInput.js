@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import 'antd/dist/antd.css';
 import { AutoComplete } from 'antd';
 
 const { Option } = AutoComplete;
+
 
 const Complete = () => {
     const [result, setResult] = useState([]);
@@ -12,7 +14,7 @@ const Complete = () => {
         if (!value || value.indexOf('@') >= 0) {
         res = [];
         } else {
-        res = ['gmail.com', '163.com', 'qq.com'].map(domain => `${value}@${domain}`);
+        res = ['gmail.com', 'yahoo.com','iCloud.com','outlook.com', 'qq.com', 'msn.com'].map(domain => `${value}@${domain}`);
         }
 
         setResult(res);
@@ -20,15 +22,14 @@ const Complete = () => {
 
     return (
         <AutoComplete
-        // style={{
-        //     width: 200,
-        // }}
-        
+        style={{
+            width: 200,
+        }}
         onSearch={handleSearch}
-        // placeholder="input here"
+        placeholder="your email please"
         >
         {result.map(email => (
-            <Option key={email} value={email} size="40">
+            <Option key={email} value={email}>
             {email}
             </Option>
         ))}
