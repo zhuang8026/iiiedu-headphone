@@ -1,11 +1,13 @@
 import React ,{ Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect  } from "react-router-dom"
 
+// components
 import MyNavBar from './components/Navbar';
 import MyMenu from './components/NavbarMenu';
 import MyFooter from './components/Footer';
 
-// import Mov from './assets/img/bg.MOV'
+// main
+// import HomeSlider from './components/HomeSlider';
 
 function App() {
   useEffect(()=>{
@@ -29,6 +31,7 @@ function App() {
         
     });
   },[])
+
   return (
     <Router>
         <Fragment>
@@ -36,6 +39,9 @@ function App() {
               <MyNavBar/>
               <MyMenu/>
             </header>
+            <main>
+
+            </main>
             <MyFooter/>
         </Fragment>
     </Router>
