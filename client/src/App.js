@@ -7,7 +7,7 @@ import MyMenu from './components/NavbarMenu';
 import MyFooter from './components/Footer';
 
 // main
-// import HomeSlider from './components/HomeSlider';
+import HomeSlider from './components/HomeSlider';
 
 function App() {
   useEffect(()=>{
@@ -40,7 +40,7 @@ function App() {
               <MyMenu/>
             </header>
             <main>
-
+              <HomeSlider/>
             </main>
             <MyFooter/>
         </Fragment>
