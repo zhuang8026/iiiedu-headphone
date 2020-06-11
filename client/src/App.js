@@ -5,6 +5,7 @@ import MyNavBar from './components/Navbar';
 import MyMenu from './components/NavbarMenu';
 import MyFooter from './components/Footer';
 
+// import Mov from './assets/img/bg.MOV'
 
 function App() {
   useEffect(()=>{
