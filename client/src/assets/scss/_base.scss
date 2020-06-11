@@ -1,0 +1,14 @@
+body, button, input, select, textarea {
+    color: #5d656b;
+    font-size: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, PingFang SC, Helvetica Neue, STHeiti, Microsoft Yahei, Tahoma, Simsun, sans-serif !important;
+    line-height: 1;
+}
+
+a {
+    text-decoration: none;
+}
+
+a,p,span,h1,h2,h3,h4,h5,h6,i {
+    color: $font-color-s;
+}
