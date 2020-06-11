@@ -23,7 +23,7 @@ const Complete = () => {
     return (
         <AutoComplete
         style={{
-            width: 200,
+            width: 250,
         }}
         onSearch={handleSearch}
         placeholder="your email please"
