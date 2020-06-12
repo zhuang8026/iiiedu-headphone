@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Route, Switch, Redirect  } from "react-router-
 
 // main
 import HomeSlider from '../../components/HomeSlider';
+import MyDiscover from './DisCover';
+import HotTrue from './HotTrue';
 
 function WiHome() {
   useEffect(()=>{
@@ -35,6 +37,8 @@ function WiHome() {
         <Fragment>
             <main>
               <HomeSlider/>
+              <MyDiscover/>
+              <HotTrue/>
             </main>
         </Fragment>
     </Router>

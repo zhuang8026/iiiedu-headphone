@@ -102,3 +102,18 @@ const SpaceBetweenSlides = () => {
     )
 };
 export default SpaceBetweenSlides;
+
+
+-------------------- swiper.css 19 行修改
+:root {
+  --swiper-theme-color: #fff;
+}
+-------------------- swiper.css 215 行修改
+/* Common Styles */
+.swiper-pagination-fraction,
+.swiper-pagination-custom,
+.swiper-container-horizontal > .swiper-pagination-bullets {
+  bottom: 10px;
+  left: 0;
+  width: 75px;
+}

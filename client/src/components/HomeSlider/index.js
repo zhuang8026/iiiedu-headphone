@@ -1,6 +1,8 @@
 import React from 'react';
-import Swiper from 'react-id-swiper';
 import { Link } from 'react-router-dom'
+
+// Swiper
+import Swiper from 'react-id-swiper';
 
 import SwiperAnimation from '@cycjimmy/swiper-animation';
 import "animate.css/animate.min.css";
@@ -23,10 +25,10 @@ const HomeSlider = () => {
         effect: 'fade',
         lazy: true,
         loop: true,
-        // autoplay: {
-        //     delay: 2500,
-        //     disableOnInteraction: false
-        // },
+        autoplay: {
+            delay: 7000,
+            disableOnInteraction: false
+        },
         pagination: {
             el: '.swiper-pagination',
             // clickable: true,
@@ -92,7 +94,11 @@ const HomeSlider = () => {
                                         <h1>{data.h1text}</h1>
                                         <p>{data.ptext}</p>
                                     </li>
-                                    <li>
+                                    <li 
+                                        data-swiper-animation="animate__fadeInUp" 
+                                        data-duration="1s" 
+                                        data-delay="1s"
+                                    >
                                         <LInkButton 
                                             linkUrl= {data.itemslinkUrl}
                                         />
@@ -100,7 +106,7 @@ const HomeSlider = () => {
                                 </ul>
                             </div>
                         </div>
-                        <img src={data.picUrl} className="swiper-lazy" alt="AKG"/>
+                        <img src={data.picUrl} className="swiper-lazy" alt="background image"/>
                     </div>
                 )
             }) }

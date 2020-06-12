@@ -25,14 +25,18 @@
     .side-menu-close {
         position: absolute;
         z-index: 10;
+        transition: 0.3s ease-out;
         cursor: pointer;
         i {
             font-size: 24px;
             transition: 0.3s ease-out;
             color: #211E55;
-            &:hover {
-                color: #4E4F97;
+            &:hover{
+                color: #CB4042;
             }
+        }
+        &:hover{
+            transform:rotate(180deg);
         }
     }
     .menu_name {
@@ -60,9 +64,11 @@
         .otis_instagram_widget {
             .otis_instagram_space {
                 .otis_instagram_feed {
+                    margin: 0;
                     .otis_instagram_img {
+                        text-align: center;
                         img {
-                            width: 100%;
+                            width: 75%;
                         }
                     }
                     .otis_instagram_code {
