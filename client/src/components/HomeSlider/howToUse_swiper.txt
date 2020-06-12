@@ -2,7 +2,7 @@
 
 -------------------------------------------------------- install
 For  react-id-swiper
----- https://react-id-swiper.ashernguyen.site/
+---- https://react-id-swiper.ashernguyen.site/example/default
 ---- https://www.npmjs.com/package/react-id-swiper
 1-1. npm install --save react-id-swiper@latest swiper@latest 
 或者
@@ -19,7 +19,8 @@ For  animate.css / 動畫效果
 3-2. yarn add animate.css
 
 For  swiper-animation / 連結動畫
----- hhttps://www.npmjs.com/package/@cycjimmy/swiper-animation
+---- https://www.npmjs.com/package/@cycjimmy/swiper-animation
+---- https://blog.csdn.net/qq_28473733/article/details/104346723
 4-1  npm install @cycjimmy/swiper-animation --save
 或者
 4-2. yarn add @cycjimmy/swiper-animation

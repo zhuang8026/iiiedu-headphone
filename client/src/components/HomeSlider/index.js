@@ -10,6 +10,8 @@ import './_swiperImg.scss'
 
 import {SwiperImg} from './config.js';
 
+import a from '../../assets/items_img/MDR-Z7M2-01.png'
+
 const swiperAnimation = new SwiperAnimation();
 const SpaceBetweenSlides = () => {
     const params = {
@@ -41,22 +43,44 @@ const SpaceBetweenSlides = () => {
         }
     }
     return (
-    <Swiper {...params}>
-        { SwiperImg.map((data, index)=>{
-            return (
-                <div key={index}>
-                    <h1 
-                        data-swiper-animation="animate__fadeInRight" 
-                        data-duration=".5s" 
-                        data-delay=".5s" 
-                        // data-swiper-out-animation="animate__fadeOut"
-                        data-out-duration=".2s"
-                    >{data.h1text}</h1>
-                    <img src={data.picUrl} className="swiper-lazy" alt="AKG"/>
-                </div>
-            )
-        }) }
-    </Swiper>
+        <Swiper {...params}>
+            { SwiperImg.map((data, index)=>{
+                return (
+                    <div key={index}>
+                        {/* <h1 
+                            data-swiper-animation="animate__fadeInRight" 
+                            data-duration=".5s" 
+                            data-delay=".5s" 
+                            data-swiper-out-animation="animate__fadeOut"
+                            data-out-duration=".2s"
+                        >{data.h1text}</h1> */}
+                        <div 
+                            className="swiper_items"
+                            data-swiper-animation="animate__fadeInUp" 
+                            data-duration=".3s" 
+                            data-delay=".3s"
+                            // data-swiper-out-animation="animate__fadeOut"
+                            // data-out-duration=".2s"
+                        >
+                            <div 
+                                className="swiper_items_inner"
+                                data-swiper-animation="animate__zoomIn" 
+                                data-duration=".5s" 
+                                data-delay=".5s" 
+                                // data-swiper-out-animation="animate__fadeOut"
+                                // data-out-duration=".2s"
+                            >
+                                <img src={a} className="swiper-lazy" alt="product"/>
+                                <h2>威廉的耳機</h2>
+                                <p>威廉的耳機牌</p>
+                                <p>NT : 100000</p>
+                            </div>
+                        </div>
+                        <img src={data.picUrl} className="swiper-lazy" alt="AKG"/>
+                    </div>
+                )
+            }) }
+        </Swiper>
     
     )
 };
