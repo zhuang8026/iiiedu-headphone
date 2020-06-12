@@ -1,8 +1,15 @@
 
 .swiper-container {
-    .swiper-wrapper {          
+    .swiper-wrapper {   
+        position: relative;       
         img {
             width: 100%;
+        }
+        h1 {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            color: #fff;
         }
     }
 }

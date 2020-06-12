@@ -1,3 +1,45 @@
+
+
+-------------------------------------------------------- install
+For  react-id-swiper
+---- https://react-id-swiper.ashernguyen.site/
+---- https://www.npmjs.com/package/react-id-swiper
+1-1. npm install --save react-id-swiper@latest swiper@latest 
+或者
+1-2. yarn add react-id-swiper@latest swiper@latest
+
+For  swiper / swiper css /version >=3.0.0
+---- https://www.swiper.com.cn/usage/animate/index.html
+1-3. npm install swiper
+
+For  animate.css / 動畫效果
+---- https://animate.style/#usage
+3-1. npm install animate.css --save  
+或者
+3-2. yarn add animate.css
+
+For  swiper-animation / 連結動畫
+---- hhttps://www.npmjs.com/package/@cycjimmy/swiper-animation
+4-1  npm install @cycjimmy/swiper-animation --save
+或者
+4-2. yarn add @cycjimmy/swiper-animation
+
+-------------------------------------------------------- import
+For version <=2.3.2
+css *
+  import 'react-id-swiper/lib/styles/css/swiper.css'
+scss *
+  import 'react-id-swiper/lib/styles/scss/swiper.scss'
+
+For version >=3.0.0
+css *
+  import 'swiper/css/swiper.css'
+scss *
+  import 'swiper/swiper.scss'
+less *
+  import 'swiper/swiper.less'
+
+-------------------------------------------------------- use swiper
 import React from 'react';
 import Swiper from 'react-id-swiper';
 
