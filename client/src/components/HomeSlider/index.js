@@ -1,19 +1,20 @@
 import React from 'react';
 import Swiper from 'react-id-swiper';
+import { Link } from 'react-router-dom'
 
 import SwiperAnimation from '@cycjimmy/swiper-animation';
 import "animate.css/animate.min.css";
 
 // scss
-import 'swiper/css/swiper.css'
-import './_swiperImg.scss'
+import 'swiper/css/swiper.css';
+import './_swiperImg.scss';
 
 import {SwiperImg} from './config.js';
 
-import a from '../../assets/items_img/MDR-Z7M2-01.png'
 
 const swiperAnimation = new SwiperAnimation();
-const SpaceBetweenSlides = () => {
+
+const HomeSlider = () => {
     const params = {
         slidesPerView: 1,
         spaceBetween: 30,
@@ -26,13 +27,16 @@ const SpaceBetweenSlides = () => {
         // },
         pagination: {
             el: '.swiper-pagination',
-            clickable: true,
-            dynamicBullets: true
+            // clickable: true,
+            // dynamicBullets: true
+            type: 'fraction',
         },
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev'
         },
+
+        // swiper-animation --use--> animate.css
         on: {
             init: function () {
                 swiperAnimation.init(this).animate();
@@ -46,34 +50,50 @@ const SpaceBetweenSlides = () => {
         <Swiper {...params}>
             { SwiperImg.map((data, index)=>{
                 return (
-                    <div key={index}>
-                        {/* <h1 
-                            data-swiper-animation="animate__fadeInRight" 
-                            data-duration=".5s" 
-                            data-delay=".5s" 
-                            data-swiper-out-animation="animate__fadeOut"
-                            data-out-duration=".2s"
-                        >{data.h1text}</h1> */}
-                        <div 
-                            className="swiper_items"
-                            data-swiper-animation="animate__fadeInUp" 
-                            data-duration=".3s" 
-                            data-delay=".3s"
-                            // data-swiper-out-animation="animate__fadeOut"
-                            // data-out-duration=".2s"
-                        >
+                    <div className="swiper_data" key={index}>
+                        <div className="swiper_card">
                             <div 
-                                className="swiper_items_inner"
-                                data-swiper-animation="animate__zoomIn" 
-                                data-duration=".5s" 
-                                data-delay=".5s" 
-                                // data-swiper-out-animation="animate__fadeOut"
-                                // data-out-duration=".2s"
+                                className="swiper_items"
+                                data-swiper-animation="animate__fadeInRight" 
+                                data-duration=".3s" 
+                                data-delay=".3s"
                             >
-                                <img src={a} className="swiper-lazy" alt="product"/>
-                                <h2>威廉的耳機</h2>
-                                <p>威廉的耳機牌</p>
-                                <p>NT : 100000</p>
+                                <div 
+                                    className="swiper_items_inner"
+                                    data-swiper-animation="animate__zoomIn" 
+                                    data-duration=".5s" 
+                                    data-delay=".5s" 
+                                    // data-swiper-out-animation="animate__fadeOut"
+                                    // data-out-duration=".2s"
+                                >
+                                    <Link to={data.itemslinkUrl}>
+                                        <img src={data.itemsUrl} className="swiper-lazy" alt="product"/>
+                                        <div className="items_inner_text">
+                                            <h2>{data.itemsName}</h2>
+                                            <p>{data.itemsText}</p>
+                                            <p>$. {data.itemsPrice} NT</p>
+                                        </div>
+                                        <span className="swiper_more">
+                                            MORE<i className="iconfont icon-right_2"></i>
+                                        </span>
+                                    </Link>
+                                </div>
+                            </div>
+                            <div 
+                                className="swiper_items_title"
+                                data-swiper-animation="animate__fadeInLeft" 
+                                data-duration=".6s" 
+                                data-delay=".6s"
+                            >
+                                <ul>
+                                    <li className="items_card_right">
+                                        <h1>{data.h1text}</h1>
+                                        <p>{data.ptext}</p>
+                                    </li>
+                                    <li>
+                                        <Link to={data.linkUrl} className="swiper_button" type="button" >DISCOVER</Link>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                         <img src={data.picUrl} className="swiper-lazy" alt="AKG"/>
@@ -84,4 +104,4 @@ const SpaceBetweenSlides = () => {
     
     )
 };
-export default SpaceBetweenSlides;
+export default HomeSlider;

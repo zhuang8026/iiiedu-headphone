@@ -1,27 +1,42 @@
 // 頭戴耳機 品牌
 export const SwiperImg = [
     {
-        linkUrl: 'https://treefonts.com/',
-        picUrl: require('../../assets/img/bg_1.jpg'),
+        piclinkUrl: '/*****',
+        picUrl: require('../../assets/img/bg_4.png'),
         name: 'background image',
         h1text: 'NEW HEADPHONES',
         ptext: 'A breath of fresh air arrives to your jewelry box – browse our new collection, brought to you by OTIS.',
-        btnText: 'DISCOVER'
+
+        itemslinkUrl: '/*****',
+        itemsUrl: require('../../assets/img/bg_4p.png'),
+        itemsName: 'RS2e',
+        itemsText: 'Reference Series',
+        itemsPrice: 99999,
     },
     {
-        linkUrl: 'https://treefonts.com/',
-        picUrl: require('../../assets/img/bg_2.jpg'),
+        linkUrl: '/*****',
+        picUrl: require('../../assets/img/bg_5.png'),
         name: 'background image',
         h1text: 'ALL DREAMLIKE',
         ptext: 'A breath of fresh air arrives to your jewelry box – browse our new collection, brought to you by OTIS.',
-        btnText: 'DISCOVER'
+
+        itemslinkUrl: '/*****',
+        itemsUrl: require('../../assets/img/bg_5p.png'),
+        itemsName: 'GS1000e',
+        itemsText: 'Statement Series',
+        itemsPrice: 99999,
     },
     {
-        linkUrl: 'https://treefonts.com/',
-        picUrl: require('../../assets/img/bg_3.jpg'),
+        linkUrl: 'b/*****',
+        picUrl: require('../../assets/img/bg_6.png'),
         name: 'background image',
-        h1text: 'NEW HEADPHONES',
+        h1text: "THE ONLY HEADPHONES YOU'LL EVER NEED",
         ptext: 'A breath of fresh air arrives to your jewelry box – browse our new collection, brought to you by OTIS.',
-        btnText: 'DISCOVER'
+
+        itemslinkUrl: '/*****',
+        itemsUrl: require('../../assets/img/bg_6p.png'),
+        itemsName: 'SR225e',
+        itemsText: 'Prestige Series',
+        itemsPrice: 99999,
     }
 ];

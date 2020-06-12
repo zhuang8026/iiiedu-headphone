@@ -1,25 +1,99 @@
-
+@import "../../assets/scss/_variables";
 .swiper-container {
-    .swiper-wrapper {   
-        position: relative;
-        .swiper_items {
+    .swiper-wrapper {  
+        position: relative; 
+        height: 100vh;
+        .swiper_card {
+            display: flex;
+            align-items: center;
             position: absolute;
-            top: 100px;
-            left: 100px;
-            width: 200px;
-            background: #fff;
-            .swiper_items_inner {
-                img {
-                    // width: 200px;
-                }
-                h2 {
+            top: calc(50% - 250px);
+            left: calc(21% - 175px);
+            .swiper_items {
+                width: 400px;
+                background: $bg-btn-s;
+                z-index: 9999;
+                transition: 0.3s;
+                .swiper_items_inner {
+                    img {
 
+                    }
+                    .items_inner_text {
+                        padding: 20px 40px;
+                        transition: 0.5s;
+                        h2 {
+                            margin-bottom: 6px;
+                            font-size: 1rem;
+                            font-weight: bold;
+                            color: $font-color-s;
+                        }
+                        p{
+                            margin-bottom: 6px;
+                        }
+                    }
+                    .swiper_more {
+                        display: flex;
+                        align-items: flex-end;
+                        padding: 10px 40px;
+                    }
+                    .swiper_more, i {
+                        font-size: 12px;
+                        transition: 0.3s;
+                    }
+                    i {
+                        animation: mymove 1s infinite ease-in-out;
+                    }
+                    @keyframes mymove {
+                        0% {transform: translateX(0px);}
+                        50% {transform: translateX(10px);}
+                        100% {transform: translateX(0px);}
+                    }
                 }
-                p {
-
+                &:hover{
+                    box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.1);
+                    transform: translate3d(-2px, -2px, 6px);
+                }
+                &:hover .swiper_more i {
+                    color: $btn-color-r;
+                }
+                &:hover .swiper_more {
+                    color: $btn-color-r;
                 }
             }
-        }       
+            .swiper_items_title {
+                margin-left: 10%;
+                width: 50vw;
+                ul {
+                    .items_card_right {
+                        border-left: 4px solid $bg-theme;
+                        padding-left: 20px;
+                        padding-bottom: 15px;
+                        margin-bottom: 60px;
+                    }
+                    li {
+                        h1, p {
+                            margin: 0;
+                        }
+                        h1 {
+                            font-size: 4rem;
+                            color: $bg-theme;
+                        }
+                        p {
+                            font-size: 1rem;
+                            font-weight: 300;
+                            color: $bg-theme;
+                        }
+                        .swiper_button {
+                            border: 1px solid $bg-theme;
+                            color: $bg-theme;
+                            padding: 10px 70px;
+                        } 
+                    }
+                }
+            }    
+        }
+        
+
         img {
             width: 100%;
         }
