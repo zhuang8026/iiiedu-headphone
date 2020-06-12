@@ -2,12 +2,13 @@ import React, {Fragment} from 'react';
 import { Link, withRouter } from 'react-router-dom'
 
 // scss
+import './linkbutton.scss';
 
-const LInkButton = () => {
-
+const LInkButton = (props) => {
+    const {linkUrl} = props;
     return (
         <Fragment>
-            <Link to="/" className="wi_button" type="button" >DISCOVER</Link>
+            <Link to={linkUrl} className="wi_button" type="button" >DISCOVER</Link>
         </Fragment>
     )
 };

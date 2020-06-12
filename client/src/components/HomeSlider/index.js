@@ -11,6 +11,8 @@ import './_swiperImg.scss';
 
 import {SwiperImg} from './config.js';
 
+// components
+import LInkButton from '../LInkButton';
 
 const swiperAnimation = new SwiperAnimation();
 
@@ -91,7 +93,9 @@ const HomeSlider = () => {
                                         <p>{data.ptext}</p>
                                     </li>
                                     <li>
-                                        <Link to={data.linkUrl} className="swiper_button" type="button" >DISCOVER</Link>
+                                        <LInkButton 
+                                            linkUrl= {data.itemslinkUrl}
+                                        />
                                     </li>
                                 </ul>
                             </div>
