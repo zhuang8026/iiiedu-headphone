@@ -4,11 +4,13 @@ import { Link, NavLink, withRouter } from 'react-router-dom'
 
 // scss
 // import './_menu.scss'
+//test
 
 function FangBlog(props) {
-    return (
-        <Fragment>
-        </Fragment>
+    return ( <
+        Fragment >
+        <
+        /Fragment>
     )
 
 }
