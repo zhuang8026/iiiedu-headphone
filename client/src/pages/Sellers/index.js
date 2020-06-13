@@ -5,11 +5,13 @@ import { Link, NavLink, withRouter } from 'react-router-dom'
 // scss
 import './test.scss'
 
+import SellerALiceNav from '../../components/AliceUse'
+
 function AliceSellers(props) {
     return (
         <Fragment>
-        <div className="test"/>
-        我是 賣家 / Alice 負責
+            <div className="test"/>
+            <SellerALiceNav/>
         </Fragment>
     )
 

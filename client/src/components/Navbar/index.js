@@ -155,9 +155,9 @@ function MyNavBar(props) {
                                         </div>
                                     </li>
                                     <li>
-                                        <a href="/YongBlog" className="meaulist">
+                                        <Link to="/YongBlog" className="meaulist">
                                             <span>BLOG</span>
-                                        </a>
+                                        </Link>
                                         <div className="inner hidden-meau">
                                         <ul>
                                             <li className="nav-menu-object">
