@@ -26,7 +26,7 @@ function MyDiscover() {
                         </video>
                     </div>
                     <article>
-                        <h1>WILLIAM DESIGN. <br/> TAIWAN ENGINNERING. </h1>
+                        <h1>HEADPHONES DESIGN. <br/> TAIWAN ENGINNERING. </h1>
                         <p>Otis verve is an authentic music lifestyle via timeless products forged by unparalleled quality, fashion-forward design 
                         and an unequivocal passion for sound and materials.<br/>
                         Since 1953 Grado Labs has hand built headphones & cartridges in Brooklyn, NY.Through three generations the family 

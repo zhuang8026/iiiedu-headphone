@@ -14,7 +14,7 @@ import './_swiperImg.scss';
 import {SwiperImg} from './config.js';
 
 // components
-import LInkButton from '../LInkButton';
+import LInkButton from '../../../components/LInkButton';
 
 const swiperAnimation = new SwiperAnimation();
 

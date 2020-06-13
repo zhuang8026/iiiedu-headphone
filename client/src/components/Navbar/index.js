@@ -159,16 +159,16 @@ function MyNavBar(props) {
                                             <span>BLOG</span>
                                         </Link>
                                         <div className="inner hidden-meau">
-                                        <ul>
-                                            <li className="nav-menu-object">
-                                                <i className="iconfont icon-blog"></i>
-                                                <a href="#" type="button"><span>所有 Blog</span></a>
-                                            </li>
-                                            <li className="nav-menu-object">
-                                                <i className="iconfont icon-blog"></i>
-                                                <a href="#" type="button"><span>我的 Blog</span></a>
-                                            </li>
-                                        </ul>
+                                            <ul>
+                                                <li className="nav-menu-object">
+                                                    <i className="iconfont icon-blog"></i>
+                                                    <a href="#" type="button"><span>所有 Blog</span></a>
+                                                </li>
+                                                <li className="nav-menu-object">
+                                                    <i className="iconfont icon-blog"></i>
+                                                    <a href="#" type="button"><span>我的 Blog</span></a>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </li>
                                 </ul>
@@ -177,87 +177,103 @@ function MyNavBar(props) {
                         <div className="nav-inner-right">
                             <nav>
                                 <ul className="menu-otis-icon">
-                                <li>
-                                    <div id="search">
-                                    <form
-                                        method="get"
-                                        id="searchform"
-                                        className="searchform"
-                                        action="#"
-                                    >
-                                        <label className="screen-reader-text">Search for:</label>
-                                        <div className="input-holder clearfix">
-                                        <input
-                                            type="search"
-                                            className="search-field"
-                                            required=""
-                                            // value=""
-                                            name="s"
-                                            title="Search for:"
-                                        />
-                                        <button type="submit" className="otis-search-submit">
-                                            <i className="iconfont icon-search"></i>
-                                        </button>
+                                    {/* 搜索引擎 */}
+                                    <li>
+                                        <div id="search">
+                                        <form
+                                            method="get"
+                                            id="searchform"
+                                            className="searchform"
+                                            action="#"
+                                        >
+                                            <label className="screen-reader-text">Search for:</label>
+                                            <div className="input-holder clearfix">
+                                            <input
+                                                type="search"
+                                                className="search-field"
+                                                required=""
+                                                // value=""
+                                                name="s"
+                                                title="Search for:"
+                                            />
+                                            <button type="submit" className="otis-search-submit">
+                                                <i className="iconfont icon-search"></i>
+                                            </button>
+                                            </div>
+                                        </form>
                                         </div>
-                                    </form>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div id="members" className="otis-members">
-                                    <a className="otis-login-opener" href="/AliceSellers">
-                                        <span className="otis-login-text">
-                                            <i className="iconfont icon-user_2"></i>
-                                        </span>
-                                    </a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div id="wishlist" className="otis-wishlist">
-                                        <a className="otis-wishlist-widget-link">
-                                            <span className="otis-wishlist-widget-icon">
-                                                <i className="iconfont icon-like"></i>
-                                            </span>
-                                            <span className="otis-wishlist-widget-count"> 0 </span>
-                                        </a>
-                                        <input
-                                            type="hidden"
-                                            id="nille_select_product_wishlist_nonce_7874"
-                                            name="nille_select_product_wishlist_nonce_7874"
-                                            // value="790326ca63"
-                                        /><input
-                                            type="hidden"
-                                            name="_wp_http_referer"
-                                            // value="/"
-                                        />
-                                    </div>
-                                </li>
-                                <li>
-                                    <div id="shopping" className="otis-shopping">
-                                        <div className="otis-shopping-cart-inner">
-                                            <a
-                                                itemProp="url"
-                                                className="qodef-header-cart"
-                                            >
-                                                <span className="otis-sc-opener-icon">
-                                                    <i className="iconfont icon-cart"></i>
+                                    </li>
+                                    
+                                    {/* 賣家 */}
+                                    <li>
+                                        <div id="members" className="otis-members">
+                                            <a className="otis-login-opener" href="/KMembers">
+                                                <span className="otis-login-text">
+                                                    <i className="iconfont icon-user_2"></i>
                                                 </span>
-                                                <span className="otis-sc-opener-count"> 5 </span>
                                             </a>
                                         </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a
-                                    className="qodef-side-menu-button-opener qodef-icon-has-hover qodef-side-menu-button-opener-predefined"
-                                    >
-                                    <span className="qodef-side-menu-icon">
-                                        <span className="qodef-hm-lines">
-                                        <span className="qodef-hm-line qodef-line-1"></span>
-                                        <span className="qodef-hm-line qodef-line-2"></span>
-                                        </span>
-                                    </span>
-                                    </a>
-                                </li>
+                                    </li>
+
+                                    {/* 會員 */}
+                                    <li>
+                                        <div id="members" className="otis-members">
+                                            <a className="otis-login-opener" href="/AliceSellers">
+                                                <span className="otis-login-text">
+                                                    <i className="iconfont icon-user_2"></i>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </li>
+
+                                    {/* 我的最愛 */}
+                                    <li>
+                                        <div id="wishlist" className="otis-wishlist">
+                                            <a className="otis-wishlist-widget-link">
+                                                <span className="otis-wishlist-widget-icon">
+                                                    <i className="iconfont icon-like"></i>
+                                                </span>
+                                                <span className="otis-wishlist-widget-count"> 0 </span>
+                                            </a>
+                                            <input
+                                                type="hidden"
+                                                id="nille_select_product_wishlist_nonce_7874"
+                                                name="nille_select_product_wishlist_nonce_7874"
+                                                // value="790326ca63"
+                                            /><input
+                                                type="hidden"
+                                                name="_wp_http_referer"
+                                                // value="/"
+                                            />
+                                        </div>
+                                    </li>
+
+                                    {/* 購物車 */}
+                                    <li>
+                                        <div id="shopping" className="otis-shopping">
+                                            <div className="otis-shopping-cart-inner">
+                                                <a
+                                                    itemProp="url"
+                                                    className="qodef-header-cart"
+                                                >
+                                                    <span className="otis-sc-opener-icon">
+                                                        <i className="iconfont icon-cart"></i>
+                                                    </span>
+                                                    <span className="otis-sc-opener-count"> 5 </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {/* <li>
+                                        <a className="qodef-side-menu-button-opener qodef-icon-has-hover qodef-side-menu-button-opener-predefined">
+                                            <span className="qodef-side-menu-icon">
+                                                <span className="qodef-hm-lines">
+                                                    <span className="qodef-hm-line qodef-line-1"></span>
+                                                    <span className="qodef-hm-line qodef-line-2"></span>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li> */}
                                 </ul>
                             </nav>
                         </div>

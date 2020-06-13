@@ -221,6 +221,7 @@ header {
             .menu-otis-icon {
                 display: flex;
                 li {
+                padding-left: 16px;
                 #search {
                     margin: 0 31px 0 23px;
                     position: relative;
@@ -280,7 +281,6 @@ header {
 
                 #wishlist {
                     a.otis-wishlist-widget-link {
-                    margin-left: 16px;
                     .otis-wishlist-widget-icon {
                         i {
                         width: 18px;
@@ -303,7 +303,6 @@ header {
                 #shopping {
                     .otis-shopping-cart-inner {
                     a.qodef-header-cart {
-                        margin-left: 16px;
                         i {
                         width: 18px;
                         fill: none;

@@ -1,26 +1,17 @@
 import React ,{ Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom"
 
-// components
-import MyNavBar from './components/Navbar';
-import MyMenu from './components/NavbarMenu';
-import MyFooter from './components/Footer';
-
 import WiHome from './pages/Home'
 import YyProduct from './pages/Product'
 import WiAbout from './pages/About'
 import YongBlog from './pages/BLog'
-// import KMembers from './pages/Members'
+import KMembers from './pages/Members'
 import AliceSellers from './pages/Sellers'
 
 function App() {
     return (
         <Router>
             <Fragment>
-                <header>
-                    <MyNavBar/>
-                    <MyMenu/>
-                </header>
                 <Switch>
                     
                     <Route exact path="/">
@@ -47,11 +38,15 @@ function App() {
                         <YongBlog />
                     </Route>
 
+                    <Route path="/KMembers">
+                        <KMembers />
+                    </Route>
+
                     <Route path="/AliceSellers">
                         <AliceSellers />
                     </Route>
 
-                    {/* ProtectdRoute */}
+                    {/* ProtectdRoute 這是 utils */}
                     {/* <ProtectedRoute path="/todoapp">
                         <TodoApp todos={todos} setTodos={setTodos} isAuth={auth}/>
                     </ProtectedRoute> */}
@@ -64,7 +59,6 @@ function App() {
                     <Redirect to="/404" />
 
                 </Switch>
-                <MyFooter/>
             </Fragment>
         </Router>
     );

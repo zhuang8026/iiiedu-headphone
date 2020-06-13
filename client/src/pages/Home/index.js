@@ -1,11 +1,13 @@
 import React ,{ Fragment, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect  } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom"
 
 // components
-// import MyFooter from './components/Footer';
+import MyNavBar from '../../components/Navbar';
+import MyMenu from '../../components/NavbarMenu';
+import MyFooter from '../../components/Footer';
 
 // main
-import HomeSlider from '../../components/HomeSlider';
+import HomeSlider from './HomeSlider';
 import MyDiscover from './DisCover';
 import HotTrue from './HotTrue';
 
@@ -35,11 +37,16 @@ function WiHome() {
   return (
     <Router>
         <Fragment>
-            <main>
-              <HomeSlider/>
-              <MyDiscover/>
-              <HotTrue/>
-            </main>
+          <header>
+            <MyNavBar/>
+            <MyMenu/>
+          </header>
+          <main>
+            <HomeSlider/>
+            <MyDiscover/>
+            <HotTrue/>
+          </main>
+          <MyFooter/>
         </Fragment>
     </Router>
   );

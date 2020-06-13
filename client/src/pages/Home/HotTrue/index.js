@@ -43,40 +43,40 @@ function HotTrue() {
                             <h3>Elite Active 65t</h3>
                             <img src="" alt=""/>
                             <ul>
-                                <li><i class="iconfont icon-correct"></i>Great for motion</li>
-                                <li><i class="iconfont icon-correct"></i>Up to 15 hours battery life*</li>
-                                <li><i class="iconfont icon-correct"></i>Motion sensor</li>
-                                <li><i class="iconfont icon-correct"></i>Sweat & dust protected</li>
+                                <li><i className="iconfont icon-correct"></i>Great for motion</li>
+                                <li><i className="iconfont icon-correct"></i>Up to 15 hours battery life*</li>
+                                <li><i className="iconfont icon-correct"></i>Motion sensor</li>
+                                <li><i className="iconfont icon-correct"></i>Sweat & dust protected</li>
                             </ul>
                         </div>
                         <div className="swiper-lazy">
                             <h3>Elite Active 65t</h3>
                             <img src="" alt=""/>
                             <ul>
-                                <li><i class="iconfont icon-correct"></i>Great for motion</li>
-                                <li><i class="iconfont icon-correct"></i>Up to 15 hours battery life*</li>
-                                <li><i class="iconfont icon-correct"></i>Motion sensor</li>
-                                <li><i class="iconfont icon-correct"></i>Sweat & dust protected</li>
+                                <li><i className="iconfont icon-correct"></i>Great for motion</li>
+                                <li><i className="iconfont icon-correct"></i>Up to 15 hours battery life*</li>
+                                <li><i className="iconfont icon-correct"></i>Motion sensor</li>
+                                <li><i className="iconfont icon-correct"></i>Sweat & dust protected</li>
                             </ul>
                         </div>
                         <div className="swiper-lazy">
                             <h3>Elite Active 65t</h3>
                             <img src="" alt=""/>
                             <ul>
-                                <li><i class="iconfont icon-correct"></i>Great for motion</li>
-                                <li><i class="iconfont icon-correct"></i>Up to 15 hours battery life*</li>
-                                <li><i class="iconfont icon-correct"></i>Motion sensor</li>
-                                <li><i class="iconfont icon-correct"></i>Sweat & dust protected</li>
+                                <li><i className="iconfont icon-correct"></i>Great for motion</li>
+                                <li><i className="iconfont icon-correct"></i>Up to 15 hours battery life*</li>
+                                <li><i className="iconfont icon-correct"></i>Motion sensor</li>
+                                <li><i className="iconfont icon-correct"></i>Sweat & dust protected</li>
                             </ul>
                         </div>
                         <div className="swiper-lazy">
                             <h3>Elite Active 65t</h3>
                             <img src="" alt=""/>
                             <ul>
-                                <li><i class="iconfont icon-correct"></i>Great for motion</li>
-                                <li><i class="iconfont icon-correct"></i>Up to 15 hours battery life*</li>
-                                <li><i class="iconfont icon-correct"></i>Motion sensor</li>
-                                <li><i class="iconfont icon-correct"></i>Sweat & dust protected</li>
+                                <li><i className="iconfont icon-correct"></i>Great for motion</li>
+                                <li><i className="iconfont icon-correct"></i>Up to 15 hours battery life*</li>
+                                <li><i className="iconfont icon-correct"></i>Motion sensor</li>
+                                <li><i className="iconfont icon-correct"></i>Sweat & dust protected</li>
                             </ul>
                         </div>
                     </Swiper>

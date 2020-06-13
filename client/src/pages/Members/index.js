@@ -8,6 +8,7 @@ import { Link, NavLink, withRouter } from 'react-router-dom'
 function KMembers(props) {
     return (
         <Fragment>
+            我是買家
         </Fragment>
     )
 

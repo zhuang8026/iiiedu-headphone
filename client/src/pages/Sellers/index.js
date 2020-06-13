@@ -5,7 +5,7 @@ import { Link, NavLink, withRouter } from 'react-router-dom'
 // scss
 import './test.scss'
 
-import SellerALiceNav from '../../components/AliceUse'
+import SellerALiceNav from '../../components/UseAlice'
 
 function AliceSellers(props) {
     return (
@@ -14,6 +14,5 @@ function AliceSellers(props) {
             <SellerALiceNav/>
         </Fragment>
     )
-
 }
 export default withRouter(AliceSellers);
