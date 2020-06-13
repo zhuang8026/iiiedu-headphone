@@ -1,5 +1,5 @@
 import React ,{ Fragment, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect  } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom"
 
 // components
 import MyNavBar from './components/Navbar';
@@ -10,7 +10,7 @@ import WiHome from './pages/Home'
 import YyProduct from './pages/Product'
 import WiAbout from './pages/About'
 import YongBlog from './pages/BLog'
-import KMembers from './pages/Members'
+// import KMembers from './pages/Members'
 import AliceSellers from './pages/Sellers'
 
 function App() {
@@ -22,6 +22,7 @@ function App() {
                     <MyMenu/>
                 </header>
                 <Switch>
+                    
                     <Route exact path="/">
                         <WiHome />
                     </Route>
@@ -46,13 +47,10 @@ function App() {
                         <YongBlog />
                     </Route>
 
-                    <Route path="/KMembers">
-                        <KMembers />
-                    </Route>
-
                     <Route path="/AliceSellers">
                         <AliceSellers />
                     </Route>
+
                     {/* ProtectdRoute */}
                     {/* <ProtectedRoute path="/todoapp">
                         <TodoApp todos={todos} setTodos={setTodos} isAuth={auth}/>
@@ -64,6 +62,7 @@ function App() {
                         {/* <NotFoundPage404/> */}
                     </Route>
                     <Redirect to="/404" />
+
                 </Switch>
                 <MyFooter/>
             </Fragment>
@@ -71,4 +70,4 @@ function App() {
     );
 }
 
-export default App;
+export default App

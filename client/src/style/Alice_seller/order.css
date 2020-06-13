@@ -1,0 +1,230 @@
+/* 每個功能都具備 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #707070;
+}
+
+main {
+  width: 100%;
+}
+
+body {
+  background: #f4f4f5;
+}
+
+nav {
+  background: white;
+}
+
+/* 模組套件 */
+.d-flex {
+  display: flex;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.align-item-center {
+  align-items: center;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-item-end {
+  align-items: flex-end;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 20px;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.toggle {
+  margin: 7px;
+  cursor: pointer;
+}
+
+.toggle > div {
+  margin: 5px;
+}
+
+.icon-size {
+  width: 16px;
+  height: 16px;
+}
+
+.w-90 {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.border {
+  border: 1px solid #707070;
+}
+
+/* 個別項 */
+.container {
+  height: 1100px;
+  margin: 25px 100px 25px;
+}
+.breadcrumb {
+  margin-left: 378px;
+}
+/* 上方navbar */
+.left-nav {
+  /* margin-bottom: 20px; */
+  width: 100%;
+  height: 70px;
+  /* border: 1px solid #ccc; */
+}
+
+.left-nav li {
+  margin: 10px;
+}
+
+.left-nav li a {
+  display: inline-block;
+}
+
+/* 左邊navbar */
+.menu {
+  /* border: 1px solid #ccc; */
+  width: 278px;
+  height: 200vh;
+}
+
+.photo {
+  margin: 10px 0;
+}
+
+.photo img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.side-bar ul {
+  font-size: 16px;
+  padding: 5px;
+  margin: 30px;
+}
+
+.side-bar ul li {
+  font-size: 14px;
+  margin: 3px;
+}
+
+/* 左方出貨列表 */
+.order-list {
+  width: 70%;
+}
+
+.sendtype {
+  margin: 0 10px;
+  border: 1px solid #cb4042;
+  color: #cb4042;
+  background: transparent;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.page {
+  margin: 0 20px;
+  border: 1px solid #000;
+  color: #000;
+  background: transparent;
+  width: 70px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.show-pages {
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin: 10px;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.left-arrow {
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  transform: translate(-100%, -50%);
+}
+
+.right-arrow {
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  transform: translate(100%, -50%);
+}
+
+.createdate {
+  margin-top: 10px;
+}
+
+table {
+  margin: 20px 0;
+}
+
+/* 對應出貨訂單 */
+.get-order {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.arrangeorderbutton {
+  width: 80%;
+  margin: 0;
+  border: 1px solid #cb4042;
+  color: #cb4042;
+  background: transparent;
+  height: 30px;
+  cursor: pointer;
+  position: relative;
+}
+
+.track {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.order-out,
+.order-doc {
+  position: relative;
+  margin: 30px;
+}
+.img-position {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.btntxt {
+  margin-left: 16px;
+}
