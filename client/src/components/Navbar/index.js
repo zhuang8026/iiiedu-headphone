@@ -20,15 +20,24 @@ import {NavItemsAir} from './config';
 function MyNavBar(props) {
     const members = (
         <Fragment>
-            <span>會員中心</span>
+            <span className="IconP">會員中心</span>
         </Fragment>
     );
     const sellers = (
         <Fragment>
-            <span>賣家中心</span>
+            <span className="IconP">賣家中心</span>
         </Fragment>
     );
-
+    const loves = (
+        <Fragment>
+            <span className="IconP">我的最愛</span>
+        </Fragment>
+    );
+    const carts = (
+        <Fragment>
+            <span className="IconP">購物車</span>
+        </Fragment>
+    );
     return (
         <Fragment>
             {/* navbar */}
@@ -221,9 +230,9 @@ function MyNavBar(props) {
                                     <li>
                                         <div id="members" className="otis-members">
                                             <a className="otis-login-opener" href="/KMembers">
-                                                <Popover content={sellers}>
+                                                <Popover content={sellers} placement="bottom">
                                                     <span className="otis-login-text">
-                                                        <i className="iconfont icon-user_2"></i>
+                                                        <i className="iconfont icon-geren"></i>
                                                     </span>
                                                 </Popover>
                                             </a>
@@ -234,9 +243,9 @@ function MyNavBar(props) {
                                     <li>
                                         <div id="members" className="otis-members">
                                             <a className="otis-login-opener" href="/AliceSellers">
-                                                <Popover content={members}>
+                                                <Popover content={members} placement="bottom">
                                                     <span className="otis-login-text">
-                                                        <i className="iconfont icon-user_2"></i>
+                                                        <i className="iconfont icon-Personal"></i>
                                                     </span>
                                                 </Popover>
                                             </a>
@@ -247,21 +256,13 @@ function MyNavBar(props) {
                                     <li>
                                         <div id="wishlist" className="otis-wishlist">
                                             <a className="otis-wishlist-widget-link">
-                                                <span className="otis-wishlist-widget-icon">
-                                                    <i className="iconfont icon-like"></i>
-                                                </span>
-                                                <span className="otis-wishlist-widget-count"> 0 </span>
+                                                <Popover content={loves} placement="bottom">
+                                                    <span className="otis-wishlist-widget-icon">
+                                                        <i className="iconfont icon-like"></i>
+                                                    </span>
+                                                    <span className="otis-wishlist-widget-count"> 1 </span>
+                                                </Popover>
                                             </a>
-                                            <input
-                                                type="hidden"
-                                                id="nille_select_product_wishlist_nonce_7874"
-                                                name="nille_select_product_wishlist_nonce_7874"
-                                                // value="790326ca63"
-                                            /><input
-                                                type="hidden"
-                                                name="_wp_http_referer"
-                                                // value="/"
-                                            />
                                         </div>
                                     </li>
 
@@ -273,10 +274,12 @@ function MyNavBar(props) {
                                                     itemProp="url"
                                                     className="qodef-header-cart"
                                                 >
-                                                    <span className="otis-sc-opener-icon">
-                                                        <i className="iconfont icon-cart"></i>
-                                                    </span>
-                                                    <span className="otis-sc-opener-count"> 5 </span>
+                                                    <Popover content={carts} placement="bottom">
+                                                        <span className="otis-sc-opener-icon">
+                                                            <i className="iconfont icon-cart"></i>
+                                                        </span>
+                                                        <span className="otis-sc-opener-count"> 5 </span>
+                                                    </Popover>
                                                 </a>
                                             </div>
                                         </div>

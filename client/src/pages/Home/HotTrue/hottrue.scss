@@ -1,8 +1,73 @@
 @import "../../../assets/scss/variables";
 
 .MyHotTrue {
+    position: relative;
     .true_title {
         background: url(../../../assets//img/true.png);
         height: 500px;
+        text-align: center;
+        padding-top: 100px;
+        h2 {
+            font-size: 36px;
+            color: $font-color-w;
+            margin: 0;
+        }
+        p {
+            font-weight: 300;
+            color: $font-color-w;
+        }
     }
+    
+    .true_items {
+        position: absolute;
+        bottom: calc(50% - 650px);
+        left: calc(50% - 40%);
+        width: 80%;
+        margin: 0 auto;
+        .swiper-container {
+            // height: 500px;
+            .swiper-wrapper {
+                height: 100%;
+                .true_items_inner {
+                    padding:12px 6px;
+                    .true_items_card {
+                        border-radius: 16px;
+                        text-align: center;
+                        background: $bg-theme;
+                        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+                        h3{
+                            font-size: $font-size-24;
+                            color: $font-color-s;
+                            margin: 0;
+                            padding-top: 24px;
+                        }
+                        img{
+                            width: 85%;
+                            margin-bottom: 32px;
+                        }
+                        ul {
+                            width: 85%;
+                            margin: 0 auto;
+                            padding: 32px 0;
+                            border-top: 1px solid $bg-btn-l;
+                            text-align: left;
+                            li {
+                                color: $font-color-s;
+                                i {
+                                    font-size: 20px;
+                                    margin-right: 16px;
+                                    color: $btn-color-s;
+                                }
+                            }
+                        }
+                    }
+        
+                }
+            }
+            
+        }
+    }
+}
+section {
+    height: 500px;
 }
