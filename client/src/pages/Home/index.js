@@ -10,6 +10,7 @@ import MyFooter from '../../components/Footer';
 import HomeSlider from './HomeSlider';
 import MyDiscover from './DisCover';
 import HotTrue from './HotTrue';
+import MostPopular from './Popular';
 
 function WiHome() {
   useEffect(()=>{
@@ -45,6 +46,7 @@ function WiHome() {
             <HomeSlider/>
             <MyDiscover/>
             <HotTrue/>
+            <MostPopular/>
           </main>
           <MyFooter/>
         </Fragment>

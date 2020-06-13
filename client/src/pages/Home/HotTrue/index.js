@@ -47,10 +47,10 @@ function HotTrue() {
                                     <img src={a} alt="商品列表"/>
                                 </a>
                                 <ul>
-                                    <li><i className="iconfont icon-correct"></i>Great for motion</li>
-                                    <li><i className="iconfont icon-correct"></i>Up to 15 hours battery life*</li>
-                                    <li><i className="iconfont icon-correct"></i>Motion sensor</li>
-                                    <li><i className="iconfont icon-correct"></i>Sweat & dust protected</li>
+                                    <li><i className="iconfont icon-correct"></i>非常適合運動</li>
+                                    <li><i className="iconfont icon-correct"></i>電池續航時間長達 15 小時 *</li>
+                                    <li><i className="iconfont icon-correct"></i>運動傳感器</li>
+                                    <li><i className="iconfont icon-correct"></i>防汗防塵</li>
                                 </ul>
                             </div>
                         </div>
