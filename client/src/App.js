@@ -1,30 +1,64 @@
-import React, { Fragment, useEffect } from 'react'
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from 'react-router-dom'
+import React ,{ Fragment, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Switch, Redirect  } from "react-router-dom"
 
-import MyNavBar from './components/Navbar'
-import MyMenu from './components/NavbarMenu'
-import MyFooter from './components/Footer'
-//賣家功能
-import Seller_center from './pages/alice_seller/Seller_center'
+// components
+import MyNavBar from './components/Navbar';
+import MyMenu from './components/NavbarMenu';
+import MyFooter from './components/Footer';
+
+import WiHome from './pages/Home'
+import YyProduct from './pages/Product'
+import WiAbout from './pages/About'
+import YongBlog from './pages/BLog'
 
 function App() {
-  return (
-    <Router>
-      <>
-        <Switch>
-        {/* 分頁切換router */}
-          <Route path="/seller-center">
-            <Seller_center />
-          </Route>
-        </Switch>
-      </>
-    </Router>
-  )
+    return (
+        <Router>
+            <Fragment>
+                <header>
+                    <MyNavBar/>
+                    <MyMenu/>
+                </header>
+                <Switch>
+                    <Route path="/YyProduct">
+                        <YyProduct />
+                    </Route>
+
+                    <Route path="/YyProduct">
+                        <YyProduct />
+                    </Route>
+
+                    <Route path="/YyProduct">
+                        <YyProduct />
+                    </Route>
+
+                    <Route path="/WiAbout">
+                        <WiAbout />
+                    </Route>
+
+                    <Route path="/YongBlog">
+                        <YongBlog />
+                    </Route>
+                    {/* ProtectdRoute */}
+                    {/* <ProtectedRoute path="/todoapp">
+                        <TodoApp todos={todos} setTodos={setTodos} isAuth={auth}/>
+                    </ProtectedRoute> */}
+
+                    {/* 404 必须放在最后一个 */}
+                    {/* Redirect 重新導向 / 需要先引入 */}
+                    <Route path="/404">
+                        {/* <NotFoundPage404/> */}
+                    </Route>
+                    <Redirect to="/404" />
+                    
+                    <Route exact path="/">
+                        <WiHome />
+                    </Route>
+                </Switch>
+                <MyFooter/>
+            </Fragment>
+        </Router>
+    );
 }
 
 export default App

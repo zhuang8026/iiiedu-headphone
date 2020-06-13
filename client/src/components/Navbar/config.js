@@ -22,6 +22,11 @@ export const NavIcon = [
     },
     {
         linkUrl: 'https://treefonts.com/',
+        picUrl: require('../../assets/img/GRADO.png'),
+        name: 'GRADO'
+    },
+    {
+        linkUrl: 'https://treefonts.com/',
         picUrl: require('../../assets/img/shure.png'),
         name: 'Shure'
     },

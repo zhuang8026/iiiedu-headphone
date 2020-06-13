@@ -1,0 +1,67 @@
+@import '../../assets/scss/variables';
+
+// .wi_button {
+//     border: 1px solid $bg-theme;
+//     color: $bg-theme;
+//     padding: 10px 70px;
+// } 
+
+.btn {
+    display: inline-block;
+    line-height: 35px;
+    padding: 0 64px;
+    font-size: 14px;
+    position: relative;
+    opacity: .999;
+    transition: all 0.3s;
+}
+
+/* button-1 */
+.btn-fill-vert-o {
+    background-color: transparent;
+    border: 1px solid $bg-btn-s;
+    color: $bg-btn-s;
+    overflow: hidden;
+}
+// .btn-fill-vert-o.btn-navy:before, .btn-fill-vert-o.btn-navy:after {
+//     background-color: #34495e;
+// }
+.btn-fill-vert-o:before {
+    top: 50%;
+}
+.btn-fill-vert-o:before, .btn-fill-vert-o:after {
+    content: '';
+    width: 100%;
+    height: 0;
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    transition: all 0.3s;
+}
+.btn-fill-vert-o:hover {
+    color: $border-color-s;
+}
+
+.btn-fill-vert-o:hover:before, .btn-fill-vert-o:hover:after {
+    height: 50%;
+    opacity: 1;
+}
+.btn-fill-vert-o.btn-navy:before, .btn-fill-vert-o.btn-navy:after {
+    background-color: $bg-c;
+}
+.btn-fill-vert-o:after {
+    bottom: 50%;
+}
+.btn-fill-vert-o:before, .btn-fill-vert-o:after {
+    content: '';
+    width: 100%;
+    height: 0;
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    z-index: -1;
+}
+.btn-fill-vert-o:after {
+    transition: all 0.3s;
+}

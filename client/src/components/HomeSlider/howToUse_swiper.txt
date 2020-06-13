@@ -1,0 +1,119 @@
+-------------------------------------------------------- install
+For  react-id-swiper
+---- https://react-id-swiper.ashernguyen.site/example/default
+---- https://www.npmjs.com/package/react-id-swiper
+1-1. npm install --save react-id-swiper@latest swiper@latest 
+或者
+1-2. yarn add react-id-swiper@latest swiper@latest
+
+For  swiper / swiper css /version >=3.0.0
+---- https://www.swiper.com.cn/usage/animate/index.html
+1-3. npm install swiper
+
+For  animate.css / 動畫效果
+---- https://animate.style/#usage
+3-1. npm install animate.css --save  
+或者
+3-2. yarn add animate.css
+
+For  swiper-animation / 連結動畫
+---- https://www.npmjs.com/package/@cycjimmy/swiper-animation
+---- https://blog.csdn.net/qq_28473733/article/details/104346723
+4-1  npm install @cycjimmy/swiper-animation --save
+或者
+4-2. yarn add @cycjimmy/swiper-animation
+
+-------------------------------------------------------- import
+For version <=2.3.2
+css *
+  import 'react-id-swiper/lib/styles/css/swiper.css'
+scss *
+  import 'react-id-swiper/lib/styles/scss/swiper.scss'
+
+For version >=3.0.0
+css *
+  import 'swiper/css/swiper.css'
+scss *
+  import 'swiper/swiper.scss'
+less *
+  import 'swiper/swiper.less'
+
+-------------------------------------------------------- use swiper
+import React from 'react';
+import Swiper from 'react-id-swiper';
+
+import SwiperAnimation from '@cycjimmy/swiper-animation';
+import "animate.css/animate.min.css";
+
+// scss
+import 'swiper/css/swiper.css'
+import './_swiperImg.scss'
+
+import {SwiperImg} from './config.js';
+
+const swiperAnimation = new SwiperAnimation();
+const SpaceBetweenSlides = () => {
+    const params = {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        effect: 'fade',
+        lazy: true,
+        loop: true,
+        // autoplay: {
+        //     delay: 2500,
+        //     disableOnInteraction: false
+        // },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            dynamicBullets: true
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+        },
+        on: {
+            init: function () {
+                swiperAnimation.init(this).animate();
+            },
+            slideChange: function () {
+                swiperAnimation.init(this).animate();
+            }
+        }
+    }
+    return (
+    <Swiper {...params}>
+        { SwiperImg.map((data, index)=>{
+            return (
+                <div key={index}>
+                    <h1 
+                        data-swiper-animation="animate__fadeInRight" 
+                        data-duration=".5s" 
+                        data-delay=".5s" 
+                        // data-swiper-out-animation="animate__fadeOut"
+                        data-out-duration=".2s"
+                    >{data.h1text}</h1>
+                    <img src={data.picUrl} className="swiper-lazy" alt="AKG"/>
+                </div>
+            )
+        }) }
+    </Swiper>
+    
+    )
+};
+export default SpaceBetweenSlides;
+
+
+-------------------- swiper.css 19 行修改
+:root {
+  --swiper-theme-color: #fff;
+}
+-------------------- swiper.css 215 行修改
+/* Common Styles */
+.swiper-pagination-fraction,
+.swiper-pagination-custom,
+.swiper-container-horizontal > .swiper-pagination-bullets {
+  bottom: 10px;
+  left: 0;
+  width: 75px;
+}
