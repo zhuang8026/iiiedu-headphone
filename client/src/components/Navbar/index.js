@@ -2,6 +2,9 @@
 import React, { Fragment, useEffect } from 'react';
 import { Link, NavLink, withRouter } from 'react-router-dom'
 
+// antd
+import { Popover, Button } from 'antd';
+
 // scss
 import './_nav.scss'
 
@@ -15,6 +18,16 @@ import {NavItemsAir} from './config';
 
 
 function MyNavBar(props) {
+    const members = (
+        <Fragment>
+            <span>會員中心</span>
+        </Fragment>
+    );
+    const sellers = (
+        <Fragment>
+            <span>賣家中心</span>
+        </Fragment>
+    );
 
     return (
         <Fragment>
@@ -208,9 +221,11 @@ function MyNavBar(props) {
                                     <li>
                                         <div id="members" className="otis-members">
                                             <a className="otis-login-opener" href="/KMembers">
-                                                <span className="otis-login-text">
-                                                    <i className="iconfont icon-user_2"></i>
-                                                </span>
+                                                <Popover content={sellers}>
+                                                    <span className="otis-login-text">
+                                                        <i className="iconfont icon-user_2"></i>
+                                                    </span>
+                                                </Popover>
                                             </a>
                                         </div>
                                     </li>
@@ -219,9 +234,11 @@ function MyNavBar(props) {
                                     <li>
                                         <div id="members" className="otis-members">
                                             <a className="otis-login-opener" href="/AliceSellers">
-                                                <span className="otis-login-text">
-                                                    <i className="iconfont icon-user_2"></i>
-                                                </span>
+                                                <Popover content={members}>
+                                                    <span className="otis-login-text">
+                                                        <i className="iconfont icon-user_2"></i>
+                                                    </span>
+                                                </Popover>
                                             </a>
                                         </div>
                                     </li>
