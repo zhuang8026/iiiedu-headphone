@@ -10,6 +10,8 @@ import WiHome from './pages/Home'
 import YyProduct from './pages/Product'
 import WiAbout from './pages/About'
 import YongBlog from './pages/BLog'
+import KMembers from './pages/Members'
+import AliceSellers from './pages/Sellers'
 
 function App() {
     return (
@@ -44,6 +46,13 @@ function App() {
                         <YongBlog />
                     </Route>
 
+                    <Route path="/KMembers">
+                        <KMembers />
+                    </Route>
+
+                    <Route path="/AliceSellers">
+                        <AliceSellers />
+                    </Route>
                     {/* ProtectdRoute */}
                     {/* <ProtectedRoute path="/todoapp">
                         <TodoApp todos={todos} setTodos={setTodos} isAuth={auth}/>

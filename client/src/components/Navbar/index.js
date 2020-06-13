@@ -204,7 +204,7 @@ function MyNavBar(props) {
                                 </li>
                                 <li>
                                     <div id="members" className="otis-members">
-                                    <a className="otis-login-opener">
+                                    <a className="otis-login-opener" href="/AliceSellers">
                                         <span className="otis-login-text">
                                             <i className="iconfont icon-user_2"></i>
                                         </span>
