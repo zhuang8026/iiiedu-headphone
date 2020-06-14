@@ -108,9 +108,10 @@
     .otis_cart {
         padding-top: 24px;
         padding-bottom: 24px;
+        // overflow-y: scroll;
         .otis_cart_inner {
-            overflow-y: scroll;
-            max-height: 300px;
+            // overflow-y: scroll;
+            // max-height: 300px;
             .cart_row {
                 display: flex;
                 align-items: flex-end;
