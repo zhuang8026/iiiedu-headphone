@@ -22,7 +22,8 @@ figure.popular_inner img {
     width: 100%;
     -webkit-transition: opacity 0.35s;
     transition: opacity 0.35s;
-    -webkit-filter:opacity(.3)
+    -webkit-filter:opacity(.5);
+    filter:opacity(.5);
     // filter: grayscale(100%);
 }
 figure.popular_inner figcaption {
@@ -86,9 +87,10 @@ figure.popular_inner a {
     color: #ffffff;
 }
 figure.popular_inner:hover img {
-    opacity: 0.8;
+    opacity: 0.3;
     // filter: grayscale(0%);
-    -webkit-filter:opacity(1)
+    // -webkit-filter:opacity(1);
+    // filter:opacity(1);
 }
 figure.popular_inner:hover figcaption h2 {
     opacity: 1;

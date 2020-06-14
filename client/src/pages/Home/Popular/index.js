@@ -22,6 +22,7 @@ function MostPopular() {
                             {/* <h2>NEW <span>POPULAR</span> HEADPHONE</h2> */}
                             <h2>{ data.name }</h2>
                             <p>{ data.ptext }</p>
+                            <p>MORE +</p>
                             <a href="#"></a>
                         </figcaption>			
                     </figure>
