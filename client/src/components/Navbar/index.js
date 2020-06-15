@@ -229,7 +229,7 @@ function MyNavBar(props) {
                                     {/* 賣家 */}
                                     <li>
                                         <div id="members" className="otis-members">
-                                            <a className="otis-login-opener" href="/KMembers">
+                                            <a className="otis-login-opener" href="/AliceSellers">
                                                 <Popover content={sellers} placement="bottom">
                                                     <span className="otis-login-text">
                                                         <i className="iconfont icon-geren"></i>
@@ -242,7 +242,7 @@ function MyNavBar(props) {
                                     {/* 會員 */}
                                     <li>
                                         <div id="members" className="otis-members">
-                                            <a className="otis-login-opener" href="/AliceSellers">
+                                            <a className="otis-login-opener" href="/KMembers">
                                                 <Popover content={members} placement="bottom">
                                                     <span className="otis-login-text">
                                                         <i className="iconfont icon-Personal"></i>

@@ -7,6 +7,7 @@ import WiAbout from './pages/About'
 import YongBlog from './pages/BLog'
 import KMembers from './pages/Members'
 import AliceSellers from './pages/Sellers'
+import YfangCart from './pages/Cart'
 
 function App() {
     return (
@@ -44,6 +45,10 @@ function App() {
 
                     <Route path="/AliceSellers">
                         <AliceSellers />
+                    </Route>
+
+                    <Route path="/YfangCart">
+                        <YfangCart />
                     </Route>
 
                     {/* ProtectdRoute 這是 utils */}
