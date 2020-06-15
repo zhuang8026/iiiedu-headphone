@@ -2,11 +2,35 @@
 @import "../../../assets/scss/mixins";
 
 .ig_inner_all {
+    margin-top: 100px;
+    width: 80%;
+    margin: 0 auto;
+    .true_title {
+        text-align: center;
+        margin: 95px 0;
+        h2 {
+            font-size: 36px;
+            color: $font-color-s;
+            margin: 0;
+        }
+        p {
+            font-weight: 300;
+            color: $font-color-s;
+            letter-spacing: 1px;
+        }
+    }
     .ig {
         ul{
             @include flex();
+            li{
+                width: 25%;
+                a {
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
         }
-        
     }
 }
 

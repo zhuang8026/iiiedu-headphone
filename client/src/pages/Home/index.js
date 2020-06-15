@@ -50,6 +50,8 @@ function WiHome() {
             <HotTrue/>
             <MostPopular/>
             <BottomIG/>
+            <BottomIG/>
+            <BottomIG/>
           </main>
 
           <MyFooter/>
