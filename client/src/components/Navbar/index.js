@@ -184,7 +184,7 @@ function MyNavBar(props) {
                                             <ul>
                                                 <li className="nav-menu-object">
                                                     <i className="iconfont icon-blog"></i>
-                                                    <a href="#" type="button"><span>所有 Blog</span></a>
+                                                    <Link to="/YongBlog" type="button"><span>所有 Blog</span></Link>
                                                 </li>
                                                 <li className="nav-menu-object">
                                                     <i className="iconfont icon-blog"></i>

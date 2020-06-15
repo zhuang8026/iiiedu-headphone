@@ -8,6 +8,7 @@ import { Link, NavLink, withRouter } from 'react-router-dom'
 function YongBlog(props) {
     return (
         <Fragment>
+        YongBlog 部落格 頁面
         </Fragment>
     )
 
