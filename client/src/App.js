@@ -26,59 +26,62 @@ function App() {
                     <Route exact path="/">
                         <WiHome />
                     </Route>
-
-                    <Route path="/YyProduct">
+                    
+                    {/* 產品列表 */}
+                    <Route path="/YyProduct/:head?">
                         <YyProduct />
                     </Route>
 
-                    <Route path="/YyProduct">
+                    <Route path="/YyProduct/:air?">
                         <YyProduct />
                     </Route>
 
-                    <Route path="/YyProduct">
+                    <Route path="/YyProduct/:box?">
                         <YyProduct />
                     </Route>
 
-                    <Route path="/YongBlog">
+                    {/* 靜態頁面 */}
+                    <Route path="/about/WiGift">
+                        <WiGift />
+                    </Route>
+                    <Route path="/about/WiWarranty">
+                        <WiWarranty />
+                    </Route>
+                    <Route path="/about/WiAbout">
+                        <WiAbout />
+                    </Route>
+                    <Route path="/about/WiConnect">
+                        <WiConnect />
+                    </Route>  
+                    <Route path="/about/WiStore">
+                        <WiStore />
+                    </Route>
+                    <Route path="/about/WiProblem">
+                        <WiProblem />
+                    </Route>
+                    <Route path="/about/WiOurClients">
+                        <WiOurClients />
+                    </Route>
+                    
+                    {/* Blog */}
+                    <Route path="/Blog/YongBlog">
                         <YongBlog />
                     </Route>
 
+                    {/* 會員 */}
                     <Route path="/KMembers">
                         <KMembers />
                     </Route>
 
+                    {/* 賣家 */}
                     <Route path="/AliceSellers">
                         <AliceSellers />
                     </Route>
 
+                    {/* 購物車 */}
                     <Route path="/YfangCart">
                         <YfangCart />
                     </Route>
-
-                    {/* 靜態頁面 */}
-                    <Route path="/WiGift">
-                        <WiGift />
-                    </Route>
-                    <Route path="/WiWarranty">
-                        <WiWarranty />
-                    </Route>
-                    <Route path="/WiAbout">
-                        <WiAbout />
-                    </Route>
-                    <Route path="/WiConnect">
-                        <WiConnect />
-                    </Route>  
-                    <Route path="/WiStore">
-                        <WiStore />
-                    </Route>
-                    <Route path="/WiProblem">
-                        <WiProblem />
-                    </Route>
-                    <Route path="/WiOurClients">
-                        <WiOurClients />
-                    </Route>
-                    
-
 
                     {/* ProtectdRoute 這是 utils */}
                     {/* <ProtectedRoute path="/todoapp">
