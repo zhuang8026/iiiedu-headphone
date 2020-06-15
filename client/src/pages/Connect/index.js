@@ -5,12 +5,12 @@ import { Link, NavLink, withRouter } from 'react-router-dom'
 // scss
 // import './_menu.scss'
 
-function WiAbout(props) {
+function WiConnect(props) {
     return (
         <Fragment>
-        關於我們
+        聯繫我們
         </Fragment>
     )
 
 }
-export default withRouter(WiAbout);
+export default withRouter(WiConnect);

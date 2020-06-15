@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import { Link, NavLink, withRouter } from 'react-router-dom'
 
 // scss
-import './test.scss'
+// import './test.scss'
 
 import SellerALiceNav from '../../components/UseAlice'
 

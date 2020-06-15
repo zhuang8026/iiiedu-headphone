@@ -9,6 +9,14 @@ import KMembers from './pages/Members'
 import AliceSellers from './pages/Sellers'
 import YfangCart from './pages/Cart'
 
+// 靜態頁面
+import WiStore from './pages/Store'
+import WiConnect from './pages/Connect'
+import WiGift from './pages/Gift'
+import WiProblem from './pages/Problem'
+import WiOurClients from './pages/OurClients'
+import WiWarranty from './pages/Warranty'
+
 function App() {
     return (
         <Router>
@@ -31,10 +39,6 @@ function App() {
                         <YyProduct />
                     </Route>
 
-                    <Route path="/WiAbout">
-                        <WiAbout />
-                    </Route>
-
                     <Route path="/YongBlog">
                         <YongBlog />
                     </Route>
@@ -50,6 +54,31 @@ function App() {
                     <Route path="/YfangCart">
                         <YfangCart />
                     </Route>
+
+                    {/* 靜態頁面 */}
+                    <Route path="/WiGift">
+                        <WiGift />
+                    </Route>
+                    <Route path="/WiWarranty">
+                        <WiWarranty />
+                    </Route>
+                    <Route path="/WiAbout">
+                        <WiAbout />
+                    </Route>
+                    <Route path="/WiConnect">
+                        <WiConnect />
+                    </Route>  
+                    <Route path="/WiStore">
+                        <WiStore />
+                    </Route>
+                    <Route path="/WiProblem">
+                        <WiProblem />
+                    </Route>
+                    <Route path="/WiOurClients">
+                        <WiOurClients />
+                    </Route>
+                    
+
 
                     {/* ProtectdRoute 這是 utils */}
                     {/* <ProtectedRoute path="/todoapp">

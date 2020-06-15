@@ -140,51 +140,51 @@ function MyNavBar(props) {
                                         </div>
                                     </li>
                                     <li>
-                                        <a href="/WiAbout" className="meaulist">
+                                        <a href="@" className="meaulist">
                                             <span>關於我們</span>
                                         </a>
                                         <div className="inner hidden-meau">
                                         <ul>
                                             <li className="nav-menu-object">
                                                 <i className="iconfont icon-gift"></i>
-                                                <a href=""><span>禮物卡</span></a>
+                                                <a href="/WiGift"><span>禮物卡</span></a>
                                             </li>
                                             <li className="nav-menu-object">
                                                 <i className="iconfont icon-card"></i>
-                                                <a href=""><span>保固卡</span></a>
+                                                <a href="/WiWarranty"><span>保固卡</span></a>
                                             </li>
                                             <li className="nav-menu-object">
                                                 <i className="iconfont icon-user_2"></i>
-                                                <a href=""><span>關於我們</span></a>
+                                                <a href="/WiAbout"><span>關於我們</span></a>
                                             </li>
                                             <li className="nav-menu-object">
                                                 <i className="iconfont icon-message"></i>
-                                                <a href=""><span>聯係我們</span></a>
+                                                <a href="/WiConnect"><span>聯係我們</span></a>
                                             </li>
                                             <li className="nav-menu-object">
                                                 <i className="iconfont icon-location"></i>
-                                                <a href=""><span>商店定位</span></a>
+                                                <a href="/WiStore"><span>商店定位</span></a>
                                             </li>
                                             <li className="nav-menu-object">
                                                 <i className="iconfont icon-warning"></i>
-                                                <a href=""><span>常見問題</span></a>
+                                                <a href="/WiProblem"><span>常見問題</span></a>
                                             </li>
                                             <li className="nav-menu-object">
                                                 <i className="iconfont icon-geren"></i>
-                                                <a href=""><span>我們的客戶</span></a>
+                                                <a href="/WiOurClients"><span>我們的客戶</span></a>
                                             </li>
                                         </ul>
                                         </div>
                                     </li>
                                     <li>
-                                        <Link to="/YongBlog" className="meaulist">
+                                        <a href="/YongBlog" className="meaulist">
                                             <span>BLOG</span>
-                                        </Link>
+                                        </a>
                                         <div className="inner hidden-meau">
                                             <ul>
                                                 <li className="nav-menu-object">
                                                     <i className="iconfont icon-blog"></i>
-                                                    <Link to="/YongBlog" type="button"><span>所有 Blog</span></Link>
+                                                    <a href="/YongBlog" type="button"><span>所有 Blog</span></a>
                                                 </li>
                                                 <li className="nav-menu-object">
                                                     <i className="iconfont icon-blog"></i>
@@ -214,7 +214,6 @@ function MyNavBar(props) {
                                                 type="search"
                                                 className="search-field"
                                                 required=""
-                                                // value=""
                                                 name="s"
                                                 title="Search for:"
                                             />
