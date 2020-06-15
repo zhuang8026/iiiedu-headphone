@@ -11,7 +11,12 @@ import HomeSlider from './HomeSlider';
 import MyDiscover from './DisCover';
 import HotTrue from './HotTrue';
 import MostPopular from './Popular';
+
+import BottomStore from './BottomStore';
 import BottomIG from './BottomIG';
+import BottomYoutube from './BottomYoutube';
+
+import { StoreImg, IGImg, YoutubeImg } from '../../assets/js/config';
 
 function WiHome() {
   useEffect(()=>{
@@ -49,9 +54,9 @@ function WiHome() {
             <MyDiscover/>
             <HotTrue/>
             <MostPopular/>
-            <BottomIG/>
-            <BottomIG/>
-            <BottomIG/>
+            <BottomStore StoreImg={StoreImg}/>
+            <BottomIG IGImg={IGImg}/>
+            <BottomYoutube YoutubeImg={YoutubeImg}/>
           </main>
 
           <MyFooter/>

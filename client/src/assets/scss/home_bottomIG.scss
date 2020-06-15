@@ -24,10 +24,29 @@
             @include flex();
             li{
                 width: 25%;
+                position: relative;
                 a {
+                    .imgCover {
+                        opacity: 0;
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        background: rgba(33, 30, 85, 0.5);
+                        transition: 0.3s ease-in;
+                        @include flex();
+                        i {
+                            font-size: 2rem;
+                            color: #fff;
+                        }
+                    }
                     img {
                         width: 100%;
                     }
+                }
+                &:hover a .imgCover{
+                    opacity: 1;
                 }
             }
         }
