@@ -1,0 +1,288 @@
+/* ============================== 共用 ============================== */
+body {
+  background-color: white;
+}
+/* .blog-main-fig img {
+    width: 100%;
+    height: 100%;
+} */
+.d-flex {
+  display: flex;
+}
+.fill {
+  object-fit: fill;
+}
+.contain {
+  object-fit: contain;
+}
+.cover {
+  object-fit: cover;
+}
+.none {
+  object-fit: none;
+}
+.justify-content-between {
+  justify-content: space-between;
+}
+/* 間距<div> */
+.spacing {
+  height: 40px;
+}
+/* ============================== 自訂 ============================== */
+
+/* 其他 */
+.spacing {
+  height: 90px;
+  background-color: #4e4f97;
+}
+
+/* ---------- top ---------- */
+.wrap-top {
+  width: 100%;
+}
+
+.breadcrumbs {
+  width: 100%;
+  height: 90px;
+}
+.breadcrumbs h5 {
+  font-size: 20px;
+  line-height: 90px;
+  margin-left: 50px;
+}
+/* ---------- main ---------- */
+.wrap-mid {
+  width: 90%;
+  margin: 0 auto;
+}
+.blog-add {
+  width: 100%;
+}
+.main {
+  width: 80%;
+  border: 1px solid gray;
+  box-shadow: 5px 5px 10px rgb(56, 56, 56);
+}
+.top-img {
+  width: 100%;
+  height: 193px;
+  background: #ebdbc9;
+  /* border: 1px solid gray; */
+}
+.top-img img {
+  width: 100%;
+  height: 100%;
+}
+.blog-add-in {
+  width: 96%;
+  margin: 0 auto;
+  /* border: 1px solid blue; */
+}
+.blog-add-in h1 {
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+.underline-1 {
+  width: 10rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #cf9e9e;
+}
+.title-h2 {
+  font-size: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.first-h2 {
+  font-size: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.input-title {
+  width: 100%;
+  height: 32px;
+  border: 1px solid gray;
+}
+.btn-and-info {
+  /* width: 100%; */
+  /* line-height: 40px; */
+  /* border:2px solid green; */
+}
+.info {
+  width: 100px;
+  height: 24px;
+  margin-top: 1rem;
+  margin-right: 20px;
+  border: 1px solid #cb4042;
+  border-radius: 8px;
+}
+.second-h2 {
+  font-size: 1rem;
+  margin-top: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.btn-and-info-input {
+  /* width: 100px; */
+  height: 32px;
+  /* line-height: 45px; */
+  margin-top: 1rem;
+  /* margin-bottom: .5rem; */
+}
+.blog-add-in textarea {
+  width: 100%;
+  border: 1px solid gray;
+  margin-bottom: 1rem;
+}
+.blog-add-in input {
+}
+.blog-add-in textarea {
+  height: 100px;
+}
+.upload-imgs {
+  width: 100%;
+  border: 1px solid gray;
+}
+.upload-imgs figure {
+  width: 99%;
+  height: 200px;
+  margin: 5px auto;
+  border: 1px solid orange;
+}
+
+.submit {
+  width: 100px;
+  height: 45px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+/* ---------- aside ---------- */
+.aside {
+  width: 20%;
+  height: 100%;
+}
+.post-map {
+  width: 90%;
+  margin: 0 0 0 10%;
+  text-align: center;
+}
+.post-map > button {
+  width: 90%;
+  margin: 0 auto;
+  line-height: 32px;
+  color: #fafaf7;
+  background: #4e4f97;
+}
+.post-map figure {
+  width: 100%;
+  height: 100%;
+}
+.post-map img {
+  width: 100%;
+  height: 100%;
+}
+.user-icon {
+  width: 90%;
+  margin: 20px 0 0 10%;
+  text-align: center;
+  align-content: center;
+}
+.user-icon > h2 {
+  font-size: 20px;
+  margin: 20px auto;
+}
+.user-icon-fig {
+  width: 250px;
+  height: 250px;
+  margin: 0 auto;
+  background: rgb(151, 160, 133);
+}
+.user-icon-fig img {
+  width: 100%;
+}
+.link-btns {
+  width: 100%;
+  margin: 20px 0;
+}
+.link-btns h2 {
+  font-size: 12px;
+}
+.link-one-btn {
+  width: 33.33%;
+  text-align: center;
+}
+.linkFB,
+.linkIG,
+.linkLINE {
+  width: 40px;
+  height: 40px;
+  margin: 10px auto;
+  background: #ebdbc9;
+  border-radius: 50%;
+}
+.link-subscribe {
+  width: 90%;
+  margin: 60px 0 0 10%;
+}
+.link-subscribe-border {
+  width: 90%;
+  margin: 0 auto;
+  border: 1px solid #ebdbc9;
+}
+.link-subscribe h5 {
+  margin: 20px auto;
+  text-align: center;
+}
+.link-subscribe-in {
+  width: 90%;
+  line-height: 32px;
+  margin: 20px auto;
+}
+.link-subscribe-in input {
+  width: 80%;
+  text-align: center;
+  border: 1px solid #211e55;
+}
+.link-subscribe-in button {
+  width: 15%;
+  border: 1px solid #211e55;
+  background: #ebdbc9;
+}
+.link-subscribe-in button img {
+  width: 40%;
+}
+.recent-post {
+  width: 90%;
+  height: 400px;
+  margin: 60px 0 0 10%;
+}
+.recent-post-in {
+  width: 90%;
+  margin: 0 auto;
+}
+.recent-post-in h2 {
+  font-size: 20px;
+  margin: 20px 0;
+}
+.recent-post-in-one {
+  margin-bottom: 20px;
+}
+.recent-post-in-one-img {
+  width: 100px;
+  height: 100px;
+  border: 1px solid gray;
+}
+.recent-post-in-one-txt {
+  margin-left: 10px;
+}
+.recent-post-in-one-txt h5 {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #adadad;
+}
+
+.footer-top {
+  width: 100%;
+  height: 60px;
+}
