@@ -7,7 +7,7 @@ import Otispng from '../../assets/img/Otis.png';
 import ticket from '../../assets/img/ticket.png';
 
 // scss
-import './_menu.scss'
+// import './_menu.scss'
 
 function MyNavBar(props) {
     return (

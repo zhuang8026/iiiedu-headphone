@@ -6,7 +6,7 @@ import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
 
 // scss
-import './hottrue.scss';
+// import './hottrue.scss';
 
 import a from '../../../assets/img/bg_6p_1.png'
 

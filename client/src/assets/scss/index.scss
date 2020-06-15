@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 // 公共初始 css
 @import "_variables";
 @import "_reset";
@@ -9,6 +8,22 @@
 
 // 公共組件 css
 @import "_window";
+@import "_Linkbutton.scss";
+
+
+// navbar 
+@import "./nav";
+@import "./menu";
+
+// footer
+@import "./footer";
+
+// home 首頁
+@import "./home_swiperImg.scss";
+@import "./home_discover.scss";
+@import "./home_hottrue.scss";
+@import "./home_mostPopular.scss";
+@import "./home_bottomIG.scss";
 
 
 

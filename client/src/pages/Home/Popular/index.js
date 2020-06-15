@@ -5,7 +5,7 @@ import { Link, withRouter } from "react-router-dom"
 // import Swiper from 'react-id-swiper';
 
 // scss
-import './MostPopular.scss';
+// import './MostPopular.scss';
 
 // img data
 import { PopularImg } from './config.js';

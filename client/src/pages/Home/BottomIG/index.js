@@ -2,7 +2,7 @@ import React ,{ useEffect } from 'react';
 import { Link, withRouter } from "react-router-dom"
 
 // scss
-import './BottomIG.scss';
+// import './BottomIG.scss';
 
 // img data
 // import { PopularImg } from './config.js';

@@ -9,7 +9,7 @@ import "animate.css/animate.min.css";
 
 // scss
 import 'swiper/css/swiper.css';
-import './_swiperImg.scss';
+// import './_swiperImg.scss';
 
 import {SwiperImg} from './config.js';
 

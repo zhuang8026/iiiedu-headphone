@@ -1,9 +1,9 @@
-@import "../../../assets/scss/variables";
+@import "./variables";
 
 .MyHotTrue {
     position: relative;
     .true_title {
-        background: url(../../../assets//img/true.png);
+        background: url(../img/true.png);
         height: 500px;
         text-align: center;
         padding-top: 100px;

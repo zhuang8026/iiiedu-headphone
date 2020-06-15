@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import { Link, withRouter } from 'react-router-dom'
 
 // scss
-import './linkbutton.scss';
+// import './linkbutton.scss';
 
 const LInkButton = (props) => {
     const {linkUrl} = props;

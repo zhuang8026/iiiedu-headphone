@@ -6,7 +6,7 @@ import { Link, NavLink, withRouter } from 'react-router-dom'
 import { Popover, Button } from 'antd';
 
 // scss
-import './_nav.scss'
+// import './_nav.scss'
 
 // logo 
 import OtisGif from "../../assets/img/Otis.gif";

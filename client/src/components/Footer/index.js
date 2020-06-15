@@ -5,7 +5,7 @@ import { Link, NavLink, withRouter } from 'react-router-dom'
 import Complete from './FooterInput.js';
 
 // scss
-import './_footer.scss'
+// import './_footer.scss'
 
 // logo 
 import OtisGift from "../../assets/img/gift.png";

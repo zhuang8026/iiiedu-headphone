@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch, Link, withRouter } from "react-
 
 
 // scss
-import './discover.scss'
+// import './discover.scss'
 
 // imove
 import BgImovie from '../../../assets/imove/bg_movie_2.mp4';
