@@ -1,6 +1,23 @@
 @import "../../../assets/scss/variables";
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,200,300,800);
 
+.popular_inner_all {
+    .true_title {
+        text-align: center;
+        margin-bottom: 95px;
+        h2 {
+            font-size: 36px;
+            color: $font-color-s;
+            margin: 0;
+        }
+        p {
+            font-weight: 300;
+            color: $font-color-s;
+            letter-spacing: 1px;
+        }
+    }
+}
+
 .popular {
     display: flex;
     flex-wrap: wrap;
@@ -51,7 +68,7 @@ figure.popular_inner figcaption::before {
 }
 figure.popular_inner h2,
 figure.popular_inner p {
-    margin: 0 0 5px;
+    margin: 16px 0 5px 0;
     opacity: 0;
     -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
     transition: opacity 0.35s,-webkit-transform 0.35s,-moz-transform 0.35s,-o-transform 0.35s,transform 0.35s;
@@ -78,7 +95,7 @@ figure.popular_inner p {
         -webkit-transition-delay: 0s;
         transition-delay: 0s;
 }
-figure.popular_inner a {
+figure.popular_inner .figureLink {
     left: 0;
     right: 0;
     top: 0;
@@ -108,7 +125,7 @@ figure.popular_inner:hover figcaption p {
 }
 figure.popular_inner:hover figcaption::before {
     opacity: 1;
-    background: rgba(33, 30, 85, 0.6);
+    background: rgba(33, 30, 85, 0);
     left: 30px;
     -webkit-transition-delay: 0s;
     transition-delay: 0s;

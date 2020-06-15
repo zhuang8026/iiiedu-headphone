@@ -11,6 +11,7 @@ import HomeSlider from './HomeSlider';
 import MyDiscover from './DisCover';
 import HotTrue from './HotTrue';
 import MostPopular from './Popular';
+import BottomIG from './BottomIG';
 
 function WiHome() {
   useEffect(()=>{
@@ -42,12 +43,15 @@ function WiHome() {
             <MyNavBar/>
             <MyMenu/>
           </header>
+          
           <main>
             <HomeSlider/>
             <MyDiscover/>
             <HotTrue/>
             <MostPopular/>
+            <BottomIG/>
           </main>
+
           <MyFooter/>
         </Fragment>
     </Router>

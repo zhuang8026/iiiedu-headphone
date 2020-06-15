@@ -1,5 +1,13 @@
 @import "variables";
 
+// flex
+@mixin flex($w:100%) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $w;
+}
+
 // flex-center
 @mixin flex-center($direction: row) {
   display: flex;
