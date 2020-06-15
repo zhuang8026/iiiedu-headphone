@@ -1,16 +1,43 @@
 // 函式元件
-import React, { Fragment } from 'react';
-import { Link, NavLink, withRouter } from 'react-router-dom'
+import React, { Fragment, useEffect } from 'react'
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+  Link,
+  NavLink,
+  withRouter,
+} from 'react-router-dom'
+
+// components
+import MyNavBar from '../../components/Navbar'
+import MyMenu from '../../components/NavbarMenu'
+import MyFooter from '../../components/Footer'
+
+//cart
+import CartCrumb from './CartCrumb'
+import CartTable from './CartTable'
 
 // scss
 // import './_menu.scss'
 
 function YfangCart(props) {
-    return (
-        <Fragment>
-        雅芳 購物車
-        </Fragment>
-    )
+  return (
+    <Router>
+      <Fragment>
+        <header>
+          <MyNavBar />
+          <MyMenu />
+        </header>
+        <CartCrumb />
+        <main>
+          <CartTable />
+        </main>
 
+        <MyFooter />
+      </Fragment>
+    </Router>
+  )
 }
-export default withRouter(YfangCart);
+export default withRouter(YfangCart)
