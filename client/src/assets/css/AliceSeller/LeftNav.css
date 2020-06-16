@@ -1,0 +1,134 @@
+/* 每個功能都具備 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #707070;
+}
+
+main {
+  width: 100%;
+}
+
+body {
+  background: #f4f4f5;
+}
+
+nav {
+  background: white;
+}
+
+/* 模組套件 */
+.d-flex {
+  display: flex;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.align-item-center {
+  align-items: center;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-item-end {
+  align-items: flex-end;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 20px;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.toggle {
+  margin: 7px;
+}
+
+.toggle > div {
+  margin: 5px;
+  cursor: pointer;
+}
+
+.icon-size {
+  width: 16px;
+  height: 16px;
+}
+
+.w-90 {
+  width: 90%;
+  margin: 0 auto;
+}
+/* 個別項 */
+.container {
+  height: 1050px;
+  margin: 25px 100px 25px;
+}
+
+.breadcrumb {
+  margin-left: 378px;
+}
+/* 上方navbar */
+.left-nav {
+  /* margin-bottom: 20px; */
+  width: 100%;
+  height: 70px;
+  /* border: 1px solid #ccc; */
+}
+
+.left-nav li {
+  margin: 10px;
+}
+
+.left-nav li a {
+  display: inline-block;
+}
+
+/* 左邊navbar */
+.menu {
+  /* border: 1px solid #ccc; */
+  width: 278px;
+  height: 200vh;
+}
+
+.photo {
+  margin: 10px 0;
+}
+
+.photo img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.side-bar ul {
+  font-size: 16px;
+  padding: 5px;
+  margin: 30px;
+}
+
+.side-bar ul li {
+  font-size: 14px;
+  margin: 3px;
+}
+
+.myproduct {
+  height: 150vh;
+}

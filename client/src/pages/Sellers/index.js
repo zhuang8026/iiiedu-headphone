@@ -5,13 +5,15 @@ import { Link, NavLink, withRouter } from 'react-router-dom'
 // scss
 // import './test.scss'
 
-import SellerALiceNav from '../../components/UseAlice'
+import LeftNav from './Leftnav/LeftNav'
+import IndexMain from './IndexMain/IndexMain'
+
 
 function AliceSellers(props) {
     return (
         <Fragment>
-            <div className="test"/>
-            <SellerALiceNav/>
+            <LeftNav />
+            <IndexMain />
         </Fragment>
     )
 }
