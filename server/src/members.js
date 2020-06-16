@@ -1,7 +1,7 @@
 const express = require('express');
 const upload = require(__dirname + '/upload-module');
 const db = require(__dirname + '/db_connect');
-// const moment = require('moment-timezone'); // 外面永远都只会执行一次，这里需要再一次引入
+const moment = require('moment-timezone'); // npm install moment-timezone
 
 const router = express.Router();
 

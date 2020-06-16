@@ -24,9 +24,11 @@ app.get('/', (req, res)=>{ // req=> 请求 res => 響應
     res.send('hello! welcome to william node.js api.');
 });
 
-// let members = require(__dirname+'/members.js')
-// app.use('/members', members);
+// 會員
 app.use('/members', require(__dirname+'/members.js'));
+
+// 產品
+app.use('/products', require(__dirname+'/products.js'));
 
 // 404
 app.use((req, res)=>{
