@@ -1,0 +1,15 @@
+mysql中有個query方法可以用來執行任意正確的sql語句，然後在回撥函式裡給出執行sql語句後的結果。
+query方法是非同步執行的，若並列書寫多個query方法的話，是不能按照書寫順序依次阻塞式執行的。
+query方法是非同步執行的
+ex: 
+    ->  const db = require(__dirname + '/db_connect');
+    ->  const sql = "SELECT `sid`, `account`, `nickname` FROM admins WHERE account=? AND password=SHA1(?)";
+        db.query(sql, [req.body.account, req.body.password])
+            .then(([result])=>{
+                if(result && result.length){
+                    req.session.adminWill = result[0]; // admin 这是自己定义的，将result的资料赋值给 admin
+                    output.success = true;
+                }
+                console.log(result)
+                res.json(output);
+            })

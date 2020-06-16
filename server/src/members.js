@@ -11,14 +11,15 @@ router.get('/', (req, res)=>{
     // res.redirect(req.baseUrl + '/list');
 });
 
+// 登入 - william-0616
 router.post('/login', upload.none(), (req, res)=>{
     //res.render('address-book/login');
     const  output = {
         body: req.body,
         success: false
     }
-    const sql = "SELECT `sid`, `account`, `nickname` FROM admins WHERE account=? AND password=SHA1(?)";
-    db.query(sql, [req.body.account, req.body.password])
+    const sql = "SELECT * FROM `users` WHERE `username`=? AND `pwd`=SHA1(?)";
+    db.query(sql, [req.body.username, req.body.pwd])
         .then(([result])=>{
             if(result && result.length){
                 req.session.adminWill = result[0]; // admin 这是自己定义的，将result的资料赋值给 admin
@@ -28,5 +29,13 @@ router.post('/login', upload.none(), (req, res)=>{
             res.json(output);
         })
 });
+
+// 登出 - william-0616
+router.get('/logout',(req, res)=>{
+    delete req.session.adminWill;
+    console.log(req.session);
+    res.redirect('/members/login'); // 從哪裡來
+});
+
 
 module.exports = router;
