@@ -64,10 +64,7 @@ function App() {
                         <WiOurClients />
                     </Route>
                     
-                    {/* Blog */} 
-                    <Route path="/YongBlog">
-                        <YongBlog />
-                    </Route>                   
+                    {/* Blog */}                 
                     <Route path="/Blog/YongBlog">
                         <YongBlog />
                     </Route>
