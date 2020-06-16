@@ -49,7 +49,7 @@ function WiHome() {
             <MyMenu/>
           </header>
           
-          <main>
+          <div>
             <HomeSlider/>
             <MyDiscover/>
             <HotTrue/>
@@ -57,7 +57,7 @@ function WiHome() {
             <BottomStore StoreImg={StoreImg}/>
             <BottomIG IGImg={IGImg}/>
             <BottomYoutube YoutubeImg={YoutubeImg}/>
-          </main>
+          </div>
 
           <MyFooter/>
         </Fragment>

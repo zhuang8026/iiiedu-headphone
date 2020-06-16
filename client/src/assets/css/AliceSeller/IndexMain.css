@@ -18,7 +18,7 @@ a {
 
 main {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
 }
 
 body {
@@ -51,10 +51,11 @@ nav {
 }
 
 .card {
+  width: 100%;
   background: #fff;
   border: 1px solid #ccc;
-  margin: 10px;
-  padding: 20px;
+  /* margin: 10px;
+  padding: 20px; */
 }
 
 .flex-wrap {
@@ -100,9 +101,9 @@ nav {
 }
 
 .button {
-  width: 30%;
+  width: 40%;
   height: 300px;
-  margin: 5px;
+  /* margin: 5px; */
 }
 
 /* 我的表現 */

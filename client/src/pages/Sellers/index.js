@@ -12,8 +12,10 @@ import IndexMain from './IndexMain/IndexMain'
 function AliceSellers(props) {
     return (
         <Fragment>
-            <LeftNav />
-            <IndexMain />
+            <div className="seller_body">
+                <LeftNav />
+                <IndexMain />
+            </div>
         </Fragment>
     )
 }
