@@ -5,8 +5,9 @@ import { Link, NavLink, withRouter } from 'react-router-dom'
 // antd
 import { Popover, Button } from 'antd';
 
-// scss
-// import './_nav.scss'
+
+import { Avatar, Badge } from 'antd';
+import { ShoppingCartOutlined, HeartOutlined } from '@ant-design/icons';
 
 // logo 
 import OtisGif from "../../assets/img/Otis.gif";
@@ -257,9 +258,12 @@ function MyNavBar(props) {
                                             <a className="otis-wishlist-widget-link">
                                                 <Popover content={loves} placement="bottom">
                                                     <span className="otis-wishlist-widget-icon">
-                                                        <i className="iconfont icon-like"></i>
+                                                        {/* <i className="iconfont icon-like"></i> */}
+                                                        <Badge count={1}>
+                                                            <Avatar shape="square" icon={<HeartOutlined/>}/>
+                                                        </Badge>
                                                     </span>
-                                                    <span className="otis-wishlist-widget-count"> 1 </span>
+                                                    {/* <span className="otis-wishlist-widget-count"> 1 </span> */}
                                                 </Popover>
                                             </a>
                                         </div>
@@ -275,9 +279,12 @@ function MyNavBar(props) {
                                                 >
                                                     <Popover content={carts} placement="bottom">
                                                         <span className="otis-sc-opener-icon">
-                                                            <i className="iconfont icon-cart"></i>
+                                                            {/* <i className="iconfont icon-cart"></i> */}
+                                                            <Badge count={0} className="site-badge-count-4">
+                                                                <Avatar shape="square" icon={<ShoppingCartOutlined />} />
+                                                            </Badge>
                                                         </span>
-                                                        <span className="otis-sc-opener-count"> 5 </span>
+                                                        {/* <span className="otis-sc-opener-count"> 5 </span> */}
                                                     </Popover>
                                                 </a>
                                             </div>
