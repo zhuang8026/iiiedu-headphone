@@ -23,7 +23,7 @@ function App() {
         <Router>
             <Fragment>
                 <Switch>
-                    
+                    {/* 首頁 */}
                     <Route exact path="/">
                         <WiHome />
                     </Route>

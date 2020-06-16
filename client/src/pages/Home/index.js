@@ -21,6 +21,7 @@ import { StoreImg, IGImg, YoutubeImg } from '../../assets/js/config';
 
 function WiHome() {
   useEffect(()=>{
+    // navbar
     let shop_btn = document.getElementById('shopping');
     let side_menu = document.getElementsByClassName('header-side-menu')[0]; 
     let page_cover = document.getElementsByClassName('nav-page-cover')[0]; 

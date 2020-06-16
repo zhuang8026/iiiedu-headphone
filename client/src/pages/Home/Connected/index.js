@@ -46,7 +46,7 @@ function OurConnected(props) {
                                         </ul>
                                         <div className="store_btn">
                                             <a href={data.piclinkUrl}>
-                                                <h4>Learn More</h4>
+                                                <h4>CONNECTED</h4>
                                                 <svg fill="#fff" height="22" viewBox="0 0 22 22" width="22" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/><path d="M0-.25h24v24H0z" fill="none"/></svg>
                                             </a>
                                         </div>
