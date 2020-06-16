@@ -1,0 +1,78 @@
+@import '../scss/_variables.scss';
+.Yybodyin {
+  margin: 0 auto;
+  display: flex;
+  width: 80%;
+  .Yybodyleft {
+    width: 25%;
+    .Yysubmit {
+      button {
+        background: $link-hover-color-s;
+        color: white;
+      }
+    }
+    ul {
+      li {
+        input {
+          -webkit-appearance: auto;
+        }
+      }
+    }
+  }
+  .Yybodyright {
+    width: 75%;
+    // border: blue solid 2px;
+    .Yybodyheader {
+      height: 50px;
+      /* border: rgb(255, 176, 5) solid 2px; */
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      select {
+        width: 150px;
+        padding-left: 7px;
+      }
+    }
+    .Yyasidebody {
+      padding-top: 30px;
+      display: flex;
+      /* justify-content: flex-end; */
+      flex-wrap: wrap;
+      .Yyaside_pro {
+        // padding: 18px 6px;
+        padding: 25px 6px;
+        width: 33%;
+        p {
+          margin-bottom: 0em;
+        }
+        .item_images {
+          width: 100%;
+          background: $bg-theme;
+        }
+        .itemul {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 0em;
+          margin-top: 20px;
+          li {
+            display: flex;
+            .pro_new {
+              color: #cb4042;
+              border: 1px solid #cb4042;
+              height: 25px;
+            }
+            p {
+              margin-right: 10px;
+            }
+            .pro_c {
+              width: 15px;
+              height: 15px;
+              background-color: #cb4042;
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
