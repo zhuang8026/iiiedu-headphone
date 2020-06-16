@@ -11,6 +11,7 @@ import HomeSlider from './HomeSlider';
 import MyDiscover from './DisCover';
 import HotTrue from './HotTrue';
 import MostPopular from './Popular';
+import OurConnected from './Connected';
 
 import BottomStore from './BottomStore';
 import BottomIG from './BottomIG';
@@ -39,6 +40,18 @@ function WiHome() {
         page_cover.classList.remove('nav-page-cover-active');
         
     });
+
+    // 卡片翻轉效果
+    const cards = document.querySelectorAll('.store_card');
+    function transition() {
+        if (this.classList.contains('active')) {
+            this.classList.remove('active')
+        } else {
+            this.classList.add('active');
+        }
+    }
+    cards.forEach(card => card.addEventListener('click', transition));
+
   },[])
 
   return (
@@ -54,6 +67,7 @@ function WiHome() {
             <MyDiscover/>
             <HotTrue/>
             <MostPopular/>
+            <OurConnected/>
             <BottomStore StoreImg={StoreImg}/>
             <BottomIG IGImg={IGImg}/>
             <BottomYoutube YoutubeImg={YoutubeImg}/>

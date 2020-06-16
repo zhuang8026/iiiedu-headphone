@@ -6,12 +6,15 @@ import { Link, withRouter } from "react-router-dom"
 
 import {StoreImg} from './config';
 
-function BottomStore(props) {
+function OurConnected(props) {
+    useEffect(()=>{
+    },[])
+    
     return (
         <div className="store_all">
                 {/* 熱門標題 */}
             <div className="true_title">
-                <h2>BEST OF OUR STORE</h2>
+                <h2>LET’S GET CONNECTED</h2>
                 <p>True wireless earbuds engineered for superior calls & music</p>
             </div>
             <div className="store_inner">
@@ -58,4 +61,4 @@ function BottomStore(props) {
     );
 }
 
-export default withRouter(BottomStore);
+export default withRouter(OurConnected);
