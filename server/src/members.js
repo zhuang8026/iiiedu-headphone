@@ -24,6 +24,7 @@ router.post('/login', upload.none(), (req, res)=>{
                 req.session.adminWill = result[0]; // admin 这是自己定义的，将result的资料赋值给 admin
                 output.success = true;
             }
+            console.log(result)
             res.json(output);
         })
 });
