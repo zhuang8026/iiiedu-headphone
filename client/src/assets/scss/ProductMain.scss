@@ -1,0 +1,19 @@
+.Yybodyin {
+  margin: 0 auto;
+  display: flex;
+  width: 80%;
+  .Yybodyleft {
+    width: 25%;
+    ul {
+      li {
+        input {
+          -webkit-appearance: auto;
+        }
+      }
+    }
+  }
+  .Yybodyright {
+    width: 75%;
+    // border: blue solid 2px;
+  }
+}
