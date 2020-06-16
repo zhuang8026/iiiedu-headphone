@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-d
 import WiHome from './pages/Home'
 import YyProduct from './pages/Product'
 import WiAbout from './pages/About'
-import YongBlog from './pages/BLog'
+import YongBlog from './pages/BLog/YongBlog'
+import YongMyBlog from './pages/BLog/YongMyBlog'
 import KMembers from './pages/Members'
 import AliceSellers from './pages/Sellers'
 import YfangCart from './pages/Cart'
@@ -63,9 +64,15 @@ function App() {
                         <WiOurClients />
                     </Route>
                     
-                    {/* Blog */}
+                    {/* Blog */} 
+                    <Route path="/YongBlog">
+                        <YongBlog />
+                    </Route>                   
                     <Route path="/Blog/YongBlog">
                         <YongBlog />
+                    </Route>
+                    <Route path="/Blog/YongMyBlog">
+                        <YongMyBlog />
                     </Route>
 
                     {/* 會員 */}
