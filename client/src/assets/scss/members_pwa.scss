@@ -29,7 +29,7 @@ main {
             }
             .members_right_inner {
                 .members_pwa_r_bottom {
-                    .members_pwa_form {
+                    form.members_pwa_form {
                         ul.members_pwa_ul {
                             padding: 28px 0;
                             li {
@@ -52,6 +52,17 @@ main {
                                     color: $btn-color-r;
                                 }
                             }
+                        }
+                        .mem_submit {
+                            width: 150px;
+                            height: 32px;
+                            border: 1px solid #211E55;
+                            background: #fff;
+                            color: #211E55;
+                            text-align: center;
+                            margin-top: 32px;
+                            transition: 0.3s ease-in;
+                            cursor: pointer;
                         }
                     }
                     

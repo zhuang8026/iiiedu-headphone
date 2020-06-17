@@ -56,6 +56,7 @@ function MembersPwa() {
                                             <span className="memDel_click">輸入密碼不一樣，請重新輸入</span>
                                         </li>
                                     </ul>
+                                    <input type="submit" id="mem_submit" className="mem_submit"/>
                                 </form>
                             </div>
                         </div>

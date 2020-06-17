@@ -1,0 +1,17 @@
+@import "./variables";
+@import "./mixins";
+
+.members_address_r_bottom {
+    .raddress_bottom_left {
+        ul {
+            li {
+                .address_bottom_nodel {
+                    label {}
+                    span.iconfont {}
+                    input.address_input {}
+                }
+                .r_bottom_err {}
+            }
+        }
+    }
+}
