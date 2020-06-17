@@ -1,0 +1,117 @@
+@import "./variables";
+@import "./mixins";
+
+main {
+    .members_all {
+        .members_right {
+            width: 75%;
+            background-color: $bg-c;
+            position: relative;
+            &::before {
+                content: '1';
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                display: block;
+                width: 20px;
+                height: 20px;
+                background: $btn-color-l;
+            }
+            &::after {
+                content: '1';
+                position: absolute;
+                top: 0;
+                right: 0;
+                display: block;
+                width: 20px;
+                height: 20px;
+                background: $btn-color-l;
+            }
+            .members_right_inner {
+                padding: 30px;
+                .members_r_top_text {
+                    height: 122px;
+                    border-bottom: 1px solid #e8e9e2;
+                    h1 {
+                        font-size: 32px;
+                    }   
+                    p {
+                        font-size: 16px;
+                        font-weight: 300;
+                    }
+                }
+
+                // 主要內容
+                .members_r_bottom {
+                    display: flex;
+                    margin-top: 32px;
+
+                    // form 左側表單
+                    form.r_bottom_left {
+                        width: 70%;
+                        ul {
+                            li {
+                                height: 55px;
+                                text-align: right;
+                                padding-right: 60px;
+                                .r_bottom_nodel {
+                                    padding-bottom: 8px;
+                                    label {
+                                        padding-right: 16px;
+                                    }
+                                }
+                                .r_bottom_del {
+                                    padding-bottom: 8px;
+                                    label {
+                                        padding-right: 16px;
+                                    }
+                                    .ant-picker {
+                                        width: 70%;
+                                    }
+                                    .ant-radio-group {
+                                        width: 70%;
+                                        text-align: left;
+                                    }
+                                }
+                                .r_bottom_err {
+                                    color:$btn-color-r;
+                                } 
+                                .mem_input {
+                                    width: 70%;
+                                    border-bottom: 1px solid #e8e9e2;
+                                }
+                            }
+                        }
+                    }
+                    span.iconfont {
+                        padding-right: 20px;
+                    }
+                    .r_bottom_right {
+                        width: 30%;
+                    }
+
+                    // 右側圖片
+                    .r_bottom_right {
+                        text-align: center;
+                        img {
+                            display: block;
+                            width: 200px;
+                            height: 200px;
+                            border-radius: 50%;
+                            margin: 0 auto;
+                        }
+                        .ant-upload {
+                            margin: 20px auto;
+                        }
+                        .ant-upload-list {
+                            margin: 16px 0;
+                            .ant-upload-list-item-info > span {
+                                display: flex;
+                            }
+                        }
+                    }
+                }
+            }
+        }   
+    }
+}
