@@ -9,8 +9,11 @@ import {
 import WiHome from './pages/Home'
 import YyProduct from './pages/Product'
 import WiAbout from './pages/About'
-// import YongBlog from './pages/BLog/YongBlog'
-// import YongMyBlog from './pages/BLog/YongMyBlog'
+import YongBlog from './pages/BLog/YongBlog'
+import YongMyBlog from './pages/BLog/YongMyBlog'
+import BlogDetail from './pages/BLog/Blog-1-page/BlogDetail'
+import BlogAdd from './pages/BLog/Blog-1-page/BlogAdd'
+import BlogEdit from './pages/BLog/Blog-1-page/BlogEdit'
 
 // 會員使用
 import KMembers from './pages/Members'
@@ -104,12 +107,21 @@ function App() {
           />
 
           {/* Blog */}
-          {/* <Route path="/Blog/YongBlog">
+          <Route path="/Blog/YongBlog">
             <YongBlog />
           </Route>
           <Route path="/Blog/YongMyBlog">
             <YongMyBlog />
-          </Route> */}
+          </Route>
+          <Route path="/Blog/BlogDetail">
+            <BlogDetail />
+          </Route>
+          <Route path="/Blog/BlogAdd">
+            <BlogAdd />
+          </Route>
+          <Route path="/Blog/BlogEdit">
+            <BlogEdit />
+          </Route>
 
           {/* 會員 */}
           <Route path="/KMembers">

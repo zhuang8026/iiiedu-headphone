@@ -18,26 +18,25 @@ import MyFooter from '../../../components/Footer'
 //blog
 import BlogStandard from '../Blog-1-page/BlogStandard'
 
-
 // scss
 // import './_menu.scss'
 
 function YongBlog(props) {
-    return (
-        <Router>
-          <Fragment>
-            <header>
-              <MyNavBar />
-              <MyMenu />
-            </header>
-            
-            <main>
-              <BlogStandard />
-            </main>
-    
-            <MyFooter />
-          </Fragment>
-        </Router>
-      )
+  return (
+    <Router>
+      <Fragment>
+        <header>
+          <MyNavBar />
+          <MyMenu />
+        </header>
+
+        <main>
+          <BlogStandard />
+        </main>
+
+        <MyFooter />
+      </Fragment>
+    </Router>
+  )
 }
-export default withRouter(YongBlog);
+export default withRouter(YongBlog)

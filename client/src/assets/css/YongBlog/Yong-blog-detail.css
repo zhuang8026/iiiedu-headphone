@@ -27,9 +27,8 @@ body {
 
 /* ============================== 自訂 ============================== */
 /* 其他 */
-.spacing {
+.blog-detail-spacing {
   height: 90px;
-  background-color: #4e4f97;
 }
 
 /* ---------- top ---------- */
@@ -54,7 +53,7 @@ body {
 .blog-detail {
   width: 100%;
 }
-.main {
+.blog-detail-main {
   width: 80%;
   /* border: 1px solid gray; */
 }
@@ -119,17 +118,17 @@ body {
   justify-content: space-between;
   margin-bottom: 2rem;
 }
-.card {
+.blog-detail-card {
   /* position: relative; */
   width: 20%;
   height: 220px;
 }
-.card figure {
+.blog-detail-card figure {
   width: 100%;
   height: 100%;
   background: #cf9e9e;
 }
-.txt {
+.blog-detail-txt {
   /* position: absolute; */
   width: 75%;
   line-height: 40px;
@@ -330,7 +329,7 @@ body {
 }
 
 /* ---------- aside ---------- */
-.aside {
+.blog-detail-aside {
   width: 20%;
   height: 100%;
 }

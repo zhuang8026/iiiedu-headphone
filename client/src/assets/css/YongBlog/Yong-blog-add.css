@@ -31,9 +31,8 @@ body {
 /* ============================== 自訂 ============================== */
 
 /* 其他 */
-.spacing {
+.blog-add-spacing {
   height: 90px;
-  background-color: #4e4f97;
 }
 
 /* ---------- top ---------- */
@@ -58,18 +57,21 @@ body {
 .blog-add {
   width: 100%;
 }
-.main {
+.blog-add-main {
   width: 80%;
   border: 1px solid gray;
   box-shadow: 5px 5px 10px rgb(56, 56, 56);
 }
-.top-img {
+.blog-add-top-img {
   width: 100%;
   height: 193px;
   background: #ebdbc9;
   /* border: 1px solid gray; */
 }
-.top-img img {
+.blog-add-top-img h1 {
+  font-size: 3rem;
+}
+.blog-add-top-img img {
   width: 100%;
   height: 100%;
 }
@@ -149,7 +151,7 @@ body {
   border: 1px solid orange;
 }
 
-.submit {
+.blog-add-submit {
   width: 100px;
   height: 45px;
   border: 1px solid gray;
@@ -158,7 +160,7 @@ body {
 }
 
 /* ---------- aside ---------- */
-.aside {
+.blog-add-aside {
   width: 20%;
   height: 100%;
 }

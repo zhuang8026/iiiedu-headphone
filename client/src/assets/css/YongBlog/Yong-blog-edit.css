@@ -24,16 +24,12 @@ body {
 .justify-content-between {
   justify-content: space-between;
 }
-/* 間距<div> */
-.spacing {
-  height: 40px;
-}
+
 /* ============================== 自訂 ============================== */
 
-/* 其他 */
-.spacing {
+/* 間距<div> */
+.blog-edit-spacing {
   height: 90px;
-  background-color: #4e4f97;
 }
 
 /* ---------- top ---------- */
@@ -55,30 +51,34 @@ body {
   width: 90%;
   margin: 0 auto;
 }
-.blog-add {
+.blog-edit {
   width: 100%;
 }
-.main {
+.blog-edit-main {
   width: 80%;
   border: 1px solid gray;
   box-shadow: 5px 5px 10px rgb(56, 56, 56);
 }
-.top-img {
+.blog-edit-top-img {
   width: 100%;
   height: 193px;
   background: #4e4f97;
   /* border: 1px solid gray; */
 }
-.top-img img {
+.blog-edit-top-img h1 {
+  font-size: 3rem;
+  color: white;
+}
+.blog-edit-top-img img {
   width: 100%;
   height: 100%;
 }
-.blog-add-in {
+.blog-edit-in {
   width: 96%;
   margin: 0 auto;
   /* border: 1px solid blue; */
 }
-.blog-add-in h1 {
+.blog-edit-in h1 {
   font-size: 2rem;
   margin-top: 1rem;
 }
@@ -108,7 +108,7 @@ body {
   /* line-height: 40px; */
   /* border:2px solid green; */
 }
-.info {
+.blog-edit-info {
   width: 100px;
   height: 24px;
   margin-top: 1rem;
@@ -128,14 +128,14 @@ body {
   margin-top: 1rem;
   /* margin-bottom: .5rem; */
 }
-.blog-add-in textarea {
+.blog-edit-in textarea {
   width: 100%;
   border: 1px solid gray;
   margin-bottom: 1rem;
 }
-.blog-add-in input {
+.blog-edit-in input {
 }
-.blog-add-in textarea {
+.blog-edit-in textarea {
   height: 100px;
 }
 .upload-imgs {
@@ -149,7 +149,7 @@ body {
   border: 1px solid orange;
 }
 
-.submit {
+.blog-edit-submit {
   width: 100px;
   height: 45px;
   border: 1px solid gray;
@@ -158,7 +158,7 @@ body {
 }
 
 /* ---------- aside ---------- */
-.aside {
+.blog-edit-aside {
   width: 20%;
   height: 100%;
 }
