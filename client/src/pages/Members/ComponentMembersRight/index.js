@@ -63,7 +63,7 @@ function KMembers() {
                         <ul>
                             <li>
                                 <div className="r_bottom_nodel">
-                                    <label for="use">使用者帳號</label>
+                                    <label htmlFor="use">使用者帳號</label>
                                     <span className="iconfont icon-user_2"></span>
                                     <input id="use" className="mem_input" placeholder="otis0710@gmail.com" readOnly value={'otis@gmail.com'}/>
                                 </div>
@@ -71,7 +71,7 @@ function KMembers() {
                             </li>
                             <li>
                                 <div className="r_bottom_del">
-                                    <label for="name">姓名</label>
+                                    <label htmlFor="name">姓名</label>
                                     <span className="iconfont icon-user_2"></span>
                                     <input id="name" className="mem_input" placeholder="Otis"/>
                                 </div>
@@ -79,7 +79,7 @@ function KMembers() {
                             </li>
                             <li>
                                 <div className="r_bottom_del">
-                                    <label for="email">Email</label>
+                                    <label htmlFor="email">Email</label>
                                     <span className="iconfont icon-user_2"></span>
                                     <input id="email" className="mem_input" placeholder="otis0710@gmail.com"/>
                                 </div>
@@ -87,7 +87,7 @@ function KMembers() {
                             </li>
                             <li>
                                 <div className="r_bottom_del">
-                                    <label for="phone">手機號碼</label>
+                                    <label htmlFor="phone">手機號碼</label>
                                     <span className="iconfont icon-user_2"></span>
                                     <input id="phone" className="mem_input" placeholder="098888888"/>
                                 </div>

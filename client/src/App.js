@@ -36,6 +36,7 @@ import WiGift from './pages/Gift'
 import WiProblem from './pages/Problem'
 import WiOurClients from './pages/OurClients'
 import WiWarranty from './pages/Warranty'
+import NotFoundPage404 from './pages/404'
 
 function App() {
   return (
@@ -148,7 +149,9 @@ function App() {
 
           {/* 404 必须放在最后一个 */}
           {/* Redirect 重新導向 / 需要先引入 */}
-          <Route path="/404">{/* <NotFoundPage404/> */}</Route>
+          <Route path="/404">
+            <NotFoundPage404/>
+          </Route>
           <Redirect to="/404" />
         </Switch>
       </Fragment>

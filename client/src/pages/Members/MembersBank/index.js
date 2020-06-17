@@ -35,6 +35,8 @@ function MembersBank() {
                                 <ul>
                                     <li>
                                         <img src={visa}/>
+                                        <h3>VISA</h3>
+                                        
                                     </li>
                                 </ul>
                             </div>
