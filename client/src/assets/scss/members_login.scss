@@ -1,0 +1,96 @@
+main {
+  .login_container {
+    width: 80%;
+    margin: 0 auto;
+    .crumb {
+      a {
+      }
+    }
+
+    // 登入
+    .login_inner {
+      display: flex;
+      margin-top: 25px;
+      align-items: flex-end;
+      .login_inner_p1 {
+        font-size: 2.4rem;
+      }
+      .login_inner_p2 {
+        a {
+          font-size: 16px;
+          color: #4e4f97;
+          margin-left: 20px;
+        }
+      }
+    }
+
+    // form
+    form {
+      .login_form {
+        .gray {
+          font-size: 16px;
+          margin-top: 35px;
+          margin: 50px 0px 10px 0px;
+          color: #707070;
+        }
+        .login_form_pwa {
+          display: flex;
+          margin-top: 30px;
+          align-items: center;
+          label {
+            padding: 0 10px 0 10px;
+            margin-right: 20px;
+          }
+        }
+        .login_btn {
+          width: 170px;
+          height: 45px;
+          background: #4e4f97;
+          color: #ffffff;
+          margin: 40px 0 80px 0;
+        }
+        .login_btn:hover {
+          background: #211e55;
+          transition: 0.3s ease-in;
+        }
+        .input01 {
+          border-bottom: 1px solid #000;
+          width: 100%;
+        }
+        .login_err {
+          color: #cb4042;
+          font-size: 14px;
+          padding-top: 6px;
+          transition: 0.3s ease-in;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.youtube {
+  .main_content {
+    padding: 100px 0 60px 0;
+    border-top: 1px solid #e1e1e1;
+    .yt_font {
+      font-size: 32px;
+      font-weight: bold;
+      text-align: center;
+      color: #2c3e50;
+    }
+    .yt_font2 {
+      font-size: 16px;
+      text-align: center;
+      color: #2c3e50;
+      margin-top: 15px;
+    }
+  }
+  .video {
+    ul {
+      display: flex;
+      margin-bottom: 100px;
+      justify-content: center;
+    }
+  }
+}
