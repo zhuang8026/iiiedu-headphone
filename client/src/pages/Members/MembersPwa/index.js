@@ -9,6 +9,9 @@ import MyFooter from '../../../components/Footer'
 
 import MembersLeft from '../ComponentMembersLeft'
 
+// 測試圖片
+import visa from '../../../assets/img/visa.png';
+
 function MembersPwa() {
     return (
         <Fragment>
@@ -19,7 +22,23 @@ function MembersPwa() {
             <main>
                 <div className="members_all">
                     <MembersLeft/>
-                    <div className="members_right">1</div>
+                    <div className="members_right">
+                        <div className="members_right_inner">
+                            {/* title */}
+                            <div className="members_r_top_text">
+                                <h1>更改密碼</h1>
+                                <p>管理你的檔案以保護你的帳戶</p>
+                            </div>
+                            {/* 主要內容 */}
+                            <div className="members_pwa_r_bottom">
+                                <ul>
+                                    <li>
+                                        <img src={visa}/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </main>
             <MyFooter />

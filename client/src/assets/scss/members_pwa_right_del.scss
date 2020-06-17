@@ -27,6 +27,19 @@ main {
                 height: 20px;
                 background: $btn-color-l;
             }
+            .members_right_inner {
+                .members_pwa_r_bottom {
+                    ul {
+                        li {
+                            img {
+                                width: 100px;
+                            }
+                        }
+                    }
+                }
+            }
+
+
         }   
     }
 }

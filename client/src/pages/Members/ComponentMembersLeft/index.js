@@ -30,19 +30,19 @@ function MembersLeft() {
                         <ul className="men_u">
                             <li>
                                 <span className="iconfont icon-reduce_1"></span>
-                                <Link to="/KMembers">個人檔案</Link>
+                                <NavLink to="/KMembers">個人檔案</NavLink>
                             </li>
                             <li>
                                 <span className="iconfont icon-reduce_1"></span>
-                                <Link to="/KMembers/MembersPwa">更改密碼</Link>
+                                <NavLink to="/KMembers/MembersPwa">更改密碼</NavLink>
                             </li>
                             <li>
                                 <span className="iconfont icon-reduce_1"></span>
-                                <Link to="/KMembers/MembersBank">銀行帳戶</Link>
+                                <NavLink to="/KMembers/MembersBank">銀行帳戶</NavLink>
                             </li>
                             <li>
                                 <span className="iconfont icon-reduce_1"></span>
-                                <Link to="/KMembers/MembersAdress">地址</Link>
+                                <NavLink to="/KMembers/MembersAdress">地址</NavLink>
                             </li>
                         </ul>
                     </div>
