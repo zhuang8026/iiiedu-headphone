@@ -9,12 +9,19 @@ import LeftNav from '../Leftnav'
 
 //import css
 import '../../../assets/css/AliceSeller/seller-product.css'
-//import image
-import SellerAccountProfileImg from '../../../assets/img/seller-profile/selleruser.svg'
-import SellerProfileImg from '../../../assets/img/seller/index/profile-photo.jpg'
-import SellerPhoneImg from '../../../assets/img/seller-profile/sellerphone.svg'
-import SellerEmailImg from '../../../assets/img/seller-profile/selleremail.svg'
-import SellerPwdImg from '../../../assets/img/seller-profile/sellerpassword.svg'
+
+//import image - 20200617 - william 
+import { ReactComponent as SellerAccountProfileImg } from '../../../assets/img/seller/seller-profile/selleremail.svg'
+import { ReactComponent as SellerProfileImg } from '../../../assets/img/seller/index/profile-photo.jpg'
+import { ReactComponent as SellerPhoneImg } from '../../../assets/img/seller/seller-profile/sellerphone.svg'
+import { ReactComponent as SellerEmailImg } from '../../../assets/img/seller/seller-profile/selleremail.svg'
+import { ReactComponent as SellerPwdImg } from '../../../assets/img/seller/seller-profile/sellerpassword.svg'
+
+// import SellerAccountProfileImg from '../../../assets/img/seller-profile/selleruser.svg'
+// import SellerProfileImg from '../../../assets/img/seller/index/profile-photo.jpg'
+// import SellerPhoneImg from '../../../assets/img/seller-profile/sellerphone.svg'
+// import SellerEmailImg from '../../../assets/img/seller-profile/selleremail.svg'
+// import SellerPwdImg from '../../../assets/img/seller-profile/sellerpassword.svg'
 
 function SellerAccount(props) {
   return (
@@ -97,4 +104,4 @@ function SellerAccount(props) {
   )
 }
 
-export default withRouter(SellerAccount)
+export default withRouter(SellerAccount);
