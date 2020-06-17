@@ -25,6 +25,7 @@ import MySale from './pages/Sellers/MySale'
 import Order from './pages/Sellers/Order'
 import Refund from './pages/Sellers/Refund'
 import SellerProduct from './pages/Sellers/SellerProduct'
+import SellerAccount from './pages/Sellers/SellerAccount'
 
 import YfangCart from './pages/Cart'
 
@@ -131,6 +132,9 @@ function App() {
           </Route>
           <Route path="/AliceSellers/seller-product">
             <SellerProduct />
+          </Route>
+          <Route path="/AliceSellers/seller-account">
+            <SellerAccount />
           </Route>
           {/* 購物車 */}
           <Route path="/YfangCart">

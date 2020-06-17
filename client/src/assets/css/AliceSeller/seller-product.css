@@ -7,6 +7,7 @@
 
 .seller-main {
   width: 100%;
+  background: #fff;
 }
 
 /* 模組套件 */
@@ -54,20 +55,25 @@
   justify-content: space-between;
   display: flex;
   flex-wrap: wrap;
+  align-items: baseline;
 }
 
-.search,
-.createdate,
-.quantity,
-.soldproduct {
+.search-wrapper,
+.product-createdate,
+.seller-quantity,
+.seller-soldproduct {
   margin: 15px 0 15px 0;
   width: 50%;
+
   /* border: 1px solid #707070; */
 }
-
+.seller-soldproduct {
+  text-align: start;
+}
 .seller-btnset {
   justify-content: flex-end;
   display: flex;
+  margin: 20px 10px 0 0;
 }
 .seller-resetbtn,
 .seller-searchbtn,
@@ -75,21 +81,23 @@
   margin-right: 10px;
 }
 
-.seller-search {
+.product-search {
   border: 1px solid #707070;
-  width: 30%;
+  width: 50%;
   height: 30px;
   position: relative;
 }
 
-.seller-search-bar {
-  height: 29px;
+.product-search-bar {
+  height: 30px;
   width: 85%;
   font-size: 14px;
   border: 1px solid #707070;
+  margin-top: -1px;
+  margin-left: -1px;
 }
 
-.seller-search-img {
+.product-search-img {
   position: absolute;
   right: 7.5%;
   top: 50%;
@@ -119,7 +127,8 @@ button,
 #maxquan,
 #soldminquan,
 #soldmaxquan {
-  width: 60px;
+  width: 80px;
+  margin: 10px;
 }
 
 #sendOrderBtn,
@@ -140,10 +149,23 @@ button,
 }
 
 .seller-table {
-  width: 100%;
+  width: 98%;
+  /* border: 1px solid #707070; */
+  margin: 20px 0;
 }
 
-.seller-form {
+.seller-table tbody tr td {
+  margin: 20px 0;
+  /* border: 1px solid #707070; */
+  width: 12.5%;
+}
+
+/* .seller-form {
   border-bottom: 1px solid #707070;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
+} */
+#seller-selectAll {
+  border: 1px solid #707070;
+  width: 10px;
+  height: 10px;
 }
