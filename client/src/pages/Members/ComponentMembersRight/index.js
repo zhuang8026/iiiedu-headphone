@@ -63,33 +63,33 @@ function KMembers() {
                         <ul>
                             <li>
                                 <div className="r_bottom_nodel">
-                                    <label>使用者帳號</label>
+                                    <label for="use">使用者帳號</label>
                                     <span className="iconfont icon-user_2"></span>
-                                    <input className="mem_input" placeholder="otis0710@gmail.com" readOnly value={'otis@gmail.com'}/>
+                                    <input id="use" className="mem_input" placeholder="otis0710@gmail.com" readOnly value={'otis@gmail.com'}/>
                                 </div>
                                 <span className="r_bottom_err">賬號不可修改</span>
                             </li>
                             <li>
                                 <div className="r_bottom_del">
-                                    <label>姓名</label>
+                                    <label for="name">姓名</label>
                                     <span className="iconfont icon-user_2"></span>
-                                    <input className="mem_input" placeholder="Otis"/>
+                                    <input id="name" className="mem_input" placeholder="Otis"/>
                                 </div>
                                 <span className="r_bottom_err">姓名不符合格式</span>
                             </li>
                             <li>
                                 <div className="r_bottom_del">
-                                    <label>Email</label>
+                                    <label for="email">Email</label>
                                     <span className="iconfont icon-user_2"></span>
-                                    <input className="mem_input" placeholder="otis0710@gmail.com"/>
+                                    <input id="email" className="mem_input" placeholder="otis0710@gmail.com"/>
                                 </div>
                                 <span className="r_bottom_err">email格式做錯</span>
                             </li>
                             <li>
                                 <div className="r_bottom_del">
-                                    <label>手機號碼</label>
+                                    <label for="phone">手機號碼</label>
                                     <span className="iconfont icon-user_2"></span>
-                                    <input className="mem_input" placeholder="098888888"/>
+                                    <input id="phone" className="mem_input" placeholder="098888888"/>
                                 </div>
                                 <span className="r_bottom_err">手機號碼格式錯誤</span>
                             </li>

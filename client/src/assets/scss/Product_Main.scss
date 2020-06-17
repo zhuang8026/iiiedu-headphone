@@ -9,6 +9,8 @@
       button {
         background: $link-hover-color-s;
         color: white;
+        border-radius: 12px;
+        width: 250px;
       }
     }
     ul {
@@ -16,6 +18,15 @@
         input {
           -webkit-appearance: auto;
         }
+      }
+    }
+    .Yysearch_container {
+      margin-top: 10px;
+      input {
+        border-radius: 12px;
+        width: 250px;
+        border: $bg-btn-l solid 1px;
+        padding: 5px;
       }
     }
   }
@@ -45,10 +56,53 @@
         p {
           margin-bottom: 0em;
         }
-        .item_images {
+        .item_image:hover .item_images {
+          opacity: 0.3;
+          transition: ease 0.5s;
+        }
+        .item_image:hover .item_imagebtnout {
+          opacity: 1;
+          transition: ease 0.5s;
+        }
+        .item_image {
           width: 100%;
           background: $bg-theme;
+          position: relative;
+          opacity: 1;
+          .item_images {
+            width: 100%;
+          }
+          .item_imagebtnout {
+            position: absolute;
+            top: 40%;
+            left: 17%;
+            opacity: 0;
+            .item_imagebtn {
+              background: $link-hover-color-s;
+              color: white;
+              width: 200px;
+              border: 1px solid transparent;
+            }
+            .item_imagebtn:hover {
+              background: white;
+              color: #211e55;
+              border: #adadad solid 1px;
+            }
+            .item_imagebtn2 {
+              background: $link-hover-color-s;
+              color: white;
+              width: 200px;
+              border: 1px solid transparent;
+              margin-top: 5px;
+            }
+            .item_imagebtn2:hover {
+              background: white;
+              color: #211e55;
+              border: #adadad solid 1px;
+            }
+          }
         }
+
         .itemul {
           display: flex;
           justify-content: space-between;

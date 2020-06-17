@@ -16,7 +16,7 @@ import MyMenu from '../../../components/NavbarMenu'
 import MyFooter from '../../../components/Footer'
 
 //blog
-import BlogStandard from '../BlogStandard'
+import BlogStandard from '../Blog-1-page/BlogStandard'
 
 
 // scss

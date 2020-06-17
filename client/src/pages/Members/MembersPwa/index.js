@@ -9,8 +9,6 @@ import MyFooter from '../../../components/Footer'
 
 import MembersLeft from '../ComponentMembersLeft'
 
-// 測試圖片
-import visa from '../../../assets/img/visa.png';
 
 function MembersPwa() {
     return (
@@ -31,11 +29,34 @@ function MembersPwa() {
                             </div>
                             {/* 主要內容 */}
                             <div className="members_pwa_r_bottom">
-                                <ul>
-                                    <li>
-                                        <img src={visa}/>
-                                    </li>
-                                </ul>
+                                <form action="/" className="members_pwa_form">
+                                    <ul className="members_pwa_ul">
+                                        <li>
+                                            <div className="r_bottom_del">
+                                                <label htmlFor="memDel_pwa">現在密碼</label>
+                                                <span className="iconfont icon-lock"></span>
+                                                <input type="password" id="memDel_pwa" className="mem_input" placeholder="請輸入密碼"/>
+                                            </div>
+                                            <span className="memDel_click">密碼輸入錯誤，請重新輸入</span>
+                                        </li>
+                                        <li>
+                                            <div className="r_bottom_del">
+                                                <label htmlFor="memDel_pwa">新的密碼</label>
+                                                <span className="iconfont icon-lock"></span>
+                                                <input type="password" id="memDel_pwa" className="mem_input" placeholder="請輸入密碼"/>
+                                            </div>
+                                            <span className="memDel_click">輸入密碼不一樣，請重新輸入</span>
+                                        </li>
+                                        <li>
+                                            <div className="r_bottom_del">
+                                                <label htmlFor="memDel_pwa">確認密碼</label>
+                                                <span className="iconfont icon-lock"></span>
+                                                <input type="password" id="memDel_pwa" className="mem_input" placeholder="請輸入密碼"/>
+                                            </div>
+                                            <span className="memDel_click">輸入密碼不一樣，請重新輸入</span>
+                                        </li>
+                                    </ul>
+                                </form>
                             </div>
                         </div>
                     </div>

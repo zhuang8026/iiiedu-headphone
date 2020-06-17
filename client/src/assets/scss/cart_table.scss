@@ -1,10 +1,12 @@
 @import '../scss/_variables.scss';
+//麵包屑
 .cart-crumb {
   margin-left: 6px;
   div {
     height: 100px;
   }
 }
+//購物車
 .cart-container {
   max-width: 980px;
   margin: 100px auto 130px auto;
@@ -82,5 +84,97 @@
         }
       }
     }
+  }
+}
+//購買個人資料填寫
+.cart-buyerInfo-form {
+  width: 100%;
+  > div {
+    display: flex;
+    > div {
+      width: 100%;
+      > div {
+        margin: 10px 0;
+        label {
+          font-size: $font-size-16;
+        }
+        input {
+          width: 95%;
+          line-height: 45px;
+          border: 1px solid #aaa;
+        }
+        textarea {
+          width: 95%;
+          border: 1px solid #aaa;
+        }
+        .error {
+          font-size: $font-size-12;
+          color: $btn-color-r;
+        }
+      }
+    }
+    button {
+      width: 200px;
+      height: 45px;
+      margin: 40px 0 80px 0;
+      border-radius: 3px;
+      background: $link-hover-color-s;
+      color: white;
+    }
+  }
+}
+//選擇配送方式
+
+.cart-step-ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto 60px auto;
+  li {
+    color: #adadad;
+    font-size: 50px;
+    /* width: 100px; */
+    text-align: center;
+    padding: 0 10px;
+    p {
+      font-size: 20px;
+    }
+    .iconfont {
+      font-size: 46px;
+    }
+  }
+  .doneColor {
+    color: $btn-color-s;
+  }
+  .line {
+    width: 100px;
+    height: 6px;
+    background: $bg-btn-l;
+  }
+  .done {
+    background: $btn-color-s;
+  }
+}
+
+.delivery-form {
+  font-size: 20px;
+  input {
+    margin: 30px 0 15px 0;
+    -webkit-appearance: auto;
+  }
+  .line {
+    margin: 10px 0;
+    width: 100%;
+    height: 1px;
+    background: #adadad;
+  }
+  button {
+    width: 200px;
+    height: 45px;
+    margin: 40px 0 80px 0;
+    padding: 3px 5px;
+    border-radius: 3px;
+    color: #fff;
+    background: $link-hover-color-s;
   }
 }
