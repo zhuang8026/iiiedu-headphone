@@ -9,8 +9,8 @@ import {
 import WiHome from './pages/Home'
 import YyProduct from './pages/Product'
 import WiAbout from './pages/About'
-import YongBlog from './pages/BLog/YongBlog'
-import YongMyBlog from './pages/BLog/YongMyBlog'
+// import YongBlog from './pages/BLog/YongBlog'
+// import YongMyBlog from './pages/BLog/YongMyBlog'
 
 // 會員使用
 import KMembers from './pages/Members'
@@ -24,7 +24,7 @@ import AliceSellers from './pages/Sellers'
 import MySale from './pages/Sellers/MySale'
 import Order from './pages/Sellers/Order'
 import Refund from './pages/Sellers/Refund'
-import MyProduct from './pages/Sellers/MyProduct'
+import SellerProduct from './pages/Sellers/SellerProduct'
 
 import YfangCart from './pages/Cart'
 
@@ -104,12 +104,12 @@ function App() {
           />
 
           {/* Blog */}
-          <Route path="/Blog/YongBlog">
+          {/* <Route path="/Blog/YongBlog">
             <YongBlog />
           </Route>
           <Route path="/Blog/YongMyBlog">
             <YongMyBlog />
-          </Route>
+          </Route> */}
 
           {/* 會員 */}
           <Route path="/KMembers">
@@ -129,8 +129,8 @@ function App() {
           <Route path="/AliceSellers/refund">
             <Refund />
           </Route>
-          <Route path="/AliceSellers/my-product">
-            <MyProduct />
+          <Route path="/AliceSellers/seller-product">
+            <SellerProduct />
           </Route>
           {/* 購物車 */}
           <Route path="/YfangCart">
