@@ -2,34 +2,86 @@
 import React ,{ Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, 
     Redirect,Link, NavLink, withRouter} from "react-router-dom"
-    import '../../../assets/scss/Product_Main.scss'
-    import WHH8101 from '../../../assets/items_img/WH-H810-01.png'
+//antd
+import { Radio } from 'antd';
+import WHH8101 from '../../../assets/items_img/WH-H810-01.png'
 // scss
+import '../../../assets/scss/Product_Main.scss'
 // import './_menu.scss'
 
-function ProductMain(props) {
+function ProductMain() {
+   useEffect(()=>{
+      let btnn = document.getElementById('btnn');
+      let Yyb = document.getElementsByClassName('Yyb')[0];
+      btnn.addEventListener('click',()=>{
+         Yyb.classList.add('Yybactive');
+      });
+   },[])
+
+   const onChange = (event) => {
+      console.log('radio checked', event.target.value);
+  };
     return (
        <>
        <div className="Yybodyin">
            <div className="Yybodyleft">
                      <ul>
-                        <li><a href="#">品牌</a></li>
-                        <li><a href="#">森海爾</a></li>
-                        <li><a href="#">鐵三角</a></li>
-                        <li><a href="#">Akg</a></li>
-                        <li><a href="#">Sony</a></li>
+                        <li class="Yywearstyle">品牌 
+                        <button id="btnn">+</button>
+                        </li>
+                        <div class="Yyb">
+                         <li><a href="#">森海爾</a></li>
+                         <li><a href="#">鐵三角</a></li>
+                         <li><a href="#">Akg</a></li>
+                         <li><a href="#">Sony</a></li>
+                        </div>
+                        
                      </ul>
                      <ul>
-                        <li>配戴方式 </li>
-                        <li> <label for="yy1"><input id="yy1" type="checkbox" value="option1"/> 入耳</label>
+                        <li class="Yywearstyle">配戴方式</li>
+                        <Radio.Group onChange={onChange} value={1}>
+                        <li> 
+                        <Radio  value={1}>
+                        入耳
+                        </Radio>
                         </li>
-                        <li> <label for="yy2"><input id="yy2" type="checkbox" value="option2"/> 耳罩</label>
+                        <li>
+                         <Radio  value={2}>
+                         耳罩         
+                         </Radio>
                         </li>
+                        </Radio.Group>
+                     </ul>
+                     <ul>
+                     <Radio.Group onChange={onChange} value={2}>
+                        <li class="Yywearstyle">類型 </li>
+                        <li> 
+                        <Radio  value={1}>
+                        入耳式
+                        </Radio>
+                        </li>
+                        <li> 
+                        <Radio  value={2}>
+                         非入耳式
+                        </Radio>
+                        </li>
+                        <li> 
+                        <Radio  value={3}>
+                        耳罩
+                        </Radio>
+                        </li>
+                        <li> 
+                        <Radio  value={4}>
+                         非耳罩
+                        </Radio>
+                        </li>
+                        </Radio.Group>
                      </ul>
                 <div className="Yysubmit">
                   <button className="btn" type="button">送出勾選資料</button>
                 </div>    
                 <div className="Yysearch_container">
+                {/* <span class="iconfont icon-search"></span> */}
                  <input type="text" placeholder=" search..." />
                 </div>
            </div>
