@@ -29,17 +29,34 @@ main {
             }
             .members_right_inner {
                 .members_pwa_r_bottom {
-                    ul {
-                        li {
-                            img {
-                                width: 100px;
+                    .members_pwa_form {
+                        ul.members_pwa_ul {
+                            padding: 28px 0;
+                            li {
+                                margin-bottom: 48px;
+                                .r_bottom_del {
+                                    label {
+                                        font-size: 24px;
+                                    }
+                                    span.iconfont {
+                                        font-size: 24px;
+                                        padding-left: 8px;
+                                    }
+                                    input.mem_input {
+                                        width: 100%;
+                                        padding-top: 16px;
+                                        border-bottom: 1px solid #e8e9e2;
+                                    }
+                                }
+                                .memDel_click {
+                                    color: $btn-color-r;
+                                }
                             }
                         }
                     }
+                    
                 }
             }
-
-
         }   
     }
 }

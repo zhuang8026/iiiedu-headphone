@@ -27,9 +27,11 @@ function ProductMain(props) {
                         </li>
                      </ul>
                 <div className="Yysubmit">
-                   <button className="btn" type="button">送出勾選資料</button>
-                    
+                  <button className="btn" type="button">送出勾選資料</button>
                 </div>    
+                <div className="Yysearch_container">
+                 <input type="text" placeholder=" search..." />
+                </div>
            </div>
            <div className="Yybodyright">
                <div className="Yybodyheader">
@@ -42,7 +44,14 @@ function ProductMain(props) {
              
                <div className="Yyasidebody">
                      <div className="Yyaside_pro">
-                        <img className="item_images" src={WHH8101}  />
+                        <div className="item_image">
+                            <img className="item_images" src={WHH8101}  />
+                            <form className="item_imagebtnout">
+                               <buttun className="item_imagebtn btn">加入購物車</buttun>
+                              <buttun className="item_imagebtn2 btn">立即查看</buttun>
+                            </form>
+                        </div>
+                        <div className="item_cover"></div>
                         <ul className="itemul">
                                 <li className="pro_name">
                                     <p>GAME ONE</p>
@@ -57,7 +66,14 @@ function ProductMain(props) {
                             <p>$4900</p>
                      </div>
                      <div className="Yyaside_pro">
-                        <img className="item_images" src={WHH8101}  />
+                        <div className="item_image">
+                            <img className="item_images" src={WHH8101}  />
+                            <form className="item_imagebtnout">
+                               <buttun className="item_imagebtn btn">加入購物車</buttun>
+                              <buttun className="item_imagebtn2 btn">立即查看</buttun>
+                            </form>
+                        </div>
+                        <div className="item_cover"></div>
                         <ul className="itemul">
                                 <li className="pro_name">
                                     <p>GAME ONE</p>
@@ -72,7 +88,14 @@ function ProductMain(props) {
                             <p>$4900</p>
                      </div>
                      <div className="Yyaside_pro">
-                        <img className="item_images" src={WHH8101}  />
+                        <div className="item_image">
+                            <img className="item_images" src={WHH8101}  />
+                            <form className="item_imagebtnout">
+                               <buttun className="item_imagebtn btn">加入購物車</buttun>
+                              <buttun className="item_imagebtn2 btn">立即查看</buttun>
+                            </form>
+                        </div>
+                        <div className="item_cover"></div>
                         <ul className="itemul">
                                 <li className="pro_name">
                                     <p>GAME ONE</p>
@@ -86,6 +109,82 @@ function ProductMain(props) {
                             <p>Senheiser</p>
                             <p>$4900</p>
                      </div>
+                     <div className="Yyaside_pro">
+                        <div className="item_image">
+                            <img className="item_images" src={WHH8101}  />
+                            <form className="item_imagebtnout">
+                               <buttun className="item_imagebtn btn">加入購物車</buttun>
+                              <buttun className="item_imagebtn2 btn">立即查看</buttun>
+                            </form>
+                        </div>
+                        <div className="item_cover"></div>
+                        <ul className="itemul">
+                                <li className="pro_name">
+                                    <p>GAME ONE</p>
+                                    <div className="pro_new">NEW</div>
+                                </li>
+                             
+                                <li>
+                                    <div className="pro_c"></div>
+                                </li>
+                        </ul>
+                            <p>Senheiser</p>
+                            <p>$4900</p>
+                     </div>
+                     <div className="Yyaside_pro">
+                        <div className="item_image">
+                            <img className="item_images" src={WHH8101}  />
+                            <form className="item_imagebtnout">
+                               <buttun className="item_imagebtn btn">加入購物車</buttun>
+                              <buttun className="item_imagebtn2 btn">立即查看</buttun>
+                            </form>
+                        </div>
+                        <div className="item_cover"></div>
+                        <ul className="itemul">
+                                <li className="pro_name">
+                                    <p>GAME ONE</p>
+                                    <div className="pro_new">NEW</div>
+                                </li>
+                             
+                                <li>
+                                    <div className="pro_c"></div>
+                                </li>
+                        </ul>
+                            <p>Senheiser</p>
+                            <p>$4900</p>
+                     </div>
+                     <div className="Yyaside_pro">
+                        <div className="item_image">
+                            <img className="item_images" src={WHH8101}  />
+                            <form className="item_imagebtnout">
+                               <buttun className="item_imagebtn btn">加入購物車</buttun>
+                              <buttun className="item_imagebtn2 btn">立即查看</buttun>
+                            </form>
+                        </div>
+                        <div className="item_cover"></div>
+                        <ul className="itemul">
+                                <li className="pro_name">
+                                    <p>GAME ONE</p>
+                                    <div className="pro_new">NEW</div>
+                                </li>
+                             
+                                <li>
+                                    <div className="pro_c"></div>
+                                </li>
+                        </ul>
+                            <p>Senheiser</p>
+                            <p>$4900</p>
+                     </div>
+                     <div class="pagination">
+                        <a href="#">&laquo;</a>
+                        <a href="#">1</a>
+                        <a href="#" class="active">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#">6</a>
+                        <a href="#">&raquo;</a>
+                      </div>
                </div>
            </div>
        </div>
