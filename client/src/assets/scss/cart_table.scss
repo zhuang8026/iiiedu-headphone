@@ -1,0 +1,89 @@
+.cart-crumb div {
+  height: 100px;
+}
+.justify-content-between {
+  justify-content: space-between;
+}
+.justify-content-end {
+  justify-content: flex-end;
+}
+
+.cart-main {
+  max-width: 980px;
+  margin: 100px auto 130px auto;
+}
+.cart-table {
+  width: 100%;
+  border: 1px solid transparent;
+  border-collapse: collapse;
+}
+.cart-table thead tr {
+  /* line-height: 3.75rem; */
+  width: 100%;
+  display: flex;
+  /* border-bottom: 1px solid#adadad; */
+}
+.cart-table thead tr th {
+  /* vertical-align: bottom; */
+  padding-bottom: 2px;
+}
+.cart-table tbody tr {
+  line-height: 3.75rem;
+  width: 100%;
+  display: flex;
+  /* border-bottom: 1px solid#adadad; */
+  /* justify-content: center; */
+}
+
+.cart-table thead th {
+  width: 100%;
+  text-align: center;
+}
+.cart-table tbody tr {
+  line-height: 60px;
+}
+
+.cart-table tbody td {
+  text-align: center;
+  width: 100%;
+}
+.cart-table tbody img {
+  height: 3.5rem;
+  overflow: hidden;
+  margin-top: 2px;
+}
+.cart-table tbody input {
+  border: 1px solid #adadad;
+  line-height: 0px;
+}
+.cart-table tbody .function {
+  display: flex;
+  vertical-align: middle;
+}
+.cart-table tbody button {
+  display: block;
+  margin: 2px 1px;
+  height: 60px;
+  width: 50%;
+  border-radius: 5px;
+}
+.cart-table tfoot tr {
+  padding-top: 10px;
+}
+.cart-table tfoot td {
+  line-height: 45px;
+  margin-top: 10px;
+  vertical-align: middle;
+}
+.cart-table tfoot input {
+  border: 1px solid #adadad;
+}
+.cart-table tfoot button {
+  background: #4e4f97;
+  border: 1px solid #4e4f97;
+  color: #fff;
+  padding: 3px 5px;
+  height: 45px;
+  width: 200px;
+  border-radius: 3px;
+}
