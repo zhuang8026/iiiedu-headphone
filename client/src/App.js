@@ -6,7 +6,11 @@ import YyProduct from './pages/Product'
 import WiAbout from './pages/About'
 import YongBlog from './pages/BLog/YongBlog'
 import YongMyBlog from './pages/BLog/YongMyBlog'
+
+// 會員使用
 import KMembers from './pages/Members'
+import MembersPwa from './pages/Members/MembersPwa/index.js'
+
 import AliceSellers from './pages/Sellers'
 import YfangCart from './pages/Cart'
 
@@ -73,9 +77,22 @@ function App() {
                     </Route>
 
                     {/* 會員 */}
-                    <Route path="/KMembers">
+                    {/* <Route path="/KMembers">
                         <KMembers />
-                    </Route>
+                    </Route> */}
+
+                    <Route
+                        path="/KMembers"
+                        render={({ match: { url } }) => (
+                        <>
+                            <Route path={`${url}/`} component={KMembers} exact />
+                            <Route path={`${url}/MembersPwa`} component={MembersPwa} />
+                            {/* <Route path={`${url}/MembersVisa`} component={MembersVisa} /> */}
+                            {/* <Route path={`${url}/MembersAddress`} component={MembersAddress} /> */}
+                        </>
+                        )}
+                    />
+                    
 
                     {/* 賣家 */}
                     <Route path="/AliceSellers">
