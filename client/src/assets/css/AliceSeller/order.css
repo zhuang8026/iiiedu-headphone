@@ -13,45 +13,17 @@
 .seller-main {
   width: 100%;
 }
-.seller {
+.seller-order {
   background: #fff;
   border: 1px solid #ccc;
   margin: 10px;
   padding: 20px;
-  height: 100vh;
+  height: 1000px;
 }
 
 /* 模組套件 */
 .d-flex {
   display: flex;
-}
-
-.text-align-center {
-  text-align: center;
-}
-
-.align-item-center {
-  align-items: center;
-}
-
-.justify-content-center {
-  justify-content: center;
-}
-
-.align-item-end {
-  align-items: flex-end;
-}
-
-.card {
-  background: #fff;
-  border: 1px solid #ccc;
-  margin: 10px;
-  padding: 20px;
-  height: 100vh;
-}
-
-.flex-wrap {
-  flex-wrap: wrap;
 }
 
 .seller-toggle {
@@ -81,7 +53,7 @@
 
 /* 個別項 */
 .seller-container {
-  height: 1100px;
+  height: 1000px;
   margin: 25px 100px 25px;
   display: flex;
 }
@@ -121,17 +93,18 @@
 
 .seller-show-pages {
   justify-content: flex-end;
-  align-items: flex-end;
+  align-items: center;
   margin: 10px;
   display: flex;
   margin-bottom: 50px;
   border-bottom: 1px solid #707070;
+  padding-bottom: 20px;
 }
 
 .seller-wrapper {
-  position: relative;
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .seller-left-arrow {
@@ -151,10 +124,19 @@
 .order-createdate {
   margin-top: 10px;
 }
-
+/* 訂單清單 */
 .seller-table {
-  margin: 20px 0;
+  width: 98%;
 }
+.seller-table,
+.seller-table tbody tr td {
+  margin: 20px 0;
+  border: none;
+}
+.seller thead tr th {
+  width: 100%;
+}
+
 #orderType,
 #orderOrder {
   border: 1px solid #707070;
@@ -183,15 +165,18 @@
   cursor: pointer;
   position: relative;
 }
-
+.seller-arrangeorderbutton-txt {
+  color: #cb4042;
+}
 .seller-track {
   position: absolute;
   top: 50%;
-  transform: translate(0, -50%);
+  left: 20%;
+  transform: translate(-20%, -50%);
 }
 
-.seller-order-out,
-.seller-order-doc {
+.order-order-out,
+.order-order-doc {
   position: relative;
   margin: 30px;
   display: flex;

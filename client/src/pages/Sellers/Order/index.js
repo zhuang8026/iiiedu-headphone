@@ -8,7 +8,7 @@ import MyFooter from '../../../components/Footer'
 import LeftNav from '../../Sellers/Leftnav'
 
 //import css
-import '../../../assets/css/AliceSeller/my-sale.css'
+import '../../../assets/css/AliceSeller/order.css'
 
 //import image
 import LeftArrow from '../../../assets/img/seller/order/left-arrow.svg'
@@ -34,12 +34,12 @@ function Order(props) {
           <div className="seller-container">
             <LeftNav />
             <div className="seller-main">
-              <div className="seller">
+              <div className="seller-order">
                 <div className="w-90">
                   <h1>出貨</h1>
                   <p>同時申請、列印多筆訂單的配送標籤!</p>
                   <div class="seller-toggle">
-                    <div class="seller-order-out">
+                    <div class="order-order-out">
                       <img
                         class="seller-img-position icon-size"
                         src={Order1}
@@ -47,7 +47,7 @@ function Order(props) {
                       />
                       <div class="seller-btntxt">待出貨</div>
                     </div>
-                    <div class="seller-order-doc">
+                    <div class="order-order-doc">
                       <img
                         class="img-position icon-size"
                         src={Download}
@@ -91,7 +91,7 @@ function Order(props) {
                           <option value="">訂單確認時間</option>
                         </select>
                       </div>
-                      <table>
+                      <table class="seller-table">
                         <thead>
                           <tr>
                             <th>商品</th>
@@ -123,7 +123,7 @@ function Order(props) {
                           src={Truck}
                           alt=""
                         />
-                        <span>一次安排取件出貨</span>
+                        <span class="seller-arrangeorderbutton-txt">一次安排取件出貨</span>
                       </button>
                     </div>
                   </div>

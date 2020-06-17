@@ -23,6 +23,8 @@ import MembersAdress from './pages/Members/MembersAdress'
 import AliceSellers from './pages/Sellers'
 import MySale from './pages/Sellers/MySale'
 import Order from './pages/Sellers/Order'
+import Refund from './pages/Sellers/Refund'
+import MyProduct from './pages/Sellers/MyProduct'
 
 import YfangCart from './pages/Cart'
 
@@ -35,110 +37,119 @@ import WiOurClients from './pages/OurClients'
 import WiWarranty from './pages/Warranty'
 
 function App() {
-    return (
-        <Router>
-        <Fragment>
-            <Switch>
-            {/* 首頁 */}
-            <Route exact path="/">
-                <WiHome />
-            </Route>
+  return (
+    <Router>
+      <Fragment>
+        <Switch>
+          {/* 首頁 */}
+          <Route exact path="/">
+            <WiHome />
+          </Route>
 
-            {/* 產品列表 */}
-            <Route path="/YyProduct/:head?">
-                <YyProduct />
-            </Route>
+          {/* 產品列表 */}
+          <Route path="/YyProduct/:head?">
+            <YyProduct />
+          </Route>
 
-            <Route path="/YyProduct/:air?">
-                <YyProduct />
-            </Route>
+          <Route path="/YyProduct/:air?">
+            <YyProduct />
+          </Route>
 
-            <Route path="/YyProduct/:box?">
-                <YyProduct />
-            </Route>
+          <Route path="/YyProduct/:box?">
+            <YyProduct />
+          </Route>
 
-            {/* 靜態頁面 */}
-            <Route path="/about/WiGift">
-                <WiGift />
-            </Route>
-            <Route path="/about/WiWarranty">
-                <WiWarranty />
-            </Route>
-            <Route path="/about/WiAbout">
-                <WiAbout />
-            </Route>
-            <Route path="/about/WiConnect">
-                <WiConnect />
-            </Route>
-            <Route path="/about/WiStore">
-                <WiStore />
-            </Route>
-            <Route path="/about/WiProblem">
-                <WiProblem />
-            </Route>
-            <Route path="/about/WiOurClients">
-                <WiOurClients />
-            </Route>
+          {/* 靜態頁面 */}
+          <Route path="/about/WiGift">
+            <WiGift />
+          </Route>
+          <Route path="/about/WiWarranty">
+            <WiWarranty />
+          </Route>
+          <Route path="/about/WiAbout">
+            <WiAbout />
+          </Route>
+          <Route path="/about/WiConnect">
+            <WiConnect />
+          </Route>
+          <Route path="/about/WiStore">
+            <WiStore />
+          </Route>
+          <Route path="/about/WiProblem">
+            <WiProblem />
+          </Route>
+          <Route path="/about/WiOurClients">
+            <WiOurClients />
+          </Route>
 
-            {/* 會員 */}
-            {/* <Route path="/KMembers">
+          {/* 會員 */}
+          {/* <Route path="/KMembers">
                 <KMembers />
             </Route> */}
-            {/* 會員 */}
-            <Route
-                path="/KMembers"
-                render={({ match: { url } }) => (
-                <>
-                    <Route path={`${url}/`} component={KMembers} exact />
-                    <Route path={`${url}/MembersLogin`} component={MembersLogin} />
-                    <Route path={`${url}/MembersPwa`} component={MembersPwa} />
-                    <Route path={`${url}/MembersBank`} component={MembersBank} />
-                    <Route path={`${url}/MembersAdress`} component={MembersAdress} />
-                </>
-                )}
-            />
-                    
-            {/* Blog */}
-            <Route path="/Blog/YongBlog">
-                <YongBlog />
-            </Route>
-            <Route path="/Blog/YongMyBlog">
-                <YongMyBlog />
-            </Route>
+          {/* 會員 */}
+          <Route
+            path="/KMembers"
+            render={({ match: { url } }) => (
+              <>
+                <Route path={`${url}/`} component={KMembers} exact />
+                <Route path={`${url}/MembersLogin`} component={MembersLogin} />
+                <Route path={`${url}/MembersPwa`} component={MembersPwa} />
+                <Route path={`${url}/MembersBank`} component={MembersBank} />
+                <Route
+                  path={`${url}/MembersAdress`}
+                  component={MembersAdress}
+                />
+              </>
+            )}
+          />
 
-            {/* 會員 */}
-            <Route path="/KMembers">
-                <KMembers />
-            </Route>
+          {/* Blog */}
+          <Route path="/Blog/YongBlog">
+            <YongBlog />
+          </Route>
+          <Route path="/Blog/YongMyBlog">
+            <YongMyBlog />
+          </Route>
 
-            {/* 賣家 */}
-            <Route path="/AliceSellers" exact>
-                <AliceSellers />
-            </Route>
-            <Route path="/AliceSellers/MySale" exact>
-                <MySale />
-            </Route>
-            <Route path="/AliceSellers/order">
-                <Order />
-            </Route>
-            {/* 購物車 */}
-            <Route path="/YfangCart">
-                <YfangCart />
-            </Route>
+          {/* 會員 */}
+          <Route path="/KMembers">
+            <KMembers />
+          </Route>
 
-            {/* ProtectdRoute 這是 utils */}
-            {/* <ProtectedRoute path="/todoapp">
+          {/* 賣家 */}
+          <Route path="/AliceSellers" exact>
+            <AliceSellers />
+          </Route>
+          <Route path="/AliceSellers/my-sale" exact>
+            <MySale />
+          </Route>
+          <Route path="/AliceSellers/order">
+            <Order />
+          </Route>
+          <Route path="/AliceSellers/refund">
+            <Refund />
+          </Route>
+          <Route path="/AliceSellers/my-product">
+            <MyProduct />
+          </Route>
+          {/* 購物車 */}
+          <Route path="/YfangCart">
+            <YfangCart />
+          </Route>
+
+          {/* ProtectdRoute 這是 utils */}
+          {/* <ProtectedRoute path="/todoapp">
                             <TodoApp todos={todos} setTodos={setTodos} isAuth={auth}/>
                         </ProtectedRoute> */}
 
-            {/* 404 必须放在最后一个 */}
-            {/* Redirect 重新導向 / 需要先引入 */}
-            <Route path="/404">{/* <NotFoundPage404/> */}</Route>
-            <Redirect to="/404" />
-            </Switch>
-        </Fragment>
-        </Router>
-    )
+          {/* 404 必须放在最后一个 */}
+          {/* Redirect 重新導向 / 需要先引入 */}
+          <Route path="/404">{/* <NotFoundPage404/> */}</Route>
+          <Redirect to="/404" />
+        </Switch>
+      </Fragment>
+    </Router>
+  )
 }
 
 export default App

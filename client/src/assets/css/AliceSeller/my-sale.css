@@ -19,22 +19,6 @@
   display: flex;
 }
 
-.text-align-center {
-  text-align: center;
-}
-
-.align-item-center {
-  align-items: center;
-}
-
-.justify-content-center {
-  justify-content: center;
-}
-
-.align-item-end {
-  align-items: flex-end;
-}
-
 .card {
   background: #fff;
   border: 1px solid #ccc;
@@ -106,13 +90,13 @@
 #orderType,
 #orderOrder {
   border: 1px solid #707070;
-  margin: 5px;
+  margin: 10px;
 }
 
 #startdate,
 #enddate {
   border: 1px solid #707070;
-  margin: 2px;
+  margin: 10px;
 }
 
 .seller-search {

@@ -5,46 +5,18 @@
   box-sizing: border-box;
 }
 
-ul {
-  list-style: none;
-}
-
-a {
+.seller-a {
   text-decoration: none;
   color: #707070;
 }
 
-main {
+.seller-main {
   width: 100%;
-}
-
-body {
-  background: #f4f4f5;
-}
-
-nav {
-  background: white;
 }
 
 /* 模組套件 */
 .d-flex {
   display: flex;
-}
-
-.text-align-center {
-  text-align: center;
-}
-
-.align-item-center {
-  align-items: center;
-}
-
-.justify-content-center {
-  justify-content: center;
-}
-
-.align-item-end {
-  align-items: flex-end;
 }
 
 .card {
@@ -55,26 +27,26 @@ nav {
   height: 100vh;
 }
 
-.flex-wrap {
-  flex-wrap: wrap;
-}
-
-.toggle {
+.seller-toggle {
   margin: 7px;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #707070;
 }
 
-.toggle > div {
+.seller-toggle > a {
   margin: 5px;
   cursor: pointer;
 }
-
-.toggle-down {
+.seller-toggle-down {
   border-bottom: 1px solid #707070;
   margin: 7px;
   margin-top: 30px;
+  display: flex;
+  margin-bottom: 20px;
 }
 
-.toggle-down > div {
+.seller-toggle-down > div {
   margin: 5px;
   cursor: pointer;
 }
@@ -88,113 +60,90 @@ nav {
   width: 90%;
   margin: 0 auto;
 }
+.h-100 {
+  height: 100px;
+}
+
 /* 個別項 */
-.container {
-  height: 1050px;
+.seller-container {
+  height: 1100px;
   margin: 25px 100px 25px;
+  display: flex;
 }
 
 .breadcrumb {
   margin-left: 378px;
 }
-/* 上方navbar */
-.left-nav {
-  /* margin-bottom: 20px; */
-  width: 100%;
-  height: 70px;
-  /* border: 1px solid #ccc; */
-}
-
-.left-nav li {
+/* 訂單管理標頭 */
+.seller-refund {
+  background: #fff;
+  border: 1px solid #ccc;
   margin: 10px;
-}
-
-.left-nav li a {
-  display: inline-block;
-}
-
-/* 左邊navbar */
-.menu {
-  /* border: 1px solid #ccc; */
-  width: 278px;
-  height: 200vh;
-}
-
-.photo {
-  margin: 10px 0;
-}
-
-.photo img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-}
-
-.side-bar ul {
-  font-size: 16px;
-  padding: 5px;
-  margin: 30px;
-}
-
-.side-bar ul li {
-  font-size: 14px;
-  margin: 3px;
+  padding: 20px;
+  height: 1000px;
 }
 
 /* 搜尋欄 */
-.wrapper {
+.seller-wrapper {
   margin: 10px;
   justify-content: space-between;
+  display: flex;
 }
 
-.search,
-.createdate {
+.seller-search,
+.refund-createdate {
   margin: 10px;
 }
 
-.search {
+#orderType,
+#orderOrder {
+  border: 1px solid #707070;
+  margin: 10px;
+}
+
+#startdate,
+#enddate {
+  border: 1px solid #707070;
+  margin: 10px;
+}
+
+.seller-search {
   border: 1px solid #707070;
   width: 30%;
   height: 30px;
   position: relative;
 }
 
-.search-bar {
+.seller-search-bar {
   height: 29px;
   width: 85%;
   font-size: 14px;
   border: 1px solid #707070;
 }
 
-.search-img {
+.seller-search-img {
   position: absolute;
   right: 7.5%;
   top: 50%;
   transform: translate(50%, -50%);
 }
 
-button {
+.seller-exportbtn {
+  border: 1px solid #707070;
   height: 30px;
   width: 100px;
   background: transparent;
-}
-
-#startdate,
-#enddate {
-  border: 1px solid #707070;
-}
-
-.exportbtn {
-  border: 1px solid #707070;
+  margin-right: 10px;
 }
 
 #sendOrderBtn {
+  height: 30px;
+  width: 100px;
   background: #cb4042;
   border: none;
   color: #fff;
 }
-
 /* 訂單清單 */
-table {
-  width: 100%;
+.seller-table {
+  width: 98%;
 }
