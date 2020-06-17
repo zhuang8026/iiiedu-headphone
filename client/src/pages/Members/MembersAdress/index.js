@@ -27,7 +27,7 @@ function MembersAdress() {
                                 <p>管理你的檔案以保護你的帳戶</p>
                             </div>
                             {/* 主要內容 */}
-                            <div className="members_pwa_r_bottom">
+                            <div className="members_address_r_bottom">
 
                             </div>
                         </div>

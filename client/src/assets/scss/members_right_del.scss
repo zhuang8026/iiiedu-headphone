@@ -47,11 +47,10 @@ main {
                     margin-top: 32px;
 
                     // form 左側表單
-                    form.r_bottom_left {
+                    .r_bottom_left {
                         width: 70%;
                         ul {
                             li {
-                                height: 55px;
                                 text-align: right;
                                 padding-right: 60px;
                                 .r_bottom_nodel {
@@ -79,6 +78,19 @@ main {
                                 .mem_input {
                                     width: 70%;
                                     border-bottom: 1px solid #e8e9e2;
+                                }
+                                .r_sumbit {
+                                    width: 150px;
+                                    height: 32px;
+                                    border: 1px solid $link-hover-color-l;
+                                    text-align: center;
+                                    margin-top: 32px;
+                                    transition: 0.3s ease-in;
+                                    cursor: pointer;
+                                    &:hover {
+                                        background: $link-hover-color-l;
+                                        color: #e8e9e2;
+                                    }
                                 }
                             }
                         }

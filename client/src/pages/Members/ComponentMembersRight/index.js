@@ -57,9 +57,9 @@ function KMembers() {
                     <p>管理你的檔案以保護你的帳戶</p>
                 </div>
                 {/* 主要內容 */}
-                <div className="members_r_bottom">
+                <form className="members_r_bottom">
                     {/* 左側表單 */}
-                    <form className="r_bottom_left">
+                    <div className="r_bottom_left">
                         <ul>
                             <li>
                                 <div className="r_bottom_nodel">
@@ -116,8 +116,11 @@ function KMembers() {
                                 </div>
                                 <span className="r_bottom_err">生日格式錯誤</span>
                             </li>
+                            <li>
+                                <input className="r_sumbit" type="sumbit" defaultValue={'發送'}/>
+                            </li>
                         </ul>
-                    </form>
+                    </div>
                     {/* 右側圖片 */}
                     <div className="r_bottom_right">
                         <img src={logo}/>
@@ -132,7 +135,8 @@ function KMembers() {
                             <p>檔案限制: .JPEG / .PNG</p>
                         </div>
                     </div>
-                </div>
+                    
+                </form>
             </div>
         </div>
     )
