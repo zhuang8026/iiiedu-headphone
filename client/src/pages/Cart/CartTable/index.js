@@ -9,7 +9,7 @@ import {
   NavLink,
   withRouter,
 } from 'react-router-dom'
-import '../../../assets/css/Cart/CartTable.css'
+// import '../../../assets/scss/cart_table.css'
 import SRH184001 from '../../../assets/items_img/SRH1840-01.png'
 
 // scss
@@ -48,8 +48,8 @@ function CartTable(props) {
               </td>
               <td>6,000</td>
               <td className="function">
-                <button className="btn_wish btn_width">加入願望</button>
-                <button className="btn_booking btn_width">加入比較</button>
+                <button className="btn_wish btn_width">願望</button>
+                <button className="btn_booking btn_width">比較</button>
               </td>
             </tr>
             <tr>
@@ -68,8 +68,48 @@ function CartTable(props) {
               </td>
               <td>6,000</td>
               <td className="function">
-                <button className="btn_wish btn_width">加入願望</button>
-                <button className="btn_booking btn_width">加入比較</button>
+                <button className="btn_wish btn_width">願望</button>
+                <button className="btn_booking btn_width">比較</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="#" type="button" name="del">
+                  X
+                </a>
+              </td>
+              <td>
+                <img src={SRH184001} alt="icon" />
+              </td>
+              <td>ATH-PDG1a</td>
+              <td>2,000</td>
+              <td>
+                <input type="number" name="" id="" />
+              </td>
+              <td>6,000</td>
+              <td className="function">
+                <button className="btn_wish btn_width">願望</button>
+                <button className="btn_booking btn_width">比較</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="#" type="button" name="del">
+                  X
+                </a>
+              </td>
+              <td>
+                <img src={SRH184001} alt="icon" />
+              </td>
+              <td>ATH-PDG1a</td>
+              <td>2,000</td>
+              <td>
+                <input type="number" name="" id="" />
+              </td>
+              <td>6,000</td>
+              <td className="function">
+                <button className="btn_wish btn_width">願望</button>
+                <button className="btn_booking btn_width">比較</button>
               </td>
             </tr>
           </tbody>
