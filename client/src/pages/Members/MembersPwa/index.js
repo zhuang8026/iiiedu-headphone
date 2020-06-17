@@ -33,7 +33,15 @@ function MembersPwa() {
                                     <ul className="members_pwa_ul">
                                         <li>
                                             <div className="r_bottom_del">
-                                                <label htmlFor="memDel_pwa">第一次密碼</label>
+                                                <label htmlFor="memDel_pwa">現在密碼</label>
+                                                <span className="iconfont icon-lock"></span>
+                                                <input type="password" id="memDel_pwa" className="mem_input" placeholder="請輸入密碼"/>
+                                            </div>
+                                            <span className="memDel_click">密碼輸入錯誤，請重新輸入</span>
+                                        </li>
+                                        <li>
+                                            <div className="r_bottom_del">
+                                                <label htmlFor="memDel_pwa">新的密碼</label>
                                                 <span className="iconfont icon-lock"></span>
                                                 <input type="password" id="memDel_pwa" className="mem_input" placeholder="請輸入密碼"/>
                                             </div>
@@ -41,7 +49,7 @@ function MembersPwa() {
                                         </li>
                                         <li>
                                             <div className="r_bottom_del">
-                                                <label htmlFor="memDel_pwa">第二次密碼</label>
+                                                <label htmlFor="memDel_pwa">確認密碼</label>
                                                 <span className="iconfont icon-lock"></span>
                                                 <input type="password" id="memDel_pwa" className="mem_input" placeholder="請輸入密碼"/>
                                             </div>
