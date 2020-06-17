@@ -13,7 +13,7 @@ import locale from 'antd/es/date-picker/locale/zh_CN';
 // 測試圖片
 import logo from '../../../assets/img/tw.jpg';
 
-const { RangePicker } = DatePicker;
+// const { RangePicker } = DatePicker;
 
 function KMembers() {
     const [todos, setTodos] = useState(1); 
@@ -110,7 +110,7 @@ function KMembers() {
                                     <label>生日</label>
                                     <span className="iconfont icon-user_2"></span>
                                     <span className="mem_input">
-                                        <RangePicker bordered={false} locale={locale} onChange={onDataChange}/>
+                                        <DatePicker bordered={false} locale={locale} onChange={onDataChange}/>
                                         {/* <input className="mem_input" /> */}
                                     </span>
                                 </div>

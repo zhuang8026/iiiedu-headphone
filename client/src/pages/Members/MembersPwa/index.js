@@ -1,16 +1,15 @@
 // 函式元件
-import React, { Fragment,useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect, Link, NavLink, withRouter} from 'react-router-dom'
 
  // components
-import MyNavBar from '../../components/Navbar'
-import MyMenu from '../../components/NavbarMenu'
-import MyFooter from '../../components/Footer'
+import MyNavBar from '../../../components/Navbar'
+import MyMenu from '../../../components/NavbarMenu'
+import MyFooter from '../../../components/Footer'
 
-import MembersLeft from './ComponentMembersLeft';
-import MembersRight from './ComponentMembersRight';
+import MembersLeft from '../ComponentMembersLeft'
 
-function KMembers() {
+function MembersPwa() {
     return (
         <Fragment>
             <header>
@@ -20,7 +19,6 @@ function KMembers() {
             <main>
                 <div className="members_all">
                     <MembersLeft/>
-                    <MembersRight/>
                 </div>
             </main>
             <MyFooter />
@@ -28,4 +26,4 @@ function KMembers() {
     )
 
 }
-export default withRouter(KMembers);
+export default withRouter(MembersPwa);

@@ -2,15 +2,15 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect, Link, NavLink, withRouter} from 'react-router-dom'
 
-// antd
-import { DatePicker  } from 'antd';
 
 // 測試圖片
 import logo from '../../../assets/img/tw.jpg';
 
-const { RangePicker } = DatePicker;
+
+
 
 function MembersLeft() {
+
     return (
         <div className="members_left">
             <div className="members_header">
@@ -30,19 +30,19 @@ function MembersLeft() {
                         <ul className="men_u">
                             <li>
                                 <span className="iconfont icon-reduce_1"></span>
-                                <a>個人檔案</a>
+                                <Link to="/KMembers">個人檔案</Link>
                             </li>
                             <li>
                                 <span className="iconfont icon-reduce_1"></span>
-                                <a>更改密碼</a>
+                                <Link to="/KMembers/MembersPwa">更改密碼</Link>
                             </li>
                             <li>
                                 <span className="iconfont icon-reduce_1"></span>
-                                <a>銀行帳戶</a>
+                                <Link to="/">銀行帳戶</Link>
                             </li>
                             <li>
                                 <span className="iconfont icon-reduce_1"></span>
-                                <a>地址</a>
+                                <Link to="/">地址</Link>
                             </li>
                         </ul>
                     </div>

@@ -13,7 +13,7 @@ main {
             width: 25%;
             background: $bg-theme;
             box-shadow: 4px 0px 2px rgba(0, 0, 0, 0.1);
-            z-index: 99;
+            z-index: 2;
             .members_header {
                 padding: 0 32px;
                 .mem_top_inner {
@@ -86,3 +86,8 @@ main {
         }
     }
 }
+
+// .active {
+//     opacity: 1;
+//     color: $btn-color-r;
+// }
