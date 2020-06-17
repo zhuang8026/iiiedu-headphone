@@ -17,7 +17,7 @@ import MyFooter from '../../../components/Footer'
 
 
 //blog
-import BlogUser from '../BlogUser'
+import BlogUser from '../Blog-1-page/BlogUser'
 
 
 // scss
