@@ -1,0 +1,88 @@
+@import "./variables";
+@import "./mixins";
+
+main {
+    .members_all {
+        width: 80%;
+        margin: 0 auto;
+        padding-top: 150px;
+        display: flex;
+        justify-content: center;
+        // align-items: center;
+        .members_left {
+            width: 25%;
+            background: $bg-theme;
+            box-shadow: 4px 0px 2px rgba(0, 0, 0, 0.1);
+            z-index: 99;
+            .members_header {
+                padding: 0 32px;
+                .mem_top_inner {
+                    display: flex;
+                    align-items: center;
+                    padding-bottom: 22px;
+                    padding-top: 22px;
+                    border-bottom: 1px solid #e8e9e2;
+                    img {
+                        width: 80px;
+                        height: 80px;
+                        border-radius: 50%;
+                    }
+                    .men_text{
+                        padding-left: 32px;
+                        h2 {
+                            font-size: 2rem;
+                        }
+                        p {
+                            font-weight: $font-w;
+                            strong {
+                                font-size: $font-size-16 + 2px;
+                            }
+                        }
+                    }
+                }
+                .mem_bottom_inner {
+                    padding-top: 32px;
+                    .men_title {
+                        padding-bottom: 28px;
+                        span.iconfont {
+                            padding: 3px;
+                            margin-right: 16px;
+                        }
+                        .men_title_inner{
+                            padding-right: 10px;
+                            padding-bottom: 16px;
+                            span.iconfont {
+                                color: #2C3E50;
+                                font-weight: 500;
+                                border: 1px solid #2C3E50;
+                                border-radius: 50%;
+                            }
+                            a {
+                                color: #2C3E50;
+                                font-weight: 500;
+                                font-size: 16px;
+                            }
+                        }
+
+                        .men_u {
+                            li {
+                                padding: 12px 0;
+                                span.iconfont {
+                                    transition: 0.3s ease-in-out;
+                                    opacity: 0;
+                                }
+                                &:hover span.iconfont {
+                                    opacity: 1;
+                                    color: $btn-color-r;
+                                }
+                                &:hover a {
+                                    color: $btn-color-r;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

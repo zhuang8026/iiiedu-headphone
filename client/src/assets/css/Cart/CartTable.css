@@ -1,6 +1,6 @@
-.d-flex {
+/* .d-flex {
   display: flex;
-}
+} */
 .justify-content-between {
   justify-content: space-between;
 }
@@ -14,12 +14,14 @@
 }
 .cart-table {
   width: 100%;
+  border: 1px solid transparent;
+  border-collapse: collapse;
 }
 .cart-table thead tr {
   /* line-height: 3.75rem; */
   width: 100%;
   display: flex;
-  border-bottom: 1px solid#adadad;
+  /* border-bottom: 1px solid#adadad; */
 }
 .cart-table thead tr th {
   /* vertical-align: bottom; */
@@ -29,7 +31,7 @@
   line-height: 3.75rem;
   width: 100%;
   display: flex;
-  border-bottom: 1px solid#adadad;
+  /* border-bottom: 1px solid#adadad; */
   /* justify-content: center; */
 }
 

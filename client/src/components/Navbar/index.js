@@ -1,12 +1,9 @@
 // 函式元件
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import { Link, NavLink, withRouter } from 'react-router-dom'
 
 // antd
-import { Popover, Button } from 'antd';
-
-
-import { Avatar, Badge } from 'antd';
+import { Avatar, Badge,Popover } from 'antd';
 import { ShoppingCartOutlined, HeartOutlined } from '@ant-design/icons';
 
 // logo 
@@ -259,9 +256,9 @@ function MyNavBar(props) {
                                                 <Popover content={loves} placement="bottom">
                                                     <span className="otis-wishlist-widget-icon">
                                                         {/* <i className="iconfont icon-like"></i> */}
-                                                        <Badge count={1}>
+                                                        {/* <Badge count={1}>
                                                             <Avatar shape="square" icon={<HeartOutlined/>}/>
-                                                        </Badge>
+                                                        </Badge> */}
                                                     </span>
                                                     {/* <span className="otis-wishlist-widget-count"> 1 </span> */}
                                                 </Popover>
@@ -280,9 +277,9 @@ function MyNavBar(props) {
                                                     <Popover content={carts} placement="bottom">
                                                         <span className="otis-sc-opener-icon">
                                                             {/* <i className="iconfont icon-cart"></i> */}
-                                                            <Badge count={0} className="site-badge-count-4">
+                                                            {/* <Badge count={0} className="site-badge-count-4">
                                                                 <Avatar shape="square" icon={<ShoppingCartOutlined />} />
-                                                            </Badge>
+                                                            </Badge> */}
                                                         </span>
                                                         {/* <span className="otis-sc-opener-count"> 5 </span> */}
                                                     </Popover>
