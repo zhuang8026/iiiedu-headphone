@@ -39,19 +39,21 @@ function SellerProduct(props) {
                   </div>
                   <htmlForm className="seller-form" action="" method="post">
                     <div className="product-wrapper">
-                      <div className="seller-search">
-                        <input
-                          className="seller-search-bar"
-                          type="text"
-                          name="search"
-                          placeholder="搜尋訂單"
-                          alt=""
-                        />
-                        <img
-                          className="seller-search-img icon-size"
-                          src={searchImg}
-                          alt=""
-                        />
+                      <div className="search-wrapper">
+                        <div className="product-search">
+                          <input
+                            className="product-search-bar"
+                            type="text"
+                            name="search"
+                            placeholder="搜尋訂單"
+                            alt=""
+                          />
+                          <img
+                            className="product-search-img icon-size"
+                            src={searchImg}
+                            alt=""
+                          />
+                        </div>
                       </div>
                       <div className="product-createdate">
                         <label for="createdate">訂單成立時間</label>
@@ -94,11 +96,15 @@ function SellerProduct(props) {
                     </div>
                   </div>
                   <div className="product-table">
-                    <table>
+                    <table className="seller-table">
                       <thead>
                         <tr>
                           <th>
-                            <input type="checkbox" name="selectAll" id="" />
+                            <input
+                              type="checkbox"
+                              name="selectAll"
+                              id="seller-selectAll"
+                            />
                           </th>
                           <th>商品名稱</th>
                           <th>商品選項貨號</th>

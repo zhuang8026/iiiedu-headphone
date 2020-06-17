@@ -57,13 +57,13 @@ function KMembers() {
                     <p>管理你的檔案以保護你的帳戶</p>
                 </div>
                 {/* 主要內容 */}
-                <div className="members_r_bottom">
+                <form className="members_r_bottom">
                     {/* 左側表單 */}
-                    <form className="r_bottom_left">
+                    <div className="r_bottom_left">
                         <ul>
                             <li>
                                 <div className="r_bottom_nodel">
-                                    <label for="use">使用者帳號</label>
+                                    <label htmlFor="use">使用者帳號</label>
                                     <span className="iconfont icon-user_2"></span>
                                     <input id="use" className="mem_input" placeholder="otis0710@gmail.com" readOnly value={'otis@gmail.com'}/>
                                 </div>
@@ -71,7 +71,7 @@ function KMembers() {
                             </li>
                             <li>
                                 <div className="r_bottom_del">
-                                    <label for="name">姓名</label>
+                                    <label htmlFor="name">姓名</label>
                                     <span className="iconfont icon-user_2"></span>
                                     <input id="name" className="mem_input" placeholder="Otis"/>
                                 </div>
@@ -79,7 +79,7 @@ function KMembers() {
                             </li>
                             <li>
                                 <div className="r_bottom_del">
-                                    <label for="email">Email</label>
+                                    <label htmlFor="email">Email</label>
                                     <span className="iconfont icon-user_2"></span>
                                     <input id="email" className="mem_input" placeholder="otis0710@gmail.com"/>
                                 </div>
@@ -87,7 +87,7 @@ function KMembers() {
                             </li>
                             <li>
                                 <div className="r_bottom_del">
-                                    <label for="phone">手機號碼</label>
+                                    <label htmlFor="phone">手機號碼</label>
                                     <span className="iconfont icon-user_2"></span>
                                     <input id="phone" className="mem_input" placeholder="098888888"/>
                                 </div>
@@ -116,8 +116,11 @@ function KMembers() {
                                 </div>
                                 <span className="r_bottom_err">生日格式錯誤</span>
                             </li>
+                            <li>
+                                <input className="r_sumbit" type="sumbit" defaultValue={'發送'}/>
+                            </li>
                         </ul>
-                    </form>
+                    </div>
                     {/* 右側圖片 */}
                     <div className="r_bottom_right">
                         <img src={logo}/>
@@ -132,7 +135,8 @@ function KMembers() {
                             <p>檔案限制: .JPEG / .PNG</p>
                         </div>
                     </div>
-                </div>
+                    
+                </form>
             </div>
         </div>
     )

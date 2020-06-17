@@ -28,6 +28,7 @@ import MySale from './pages/Sellers/MySale'
 import Order from './pages/Sellers/Order'
 import Refund from './pages/Sellers/Refund'
 import SellerProduct from './pages/Sellers/SellerProduct'
+import SellerAccount from './pages/Sellers/SellerAccount'
 
 import YfangCart from './pages/Cart'
 
@@ -38,6 +39,7 @@ import WiGift from './pages/Gift'
 import WiProblem from './pages/Problem'
 import WiOurClients from './pages/OurClients'
 import WiWarranty from './pages/Warranty'
+import NotFoundPage404 from './pages/404'
 
 function App() {
   return (
@@ -144,6 +146,9 @@ function App() {
           <Route path="/AliceSellers/seller-product">
             <SellerProduct />
           </Route>
+          <Route path="/AliceSellers/seller-account">
+            <SellerAccount />
+          </Route>
           {/* 購物車 */}
           <Route path="/YfangCart">
             <YfangCart />
@@ -156,7 +161,9 @@ function App() {
 
           {/* 404 必须放在最后一个 */}
           {/* Redirect 重新導向 / 需要先引入 */}
-          <Route path="/404">{/* <NotFoundPage404/> */}</Route>
+          <Route path="/404">
+            <NotFoundPage404/>
+          </Route>
           <Redirect to="/404" />
         </Switch>
       </Fragment>

@@ -1,0 +1,60 @@
+@import "./variables";
+@import "./mixins";
+
+.members_pwa_r_bottom {
+    .members_pwa_r_inner {
+        li {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 20px 0;
+            border-bottom: 1px dashed #e8e9e2;
+            .members_card {
+                display: flex;
+                img {
+                    width: 50px;
+                    height: 20px;
+                }
+                h3 {
+                    padding: 0 16px;
+                    font-weight: bold;
+                }
+                span {
+                    padding: 0 16px;
+                }
+            }
+            .members_card_button {
+                .men_btn_style {
+                    width: 100px;
+                    height: 32px;
+                    line-height: 32px;
+                    margin: 0 3px;
+                    background: #fff;
+                    border: 1px solid $btn-color-l;
+                    background: #fff;
+                    cursor: pointer;
+                    transition: 0.3s ease-in;
+                    &:hover {
+                        background: $btn-color-l;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+    .members_add {
+        width: 100px;
+        height: 32px;
+        line-height: 32px;
+        margin: 0 3px;
+        background: $btn-color-l;
+        border: 1px solid $btn-color-l;
+        color: #fff;
+        cursor: pointer;
+        transition: 0.3s ease-in;
+        &:hover {
+            background: #fff;
+            color: $btn-color-l
+        }
+    }
+}

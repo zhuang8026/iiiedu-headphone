@@ -17,6 +17,9 @@
 // footer
 @import './footer';
 
+// 404
+@import './404';
+
 // home 首頁
 @import './home_swiperImg.scss';
 @import './home_discover.scss';
@@ -28,7 +31,8 @@
 // 會員
 @import './members_left.scss';
 @import './members_right_del.scss';
-@import './members_pwa_right_del.scss';
+@import './members_pwa.scss';
+@import './members_bank.scss';
 @import'./members_login.scss';
 
 //Product

@@ -30,13 +30,34 @@ function MembersBank() {
                                 <p>管理你的檔案以保護你的帳戶</p>
                             </div>
                             {/* 主要內容 */}
-                            {/* 主要內容 */}
                             <div className="members_pwa_r_bottom">
-                                <ul>
+                                <ul className="members_pwa_r_inner">
                                     <li>
-                                        <img src={visa}/>
+                                        <div className="members_card">
+                                            <img src={visa}/>
+                                            <h3>VISA</h3>
+                                            <span>1111-2222-3333-4444</span>
+                                            <span>PIN : 876</span>
+                                        </div>
+                                        <div className="members_card_button">
+                                            <button className="members_update men_btn_style">修改</button>
+                                            <button className="members_del men_btn_style">刪除</button>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div className="members_card">
+                                            <img src={visa}/>
+                                            <h3>VISA</h3>
+                                            <span>1111-2222-3333-4444</span>
+                                            <span>PIN : 876</span>
+                                        </div>
+                                        <div className="members_card_button">
+                                            <button className="members_update men_btn_style">修改</button>
+                                            <button className="members_del men_btn_style">刪除</button>
+                                        </div>
                                     </li>
                                 </ul>
+                                <button className="members_add">新增</button>
                             </div>
                         </div>
                     </div>
