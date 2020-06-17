@@ -1,73 +1,19 @@
-/* nothing */
-
-/* 每個功能都具備 */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-ul {
-  list-style: none;
-}
-
-a {
+.seller-a {
   text-decoration: none;
   color: #707070;
 }
-
-main {
-  width: 100%;
-  /* height: 100%; */
+.seller-main {
+  width: 60%;
+  height: 100%;
 }
-
-body {
-  background: #f4f4f5;
-}
-
-nav {
-  background: white;
-}
-
-/* 模組套件 */
-.d-flex {
-  display: flex;
-}
-
-.text-align-center {
-  text-align: center;
-}
-
-.align-item-center {
-  align-items: center;
-}
-
-.justify-content-center {
-  justify-content: center;
-}
-
-.align-item-end {
-  align-items: flex-end;
-}
-
-.card {
-  width: 100%;
-  background: #fff;
-  border: 1px solid #ccc;
-  /* margin: 10px;
-  padding: 20px; */
-}
-
-.flex-wrap {
-  flex-wrap: wrap;
-}
-
-.toggle {
+.seller-toggle {
   margin: 7px;
   cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #707070;
 }
 
-.toggle > div {
+.seller-toggle > div {
   margin: 5px;
 }
 
@@ -75,46 +21,69 @@ nav {
   width: 16px;
   height: 16px;
 }
-
-/* 個別項 */
-.container {
-  height: 1100px;
-  margin: 25px 100px 25px;
+.seller-card {
+  background: #fff;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 20px;
 }
 /* 待辦清單 */
-.todo-item {
+.seller-todo-list {
+  background: #fff;
+  border: 1px solid #ccc;
   margin: 10px;
+  padding: 20px;
+}
+.seller-todo-item {
+  margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
 }
 
-.todo-list ul li {
+.seller-todo-list ul li {
   width: 25%;
   height: 100px;
   border: 1px solid #ccc;
   text-align: center;
 }
 
-/* 部落格 */
-.graph {
+/* 行銷活動 */
+.seller-marketing {
+  background: #fff;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 20px;
+}
+.seller-graph {
   width: 60%;
   height: 300px;
   border: 1px solid #707070;
 }
 
-.button {
-  width: 40%;
+.seller-button {
+  width: 30%;
   height: 300px;
-  /* margin: 5px; */
+  margin: 5px;
 }
 
 /* 我的表現 */
-table {
+.seller-performance {
+  background: #fff;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 20px;
+}
+.seller-table {
   width: 100%;
   border: 1px solid #707070;
   margin: 13px auto;
   border-collapse: collapse;
+  text-align: center;
 }
 
-tbody tr td {
+.seller-table tbody tr td {
   padding: 10px;
   border-bottom: 1px solid #707070;
   border-top: 1px solid #707070;
