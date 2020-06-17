@@ -9,6 +9,9 @@ import MyFooter from '../../../components/Footer'
 
 import MembersLeft from '../ComponentMembersLeft'
 
+// 測試圖片
+import visa from '../../../assets/img/visa.png';
+
 function MembersBank() {
     return (
         <Fragment>
@@ -27,8 +30,13 @@ function MembersBank() {
                                 <p>管理你的檔案以保護你的帳戶</p>
                             </div>
                             {/* 主要內容 */}
+                            {/* 主要內容 */}
                             <div className="members_pwa_r_bottom">
-
+                                <ul>
+                                    <li>
+                                        <img src={visa}/>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
