@@ -38,11 +38,11 @@ function MembersLeft() {
                             </li>
                             <li>
                                 <span className="iconfont icon-reduce_1"></span>
-                                <Link to="/">銀行帳戶</Link>
+                                <Link to="/KMembers/MembersBank">銀行帳戶</Link>
                             </li>
                             <li>
                                 <span className="iconfont icon-reduce_1"></span>
-                                <Link to="/">地址</Link>
+                                <Link to="/KMembers/MembersAdress">地址</Link>
                             </li>
                         </ul>
                     </div>

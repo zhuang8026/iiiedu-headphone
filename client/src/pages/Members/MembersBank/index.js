@@ -9,7 +9,7 @@ import MyFooter from '../../../components/Footer'
 
 import MembersLeft from '../ComponentMembersLeft'
 
-function MembersPwa() {
+function MembersBank() {
     return (
         <Fragment>
             <header>
@@ -19,7 +19,7 @@ function MembersPwa() {
             <main>
                 <div className="members_all">
                     <MembersLeft/>
-                    <div className="members_right">1</div>
+                    <div className="members_right">2</div>
                 </div>
             </main>
             <MyFooter />
@@ -27,4 +27,4 @@ function MembersPwa() {
     )
 
 }
-export default withRouter(MembersPwa);
+export default withRouter(MembersBank);

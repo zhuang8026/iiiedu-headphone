@@ -14,8 +14,9 @@ import YongMyBlog from './pages/BLog/YongMyBlog'
 
 // 會員使用
 import KMembers from './pages/Members'
-
-import MembersPwa from './pages/Members/MembersPwa/index.js'
+import MembersPwa from './pages/Members/MembersPwa'
+import MembersBank from './pages/Members/MembersBank'
+import MembersAdress from './pages/Members/MembersAdress'
 
 // Alice's part
 import AliceSellers from './pages/Sellers'
@@ -89,8 +90,8 @@ function App() {
                 <>
                     <Route path={`${url}/`} component={KMembers} exact />
                     <Route path={`${url}/MembersPwa`} component={MembersPwa} />
-                    {/* <Route path={`${url}/MembersVisa`} component={MembersVisa} /> */}
-                    {/* <Route path={`${url}/MembersAddress`} component={MembersAddress} /> */}
+                    <Route path={`${url}/MembersBank`} component={MembersBank} />
+                    <Route path={`${url}/MembersAdress`} component={MembersAdress} />
                 </>
                 )}
             />

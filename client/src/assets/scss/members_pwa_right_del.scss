@@ -1,0 +1,32 @@
+@import "./variables";
+@import "./mixins";
+
+main {
+    .members_all {
+        .members_right {
+            width: 75%;
+            background-color: $bg-c;
+            position: relative;
+            &::before {
+                content: '1';
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                display: block;
+                width: 20px;
+                height: 20px;
+                background: $btn-color-l;
+            }
+            &::after {
+                content: '1';
+                position: absolute;
+                top: 0;
+                right: 0;
+                display: block;
+                width: 20px;
+                height: 20px;
+                background: $btn-color-l;
+            }
+        }   
+    }
+}
