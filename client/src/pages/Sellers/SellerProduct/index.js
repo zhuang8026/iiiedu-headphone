@@ -60,7 +60,9 @@ function SellerProduct(props) {
                         <input type="date" id="startdate" />
                         &nbsp;-&nbsp;
                         <input type="date" id="enddate" />
-                        <button className="seller-exportbtn">匯出</button>
+                        <button className="seller-btn seller-exportbtn">
+                          匯出
+                        </button>
                       </div>
                       <div className="seller-quantity">
                         <label>商品數量</label>
@@ -84,15 +86,23 @@ function SellerProduct(props) {
                       </div>
                     </div>
                     <div className="seller-btnset">
-                      <button className="seller-resetbtn">重置</button>
-                      <button className="seller-searchbtn">搜尋</button>
+                      <button className="seller-btn seller-resetbtn">
+                        重置
+                      </button>
+                      <button className="seller-btn seller-searchbtn">
+                        搜尋
+                      </button>
                     </div>
                   </htmlForm>
                   <div className="product-wrapper">
                     <h1>0項商品</h1>
                     <div className="seller-btnset">
-                      <button className="seller-addproduct">新增商品</button>
-                      <button className="seller-addtool">批次工具</button>
+                      <button className="seller-btn seller-addproduct">
+                        新增商品
+                      </button>
+                      <button className="seller-btn seller-addtool">
+                        批次工具
+                      </button>
                     </div>
                   </div>
                   <div className="product-table">

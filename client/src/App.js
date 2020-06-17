@@ -9,11 +9,11 @@ import {
 import WiHome from './pages/Home'
 import YyProduct from './pages/Product'
 import WiAbout from './pages/About'
-import YongBlog from './pages/BLog/YongBlog'
-import YongMyBlog from './pages/BLog/YongMyBlog'
-import BlogDetail from './pages/BLog/Blog-1-page/BlogDetail'
-import BlogAdd from './pages/BLog/Blog-1-page/BlogAdd'
-import BlogEdit from './pages/BLog/Blog-1-page/BlogEdit'
+// import YongBlog from './pages/BLog/YongBlog'
+// import YongMyBlog from './pages/BLog/YongMyBlog'
+// import BlogDetail from './pages/BLog/Blog-1-page/BlogDetail'
+// import BlogAdd from './pages/BLog/Blog-1-page/BlogAdd'
+// import BlogEdit from './pages/BLog/Blog-1-page/BlogEdit'
 
 // 會員使用
 import KMembers from './pages/Members'
@@ -29,6 +29,7 @@ import Order from './pages/Sellers/Order'
 import Refund from './pages/Sellers/Refund'
 import SellerProduct from './pages/Sellers/SellerProduct'
 import SellerAccount from './pages/Sellers/SellerAccount'
+import SellerAddress from './pages/Sellers/SellerAddress'
 
 import YfangCart from './pages/Cart'
 
@@ -109,7 +110,7 @@ function App() {
           />
 
           {/* Blog */}
-          <Route path="/Blog/YongBlog">
+          {/* <Route path="/Blog/YongBlog">
             <YongBlog />
           </Route>
           <Route path="/Blog/YongMyBlog">
@@ -123,7 +124,7 @@ function App() {
           </Route>
           <Route path="/Blog/BlogEdit">
             <BlogEdit />
-          </Route>
+          </Route> */}
 
           {/* 會員 */}
           <Route path="/KMembers">
@@ -149,6 +150,9 @@ function App() {
           <Route path="/AliceSellers/seller-account">
             <SellerAccount />
           </Route>
+          <Route path="/AliceSellers/seller-address">
+            <SellerAddress />
+          </Route>
           {/* 購物車 */}
           <Route path="/YfangCart">
             <YfangCart />
@@ -162,7 +166,7 @@ function App() {
           {/* 404 必须放在最后一个 */}
           {/* Redirect 重新導向 / 需要先引入 */}
           <Route path="/404">
-            <NotFoundPage404/>
+            <NotFoundPage404 />
           </Route>
           <Redirect to="/404" />
         </Switch>
