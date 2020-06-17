@@ -117,7 +117,7 @@ function KMembers() {
                                 <span className="r_bottom_err">生日格式錯誤</span>
                             </li>
                             <li>
-                                <input className="r_sumbit" type="sumbit" defaultValue={'發送'}/>
+                                <button className="r_sumbit" type="sumbit">確認</button>
                             </li>
                         </ul>
                     </div>

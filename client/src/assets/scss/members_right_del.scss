@@ -83,13 +83,15 @@ main {
                                     width: 150px;
                                     height: 32px;
                                     border: 1px solid $link-hover-color-l;
+                                    background: $link-hover-color-l;
+                                    color: #fff;
                                     text-align: center;
                                     margin-top: 32px;
                                     transition: 0.3s ease-in;
                                     cursor: pointer;
                                     &:hover {
-                                        background: $link-hover-color-l;
-                                        color: #e8e9e2;
+                                        background: #fff;
+                                        color: $link-hover-color-l;
                                     }
                                 }
                             }

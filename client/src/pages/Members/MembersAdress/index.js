@@ -29,17 +29,17 @@ function MembersAdress() {
                             {/* 主要內容 */}
                             <div className="members_address_r_bottom">
                                 <div className="raddress_bottom_left">
-                                    <ul>
+                                    <ul className="raddress_bottom_left_ul">
                                         <li>
                                             <div className="address_bottom_nodel">
                                                 <label htmlFor="use">姓名</label>
                                                 <span className="iconfont icon-user_2"></span>
-                                                <input type="text" id="use" className="address_input" placeholder="莊杰翰" defaultValue={'莊杰翰'}/>
+                                                <input type="text" id="use" className="address_input" placeholder="您的大名" defaultValue={'快來動起來'}/>
                                             </div>
-                                            <span className="r_bottom_err">姓名不符合格式</span>
+                                            <span className="address_bottom_err">姓名不符合格式</span>
                                         </li>
                                         <li>
-                                            <div className="address_bottom_del">
+                                            <div className="address_bottom_nodel">
                                                 <label htmlFor="name">手機</label>
                                                 <span className="iconfont icon-user_2"></span>
                                                 <input type="tel" id="name" className="address_input" placeholder="0911223344" pattern="[0-9]{2}[0-9]{8}"/>
@@ -47,7 +47,7 @@ function MembersAdress() {
                                             <span className="address_bottom_err">手機號碼不符合格式</span>
                                         </li>
                                         <li>
-                                            <div className="address_bottom_del">
+                                            <div className="address_bottom_nodel">
                                                 <label htmlFor="email">地址</label>
                                                 <span className="iconfont icon-user_2"></span>
                                                 <input type="email" id="email" className="address_input" placeholder="新北市火星區地球路一段413號１樓 全家火星噴火店"/>
@@ -55,12 +55,12 @@ function MembersAdress() {
                                             <span className="address_bottom_err">地址格式錯誤</span>
                                         </li>
                                     </ul>
-                                    <div>
-                                        <button>修改</button>
-                                        <button>删除</button>
+                                    <div className="address_bottom_btn_inner">
+                                        <button className="address_btn">修改</button>
+                                        <button className="address_btn">删除</button>
                                     </div>
                                 </div>
-                                <button>新增</button>
+                                <button className="address_add_btn">新增</button>
                             </div>
                         </div>
                     </div>
