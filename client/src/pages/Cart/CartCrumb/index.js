@@ -9,10 +9,6 @@ import {
   NavLink,
   withRouter,
 } from 'react-router-dom'
-// import '../../../assets/css/Cart/CartCrumb.css'
-
-// scss
-// import './_menu.scss'
 
 function CartCrumb(props) {
   return (

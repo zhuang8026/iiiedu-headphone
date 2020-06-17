@@ -5,25 +5,20 @@
   box-sizing: border-box;
 }
 
-ul {
-  list-style: none;
-}
-
-a {
+.seller-a {
   text-decoration: none;
   color: #707070;
 }
 
-main {
+.seller-main {
   width: 100%;
 }
-
-body {
-  background: #f4f4f5;
-}
-
-nav {
-  background: white;
+.seller {
+  background: #fff;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 20px;
+  height: 100vh;
 }
 
 /* 模組套件 */
@@ -52,19 +47,23 @@ nav {
   border: 1px solid #ccc;
   margin: 10px;
   padding: 20px;
+  height: 100vh;
 }
 
 .flex-wrap {
   flex-wrap: wrap;
 }
 
-.toggle {
+.seller-toggle {
   margin: 7px;
   cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #707070;
 }
 
-.toggle > div {
+.seller-toggle > a {
   margin: 5px;
+  cursor: pointer;
 }
 
 .icon-size {
@@ -76,69 +75,31 @@ nav {
   width: 90%;
   margin: 0 auto;
 }
-
-.border {
-  border: 1px solid #707070;
+.h-100 {
+  height: 100px;
 }
 
 /* 個別項 */
-.container {
+.seller-container {
   height: 1100px;
   margin: 25px 100px 25px;
+  display: flex;
 }
+
 .breadcrumb {
   margin-left: 378px;
 }
-/* 上方navbar */
-.left-nav {
-  /* margin-bottom: 20px; */
-  width: 100%;
-  height: 70px;
-  /* border: 1px solid #ccc; */
-}
-
-.left-nav li {
-  margin: 10px;
-}
-
-.left-nav li a {
-  display: inline-block;
-}
-
-/* 左邊navbar */
-.menu {
-  /* border: 1px solid #ccc; */
-  width: 278px;
-  height: 200vh;
-}
-
-.photo {
-  margin: 10px 0;
-}
-
-.photo img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-}
-
-.side-bar ul {
-  font-size: 16px;
-  padding: 5px;
-  margin: 30px;
-}
-
-.side-bar ul li {
-  font-size: 14px;
-  margin: 3px;
-}
-
 /* 左方出貨列表 */
-.order-list {
+.seller-order-list {
   width: 70%;
+  background: #fff;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 20px;
+  height: 100vh;
 }
 
-.sendtype {
+.seller-sendtype {
   margin: 0 10px;
   border: 1px solid #cb4042;
   color: #cb4042;
@@ -148,7 +109,7 @@ nav {
   cursor: pointer;
 }
 
-.page {
+.seller-page {
   margin: 0 20px;
   border: 1px solid #000;
   color: #000;
@@ -158,47 +119,61 @@ nav {
   cursor: pointer;
 }
 
-.show-pages {
+.seller-show-pages {
   justify-content: flex-end;
   align-items: flex-end;
   margin: 10px;
+  display: flex;
+  margin-bottom: 50px;
+  border-bottom: 1px solid #707070;
 }
 
-.wrapper {
+.seller-wrapper {
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 
-.left-arrow {
+.seller-left-arrow {
   position: absolute;
   top: 50%;
   left: 0px;
   transform: translate(-100%, -50%);
 }
 
-.right-arrow {
+.seller-right-arrow {
   position: absolute;
   top: 50%;
   right: 0px;
   transform: translate(100%, -50%);
 }
 
-.createdate {
+.order-createdate {
   margin-top: 10px;
 }
 
-table {
+.seller-table {
   margin: 20px 0;
 }
-
+#orderType,
+#orderOrder {
+  border: 1px solid #707070;
+  margin: 5px;
+}
 /* 對應出貨訂單 */
-.get-order {
+.seller-get-order {
   width: 30%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background: #fff;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 20px;
+  height: 100vh;
 }
 
-.arrangeorderbutton {
+.seller-arrangeorderbutton {
   width: 80%;
   margin: 0;
   border: 1px solid #cb4042;
@@ -209,22 +184,23 @@ table {
   position: relative;
 }
 
-.track {
+.seller-track {
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
 }
 
-.order-out,
-.order-doc {
+.seller-order-out,
+.seller-order-doc {
   position: relative;
   margin: 30px;
+  display: flex;
 }
-.img-position {
+.seller-img-position {
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
 }
-.btntxt {
+.seller-btntxt {
   margin-left: 16px;
 }
