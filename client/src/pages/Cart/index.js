@@ -18,9 +18,9 @@ import MyFooter from '../../components/Footer'
 //cart
 import CartCrumb from './CartCrumb'
 import CartTable from './CartTable'
-import '../../assets/scss/cart_table.scss'
+
 // scss
-// import './_menu.scss'
+// import '../../assets/scss/cart_table.scss'
 
 function YfangCart(props) {
   return (
@@ -30,8 +30,8 @@ function YfangCart(props) {
           <MyNavBar />
           <MyMenu />
         </header>
-        <CartCrumb />
         <main>
+          <CartCrumb />
           <CartTable />
         </main>
         <MyFooter />

@@ -9,16 +9,12 @@ import {
   NavLink,
   withRouter,
 } from 'react-router-dom'
-// import '../../../assets/scss/cart_table.css'
 import SRH184001 from '../../../assets/items_img/SRH1840-01.png'
-
-// scss
-// import './_menu.scss'
 
 function CartTable(props) {
   return (
     <>
-      <main className="cart-main">
+      <div className="cart-container">
         <table className="cart-table">
           <thead>
             <tr>
@@ -115,26 +111,25 @@ function CartTable(props) {
           </tbody>
           <tfoot>
             <tr>
-              <td className="d-flex justify-content-end">
+              <td>
                 <input type="text" placeholder=" 請輸入優惠碼" />
                 <button>去取得優惠卷</button>
               </td>
             </tr>
             <tr>
-              <td className="d-flex justify-content-end">
+              <td>
                 <span>總計</span>
                 <span>24,000</span>
               </td>
-            <tr className="d-flex justify-content-end">
-                <td>
-                    <button>去結帳</button>
-                </td>
             </tr>
-              
+            <tr>
+              <td>
+                <button>去結帳</button>
+              </td>
             </tr>
           </tfoot>
         </table>
-      </main>
+      </div>
     </>
   )
 }
