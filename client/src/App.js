@@ -8,6 +8,7 @@ import {
 
 import WiHome from './pages/Home'
 import YyProduct from './pages/Product'
+import ProductDetail from './pages/Product/ProductDetail'
 import WiAbout from './pages/About'
 // import YongBlog from './pages/BLog/YongBlog'
 // import YongMyBlog from './pages/BLog/YongMyBlog'
@@ -67,6 +68,9 @@ function App() {
           <Route path="/YyProduct/:box?">
             <YyProduct />
           </Route>
+          <Route path="/ProductDetail">
+            <ProductDetail />
+          </Route>
 
           {/* 靜態頁面 */}
           <Route path="/about/WiGift">
@@ -104,9 +108,18 @@ function App() {
                 <Route path={`${url}/MembersLogin`} component={MembersLogin} />
                 <Route path={`${url}/MembersPwa`} component={MembersPwa} />
                 <Route path={`${url}/MembersBank`} component={MembersBank} />
-                <Route path={`${url}/MembersAdress`} component={MembersAdress} />
-                <Route path={`${url}/MembersCartList`} component={MembersCartList} />
-                <Route path={`${url}/MembersCartDetail`} component={MembersCartDetail} />
+                <Route
+                  path={`${url}/MembersAdress`}
+                  component={MembersAdress}
+                />
+                <Route
+                  path={`${url}/MembersCartList`}
+                  component={MembersCartList}
+                />
+                <Route
+                  path={`${url}/MembersCartDetail`}
+                  component={MembersCartDetail}
+                />
               </>
             )}
           />
