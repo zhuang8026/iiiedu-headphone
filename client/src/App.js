@@ -103,8 +103,14 @@ function App() {
                 <Route path={`${url}/MembersLogin`} component={MembersLogin} />
                 <Route path={`${url}/MembersPwa`} component={MembersPwa} />
                 <Route path={`${url}/MembersBank`} component={MembersBank} />
-                <Route path={`${url}/MembersAdress`} component={MembersAdress} />
-                <Route path={`${url}/MembersCartList`} component={MembersCartList} />
+                <Route
+                  path={`${url}/MembersAdress`}
+                  component={MembersAdress}
+                />
+                <Route
+                  path={`${url}/MembersCartList`}
+                  component={MembersCartList}
+                />
               </>
             )}
           />
