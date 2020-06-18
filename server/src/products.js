@@ -5,13 +5,13 @@ const db = require(__dirname + '/db_connect');
 
 const router = express.Router();
 
+//http://localhost:3009/products/ 
 router.get('/', (req, res)=>{
     res.send('產品列表')
 });
 
-
 const getDataList = async (req)=>{ 
-    const perPage = 5;
+    const perPage = 15;
     let page = parseInt(req.params.page) || 1;
 
     const output = {
@@ -41,25 +41,52 @@ const getDataList = async (req)=>{
     return output;
 };
 
-// router.get('/list/:page?', async (req, res)=>{
-//     const output = await getDataList(req);
-//     // output.baseUrl = req.baseUrl;
-//     // console.log(output.baseUrl);
-//     console.log(req);
 
-//     // if(req.session.adminWill){
-//     //     res.render('address-book/list.ejs', output);
-//     // } else {
-//     //     res.render('address-book/list-no-admin.ejs', output);
-//     // }
-// })
+// 所有資料
+router.get("/list", (req, res) => {
+    const sql = "SELECT * FROM `items`";
 
-// 呼叫 api 
-router.get('/list/api/:page?', async (req, res)=>{
+    db.query(sql, (error, results, fields) => {
+        if (error) throw error;
+        // console.log(results);
+        res.json(results);
+    });
+
+});
+
+// 分頁
+// http://localhost:3009/products/list/1 (Page) ~ ... 
+router.get('/listpage/:page?', async (req, res)=>{
     console.log(req);
     const output = await getDataList(req);
     res.json(output);
 })
+
+// 單筆資料
+router.get("/detail/:id", (req, res) => {
+    // console.log(req.params.id);
+    let id = req.params.id;
+    let sql = `SELECT * FROM items WHERE itemId=${id}`;
+    let output = {}
+    db.query(sql)
+        .then(results =>{
+            // if (error) throw error;
+            // console.log(results);
+            output.results = results;
+            let relatedProduct = results[0];
+            console.log(relatedProduct[0])
+            res.json(relatedProduct[0])
+            // sql = `SELECT * FROM items WHERE product_category = '${relatedProduct.product_category}' AND product_id != ${relatedProduct.product_id}`;
+            // console.log(sql)
+            return db.query(sql);
+        })
+        // .then(results => {
+        //     console.log(results)
+        //     // output.relatedProducts = results
+        //     res.json(output);  
+        // })
+    });
+
 
 
 module.exports = router;
