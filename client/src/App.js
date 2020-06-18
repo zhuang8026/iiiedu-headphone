@@ -8,6 +8,7 @@ import {
 
 import WiHome from './pages/Home'
 import YyProduct from './pages/Product'
+import ProductDetail from './pages/Product/ProductDetail'
 import WiAbout from './pages/About'
 // import YongBlog from './pages/BLog/YongBlog'
 // import YongMyBlog from './pages/BLog/YongMyBlog'
@@ -22,6 +23,7 @@ import MembersPwa from './pages/Members/MembersPwa'
 import MembersBank from './pages/Members/MembersBank'
 import MembersAdress from './pages/Members/MembersAdress'
 import MembersCartList from './pages/Members/MembersCartList'
+import MembersCartDetail from './pages/Members/MembersCartDetail'
 
 // Alice's part
 import AliceSellers from './pages/Sellers'
@@ -66,6 +68,9 @@ function App() {
           <Route path="/YyProduct/:box?">
             <YyProduct />
           </Route>
+          <Route path="/ProductDetail">
+            <ProductDetail />
+          </Route>
 
           {/* 靜態頁面 */}
           <Route path="/about/WiGift">
@@ -91,15 +96,39 @@ function App() {
           </Route>
 
           {/* 會員 */}
-          {/* <Route path="/KMembers">
-                <KMembers />
-            </Route> */}
-          {/* 會員 */}
           <Route
             path="/KMembers"
             render={({ match: { url } }) => (
               <>
-                <Route path={`${url}/`} component={KMembers} exact />
+                <Route path={`${url}/`} exact>
+                  <KMembers />
+                </Route>
+
+                <Route path={`${url}/MembersLogin`}>
+                  <MembersLogin />
+                </Route>
+
+                <Route path={`${url}/MembersPwa`}>
+                  <MembersPwa />
+                </Route>
+
+                <Route path={`${url}/MembersBank`}>
+                  <MembersBank />
+                </Route>
+
+                <Route path={`${url}/MembersAdress`}>
+                  <MembersAdress />
+                </Route>
+
+                <Route path={`${url}/MembersCartList`}>
+                  <MembersCartList />
+                </Route>
+                
+                <Route path={`${url}/MembersCartDetail`}>
+                  <MembersCartDetail />
+                </Route>
+
+                {/* <Route path={`${url}/`} component={KMembers} exact />
                 <Route path={`${url}/MembersLogin`} component={MembersLogin} />
                 <Route path={`${url}/MembersPwa`} component={MembersPwa} />
                 <Route path={`${url}/MembersBank`} component={MembersBank} />
@@ -111,6 +140,14 @@ function App() {
                   path={`${url}/MembersCartList`}
                   component={MembersCartList}
                 />
+<<<<<<< HEAD
+=======
+                <Route
+                  path={`${url}/MembersCartDetail`}
+                  component={MembersCartDetail}
+                /> */}
+
+>>>>>>> 346c1d7554987e9e072fc1e5021a2a5a7ab1af40
               </>
             )}
           />
@@ -131,11 +168,6 @@ function App() {
           <Route path="/Blog/BlogEdit">
             <BlogEdit />
           </Route> */}
-
-          {/* 會員 */}
-          <Route path="/KMembers">
-            <KMembers />
-          </Route>
 
           {/* 賣家 */}
           <Route path="/AliceSellers" exact>

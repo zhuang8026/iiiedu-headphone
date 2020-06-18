@@ -20,6 +20,8 @@ import CartCrumb from './CartCrumb' //麵包屑
 import CartTable from './CartTable' //購物車商品清單
 import CartBuyerInfo from './CartBuyerInfo' //訂單個人資料填寫
 import CartDelivery from './CartDelivery' //選擇配送方式
+import CartPayment from './CartPayment' //選擇付款方式
+import CartDone from './CartDone' //購買完成頁
 
 function YfangCart(props) {
   return (
@@ -31,7 +33,7 @@ function YfangCart(props) {
         </header>
         <main>
           <CartCrumb />
-          <CartBuyerInfo />
+          <CartDone />
         </main>
         <MyFooter />
       </Fragment>

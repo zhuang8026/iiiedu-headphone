@@ -6,6 +6,7 @@ function CartBuyerInfo(props) {
   return (
     <>
       <div className="cart-container">
+        {/* 購物車步驟圖 */}
         <ul className="cart-step-ul">
           <li className="cart-step-active">
             <div className="icon-box">
@@ -41,6 +42,7 @@ function CartBuyerInfo(props) {
             <p>訂單完成</p>
           </li>
         </ul>
+        {/* 購買個人資訊填寫 */}
         <form action="" className="cart-buyerInfo-form">
           <div>
             <div>
