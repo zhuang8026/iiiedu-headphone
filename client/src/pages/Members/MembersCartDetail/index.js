@@ -12,7 +12,7 @@ import MembersLeft from '../ComponentMembersLeft'
 // 測試圖片
 import logo from '../../../assets/img/tw.jpg';
 
-function MembersCartList() {
+function MembersCartDetail() {
     return (
         <Fragment>
             <header>
@@ -26,16 +26,13 @@ function MembersCartList() {
                         <div className="members_right_inner">
                             {/* title */}
                             <div className="members_r_top_text">
-                                <h1>購買清單</h1>
+                                <h1>清單詳情</h1>
                                 <p>管理你的清單以保護你的荷包</p>
                             </div>
                             {/* 主要內容 */}
                             <div className="members_cart_r_bottom">
                                 <ul className="cart_r_change">
-                                    <li className="cart_r_changeBtn changeBtn_active">全部</li>
-                                    <li className="cart_r_changeBtn changeBtn_NoActive">待付款</li>
-                                    <li className="cart_r_changeBtn changeBtn_NoActive">待出貨</li>
-                                    <li className="cart_r_changeBtn changeBtn_NoActive">完成</li>
+                                    <li className="cart_r_changeBtn changeBtn_active">內容</li>
                                 </ul>
                                 
                                 {/* 模板 start */}
@@ -47,6 +44,15 @@ function MembersCartList() {
                                                 <span>訂單編號 :</span>
                                                 <span>20200530U00001</span>
                                             </div>
+
+                                            <div className="cart_r_detail">
+
+                                            </div>
+
+                                            <div className="cart_r_detail_address">
+                                                
+                                            </div>
+
                                             {/* 模板 內 */}
                                             <div className="cart_r_list_row">
                                                 <div className="cart_r_list_row_p_all">
@@ -84,7 +90,7 @@ function MembersCartList() {
                                     </ul>
                                 </div>
                                  {/* 模板 end */}
-
+                                
                             </div>
                         </div>
                     </div>
@@ -95,4 +101,4 @@ function MembersCartList() {
     )
 
 }
-export default withRouter(MembersCartList);
+export default withRouter(MembersCartDetail);

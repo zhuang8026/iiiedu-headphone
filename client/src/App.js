@@ -22,6 +22,7 @@ import MembersPwa from './pages/Members/MembersPwa'
 import MembersBank from './pages/Members/MembersBank'
 import MembersAdress from './pages/Members/MembersAdress'
 import MembersCartList from './pages/Members/MembersCartList'
+import MembersCartDetail from './pages/Members/MembersCartDetail'
 
 // Alice's part
 import AliceSellers from './pages/Sellers'
@@ -105,6 +106,7 @@ function App() {
                 <Route path={`${url}/MembersBank`} component={MembersBank} />
                 <Route path={`${url}/MembersAdress`} component={MembersAdress} />
                 <Route path={`${url}/MembersCartList`} component={MembersCartList} />
+                <Route path={`${url}/MembersCartDetail`} component={MembersCartDetail} />
               </>
             )}
           />

@@ -66,6 +66,9 @@ main {
                         .men_u {
                             li {
                                 padding: 12px 0;
+                                a {
+                                    color: #366899;
+                                }
                                 span.iconfont {
                                     transition: 0.3s ease-in-out;
                                     opacity: 0;
