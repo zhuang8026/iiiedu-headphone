@@ -4,7 +4,7 @@ const pool = mysql.createPool({
     host: 'localhost',
     user: 'otis',
     password: 'otis',
-    database: 'otis_shop',
+    database: 'otis_store',
     waitForConnections: true, // 等待连线
     connectionLimit: 10,      // 连线资料库个数设定
     queueLimit: 0             // 无限制连线人数

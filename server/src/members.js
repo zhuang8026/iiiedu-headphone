@@ -12,6 +12,7 @@ router.get('/', (req, res)=>{
 });
 
 // 登入 - william-0616
+// how to use ? post -> http://localhost:3009/members/login
 router.post('/login', upload.none(), (req, res)=>{
     //res.render('address-book/login');
     const  output = {
@@ -31,6 +32,7 @@ router.post('/login', upload.none(), (req, res)=>{
 });
 
 // 登出 - william-0616
+// how to use ? get -> http://localhost:3009/members/login
 router.get('/logout',(req, res)=>{
     delete req.session.adminWill;
     console.log(req.session);
