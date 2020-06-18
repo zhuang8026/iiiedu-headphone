@@ -11,6 +11,7 @@ import {
 } from 'react-router-dom'
 //antd
 import { Radio } from 'antd'
+import { Pagination } from 'antd'
 import WHH8101 from '../../../assets/items_img/WH-H810-01.png'
 // scss
 import '../../../assets/scss/Product_Main.scss'
@@ -232,17 +233,8 @@ function ProductMain() {
               <p>Senheiser</p>
               <p>$4900</p>
             </div>
-            <div class="pagination">
-              <a href="#">&laquo;</a>
-              <a href="#">1</a>
-              <a href="#" class="active">
-                2
-              </a>
-              <a href="#">3</a>
-              <a href="#">4</a>
-              <a href="#">5</a>
-              <a href="#">6</a>
-              <a href="#">&raquo;</a>
+            <div class="Yypagination">
+              <Pagination simple defaultCurrent={2} total={50} />
             </div>
           </div>
         </div>
