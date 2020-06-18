@@ -12,11 +12,12 @@ const sessionStore = new MysqlStore({}, db);
 
 app.use(session({
     saveUninitialized: false,
-    resave: false,
-    secret: 'dolkidf;lalsdfjls',
+    resave: false, // 沒變更內容是否強制回存
+    // secret = 加密用的字串，透過這個值去比對，可以自訂
+    secret: '加密用的字串', 
     store: sessionStore,
-    cookie:{
-        maxAge: 1200000
+    cookie: {
+        maxAge: 1200000, // session的存活時間 單位毫秒
     }
 }));
 
@@ -27,16 +28,14 @@ app.get('/', (req, res)=>{ // req=> 请求 res => 響應
 // 存储session 
 app.use((req, res, next)=>{
     res.locals.sess = req.session || {}; // sess 是自己定义的session名称
-    // res.locals.customData = {  //server => use templete
-    //     name: 'shin',
-    //     action: 'edit'
-    // }
-    // console.log(res.locals);
+
     next();
 });
 
 // 會員
 app.use('/members', require(__dirname+'/members.js'));
+
+app.use('/register', require(__dirname+'/register.js'));
 
 // 產品
 app.use('/products', require(__dirname+'/products.js'));

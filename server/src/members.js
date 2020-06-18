@@ -1,42 +1,91 @@
 const express = require('express');
 const upload = require(__dirname + '/upload-module');
 const db = require(__dirname + '/db_connect');
-const moment = require('moment-timezone'); // npm install moment-timezone
-
 const router = express.Router();
 
-// 202020525 
-router.get('/', (req, res)=>{
-    res.send('sql')
-    // res.redirect(req.baseUrl + '/list');
+
+router.use((req,res,next)=>{
+/*
+// 這裡要記錄session的資料
+*/
+    //如果他有設定就會拿到值,會有一個isLogin的值傳到login-test-login.ejs
+    //有登入把帳號設定給他
+    //登入之後顯示暱稱
+
+    res.locals.user_access  = req.session.user_access || false,
+    res.locals.username = req.session.username || false,
+    res.locals.name = req.session.name || false,
+    res.locals.password = req.session.password || false,
+    // console.log('res.locals',res.locals);
+    next();
+
 });
 
 // 登入 - william-0616
-// how to use ? post -> http://localhost:3009/members/login
+// post -> http://localhost:3009/members/login
 router.post('/login', upload.none(), (req, res)=>{
-    //res.render('address-book/login');
-    const  output = {
-        body: req.body,
-        success: false
+    //登入邏輯
+    // const sql = "SELECT * FROM `users` WHERE `username`=? AND `pwd`=SHA1(?)";
+    const sql = "SELECT `id`, `username`, `name`, `pwd` FROM `users`";
+
+    let username = req.body.username;
+    let pwd = req.body.pwd;
+
+    const loginInfo = {
+        success: false, //登入許可
+        username: "",   //儲存使用者帳號
+        access:"",      //儲存使用者權限
+        name:"",        //儲存使用者姓名
+        password:"",
     }
-    const sql = "SELECT * FROM `users` WHERE `username`=? AND `pwd`=SHA1(?)";
-    db.query(sql, [req.body.username, req.body.pwd])
-        .then(([result])=>{
-            if(result && result.length){
-                req.session.adminWill = result[0]; // admin 这是自己定义的，将result的资料赋值给 admin
-                output.success = true;
+
+    db.query(sql)
+        .then((result)=>{
+            // res.json(result);
+            //使用者從前端傳過來的資料進行與資料庫比對
+            result[0].forEach((value, index)=>{
+                // console.log(value)
+                if(username === value.username && pwd === value.pwd){
+                    // console.log("yes!");
+                    loginInfo.success = true;
+                    loginInfo.access = "擁有使用權限";
+                    loginInfo.username = value.username;
+                    loginInfo.name = value.name;
+                    loginInfo.password = value.pwd;
+                }
+            })
+            
+            if(loginInfo.success) {
+                req.session.username = loginInfo.username
+                req.session.name = loginInfo.name
+                req.session.password = loginInfo.password
+                req.session.user_access = loginInfo.access
+                // console.log('true',req.session)
+                res.json(loginInfo)//傳輸資料到前端
+            } else {
+                // console.log('false',req.session)
+                res.json(loginInfo)
             }
-            console.log(result)
-            res.json(output);
         })
 });
 
 // 登出 - william-0616
-// how to use ? get -> http://localhost:3009/members/login
+// get -> http://localhost:3009/members/logout
 router.get('/logout',(req, res)=>{
-    delete req.session.adminWill;
-    console.log(req.session);
-    res.redirect('/members/login'); // 從哪裡來
+    // delete req.session.username;
+    // delete req.session.name;
+    // delete req.session.password;
+    // delete req.session.user_access;
+    // console.log('logout',req.session);
+    // res.send("session 刪除成功");
+
+    // 清除所有的session
+    req.session = null
+    
+    res.clearCookie('skey')
+    res.status(200).json({ status: 0, message: '登出成功' })
+
+    // res.redirect('/members/login'); // 從哪裡來
 });
 
 
