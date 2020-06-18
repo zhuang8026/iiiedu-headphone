@@ -1,11 +1,4 @@
 /* ============================== 共用 ============================== */
-body {
-  background-color: white;
-}
-/* .blog-main-fig img {
-    width: 100%;
-    height: 100%;
-} */
 .d-flex {
   display: flex;
 }
