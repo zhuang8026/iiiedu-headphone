@@ -10,9 +10,6 @@ import {
   withRouter,
 } from 'react-router-dom'
 
-
-
-
 // -------------------- components --------------------
 import MyNavBar from '../../../components/Navbar'
 import MyMenu from '../../../components/NavbarMenu'
@@ -24,17 +21,15 @@ import BlogMainDetailComments from '../Blog-2-main/Blog-Main-Detail-3-Comments'
 // 引入Aside
 import BlogAsidePhoto from '../Blog-2-Aside/Blog-Aside-1-Photo'
 import BlogAsideCommunity from '../Blog-2-Aside/Blog-Aside-2-Community'
-import BlogAsideSubscribe from '../Blog-2-Aside/Blog-Aside-3-Subscribe'
+import BlogAsideSubscribe from '../Blog-2-Aside/Blog-Aside-3-subscribe'
 import BlogAsideRecent from '../Blog-2-Aside/Blog-Aside-4-Recent'
 
-
-
-// -------------------- scss -------------------- 
+// -------------------- scss --------------------
 import '../../../assets/scss/blog_detail.scss'
 
-// -------------------- imgs -------------------- 
+// -------------------- imgs --------------------
 
-// -------------------- func -------------------- 
+// -------------------- func --------------------
 
 function BlogDetail(props) {
   return (
@@ -50,9 +45,10 @@ function BlogDetail(props) {
         </div>
       </div>
       <div class="wrap-mid">
-        <div class="blog-detail d-flex">
+        <div class="blog-detail blog-d-flex">
           <div class="blog-detail-main">
             <BlogMainDetailArticles />
+            <div className="blog-detail-spacing"></div>
             <BlogMainDetailLike />
             <BlogMainDetailComments />
           </div>

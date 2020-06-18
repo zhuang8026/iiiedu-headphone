@@ -43,7 +43,7 @@ function BlogEdit(props) {
         </div>
       </div>
       <div class="wrap-mid">
-        <div class="blog-edit d-flex">
+        <div class="blog-edit blog-d-flex">
           <div class="blog-edit-main">
             <BlogMainEditInputs />
           </div>

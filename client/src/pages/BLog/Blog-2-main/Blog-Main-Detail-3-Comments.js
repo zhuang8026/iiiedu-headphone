@@ -27,10 +27,10 @@ function BlogMainDetailComments(props) {
         <h2>3篇 評論</h2>
         <div className="comment-one-list">
           <div className="comment-one">
-            <div className="comment-one-in d-flex">
+            <div className="comment-one-in blog-d-flex">
               <div className="user-post-icon">
                 <figure className="user-post-fig"></figure>
-                <button className="list-reply d-flex">
+                <button className="list-reply blog-d-flex">
                   <figure className="user-list-reply-fig">
                     <img src={CaretDown} alt="" />
                   </figure>
@@ -58,7 +58,7 @@ function BlogMainDetailComments(props) {
             </div>
           </div>
           <div className="comment-reply">
-            <div className="comment-reply-in d-flex">
+            <div className="comment-reply-in blog-d-flex">
               <div className="user-reply-icon">
                 <figure className="user-reply-fig"></figure>
               </div>
@@ -84,10 +84,10 @@ function BlogMainDetailComments(props) {
         </div>
         <div className="comment-one-list">
           <div className="comment-one">
-            <div className="comment-one-in d-flex">
+            <div className="comment-one-in blog-d-flex">
               <div className="user-post-icon">
                 <figure className="user-post-fig"></figure>
-                <button className="list-reply d-flex">
+                <button className="list-reply blog-d-flex">
                   <figure className="user-list-reply-fig">
                     <img src={CaretDown} alt="" />
                   </figure>
@@ -115,7 +115,7 @@ function BlogMainDetailComments(props) {
             </div>
           </div>
           <div className="comment-reply">
-            <div className="comment-reply-in d-flex">
+            <div className="comment-reply-in blog-d-flex">
               <div className="user-reply-icon">
                 <figure className="user-reply-fig"></figure>
               </div>
@@ -141,10 +141,10 @@ function BlogMainDetailComments(props) {
         </div>
         <div className="comment-one-list">
           <div className="comment-one">
-            <div className="comment-one-in d-flex">
+            <div className="comment-one-in blog-d-flex">
               <div className="user-post-icon">
                 <figure className="user-post-fig"></figure>
-                <button className="list-reply d-flex">
+                <button className="list-reply blog-d-flex">
                   <figure className="user-list-reply-fig">
                     <img src={CaretDown} alt="" />
                   </figure>
@@ -172,7 +172,7 @@ function BlogMainDetailComments(props) {
             </div>
           </div>
           <div className="comment-reply">
-            <div className="comment-reply-in d-flex">
+            <div className="comment-reply-in blog-d-flex">
               <div className="user-reply-icon">
                 <figure className="user-reply-fig"></figure>
               </div>
@@ -199,7 +199,7 @@ function BlogMainDetailComments(props) {
       </div>
       <div className="spacing"></div>
       <div className="add-comment">
-        <div className="add-comment-title d-flex">
+        <div className="add-comment-title blog-d-flex">
           <h2>發表評論，從</h2>
           <figure>
             <img src="" alt="" />
@@ -210,7 +210,7 @@ function BlogMainDetailComments(props) {
           <textarea name="" id=""></textarea>
         </div>
 
-        <div className="add-comment-btns d-flex justify-content-between">
+        <div className="add-comment-btns d-flex blog-justify-content-between">
           <button>發表評論</button>
           <button>登出</button>
         </div>

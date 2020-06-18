@@ -23,7 +23,7 @@ function BlogAsideSubscribe(props) {
       <div className="link-subscribe">
         <div className="link-subscribe-border">
           <h5>訂閱</h5>
-          <div className="link-subscribe-in d-flex justify-content-between">
+          <div className="link-subscribe-in blog-d-flex blog-justify-content-between">
             <input type="text" placeholder="Email address" />
             <button>
               <img src={NextPageHover} alt="" />

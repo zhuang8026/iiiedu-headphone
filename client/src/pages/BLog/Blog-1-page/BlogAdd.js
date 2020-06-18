@@ -43,7 +43,7 @@ function BlogAdd(props) {
         </div>
       </div>
       <div class="wrap-mid">
-        <div class="blog-add d-flex">
+        <div class="blog-add blog-d-flex">
           <div class="blog-add-main">
             <BlogMainAddInputs />
           </div>

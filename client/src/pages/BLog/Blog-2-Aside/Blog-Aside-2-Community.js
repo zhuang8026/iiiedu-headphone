@@ -23,7 +23,7 @@ function BlogAsideCommunity(props) {
         <figure className="user-icon-fig">
           <img src="" alt="" />
         </figure>
-        <div className="link-btns d-flex">
+        <div className="link-btns blog-d-flex">
           <div className="link-one-btn">
             <div className="linkFB"></div>
             <h2>FACEBOOK</h2>
