@@ -92,21 +92,37 @@ function App() {
           </Route>
 
           {/* 會員 */}
-          {/* <Route path="/KMembers">
-                <KMembers />
-            </Route> */}
-          {/* 會員 */}
           <Route
             path="/KMembers"
             render={({ match: { url } }) => (
               <>
-                <Route path={`${url}/`} component={KMembers} exact />
-                <Route path={`${url}/MembersLogin`} component={MembersLogin} />
-                <Route path={`${url}/MembersPwa`} component={MembersPwa} />
-                <Route path={`${url}/MembersBank`} component={MembersBank} />
-                <Route path={`${url}/MembersAdress`} component={MembersAdress} />
-                <Route path={`${url}/MembersCartList`} component={MembersCartList} />
-                <Route path={`${url}/MembersCartDetail`} component={MembersCartDetail} />
+                <Route path={`${url}/`} exact>
+                  <KMembers />
+                </Route>
+
+                <Route path={`${url}/MembersLogin`}>
+                  <MembersLogin />
+                </Route>
+
+                <Route path={`${url}/MembersPwa`}>
+                  <MembersPwa />
+                </Route>
+
+                <Route path={`${url}/MembersBank`}>
+                  <MembersBank />
+                </Route>
+
+                <Route path={`${url}/MembersAdress`}>
+                  <MembersAdress />
+                </Route>
+
+                <Route path={`${url}/MembersCartList`}>
+                  <MembersCartList />
+                </Route>
+                
+                <Route path={`${url}/MembersCartDetail`}>
+                  <MembersCartDetail />
+                </Route>
               </>
             )}
           />
@@ -127,11 +143,6 @@ function App() {
           <Route path="/Blog/BlogEdit">
             <BlogEdit />
           </Route> */}
-
-          {/* 會員 */}
-          <Route path="/KMembers">
-            <KMembers />
-          </Route>
 
           {/* 賣家 */}
           <Route path="/AliceSellers" exact>

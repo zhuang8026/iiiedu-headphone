@@ -79,7 +79,8 @@ function MembersCartList() {
                                             <span className="cart_r_list_total_li_price">$ 31346</span>
                                         </li>
                                         <li className="cart_r_list_total_search">
-                                            <Link to="/KMembers/MembersCartDetail/">查看詳情</Link>
+                                            <Link to="/KMembers/MembersCartDetail">查看詳情</Link>
+
                                         </li>
                                     </ul>
                                 </div>

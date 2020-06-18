@@ -1,0 +1,35 @@
+@import "./variables";
+
+.cart_r_detail_address {
+    background-color: #fff;
+    padding: 24px;
+    &::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 5px;
+        background: url(../img/list.png);
+        margin-top: 36px;
+    }
+    &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 5px;
+        background: url(../img/list.png);
+        margin-bottom: 36px;
+    }
+    h3 {
+        width: 60px;
+        text-align: center;
+        border-bottom: 2px solid #4E4F97;
+    }
+    ul {
+        li{
+            margin: 18px auto;
+            span {
+                padding-right: 16px;
+            }
+        }
+    }
+}

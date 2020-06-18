@@ -45,12 +45,19 @@ function MembersCartDetail() {
                                                 <span>20200530U00001</span>
                                             </div>
 
-                                            <div className="cart_r_detail">
+                                            {/* 流程 */}
+                                            {/* <div className="cart_r_detail">
 
-                                            </div>
+                                            </div> */}
 
+                                            {/* 收貨地址 */}
                                             <div className="cart_r_detail_address">
-                                                
+                                                <h3>收件地址</h3>
+                                                <ul>
+                                                    <li><span>姓名</span><span>莊杰翰</span></li>
+                                                    <li><span>手機</span><span>(+886) 988220903</span></li>
+                                                    <li><span>地址</span><span>新北市火星區地球路一段413號１樓 全家火星噴火店</span></li>
+                                                </ul>
                                             </div>
 
                                             {/* 模板 內 */}
