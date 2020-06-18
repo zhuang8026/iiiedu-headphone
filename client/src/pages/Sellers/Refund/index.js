@@ -8,7 +8,7 @@ import MyFooter from '../../../components/Footer'
 import LeftNav from '../../Sellers/Leftnav'
 
 //import css
-import '../../../assets/css/AliceSeller/refund.css'
+// import '../../../assets/css/AliceSeller/refund.css'
 
 //import image
 import searchImg from '../../../assets/img/seller/my-sale/search.svg'
@@ -61,7 +61,7 @@ function Refund(props) {
                         <input type="date" id="startdate" />
                         &nbsp;-&nbsp;
                         <input type="date" id="enddate" />
-                        <button class="seller-exportbtn">匯出</button>
+                        <button class="seller-refund-exportbtn">匯出</button>
                       </div>
                     </div>
                   </htmlForm>
@@ -84,7 +84,7 @@ function Refund(props) {
                       <button id="sendOrderBtn">出貨</button>
                     </div>
                   </div>
-                  <table>
+                  <table class="refund-seller-table">
                     <thead>
                       <tr>
                         <th>商品</th>

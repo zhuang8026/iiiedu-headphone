@@ -8,7 +8,7 @@ import MyFooter from '../../../components/Footer'
 import LeftNav from '../../Sellers/Leftnav'
 
 //import css
-import '../../../assets/css/AliceSeller/order.css'
+// import '../../../assets/css/AliceSeller/order.css'
 
 //import image
 import LeftArrow from '../../../assets/img/seller/order/left-arrow.svg'
@@ -33,8 +33,8 @@ function Order(props) {
           </span>
           <div className="seller-container">
             <LeftNav />
-            <div className="seller-main">
-              <div className="seller-order">
+            <div className="seller-w100-main">
+              <div className="seller-card">
                 <div className="w-90">
                   <h1>出貨</h1>
                   <p>同時申請、列印多筆訂單的配送標籤!</p>
@@ -83,15 +83,15 @@ function Order(props) {
                       </div>
                       <div class="order-createdate">
                         <label for="orderType">訂單類型</label>
-                        <select id="orderType">
+                        <select id="order-orderType">
                           <option value="">全部訂單</option>
                         </select>
                         <label for="">排序</label>
-                        <select type="date" id="orderOrder">
+                        <select type="date" id="order-orderOrder">
                           <option value="">訂單確認時間</option>
                         </select>
                       </div>
-                      <table class="seller-table">
+                      <table class="order-seller-table">
                         <thead>
                           <tr>
                             <th>商品</th>
@@ -123,7 +123,9 @@ function Order(props) {
                           src={Truck}
                           alt=""
                         />
-                        <span class="seller-arrangeorderbutton-txt">一次安排取件出貨</span>
+                        <span class="seller-arrangeorderbutton-txt">
+                          一次安排取件出貨
+                        </span>
                       </button>
                     </div>
                   </div>

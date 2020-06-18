@@ -1,3 +1,39 @@
+/* 賣家都具備的 */
+.w-90 {
+  width: 90%;
+  margin: 0 auto;
+}
+.breadcrumb {
+  margin-left: 378px;
+}
+.seller-ul {
+  list-style: none;
+}
+.seller-a {
+  text-decoration: none;
+  color: #707070;
+}
+.seller-main {
+  width: 60%;
+  height: 100%;
+}
+.seller-toggle {
+  margin: 7px;
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid #707070;
+}
+.seller-toggle > div {
+  margin: 5px;
+}
+.icon-size {
+  width: 16px;
+  height: 16px;
+}
+.d-flex {
+  display: flex;
+}
+/* IndexBase */
 .h-100 {
   height: 100px;
 }
@@ -5,4 +41,574 @@
   height: 1100px;
   margin: 25px 100px 25px;
   display: flex;
+}
+/* 左邊navbar */
+.seller-menu {
+  text-align: center;
+  width: 20%;
+}
+.seller-photo {
+  margin: 10px 0;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.seller-photo img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+.side-bar ul {
+  font-size: 16px;
+  padding: 5px;
+  margin: 30px;
+}
+.side-bar ul li {
+  font-size: 14px;
+  margin: 3px;
+}
+/* IndexMain */
+.seller-card {
+  background: #fff;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 20px;
+}
+/* 待辦清單 */
+.seller-todo-list {
+  background: #fff;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 20px;
+}
+.seller-todo-item {
+  margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+}
+.seller-todo-list ul li {
+  width: 25%;
+  height: 100px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+/* 行銷活動 */
+.seller-marketing {
+  background: #fff;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 20px;
+}
+.seller-graph {
+  width: 60%;
+  height: 300px;
+  border: 1px solid #707070;
+}
+.seller-button {
+  width: 30%;
+  height: 300px;
+  margin: 5px;
+}
+/* 我的表現 */
+.seller-performance {
+  background: #fff;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 20px;
+}
+.seller-table {
+  width: 100%;
+  border: 1px solid #707070;
+  margin: 13px auto;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.seller-table tbody tr td {
+  padding: 10px;
+  border-bottom: 1px solid #707070;
+  border-top: 1px solid #707070;
+}
+
+/* 公告 */
+.seller-news {
+  margin-left: 0;
+  width: 30%;
+  height: 1045px;
+  background: #fff;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 20px;
+}
+.seller-news span {
+  color: #211e55;
+  font-weight: bold;
+}
+.seller-news p {
+  margin: 5px;
+}
+
+/* MySale */
+.seller-w100-main {
+  width: 100%;
+}
+/* 訂單管理標頭 */
+.seller-mysale {
+  background: #fff;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 20px;
+  height: 1000px;
+}
+/* 搜尋欄 */
+.seller-wrapper {
+  margin: 10px;
+  justify-content: space-between;
+  display: flex;
+}
+.seller-search,
+.mysale-createdate {
+  margin: 10px;
+}
+.orderType {
+  padding-right: 16px;
+}
+#orderType,
+#orderOrder {
+  border: 1px solid #707070;
+  margin: 10px;
+}
+#startdate,
+#enddate {
+  border: 1px solid #707070;
+  margin: 10px;
+}
+.seller-search {
+  border: 1px solid #707070;
+  width: 30%;
+  height: 30px;
+  position: relative;
+}
+.seller-search-bar {
+  height: 30px;
+  width: 85%;
+  font-size: 14px;
+  border: 1px solid #707070;
+  margin-top: -1px;
+  margin-left: -1px;
+}
+.seller-search-img {
+  position: absolute;
+  right: 7.5%;
+  top: 50%;
+  transform: translate(50%, -50%);
+}
+.seller-exportbtn {
+  border: 1px solid #707070;
+  height: 30px;
+  width: 100px;
+  background: transparent;
+  margin-right: -6px;
+}
+#sendOrderBtn {
+  height: 30px;
+  width: 100px;
+  background: #cb4042;
+  border: none;
+  color: #fff;
+}
+
+/* order */
+/* 左方出貨列表 */
+.seller-order-list {
+  width: 70%;
+  background: #fff;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 20px;
+  height: 100vh;
+}
+
+.seller-sendtype {
+  margin: 0 10px;
+  border: 1px solid #cb4042;
+  color: #cb4042;
+  background: transparent;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.seller-page {
+  margin: 0 20px;
+  border: 1px solid #000;
+  color: #000;
+  background: transparent;
+  width: 70px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.seller-show-pages {
+  justify-content: flex-end;
+  align-items: center;
+  margin: 10px;
+  display: flex;
+  margin-bottom: 50px;
+  border-bottom: 1px solid #707070;
+  padding-bottom: 20px;
+}
+
+.seller-left-arrow {
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  transform: translate(-100%, -50%);
+}
+
+.seller-right-arrow {
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  transform: translate(100%, -50%);
+}
+
+.order-createdate {
+  margin-top: 10px;
+}
+.order-seller-table {
+  width: 100%;
+  margin: 10px 0;
+}
+.order-seller-table thead tr th,
+.order-seller-table tbody tr td {
+  margin: 20px 0;
+  width: 17%;
+  /* border: 1px solid #707070; */
+  text-align: center;
+}
+
+#order-orderType,
+#order-orderOrder {
+  border: 1px solid #707070;
+  margin: 5px;
+}
+/* 對應出貨訂單 */
+.seller-get-order {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #fff;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 20px;
+  height: 100vh;
+}
+
+.seller-arrangeorderbutton {
+  width: 80%;
+  margin: 0;
+  border: 1px solid #cb4042;
+  color: #cb4042;
+  background: transparent;
+  height: 30px;
+  cursor: pointer;
+  position: relative;
+}
+.seller-arrangeorderbutton-txt {
+  color: #cb4042;
+}
+.seller-track {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-20%, -50%);
+}
+
+.order-order-out,
+.order-order-doc {
+  position: relative;
+  margin: 30px;
+  display: flex;
+}
+.seller-img-position {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.seller-btntxt {
+  margin-left: 16px;
+}
+
+/* refund */
+/* 訂單管理標頭 */
+.seller-refund {
+  background: #fff;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 20px;
+  height: 1000px;
+}
+.seller-toggle-down {
+  border-bottom: 1px solid #707070;
+  margin: 7px;
+  margin-top: 30px;
+  display: flex;
+}
+.seller-toggle-down > div {
+  margin: 5px;
+  cursor: pointer;
+}
+/* 搜尋欄 */
+.refund-createdate {
+  margin: 10px;
+}
+.seller-refund-exportbtn {
+  border: 1px solid #707070;
+  height: 30px;
+  width: 100px;
+  background: transparent;
+  margin-right: 10px;
+}
+.refund-seller-table {
+  width: 100%;
+  /* border: 1px solid #707070; */
+  margin: 13px auto;
+  border-collapse: collapse;
+  text-align: center;
+}
+.refund-seller-table tbody tr td {
+  padding: 10px;
+  /* border-bottom: 1px solid #707070; */
+  /* border-top: 1px solid #707070; */
+}
+
+/* seller-product */
+.seller-myproduct {
+  height: 150vh;
+  background: #fff;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 20px;
+}
+/* 搜尋欄 */
+.product-wrapper {
+  margin: 10px;
+  justify-content: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+.seller-item-wrapper {
+  margin: 10px;
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+.search-wrapper,
+.product-createdate,
+.seller-quantity,
+.seller-soldproduct {
+  margin: 15px 0 15px 0;
+  width: 50%;
+  /* border: 1px solid #707070; */
+}
+.seller-soldproduct {
+  text-align: start;
+}
+.seller-btnset {
+  justify-content: flex-end;
+  display: flex;
+  margin: 20px 10px 0 0;
+}
+.seller-resetbtn,
+.seller-searchbtn,
+.seller-addproduct {
+  margin-right: 10px;
+}
+.seller-addproduct,
+.seller-resetbtn {
+  background: transparent;
+}
+.product-search {
+  border: 1px solid #707070;
+  width: 60%;
+  height: 30px;
+  position: relative;
+}
+
+.product-search-bar {
+  height: 30px;
+  width: 85%;
+  font-size: 14px;
+  border: 1px solid #707070;
+  margin-top: -1px;
+  margin-left: -1px;
+}
+
+.product-search-img {
+  position: absolute;
+  right: 7.5%;
+  top: 50%;
+  transform: translate(50%, -50%);
+}
+
+.seller-btn-style {
+  height: 30px;
+  width: 100px;
+  border: 1px solid #707070;
+}
+
+.seller-exportbtn,
+#startdate,
+#enddate,
+#minquan,
+#maxquan,
+#soldminquan,
+#soldmaxquan {
+  border: 1px solid #707070;
+}
+
+#minquan,
+#maxquan,
+#soldminquan,
+#soldmaxquan {
+  width: 80px;
+  margin: 10px;
+}
+
+#sendOrderBtn,
+.seller-searchbtn,
+.seller-addtool {
+  background: #cb4042;
+  border: none;
+  color: #fff;
+}
+
+/* 訂單清單 */
+.product-table {
+  height: 50vh;
+  background: #fff;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 20px;
+}
+.product-seller-table {
+  width: 98%;
+  /* border: 1px solid #707070; */
+  margin: 20px 0;
+}
+.product-seller-table tbody tr td,
+.product-seller-table thead tr th {
+  margin: 20px 0;
+  /* border: 1px solid #707070; */
+  width: 12.5%;
+  text-align: center;
+}
+#seller-selectAll {
+  border: 1px solid #707070;
+  width: 10px;
+  height: 10px;
+}
+
+/* account */
+.seller-account-main {
+  width: 100%;
+  height: 800px;
+  background: #fff;
+}
+.seller-myaccount {
+  height: 150vh;
+  background: #fff;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 20px;
+}
+.seller-account-container {
+  height: 900px;
+  margin: 25px 100px 25px;
+  display: flex;
+}
+.seller-account-button {
+  height: 30px;
+  width: 100px;
+  background: transparent;
+}
+.seller-editbtn {
+  background: transparent;
+  border: 1px solid #707070;
+}
+.seller-account-margin-top {
+  margin-top: 20px;
+}
+.seller-formgroup {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.seller-infowrapper {
+  border-bottom: 1px solid #707070;
+  margin: 30px;
+  display: flex;
+}
+
+.seller-infobar {
+  width: 95%;
+  text-align: center;
+}
+
+.seller-profile-container {
+  padding: 15px;
+  /* height:80px; */
+}
+/* 我的地址 */
+.seller-myaddress {
+  height: 150vh;
+  background: #fff;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 20px;
+}
+.add-address {
+  background: #cb4042;
+  border: none;
+  color: #fff;
+  margin-right: 10px;
+  height: 30px;
+  width: 100px;
+}
+.address-head {
+  justify-content: space-between;
+  margin: 30px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid #707070;
+  display: flex;
+}
+.seller-btn {
+  height: 30px;
+  width: 100px;
+  background: transparent;
+}
+.btnarrange {
+  flex-direction: column;
+  width: 40%;
+  display: flex;
+  align-items: center;
+}
+.adreditbtn,
+.adrdelbtn {
+  background: transparent;
+  border: 1px solid #707070;
+  margin: 10px;
+}
+.seller-address-form {
+  width: 60%;
+}
+.seller-address-margin-left {
+  margin-left: 32px;
 }

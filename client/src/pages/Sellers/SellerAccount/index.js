@@ -8,7 +8,7 @@ import MyFooter from '../../../components/Footer'
 import LeftNav from '../Leftnav'
 
 //import css
-import '../../../assets/css/AliceSeller/account.css'
+// import '../../../assets/css/AliceSeller/account.css'
 
 //import image - 20200617 - william
 // import { ReactComponent as SellerAccountProfileImg } from '../../../assets/img/seller/seller-profile/selleremail.svg'
@@ -39,7 +39,7 @@ function SellerAccount(props) {
           </span>
           <div className="seller-account-container">
             <LeftNav />
-            <div className="seller-account-main">
+            <div className="seller-w100-main">
               <div className="seller-myaccount">
                 <div className="w-90">
                   <h1 className="seller-account-margin-top">帳戶</h1>

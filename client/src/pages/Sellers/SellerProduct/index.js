@@ -8,7 +8,7 @@ import MyFooter from '../../../components/Footer'
 import LeftNav from '../Leftnav'
 
 //import css
-import '../../../assets/css/AliceSeller/seller-product.css'
+// import '../../../assets/css/AliceSeller/seller-product.css'
 //import image
 import searchImg from '../../../assets/img/seller/my-sale/search.svg'
 
@@ -28,7 +28,7 @@ function SellerProduct(props) {
           </span>
           <div className="seller-container">
             <LeftNav />
-            <div className="seller-main">
+            <div className="seller-w100-main">
               <div className="seller-myproduct">
                 <div className="w-90">
                   <div className="seller-toggle">
@@ -64,6 +64,7 @@ function SellerProduct(props) {
                           匯出
                         </button>
                       </div>
+
                       <div className="seller-quantity">
                         <label>商品數量</label>
                         <input type="text" id="minquan" placeholder="請輸入" />
@@ -86,27 +87,27 @@ function SellerProduct(props) {
                       </div>
                     </div>
                     <div className="seller-btnset">
-                      <button className="seller-btn seller-resetbtn">
+                      <button className="seller-btn-style seller-resetbtn">
                         重置
                       </button>
-                      <button className="seller-btn seller-searchbtn">
+                      <button className="seller-btn-style seller-searchbtn">
                         搜尋
                       </button>
                     </div>
                   </htmlForm>
-                  <div className="product-wrapper">
+                  <div className="seller-item-wrapper">
                     <h1>0項商品</h1>
                     <div className="seller-btnset">
-                      <button className="seller-btn seller-addproduct">
+                      <button className="seller-btn-style seller-addproduct">
                         新增商品
                       </button>
-                      <button className="seller-btn seller-addtool">
+                      <button className="seller-btn-style seller-addtool">
                         批次工具
                       </button>
                     </div>
                   </div>
                   <div className="product-table">
-                    <table className="seller-table">
+                    <table className="product-seller-table">
                       <thead>
                         <tr>
                           <th>

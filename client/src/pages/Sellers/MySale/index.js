@@ -8,7 +8,7 @@ import MyFooter from '../../../components/Footer'
 import LeftNav from '../../Sellers/Leftnav'
 
 //import css
-import '../../../assets/css/AliceSeller/my-sale.css'
+// import '../../../assets/css/AliceSeller/my-sale.css'
 //import image
 import searchImg from '../../../assets/img/seller/my-sale/search.svg'
 
@@ -28,31 +28,31 @@ function MySale(props) {
           </span>
           <div className="seller-container">
             <LeftNav />
-            <div className="seller-main">
+            <div className="seller-w100-main">
               <div className="seller-mysale">
                 <div className="w-90">
                   <div className="seller-toggle">
-                    <a className="seller-a" href="www.treefont">
+                    <div className="seller-a" href="www.treefont">
                       全部
-                    </a>
-                    <a className="seller-a" href="www">
+                    </div>
+                    <div className="seller-a" href="www">
                       尚未付款
-                    </a>
-                    <a className="seller-a" href="www">
+                    </div>
+                    <div className="seller-a" href="www">
                       待出貨
-                    </a>
-                    <a className="seller-a" href="www">
+                    </div>
+                    <div className="seller-a" href="www">
                       運送中
-                    </a>
-                    <a className="seller-a" href="www">
+                    </div>
+                    <div className="seller-a" href="www">
                       已完成
-                    </a>
-                    <a className="seller-a" href="www">
+                    </div>
+                    <div className="seller-a" href="www">
                       已取消
-                    </a>
-                    <a className="seller-a" href="www">
+                    </div>
+                    <div className="seller-a" href="www">
                       退貨/退款
-                    </a>
+                    </div>
                   </div>
                   <htmlForm action="" method="post">
                     <div className="seller-wrapper">

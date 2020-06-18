@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 //import li tag
 // import { Todoli } from './config'
 //import css
-import '../../../assets/css/AliceSeller/IndexMain.css'
+// import '../../../assets/css/AliceSeller/IndexMain.css'
 
 function IndexMain() {
   return (

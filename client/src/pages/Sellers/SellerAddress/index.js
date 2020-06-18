@@ -8,7 +8,7 @@ import MyFooter from '../../../components/Footer'
 import LeftNav from '../Leftnav'
 
 //import css
-import '../../../assets/css/AliceSeller/address.css'
+// import '../../../assets/css/AliceSeller/address.css'
 
 //import image - 20200617 - william
 // import { ReactComponent as SellerAccountProfileImg } from '../../../assets/img/seller/seller-profile/selleremail.svg'
@@ -37,9 +37,9 @@ function SellerAddress(props) {
           <span className="breadcrumb">
             首頁 &nbsp;/ 訂單管理/ &nbsp;我的訂單
           </span>
-          <div className="seller-account-container">
+          <div className="seller-container">
             <LeftNav />
-            <div className="seller-main">
+            <div className="seller-w100-main">
               <div className="seller-myaddress">
                 <div className="w-90">
                   <div class="address-head">
@@ -47,7 +47,7 @@ function SellerAddress(props) {
                       <h1>我的地址</h1>
                       <p>管理你的配送及快遞取件地址</p>
                     </div>
-                    <button class="seller-btn add-address">新增地址</button>
+                    <button class="add-address">新增地址</button>
                   </div>
                   <div class="form-wrapper d-flex">
                     <htmlForm

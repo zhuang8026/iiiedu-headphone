@@ -1,7 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 //import css
-import '../../../assets/css/AliceSeller/News.css'
+// import '../../../assets/css/AliceSeller/News.css'
 
 function News() {
   return (

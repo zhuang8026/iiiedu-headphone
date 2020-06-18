@@ -23,12 +23,12 @@ import MarketingImg from '../../../assets/img/seller/index/blog-b.png'
 import ShopImg from '../../../assets/img/seller/index/online-shop.png'
 
 //import css
-import '../../../assets/css/AliceSeller/LeftNav.css'
+// import '../../../assets/css/AliceSeller/LeftNav.css'
 
 function LeftNav(props) {
   return (
-    <aside className="menu text-align-center">
-      <div className="photo d-flex text-align-center align-item-center justify-content-center">
+    <aside className="seller-menu">
+      <div className="seller-photo">
         <img src={ProfileImg} alt="" />
         <p>
           Hello!
@@ -38,14 +38,15 @@ function LeftNav(props) {
       </div>
       <div className="side-bar">
         <div className="sidebar-box">
-
           <ul>
             <img className="icon-size" src={AccountImg} alt="" />
             <span>我的帳戶</span>
             {ProfileLi.map((item, index) => {
               return (
                 <li key={index}>
-                  <a href={item.linkUrl}>{item.name}</a>
+                  <a className="seller-a" href={item.linkUrl}>
+                    {item.name}
+                  </a>
                 </li>
               )
             })}
@@ -57,7 +58,9 @@ function LeftNav(props) {
           {OrderLi.map((item, index) => {
             return (
               <li key={index}>
-                <a href={item.linkUrl}>{item.name}</a>
+                <a className="seller-a" href={item.linkUrl}>
+                  {item.name}
+                </a>
               </li>
             )
           })}
@@ -68,7 +71,9 @@ function LeftNav(props) {
           {ProductLi.map((item, index) => {
             return (
               <li key={index}>
-                <a href={item.linkUrl}>{item.name}</a>
+                <a className="seller-a" href={item.linkUrl}>
+                  {item.name}
+                </a>
               </li>
             )
           })}
@@ -77,7 +82,9 @@ function LeftNav(props) {
           <img className="icon-size" src={MarketingImg} alt="" />
           <span>行銷管理</span>
           <li>
-            <a href="#">部落格文章</a>
+            <a className="seller-a" href="#">
+              部落格文章
+            </a>
           </li>
         </ul>
         <ul>
@@ -86,7 +93,9 @@ function LeftNav(props) {
           {ShopLi.map((item, index) => {
             return (
               <li key={index}>
-                <a href={item.linkUrl}>{item.name}</a>
+                <a className="seller-a" href={item.linkUrl}>
+                  {item.name}
+                </a>
               </li>
             )
           })}
