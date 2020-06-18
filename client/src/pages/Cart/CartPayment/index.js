@@ -7,7 +7,7 @@ import {
   withRouter,
 } from 'react-router-dom'
 
-function CartDelivery(props) {
+function CartPayment(props) {
   return (
     <>
       <div className="cart-container">
@@ -24,14 +24,14 @@ function CartDelivery(props) {
           </li>
           <li className="cart-step-active">
             <div className="icon-box">
-              <i className="iconfont icon-wuliu"></i>
+              <i className="iconfont icon-wancheng"></i>
             </div>
             <p>配送方式</p>
           </li>
           <li>
-            <div className="line"></div>
+            <div className="line done"></div>
           </li>
-          <li>
+          <li className="cart-step-active">
             <div className="icon-box">
               <i className="iconfont icon-card"></i>
             </div>
@@ -48,27 +48,27 @@ function CartDelivery(props) {
           </li>
         </ul>
         {/* 選擇配送方式表單 */}
-        <form className="delivery-form">
-          <div>請選擇配送方式:</div>
+        <form className="payment-form">
+          <div>請選擇付款方式:</div>
           <input
             type="radio"
-            name="deliveryId"
-            id="deliveryId1"
-            value="黑貓宅急便"
+            name="payment"
+            id="paymentId1"
+            value="貨到付款"
             required
           />
-          <label htmlFor="deliveryId1"> 黑貓宅急便</label>
+          <label htmlFor="paymentId1"> 貨到付款</label>
           <div className="line">
             <div></div>
           </div>
           <input
             type="radio"
-            name="deliveryId"
-            id="deliveryId2"
-            value="新竹物流"
+            name="payment"
+            id="paymentId2"
+            value="信用卡"
             required
           />
-          <label htmlFor="deliveryId2"> 新竹物流</label>
+          <label htmlFor="paymentId2"> 信用卡</label>
           <div>
             <button>下一步</button>
           </div>
@@ -77,4 +77,4 @@ function CartDelivery(props) {
     </>
   )
 }
-export default withRouter(CartDelivery)
+export default withRouter(CartPayment)
