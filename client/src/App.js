@@ -24,6 +24,8 @@ import MembersBank from './pages/Members/MembersBank'
 import MembersAdress from './pages/Members/MembersAdress'
 import MembersCartList from './pages/Members/MembersCartList'
 import MembersCartDetail from './pages/Members/MembersCartDetail'
+import MembersRegister from './pages/Members/MembersRegister'
+import MembersForget from './pages/Members/MembersForget'
 
 // Alice's part
 import AliceSellers from './pages/Sellers'
@@ -108,6 +110,14 @@ function App() {
                   <MembersLogin />
                 </Route>
 
+                <Route path={`${url}/MembersForget`}>
+                  <MembersForget />
+                </Route>
+
+                <Route path={`${url}/MembersRegister`}>
+                  <MembersRegister />
+                </Route>
+
                 <Route path={`${url}/MembersPwa`}>
                   <MembersPwa />
                 </Route>
@@ -123,7 +133,7 @@ function App() {
                 <Route path={`${url}/MembersCartList`}>
                   <MembersCartList />
                 </Route>
-                
+
                 <Route path={`${url}/MembersCartDetail`}>
                   <MembersCartDetail />
                 </Route>
@@ -140,14 +150,10 @@ function App() {
                   path={`${url}/MembersCartList`}
                   component={MembersCartList}
                 />
-<<<<<<< HEAD
-=======
                 <Route
                   path={`${url}/MembersCartDetail`}
                   component={MembersCartDetail}
                 /> */}
-
->>>>>>> 346c1d7554987e9e072fc1e5021a2a5a7ab1af40
               </>
             )}
           />
