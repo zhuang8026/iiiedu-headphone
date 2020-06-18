@@ -64,7 +64,7 @@ function KMembers() {
                             <li>
                                 <div className="r_bottom_nodel">
                                     <label htmlFor="use">使用者帳號</label>
-                                    <span className="iconfont icon-user_2"></span>
+                                    <span className="iconfont icon-gerenziliao"></span>
                                     <input id="use" className="mem_input" placeholder="otis0710@gmail.com" readOnly value={'otis@gmail.com'}/>
                                 </div>
                                 <span className="r_bottom_err">賬號不可修改</span>
@@ -72,7 +72,7 @@ function KMembers() {
                             <li>
                                 <div className="r_bottom_del">
                                     <label htmlFor="name">姓名</label>
-                                    <span className="iconfont icon-user_2"></span>
+                                    <span className="iconfont icon-Personal"></span>
                                     <input id="name" className="mem_input" placeholder="Otis"/>
                                 </div>
                                 <span className="r_bottom_err">姓名不符合格式</span>
@@ -80,7 +80,7 @@ function KMembers() {
                             <li>
                                 <div className="r_bottom_del">
                                     <label htmlFor="email">Email</label>
-                                    <span className="iconfont icon-user_2"></span>
+                                    <span className="iconfont icon-email"></span>
                                     <input id="email" className="mem_input" placeholder="otis0710@gmail.com"/>
                                 </div>
                                 <span className="r_bottom_err">email格式做錯</span>
@@ -88,7 +88,7 @@ function KMembers() {
                             <li>
                                 <div className="r_bottom_del">
                                     <label htmlFor="phone">手機號碼</label>
-                                    <span className="iconfont icon-user_2"></span>
+                                    <span className="iconfont icon-phone"></span>
                                     <input id="phone" className="mem_input" placeholder="098888888"/>
                                 </div>
                                 <span className="r_bottom_err">手機號碼格式錯誤</span>
@@ -96,7 +96,7 @@ function KMembers() {
                             <li>
                                 <div className="r_bottom_del">
                                     <label>性別</label>
-                                    <span className="iconfont icon-user_2"></span>
+                                    <span className="iconfont icon-sex"></span>
                                     {/* <input className="mem_input" placeholder="男"/> */}
                                     <Radio.Group onChange={onChange} value={todos}>
                                         <Radio value={1}>男</Radio>
@@ -108,7 +108,7 @@ function KMembers() {
                             <li>
                                 <div className="r_bottom_del">
                                     <label>生日</label>
-                                    <span className="iconfont icon-user_2"></span>
+                                    <span className="iconfont icon-shengri"></span>
                                     <span className="mem_input">
                                         <DatePicker bordered={false} locale={locale} onChange={onDataChange}/>
                                         {/* <input className="mem_input" /> */}

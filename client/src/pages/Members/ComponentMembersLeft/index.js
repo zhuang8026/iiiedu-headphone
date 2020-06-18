@@ -49,7 +49,7 @@ function MembersLeft() {
                     <div className="men_title">
                         <div className="men_title_inner">
                             <span className="iconfont icon-date"></span>
-                            <a className="men_a">購買清單</a>
+                            <NavLink to="/KMembers/MembersCartList" className="men_a">購買清單</NavLink>
                         </div>
                     </div>
                     <div className="men_title">

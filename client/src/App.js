@@ -21,6 +21,7 @@ import MembersLogin from './pages/Members/MembersLogin'
 import MembersPwa from './pages/Members/MembersPwa'
 import MembersBank from './pages/Members/MembersBank'
 import MembersAdress from './pages/Members/MembersAdress'
+import MembersCartList from './pages/Members/MembersCartList'
 
 // Alice's part
 import AliceSellers from './pages/Sellers'
@@ -31,6 +32,7 @@ import SellerProduct from './pages/Sellers/SellerProduct'
 import SellerAccount from './pages/Sellers/SellerAccount'
 import SellerAddress from './pages/Sellers/SellerAddress'
 
+// yafang
 import YfangCart from './pages/Cart'
 
 // 靜態頁面
@@ -101,10 +103,8 @@ function App() {
                 <Route path={`${url}/MembersLogin`} component={MembersLogin} />
                 <Route path={`${url}/MembersPwa`} component={MembersPwa} />
                 <Route path={`${url}/MembersBank`} component={MembersBank} />
-                <Route
-                  path={`${url}/MembersAdress`}
-                  component={MembersAdress}
-                />
+                <Route path={`${url}/MembersAdress`} component={MembersAdress} />
+                <Route path={`${url}/MembersCartList`} component={MembersCartList} />
               </>
             )}
           />
