@@ -3,8 +3,10 @@ import React, { Fragment } from 'react';
 import { Link, NavLink, withRouter } from 'react-router-dom'
 
 // antd
-import { Avatar, Badge,Popover } from 'antd';
-import { ShoppingCartOutlined, HeartOutlined } from '@ant-design/icons';
+// import { Avatar, Badge } from 'antd';
+// import { ShoppingCartOutlined, HeartOutlined } from '@ant-design/icons';
+import { Popover } from 'antd';
+
 
 // logo 
 import OtisGif from "../../assets/img/Otis.gif";
@@ -239,13 +241,13 @@ function MyNavBar(props) {
                                     {/* 會員 */}
                                     <li>
                                         <div id="members" className="otis-members">
-                                            <a className="otis-login-opener" href="/KMembers">
+                                            <Link className="otis-login-opener" to="/KMembers">
                                                 <Popover content={members} placement="bottom">
                                                     <span className="otis-login-text">
                                                         <i className="iconfont icon-Personal"></i>
                                                     </span>
                                                 </Popover>
-                                            </a>
+                                            </Link>
                                         </div>
                                     </li>
 
@@ -255,12 +257,12 @@ function MyNavBar(props) {
                                             <a className="otis-wishlist-widget-link">
                                                 <Popover content={loves} placement="bottom">
                                                     <span className="otis-wishlist-widget-icon">
-                                                        {/* <i className="iconfont icon-like"></i> */}
-                                                        <Badge count={1}>
+                                                        <i className="iconfont icon-like"></i>
+                                                        {/* <Badge count={1}>
                                                             <Avatar shape="square" icon={<HeartOutlined/>}/>
-                                                        </Badge>
+                                                        </Badge> */}
                                                     </span>
-                                                    {/* <span className="otis-wishlist-widget-count"> 1 </span> */}
+                                                    <span className="otis-wishlist-widget-count"> 1 </span>
                                                 </Popover>
                                             </a>
                                         </div>
@@ -276,27 +278,17 @@ function MyNavBar(props) {
                                                 >
                                                     <Popover content={carts} placement="bottom">
                                                         <span className="otis-sc-opener-icon">
-                                                            {/* <i className="iconfont icon-cart"></i> */}
-                                                            <Badge count={0} className="site-badge-count-4">
+                                                            <i className="iconfont icon-cart"></i>
+                                                            {/* <Badge count={0} className="site-badge-count-4">
                                                                 <Avatar shape="square" icon={<ShoppingCartOutlined />} />
-                                                            </Badge>
+                                                            </Badge> */}
                                                         </span>
-                                                        {/* <span className="otis-sc-opener-count"> 5 </span> */}
+                                                        <span className="otis-sc-opener-count"> 5 </span>
                                                     </Popover>
                                                 </a>
                                             </div>
                                         </div>
                                     </li>
-                                    {/* <li>
-                                        <a className="qodef-side-menu-button-opener qodef-icon-has-hover qodef-side-menu-button-opener-predefined">
-                                            <span className="qodef-side-menu-icon">
-                                                <span className="qodef-hm-lines">
-                                                    <span className="qodef-hm-line qodef-line-1"></span>
-                                                    <span className="qodef-hm-line qodef-line-2"></span>
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </li> */}
                                 </ul>
                             </nav>
                         </div>

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useState } from 'react'
 import {
   BrowserRouter as Router,
   Route,
@@ -49,6 +49,7 @@ import WiWarranty from './pages/Warranty'
 import NotFoundPage404 from './pages/404'
 
 function App() {
+
   return (
     <Router>
       <Fragment>
@@ -107,7 +108,7 @@ function App() {
                 </Route>
 
                 <Route path={`${url}/MembersLogin`}>
-                  <MembersLogin />
+                  <MembersLogin/>
                 </Route>
 
                 <Route path={`${url}/MembersForget`}>
@@ -137,23 +138,6 @@ function App() {
                 <Route path={`${url}/MembersCartDetail`}>
                   <MembersCartDetail />
                 </Route>
-
-                {/* <Route path={`${url}/`} component={KMembers} exact />
-                <Route path={`${url}/MembersLogin`} component={MembersLogin} />
-                <Route path={`${url}/MembersPwa`} component={MembersPwa} />
-                <Route path={`${url}/MembersBank`} component={MembersBank} />
-                <Route
-                  path={`${url}/MembersAdress`}
-                  component={MembersAdress}
-                />
-                <Route
-                  path={`${url}/MembersCartList`}
-                  component={MembersCartList}
-                />
-                <Route
-                  path={`${url}/MembersCartDetail`}
-                  component={MembersCartDetail}
-                /> */}
               </>
             )}
           />
