@@ -1,0 +1,43 @@
+@import '../scss/_variables.scss';
+.Yybodyin {
+  margin: 0 auto;
+  display: flex;
+  width: 80%;
+  .YyDetailleft {
+    width: 40%;
+    .DetailImg {
+      img {
+        width: 100%;
+        background: $bg-theme;
+      }
+    }
+    .DetailSmallPic {
+      width: 100%;
+      height: 80px;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+      img {
+        width: 23%;
+      }
+    }
+  }
+
+  .YyDetailRight {
+    width: 60%;
+    .YyContent {
+      .YyName {
+        font-size: 40px;
+        padding: 20px 100px;
+      }
+      .Yyitemprice {
+        font-size: $icon-size-24;
+        padding: 0px 100px;
+      }
+      .Yycontentin {
+        padding-left: 45px;
+        line-height: 32px;
+      }
+    }
+  }
+}

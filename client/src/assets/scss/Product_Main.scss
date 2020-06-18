@@ -1,4 +1,10 @@
 @import '../scss/_variables.scss';
+.Yyshow {
+  display: block;
+}
+.Yyhide {
+  display: none;
+}
 .Yybodyin {
   margin: 0 auto;
   display: flex;
@@ -19,12 +25,6 @@
         input {
           -webkit-appearance: auto;
         }
-      }
-      .Yyb {
-        display: none;
-      }
-      .Yybactive {
-        display: block;
       }
       .Yywearstyle {
         font-size: 16px;

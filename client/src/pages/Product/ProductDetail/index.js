@@ -15,7 +15,9 @@ import MyNavBar from '../../../components/Navbar'
 import MyMenu from '../../../components/NavbarMenu'
 import MyFooter from '../../../components/Footer'
 import ProductCrumb from '../ProductCrumb'
-import ProductMain from '../ProductMain'
+import ProductDetailLeft from '../ProductDetail/ProductDetailLeft'
+import ProductDetailRight from '../ProductDetail/ProductDetailRight'
+
 // scss
 // import './_menu.scss'
 
@@ -29,9 +31,11 @@ function ProductDetail(props) {
         </header>
         <main>
           <ProductCrumb />
-          <ProductMain />
         </main>
-
+        <div className="Yybodyin">
+          <ProductDetailLeft />
+          <ProductDetailRight />
+        </div>
         <MyFooter />
       </Fragment>
     </Router>
