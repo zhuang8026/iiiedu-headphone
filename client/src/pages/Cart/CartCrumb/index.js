@@ -1,14 +1,6 @@
 // 函式元件
-import React, { Fragment, useEffect } from 'react'
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-  Link,
-  NavLink,
-  withRouter,
-} from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, withRouter } from 'react-router-dom'
 
 function CartCrumb(props) {
   return (

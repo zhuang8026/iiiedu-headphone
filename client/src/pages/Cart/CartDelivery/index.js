@@ -1,12 +1,9 @@
 // 函式元件
-import React, { Fragment, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import {
   BrowserRouter as Router,
   Route,
-  Switch,
-  Redirect,
   Link,
-  NavLink,
   withRouter,
 } from 'react-router-dom'
 
@@ -14,27 +11,43 @@ function CartDelivery(props) {
   return (
     <>
       <div className="cart-container">
+        {/* 購物車進度圖 */}
         <ul className="cart-step-ul">
-          <li className="doneColor">
-            <i className="iconfont icon-geren"></i>
+          <li className="cart-step-li-hasIcon doneColor">
+            <div className="icon-box">
+              <i className="iconfont icon-address"></i>
+            </div>
             <p>個人資料</p>
           </li>
-          <li className="line done"></li>
-          <li className="doneColor">
-            <i className="iconfont icon-geren"></i>
+          <li className="line done">
+            <div></div>
+          </li>
+          <li className="cart-step-li-hasIcon doneColor">
+            <div className="icon-box">
+              <i className="iconfont icon-wuliu"></i>
+            </div>
             <p>配送方式</p>
           </li>
-          <li className="line"></li>
-          <li>
-            <i className="iconfont icon-geren"></i>
+          <li className="line">
+            <div></div>
+          </li>
+          <li className="cart-step-li-hasIcon">
+            <div className="icon-box">
+              <i className="iconfont icon-card"></i>
+            </div>
             <p>付款方式</p>
           </li>
-          <li className="line"></li>
-          <li>
-            <i className="iconfont icon-geren"></i>
+          <li className="line">
+            <div></div>
+          </li>
+          <li className="cart-step-li-hasIcon">
+            <div className="icon-box">
+              <i className="iconfont icon-gift"></i>
+            </div>
             <p>訂單完成</p>
           </li>
         </ul>
+        {/* 選擇配送方式表單 */}
         <form className="delivery-form">
           <div>請選擇配送方式:</div>
           <input
@@ -44,7 +57,9 @@ function CartDelivery(props) {
             value="黑貓宅急便"
           />
           <label htmlFor="deliveryId1"> 黑貓宅急便</label>
-          <div className="line"></div>
+          <div className="line">
+            <div></div>
+          </div>
           <input
             type="radio"
             name="deliveryId"

@@ -16,10 +16,10 @@ import MyMenu from '../../components/NavbarMenu'
 import MyFooter from '../../components/Footer'
 
 //cart
-import CartCrumb from './CartCrumb'
-import CartTable from './CartTable'
-import CartBuyerInfo from './CartBuyerInfo'
-import CartDelivery from './CartDelivery'
+import CartCrumb from './CartCrumb' //麵包屑
+import CartTable from './CartTable' //購物車商品清單
+import CartBuyerInfo from './CartBuyerInfo' //訂單個人資料填寫
+import CartDelivery from './CartDelivery' //選擇配送方式
 
 function YfangCart(props) {
   return (
@@ -31,7 +31,7 @@ function YfangCart(props) {
         </header>
         <main>
           <CartCrumb />
-          <CartDelivery />
+          <CartBuyerInfo />
         </main>
         <MyFooter />
       </Fragment>
