@@ -9,27 +9,32 @@ import {
   NavLink,
   withRouter,
 } from 'react-router-dom'
-import '../../../assets/css/YongBlog/Yong-blog-detail.css'
 
-import BlogMainDetail from '../Blog-2-main/Blog-Main-3-Detail'
 
-// components
+
+
+// -------------------- components --------------------
 import MyNavBar from '../../../components/Navbar'
 import MyMenu from '../../../components/NavbarMenu'
 import MyFooter from '../../../components/Footer'
-
 // 引入Main
-
+import BlogMainDetailArticles from '../Blog-2-main/Blog-Main-Detail-1-Articles'
+import BlogMainDetailLike from '../Blog-2-main/Blog-Main-Detail-2-Like'
+import BlogMainDetailComments from '../Blog-2-main/Blog-Main-Detail-3-Comments'
 // 引入Aside
 import BlogAsidePhoto from '../Blog-2-Aside/Blog-Aside-1-Photo'
 import BlogAsideCommunity from '../Blog-2-Aside/Blog-Aside-2-Community'
 import BlogAsideSubscribe from '../Blog-2-Aside/Blog-Aside-3-Subscribe'
 import BlogAsideRecent from '../Blog-2-Aside/Blog-Aside-4-Recent'
 
-// imgs
 
-// scss
-// import './_menu.scss'
+
+// -------------------- scss -------------------- 
+import '../../../assets/scss/blog_detail.scss'
+
+// -------------------- imgs -------------------- 
+
+// -------------------- func -------------------- 
 
 function BlogDetail(props) {
   return (
@@ -47,7 +52,9 @@ function BlogDetail(props) {
       <div class="wrap-mid">
         <div class="blog-detail d-flex">
           <div class="blog-detail-main">
-            <BlogMainDetail />
+            <BlogMainDetailArticles />
+            <BlogMainDetailLike />
+            <BlogMainDetailComments />
           </div>
           <div class="blog-detail-aside">
             <BlogAsidePhoto />

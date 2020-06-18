@@ -11,7 +11,7 @@ import {
 } from 'react-router-dom'
 import '../../../assets/css/YongBlog/Yong-blog-edit.css'
 
-import BlogMainEdit from '../Blog-2-main/Blog-Main-5-Edit'
+import BlogMainEditInputs from '../Blog-2-main/Blog-Main-Edit-1-Inputs'
 
 // components
 import MyNavBar from '../../../components/Navbar'
@@ -45,7 +45,7 @@ function BlogEdit(props) {
       <div class="wrap-mid">
         <div class="blog-edit d-flex">
           <div class="blog-edit-main">
-            <BlogMainEdit />
+            <BlogMainEditInputs />
           </div>
           <div class="blog-edit-aside">
             <BlogAsidePhoto />

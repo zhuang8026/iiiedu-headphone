@@ -11,7 +11,7 @@ import {
 } from 'react-router-dom'
 import '../../../assets/css/YongBlog/Yong-blog-add.css'
 
-import BlogMainAdd from '../Blog-2-main/Blog-Main-4-Add'
+import BlogMainAddInputs from '../Blog-2-main/Blog-Main-Add-1-Inputs'
 
 // components
 import MyNavBar from '../../../components/Navbar'
@@ -45,7 +45,7 @@ function BlogAdd(props) {
       <div class="wrap-mid">
         <div class="blog-add d-flex">
           <div class="blog-add-main">
-            <BlogMainAdd />
+            <BlogMainAddInputs />
           </div>
           <div class="blog-add-aside">
             <BlogAsidePhoto />

@@ -9,22 +9,24 @@ import {
   NavLink,
   withRouter,
 } from 'react-router-dom'
-import '../../../assets/css/YongBlog/Yong-blog-user.css'
 
+// -------------------- components --------------------
 // 引入Main
-import BlogMainListByUser from '../Blog-2-main/Blog-Main-2-ListByUser'
-
+import BlogMainUserListByUser from '../Blog-2-main/Blog-Main-User-1-ListByUser'
 // 引入Aside
 import BlogAsidePhoto from '../Blog-2-Aside/Blog-Aside-1-Photo'
 import BlogAsideCommunity from '../Blog-2-Aside/Blog-Aside-2-Community'
 import BlogAsideSubscribe from '../Blog-2-Aside/Blog-Aside-3-Subscribe'
 import BlogAsideRecent from '../Blog-2-Aside/Blog-Aside-4-Recent'
 
-// scss
+// -------------------- scss -------------------- 
 // import './_menu.scss'
+import '../../../assets/scss/blog_user.scss'
 
-// imgs
+// -------------------- imgs -------------------- 
 
+
+// -------------------- func -------------------- 
 function BlogUser(props) {
   return (
     <>
@@ -44,7 +46,7 @@ function BlogUser(props) {
                 這裡是Otis'耳機專門站為各位耳機使用者建立的部落格空間，以提供使用者交流之用，如使用心得、測試報告、時尚穿搭以及各種交流文章。這裡是Otis'耳機專門站為各位耳機使用者建立的部落格空間，以提供使用者交流之用，如使用心得、測試報告、時尚穿搭以及各種交流文章。這裡是Otis'耳機專門站為各位耳機使用者建立的部落格空間，以提供使用者交流之用，如使用心得、測試報告、時尚穿搭以及各種交流文章。這裡是Otis'耳機專門站為各位耳機使用者建立的部落格空間，以提供使用者交流之用，如使用心得、測試報告、時尚穿搭以及各種交流文章。
               </p>
             </div>
-            <BlogMainListByUser />
+            <BlogMainUserListByUser />
           </div>
           <div className="blog-aside">
             <BlogAsidePhoto />

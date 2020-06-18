@@ -17,7 +17,7 @@ import '../../../assets/css/YongBlog/Yong-blog-edit.css'
 // scss
 // import './_menu.scss'
 
-function BlogMainEdit(props) {
+function BlogMainEditInputs(props) {
   return (
     <>
       <figure class="blog-edit-top-img">
@@ -65,4 +65,4 @@ function BlogMainEdit(props) {
     </>
   )
 }
-export default withRouter(BlogMainEdit)
+export default withRouter(BlogMainEditInputs)

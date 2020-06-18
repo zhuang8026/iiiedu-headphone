@@ -9,18 +9,20 @@ import {
   NavLink,
   withRouter,
 } from 'react-router-dom'
-import '../../../assets/css/YongBlog/Yong-blog-standard.css'
 
-// components
 
-// imgs
+// -------------------- components --------------------
+
+// -------------------- scss -------------------- 
+// import '../../../assets/scss/blog_standard.scss'
+
+// -------------------- imgs -------------------- 
 import slide from '../../../assets/img/blog-img/blog-standard/slide.png'
 import top from '../../../assets/img/blog-img/blog-standard/top.png'
 
-// scss
-// import './_menu.scss'
+// -------------------- func -------------------- 
 
-function BlogMainSlide(props) {
+function BlogMainStandardSlide(props) {
   return (
     <>
       <div className="carouselWall">
@@ -81,4 +83,4 @@ function BlogMainSlide(props) {
     </>
   )
 }
-export default withRouter(BlogMainSlide)
+export default withRouter(BlogMainStandardSlide)
