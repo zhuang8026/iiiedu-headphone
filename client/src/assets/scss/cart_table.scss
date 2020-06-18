@@ -1,19 +1,20 @@
 @import '../scss/_variables.scss';
 //麵包屑
 .cart-crumb {
-  margin-left: 6px;
+  width: 80%;
+  margin: 0 auto;
   div {
     height: 100px;
   }
 }
 //購物車
 .cart-container {
-  max-width: 980px;
+  width: 80%;
   margin: 100px auto 130px auto;
   padding: 20px;
   background: $bg-c;
   border-radius: 5px;
-  box-shadow: 1px 1px #ddd;
+  box-shadow: 3px 3px #ddd;
   .cart-table {
     width: 100%;
     border: 1px solid transparent;
@@ -123,39 +124,53 @@
     }
   }
 }
-//選擇配送方式
 
+//購物車進度圖
 .cart-step-ul {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  max-width: 760px;
   margin: 10px auto 60px auto;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   li {
-    color: #adadad;
-    font-size: 50px;
-    /* width: 100px; */
-    text-align: center;
+    width: 18%;
     padding: 0 10px;
+    font-size: 50px;
+
+    .line {
+      height: 6px;
+      background: $bg-btn-l;
+    }
+    .icon-box {
+      width: 85px;
+      height: 85px;
+      background: $bg-btn-l;
+      border-radius: 50%;
+      .iconfont {
+        font-size: 46px;
+        color: $font-color-w;
+      }
+    }
+    // .icon-box.active {
+    //   background: $btn-color-s;
+    // }
     p {
+      color: $bg-btn-l;
       font-size: 20px;
     }
-    .iconfont {
-      font-size: 46px;
+  }
+  .cart-step-active {
+    .icon-box {
+      background: $btn-color-s;
     }
-  }
-  .doneColor {
-    color: $btn-color-s;
-  }
-  .line {
-    width: 100px;
-    height: 6px;
-    background: $bg-btn-l;
-  }
-  .done {
-    background: $btn-color-s;
+    p {
+      color: $btn-color-s;
+    }
   }
 }
 
+//選擇配送方式表單
 .delivery-form {
   font-size: 20px;
   input {
@@ -166,7 +181,7 @@
     margin: 10px 0;
     width: 100%;
     height: 1px;
-    background: #adadad;
+    background: $bg-btn-l;
   }
   button {
     width: 200px;
