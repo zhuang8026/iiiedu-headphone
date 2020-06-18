@@ -41,7 +41,7 @@ function MembersAdress() {
                                         <li>
                                             <div className="address_bottom_nodel">
                                                 <label htmlFor="name">手機</label>
-                                                <span className="iconfont icon-user_2"></span>
+                                                <span className="iconfont icon-phone"></span>
                                                 <input type="tel" id="name" className="address_input" placeholder="0911223344" pattern="[0-9]{2}[0-9]{8}"/>
                                             </div>
                                             <span className="address_bottom_err">手機號碼不符合格式</span>
@@ -49,7 +49,7 @@ function MembersAdress() {
                                         <li>
                                             <div className="address_bottom_nodel">
                                                 <label htmlFor="email">地址</label>
-                                                <span className="iconfont icon-user_2"></span>
+                                                <span className="iconfont icon-address"></span>
                                                 <input type="email" id="email" className="address_input" placeholder="新北市火星區地球路一段413號１樓 全家火星噴火店"/>
                                             </div>
                                             <span className="address_bottom_err">地址格式錯誤</span>

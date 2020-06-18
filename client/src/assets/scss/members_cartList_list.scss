@@ -1,0 +1,75 @@
+@import "./variables";
+
+.members_cart_r_bottom {
+    .members_cart_r_num {
+        margin: 24px auto;
+        background: #fdfdfd;
+        transition: 0.3s ease-in;
+        &:hover {
+            box-shadow: 0px 3px 3px #0000001f;
+            background: #FAFAFA;
+        }
+        .cart_r_list {
+            .cart_r_list_inner {
+                .cart_r_title {
+                    background: $btn-color-s;
+                    padding: 24px;
+                    span{
+                        color: #fff;
+                        margin-right: 12px;
+                        letter-spacing: 2px;
+                    }
+                }
+                .cart_r_list_row {
+                    border-bottom: 1px solid #e8e9e2;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 24px;
+                    .cart_r_list_row_p_all {
+                        display: flex;
+                        img{
+                            width: 100px;
+                            height: 100px;
+                        }
+                        .cart_r_list_row_p {
+                            padding-left: 24px;
+                            p{}
+                        }
+                    }
+                    .cart_r_list_price {
+                        font-weight: bold;
+                        font-size: $font-size-24;
+                    }
+                }
+            }
+        }
+        .cart_r_list_total {
+            padding: 22px;
+            text-align: right;
+            .cart_r_list_total_li {
+                .cart_r_list_total_li_span {
+
+                }
+                .cart_r_list_total_li_price {
+                    color: $btn-color-r;
+                    font-weight: bold;
+                    font-size: $font-size-24+12;
+                }
+            }
+            .cart_r_list_total_search {
+                margin-top: 24px;
+                a {
+                    width: 150px;
+                    height: 32px;
+                    padding: 8px 64px;
+                    border: 1px solid $border-color-l;
+                    background: $border-color-l;
+                    color: #fff;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    
+}

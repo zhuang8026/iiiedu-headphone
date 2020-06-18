@@ -1,0 +1,19 @@
+@import "./variables";
+
+.members_cart_r_bottom {
+    padding: 28px 0;
+    .cart_r_change {
+        display: flex;
+        .cart_r_changeBtn {
+            width: 200px;
+            font-size: 16px;
+            text-align: center;
+        }
+    }
+}
+.changeBtn_active {
+    border-bottom: 4px solid $btn-color-s;
+}
+.changeBtn_NoActive {
+    border-bottom: 4px solid $bg-btn-s;
+}
