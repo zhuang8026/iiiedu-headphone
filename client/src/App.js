@@ -140,11 +140,14 @@ function App() {
                   path={`${url}/MembersCartList`}
                   component={MembersCartList}
                 />
+<<<<<<< HEAD
+=======
                 <Route
                   path={`${url}/MembersCartDetail`}
                   component={MembersCartDetail}
                 /> */}
 
+>>>>>>> 346c1d7554987e9e072fc1e5021a2a5a7ab1af40
               </>
             )}
           />
