@@ -18,16 +18,16 @@ import BlogMainStandardList from '../Blog-2-main/Blog-Main-Standard-1-List'
 // 引入Aside
 import BlogAsidePhoto from '../Blog-2-Aside/Blog-Aside-1-Photo'
 import BlogAsideCommunity from '../Blog-2-Aside/Blog-Aside-2-Community'
-import BlogAsideSubscribe from '../Blog-2-Aside/Blog-Aside-3-Subscribe'
+import BlogAsideSubscribe from '../Blog-2-Aside/Blog-Aside-3-subscribe'
 import BlogAsideRecent from '../Blog-2-Aside/Blog-Aside-4-Recent'
 
-// -------------------- scss -------------------- 
+// -------------------- scss --------------------
 // import './_menu.scss'
 import '../../../assets/scss/blog_standard.scss'
 
-// -------------------- imgs -------------------- 
+// -------------------- imgs --------------------
 
-// -------------------- func -------------------- 
+// -------------------- func --------------------
 
 function BlogStandard(props) {
   return (
@@ -42,7 +42,7 @@ function BlogStandard(props) {
       </div>
 
       <div className="wrap-mid">
-        <div className="blog d-flex">
+        <div className="blog blog-d-flex">
           <div className="blog-main">
             <div className="blog-wellcome">
               <h2>歡迎來到Otis'耳機專門站部落格</h2>

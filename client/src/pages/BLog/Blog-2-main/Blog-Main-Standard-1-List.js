@@ -10,13 +10,12 @@ import {
   withRouter,
 } from 'react-router-dom'
 
-
 // -------------------- components --------------------
 
-// -------------------- scss -------------------- 
+// -------------------- scss --------------------
 // import '../../../assets/scss/blog_standard.scss'
 
-// -------------------- imgs -------------------- 
+// -------------------- imgs --------------------
 import BlogCard from '../../../assets/img/blog-img/blog-standard/Blog-card.png'
 import IconSearch from '../../../assets/img/blog-img/blog-standard/icon-search.svg'
 import NextPage from '../../../assets/img/blog-img/blog-standard/next-page.svg'
@@ -24,17 +23,21 @@ import PrevPage from '../../../assets/img/blog-img/blog-standard/prev-page.svg'
 import NextPageHover from '../../../assets/img/blog-img/blog-standard/next-page-hover.svg'
 import PrevPageHover from '../../../assets/img/blog-img/blog-standard/prev-page-hover.svg'
 
-// -------------------- func -------------------- 
+// -------------------- func --------------------
 
 function BlogMainStandardList(props) {
   return (
     <>
-      <div className="blog-btns d-flex justify-content-between">
+      <div className="blog-btns blog-d-flex blog-justify-content-between">
         <div className="blog-btns-left">
-          <Link to="../BlogStandard" className="blog-btns-left-Link">全部文章</Link>
-          <Link to="../BlogUser" className="blog-btns-left-Link">個人文章</Link>
+          <Link to="../BlogStandard" className="blog-btns-left-Link">
+            全部文章
+          </Link>
+          <Link to="../BlogUser" className="blog-btns-left-Link">
+            個人文章
+          </Link>
         </div>
-        <div className="blog-btns-right d-flex justify-content-between">
+        <div className="blog-btns-right blog-d-flex blog-justify-content-between">
           <select name="" id="">
             <option value="0">依順序</option>
             <option value="1">依順序</option>
@@ -45,15 +48,15 @@ function BlogMainStandardList(props) {
             <option value="2">依最後修改</option>
             <option value="3">依最後回覆</option>
           </select>
-          <figure className="cover">
+          <figure className="blog-cover">
             <img src={IconSearch} alt="" />
           </figure>
         </div>
       </div>
-      <div className="blog-list d-flex">
+      <div className="blog-list blog-d-flex">
         <div className="blog-card">
           <figure className="blog-card-fig">
-            <img className="cover" src={BlogCard} alt="" />
+            <img className="blog-cover" src={BlogCard} alt="" />
           </figure>
           <div className="blog-card-btns"></div>
           <div className="blog-card-title">文章標題</div>
@@ -72,7 +75,7 @@ function BlogMainStandardList(props) {
         </div>
         <div className="blog-card">
           <figure className="blog-card-fig">
-            <img className="cover" src={BlogCard} alt="" />
+            <img className="blog-cover" src={BlogCard} alt="" />
           </figure>
           <div className="blog-card-btns"></div>
           <div className="blog-card-title">文章標題</div>
@@ -91,7 +94,7 @@ function BlogMainStandardList(props) {
         </div>
         <div className="blog-card">
           <figure className="blog-card-fig">
-            <img className="cover" src={BlogCard} alt="" />
+            <img className="blog-cover" src={BlogCard} alt="" />
           </figure>
           <div className="blog-card-btns"></div>
           <div className="blog-card-title">文章標題</div>
@@ -110,7 +113,7 @@ function BlogMainStandardList(props) {
         </div>
         <div className="blog-card">
           <figure className="blog-card-fig">
-            <img className="cover" src={BlogCard} alt="" />
+            <img className="blog-cover" src={BlogCard} alt="" />
           </figure>
           <div className="blog-card-btns"></div>
           <div className="blog-card-title">文章標題</div>
@@ -129,7 +132,7 @@ function BlogMainStandardList(props) {
         </div>
         <div className="blog-card">
           <figure className="blog-card-fig">
-            <img className="cover" src={BlogCard} alt="" />
+            <img className="blog-cover" src={BlogCard} alt="" />
           </figure>
           <div className="blog-card-btns"></div>
           <div className="blog-card-title">文章標題</div>
@@ -148,7 +151,7 @@ function BlogMainStandardList(props) {
         </div>
         <div className="blog-card">
           <figure className="blog-card-fig">
-            <img className="cover" src={BlogCard} alt="" />
+            <img className="blog-cover" src={BlogCard} alt="" />
           </figure>
           <div className="blog-card-btns"></div>
           <div className="blog-card-title">文章標題</div>
@@ -166,7 +169,7 @@ function BlogMainStandardList(props) {
           </div>
         </div>
       </div>
-      <div className="blog-standard-pages d-flex">
+      <div className="blog-standard-pages blog-d-flex">
         <div className="prev-page">
           <img src={PrevPage} alt="" />
         </div>

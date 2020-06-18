@@ -30,7 +30,7 @@ function BlogMainAdd(props) {
         <input class="input-title" type="text" name="" id="" />
         <h2 class="first-h2">第一篇文章</h2>
         <textarea name="" id=""></textarea>
-        <div class="btn-and-info d-flex">
+        <div class="btn-and-info blog-d-flex">
           <input type="file" class="btn-and-info-input" name="" id="" />
           <div class="blog-add-info"></div>
           <div class="blog-add-info"></div>
@@ -46,7 +46,7 @@ function BlogMainAdd(props) {
         </div>
         <h2 class="second-h2">第二篇文章</h2>
         <textarea name="" id=""></textarea>
-        <div class="btn-and-info d-flex">
+        <div class="btn-and-info blog-d-flex">
           <input type="file" class="btn-and-info-input" name="" id="" />
           <div class="blog-add-info"></div>
           <div class="blog-add-info"></div>

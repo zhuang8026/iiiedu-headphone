@@ -10,31 +10,30 @@ import {
   withRouter,
 } from 'react-router-dom'
 
-
 // -------------------- components --------------------
 
-// -------------------- scss -------------------- 
+// -------------------- scss --------------------
 // import '../../../assets/scss/blog_standard.scss'
 
-// -------------------- imgs -------------------- 
+// -------------------- imgs --------------------
 import slide from '../../../assets/img/blog-img/blog-standard/slide.png'
 import top from '../../../assets/img/blog-img/blog-standard/top.png'
 
-// -------------------- func -------------------- 
+// -------------------- func --------------------
 
 function BlogMainStandardSlide(props) {
   return (
     <>
       <div className="carouselWall">
         <div className="imageWall">
-          <figure className="blog-standard-fig wallFig cover">
+          <figure className="blog-standard-fig wallFig blog-cover">
             <img src={top} alt="" />
           </figure>
         </div>
         <div className="slideWall">
           <div className="slides slider-container" id="sliderContainer">
             <ul
-              className="list-unstyled slider-images d-flex position-absolute"
+              className="list-unstyled slider-images blog-d-flex position-absolute"
               id="sliderImages"
             >
               <li>
@@ -54,7 +53,7 @@ function BlogMainStandardSlide(props) {
               </li>
             </ul>
             <ul
-              className="list-unstyled position-absolute slider-dots d-flex justify-content-center"
+              className="list-unstyled position-absolute slider-dots blog-d-flex justify-content-center"
               id="sliderDots"
             >
               <li></li>
