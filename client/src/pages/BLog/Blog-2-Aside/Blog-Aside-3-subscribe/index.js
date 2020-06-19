@@ -10,12 +10,16 @@ import {
   withRouter,
 } from 'react-router-dom'
 
-import NextPageHover from '../../../assets/img/blog-img/blog-standard/next-page-hover.svg'
 
-// components
 
-// scss
-// import './_menu.scss'
+// -------------------- components --------------------
+
+// -------------------- scss --------------------
+
+// -------------------- imgs --------------------
+import NextPageHover from '../../../../assets/img/blog-img/blog-standard/next-page-hover.svg'
+
+// -------------------- func --------------------
 
 function BlogAsideSubscribe(props) {
   return (

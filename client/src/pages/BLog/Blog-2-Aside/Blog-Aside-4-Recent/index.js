@@ -10,10 +10,13 @@ import {
   withRouter,
 } from 'react-router-dom'
 
-// components
+// -------------------- components --------------------
 
-// scss
-// import './_menu.scss'
+// -------------------- scss --------------------
+
+// -------------------- imgs --------------------
+
+// -------------------- func --------------------
 
 function BlogAsideRecent(props) {
   return (

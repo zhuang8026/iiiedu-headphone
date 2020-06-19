@@ -10,12 +10,15 @@ import {
   withRouter,
 } from 'react-router-dom'
 
-import '../../../assets/css/YongBlog/Yong-blog-edit.css'
+// import '../../../../assets/css/YongBlog/Yong-blog-edit.css'
 
-// components
+// -------------------- components --------------------
 
-// scss
-// import './_menu.scss'
+// -------------------- scss --------------------
+
+// -------------------- imgs --------------------
+
+// -------------------- func --------------------
 
 function BlogMainEditInputs(props) {
   return (

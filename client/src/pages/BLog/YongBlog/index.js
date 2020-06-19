@@ -10,16 +10,18 @@ import {
   withRouter,
 } from 'react-router-dom'
 
-// components
+// -------------------- components --------------------
 import MyNavBar from '../../../components/Navbar'
 import MyMenu from '../../../components/NavbarMenu'
 import MyFooter from '../../../components/Footer'
-
 //blog
-import BlogStandard from '../Blog-1-page/BlogStandard'
+import BlogStandard from '../Blog-1-main-components/BlogStandard'
 
-// scss
-// import './_menu.scss'
+// -------------------- scss --------------------
+
+// -------------------- imgs --------------------
+
+// -------------------- func --------------------
 
 function YongBlog(props) {
   return (

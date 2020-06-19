@@ -14,7 +14,7 @@ import { Radio } from 'antd'
 import { Pagination } from 'antd'
 import WHH8101 from '../../../assets/items_img/WH-H810-01.png'
 // scss
-import '../../../assets/scss/Product_Main.scss'
+// import '../../../assets/scss/Product_Main.scss'
 // import './_menu.scss'
 
 function ProductMain() {

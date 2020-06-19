@@ -30,9 +30,7 @@ function CartTable(props) {
           <tbody>
             <tr>
               <td>
-                <a href="#" type="button" name="del">
-                  X
-                </a>
+                <i>X</i>
               </td>
               <td>
                 <img src={SRH184001} alt="icon" />
@@ -50,9 +48,7 @@ function CartTable(props) {
             </tr>
             <tr>
               <td>
-                <a href="#" type="button" name="del">
-                  X
-                </a>
+                <i>X</i>
               </td>
               <td>
                 <img src={SRH184001} alt="icon" />
@@ -70,9 +66,7 @@ function CartTable(props) {
             </tr>
             <tr>
               <td>
-                <a href="#" type="button" name="del">
-                  X
-                </a>
+                <i>X</i>
               </td>
               <td>
                 <img src={SRH184001} alt="icon" />
@@ -90,9 +84,7 @@ function CartTable(props) {
             </tr>
             <tr>
               <td>
-                <a href="#" type="button" name="del">
-                  X
-                </a>
+                <i>X</i>
               </td>
               <td>
                 <img src={SRH184001} alt="icon" />

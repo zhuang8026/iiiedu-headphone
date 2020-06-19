@@ -16,12 +16,12 @@ import {
 // import '../../../assets/scss/blog_standard.scss'
 
 // -------------------- imgs --------------------
-import BlogCard from '../../../assets/img/blog-img/blog-standard/Blog-card.png'
-import IconSearch from '../../../assets/img/blog-img/blog-standard/icon-search.svg'
-import NextPage from '../../../assets/img/blog-img/blog-standard/next-page.svg'
-import PrevPage from '../../../assets/img/blog-img/blog-standard/prev-page.svg'
-import NextPageHover from '../../../assets/img/blog-img/blog-standard/next-page-hover.svg'
-import PrevPageHover from '../../../assets/img/blog-img/blog-standard/prev-page-hover.svg'
+import BlogCard from '../../../../assets/img/blog-img/blog-standard/Blog-card.png'
+import IconSearch from '../../../../assets/img/blog-img/blog-standard/icon-search.svg'
+import NextPage from '../../../../assets/img/blog-img/blog-standard/next-page.svg'
+import PrevPage from '../../../../assets/img/blog-img/blog-standard/prev-page.svg'
+import NextPageHover from '../../../../assets/img/blog-img/blog-standard/next-page-hover.svg'
+import PrevPageHover from '../../../../assets/img/blog-img/blog-standard/prev-page-hover.svg'
 
 // -------------------- func --------------------
 

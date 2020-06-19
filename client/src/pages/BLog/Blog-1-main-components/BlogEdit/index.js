@@ -9,25 +9,25 @@ import {
   NavLink,
   withRouter,
 } from 'react-router-dom'
-import '../../../assets/css/YongBlog/Yong-blog-edit.css'
 
-import BlogMainEditInputs from '../Blog-2-main/Blog-Main-Edit-1-Inputs'
-
-// components
-import MyNavBar from '../../../components/Navbar'
-import MyMenu from '../../../components/NavbarMenu'
-import MyFooter from '../../../components/Footer'
-
+// -------------------- components --------------------
+import MyNavBar from '../../../../components/Navbar'
+import MyMenu from '../../../../components/NavbarMenu'
+import MyFooter from '../../../../components/Footer'
+// 麵包削
+import BlogCrumb from '../BlogCrumb'
 // 引入Main
-
+import BlogMainEditInputs from '../../Blog-2-main/Blog-Main-Edit-1-Inputs'
 // 引入Aside
-import BlogAsidePhoto from '../Blog-2-Aside/Blog-Aside-1-Photo'
-import BlogAsideCommunity from '../Blog-2-Aside/Blog-Aside-2-Community'
+import BlogAsidePhoto from '../../Blog-2-Aside/Blog-Aside-1-Photo'
+import BlogAsideCommunity from '../../Blog-2-Aside/Blog-Aside-2-Community'
 
-// imgs
+// -------------------- scss --------------------
+import '../../../../assets/scss/blog_edit.scss'
 
-// scss
-// import './_menu.scss'
+// -------------------- imgs --------------------
+
+// -------------------- func --------------------
 
 function BlogEdit(props) {
   return (
@@ -38,9 +38,7 @@ function BlogEdit(props) {
       </header>
       <div className="blog-edit-spacing"></div>
       <div class="wrap-top">
-        <div class="breadcrumbs">
-          <h5>首頁 / 部落格 / 編輯文章</h5>
-        </div>
+        <BlogCrumb />
       </div>
       <div class="wrap-mid">
         <div class="blog-edit blog-d-flex">

@@ -29,11 +29,11 @@
   width: 100%;
 }
 
-.breadcrumbs {
+.blog-crumb {
   width: 100%;
   height: 90px;
 }
-.breadcrumbs h5 {
+.blog-crumb h5 {
   font-size: 20px;
   line-height: 90px;
   margin-left: 50px;

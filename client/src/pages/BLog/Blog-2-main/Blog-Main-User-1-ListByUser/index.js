@@ -15,12 +15,12 @@ import {
 // -------------------- scss --------------------
 
 // -------------------- imgs --------------------
-import BlogCard from '../../../assets/img/blog-img/blog-standard/Blog-card.png'
-import IconSearch from '../../../assets/img/blog-img/blog-standard/icon-search.svg'
-import NextPage from '../../../assets/img/blog-img/blog-standard/next-page.svg'
-import PrevPage from '../../../assets/img/blog-img/blog-standard/prev-page.svg'
-import NextPageHover from '../../../assets/img/blog-img/blog-standard/next-page-hover.svg'
-import PrevPageHover from '../../../assets/img/blog-img/blog-standard/prev-page-hover.svg'
+import BlogCard from '../../../../assets/img/blog-img/blog-standard/Blog-card.png'
+import IconSearch from '../../../../assets/img/blog-img/blog-standard/icon-search.svg'
+import NextPage from '../../../../assets/img/blog-img/blog-standard/next-page.svg'
+import PrevPage from '../../../../assets/img/blog-img/blog-standard/prev-page.svg'
+import NextPageHover from '../../../../assets/img/blog-img/blog-standard/next-page-hover.svg'
+import PrevPageHover from '../../../../assets/img/blog-img/blog-standard/prev-page-hover.svg'
 
 // -------------------- func --------------------
 
@@ -29,8 +29,8 @@ function BlogMainUserListByUser(props) {
     <>
       <div className="blog-btns blog-d-flex blog-justify-content-between">
         <div className="blog-btns-left">
-          <Link to="../BlogStandard">全部文章</Link>
-          <Link to="../BlogUser">個人文章</Link>
+          <Link to="../BlogStandard" className="blog-btns-left-Link">全部文章</Link>
+          <Link to="../BlogUser" className="blog-btns-left-Link">個人文章</Link>
         </div>
         <div className="blog-btns-right blog-d-flex blog-justify-content-between">
           <select name="" id="">

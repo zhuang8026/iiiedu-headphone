@@ -10,16 +10,20 @@ import {
   withRouter,
 } from 'react-router-dom'
 
-import '../../../assets/css/YongBlog/Yong-blog-edit.css'
+// import '../../../../assets/css/YongBlog/Yong-blog-edit.css'
 
-// components
+// -------------------- components --------------------
 
-// imgs
-import DetailSample1 from '../../../assets/img/blog-img/blog-detail/blog-detail-sample-1.jpg'
-import DetailSample2 from '../../../assets/img/blog-img/blog-detail/blog-detail-sample-2.jpg'
+// -------------------- scss --------------------
 
-// scss
-// import './_menu.scss'
+// -------------------- imgs --------------------
+import DetailSample1 from '../../../../assets/img/blog-img/blog-detail/blog-detail-sample-1.jpg'
+import DetailSample2 from '../../../../assets/img/blog-img/blog-detail/blog-detail-sample-2.jpg'
+
+// -------------------- func --------------------
+
+
+
 
 function BlogMainDetailArticles(props) {
   return (

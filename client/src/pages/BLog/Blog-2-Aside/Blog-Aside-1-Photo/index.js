@@ -10,12 +10,16 @@ import {
   withRouter,
 } from 'react-router-dom'
 
-import WorldMap from '../../../assets/img/blog-img/blog-standard/world-map.png'
 
-// components
 
-// scss
-// import './_menu.scss'
+// -------------------- components --------------------
+
+// -------------------- scss --------------------
+
+// -------------------- imgs --------------------
+import WorldMap from '../../../../assets/img/blog-img/blog-standard/world-map.png'
+
+// -------------------- func --------------------
 
 function BlogAsidePhoto(props) {
   return (
