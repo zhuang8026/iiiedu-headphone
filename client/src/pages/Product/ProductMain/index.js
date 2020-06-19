@@ -34,11 +34,11 @@ function ProductMain() {
       <div className="Yybodyin">
         <div className="Yybodyleft">
           <ul>
-            <li class="Yywearstyle">
+            <li className="Yywearstyle">
               品牌
               {/* <button id="btnn">+</button> */}
             </li>
-            <div class="Yyb">
+            <div className="Yyb">
               <li>
                 <a href="#">森海爾</a>
               </li>
@@ -54,7 +54,7 @@ function ProductMain() {
             </div>
           </ul>
           <ul>
-            <li class="Yywearstyle">配戴方式</li>
+            <li className="Yywearstyle">配戴方式</li>
             <Radio.Group onChange={onChange} value={1}>
               <li>
                 <Radio value={1}>入耳</Radio>
@@ -66,7 +66,7 @@ function ProductMain() {
           </ul>
           <ul>
             <Radio.Group onChange={onChange} value={2}>
-              <li class="Yywearstyle">類型 </li>
+              <li className="Yywearstyle">類型 </li>
               <li>
                 <Radio value={1}>入耳式</Radio>
               </li>

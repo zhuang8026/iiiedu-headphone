@@ -18,6 +18,9 @@ import {NavItemsAir} from './config';
 
 
 function MyNavBar(props) {
+    const memberData = JSON.parse(localStorage.getItem('memberData'))
+    console.log('localStorage', memberData)
+
     const members = (
         <Fragment>
             <span className="IconP">會員中心</span>
@@ -38,6 +41,10 @@ function MyNavBar(props) {
             <span className="IconP">購物車</span>
         </Fragment>
     );
+
+    // const membersChange = (props)=>{
+    //     console.log(props)
+    // }
     return (
         <Fragment>
             {/* navbar */}
@@ -56,14 +63,14 @@ function MyNavBar(props) {
                             <nav>
                                 <ul className="menu-otis-menu">
                                     <li>
-                                        <a href="/" className="meaulist">
+                                        <Link to="/" className="meaulist">
                                             <span>首頁</span>
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a href="/YyProduct" className="meaulist">
+                                        <Link to="/YyProduct" className="meaulist">
                                             <span>頭戴式耳機</span>
-                                        </a>
+                                        </Link>
                                         <div className="inner hidden-meau">
                                             <ul>
                                             { NavIcon.map((data, index)=>{
@@ -88,9 +95,9 @@ function MyNavBar(props) {
                                         </div>
                                     </li>
                                     <li>
-                                        <a href="/YyProduct" className="meaulist">
+                                        <Link to="/YyProduct" className="meaulist">
                                             <span>耳戴式耳機</span>
-                                        </a>
+                                        </Link>
                                         <div className="inner hidden-meau">
                                             <ul>
                                                 { NavIcon.map((data, index)=>{
@@ -115,9 +122,9 @@ function MyNavBar(props) {
                                         </div>
                                     </li>
                                     <li>
-                                        <a href="/YyProduct" className="meaulist">
+                                        <Link to="/YyProduct" className="meaulist">
                                             <span>揚聲器</span>
-                                        </a>
+                                        </Link>
                                         <div className="inner hidden-meau">
                                             <ul>
                                                 { NavIcon.map((data, index)=>{
@@ -140,9 +147,9 @@ function MyNavBar(props) {
                                         </div>
                                     </li>
                                     <li>
-                                        <a href="@" className="meaulist">
+                                        <Link to="@" className="meaulist">
                                             <span>關於我們</span>
-                                        </a>
+                                        </Link>
                                         <div className="inner hidden-meau">
                                         <ul>
                                             <li className="nav-menu-object">
@@ -177,18 +184,18 @@ function MyNavBar(props) {
                                         </div>
                                     </li>
                                     <li>
-                                        <a href="/YongBlog" className="meaulist">
+                                        <Link to="/YongBlog" className="meaulist">
                                             <span>BLOG</span>
-                                        </a>
+                                        </Link>
                                         <div className="inner hidden-meau">
                                             <ul>
                                                 <li className="nav-menu-object">
                                                     <i className="iconfont icon-blog"></i>
-                                                    <a href="/Blog/YongBlog" type="button"><span>所有 Blog</span></a>
+                                                    <Link to="/Blog/YongBlog" type="button"><span>所有 Blog</span></Link>
                                                 </li>
                                                 <li className="nav-menu-object">
                                                     <i className="iconfont icon-blog"></i>
-                                                    <a href="/Blog/YongMyBlog" type="button"><span>我的 Blog</span></a>
+                                                    <Link to="/Blog/YongMyBlog" type="button"><span>我的 Blog</span></Link>
                                                 </li>
                                             </ul>
                                         </div>
@@ -241,13 +248,15 @@ function MyNavBar(props) {
                                     {/* 會員 */}
                                     <li>
                                         <div id="members" className="otis-members">
-                                            <Link className="otis-login-opener" to="/KMembers">
-                                                <Popover content={members} placement="bottom">
-                                                    <span className="otis-login-text">
-                                                        <i className="iconfont icon-Personal"></i>
-                                                    </span>
-                                                </Popover>
-                                            </Link>
+                                        {memberData ? (<Link className="otis-login-opener" to="/KMembers/MembersLogin">
+                                                            <Popover content={members} placement="bottom">
+                                                                <span className="otis-login-text"><i className="iconfont icon-Personal"></i></span>
+                                                            </Popover>
+                                                        </Link>) : (<Link className="otis-login-opener" to="/KMembers">
+                                                            <Popover content={members} placement="bottom">
+                                                                <span className="otis-login-text"><i className="iconfont icon-Personal"></i></span>
+                                                            </Popover>
+                                                        </Link>)}
                                         </div>
                                     </li>
 

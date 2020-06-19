@@ -6,6 +6,11 @@ import {
   Redirect,
 } from 'react-router-dom'
 
+// navbar & footer
+import MyNavBar from './components/Navbar'
+import MyMenu from './components/NavbarMenu'
+import MyFooter from './components/Footer'
+
 import WiHome from './pages/Home'
 import YyProduct from './pages/Product'
 import ProductDetail from './pages/Product/ProductDetail'
@@ -50,25 +55,55 @@ import NotFoundPage404 from './pages/404'
 
 function App() {
 
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [loginErrors, setLoginErrors] = useState([])
+  
+  const loginProcess = (loginSuccessCallback) => {
+    const errors = []
+
+    // let a = (name === '')?'姓名沒填':'姓名ok';
+    // errors.push(a)
+    if (username === '') errors.push('帳號沒填')
+    if (password === '') errors.push('密碼沒填')
+
+    if (errors.length > 0) {
+        setLoginErrors(errors)
+        return
+    }
+
+    // 清空錯誤訊息陣列 + 登入
+    setLoginErrors([])
+
+    // 執行成功的callback(來自MemberLogin)
+    loginSuccessCallback()
+  }
+
+  
+
   return (
     <Router>
-      <Fragment>
+        <header>
+          <MyNavBar />
+          <MyMenu />
+        </header>
+
         <Switch>
           {/* 首頁 */}
           <Route exact path="/">
-            <WiHome />
+            <WiHome/>
           </Route>
 
           {/* 產品列表 */}
-          <Route path="/YyProduct/:head?">
+          <Route exact path="/YyProduct/:head?">
             <YyProduct />
           </Route>
 
-          <Route path="/YyProduct/:air?">
+          <Route exact path="/YyProduct/:air?">
             <YyProduct />
           </Route>
 
-          <Route path="/YyProduct/:box?">
+          <Route exact path="/YyProduct/:box?">
             <YyProduct />
           </Route>
           <Route path="/ProductDetail">
@@ -94,21 +129,47 @@ function App() {
           <Route path="/about/WiProblem">
             <WiProblem />
           </Route>
-          <Route path="/about/WiOurClients">
+          {/* <Route path="/about/WiOurClients">
             <WiOurClients />
+          </Route> */}
+
+          <Route exact path="/KMembers">
+            <KMembers />
+          </Route>
+          <Route path="/KMembers/MembersLogin">
+            <MembersLogin  
+              allprops={{
+              username, 
+              setUsername,
+              password, 
+              setPassword,
+              loginProcess
+            }}/>
           </Route>
 
+          <Route exact path="/about/WiOurClients" render={()=> <WiOurClients allprops={{ username, setUsername}} />} />
+
+
           {/* 會員 */}
-          <Route
+          {/* <Route
+            exact
             path="/KMembers"
             render={({ match: { url } }) => (
               <>
-                <Route path={`${url}/`} exact>
+                <Route path={`${url}`}>
                   <KMembers />
                 </Route>
 
                 <Route path={`${url}/MembersLogin`}>
-                  <MembersLogin/>
+                  <MembersLogin 
+                    allprops={{
+                      username, 
+                      setUsername,
+                      password, 
+                      setPassword,
+                      loginProcess
+                    }}
+                  />
                 </Route>
 
                 <Route path={`${url}/MembersForget`}>
@@ -140,7 +201,7 @@ function App() {
                 </Route>
               </>
             )}
-          />
+          /> */}
 
           {/* Blog */}
           {/* <Route path="/Blog/YongBlog">
@@ -160,10 +221,10 @@ function App() {
           </Route> */}
 
           {/* 賣家 */}
-          <Route path="/AliceSellers" exact>
+          <Route exact path="/AliceSellers">
             <AliceSellers />
           </Route>
-          <Route path="/AliceSellers/my-sale" exact>
+          <Route path="/AliceSellers/my-sale">
             <MySale />
           </Route>
           <Route path="/AliceSellers/order">
@@ -181,8 +242,9 @@ function App() {
           <Route path="/AliceSellers/seller-address">
             <SellerAddress />
           </Route>
+
           {/* 購物車 */}
-          <Route path="/YfangCart">
+          <Route path="/YfangCart" exact>
             <YfangCart />
           </Route>
 
@@ -193,12 +255,14 @@ function App() {
 
           {/* 404 必须放在最后一个 */}
           {/* Redirect 重新導向 / 需要先引入 */}
+
           <Route path="/404">
             <NotFoundPage404 />
           </Route>
           <Redirect to="/404" />
         </Switch>
-      </Fragment>
+        
+        <MyFooter />
     </Router>
   )
 }

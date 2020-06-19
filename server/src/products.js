@@ -55,7 +55,7 @@ router.get("/list", (req, res) => {
 });
 
 // 分頁
-// http://localhost:3009/products/list/1 (Page) ~ ... 
+// http://localhost:3009/products/listpage/1 (Page) ~ ... 
 router.get('/listpage/:page?', async (req, res)=>{
     console.log(req);
     const output = await getDataList(req);

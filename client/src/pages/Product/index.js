@@ -10,31 +10,16 @@ import {
     withRouter,
  } from 'react-router-dom'
 
- // components
-import MyNavBar from '../../components/Navbar'
-import MyMenu from '../../components/NavbarMenu'
-import MyFooter from '../../components/Footer'
+// components
 import ProductCrumb from './ProductCrumb'
 import ProductMain from './ProductMain'
-// scss
-// import './_menu.scss'
 
 function YyProduct(props) {
     return (
-        <Router>
-          <Fragment>
-            <header>
-              <MyNavBar />
-              <MyMenu />
-            </header>
-            <main>
-            <ProductCrumb />
-            <ProductMain />
-            </main>
-    
-            <MyFooter />
-          </Fragment>
-        </Router>
+        <main>
+          <ProductCrumb />
+          <ProductMain />
+        </main>
       )
 
 }
