@@ -1,0 +1,92 @@
+@import './variables.scss';
+
+main {
+  .MyFav_container {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 150px;
+    .MyFav_select {
+      display: flex;
+      justify-content: space-between;
+      a {
+        font-size: $font-size-16;
+        color: $font-color-s;
+      }
+      select {
+        color: $font-color-s;
+        border: 1px solid $font-color-s;
+        width: 280px;
+        height: 45px;
+        padding-left: 70px;
+        background: transparent;
+        option{
+            background: #f4f4f5;
+        }
+      }
+    }
+    .MyFav_list {
+      .MyFav_pwa_r_inner {
+        li {
+          display: flex;
+          justify-content: space-between;
+          margin: 10px 0;
+          padding: 20px 0;
+          border-bottom: 1px solid #adadad;
+            align-items: center;
+          .MyFav_card {
+            display: flex;
+            align-items: center;
+            img {
+              width: 86px;
+              height: 85px;
+            }
+            h3 {
+              padding-left:42px;
+              font-weight: bold;
+            }
+            h4{
+                font-weight: bold;
+                padding-left: 800px;
+            }
+            span {
+              padding: 0 16px;
+            }
+          }
+          .MyFav_card_button {
+            .men_btn_style {
+              width: 128px;
+              height: 45px;
+              line-height: 32px;
+              margin: 0 3px;
+              background: transparent;
+              border: 1px solid $btn-color-l;
+              background: transparent;
+              cursor: pointer;
+              transition: 0.3s ease-in;
+              &:hover {
+                background: $btn-color-l;
+                color: #fff;
+              }
+            }
+          }
+        }
+      }
+    }
+  }.page{
+    padding-top: 60px;
+    text-align: center;
+    .ant-pagination-item-active{
+        background: #211E55;
+        border: #fff;
+        a{
+            color:#fff ;
+        }
+    }
+    .ant-pagination-item-active:hover{
+        
+    }
+  }
+}
+.ant-pagination-item-active{
+    background: #211E55;
+}

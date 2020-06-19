@@ -36,6 +36,9 @@ import SellerProduct from './pages/Sellers/SellerProduct'
 import SellerAccount from './pages/Sellers/SellerAccount'
 import SellerAddress from './pages/Sellers/SellerAddress'
 
+//我的最愛
+import MyFav from './pages/MyFav'
+
 // yafang
 import YfangCart from './pages/Cart'
 
@@ -181,6 +184,12 @@ function App() {
           <Route path="/AliceSellers/seller-address">
             <SellerAddress />
           </Route>
+
+          {/* 我的最愛 */}
+          <Route path="/MyFav">
+            <MyFav />
+          </Route>
+          
           {/* 購物車 */}
           <Route path="/YfangCart">
             <YfangCart />
