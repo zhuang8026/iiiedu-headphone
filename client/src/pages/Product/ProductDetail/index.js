@@ -17,6 +17,7 @@ import MyFooter from '../../../components/Footer'
 import ProductCrumb from '../ProductCrumb'
 import ProductDetailLeft from '../ProductDetail/ProductDetailLeft'
 import ProductDetailRight from '../ProductDetail/ProductDetailRight'
+import ProductDetailBottom from '../ProductDetail/ProductDetailBottom'
 
 // scss
 // import './_menu.scss'
@@ -35,6 +36,7 @@ function ProductDetail(props) {
         <div className="Yybodyin">
           <ProductDetailLeft />
           <ProductDetailRight />
+          <ProductDetailBottom />
         </div>
         <MyFooter />
       </Fragment>
