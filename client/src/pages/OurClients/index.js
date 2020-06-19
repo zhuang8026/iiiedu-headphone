@@ -6,6 +6,7 @@ import { Link, NavLink, withRouter } from 'react-router-dom'
 // import './_menu.scss'
 
 function WiOurClients(props) {
+    console.log(props);
     return (
         <Fragment>
         合作對象

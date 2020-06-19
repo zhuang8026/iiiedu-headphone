@@ -60,7 +60,7 @@ router.post('/login', (req, res)=>{
                 req.session.name = loginInfo.name
                 req.session.password = loginInfo.password
                 req.session.user_access = loginInfo.access
-                console.log('true',req.session)
+                console.log('req.session',req.session)
                 res.json(loginInfo)//傳輸資料到前端
             } else {
                 // console.log('false',req.session)

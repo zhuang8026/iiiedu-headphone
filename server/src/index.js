@@ -55,7 +55,7 @@ app.use((req, res, next)=>{
 
 // 會員
 app.use('/members', require(__dirname+'/members.js'));
-
+// 会员修改
 // app.use('/register', require(__dirname+'/register.js'));
 
 // 產品

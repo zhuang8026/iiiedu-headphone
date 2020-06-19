@@ -41,11 +41,11 @@ function ProductMain() {
       <div className="Yybodyin">
         <div className="Yybodyleft">
           <ul>
-            <li class="Yywearstyle">
+            <li className="Yywearstyle">
               品牌
               {/* <button id="btnn">+</button> */}
             </li>
-            <div class="Yyb">
+            <div className="Yyb">
               <li>
                 <a href="#">森海爾</a>
               </li>
@@ -60,6 +60,36 @@ function ProductMain() {
               </li>
             </div>
           </ul>
+          
+          <ul>
+            <li className="Yywearstyle">配戴方式</li>
+            <Radio.Group onChange={onChange} value={1}>
+              <li>
+                <Radio value={1}>入耳</Radio>
+              </li>
+              <li>
+                <Radio value={2}>耳罩</Radio>
+              </li>
+            </Radio.Group>
+          </ul>
+          <ul>
+            <Radio.Group onChange={onChange} value={2}>
+              <li className="Yywearstyle">類型 </li>
+              <li>
+                <Radio value={1}>入耳式</Radio>
+              </li>
+              <li>
+                <Radio value={2}>非入耳式</Radio>
+              </li>
+              <li>
+                <Radio value={3}>耳罩</Radio>
+              </li>
+              <li>
+                <Radio value={4}>非耳罩</Radio>
+              </li>
+            </Radio.Group>
+          </ul>
+
           <div className="Yysubmit">
             <button className="btn" type="button">
               送出勾選資料
