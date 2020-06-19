@@ -3,8 +3,6 @@ import React, { Fragment } from 'react';
 import { Link, NavLink, withRouter } from 'react-router-dom'
 
 // antd
-// import { Avatar, Badge } from 'antd';
-// import { ShoppingCartOutlined, HeartOutlined } from '@ant-design/icons';
 import { Popover } from 'antd';
 
 
@@ -18,9 +16,6 @@ import {NavItemsAir} from './config';
 
 
 function MyNavBar(props) {
-    const memberData = JSON.parse(localStorage.getItem('memberData'))
-    console.log('localStorage', memberData)
-
     const members = (
         <Fragment>
             <span className="IconP">會員中心</span>
@@ -41,10 +36,32 @@ function MyNavBar(props) {
             <span className="IconP">購物車</span>
         </Fragment>
     );
+    
+    const memberData = JSON.parse(localStorage.getItem('memberData'))
+    // console.log('localStorage', memberData)
+    
+    const logoutSuccessCallback = () => {
+        fetch('http://localhost:3009/members/logout', {
+            method: 'get',
+            // body:JSON.stringify({
+            // username: username,
+            // pwd: password
+            // }),
+            headers: new Headers({
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            })
+        })
+            .then(result=>result.json())
+            .then(obj=>{
+            console.log(JSON.stringify(obj));
+            localStorage.removeItem('memberData');
+            // alert('儲存成功，跳回首頁')
+            // props.history.push('/')
+            // props.history.goBack()
+            })
+    }
 
-    // const membersChange = (props)=>{
-    //     console.log(props)
-    // }
     return (
         <Fragment>
             {/* navbar */}
@@ -136,14 +153,6 @@ function MyNavBar(props) {
                                                     )
                                                 }) }
                                             </ul>
-                                            {/* <div className="meau_img">
-                                                <a href="#"><img src="./asset/items_img/Beoplay_E8-01.png" alt="Beoplay_E8-01"><span>Beoplay_E8-01</span></a>
-                                                <a href="#"><img src="./asset/items_img/Beoplay_E8_3rd_Gen-02.png" alt="Beoplay_E8_3rd_Gen-02"><span>Beoplay_E8_3rd_Gen-02</span</a>
-                                                <a href="#"><img src="./asset/items_img/Beoplay_E8_2.0-01.png" alt="Beoplay_E8_2.0-01"><span>Beoplay_E8_2.0-01</span</a>
-                                                <a href="#"><img src="./asset/items_img/SE846-04.png" alt="SE846-04"><span>SE846-04</span</a>
-                                                <a href="#"><img src="./asset/items_img/Beoplay_H3-03.png" alt="eoplay_H3-03"><span>eoplay_H3-03</span</a>
-                                                <a href="#"><img src="./asset/items_img/Beoplay_E4-01.png" alt="Beoplay_E4-01"><span>Beoplay_E4-01</span</a>
-                                            </div> */}
                                         </div>
                                     </li>
                                     <li>
@@ -248,15 +257,19 @@ function MyNavBar(props) {
                                     {/* 會員 */}
                                     <li>
                                         <div id="members" className="otis-members">
-                                        {memberData ? (<Link className="otis-login-opener" to="/KMembers/MembersLogin">
+                                        { 
+                                            memberData ? (<Link className="otis-login-opener" to="/KMembers/">
+                                                            <Popover content={members} placement="bottom">
+                                                                <span className="otis-login-text"><i className="iconfont icon-Personal"></i></span>
+                                                                {/* <span className="otis-login-text">{memberData.name}</span> */}
+                                                            </Popover>
+                                                            <span className="otis-login-text" onClick={logoutSuccessCallback}>登出</span>
+                                                        </Link>) : (<Link className="otis-login-opener" to="/KMembers/MembersLogin">
                                                             <Popover content={members} placement="bottom">
                                                                 <span className="otis-login-text"><i className="iconfont icon-Personal"></i></span>
                                                             </Popover>
-                                                        </Link>) : (<Link className="otis-login-opener" to="/KMembers">
-                                                            <Popover content={members} placement="bottom">
-                                                                <span className="otis-login-text"><i className="iconfont icon-Personal"></i></span>
-                                                            </Popover>
-                                                        </Link>)}
+                                                        </Link>) 
+                                        }
                                         </div>
                                     </li>
 
@@ -267,9 +280,6 @@ function MyNavBar(props) {
                                                 <Popover content={loves} placement="bottom">
                                                     <span className="otis-wishlist-widget-icon">
                                                         <i className="iconfont icon-like"></i>
-                                                        {/* <Badge count={1}>
-                                                            <Avatar shape="square" icon={<HeartOutlined/>}/>
-                                                        </Badge> */}
                                                     </span>
                                                     <span className="otis-wishlist-widget-count"> 1 </span>
                                                 </Popover>
@@ -288,9 +298,6 @@ function MyNavBar(props) {
                                                     <Popover content={carts} placement="bottom">
                                                         <span className="otis-sc-opener-icon">
                                                             <i className="iconfont icon-cart"></i>
-                                                            {/* <Badge count={0} className="site-badge-count-4">
-                                                                <Avatar shape="square" icon={<ShoppingCartOutlined />} />
-                                                            </Badge> */}
                                                         </span>
                                                         <span className="otis-sc-opener-count"> 5 </span>
                                                     </Popover>

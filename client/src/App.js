@@ -6,6 +6,8 @@ import {
   Redirect,
 } from 'react-router-dom'
 
+import { message } from 'antd';
+
 // navbar & footer
 import MyNavBar from './components/Navbar'
 import MyMenu from './components/NavbarMenu'
@@ -64,20 +66,17 @@ function App() {
   const loginProcess = (loginSuccessCallback) => {
     const errors = []
 
-    // let a = (name === '')?'姓名沒填':'姓名ok';
-    // errors.push(a)
     if (username === '') errors.push('帳號沒填')
     if (password === '') errors.push('密碼沒填')
 
     if (errors.length > 0) {
       setLoginErrors(errors)
+      message.warning(errors);
       return
     }
-
     // 清空錯誤訊息陣列 + 登入
     setLoginErrors([])
 
-    // 執行成功的callback(來自MemberLogin)
     loginSuccessCallback()
   }
 
@@ -129,10 +128,11 @@ function App() {
         <Route path="/about/WiProblem">
           <WiProblem />
         </Route>
-        {/* <Route path="/about/WiOurClients">
-            <WiOurClients />
-          </Route> */}
+        <Route path="/about/WiOurClients">
+          <WiOurClients />
+        </Route>
 
+        {/* 會員 */}
         <Route exact path="/KMembers">
           <KMembers />
         </Route>
@@ -148,11 +148,11 @@ function App() {
           />
         </Route>
 
-        <Route
+        {/* <Route
           exact
           path="/about/WiOurClients"
           render={() => <WiOurClients allprops={{ username, setUsername }} />}
-        />
+        /> */}
 
         {/* 會員 */}
         {/* <Route
