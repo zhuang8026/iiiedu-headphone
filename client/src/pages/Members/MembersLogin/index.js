@@ -14,34 +14,30 @@ function MembersLogin(props) {
   const [error, setError] = useState(false)
   const [errorMessages, setErrorMessages] = useState([])
 
-  const handleSubmit =()=>{
-    console.log(username)
-    console.log(password)
-    let error = false
-    let errorMessagestest = [];
-    
-    if (!username) {
-      error = true
-      errorMessagestest.push('帳號沒填')
-    }
+  // console.log(username)
+  // console.log(password)
 
-    if (!password) {
-      error = true
-      errorMessagestest.push('密碼沒填')
-    }
+  const checkLogin =()=>{
+    fetch('http://localhost:3009/members/login', {
+      method: 'post',
+      body:JSON.stringify({
+        username:username,
+        pwd:password
+      }),
+      headers: new Headers({
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+      }),})
+      .then(r=>r.json())
+      .then(obj=>{
+        console.log(obj);
+        alert("登入成功")
+        // return obj.json()
+        props.history.push('/')
+      })
 
-    if (error) {
-      setErrorMessages(errorMessagestest)
-      console.log(errorMessages)
-      return;
-    }
+	}
 
-    const userData = { username, password }
-    const userLoginAsync = (userData, callback) => {
-      console.log(userData)
-    }
-
-  }
 
   return (
     <Fragment>
@@ -60,7 +56,7 @@ function MembersLogin(props) {
             </p>
           </div>
           {/* form input */}
-          <form action="#" name="formLogin" method="post">
+          <form action="#">
             <div className="login_form">
               <label htmlFor="" className="gray">用戶名或郵箱地址 *</label>
               <input className="input01" type="text" placeholder="請輸入帳號" onChange={e => setUsername(e.target.value)}/>
@@ -78,7 +74,7 @@ function MembersLogin(props) {
                   <a href="#">忘記密碼?</a>
                 </p>
               </div>
-              <button type="submit" className="login_btn" onClick={()=> handleSubmit()}> 登入 </button>
+              <button className="login_btn" onClick={()=> checkLogin()}> 登入 </button>
             </div>
           </form>
         </div>
