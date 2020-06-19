@@ -10,7 +10,6 @@ import {
   withRouter,
 } from 'react-router-dom'
 
-
 // -------------------- components --------------------
 import MyNavBar from '../../../components/Navbar'
 import MyMenu from '../../../components/NavbarMenu'
@@ -27,16 +26,9 @@ function YongMyBlog(props) {
   return (
     <Router>
       <Fragment>
-        <header>
-          <MyNavBar />
-          <MyMenu />
-        </header>
-
         <main>
           <BlogUser />
         </main>
-
-        <MyFooter />
       </Fragment>
     </Router>
   )

@@ -32,10 +32,6 @@ import '../../../../assets/scss/blog_edit.scss'
 function BlogEdit(props) {
   return (
     <>
-      <header>
-        <MyNavBar />
-        <MyMenu />
-      </header>
       <div className="blog-edit-spacing"></div>
       <div class="wrap-top">
         <BlogCrumb />
@@ -52,7 +48,6 @@ function BlogEdit(props) {
         </div>
       </div>
       <div className="blog-edit-spacing"></div>
-      <MyFooter />
     </>
   )
 }

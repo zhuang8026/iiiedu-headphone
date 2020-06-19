@@ -57,11 +57,10 @@ import WiWarranty from './pages/Warranty'
 import NotFoundPage404 from './pages/404'
 
 function App() {
-
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [loginErrors, setLoginErrors] = useState([])
-  
+
   const loginProcess = (loginSuccessCallback) => {
     const errors = []
 
@@ -71,8 +70,8 @@ function App() {
     if (password === '') errors.push('密碼沒填')
 
     if (errors.length > 0) {
-        setLoginErrors(errors)
-        return
+      setLoginErrors(errors)
+      return
     }
 
     // 清空錯誤訊息陣列 + 登入
@@ -82,79 +81,81 @@ function App() {
     loginSuccessCallback()
   }
 
-  
-
   return (
     <Router>
-        <header>
-          <MyNavBar />
-          <MyMenu />
-        </header>
+      <header>
+        <MyNavBar />
+        <MyMenu />
+      </header>
 
-        <Switch>
-          {/* 首頁 */}
-          <Route exact path="/">
-            <WiHome/>
-          </Route>
+      <Switch>
+        {/* 首頁 */}
+        <Route exact path="/">
+          <WiHome />
+        </Route>
 
-          {/* 產品列表 */}
-          <Route exact path="/YyProduct/:head?">
-            <YyProduct />
-          </Route>
+        {/* 產品列表 */}
+        <Route exact path="/YyProduct/:head?">
+          <YyProduct />
+        </Route>
 
-          <Route exact path="/YyProduct/:air?">
-            <YyProduct />
-          </Route>
+        <Route exact path="/YyProduct/:air?">
+          <YyProduct />
+        </Route>
 
-          <Route exact path="/YyProduct/:box?">
-            <YyProduct />
-          </Route>
-          <Route path="/ProductDetail">
-            <ProductDetail />
-          </Route>
+        <Route exact path="/YyProduct/:box?">
+          <YyProduct />
+        </Route>
+        <Route path="/ProductDetail">
+          <ProductDetail />
+        </Route>
 
-          {/* 靜態頁面 */}
-          <Route path="/about/WiGift">
-            <WiGift />
-          </Route>
-          <Route path="/about/WiWarranty">
-            <WiWarranty />
-          </Route>
-          <Route path="/about/WiAbout">
-            <WiAbout />
-          </Route>
-          <Route path="/about/WiConnect">
-            <WiConnect />
-          </Route>
-          <Route path="/about/WiStore">
-            <WiStore />
-          </Route>
-          <Route path="/about/WiProblem">
-            <WiProblem />
-          </Route>
-          {/* <Route path="/about/WiOurClients">
+        {/* 靜態頁面 */}
+        <Route path="/about/WiGift">
+          <WiGift />
+        </Route>
+        <Route path="/about/WiWarranty">
+          <WiWarranty />
+        </Route>
+        <Route path="/about/WiAbout">
+          <WiAbout />
+        </Route>
+        <Route path="/about/WiConnect">
+          <WiConnect />
+        </Route>
+        <Route path="/about/WiStore">
+          <WiStore />
+        </Route>
+        <Route path="/about/WiProblem">
+          <WiProblem />
+        </Route>
+        {/* <Route path="/about/WiOurClients">
             <WiOurClients />
           </Route> */}
 
-          <Route exact path="/KMembers">
-            <KMembers />
-          </Route>
-          <Route path="/KMembers/MembersLogin">
-            <MembersLogin  
-              allprops={{
-              username, 
+        <Route exact path="/KMembers">
+          <KMembers />
+        </Route>
+        <Route path="/KMembers/MembersLogin">
+          <MembersLogin
+            allprops={{
+              username,
               setUsername,
-              password, 
+              password,
               setPassword,
-              loginProcess
-            }}/>
-          </Route>
+              loginProcess,
+            }}
+          />
+        </Route>
 
-          <Route exact path="/about/WiOurClients" render={()=> <WiOurClients allprops={{ username, setUsername}} />} />
+        <Route
+          exact
+          path="/about/WiOurClients"
+          render={() => <WiOurClients allprops={{ username, setUsername }} />}
+        />
 
-
-          {/* 會員 */}
-          {/* <Route
+        {/* 會員 */}
+        {/* <Route
             exact
             path="/KMembers"
             render={({ match: { url } }) => (
@@ -206,71 +207,71 @@ function App() {
             )}
           /> */}
 
-          {/* Blog */}
-          {/* <Route path="/Blog/YongBlog">
-            <YongBlog />
-          </Route>
-          <Route path="/Blog/YongMyBlog">
-            <YongMyBlog />
-          </Route>
-          <Route path="/Blog/BlogDetail">
-            <BlogDetail />
-          </Route>
-          <Route path="/Blog/BlogAdd">
-            <BlogAdd />
-          </Route>
-          <Route path="/Blog/BlogEdit">
-            <BlogEdit />
-          </Route> */}
+        {/* Blog */}
+        {/* <Route path="/Blog/YongBlog">
+          <YongBlog />
+        </Route>
+        <Route path="/Blog/YongMyBlog">
+          <YongMyBlog />
+        </Route>
+        <Route path="/Blog/BlogDetail">
+          <BlogDetail />
+        </Route>
+        <Route path="/Blog/BlogAdd">
+          <BlogAdd />
+        </Route>
+        <Route path="/Blog/BlogEdit">
+          <BlogEdit />
+        </Route> */}
 
-          {/* 賣家 */}
-          <Route exact path="/AliceSellers">
-            <AliceSellers />
-          </Route>
-          <Route path="/AliceSellers/my-sale">
-            <MySale />
-          </Route>
-          <Route path="/AliceSellers/order">
-            <Order />
-          </Route>
-          <Route path="/AliceSellers/refund">
-            <Refund />
-          </Route>
-          <Route path="/AliceSellers/seller-product">
-            <SellerProduct />
-          </Route>
-          <Route path="/AliceSellers/seller-account">
-            <SellerAccount />
-          </Route>
-          <Route path="/AliceSellers/seller-address">
-            <SellerAddress />
-          </Route>
+        {/* 賣家 */}
+        <Route exact path="/AliceSellers">
+          <AliceSellers />
+        </Route>
+        <Route path="/AliceSellers/my-sale">
+          <MySale />
+        </Route>
+        <Route path="/AliceSellers/order">
+          <Order />
+        </Route>
+        <Route path="/AliceSellers/refund">
+          <Refund />
+        </Route>
+        <Route path="/AliceSellers/seller-product">
+          <SellerProduct />
+        </Route>
+        <Route path="/AliceSellers/seller-account">
+          <SellerAccount />
+        </Route>
+        <Route path="/AliceSellers/seller-address">
+          <SellerAddress />
+        </Route>
 
-          {/* 我的最愛 */}
-          <Route path="/MyFav">
-            <MyFav />
-          </Route>
-          
-          {/* 購物車 */}
-          <Route path="/YfangCart" exact>
-            <YfangCart />
-          </Route>
+        {/* 我的最愛 */}
+        <Route path="/MyFav">
+          <MyFav />
+        </Route>
 
-          {/* ProtectdRoute 這是 utils */}
-          {/* <ProtectedRoute path="/todoapp">
+        {/* 購物車 */}
+        <Route path="/YfangCart" exact>
+          <YfangCart />
+        </Route>
+
+        {/* ProtectdRoute 這是 utils */}
+        {/* <ProtectedRoute path="/todoapp">
                             <TodoApp todos={todos} setTodos={setTodos} isAuth={auth}/>
                         </ProtectedRoute> */}
 
-          {/* 404 必须放在最后一个 */}
-          {/* Redirect 重新導向 / 需要先引入 */}
+        {/* 404 必须放在最后一个 */}
+        {/* Redirect 重新導向 / 需要先引入 */}
 
-          <Route path="/404">
-            <NotFoundPage404 />
-          </Route>
-          <Redirect to="/404" />
-        </Switch>
-        
-        <MyFooter />
+        <Route path="/404">
+          <NotFoundPage404 />
+        </Route>
+        <Redirect to="/404" />
+      </Switch>
+
+      <MyFooter />
     </Router>
   )
 }

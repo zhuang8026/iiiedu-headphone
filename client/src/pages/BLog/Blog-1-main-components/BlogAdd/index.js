@@ -32,10 +32,6 @@ import '../../../../assets/scss/blog_add.scss'
 function BlogAdd(props) {
   return (
     <>
-      <header>
-        <MyNavBar />
-        <MyMenu />
-      </header>
       <div className="blog-add-spacing"></div>
       <div class="wrap-top">
         <BlogCrumb />
@@ -52,7 +48,6 @@ function BlogAdd(props) {
         </div>
       </div>
       <div className="blog-add-spacing"></div>
-      <MyFooter />
     </>
   )
 }

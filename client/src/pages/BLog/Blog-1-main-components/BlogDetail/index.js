@@ -36,10 +36,6 @@ import '../../../../assets/scss/blog_detail.scss'
 function BlogDetail(props) {
   return (
     <>
-      <header>
-        <MyNavBar />
-        <MyMenu />
-      </header>
       <div className="blog-detail-spacing"></div>
       <div class="wrap-top">
         <BlogCrumb />
@@ -61,7 +57,6 @@ function BlogDetail(props) {
         </div>
       </div>
       <div className="spacing"></div>
-      <MyFooter />
     </>
   )
 }

@@ -27,16 +27,9 @@ function YongBlog(props) {
   return (
     <Router>
       <Fragment>
-        <header>
-          <MyNavBar />
-          <MyMenu />
-        </header>
-
         <main>
           <BlogStandard />
         </main>
-
-        <MyFooter />
       </Fragment>
     </Router>
   )
