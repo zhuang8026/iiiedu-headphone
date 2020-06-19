@@ -11,34 +11,23 @@ import {
 } from 'react-router-dom'
 
 // components
-import MyNavBar from '../../../components/Navbar'
-import MyMenu from '../../../components/NavbarMenu'
-import MyFooter from '../../../components/Footer'
 import ProductCrumb from '../ProductCrumb'
 import ProductDetailLeft from '../ProductDetail/ProductDetailLeft'
 import ProductDetailRight from '../ProductDetail/ProductDetailRight'
-
-// scss
-// import './_menu.scss'
+import ProductDetailBottom from '../ProductDetail/ProductDetailBottom'
 
 function ProductDetail(props) {
   return (
-    <Router>
-      <Fragment>
-        <header>
-          <MyNavBar />
-          <MyMenu />
-        </header>
-        <main>
-          <ProductCrumb />
-        </main>
-        <div className="Yybodyin">
-          <ProductDetailLeft />
-          <ProductDetailRight />
-        </div>
-        <MyFooter />
-      </Fragment>
-    </Router>
+    <Fragment>
+      <main>
+        <ProductCrumb />
+      </main>
+      <div className="Yybodyin">
+        <ProductDetailLeft />
+        <ProductDetailRight />
+        <ProductDetailBottom />
+      </div>
+    </Fragment>
   )
 }
 export default withRouter(ProductDetail)

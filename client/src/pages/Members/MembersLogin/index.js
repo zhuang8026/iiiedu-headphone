@@ -2,53 +2,73 @@
 import React, { Fragment, useState } from 'react'
 import {Link, withRouter} from 'react-router-dom'
 
-// components
-import MyNavBar from '../../../components/Navbar'
-import MyMenu from '../../../components/NavbarMenu'
-import MyFooter from '../../../components/Footer'
-
 function MembersLogin(props) {
+  console.log(props.allprops);
+  const { username, 
+          setUsername,
+          password, 
+          setPassword,
+          loginProcess } = props.allprops;
 
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState(false)
-  const [errorMessages, setErrorMessages] = useState([])
+  // console.log(username)
+  // console.log(password)
 
-  const handleSubmit =()=>{
-    console.log(username)
-    console.log(password)
-    let error = false
-    let errorMessagestest = [];
-    
-    if (!username) {
-      error = true
-      errorMessagestest.push('帳號沒填')
-    }
+  // const checkLogin =()=>{
+  //   fetch('http://localhost:3009/members/login', {
+  //     method: 'post',
+  //     body:JSON.stringify({
+  //       username: username,
+  //       pwd: password
+  //     }),
+  //     headers: new Headers({
+  //         'Accept': 'application/json',
+  //         'Content-Type': 'application/json',
+  //     }),})
+  //     .then(r=>r.json())
+  //     .then(obj=>{
+  //       console.log(obj);
+  //       alert("登入成功")
+  //       // return obj.json()
+  //       props.history.push('/')
+  //     })
 
-    if (!password) {
-      error = true
-      errorMessagestest.push('密碼沒填')
-    }
+	// }
 
-    if (error) {
-      setErrorMessages(errorMessagestest)
-      console.log(errorMessages)
-      return;
-    }
-
-    const userData = { username, password }
-    const userLoginAsync = (userData, callback) => {
-      console.log(userData)
-    }
-
+  const loginSuccessCallback = () => {
+    fetch('http://localhost:3009/members/login', {
+      method: 'post',
+      body:JSON.stringify({
+        username: username,
+        pwd: password
+      }),
+      headers: new Headers({
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+      })
+    })
+      .then(r=>r.json())
+      .then(obj=>{
+        // console.log(obj);
+        console.log(JSON.stringify(obj));
+        localStorage.setItem('memberData', JSON.stringify(obj));
+        // alert('儲存成功，跳回首頁')
+        // props.history.push('/')
+        // props.history.goBack()
+      })
   }
+
 
   return (
     <Fragment>
-      <header>
-        <MyNavBar />
+      {/* <header>
+        <MyNavBar 
+          NavUsername= {username}
+          NavSetUsername = {setUsername}
+          NavPassword = {password}
+          NavSetPassword = {setPassword}
+        />
         <MyMenu />
-      </header>
+      </header> */}
       <main>
         <div className="login_container">
           {/* 登入 */}
@@ -60,16 +80,16 @@ function MembersLogin(props) {
             </p>
           </div>
           {/* form input */}
-          <form action="#" name="formLogin" method="post">
+          <form action="#">
             <div className="login_form">
               <label htmlFor="" className="gray">用戶名或郵箱地址 *</label>
               <input className="input01" type="text" placeholder="請輸入帳號" onChange={e => setUsername(e.target.value)}/>
               {/* <p className="login_err">用戶名或郵箱地址 錯誤</p> */}
-              <p className="login_err">{errorMessages[0]}</p>
+              <p className="login_err">111</p>
 
               <label htmlFor="" className="gray">密碼 *</label>
               <input className="input01" type="password" placeholder="請輸入密碼" onChange={e => setPassword(e.target.value)}/>
-              <p className="login_err">{errorMessages[1]}</p>
+              <p className="login_err">222</p>
 
               <div className="login_form_pwa">
                 <input type="checkbox" id="login_form_pwa" />
@@ -78,12 +98,11 @@ function MembersLogin(props) {
                   <a href="#">忘記密碼?</a>
                 </p>
               </div>
-              <button type="submit" className="login_btn" onClick={()=> handleSubmit()}> 登入 </button>
+              <button className="login_btn" onClick={()=> loginProcess(loginSuccessCallback)}> 登入 </button>
             </div>
           </form>
         </div>
       </main>
-      <MyFooter />
     </Fragment>
   )
 }

@@ -7,9 +7,9 @@ import {
 } from 'react-router-dom'
 
 // components
-import MyNavBar from '../../components/Navbar'
-import MyMenu from '../../components/NavbarMenu'
-import MyFooter from '../../components/Footer'
+// import MyNavBar from '../../components/Navbar'
+// import MyMenu from '../../components/NavbarMenu'
+// import MyFooter from '../../components/Footer'
 
 // main
 import HomeSlider from './HomeSlider'
@@ -59,10 +59,10 @@ function WiHome() {
   return (
     <Router>
       <Fragment>
-        <header>
+        {/* <header>
           <MyNavBar />
           <MyMenu />
-        </header>
+        </header> */}
 
         <div>
           <HomeSlider />
@@ -75,7 +75,7 @@ function WiHome() {
           <BottomYoutube YoutubeImg={YoutubeImg} />
         </div>
 
-        <MyFooter />
+        {/* <MyFooter /> */}
       </Fragment>
     </Router>
   )

@@ -23,7 +23,7 @@ router.use((req,res,next)=>{
 
 // 登入 - william-0616
 // post -> http://localhost:3009/members/login
-router.post('/login', upload.none(), (req, res)=>{
+router.post('/login', (req, res)=>{
     //登入邏輯
     // const sql = "SELECT * FROM `users` WHERE `username`=? AND `pwd`=SHA1(?)";
     const sql = "SELECT `id`, `username`, `name`, `pwd` FROM `users`";
@@ -60,7 +60,7 @@ router.post('/login', upload.none(), (req, res)=>{
                 req.session.name = loginInfo.name
                 req.session.password = loginInfo.password
                 req.session.user_access = loginInfo.access
-                // console.log('true',req.session)
+                console.log('req.session',req.session)
                 res.json(loginInfo)//傳輸資料到前端
             } else {
                 // console.log('false',req.session)

@@ -1,5 +1,5 @@
 // 函式元件
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import {
   BrowserRouter as Router,
   Route,
@@ -11,20 +11,31 @@ import {
 } from 'react-router-dom'
 //antd
 import { Radio } from 'antd'
-import { Pagination } from 'antd'
+// import { Pagination } from 'antd'
 import WHH8101 from '../../../assets/items_img/WH-H810-01.png'
 // scss
-import '../../../assets/scss/Product_Main.scss'
+// import '../../../assets/scss/Product_Main.scss'
 // import './_menu.scss'
 
 function ProductMain() {
-  useEffect(() => {
-    // let btnn = document.getElementById('btnn')
-    // let Yyb = document.getElementsByClassName('Yyb')[0]
-    // btnn.addEventListener('click', () => {
-    //   Yyb.classList.add('Yybactive')
-    // })
-  }, [])
+  const [itemsdata, setItemsdata] = useState([])
+
+  useEffect(()=>{
+      fetch('http://localhost:3009/products/listpage/1',  {
+          method: 'get',
+          headers: new Headers({
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+          }),
+      })
+      .then((response)=>{
+          return response.json()
+      })
+      .then((response)=>{
+        console.log(response.rows)
+        setItemsdata(response.rows)
+      })
+  },[])
 
   const onChange = (event) => {
     console.log('radio checked', event.target.value)
@@ -34,11 +45,11 @@ function ProductMain() {
       <div className="Yybodyin">
         <div className="Yybodyleft">
           <ul>
-            <li class="Yywearstyle">
+            <li className="Yywearstyle">
               品牌
               {/* <button id="btnn">+</button> */}
             </li>
-            <div class="Yyb">
+            <div className="Yyb">
               <li>
                 <a href="#">森海爾</a>
               </li>
@@ -53,8 +64,9 @@ function ProductMain() {
               </li>
             </div>
           </ul>
+          
           <ul>
-            <li class="Yywearstyle">配戴方式</li>
+            <li className="Yywearstyle">配戴方式</li>
             <Radio.Group onChange={onChange} value={1}>
               <li>
                 <Radio value={1}>入耳</Radio>
@@ -66,7 +78,7 @@ function ProductMain() {
           </ul>
           <ul>
             <Radio.Group onChange={onChange} value={2}>
-              <li class="Yywearstyle">類型 </li>
+              <li className="Yywearstyle">類型 </li>
               <li>
                 <Radio value={1}>入耳式</Radio>
               </li>
@@ -81,6 +93,7 @@ function ProductMain() {
               </li>
             </Radio.Group>
           </ul>
+
           <div className="Yysubmit">
             <button className="btn" type="button">
               送出勾選資料
@@ -101,141 +114,39 @@ function ProductMain() {
           </div>
 
           <div className="Yyasidebody">
-            <div className="Yyaside_pro">
-              <div className="item_image">
-                <img className="item_images" src={WHH8101} />
-                <form className="item_imagebtnout">
-                  <buttun className="item_imagebtn btn">加入購物車</buttun>
-                  <buttun className="item_imagebtn2 btn">立即查看</buttun>
-                </form>
-              </div>
-              <div className="item_cover"></div>
-              <ul className="itemul">
-                <li className="pro_name">
-                  <p>GAME ONE</p>
-                  <div className="pro_new">NEW</div>
-                </li>
+            
+            {itemsdata.map((data, index)=>{
+              console.log(data)
+              return(
+                <div className="Yyaside_pro">
+                  <div className="item_image">
+                    <img className="item_images" src={`/items_img/${data.itemImg}`} />
+                    <form className="item_imagebtnout">
+                      <buttun className="item_imagebtn btn">加入購物車</buttun>
+                      <buttun className="item_imagebtn2 btn">立即查看</buttun>
+                    </form>
+                  </div>
+                  <div className="item_cover"></div>
+                  <ul className="itemul">
+                    <li className="pro_name">
+                      <p>{data.itemName}</p>
+                      <div className="pro_new">NEW</div>
+                    </li>
 
-                <li>
-                  <div className="pro_c"></div>
-                </li>
-              </ul>
-              <p>Senheiser</p>
-              <p>$4900</p>
-            </div>
-            <div className="Yyaside_pro">
-              <div className="item_image">
-                <img className="item_images" src={WHH8101} />
-                <form className="item_imagebtnout">
-                  <buttun className="item_imagebtn btn">加入購物車</buttun>
-                  <buttun className="item_imagebtn2 btn">立即查看</buttun>
-                </form>
-              </div>
-              <div className="item_cover"></div>
-              <ul className="itemul">
-                <li className="pro_name">
-                  <p>GAME ONE</p>
-                  <div className="pro_new">NEW</div>
-                </li>
-
-                <li>
-                  <div className="pro_c"></div>
-                </li>
-              </ul>
-              <p>Senheiser</p>
-              <p>$4900</p>
-            </div>
-            <div className="Yyaside_pro">
-              <div className="item_image">
-                <img className="item_images" src={WHH8101} />
-                <form className="item_imagebtnout">
-                  <buttun className="item_imagebtn btn">加入購物車</buttun>
-                  <buttun className="item_imagebtn2 btn">立即查看</buttun>
-                </form>
-              </div>
-              <div className="item_cover"></div>
-              <ul className="itemul">
-                <li className="pro_name">
-                  <p>GAME ONE</p>
-                  <div className="pro_new">NEW</div>
-                </li>
-
-                <li>
-                  <div className="pro_c"></div>
-                </li>
-              </ul>
-              <p>Senheiser</p>
-              <p>$4900</p>
-            </div>
-            <div className="Yyaside_pro">
-              <div className="item_image">
-                <img className="item_images" src={WHH8101} />
-                <form className="item_imagebtnout">
-                  <buttun className="item_imagebtn btn">加入購物車</buttun>
-                  <buttun className="item_imagebtn2 btn">立即查看</buttun>
-                </form>
-              </div>
-              <div className="item_cover"></div>
-              <ul className="itemul">
-                <li className="pro_name">
-                  <p>GAME ONE</p>
-                  <div className="pro_new">NEW</div>
-                </li>
-
-                <li>
-                  <div className="pro_c"></div>
-                </li>
-              </ul>
-              <p>Senheiser</p>
-              <p>$4900</p>
-            </div>
-            <div className="Yyaside_pro">
-              <div className="item_image">
-                <img className="item_images" src={WHH8101} />
-                <form className="item_imagebtnout">
-                  <buttun className="item_imagebtn btn">加入購物車</buttun>
-                  <buttun className="item_imagebtn2 btn">立即查看</buttun>
-                </form>
-              </div>
-              <div className="item_cover"></div>
-              <ul className="itemul">
-                <li className="pro_name">
-                  <p>GAME ONE</p>
-                  <div className="pro_new">NEW</div>
-                </li>
-
-                <li>
-                  <div className="pro_c"></div>
-                </li>
-              </ul>
-              <p>Senheiser</p>
-              <p>$4900</p>
-            </div>
-            <div className="Yyaside_pro">
-              <div className="item_image">
-                <img className="item_images" src={WHH8101} />
-                <form className="item_imagebtnout">
-                  <buttun className="item_imagebtn btn">加入購物車</buttun>
-                  <buttun className="item_imagebtn2 btn">立即查看</buttun>
-                </form>
-              </div>
-              <div className="item_cover"></div>
-              <ul className="itemul">
-                <li className="pro_name">
-                  <p>GAME ONE</p>
-                  <div className="pro_new">NEW</div>
-                </li>
-
-                <li>
-                  <div className="pro_c"></div>
-                </li>
-              </ul>
-              <p>Senheiser</p>
-              <p>$4900</p>
-            </div>
-            <div class="Yypagination">
+                    <li>
+                      <div className="pro_c"></div>
+                    </li>
+                  </ul>
+                  <p> {data.itemsbrand} </p>
+                  <p>{data.itemPrice}</p>
+                </div>
+              )
+            })}
+            
+  
+            {/* <div class="Yypagination">
               <Pagination simple defaultCurrent={2} total={50} />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

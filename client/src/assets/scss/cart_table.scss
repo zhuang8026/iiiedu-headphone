@@ -7,6 +7,36 @@
     height: 100px;
   }
 }
+//購物車空的時候
+
+.cart-empty {
+  width: 100%;
+  margin: 100px auto 130px auto;
+  li {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+  }
+  .border-top {
+    border-top: 1px solid #e1e1e1;
+    button {
+      width: 200px;
+      height: 45px;
+      margin-top: 32px;
+      border: 1px solid $link-hover-color-l;
+      border-radius: 5px;
+      text-align: center;
+      background: $link-hover-color-l;
+      transition: 0.3s ease-in;
+      cursor: pointer;
+      &:hover {
+        background: #fff;
+        color: $link-hover-color-l;
+      }
+    }
+  }
+}
+
 //購物車
 .cart-container {
   width: 80%;
@@ -54,11 +84,20 @@
           display: flex;
           vertical-align: middle;
           button {
-            display: block;
             width: 50%;
             height: 60px;
             margin: 2px 1px;
+            border: 1px solid $bg-btn-l;
             border-radius: 5px;
+            text-align: center;
+            color: #fff;
+            background: $bg-btn-l;
+            transition: 0.3s ease-in;
+            cursor: pointer;
+            &:hover {
+              background: #fff;
+              color: $bg-btn-l;
+            }
           }
         }
       }
@@ -75,12 +114,20 @@
             border: 1px solid $bg-btn-l;
           }
           button {
-            background: $link-hover-color-s;
-            color: white;
-            padding: 3px 5px;
-            height: 45px;
             width: 200px;
-            border-radius: 3px;
+            height: 45px;
+            margin-left: 5px;
+            border: 1px solid $link-hover-color-l;
+            border-radius: 5px;
+            text-align: center;
+            color: #fff;
+            background: $link-hover-color-l;
+            transition: 0.3s ease-in;
+            cursor: pointer;
+            &:hover {
+              background: #fff;
+              color: $link-hover-color-l;
+            }
           }
         }
       }
@@ -241,7 +288,7 @@
   }
 }
 
-//購買完成感顯示
+//購買完成顯示
 .cartDone-table {
   width: 50%;
   margin: 100px auto 130px auto;
