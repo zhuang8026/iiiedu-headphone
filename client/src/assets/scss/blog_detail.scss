@@ -33,12 +33,12 @@
     width: 100%;
     height: 90px;
     h5 {
-      font-size: 20px;
+      font-size: $font-size-16;
       line-height: 90px;
       margin-left: 50px;
     }
     a {
-      font-size: 20px;
+      font-size: $font-size-16;
       line-height: 90px;
       margin-left: 50px;
     }
@@ -74,13 +74,13 @@
         h5 {
           text-align: center;
 
-          font-weight: 800;
+          font-weight: $font-w;
         }
         h2 {
-          font-size: 2rem;
+          font-size: $font-size-24;
         }
         h5 {
-          font-size: 1.5rem;
+          font-size: $font-size-24;
           padding: 20px 0;
           color: #cf9e9e;
         }
@@ -96,15 +96,15 @@
         }
         h6 {
           padding: 10px 0;
-          font-size: 1rem;
-          font-weight: 800;
+          font-size: $font-size-16;
+          font-weight: $font-w;
           color: #cf9e9e;
         }
       }
       .you-may-like {
         h2 {
-          font-size: 2rem;
-          font-weight: 800;
+          font-size: $font-size-24;
+          font-weight: $font-w;
           text-align: center;
           margin: 50px 0;
         }
@@ -135,8 +135,8 @@
               position: absolute;
               width: 75%;
               line-height: 40px;
-              font-size: 1rem;
-              font-weight: 800;
+              font-size: $font-size-16;
+              font-weight: $font-w;
               transform: translateY(-80px);
               color: $font-color-w;
               background: rgba(107, 107, 107, 0.6);
@@ -148,7 +148,7 @@
       .comments {
         width: 100%;
         h2 {
-          font-size: 1.2rem;
+          font-size: $font-size-16;
           text-align: center;
           margin-top: 50px;
           margin-bottom: 20px;
@@ -191,7 +191,7 @@
                     }
                   }
                   h5 {
-                    font-weight: 800;
+                    font-weight: $font-w;
                     padding-left: 32px;
                   }
                 }
@@ -201,8 +201,8 @@
                 margin-left: 2%;
                 .user-post-name,
                 .user-post-date {
-                  font-size: 1rem;
-                  font-weight: 800;
+                  font-size: $font-size-16;
+                  font-weight: $font-w;
                   padding-bottom: 16px;
                 }
                 .user-post-name {
@@ -215,8 +215,8 @@
                 p {
                   width: 100%;
                   height: 5rem;
-                  font-size: 1rem;
-                  font-weight: 800;
+                  font-size: $font-size-16;
+                  font-weight: $font-w;
                   color: $font-color-m;
                 }
                 .post-reply {
@@ -250,8 +250,8 @@
 
                 .user-reply-name,
                 .user-reply-date {
-                  font-size: 1rem;
-                  font-weight: 800;
+                  font-size: $font-size-16;
+                  font-weight: $font-w;
                   padding-bottom: 16px;
                   /* border: 1px solid gray; */
                 }
@@ -266,8 +266,8 @@
                 p {
                   width: 100%;
                   height: 5rem;
-                  font-size: 1rem;
-                  font-weight: 800;
+                  font-size: $font-size-16;
+                  font-weight: $font-w;
                   color: $font-color-m;
                 }
 
@@ -294,12 +294,12 @@
           margin: 20px auto;
           line-height: 40px;
           h2 {
-            font-size: 1.5rem;
+            font-size: $font-size-24;
           }
           figure {
             position: absolute;
-            width: 32px;
-            height: 32px;
+            width: $icon-size-24;
+            height: $icon-size-24;
             top: 50%;
             transform: translateY(-50%);
 
@@ -308,7 +308,7 @@
             border-radius: 50%;
           }
           h5 {
-            font-size: 1.2rem;
+            font-size: $font-size-16;
             margin-left: 3.5rem;
           }
         }
@@ -367,7 +367,7 @@
         align-content: center;
 
         .user-icon > h2 {
-          font-size: 20px;
+          font-size: $font-size-16;
           margin: 20px auto;
         }
         .user-icon-fig {
@@ -389,14 +389,14 @@
             .linkFB,
             .linkIG,
             .linkLINE {
-              width: 40px;
-              height: 40px;
+              width: $icon-size-45;
+              height: $icon-size-45;
               margin: 10px auto;
               background: $btn-color-r;
               border-radius: 50%;
             }
             h2 {
-              font-size: 12px;
+              font-size: $font-size-12;
             }
           }
         }
@@ -449,7 +449,7 @@
           margin: 0 auto;
 
           h2 {
-            font-size: 20px;
+            font-size: $font-size-16;
             margin: 20px 0;
           }
 
@@ -466,7 +466,7 @@
               margin-left: 10px;
               h5 {
                 margin-top: 10px;
-                font-size: 16px;
+                font-size: $font-size-16;
                 color: $font-color-m;
               }
             }

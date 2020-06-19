@@ -29,8 +29,8 @@ function BlogMainUserListByUser(props) {
     <>
       <div className="blog-btns blog-d-flex blog-justify-content-between">
         <div className="blog-btns-left">
-          <Link to="../BlogStandard">全部文章</Link>
-          <Link to="../BlogUser">個人文章</Link>
+          <Link to="../BlogStandard" className="blog-btns-left-Link">全部文章</Link>
+          <Link to="../BlogUser" className="blog-btns-left-Link">個人文章</Link>
         </div>
         <div className="blog-btns-right blog-d-flex blog-justify-content-between">
           <select name="" id="">

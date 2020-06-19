@@ -42,7 +42,7 @@ function BlogMainDetailComments(props) {
                 </button>
               </div>
               <div className="user-post-content">
-                <h2 className="user-post-name">發文者暱稱</h2>
+                <h3 className="user-post-name">發文者暱稱</h3>
                 <h5 className="user-post-date">發文日期</h5>
                 <p>
                   發文內容發文內容發文內容發文內容
@@ -67,7 +67,7 @@ function BlogMainDetailComments(props) {
                 <figure className="user-reply-fig"></figure>
               </div>
               <div className="user-reply-content">
-                <h2 className="user-reply-name">回覆者暱稱</h2>
+                <h3 className="user-reply-name">回覆者暱稱</h3>
                 <h5 className="user-reply-date">回覆日期</h5>
                 <p>
                   回覆內容回覆內容回覆內容回覆內容
@@ -99,7 +99,7 @@ function BlogMainDetailComments(props) {
                 </button>
               </div>
               <div className="user-post-content">
-                <h2 className="user-post-name">發文者暱稱</h2>
+                <h3 className="user-post-name">發文者暱稱</h3>
                 <h5 className="user-post-date">發文日期</h5>
                 <p>
                   發文內容發文內容發文內容發文內容
@@ -124,7 +124,7 @@ function BlogMainDetailComments(props) {
                 <figure className="user-reply-fig"></figure>
               </div>
               <div className="user-reply-content">
-                <h2 className="user-reply-name">回覆者暱稱</h2>
+                <h3 className="user-reply-name">回覆者暱稱</h3>
                 <h5 className="user-reply-date">回覆日期</h5>
                 <p>
                   回覆內容回覆內容回覆內容回覆內容
@@ -156,7 +156,7 @@ function BlogMainDetailComments(props) {
                 </button>
               </div>
               <div className="user-post-content">
-                <h2 className="user-post-name">發文者暱稱</h2>
+                <h3 className="user-post-name">發文者暱稱</h3>
                 <h5 className="user-post-date">發文日期</h5>
                 <p>
                   發文內容發文內容發文內容發文內容
@@ -181,7 +181,7 @@ function BlogMainDetailComments(props) {
                 <figure className="user-reply-fig"></figure>
               </div>
               <div className="user-reply-content">
-                <h2 className="user-reply-name">回覆者暱稱</h2>
+                <h3 className="user-reply-name">回覆者暱稱</h3>
                 <h5 className="user-reply-date">回覆日期</h5>
                 <p>
                   回覆內容回覆內容回覆內容回覆內容
