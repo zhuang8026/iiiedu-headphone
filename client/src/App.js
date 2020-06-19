@@ -12,9 +12,9 @@ import ProductDetail from './pages/Product/ProductDetail'
 import WiAbout from './pages/About'
 // import YongBlog from './pages/BLog/YongBlog'
 // import YongMyBlog from './pages/BLog/YongMyBlog'
-// import BlogDetail from './pages/BLog/Blog-1-page/BlogDetail'
-// import BlogAdd from './pages/BLog/Blog-1-page/BlogAdd'
-// import BlogEdit from './pages/BLog/Blog-1-page/BlogEdit'
+// import BlogDetail from './pages/BLog/Blog-1-main-components/BlogDetail'
+// import BlogAdd from './pages/BLog/Blog-1-main-components/BlogAdd'
+// import BlogEdit from './pages/BLog/Blog-1-main-components/BlogEdit'
 
 // 會員使用
 import KMembers from './pages/Members'

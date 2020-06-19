@@ -16,8 +16,8 @@ import {
 // import '../../../assets/scss/blog_standard.scss'
 
 // -------------------- imgs --------------------
-import slide from '../../../assets/img/blog-img/blog-standard/slide.png'
-import top from '../../../assets/img/blog-img/blog-standard/top.png'
+import slide from '../../../../assets/img/blog-img/blog-standard/slide.png'
+import top from '../../../../assets/img/blog-img/blog-standard/top.png'
 
 // -------------------- func --------------------
 

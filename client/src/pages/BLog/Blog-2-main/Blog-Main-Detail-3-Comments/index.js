@@ -10,15 +10,19 @@ import {
   withRouter,
 } from 'react-router-dom'
 
-import '../../../assets/css/YongBlog/Yong-blog-edit.css'
+// import '../../../../assets/css/YongBlog/Yong-blog-edit.css'
 
-// components
+// -------------------- components --------------------
 
-//imgs
-import CaretDown from '../../../assets/img/blog-img/blog-detail/caret-down-solid.svg'
+// -------------------- scss --------------------
 
-// scss
-// import './_menu.scss'
+// -------------------- imgs --------------------
+import CaretDown from '../../../../assets/img/blog-img/blog-detail/caret-down-solid.svg'
+
+// -------------------- func --------------------
+
+
+
 
 function BlogMainDetailComments(props) {
   return (

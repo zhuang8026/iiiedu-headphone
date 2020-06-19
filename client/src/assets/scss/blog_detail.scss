@@ -29,10 +29,15 @@
 /* ---------- top ---------- */
 .wrap-top {
   width: 100%;
-  .breadcrumbs {
+  .blog-crumb {
     width: 100%;
     height: 90px;
     h5 {
+      font-size: 20px;
+      line-height: 90px;
+      margin-left: 50px;
+    }
+    a {
       font-size: 20px;
       line-height: 90px;
       margin-left: 50px;
@@ -234,7 +239,7 @@
                 .user-reply-fig {
                   width: 100px;
                   height: 100px;
-                  background: lightsalmon;
+                  background: $bg-btn-l;
                   /* border: 3px solid lightsalmon; */
                   border-radius: 50%;
                 }
@@ -310,7 +315,7 @@
         .add-comment-textarea {
           width: 96%;
           margin: 20px auto;
-          border: 1px solid gray;
+          border: 1px solid $border-color-l;
           textarea {
             width: 100%;
             height: 80px;
