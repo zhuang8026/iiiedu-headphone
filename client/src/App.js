@@ -15,11 +15,11 @@ import WiHome from './pages/Home'
 import YyProduct from './pages/Product'
 import ProductDetail from './pages/Product/ProductDetail'
 import WiAbout from './pages/About'
-// import YongBlog from './pages/BLog/YongBlog'
-// import YongMyBlog from './pages/BLog/YongMyBlog'
-// import BlogDetail from './pages/BLog/Blog-1-main-components/BlogDetail'
-// import BlogAdd from './pages/BLog/Blog-1-main-components/BlogAdd'
-// import BlogEdit from './pages/BLog/Blog-1-main-components/BlogEdit'
+import YongBlog from './pages/BLog/YongBlog'
+import YongMyBlog from './pages/BLog/YongMyBlog'
+import BlogDetail from './pages/BLog/Blog-1-main-components/BlogDetail'
+import BlogAdd from './pages/BLog/Blog-1-main-components/BlogAdd'
+import BlogEdit from './pages/BLog/Blog-1-main-components/BlogEdit'
 
 // 會員使用
 import KMembers from './pages/Members'
@@ -208,7 +208,7 @@ function App() {
           /> */}
 
         {/* Blog */}
-        {/* <Route path="/Blog/YongBlog">
+        <Route path="/Blog/YongBlog">
           <YongBlog />
         </Route>
         <Route path="/Blog/YongMyBlog">
@@ -222,7 +222,7 @@ function App() {
         </Route>
         <Route path="/Blog/BlogEdit">
           <BlogEdit />
-        </Route> */}
+        </Route>
 
         {/* 賣家 */}
         <Route exact path="/AliceSellers">

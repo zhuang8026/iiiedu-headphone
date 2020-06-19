@@ -95,3 +95,11 @@
     }
 }
 
+.swiper-button-prev:after, .swiper-button-next:after {
+    color: #fff;
+    font-size: 1.5rem !important;
+}
+.swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets {
+    width: 100px !important;
+    color: $btn-color-s;
+}

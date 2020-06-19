@@ -1,5 +1,5 @@
 // 函式元件
-import React, { Fragment, useState } from 'react'
+import React from 'react'
 import {Link, withRouter} from 'react-router-dom'
 
 function MembersLogin(props) {
@@ -9,30 +9,6 @@ function MembersLogin(props) {
           password, 
           setPassword,
           loginProcess } = props.allprops;
-
-  // console.log(username)
-  // console.log(password)
-
-  // const checkLogin =()=>{
-  //   fetch('http://localhost:3009/members/login', {
-  //     method: 'post',
-  //     body:JSON.stringify({
-  //       username: username,
-  //       pwd: password
-  //     }),
-  //     headers: new Headers({
-  //         'Accept': 'application/json',
-  //         'Content-Type': 'application/json',
-  //     }),})
-  //     .then(r=>r.json())
-  //     .then(obj=>{
-  //       console.log(obj);
-  //       alert("登入成功")
-  //       // return obj.json()
-  //       props.history.push('/')
-  //     })
-
-	// }
 
   const loginSuccessCallback = () => {
     fetch('http://localhost:3009/members/login', {
@@ -46,9 +22,8 @@ function MembersLogin(props) {
           'Content-Type': 'application/json',
       })
     })
-      .then(r=>r.json())
+      .then(result=>result.json())
       .then(obj=>{
-        // console.log(obj);
         console.log(JSON.stringify(obj));
         localStorage.setItem('memberData', JSON.stringify(obj));
         // alert('儲存成功，跳回首頁')
@@ -59,16 +34,6 @@ function MembersLogin(props) {
 
 
   return (
-    <Fragment>
-      {/* <header>
-        <MyNavBar 
-          NavUsername= {username}
-          NavSetUsername = {setUsername}
-          NavPassword = {password}
-          NavSetPassword = {setPassword}
-        />
-        <MyMenu />
-      </header> */}
       <main>
         <div className="login_container">
           {/* 登入 */}
@@ -103,7 +68,6 @@ function MembersLogin(props) {
           </form>
         </div>
       </main>
-    </Fragment>
   )
 }
 export default withRouter(MembersLogin)
