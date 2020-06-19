@@ -10,7 +10,7 @@ import {
   withRouter,
 } from 'react-router-dom'
 //antd
-// import { Radio } from 'antd'
+import { Radio } from 'antd'
 // import { Pagination } from 'antd'
 import WHH8101 from '../../../assets/items_img/WH-H810-01.png'
 // scss
@@ -18,20 +18,24 @@ import WHH8101 from '../../../assets/items_img/WH-H810-01.png'
 // import './_menu.scss'
 
 function ProductMain() {
-  const [items, setItems] = useState([]);
-  const itemsdata= [];
-  // useEffect(()=>{
-    fetch('http://localhost:3009/products/list')
-      .then((res)=>{
-        // console.log(res)
-        return res.json()
+  const [itemsdata, setItemsdata] = useState([])
+
+  useEffect(()=>{
+      fetch('http://localhost:3009/products/listpage/1',  {
+          method: 'get',
+          headers: new Headers({
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+          }),
       })
-      .then((res)=>{
-        console.log(res)
-        setItems(res)
+      .then((response)=>{
+          return response.json()
       })
-  // },[])
-    
+      .then((response)=>{
+        console.log(response.rows)
+        setItemsdata(response.rows)
+      })
+  },[])
 
   const onChange = (event) => {
     console.log('radio checked', event.target.value)
@@ -111,12 +115,12 @@ function ProductMain() {
 
           <div className="Yyasidebody">
             
-            {/* {items.map((data, index)=>{
+            {itemsdata.map((data, index)=>{
               console.log(data)
               return(
                 <div className="Yyaside_pro">
                   <div className="item_image">
-                    <img className="item_images" src={WHH8101} />
+                    <img className="item_images" src={`/items_img/${data.itemImg}`} />
                     <form className="item_imagebtnout">
                       <buttun className="item_imagebtn btn">加入購物車</buttun>
                       <buttun className="item_imagebtn2 btn">立即查看</buttun>
@@ -133,11 +137,11 @@ function ProductMain() {
                       <div className="pro_c"></div>
                     </li>
                   </ul>
-                  <p>Senheiser</p>
-                  <p>$4900</p>
+                  <p> {data.itemsbrand} </p>
+                  <p>{data.itemPrice}</p>
                 </div>
               )
-            })} */}
+            })}
             
   
             {/* <div class="Yypagination">
