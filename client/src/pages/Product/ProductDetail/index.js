@@ -36,8 +36,8 @@ function ProductDetail(props) {
         <div className="Yybodyin">
           <ProductDetailLeft />
           <ProductDetailRight />
-          <ProductDetailBottom />
         </div>
+        <ProductDetailBottom />
         <MyFooter />
       </Fragment>
     </Router>

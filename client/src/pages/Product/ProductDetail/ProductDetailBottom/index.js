@@ -11,13 +11,14 @@ import {
 } from 'react-router-dom'
 //antd
 import { Radio } from 'antd'
-// scss
-// import '../../../../assets/scss/Product_Detail.scss'
-import WHH8101 from '../../../../assets/items_img/WH-H810-01.png'
 function ProductDetailBottom() {
   return (
     <>
-   
+        <div className="Yy_commission">
+            <button>特點</button>
+            <button>規格</button>
+            <button>評論</button>
+        </div>
     </>
   )
 }
