@@ -51,7 +51,9 @@ function MembersLogin(props) {
         
         <div className="login_container">
           {/* 登入 */}
-          <a href="../">首頁</a> / <a href="#">登入</a>
+          <div className="login_Breadcrumb">
+            <a href="#">首頁</a> / <a href="#">登入</a>
+          </div>
           <div className="login_inner">
             <h1 className="login_inner_p1">登入</h1>
             <p className="login_inner_p2">

@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   BrowserRouter as Router,
   Route,
@@ -26,13 +26,13 @@ import BlogEdit from './pages/BLog/Blog-1-main-components/BlogEdit'
 // 會員使用
 import KMembers from './pages/Members'
 import MembersLogin from './pages/Members/MembersLogin'
-import MembersPwa from './pages/Members/MembersPwa'
-import MembersBank from './pages/Members/MembersBank'
-import MembersAdress from './pages/Members/MembersAdress'
-import MembersCartList from './pages/Members/MembersCartList'
-import MembersCartDetail from './pages/Members/MembersCartDetail'
 import MembersRegister from './pages/Members/MembersRegister'
-import MembersForget from './pages/Members/MembersForget'
+// import MembersPwa from './pages/Members/MembersPwa'
+// import MembersBank from './pages/Members/MembersBank'
+// import MembersAdress from './pages/Members/MembersAdress'
+// import MembersCartList from './pages/Members/MembersCartList'
+// import MembersCartDetail from './pages/Members/MembersCartDetail'
+// import MembersForget from './pages/Members/MembersForget'
 
 // Alice's part
 import AliceSellers from './pages/Sellers'
@@ -63,6 +63,7 @@ function App() {
   const [password, setPassword] = useState('')
   const [loginErrors, setLoginErrors] = useState([])
 
+  // 登入 & 狀態判斷
   const loginProcess = (loginSuccessCallback) => {
     const errors = []
 
@@ -79,6 +80,38 @@ function App() {
 
     loginSuccessCallback()
   }
+
+  useEffect(() => {
+    // navbar
+    let shop_btn = document.getElementById('shopping')
+    let side_menu = document.getElementsByClassName('header-side-menu')[0]
+    let page_cover = document.getElementsByClassName('nav-page-cover')[0]
+    let menu_close = document.getElementsByClassName('side-menu-close')[0]
+    shop_btn.addEventListener('click', () => {
+      side_menu.classList.add('header-side-menu-active')
+      page_cover.classList.add('nav-page-cover-active')
+    })
+    page_cover.addEventListener('click', () => {
+      side_menu.classList.remove('header-side-menu-active')
+      page_cover.classList.remove('nav-page-cover-active')
+    })
+    menu_close.addEventListener('click', () => {
+      side_menu.classList.remove('header-side-menu-active')
+      page_cover.classList.remove('nav-page-cover-active')
+    })
+
+    // 卡片翻轉效果
+    const cards = document.querySelectorAll('.store_card')
+    function transition() {
+      if (this.classList.contains('active')) {
+        this.classList.remove('active')
+      } else {
+        this.classList.add('active')
+      }
+    }
+    cards.forEach((card) => card.addEventListener('click', transition))
+  }, [])
+
 
   return (
     <Router>
