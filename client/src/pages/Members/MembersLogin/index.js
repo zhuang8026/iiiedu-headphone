@@ -63,7 +63,7 @@ function MembersLogin(props) {
           {/* form input */}
           <form action="#">
             <div className="login_form">
-              <label htmlFor="" className="gray">用戶名或郵箱地址 *</label>
+              <label htmlFor="" className="gray">郵箱地址 *</label>
               <input className="input01" type="text" placeholder="請輸入帳號" onChange={e => setUsername(e.target.value)}/>
               {/* <p className="login_err">用戶名或郵箱地址 錯誤</p> */}
               <p className="login_err"></p>
