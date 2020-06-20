@@ -76,7 +76,7 @@ function ProductMain() {
               <li>
                 <input id='check-3' type="checkbox" name='check-1'/>
                 <label for="check-3">非入耳</label>
-               </li>
+              </li>
             </ul>
         </div>
         <div className="Yybrand">
