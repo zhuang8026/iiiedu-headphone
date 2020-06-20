@@ -37,13 +37,15 @@ function CartTable(props) {
               </td>
               <td>ATH-PDG1a</td>
               <td>2,000</td>
-              <td>
-                <input type="number" name="" id="" />
+              <td className="td-qut">
+                <button>-</button>
+                <input type="text" name="qut" id="" readOnly />
+                <button>+</button>
               </td>
               <td>6,000</td>
-              <td className="function">
-                <button className="btn_wish btn_width">願望</button>
-                <button className="btn_booking btn_width">比較</button>
+              <td className="td-function">
+                <button className="btn_wish btn_width">加入願望</button>
+                <button className="btn_booking btn_width">加入比較</button>
               </td>
             </tr>
             <tr>
@@ -55,13 +57,15 @@ function CartTable(props) {
               </td>
               <td>ATH-PDG1a</td>
               <td>2,000</td>
-              <td>
-                <input type="number" name="" id="" />
+              <td className="td-qut">
+                <button>-</button>
+                <input type="text" name="qut" id="" readOnly />
+                <button>+</button>
               </td>
               <td>6,000</td>
-              <td className="function">
-                <button className="btn_wish btn_width">願望</button>
-                <button className="btn_booking btn_width">比較</button>
+              <td className="td-function">
+                <button className="btn_wish btn_width">加入願望</button>
+                <button className="btn_booking btn_width">加入比較</button>
               </td>
             </tr>
             <tr>
@@ -73,13 +77,15 @@ function CartTable(props) {
               </td>
               <td>ATH-PDG1a</td>
               <td>2,000</td>
-              <td>
-                <input type="number" name="" id="" />
+              <td className="td-qut">
+                <button>-</button>
+                <input type="text" name="qut" id="" readOnly />
+                <button>+</button>
               </td>
               <td>6,000</td>
-              <td className="function">
-                <button className="btn_wish btn_width">願望</button>
-                <button className="btn_booking btn_width">比較</button>
+              <td className="td-function">
+                <button className="btn_wish btn_width">加入願望</button>
+                <button className="btn_booking btn_width">加入比較</button>
               </td>
             </tr>
             <tr>
@@ -91,13 +97,55 @@ function CartTable(props) {
               </td>
               <td>ATH-PDG1a</td>
               <td>2,000</td>
-              <td>
-                <input type="number" name="" id="" />
+              <td className="td-qut">
+                <button>-</button>
+                <input type="text" name="qut" id="" readOnly />
+                <button>+</button>
               </td>
               <td>6,000</td>
-              <td className="function">
-                <button className="btn_wish btn_width">願望</button>
-                <button className="btn_booking btn_width">比較</button>
+              <td className="td-function">
+                <button className="btn_wish btn_width">加入願望</button>
+                <button className="btn_booking btn_width">加入比較</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <i>X</i>
+              </td>
+              <td>
+                <img src={SRH184001} alt="icon" />
+              </td>
+              <td>ATH-PDG1a</td>
+              <td>2,000</td>
+              <td className="td-qut">
+                <button>-</button>
+                <input type="text" name="qut" id="" readOnly />
+                <button>+</button>
+              </td>
+              <td>6,000</td>
+              <td className="td-function">
+                <button className="btn_wish btn_width">加入願望</button>
+                <button className="btn_booking btn_width">加入比較</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <i>X</i>
+              </td>
+              <td>
+                <img src={SRH184001} alt="icon" />
+              </td>
+              <td>ATH-PDG1a</td>
+              <td>2,000</td>
+              <td className="td-qut">
+                <button>-</button>
+                <input type="text" name="qut" id="" readOnly />
+                <button>+</button>
+              </td>
+              <td>6,000</td>
+              <td className="td-function">
+                <button className="btn_wish btn_width">加入願望</button>
+                <button className="btn_booking btn_width">加入比較</button>
               </td>
             </tr>
           </tbody>
@@ -110,7 +158,7 @@ function CartTable(props) {
             </tr>
             <tr>
               <td>
-                <span>總計</span>
+                <span>總計 </span>
                 <span>24,000</span>
               </td>
             </tr>

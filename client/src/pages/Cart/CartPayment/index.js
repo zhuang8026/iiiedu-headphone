@@ -69,6 +69,13 @@ function CartPayment(props) {
             required
           />
           <label htmlFor="paymentId2"> 信用卡</label>
+          <div className="line">
+            <div></div>
+          </div>
+          <p>以下暫用 待修改</p>
+          <input type="text" name="creditCardNum"/>
+          <input type="text" name="creditCardName"/>
+          <input type="month" name="creditCardMonth" min="218-01" lue="2025-01"/>
           <div>
             <button>下一步</button>
           </div>

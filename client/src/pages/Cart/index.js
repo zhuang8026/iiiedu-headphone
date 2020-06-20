@@ -21,14 +21,14 @@ import CartDone from './CartDone' //購買完成頁
 
 function YfangCart(props) {
   return (
-    <Router>
+    <Route>
       <>
         <main>
           <CartCrumb />
           <CartTable />
         </main>
       </>
-    </Router>
+    </Route>
   )
 }
 export default withRouter(YfangCart)

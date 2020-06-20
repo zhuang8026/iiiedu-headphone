@@ -25,13 +25,13 @@ import BlogStandard from '../Blog-1-main-components/BlogStandard'
 
 function YongBlog(props) {
   return (
-    <Router>
+    <Route>
       <Fragment>
         <main>
           <BlogStandard />
         </main>
       </Fragment>
-    </Router>
+    </Route>
   )
 }
 export default withRouter(YongBlog)
