@@ -1,5 +1,5 @@
 // 函式元件
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import {
   BrowserRouter as Router,
   Route,
@@ -25,7 +25,30 @@ import PrevPageHover from '../../../../assets/img/blog-img/blog-standard/prev-pa
 
 // -------------------- func --------------------
 
+
+
 function BlogMainStandardList(props) {
+
+const [listAllBlogdata, setlistAllBlogdata] = useState([])
+
+  useEffect(()=>{
+      fetch('http://localhost:3009/blog/listAllBlog/3',  {
+          method: 'get',
+          headers: new Headers({
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+          }),
+      })
+      .then((response)=>{
+          return response.json()
+      })
+      .then((response)=>{
+        console.log(response.rows)
+        setlistAllBlogdata(response.rows)
+      })
+  },[])
+
+
   return (
     <>
       <div className="blog-btns blog-d-flex blog-justify-content-between">
@@ -54,15 +77,17 @@ function BlogMainStandardList(props) {
         </div>
       </div>
       <div className="blog-list blog-d-flex">
-        <div className="blog-card">
+        
+      {listAllBlogdata.map((data, index)=>{
+              console.log(data)
+              return(
+                <div className="blog-card">
           <figure className="blog-card-fig">
             <img className="blog-cover" src={BlogCard} alt="" />
           </figure>
           <div className="blog-card-btns"></div>
-          <div className="blog-card-title">文章標題</div>
-          <div className="blog-card-content">
-            兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字
-          </div>
+          <div className="blog-card-title">{data.blogTitle}</div>
+          <div className="blog-card-content">{data.blogContent01}</div>
           <div className="blog-card-calendar">
             <div className="blog-card-calendar-in">
               <h2>01</h2>
@@ -73,101 +98,39 @@ function BlogMainStandardList(props) {
             <button className="read-more-btn">閱讀文章</button>
           </div>
         </div>
-        <div className="blog-card">
-          <figure className="blog-card-fig">
-            <img className="blog-cover" src={BlogCard} alt="" />
-          </figure>
-          <div className="blog-card-btns"></div>
-          <div className="blog-card-title">文章標題</div>
-          <div className="blog-card-content">
-            兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字
-          </div>
-          <div className="blog-card-calendar">
-            <div className="blog-card-calendar-in">
-              <h2>01</h2>
-              <h5>6月</h5>
-            </div>
-          </div>
-          <div className="read-more">
-            <button className="read-more-btn">閱讀文章</button>
-          </div>
-        </div>
-        <div className="blog-card">
-          <figure className="blog-card-fig">
-            <img className="blog-cover" src={BlogCard} alt="" />
-          </figure>
-          <div className="blog-card-btns"></div>
-          <div className="blog-card-title">文章標題</div>
-          <div className="blog-card-content">
-            兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字
-          </div>
-          <div className="blog-card-calendar">
-            <div className="blog-card-calendar-in">
-              <h2>01</h2>
-              <h5>6月</h5>
-            </div>
-          </div>
-          <div className="read-more">
-            <button className="read-more-btn">閱讀文章</button>
-          </div>
-        </div>
-        <div className="blog-card">
-          <figure className="blog-card-fig">
-            <img className="blog-cover" src={BlogCard} alt="" />
-          </figure>
-          <div className="blog-card-btns"></div>
-          <div className="blog-card-title">文章標題</div>
-          <div className="blog-card-content">
-            兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字
-          </div>
-          <div className="blog-card-calendar">
-            <div className="blog-card-calendar-in">
-              <h2>01</h2>
-              <h5>6月</h5>
-            </div>
-          </div>
-          <div className="read-more">
-            <button className="read-more-btn">閱讀文章</button>
-          </div>
-        </div>
-        <div className="blog-card">
-          <figure className="blog-card-fig">
-            <img className="blog-cover" src={BlogCard} alt="" />
-          </figure>
-          <div className="blog-card-btns"></div>
-          <div className="blog-card-title">文章標題</div>
-          <div className="blog-card-content">
-            兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字
-          </div>
-          <div className="blog-card-calendar">
-            <div className="blog-card-calendar-in">
-              <h2>01</h2>
-              <h5>6月</h5>
-            </div>
-          </div>
-          <div className="read-more">
-            <button className="read-more-btn">閱讀文章</button>
-          </div>
-        </div>
-        <div className="blog-card">
-          <figure className="blog-card-fig">
-            <img className="blog-cover" src={BlogCard} alt="" />
-          </figure>
-          <div className="blog-card-btns"></div>
-          <div className="blog-card-title">文章標題</div>
-          <div className="blog-card-content">
-            兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字
-          </div>
-          <div className="blog-card-calendar">
-            <div className="blog-card-calendar-in">
-              <h2>01</h2>
-              <h5>6月</h5>
-            </div>
-          </div>
-          <div className="read-more">
-            <button className="read-more-btn">閱讀文章</button>
-          </div>
-        </div>
+              )
+            })}
+        
+            {/* <div className="Yyaside_pro">
+                  <div className="item_image">
+                    <img className="item_images" src={`/items_img/${data.itemImg}`} />
+                    <div className="item_imagebtnout">
+                      <buttun className="item_imagebtn btn">加入購物車</buttun>
+                      <buttun className="item_imagebtn2 btn">立即查看</buttun>
+                    </div>
+                  </div>
+                  <div className="item_cover"></div>
+                  <ul className="itemul">
+                    <li className="pro_name">
+                      <p>{data.itemName}</p>
+                      <div className="pro_new">NEW</div>
+                    </li>
+
+                    <li>
+                      <div className="pro_c"></div>
+                    </li>
+                  </ul>
+                  <p> {data.itemsbrand} </p>
+                  <p>{data.itemPrice}</p>
+                </div>
+         */}
+        
+        
+        
+        
+        
+        
+        
       </div>
       <div className="blog-standard-pages blog-d-flex">
         <div className="prev-page">

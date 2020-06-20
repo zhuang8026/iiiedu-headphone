@@ -24,6 +24,10 @@ import BlogStandard from '../Blog-1-main-components/BlogStandard'
 // -------------------- func --------------------
 
 function YongBlog(props) {
+
+  
+
+
   return (
     <Route>
       <Fragment>
