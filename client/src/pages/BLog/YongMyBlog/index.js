@@ -24,13 +24,13 @@ import BlogUser from '../Blog-1-main-components/BlogUser'
 
 function YongMyBlog(props) {
   return (
-    <Router>
+    <Route>
       <Fragment>
         <main>
           <BlogUser />
         </main>
       </Fragment>
-    </Router>
+    </Route>
   )
 }
 export default withRouter(YongMyBlog)

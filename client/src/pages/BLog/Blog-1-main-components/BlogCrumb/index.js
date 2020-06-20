@@ -7,7 +7,7 @@ function BlogCrumb(props) {
     <>
       <div className="blog-crumb">
         <div></div>
-        <a href="../">首頁</a>/<a href="#">部落格</a>
+        <Link to ="../">首頁</Link>/<Link to="#">部落格</Link>
       </div>
     </>
   )
