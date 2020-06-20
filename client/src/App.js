@@ -66,8 +66,8 @@ function App() {
   const loginProcess = (loginSuccessCallback) => {
     const errors = []
 
-    if (username === '') errors.push('帳號沒填')
-    if (password === '') errors.push('密碼沒填')
+    if (username === '') errors.push('帳號沒填！ ')
+    if (password === '') errors.push('密碼沒填！ ')
 
     if (errors.length > 0) {
       setLoginErrors(errors)
@@ -147,7 +147,9 @@ function App() {
             }}
           />
         </Route>
-
+        <Route path="/KMembers/MembersRegister">
+          <MembersRegister />
+        </Route>
         {/* <Route
           exact
           path="/about/WiOurClients"

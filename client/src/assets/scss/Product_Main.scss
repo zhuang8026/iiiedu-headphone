@@ -10,7 +10,7 @@
   display: flex;
   width: 80%;
   .Yybodyleft {
-    width: 25%;
+    width: 20%;
     .Yysubmit {
       button {
         background: $link-hover-color-s;
@@ -41,7 +41,7 @@
     }
   }
   .Yybodyright {
-    width: 75%;
+    width: 80%;
     // border: blue solid 2px;
     .Yybodyheader {
       height: 50px;
@@ -60,9 +60,8 @@
       /* justify-content: flex-end; */
       flex-wrap: wrap;
       .Yyaside_pro {
-        // padding: 18px 6px;
-        padding: 25px 6px;
-        width: 33%;
+        padding: 6px;
+        width: 33.3%;
         p {
           margin-bottom: 0em;
         }

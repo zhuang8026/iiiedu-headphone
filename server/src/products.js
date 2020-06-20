@@ -11,7 +11,7 @@ router.get('/', (req, res)=>{
 });
 
 const getDataList = async (req)=>{ 
-    const perPage = 15;
+    const perPage = 12;
     let page = parseInt(req.params.page) || 1;
 
     const output = {

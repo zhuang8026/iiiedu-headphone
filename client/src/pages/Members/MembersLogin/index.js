@@ -55,7 +55,7 @@ function MembersLogin(props) {
           <div className="login_inner">
             <h1 className="login_inner_p1">登入</h1>
             <p className="login_inner_p2">
-              <Link to="/****">沒有帳號了?在此註冊</Link>
+              <Link to="/KMembers/MembersRegister">沒有帳號了?在此註冊</Link>
             </p>
           </div>
           {/* form input */}

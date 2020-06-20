@@ -47,11 +47,11 @@ function ProductMain() {
           <ul>
             <li className="Yywearstyle">
               品牌
-              {/* <button id="btnn">+</button> */}
             </li>
             <div className="Yyb">
               <li>
-                <a href="#">森海爾</a>
+                <input id='check-1' type="checkbox" name='check-1'/>
+                <label for="check-1">Apples</label>
               </li>
               <li>
                 <a href="#">鐵三角</a>
@@ -67,14 +67,7 @@ function ProductMain() {
           
           <ul>
             <li className="Yywearstyle">配戴方式</li>
-            <Radio.Group onChange={onChange} value={1}>
-              <li>
-                <Radio value={1}>入耳</Radio>
-              </li>
-              <li>
-                <Radio value={2}>耳罩</Radio>
-              </li>
-            </Radio.Group>
+            <li></li>
           </ul>
           <ul>
             <Radio.Group onChange={onChange} value={2}>
