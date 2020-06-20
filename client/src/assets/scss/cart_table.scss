@@ -67,39 +67,58 @@
       tr {
         display: flex;
         width: 100%;
-        line-height: 60px;
+        line-height: 50px;
         border-bottom: 1px solid $bg-btn-l;
         td {
           width: 100%;
           text-align: center;
           img {
             overflow: hidden;
-            height: 3.5rem;
+            height: 40px;
             margin-top: 2px;
           }
+        }
+        .td-qut {
           input {
             max-width: 50px;
-            line-height: 0px;
+            line-height: 25px;
+            vertical-align: middle;
+            border: 1px solid $bg-btn-l;
+          }
+          button {
+            background: none;
+            line-height: 25px;
+            vertical-align: middle;
+            width: 20px;
             border: 1px solid $bg-btn-l;
           }
         }
-        .function {
+        .td-function {
           display: flex;
+          // height: 45px;
           vertical-align: middle;
-          button {
+          padding: 10px 0;
+          .btn_wish {
+            background-color: #adadad;
+            color: #fafafa;
+          }
+          .btn_booking {
+            background-color: #f3f4ed;
+            color: #8b8b8b;
+          }
+          .btn_width {
             width: 50%;
-            height: 60px;
-            margin: 2px 1px;
-            border: 1px solid $bg-btn-l;
+            // height: 35px;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+          }
+          button {
+            transition: 0.3s ease-out;
             border-radius: 5px;
-            text-align: center;
-            color: #fff;
-            background: $bg-btn-l;
-            transition: 0.3s ease-in;
-            cursor: pointer;
             &:hover {
-              background: #fff;
-              color: $bg-btn-l;
+              background-color: #211e55;
+              color: #fafafa;
             }
           }
         }
