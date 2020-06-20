@@ -1,5 +1,5 @@
-import React ,{ Fragment, useEffect } from 'react';
-import { Link, withRouter } from "react-router-dom"
+import React ,{ Fragment } from 'react';
+import { withRouter } from "react-router-dom"
 
 // Swiper
 import Swiper from 'react-id-swiper';

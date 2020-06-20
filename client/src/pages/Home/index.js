@@ -1,9 +1,6 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment } from 'react'
 import {
   BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
 } from 'react-router-dom'
 
 // components
@@ -28,11 +25,6 @@ function WiHome() {
   return (
     <Router>
       <Fragment>
-        {/* <header>
-          <MyNavBar />
-          <MyMenu />
-        </header> */}
-
         <div>
           <HomeSlider />
           <MyDiscover />
@@ -43,8 +35,6 @@ function WiHome() {
           <BottomIG IGImg={IGImg} />
           <BottomYoutube YoutubeImg={YoutubeImg} />
         </div>
-
-        {/* <MyFooter /> */}
       </Fragment>
     </Router>
   )

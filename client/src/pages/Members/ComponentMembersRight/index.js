@@ -1,6 +1,6 @@
 // 函式元件
-import React, { Fragment,useState } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect, Link, NavLink, withRouter} from 'react-router-dom'
+import React, { useState } from 'react';
+import {withRouter} from 'react-router-dom'
 
 // antd
 import { Radio, DatePicker  } from 'antd';
@@ -123,7 +123,7 @@ function KMembers() {
                     </div>
                     {/* 右側圖片 */}
                     <div className="r_bottom_right">
-                        <img src={logo}/>
+                        <img src={logo} alt="image"/>
                         {/* <button>選擇圖片</button> */}
                         <Upload {...props}>
                             <Button>

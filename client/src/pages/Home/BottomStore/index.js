@@ -1,5 +1,5 @@
-import React ,{ useEffect } from 'react';
-import { Link, withRouter } from "react-router-dom"
+import React from 'react';
+import { withRouter } from "react-router-dom"
 
 // scss
 // import './BottomIG.scss';
@@ -21,7 +21,7 @@ function BottomStore(props) {
                             <div className="store_card">
                                 <div className="store_side store_front">
                                 <div className="store_img">
-                                    <img src={data.picUrl}/>
+                                    <img src={data.picUrl} alt="商品圖片"/>
                                 </div>
                                 <div className="store_info">
                                     <h2>{data.h2text}</h2>

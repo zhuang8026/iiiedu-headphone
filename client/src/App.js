@@ -13,10 +13,14 @@ import MyNavBar from './components/Navbar'
 import MyMenu from './components/NavbarMenu'
 import MyFooter from './components/Footer'
 
+// home 
 import WiHome from './pages/Home'
+
+// Product
 import YyProduct from './pages/Product'
 import ProductDetail from './pages/Product/ProductDetail'
-import WiAbout from './pages/About'
+
+// Blog
 import YongBlog from './pages/BLog/YongBlog'
 import YongMyBlog from './pages/BLog/YongMyBlog'
 import BlogDetail from './pages/BLog/Blog-1-main-components/BlogDetail'
@@ -50,12 +54,13 @@ import MyFav from './pages/MyFav'
 import YfangCart from './pages/Cart'
 
 // 靜態頁面
-import WiStore from './pages/Store'
-import WiConnect from './pages/Connect'
-import WiGift from './pages/Gift'
-import WiProblem from './pages/Problem'
-import WiOurClients from './pages/OurClients'
-import WiWarranty from './pages/Warranty'
+// import WiAbout from './pages/About'
+// import WiStore from './pages/Store'
+// import WiConnect from './pages/Connect'
+// import WiGift from './pages/Gift'
+// import WiProblem from './pages/Problem'
+// import WiOurClients from './pages/OurClients'
+// import WiWarranty from './pages/Warranty'
 import NotFoundPage404 from './pages/404'
 
 function App() {
@@ -143,7 +148,7 @@ function App() {
         </Route>
 
         {/* 靜態頁面 */}
-        <Route path="/about/WiGift">
+        {/* <Route path="/about/WiGift">
           <WiGift />
         </Route>
         <Route path="/about/WiWarranty">
@@ -163,7 +168,7 @@ function App() {
         </Route>
         <Route path="/about/WiOurClients">
           <WiOurClients />
-        </Route>
+        </Route> */}
 
         {/* 會員 */}
         <Route exact path="/KMembers">

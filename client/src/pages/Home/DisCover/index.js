@@ -1,5 +1,5 @@
 import React ,{ Fragment, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link, withRouter } from "react-router-dom"
+import { Link, withRouter } from "react-router-dom"
 
 // components
 

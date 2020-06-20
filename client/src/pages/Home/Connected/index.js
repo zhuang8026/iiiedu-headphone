@@ -1,5 +1,5 @@
 import React ,{ useEffect } from 'react';
-import { Link, withRouter } from "react-router-dom"
+import {withRouter } from "react-router-dom"
 
 // scss
 // import './BottomIG.scss';
@@ -24,7 +24,7 @@ function OurConnected(props) {
                             <div className="store_card">
                                 <div className="store_side store_front">
                                 <div className="store_img">
-                                    <img src={data.picUrl}/>
+                                    <img src={data.picUrl} alt="產品圖片"/>
                                 </div>
                                 <div className="store_info">
                                     <h2>{data.h2text}</h2>

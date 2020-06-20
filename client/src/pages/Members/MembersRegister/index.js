@@ -1,27 +1,10 @@
 // 函式元件
-import React, { Fragment, useState } from 'react'
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-  Link,
-  NavLink,
-  withRouter,
-} from 'react-router-dom'
+import React from 'react'
+import {Link,withRouter} from 'react-router-dom'
 
-// components
-import MyNavBar from '../../../components/Navbar'
-import MyMenu from '../../../components/NavbarMenu'
-import MyFooter from '../../../components/Footer'
 
 function MembersRegister() {
   return (
-    <Fragment>
-      <header>
-        <MyNavBar />
-        <MyMenu />
-      </header>
       <main>
         <div className="login_container">
           {/* 登入 */}
@@ -53,7 +36,7 @@ function MembersRegister() {
 
               <div className="login_form_pwa">
                 <input type="checkbox" id="a" />
-                <label for="a">記住帳號</label>
+                <label htmlFor="a">記住帳號</label>
                 <p>
                   <a href="">忘記密碼?</a>
                 </p>
@@ -65,8 +48,6 @@ function MembersRegister() {
           </form>
         </div>
       </main>
-      <MyFooter />
-    </Fragment>
   )
 }
 export default withRouter(MembersRegister)

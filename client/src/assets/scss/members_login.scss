@@ -4,7 +4,11 @@ main {
     margin: 0 auto;
     padding-top:150px ;
     
-    
+    .login_Breadcrumb {
+      a {
+        color: #4e4f97;
+      }
+    }
 
     // 登入
     .login_inner {
@@ -40,7 +44,11 @@ main {
         .login_form_pwa {
           display: flex;
           // margin-top: 30px;
-          
+          p {
+            a {
+              color: #4e4f97;
+            }
+          }
           align-items: center;
           input{
             -webkit-appearance: auto;

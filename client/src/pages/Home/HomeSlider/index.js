@@ -71,7 +71,7 @@ const HomeSlider = () => {
                                     // data-out-duration=".2s"
                                 >
                                     <Link to={data.itemslinkUrl}>
-                                        <img src={data.itemsUrl} className="swiper-lazy" alt="product"/>
+                                        <img type="image" src={data.itemsUrl} className="swiper-lazy" alt="image"/>
                                         <div className="items_inner_text">
                                             <h2>{data.itemsName}</h2>
                                             <p>{data.itemsText}</p>

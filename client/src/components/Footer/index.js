@@ -1,6 +1,6 @@
 // 函式元件
-import React, { useState } from 'react';
-import { Link, NavLink, withRouter } from 'react-router-dom'
+import React from 'react';
+import { withRouter } from 'react-router-dom'
 
 import Complete from './FooterInput.js';
 
