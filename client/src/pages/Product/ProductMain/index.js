@@ -80,21 +80,15 @@ function ProductMain() {
             </li>
           </ul>
           <ul>
-            <Radio.Group onChange={onChange} value={2}>
-              <li className="Yywearstyle">類型 </li>
-              <li>
-                <Radio value={1}>入耳式</Radio>
-              </li>
-              <li>
-                <Radio value={2}>非入耳式</Radio>
-              </li>
-              <li>
-                <Radio value={3}>耳罩</Radio>
-              </li>
-              <li>
-                <Radio value={4}>非耳罩</Radio>
-              </li>
-            </Radio.Group>
+            <li className="Yywearstyle">類型 </li>
+            <li>
+              <input id='check-2' type="checkbox" name='check-1'/>
+              <label for="check-2">入耳式</label>
+            </li>
+            <li>
+              <input id='check-2' type="checkbox" name='check-1'/>
+              <label for="check-2">非入耳式</label>
+            </li>
           </ul>
 
           <div className="Yysubmit">
