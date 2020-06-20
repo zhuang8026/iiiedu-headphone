@@ -44,53 +44,55 @@ function ProductMain() {
     <>
       <div className="Yybodyin">
         <div className="Yybodyleft">
-          <ul>
-            <li className="Yywearstyle">
-              品牌
-            </li>
-            <div className="Yyb">
+        <div className="Yybrand">
+            <div className="Yywearstyle">品牌</div>
+            <ul>
               <li>
-                <input id='check-1' type="checkbox" name='check-1'/>
-                <label for="check-1">Apples</label>
+                  <input id='check-1' type="checkbox" name='check-1'/>
+                  <label for="check-1">Apples</label>
               </li>
               <li>
-                <input id='check-1' type="checkbox" name='check-1'/>
-                <label for="check-1">鐵三角</label>
+                  <input id='check-1' type="checkbox" name='check-1'/>
+                  <label for="check-1">鐵三角</label>
               </li>
               <li>
-                <input id='check-1' type="checkbox" name='check-1'/>
-                <label for="check-1">Akg</label>
+                  <input id='check-1' type="checkbox" name='check-1'/>
+                  <label for="check-1">Akg</label>
               </li>
               <li>
-                <input id='check-1' type="checkbox" name='check-1'/>
-                <label for="check-1">Sony</label>
+                  <input id='check-1' type="checkbox" name='check-1'/>
+                  <label for="check-1">Sony</label>
               </li>
-            </div>
-          </ul>
+            </ul>
+        </div>
           
-          <ul>
-            <li className="Yywearstyle">配戴方式</li>
-            <li>
-              <input id='check-2' type="checkbox" name='check-1'/>
-              <label for="check-2">入耳</label>
-            </li>
-            <li>
-              <input id='check-3' type="checkbox" name='check-1'/>
-              <label for="check-3">非入耳</label>
-            </li>
-          </ul>
-          <ul>
-            <li className="Yywearstyle">類型 </li>
-            <li>
-              <input id='check-2' type="checkbox" name='check-1'/>
-              <label for="check-2">入耳式</label>
-            </li>
-            <li>
-              <input id='check-2' type="checkbox" name='check-1'/>
-              <label for="check-2">非入耳式</label>
-            </li>
-          </ul>
-
+        <div className="Yybrand">
+            <div className="Yywearstyle">配戴方式</div>
+            <ul>
+              <li>
+                <input id='check-2' type="checkbox" name='check-1'/>
+                <label for="check-2">入耳</label>
+              </li>
+              <li>
+                <input id='check-3' type="checkbox" name='check-1'/>
+                <label for="check-3">非入耳</label>
+               </li>
+            </ul>
+        </div>
+        <div className="Yybrand">
+            <div className="Yywearstyle">類型 </div>
+            <ul>
+              <li>
+                <input id='check-2' type="checkbox" name='check-1'/>
+                <label for="check-2">入耳式</label>
+              </li>
+              <li>
+                <input id='check-2' type="checkbox" name='check-1'/>
+                <label for="check-2">非入耳式</label>
+              </li>
+            </ul>
+        </div>
+        
           <div className="Yysubmit">
             <button className="btn" type="button">
               送出勾選資料
@@ -118,10 +120,10 @@ function ProductMain() {
                 <div className="Yyaside_pro">
                   <div className="item_image">
                     <img className="item_images" src={`/items_img/${data.itemImg}`} />
-                    <form className="item_imagebtnout">
+                    <div className="item_imagebtnout">
                       <buttun className="item_imagebtn btn">加入購物車</buttun>
                       <buttun className="item_imagebtn2 btn">立即查看</buttun>
-                    </form>
+                    </div>
                   </div>
                   <div className="item_cover"></div>
                   <ul className="itemul">
