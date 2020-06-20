@@ -11,18 +11,21 @@ router.get('/', (req, res)=>{
 });
 
 // 註冊 
-router.post('/add', upload.none(), (req, res)=>{ // upload.none() 回傳的是 表單欄位 每一個的值，并包裝成對象
+router.post('/Add', (req, res)=>{ // upload.none() 回傳的是 表單欄位 每一個的值，并包裝成對象
     const output = {
-        success: false
+        success: false,
     }
     let name = req.body.name;
     let username = req.body.username;
     let pwd = req.body.pwd;
-    const sql = "INSERT INTO `users`(`name`,`username`, `pwd`) VALUES (?, ?, ?)"; 
-    db.query(sql, [name, username, pwd])                        
-        .then(([r])=>{
-            output.results = r;
-            if(r.affectedRows && r.insertId){
+
+    const sql = "INSERT INTO `users`(`name`, `username`, `pwd`) VALUES (?, ?, ?)"; 
+    console.log('req.body',[req.body])
+    db.query(sql, [name, username, pwd])
+        .then((result)=>{
+            console.log('result',result)
+            output.results = result;
+            if(result.affectedRows && r.insertId){
                 output.success = true;
             }
             res.json(output);

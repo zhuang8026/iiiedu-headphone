@@ -64,6 +64,7 @@ import YfangCart from './pages/Cart'
 import NotFoundPage404 from './pages/404'
 
 function App() {
+  const [name, setName] = useState('')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [loginErrors, setLoginErrors] = useState([])
@@ -72,8 +73,8 @@ function App() {
   const loginProcess = (loginSuccessCallback) => {
     const errors = []
 
-    if (username === '') errors.push('帳號沒填！ ')
-    if (password === '') errors.push('密碼沒填！ ')
+    if (username === '') errors.push('帳號沒填！')
+    if (password === '') errors.push('密碼沒填！')
 
     if (errors.length > 0) {
       setLoginErrors(errors)
@@ -84,6 +85,25 @@ function App() {
     setLoginErrors([])
 
     loginSuccessCallback()
+  }
+
+  // 登入 & 狀態判斷
+  const RegisterProcess = (addFromServer) => {
+    const errors = []
+
+    if (name === '') errors.push('暱稱沒填！')
+    if (username === '') errors.push('帳號沒填！')
+    if (password === '') errors.push('密碼沒填！')
+
+    if (errors.length > 0) {
+      setLoginErrors(errors)
+      message.warning(errors);
+      return
+    }
+    // 清空錯誤訊息陣列 + 登入
+    setLoginErrors([])
+
+    addFromServer()
   }
 
   useEffect(() => {
@@ -186,7 +206,17 @@ function App() {
           />
         </Route>
         <Route path="/KMembers/MembersRegister">
-          <MembersRegister />
+          <MembersRegister 
+            allprops={{
+              name,
+              setName,
+              username,
+              setUsername,
+              password,
+              setPassword,
+              RegisterProcess
+            }}
+          />
         </Route>
         {/* <Route
           exact

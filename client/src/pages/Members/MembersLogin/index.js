@@ -28,7 +28,7 @@ function MembersLogin(props) {
         if(obj.success){
           if(obj.password === password){
             localStorage.setItem('memberData', JSON.stringify(obj));
-            message.success(`Hello!${obj.name}`);
+            message.success(`Hello! ${obj.name}`);
             setTimeout(()=>{
               // props.history.goBack()
               props.history.push('/');
@@ -61,7 +61,7 @@ function MembersLogin(props) {
             </p>
           </div>
           {/* form input */}
-          <form action="#">
+          <div className="form_all">
             <div className="login_form">
               <label htmlFor="" className="gray">郵箱地址 *</label>
               <input className="input01" type="text" placeholder="請輸入帳號" onChange={e => setUsername(e.target.value)}/>
@@ -81,7 +81,7 @@ function MembersLogin(props) {
               </div>
               <button type="button" className="login_btn" onClick={()=> loginProcess(loginSuccessCallback)}> 登入 </button>
             </div>
-          </form>
+          </div>
         </div>
       </main>
   )
