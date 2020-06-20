@@ -54,20 +54,30 @@ function ProductMain() {
                 <label for="check-1">Apples</label>
               </li>
               <li>
-                <a href="#">鐵三角</a>
+                <input id='check-1' type="checkbox" name='check-1'/>
+                <label for="check-1">鐵三角</label>
               </li>
               <li>
-                <a href="#">Akg</a>
+                <input id='check-1' type="checkbox" name='check-1'/>
+                <label for="check-1">Akg</label>
               </li>
               <li>
-                <a href="#">Sony</a>
+                <input id='check-1' type="checkbox" name='check-1'/>
+                <label for="check-1">Sony</label>
               </li>
             </div>
           </ul>
           
           <ul>
             <li className="Yywearstyle">配戴方式</li>
-            <li></li>
+            <li>
+              <input id='check-2' type="checkbox" name='check-1'/>
+              <label for="check-2">入耳</label>
+            </li>
+            <li>
+              <input id='check-3' type="checkbox" name='check-1'/>
+              <label for="check-3">非入耳</label>
+            </li>
           </ul>
           <ul>
             <Radio.Group onChange={onChange} value={2}>
