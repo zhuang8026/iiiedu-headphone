@@ -1,12 +1,22 @@
 const express = require('express');
 const moment = require('moment-timezone');
+const session = require('express-session');   
+const MysqlStore = require('express-mysql-session')(session);
 const upload = require(__dirname + '/upload-module');
 const db = require(__dirname + '/db_connect');
+const cors = require('cors');
+const fs = require('fs'); 
+
+
 const router = express.Router();
 
 // 建立 web server 物件
 const app = express();
 
+
+
+
+// middleware
 app.use(express.urlencoded({ extended: false })); 
 app.use(express.json());
 
@@ -14,13 +24,37 @@ app.use(express.json());
 
 
 // blogAdd
-app.use('/blogAdd', require(__dirname+'/blogAdd.js'));
+// app.use('/blogAdd', require(__dirname+'/blogAdd.js'));
 
 
 
+
+//================================================== session ==============================================================
+// (未完成)
+// app.use('/my',require(__dirname + '/admins/admin2'));
+
+
+
+router.get('/try-session', (req, res)=>{
+    req.session.my_var = req.session.my_var || 0;
+    req.session.my_var++;
+
+    res.json({
+        my_var: req.session.my_var,
+        session: req.session
+    })
+})
+
+//================================================== blog root ==============================================================
+// http://localhost:3009/blog
+router.get('/', (req, res)=>{ 
+    res.send('blog root => 請輸入您要的url');
+});
 
 //================================================== blogList ==============================================================
-// 所有文章(分頁)的func
+// (測試ok)
+
+// 所有文章(分頁)的function
 const getAllBlogList = async (req) => {
     const perPage = 5;
     let page = parseInt(req.params.page) || 1;    
@@ -56,7 +90,7 @@ const getAllBlogList = async (req) => {
     return output;
 };
 
-// (個人)所有文章(分頁)的func
+// (個人)所有文章(分頁)的function
 const getUserBlogList = async (req) => {
     const perPage = 5;
     let page = parseInt(req.params.page) || 1;
@@ -132,6 +166,7 @@ router.get('/listUserBlog/:id/:page?', async (req, res) => {
 })
 
 //================================================== blogAdd ==============================================================
+// (測試ok)
 // 新增部落格文章
 // http://localhost:3009/blog/add
 router.get('/add', upload.none(), (req, res)=>{
@@ -158,6 +193,7 @@ router.get('/add', upload.none(), (req, res)=>{
 })
 
 //================================================== blogDelete ==============================================================
+// (測試ok)
 // 刪除部落格文章
 // http://localhost:3009/blog/del/(部落格編號)
 router.get('/del/:blogId', (req, res)=>{
@@ -180,7 +216,8 @@ router.get('/del/:blogId', (req, res)=>{
 })
 
 //================================================== blogEdit ==============================================================
-// 刪除部落格文章
+// (測試ok)
+// 編輯部落格文章
 // http://localhost:3009/blog/edit/(部落格編號)
 // 提交表單才要改成PUT
 router.post('/edit/:blogId', upload.none(), (req, res)=>{
@@ -210,5 +247,96 @@ router.post('/edit/:blogId', upload.none(), (req, res)=>{
 })
 
 //================================================== blogSearch ==============================================================
+// (未完成)
+// 搜尋結果(分頁)的func
+const getSearchList = async (req) => {
+    const perPage = 5;
+    let page = parseInt(req.params.page) || 1;    
+    const output = {
 
+
+        page: page,
+        perPage: perPage,
+        totalRows: 0, // 總共有幾筆資料
+        totalPages: 0, //總共有幾頁
+        rows: []
+    }
+    const [r1]= await db.query(`SELECT COUNT(1) num FROM blogs`);
+    
+    output.totalRows = r1[0].num;
+    output.totalPages = Math.ceil(output.totalRows / perPage);
+    if (page < 1) page = 1;
+    if (page > output.totalPages) page = output.totalPages;
+    if (output.totalPages === 0) page = 0;
+    output.page = page;
+    if (!output.page) {
+        return output;
+    }
+    const sql = `SELECT * FROM blogs ORDER BY blogId desc LIMIT ${(page - 1) * perPage}, ${perPage}`
+    const [r2] = await db.query(sql);    
+    if (r2) output.rows = r2;
+    console.log(output)
+    // 將r2裡的Date改成正常時間格式
+    for (let i of r2) {
+        // 要先放到moment才能使用.format('YYYY-MM-DD')
+        i.blogExpectedTime = moment(i.blogExpectedTime).format('DD-YY-MM');
+        i.blogPublishTime = moment(i.blogPublishTime).format('DD-YY-MM');
+        i.blogUpdateTime = moment(i.blogUpdateTime).format('DD-YY-MM');
+    }
+    return output;
+};
+
+
+//================================================== 圖片上傳 ==============================================================
+// (未完成)
+// 測試upload
+app.post('/try-upload', upload.single('avatar'),(req, res)=>{
+    console.log(req.file);
+    console.log(req.body);
+    const output = {
+        success: false,
+        uploadedImg: '',
+        nickname: '',
+        errorMsg: ''
+    }
+    output.nickname = req.body.nickname || '';
+    if(req.file && req.file.originalname){
+        // 判斷是否為圖檔
+        // 下面的寫法，不管是png還是jpeg都會進入fs.rename
+        switch(req.file.mimetype){
+            case 'image/png':
+            case 'image/jpeg':
+                // 將檔案搬至公開的資料夾
+                fs.rename(req.file.path, './public/img/'+ req.file.originalname, error=>{
+                    if(!error){
+                        output.success = true;
+                        output.uploadedImg = '/img/' + req.file.originalname;
+                    }
+                    res.render('try-upload', output);
+                })
+                break;
+            default:
+                fs.unlink(req.file.path, error=>{
+                    output.errorMsg = '檔案類型錯誤'
+                    res.render('try-upload', output);
+                })  // 刪除暫存檔
+        }
+    }
+    // 上面使用render，send就要拿掉。
+    // res.send('ok')
+});
+
+
+//================================================== 測試區 ==============================================================
+
+
+router.post('/try-post', (req, res)=>{
+    req.body.contentType = req.get('Content-Type'); // 取得檔頭  
+    req.body.pageTitle = '測試表單-Json'
+    req.body.txt='測試一下'
+    res.json(req.body)
+})
+
+
+//================================================================================================================
 module.exports = router;
