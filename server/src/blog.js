@@ -180,19 +180,23 @@ router.get('/del/:blogId', (req, res)=>{
 })
 
 //================================================== blogEdit ==============================================================
+// 刪除部落格文章
+// http://localhost:3009/blog/edit/(部落格編號)
 // 提交表單才要改成PUT
-router.post('/edit', upload.none(), (req, res)=>{
+router.post('/edit/:blogId', upload.none(), (req, res)=>{
     const output = {
         success: false,
         body: req.body
     }
-    let blogId = parseInt(req.body.blogId);
+    // let blogId = parseInt(req.body.blogId);
+    let blogId = req.params.blogId;
+    req.body.blogTitle = 9988 ; 
     if(! blogId){
         output.error = '沒有主鍵';
         return res.json(output);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
     }
     const sql = "UPDATE `blogs` SET ? WHERE blogId=?";
-    // 把req.body.sid刪掉，但宣告的sid還存在
+    // 把req.body.blogId刪掉，但宣告的blogId還存在
     delete req.body.blogId;
     db.query(sql, [req.body, blogId])
         .then(([r])=>{
