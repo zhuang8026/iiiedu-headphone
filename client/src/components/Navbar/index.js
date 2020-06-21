@@ -1,10 +1,10 @@
 // 函式元件
-import React, { Fragment } from 'react';
-import { Link, NavLink, withRouter } from 'react-router-dom'
+import React, { Fragment, useEffect } from 'react';
+import { Link, withRouter } from 'react-router-dom'
 
 // antd
 import { Popover } from 'antd';
-
+import { message } from 'antd';
 
 // logo 
 import OtisGif from "../../assets/img/Otis.gif";
@@ -40,13 +40,9 @@ function MyNavBar(props) {
     const memberData = JSON.parse(localStorage.getItem('memberData'))
     // console.log('localStorage', memberData)
     
-    const logoutSuccessCallback = () => {
+    const logoutCallback = () => {
         fetch('http://localhost:3009/members/logout', {
             method: 'get',
-            // body:JSON.stringify({
-            // username: username,
-            // pwd: password
-            // }),
             headers: new Headers({
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -54,13 +50,51 @@ function MyNavBar(props) {
         })
             .then(result=>result.json())
             .then(obj=>{
-            console.log(JSON.stringify(obj));
+            console.log(obj);
+            message.success(`${obj['message']}`);
             localStorage.removeItem('memberData');
-            // alert('儲存成功，跳回首頁')
             props.history.push('/')
             // props.history.goBack()
             })
     }
+
+    useEffect(() => {
+        // navbar
+        let shop_btn = document.getElementById('shopping')
+        let side_menu = document.getElementsByClassName('header-side-menu')[0]
+        let page_cover = document.getElementsByClassName('nav-page-cover')[0]
+        let menu_close = document.getElementsByClassName('side-menu-close')[0]
+        shop_btn.addEventListener('click', () => {
+            side_menu.classList.add('header-side-menu-active')
+            page_cover.classList.add('nav-page-cover-active')
+        })
+        page_cover.addEventListener('click', () => {
+            side_menu.classList.remove('header-side-menu-active')
+            page_cover.classList.remove('nav-page-cover-active')
+        })
+        menu_close.addEventListener('click', () => {
+            side_menu.classList.remove('header-side-menu-active')
+            page_cover.classList.remove('nav-page-cover-active')
+        })
+    
+        let nav_containers= document.getElementsByClassName('nav-containers')[0].classList,
+            nav_right= document.getElementsByClassName('nav-right')[0].classList,
+            menu_otis_menu= document.getElementsByClassName('menu-otis-menu')[0].classList,
+        lastScrollY = 0;
+        window.addEventListener('scroll', function(){
+            var window_higth = this.scrollY;
+            if( window_higth <= lastScrollY) {
+                nav_containers.remove('hideUp');
+                nav_right.remove('nav-add-width');
+                menu_otis_menu.remove('menu_add_li');
+            }else{
+                nav_containers.add('hideUp');
+                nav_right.add('nav-add-width');
+                menu_otis_menu.add('menu_add_li');
+            }
+            // lastScrollY = window_higth;
+            });
+        }, [])
 
 
     return (
@@ -194,7 +228,7 @@ function MyNavBar(props) {
                                         </div>
                                     </li>
                                     <li>
-                                        <Link to="/YongBlog" className="meaulist">
+                                        <Link to="/Blog/YongBlog" className="meaulist">
                                             <span>BLOG</span>
                                         </Link>
                                         <div className="inner hidden-meau">
@@ -259,17 +293,19 @@ function MyNavBar(props) {
                                     <li>
                                         <div id="members" className="otis-members">
                                         { 
-                                            memberData ? (<Link className="otis-login-opener" to="/KMembers/">
-                                                            <Popover content={members} placement="bottom">
-                                                                <span className="otis-login-text"><i className="iconfont icon-Personal"></i></span>
-                                                                {/* <span className="otis-login-text">{memberData.name}</span> */}
-                                                            </Popover>
-                                                            <span className="otis-login-text" onClick={logoutSuccessCallback}>登出</span>
-                                                        </Link>) : (<Link className="otis-login-opener" to="/KMembers/MembersLogin">
-                                                            <Popover content={members} placement="bottom">
-                                                                <span className="otis-login-text"><i className="iconfont icon-Personal"></i></span>
-                                                            </Popover>
-                                                        </Link>) 
+                                            memberData ? (<Fragment>
+                                                                <Link className="otis-login-opener" to="/KMembers/">
+                                                                    <Popover content={members} placement="bottom">
+                                                                        <span className="otis-login-text"><i className="iconfont icon-Personal"></i></span>
+                                                                        {/* <span className="otis-login-text">{memberData.name}</span> */}
+                                                                    </Popover>
+                                                                </Link>
+                                                                <span className="otis-login-text" onClick={logoutCallback}>登出</span>
+                                                            </Fragment>) : (<Link className="otis-login-opener" to="/KMembers/MembersLogin">
+                                                                                <Popover content={members} placement="bottom">
+                                                                                    <span className="otis-login-text"><i className="iconfont icon-Personal"></i></span>
+                                                                                </Popover>
+                                                                            </Link>) 
                                         }
                                         </div>
                                     </li>

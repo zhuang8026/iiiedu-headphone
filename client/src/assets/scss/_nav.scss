@@ -38,6 +38,7 @@ header {
             align-items: center;
             figure {
                 width: 100%;
+                margin: 0;
                 img {
                 max-height: 35px;
                 }
@@ -57,12 +58,14 @@ header {
                 nav {
                     .menu-otis-menu {
                         display: flex;
+                        margin: 0;
+                        height: 89px;
                         li {
                             position: relative;
                             -webkit-box-align: center;
                             -ms-flex-align: center;
                             align-items: center;
-                            height: 89px;
+                            height: 100%;
                             .meaulist {
                                 font-size: 14px;
                                 display: -webkit-box;
@@ -211,7 +214,11 @@ header {
                             // }
                         }
                     }
+                    .menu_add_li {
+                        height: 60px;
+                    }
                 }
+                
             }
             .nav-inner-right {
                 height: 100%;
@@ -224,6 +231,7 @@ header {
                 nav {
                 .menu-otis-icon {
                     display: flex;
+                    margin: 0;
                     li {
                     padding-left: 16px;
                     #search {
@@ -339,4 +347,5 @@ header {
 }
 .hideUp {
     background: #fff;
+    height: 60px !important;
 }

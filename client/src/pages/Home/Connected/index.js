@@ -8,6 +8,16 @@ import {StoreImg} from './config';
 
 function OurConnected(props) {
     useEffect(()=>{
+        // 卡片翻轉效果
+        const cards = document.querySelectorAll('.store_card')
+        function transition() {
+            if (this.classList.contains('active')) {
+            this.classList.remove('active')
+            } else {
+            this.classList.add('active')
+            }
+        }
+        cards.forEach((card) => card.addEventListener('click', transition))
     },[])
     
     return (

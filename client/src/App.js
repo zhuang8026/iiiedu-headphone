@@ -106,54 +106,6 @@ function App() {
     addFromServer()
   }
 
-  useEffect(() => {
-    // navbar
-    let shop_btn = document.getElementById('shopping')
-    let side_menu = document.getElementsByClassName('header-side-menu')[0]
-    let page_cover = document.getElementsByClassName('nav-page-cover')[0]
-    let menu_close = document.getElementsByClassName('side-menu-close')[0]
-    shop_btn.addEventListener('click', () => {
-      side_menu.classList.add('header-side-menu-active')
-      page_cover.classList.add('nav-page-cover-active')
-    })
-    page_cover.addEventListener('click', () => {
-      side_menu.classList.remove('header-side-menu-active')
-      page_cover.classList.remove('nav-page-cover-active')
-    })
-    menu_close.addEventListener('click', () => {
-      side_menu.classList.remove('header-side-menu-active')
-      page_cover.classList.remove('nav-page-cover-active')
-    })
-
-    let nav_containers= document.getElementsByClassName('nav-containers')[0].classList,
-    nav_right= document.getElementsByClassName('nav-right')[0].classList,
-    lastScrollY = 0;
-    window.addEventListener('scroll', function(){
-      var window_higth = this.scrollY;
-      // 判斷是向上捲動，而且捲軸超過 200px
-      if( window_higth < lastScrollY) {
-        nav_containers.remove('hideUp');
-        nav_right.remove('nav-add-width');
-      }else{
-        nav_containers.add('hideUp');
-        nav_right.add('nav-add-width');
-      }
-      lastScrollY = window_higth;
-    });
-
-    // 卡片翻轉效果
-    const cards = document.querySelectorAll('.store_card')
-    function transition() {
-      if (this.classList.contains('active')) {
-        this.classList.remove('active')
-      } else {
-        this.classList.add('active')
-      }
-    }
-    cards.forEach((card) => card.addEventListener('click', transition))
-  }, [])
-
-
   return (
     <Router>
       <header>
