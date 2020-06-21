@@ -31,25 +31,20 @@ function MyNavBar(props) {
             .then(result=>result.json())
             .then(obj=>{
                 console.log(obj);
-                message.success(`${obj['message']}`);
                 localStorage.removeItem('memberData');
-                props.history.push('/')
+                setTimeout(()=>{
+                    message.success(`${obj['message']}`);
+                    props.history.push('/')
+                },1000)
                 // props.history.goBack()
             })
     }
 
     // 點擊跳轉到 賣家
     const goToStore =()=>{
-        document.location.href='/AliceSellers'
-        // props.history.push('/AliceSellers')
-        console.log(props.history)
+        // document.location.href='/AliceSellers'
+        props.history.push('/AliceSellers')
     }
-
-    // const sellers = (
-    //     <Fragment>
-    //         <span className="IconP">賣家中心</span>
-    //     </Fragment>
-    // );
     const loves = (
         <Fragment>
             <span className="IconP">我的最愛</span>
@@ -67,8 +62,13 @@ function MyNavBar(props) {
     );
     const membersInside = (
         <Fragment>
-            <p className="IconP">會員中心</p>
-            <p className="IconP" onClick={goToStore}>我的賣場</p>
+            <Link className="otis-login-opener" to="/KMembers/">
+                <p className="IconP">會員中心</p>
+            </Link>
+            <Link className="otis-login-opener" to="/AliceSellers">
+                <p className="IconP">我的賣場</p>
+            </Link>
+            {/* <p className="IconP" onClick={goToStore}>我的賣場</p> */}
             {/* <link to='/AliceSellers'>我的賣場</link> */}
             <p className="IconP" onClick={logoutCallback}>登出</p>
         </Fragment>
@@ -309,11 +309,11 @@ function MyNavBar(props) {
                                         <div id="members" className="otis-members">
                                         { 
                                             memberData ? (<Fragment>
-                                                                <Link className="otis-login-opener" to="/KMembers/">
+                                                                {/* <Link className="otis-login-opener" to="/KMembers/"> */}
                                                                     <Popover content={membersInside} placement="bottom">
                                                                         <span className="otis-login-text"><i className="iconfont icon-Personal"></i>{memberData.name}</span>
                                                                     </Popover>
-                                                                </Link>
+                                                                {/* </Link> */}
                                                             </Fragment>) : (<Link className="otis-login-opener" to="/KMembers/MembersLogin">
                                                                                 <Popover content={membersOutside} placement="bottom">
                                                                                     <span className="otis-login-text"><i className="iconfont icon-Personal"></i></span>
