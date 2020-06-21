@@ -51,7 +51,7 @@ const addFromServer = () =>{
     .then(result=>result.json())
     .then(obj=>{
         console.log(obj)
-        localStorage.setItem('memberData', JSON.stringify(obj));
+        // localStorage.setItem('memberData', JSON.stringify(obj));
         message.success(`註冊成功！`);
         setTimeout(()=>{
           // props.history.goBack()
@@ -105,7 +105,7 @@ const addFromServer = () =>{
               />
               <p className="login_err"></p>
 
-              <label htmlFor="registerEmail" className="gray">用戶名或郵箱地址 *</label>
+              <label htmlFor="registerEmail" className="gray">郵箱地址 *</label>
               <input 
                 required
                 className="input01" 

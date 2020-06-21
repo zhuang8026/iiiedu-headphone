@@ -57,7 +57,7 @@ function MyNavBar(props) {
             console.log(JSON.stringify(obj));
             localStorage.removeItem('memberData');
             // alert('儲存成功，跳回首頁')
-            // props.history.push('/')
+            props.history.push('/')
             // props.history.goBack()
             })
     }

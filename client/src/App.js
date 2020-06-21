@@ -125,6 +125,22 @@ function App() {
       page_cover.classList.remove('nav-page-cover-active')
     })
 
+    let nav_containers= document.getElementsByClassName('nav-containers')[0].classList,
+    nav_right= document.getElementsByClassName('nav-right')[0].classList,
+    lastScrollY = 0;
+    window.addEventListener('scroll', function(){
+      var window_higth = this.scrollY;
+      // 判斷是向上捲動，而且捲軸超過 200px
+      if( window_higth < lastScrollY) {
+        nav_containers.remove('hideUp');
+        nav_right.remove('nav-add-width');
+      }else{
+        nav_containers.add('hideUp');
+        nav_right.add('nav-add-width');
+      }
+      lastScrollY = window_higth;
+    });
+
     // 卡片翻轉效果
     const cards = document.querySelectorAll('.store_card')
     function transition() {
