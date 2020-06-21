@@ -55,7 +55,7 @@ function MembersLeft() {
                     <div className="men_title">
                         <div className="men_title_inner">
                             <span className="iconfont icon-safety"></span>
-                            <a className="men_a">我的保固卡</a>
+                            <NavLink className="men_a" to="/AliceSellers">我的商場</NavLink>
                         </div>
                     </div>
                     <div className="men_title">

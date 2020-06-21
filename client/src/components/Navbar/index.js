@@ -16,30 +16,10 @@ import {NavItemsAir} from './config';
 
 
 function MyNavBar(props) {
-    const members = (
-        <Fragment>
-            <span className="IconP">會員中心</span>
-        </Fragment>
-    );
-    const sellers = (
-        <Fragment>
-            <span className="IconP">賣家中心</span>
-        </Fragment>
-    );
-    const loves = (
-        <Fragment>
-            <span className="IconP">我的最愛</span>
-        </Fragment>
-    );
-    const carts = (
-        <Fragment>
-            <span className="IconP">購物車</span>
-        </Fragment>
-    );
-    
     const memberData = JSON.parse(localStorage.getItem('memberData'))
     // console.log('localStorage', memberData)
     
+    // 登出
     const logoutCallback = () => {
         fetch('http://localhost:3009/members/logout', {
             method: 'get',
@@ -50,14 +30,49 @@ function MyNavBar(props) {
         })
             .then(result=>result.json())
             .then(obj=>{
-            console.log(obj);
-            message.success(`${obj['message']}`);
-            localStorage.removeItem('memberData');
-            props.history.push('/')
-            // props.history.goBack()
+                console.log(obj);
+                message.success(`${obj['message']}`);
+                localStorage.removeItem('memberData');
+                props.history.push('/')
+                // props.history.goBack()
             })
     }
 
+    // 點擊跳轉到 賣家
+    const goToStore =()=>{
+        document.location.href='/AliceSellers'
+        // props.history.push('/AliceSellers')
+        console.log(props.history)
+    }
+
+    // const sellers = (
+    //     <Fragment>
+    //         <span className="IconP">賣家中心</span>
+    //     </Fragment>
+    // );
+    const loves = (
+        <Fragment>
+            <span className="IconP">我的最愛</span>
+        </Fragment>
+    );
+    const carts = (
+        <Fragment>
+            <span className="IconP">購物車</span>
+        </Fragment>
+    );
+    const membersOutside = (
+        <Fragment>
+            <span className="IconP">會員登入</span>
+        </Fragment>
+    );
+    const membersInside = (
+        <Fragment>
+            <p className="IconP">會員中心</p>
+            <p className="IconP" onClick={goToStore}>我的賣場</p>
+            {/* <link to='/AliceSellers'>我的賣場</link> */}
+            <p className="IconP" onClick={logoutCallback}>登出</p>
+        </Fragment>
+    );
     useEffect(() => {
         // navbar
         let shop_btn = document.getElementById('shopping')
@@ -277,17 +292,17 @@ function MyNavBar(props) {
                                     </li>
                                     
                                     {/* 賣家 */}
-                                    <li>
+                                    {/* <li>
                                         <div id="members" className="otis-members">
-                                            <a className="otis-login-opener" href="/AliceSellers">
+                                            <Link className="otis-login-opener" to="/AliceSellers">
                                                 <Popover content={sellers} placement="bottom">
                                                     <span className="otis-login-text">
                                                         <i className="iconfont icon-geren"></i>
                                                     </span>
                                                 </Popover>
-                                            </a>
+                                            </Link>
                                         </div>
-                                    </li>
+                                    </li> */}
 
                                     {/* 會員 */}
                                     <li>
@@ -295,14 +310,12 @@ function MyNavBar(props) {
                                         { 
                                             memberData ? (<Fragment>
                                                                 <Link className="otis-login-opener" to="/KMembers/">
-                                                                    <Popover content={members} placement="bottom">
+                                                                    <Popover content={membersInside} placement="bottom">
                                                                         <span className="otis-login-text"><i className="iconfont icon-Personal"></i></span>
-                                                                        {/* <span className="otis-login-text">{memberData.name}</span> */}
                                                                     </Popover>
                                                                 </Link>
-                                                                <span className="otis-login-text" onClick={logoutCallback}>登出</span>
                                                             </Fragment>) : (<Link className="otis-login-opener" to="/KMembers/MembersLogin">
-                                                                                <Popover content={members} placement="bottom">
+                                                                                <Popover content={membersOutside} placement="bottom">
                                                                                     <span className="otis-login-text"><i className="iconfont icon-Personal"></i></span>
                                                                                 </Popover>
                                                                             </Link>) 

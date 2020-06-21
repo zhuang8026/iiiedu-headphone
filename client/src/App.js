@@ -31,12 +31,12 @@ import BlogEdit from './pages/BLog/Blog-1-main-components/BlogEdit'
 import KMembers from './pages/Members'
 import MembersLogin from './pages/Members/MembersLogin'
 import MembersRegister from './pages/Members/MembersRegister'
-// import MembersPwa from './pages/Members/MembersPwa'
-// import MembersBank from './pages/Members/MembersBank'
-// import MembersAdress from './pages/Members/MembersAdress'
-// import MembersCartList from './pages/Members/MembersCartList'
-// import MembersCartDetail from './pages/Members/MembersCartDetail'
-// import MembersForget from './pages/Members/MembersForget'
+import MembersPwa from './pages/Members/MembersPwa'
+import MembersBank from './pages/Members/MembersBank'
+import MembersAdress from './pages/Members/MembersAdress'
+import MembersCartList from './pages/Members/MembersCartList'
+import MembersCartDetail from './pages/Members/MembersCartDetail'
+import MembersForget from './pages/Members/MembersForget'
 
 // Alice's part
 import AliceSellers from './pages/Sellers'
@@ -186,6 +186,34 @@ function App() {
             }}
           />
         </Route>
+        <Route path="/KMembers/MembersForget">
+          <MembersForget />
+        </Route>
+
+        <Route path="/KMembers/MembersRegister">
+          <MembersRegister />
+        </Route>
+
+        <Route path="/KMembers/MembersPwa">
+          <MembersPwa />
+        </Route>
+
+        <Route path="/KMembers/MembersBank">
+          <MembersBank />
+        </Route>
+
+        <Route path="/KMembers/MembersAdress">
+          <MembersAdress />
+        </Route>
+
+        <Route path="/KMembers/MembersCartList">
+          <MembersCartList />
+        </Route>
+
+        <Route path="/KMembers/MembersCartDetail">
+          <MembersCartDetail />
+        </Route>
+
         {/* <Route
           exact
           path="/about/WiOurClients"
