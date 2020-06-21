@@ -13,9 +13,6 @@ import {
 
 
 // components
-import MyNavBar from '../../components/Navbar'
-import MyMenu from '../../components/NavbarMenu'
-import MyFooter from '../../components/Footer'
 
 import { Pagination } from 'antd';
 
@@ -29,10 +26,6 @@ function MyFav(props) {
   return (
     <Router>
       <Fragment>
-        <header>
-          <MyNavBar />
-          <MyMenu />
-        </header>
         <main>
           <div className="MyFav_container">
             <div className="MyFav_select">
@@ -59,7 +52,7 @@ function MyFav(props) {
                           <h4>$8,700</h4>
                       </div>
                       <div className="MyFav_card_button">
-                          <button className="MyFav_update men_btn_style">加入比較</button>
+                          <button className="MyFav_update men_btn_style">前往細節頁</button>
                           <button className="MyFav_del men_btn_style">加入購物車</button>
                       </div>
                   </li>
@@ -72,7 +65,7 @@ function MyFav(props) {
                           <h4>$8,700</h4>
                       </div>
                       <div className="MyFav_card_button">
-                          <button className="MyFav_update men_btn_style">加入比較</button>
+                          <button className="MyFav_update men_btn_style">前往細節頁</button>
                           <button className="MyFav_del men_btn_style">加入購物車</button>
                       </div>
                   </li>
@@ -81,7 +74,6 @@ function MyFav(props) {
             </div>
           </div>
         </main>
-        <MyFooter />
       </Fragment>
     </Router>
   )
