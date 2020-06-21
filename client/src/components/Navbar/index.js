@@ -311,7 +311,7 @@ function MyNavBar(props) {
                                             memberData ? (<Fragment>
                                                                 <Link className="otis-login-opener" to="/KMembers/">
                                                                     <Popover content={membersInside} placement="bottom">
-                                                                        <span className="otis-login-text"><i className="iconfont icon-Personal"></i></span>
+                                                                        <span className="otis-login-text"><i className="iconfont icon-Personal"></i>{memberData.name}</span>
                                                                     </Popover>
                                                                 </Link>
                                                             </Fragment>) : (<Link className="otis-login-opener" to="/KMembers/MembersLogin">
