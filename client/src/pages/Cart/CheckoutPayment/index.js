@@ -10,6 +10,10 @@ import {
 function CartPayment(props) {
   return (
     <>
+      <div className="cart-crumb">
+        <div></div>
+        <Link to="/">首頁</Link> / <Link to="/YfangCart">購物車</Link>
+      </div>
       <div className="cart-container">
         {/* 購物車步驟圖 */}
         <ul className="cart-step-ul">
@@ -73,11 +77,16 @@ function CartPayment(props) {
             <div></div>
           </div>
           <p>以下暫用 待修改</p>
-          <input type="text" name="creditCardNum"/>
-          <input type="text" name="creditCardName"/>
-          <input type="month" name="creditCardMonth" min="218-01" lue="2025-01"/>
+          <input type="text" name="creditCardNum" />
+          <input type="text" name="creditCardName" />
+          <input
+            type="month"
+            name="creditCardMonth"
+            min="218-01"
+            lue="2025-01"
+          />
           <div>
-            <button>下一步</button>
+            <button type="button"><Link to="/OrderComplete">下一步</Link></button>
           </div>
         </form>
       </div>

@@ -1,32 +1,18 @@
 // 函式元件
-import React, { Fragment, useState } from 'react'
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-  Link,
-  NavLink,
-  withRouter,
-} from 'react-router-dom'
-
-// components
-import MyNavBar from '../../../components/Navbar'
-import MyMenu from '../../../components/NavbarMenu'
-import MyFooter from '../../../components/Footer'
+import React from 'react'
+import { withRouter } from 'react-router-dom'
 
 import MembersLeft from '../ComponentMembersLeft'
 
-function MembersPwa() {
+function MembersPwa(props) {
+  const {userdata, setUserdata} = props;
   return (
-    <Fragment>
-      <header>
-        <MyNavBar />
-        <MyMenu />
-      </header>
       <main>
         <div className="members_all">
-          <MembersLeft />
+          <MembersLeft 
+            userdata= {userdata}
+            setUserdata= {setUserdata}
+          />
           <div className="members_right">
             <div className="members_right_inner">
               {/* title */}
@@ -91,8 +77,6 @@ function MembersPwa() {
           </div>
         </div>
       </main>
-      <MyFooter />
-    </Fragment>
   )
 }
 export default withRouter(MembersPwa)

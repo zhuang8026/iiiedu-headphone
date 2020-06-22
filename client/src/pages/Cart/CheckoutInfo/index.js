@@ -1,10 +1,14 @@
 // 函式元件
 import React, { useEffect } from 'react'
-import { withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 function CartBuyerInfo(props) {
   return (
     <>
+      <div className="cart-crumb">
+        <div></div>
+        <Link to="/">首頁</Link> / <Link to="/YfangCart">購物車</Link>
+      </div>  
       <div className="cart-container">
         {/* 購物車步驟圖 */}
         <ul className="cart-step-ul">
@@ -75,7 +79,7 @@ function CartBuyerInfo(props) {
             </div>
           </div>
           <div>
-            <button>下一步</button>
+            <button type="button"><Link to="/CheckoutDelivery">下一步</Link></button>
           </div>
         </form>
       </div>

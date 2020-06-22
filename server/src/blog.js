@@ -1,11 +1,11 @@
 const express = require('express');
 const moment = require('moment-timezone');
-const session = require('express-session');   
+const session = require('express-session');
 const MysqlStore = require('express-mysql-session')(session);
 const upload = require(__dirname + '/upload-module');
 const db = require(__dirname + '/db_connect');
 const cors = require('cors');
-const fs = require('fs'); 
+const fs = require('fs');
 
 
 const router = express.Router();
@@ -17,7 +17,7 @@ const app = express();
 
 
 // middleware
-app.use(express.urlencoded({ extended: false })); 
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 
@@ -35,7 +35,7 @@ app.use(express.json());
 
 
 
-router.get('/try-session', (req, res)=>{
+router.get('/try-session', (req, res) => {
     req.session.my_var = req.session.my_var || 0;
     req.session.my_var++;
 
@@ -47,7 +47,7 @@ router.get('/try-session', (req, res)=>{
 
 //================================================== blog root ==============================================================
 // http://localhost:3009/blog
-router.get('/', (req, res)=>{ 
+router.get('/', (req, res) => {
     res.send('blog root => 請輸入您要的url');
 });
 
@@ -57,7 +57,7 @@ router.get('/', (req, res)=>{
 // 所有文章(分頁)的function
 const getAllBlogList = async (req) => {
     const perPage = 5;
-    let page = parseInt(req.params.page) || 1;    
+    let page = parseInt(req.params.page) || 1;
     const output = {
         page: page,
         perPage: perPage,
@@ -65,8 +65,8 @@ const getAllBlogList = async (req) => {
         totalPages: 0, //總共有幾頁
         rows: []
     }
-    const [r1]= await db.query(`SELECT COUNT(1) num FROM blogs`);
-    
+    const [r1] = await db.query(`SELECT COUNT(1) num FROM blogs`);
+
     output.totalRows = r1[0].num;
     output.totalPages = Math.ceil(output.totalRows / perPage);
     if (page < 1) page = 1;
@@ -76,8 +76,8 @@ const getAllBlogList = async (req) => {
     if (!output.page) {
         return output;
     }
-    const sql = `SELECT * FROM blogs ORDER BY blogId desc LIMIT ${(page - 1) * perPage}, ${perPage}`
-    const [r2] = await db.query(sql);    
+    const sql = `SELECT * FROM blogs ORDER BY blogId LIMIT ${(page - 1) * perPage}, ${perPage}`
+    const [r2] = await db.query(sql);
     if (r2) output.rows = r2;
     console.log(output)
     // 將r2裡的Date改成正常時間格式
@@ -96,7 +96,7 @@ const getUserBlogList = async (req) => {
     let page = parseInt(req.params.page) || 1;
     let id = parseInt(req.params.id);
     const output = {
-        id:id,
+        id: id,
         page: page,
         perPage: perPage,
         totalRows: 0, // 總共有幾筆資料
@@ -104,7 +104,7 @@ const getUserBlogList = async (req) => {
         rows: []
     }
     console.log(id)
-    const [r1]= await db.query(`SELECT COUNT(1) num FROM blogs WHERE id=${id}`);
+    const [r1] = await db.query(`SELECT COUNT(1) num FROM blogs WHERE id=${id}`);
     output.totalRows = r1[0].num;
     output.totalPages = Math.ceil(output.totalRows / perPage);
     if (page < 1) page = 1;
@@ -152,7 +152,7 @@ router.get("/listUserBlog/:id", (req, res) => {
     let output = {}
     db.query(sql)
         .then(results => {
-            output.results = results;            
+            output.results = results;
             res.json(results[0])
             return db.query(sql);
         })
@@ -169,22 +169,24 @@ router.get('/listUserBlog/:id/:page?', async (req, res) => {
 // (測試ok)
 // 新增部落格文章
 // http://localhost:3009/blog/add
-router.get('/add', upload.none(), (req, res)=>{
+// router.get('/add', (req, res)=>{
+router.post('/add', upload.none(), (req, res) => {
     const output = {
         success: false
     }
-    const sql = "INSERT INTO blogs set ?";
     // 沒有創建時間的input欄位，就直接給它函數方法
-    req.body.id = 9999; 
-    req.body.blogTitle = 9999 ; 
-    req.body.blogContent01 = 9999 ; 
-    req.body.blogContent01_img01 = 9999 ;   
-    req.body.blogContent02 = 9999 ; 
-    req.body.blogContent02_img01 = 9999 ;   
-    db.query(sql, [req.body])
-        .then(([r])=>{
+    let id = 99;
+
+    let blogTitle = req.body.blogTitle;
+    let blogContent01 = req.body.blogContent01;
+    let blogContent02 = req.body.blogContent02;
+
+    const sql = "INSERT INTO `blogs`(`id`,`blogTitle`,`blogContent01`,`blogContent02`) VALUES (?, ?, ?, ?)";
+    console.log('req.body', [req.body])
+    db.query(sql, [id, blogTitle, blogContent01, blogContent02])
+        .then(([r]) => {
             output.results = r;
-            if(r.affectedRows && r.insertId){
+            if (r.affectedRows && r.insertId) {
                 output.success = true;
             }
             res.json(output);
@@ -196,14 +198,14 @@ router.get('/add', upload.none(), (req, res)=>{
 // (測試ok)
 // 刪除部落格文章
 // http://localhost:3009/blog/del/(部落格編號)
-router.get('/del/:blogId', (req, res)=>{
+router.get('/del/:blogId', (req, res) => {
     // 找檔頭裡面有沒有'Referer'，就是有沒有從哪裡來
     // let referer = req.get('Referer'); 
-    let referer=1;
+    let referer = 1;
     let blogId = req.params.blogId;
     const sql = `DELETE FROM blogs WHERE blogId=${blogId}`;
     db.query(sql, [req.params.blogId])
-        .then(([r])=>{
+        .then(([r]) => {
             res.json(req.params);
             // if(referer){
             //     // 如果有則回到原本那一頁
@@ -220,26 +222,39 @@ router.get('/del/:blogId', (req, res)=>{
 // 編輯部落格文章
 // http://localhost:3009/blog/edit/(部落格編號)
 // 提交表單才要改成PUT
-router.post('/edit/:blogId', upload.none(), (req, res)=>{
+router.post('/edit/:blogId', upload.none(), (req, res) => {
     const output = {
         success: false,
         body: req.body
     }
     // let blogId = parseInt(req.body.blogId);
     let blogId = req.params.blogId;
-    req.body.blogTitle = 9988 ; 
-    if(! blogId){
+
+    // let editBlogTitle = req.body.editBlogTitle;
+    // let editBlogContent01 = req.body.editBlogContent01;
+    // let editBlogContent02 = req.body.editBlogContent02;
+
+    let editBlogTitle = 1234;
+    let editBlogContent01 = 1234;
+    let editBlogContent02 = 1234;
+
+    const sql = `UPDATE blogs
+    SET editBlogTitle=${editBlogTitle},
+    editBlogContent01=${editBlogContent01},
+    editBlogContent02=${editBlogContent02}
+    WHERE blogId=${blogId}`;
+
+    if (!blogId) {
         output.error = '沒有主鍵';
-        return res.json(output);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+        return res.json(output);
     }
-    const sql = "UPDATE `blogs` SET ? WHERE blogId=?";
+    // const sql = "UPDATE `blogs` SET ? WHERE blogId=?";
     // 把req.body.blogId刪掉，但宣告的blogId還存在
     delete req.body.blogId;
-    db.query(sql, [req.body, blogId])
-        .then(([r])=>{
+    db.query(sql)
+        .then(([r]) => {
             output.results = r;
-            
-            if(r.affectedRows && r.changedRows){
+            if (r.affectedRows && r.changedRows) {
                 output.success = true;
             }
             res.json(output);
@@ -251,18 +266,16 @@ router.post('/edit/:blogId', upload.none(), (req, res)=>{
 // 搜尋結果(分頁)的func
 const getSearchList = async (req) => {
     const perPage = 5;
-    let page = parseInt(req.params.page) || 1;    
+    let page = parseInt(req.params.page) || 1;
     const output = {
-
-
         page: page,
         perPage: perPage,
         totalRows: 0, // 總共有幾筆資料
         totalPages: 0, //總共有幾頁
         rows: []
     }
-    const [r1]= await db.query(`SELECT COUNT(1) num FROM blogs`);
-    
+    const [r1] = await db.query(`SELECT COUNT(1) num FROM blogs`);
+
     output.totalRows = r1[0].num;
     output.totalPages = Math.ceil(output.totalRows / perPage);
     if (page < 1) page = 1;
@@ -273,7 +286,7 @@ const getSearchList = async (req) => {
         return output;
     }
     const sql = `SELECT * FROM blogs ORDER BY blogId desc LIMIT ${(page - 1) * perPage}, ${perPage}`
-    const [r2] = await db.query(sql);    
+    const [r2] = await db.query(sql);
     if (r2) output.rows = r2;
     console.log(output)
     // 將r2裡的Date改成正常時間格式
@@ -290,7 +303,7 @@ const getSearchList = async (req) => {
 //================================================== 圖片上傳 ==============================================================
 // (未完成)
 // 測試upload
-app.post('/try-upload', upload.single('avatar'),(req, res)=>{
+app.post('/try-upload', upload.single('avatar'), (req, res) => {
     console.log(req.file);
     console.log(req.body);
     const output = {
@@ -300,15 +313,15 @@ app.post('/try-upload', upload.single('avatar'),(req, res)=>{
         errorMsg: ''
     }
     output.nickname = req.body.nickname || '';
-    if(req.file && req.file.originalname){
+    if (req.file && req.file.originalname) {
         // 判斷是否為圖檔
         // 下面的寫法，不管是png還是jpeg都會進入fs.rename
-        switch(req.file.mimetype){
+        switch (req.file.mimetype) {
             case 'image/png':
             case 'image/jpeg':
                 // 將檔案搬至公開的資料夾
-                fs.rename(req.file.path, './public/img/'+ req.file.originalname, error=>{
-                    if(!error){
+                fs.rename(req.file.path, './public/img/' + req.file.originalname, error => {
+                    if (!error) {
                         output.success = true;
                         output.uploadedImg = '/img/' + req.file.originalname;
                     }
@@ -316,7 +329,7 @@ app.post('/try-upload', upload.single('avatar'),(req, res)=>{
                 })
                 break;
             default:
-                fs.unlink(req.file.path, error=>{
+                fs.unlink(req.file.path, error => {
                     output.errorMsg = '檔案類型錯誤'
                     res.render('try-upload', output);
                 })  // 刪除暫存檔
@@ -330,10 +343,10 @@ app.post('/try-upload', upload.single('avatar'),(req, res)=>{
 //================================================== 測試區 ==============================================================
 
 
-router.post('/try-post', (req, res)=>{
+router.post('/try-post', (req, res) => {
     req.body.contentType = req.get('Content-Type'); // 取得檔頭  
     req.body.pageTitle = '測試表單-Json'
-    req.body.txt='測試一下'
+    req.body.txt = '測試一下'
     res.json(req.body)
 })
 

@@ -1,14 +1,6 @@
 // 函式元件
 import React, { Fragment } from 'react'
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-  Link,
-  NavLink,
-  withRouter,
-} from 'react-router-dom'
+import { Link ,withRouter, useParams } from 'react-router-dom'
 
 // components
 import ProductCrumb from '../ProductCrumb'
@@ -17,6 +9,11 @@ import ProductDetailRight from '../ProductDetail/ProductDetailRight'
 import ProductDetailBottom from '../ProductDetail/ProductDetailBottom'
 
 function ProductDetail(props) {
+    // console.log(props)
+    // const { match } = props;
+    let { id } = useParams()
+    // let {id} = match.params;
+    console.log(id);
   return (
     <Fragment>
       <main>

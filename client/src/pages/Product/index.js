@@ -15,10 +15,16 @@ import ProductCrumb from './ProductCrumb'
 import ProductMain from './ProductMain'
 
 function YyProduct(props) {
+    const { itemsdata, setItemsdata, itemsid, setItemsid } = props;
     return (
         <main>
           <ProductCrumb />
-          <ProductMain />
+          <ProductMain 
+            itemsdata = {itemsdata}
+            setItemsdata = {setItemsdata}
+            itemsid = {itemsid}
+            setItemsid = {setItemsid}
+          />
         </main>
       )
 

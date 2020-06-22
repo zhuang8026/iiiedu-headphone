@@ -37,7 +37,7 @@
       line-height: 90px;
       margin-left: 50px;
     }
-    a {
+    Link {
       font-size: $font-size-16;
       line-height: 90px;
       margin-left: 50px;
@@ -343,12 +343,15 @@
         width: 90%;
         margin: 0 0 0 10%;
         text-align: center;
-        button {
+        .i-want-post {
           width: 90%;
           margin: 0 auto;
           line-height: 32px;
           color: $font-color-x;
           background: $btn-color-s;
+        }
+        .i-want-post:hover{
+          cursor: pointer;
         }
         figure {
           width: 100%;

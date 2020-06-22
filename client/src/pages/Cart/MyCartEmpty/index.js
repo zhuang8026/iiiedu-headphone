@@ -10,11 +10,15 @@ import {
 function CartEmpty(props) {
   return (
     <>
+      <div className="cart-crumb">
+        <div></div>
+        <Link to="/">首頁</Link> / <Link to="/YfangCart">購物車</Link>
+      </div>
       <div className="cart-container">
         <ul class="cart-empty">
           <li>目前購物車是空的!</li>
           <li class="border-top">
-            <button>去商店</button>
+            <button type="button"><Link to="/YyProduct">去商店</Link></button>
           </li>
         </ul>
       </div>
