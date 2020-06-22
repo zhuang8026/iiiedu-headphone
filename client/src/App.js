@@ -6,14 +6,14 @@ import {
   Redirect,
 } from 'react-router-dom'
 
-import { message } from 'antd';
+import { message } from 'antd'
 
 // navbar & footer
 import MyNavBar from './components/Navbar'
 import MyMenu from './components/NavbarMenu'
 import MyFooter from './components/Footer'
 
-// home 
+// home
 import WiHome from './pages/Home'
 
 // Product
@@ -50,8 +50,12 @@ import SellerAddress from './pages/Sellers/SellerAddress'
 //我的最愛
 import MyFav from './pages/MyFav'
 
-// yafang
-import YfangCart from './pages/Cart'
+// 購物車
+import MyCart from './pages/Cart/MyCart' //購物車
+import CheckoutInfo from './pages/Cart/CheckoutInfo' //訂單個人資料填寫
+import CheckoutDelivery from './pages/Cart/CheckoutDelivery' //選擇配送方式
+import CheckoutPayment from './pages/Cart/CheckoutPayment' //選擇付款方式
+import OrderComplete from './pages/Cart/OrderComplete' //購買完成頁
 
 // 靜態頁面
 // import WiAbout from './pages/About'
@@ -84,7 +88,7 @@ function App() {
 
     if (errors.length > 0) {
       setLoginErrors(errors)
-      message.warning(errors);
+      message.warning(errors)
       return
     }
     // 清空錯誤訊息陣列 + 登入
@@ -103,7 +107,7 @@ function App() {
 
     if (errors.length > 0) {
       setLoginErrors(errors)
-      message.warning(errors);
+      message.warning(errors)
       return
     }
     // 清空錯誤訊息陣列 + 登入
@@ -112,28 +116,28 @@ function App() {
     addFromServer()
   }
 
-  const localUser = JSON.parse(localStorage.getItem('memberData')); // 取得localStorage資料
-  const getUserData = (usernameData,pwdData )=> {
-      fetch(`http://localhost:3009/members/user/${usernameData}/${pwdData}`, {
-          method: 'get',
-          headers: new Headers({
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-          })
+  const localUser = JSON.parse(localStorage.getItem('memberData')) || '';  // 取得localStorage資料
+  const getUserData = (usernameData, pwdData) => {
+    fetch(`http://localhost:3009/members/user/${usernameData}/${pwdData}`, {
+      method: 'get',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      }),
+    })
+      .then((res) => {
+        return res.json()
       })
-          .then((res)=>{
-              return res.json()
-          })
-          .then((res)=>{
-              console.log(res)
-              setUserdata(res[0]);
-              // console.log(userdata);
-          })
+      .then((res) => {
+        console.log(res)
+        setUserdata(res[0])
+        // console.log(userdata);
+      })
   }
-  useEffect(()=>{
-      getUserData(localUser['username'], localUser['password'])
-  },[])
-  
+  useEffect(() => {
+    getUserData(localUser['username'], localUser['password'])
+  }, [])
+
   return (
     <Router>
       <header>
@@ -194,10 +198,7 @@ function App() {
 
         {/* 會員 */}
         <Route exact path="/KMembers">
-          <KMembers 
-            userdata={userdata}
-            setUserdata={setUserdata}
-          />
+          <KMembers userdata={userdata} setUserdata={setUserdata} />
         </Route>
         <Route path="/KMembers/MembersLogin">
           <MembersLogin
@@ -211,7 +212,7 @@ function App() {
           />
         </Route>
         <Route path="/KMembers/MembersRegister">
-          <MembersRegister 
+          <MembersRegister
             allprops={{
               name,
               setName,
@@ -219,50 +220,36 @@ function App() {
               setUsername,
               password,
               setPassword,
-              RegisterProcess
+              RegisterProcess,
             }}
           />
         </Route>
         <Route path="/KMembers/MembersForget">
-          <MembersForget 
-            userdata={userdata}
-            setUserdata={setUserdata}/>
+          <MembersForget userdata={userdata} setUserdata={setUserdata} />
         </Route>
 
         <Route path="/KMembers/MembersRegister">
-          <MembersRegister 
-            userdata={userdata}
-            setUserdata={setUserdata}/>
+          <MembersRegister userdata={userdata} setUserdata={setUserdata} />
         </Route>
 
         <Route path="/KMembers/MembersPwa">
-          <MembersPwa 
-            userdata={userdata}
-            setUserdata={setUserdata}/>
+          <MembersPwa userdata={userdata} setUserdata={setUserdata} />
         </Route>
 
         <Route path="/KMembers/MembersBank">
-          <MembersBank 
-            userdata={userdata}
-            setUserdata={setUserdata}/>
+          <MembersBank userdata={userdata} setUserdata={setUserdata} />
         </Route>
 
         <Route path="/KMembers/MembersAdress">
-          <MembersAdress 
-            userdata={userdata}
-            setUserdata={setUserdata}/>
+          <MembersAdress userdata={userdata} setUserdata={setUserdata} />
         </Route>
 
         <Route path="/KMembers/MembersCartList">
-          <MembersCartList 
-            userdata={userdata}
-            setUserdata={setUserdata}/>
+          <MembersCartList userdata={userdata} setUserdata={setUserdata} />
         </Route>
 
         <Route path="/KMembers/MembersCartDetail">
-          <MembersCartDetail 
-            userdata={userdata}
-            setUserdata={setUserdata}/>
+          <MembersCartDetail userdata={userdata} setUserdata={setUserdata} />
         </Route>
 
 
@@ -284,27 +271,13 @@ function App() {
         </Route>
 
         {/* 賣家 */}
-        <Route exact path="/AliceSellers">
-          <AliceSellers />
-        </Route>
-        <Route path="/AliceSellers/my-sale">
-          <MySale />
-        </Route>
-        <Route path="/AliceSellers/order">
-          <Order />
-        </Route>
-        <Route path="/AliceSellers/refund">
-          <Refund />
-        </Route>
-        <Route path="/AliceSellers/seller-product">
-          <SellerProduct />
-        </Route>
-        <Route path="/AliceSellers/seller-account">
-          <SellerAccount />
-        </Route>
-        <Route path="/AliceSellers/seller-address">
-          <SellerAddress />
-        </Route>
+        <Route exact path="/AliceSellers" component={AliceSellers} />
+        <Route path="/AliceSellers/my-sale" component={MySale} />
+        <Route path="/AliceSellers/order" component={Order} />
+        <Route path="/AliceSellers/refund" component={Refund} />
+        <Route path="/AliceSellers/seller-product" component={SellerProduct} />
+        <Route path="/AliceSellers/seller-account" component={SellerAccount} />
+        <Route path="/AliceSellers/seller-address" component={SellerAddress} />
 
         {/* 我的最愛 */}
         <Route path="/MyFav">
@@ -312,8 +285,20 @@ function App() {
         </Route>
 
         {/* 購物車 */}
-        <Route path="/YfangCart" exact>
-          <YfangCart />
+        <Route path="/MyCart">
+          <MyCart />
+        </Route>
+        <Route path="/CheckoutInfo">
+          <CheckoutInfo />
+        </Route>
+        <Route path="/CheckoutDelivery">
+          <CheckoutDelivery />
+        </Route>
+        <Route path="/CheckoutPayment">
+          <CheckoutPayment />
+        </Route>
+        <Route path="/OrderComplete">
+          <OrderComplete />
         </Route>
 
         {/* ProtectdRoute 這是 utils */}

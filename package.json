@@ -1,0 +1,8 @@
+{
+  "name": "iiiedu-headphone",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/zhuang8026/iiiedu-headphone.git",
+  "author": "Alice <alicehpai@gmail.com>",
+  "license": "MIT"
+}

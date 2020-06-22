@@ -10,6 +10,10 @@ import {
 function CartDone(props) {
   return (
     <>
+      <div className="cart-crumb">
+        <div></div>
+        <Link to="/">首頁</Link> / <Link to="/YfangCart">購物車</Link>
+      </div>
       <div className="cart-container">
         {/* 購物車步驟圖 */}
         <ul className="cart-step-ul">
@@ -75,7 +79,7 @@ function CartDone(props) {
           <tfoot>
             <tr>
               <td>
-                <button>回到首頁</button>
+                <button type="button"><Link to="/">回首頁</Link></button>
               </td>
             </tr>
           </tfoot>

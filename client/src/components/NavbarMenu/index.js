@@ -131,7 +131,7 @@ function MyNavBar(props) {
                         </div>
                     </div>
                 </div>
-                <Link to="/YfangCart" type="button" className="add_cart" href="#">TO CART</Link>
+                <Link to="/MyCart" type="button" className="add_cart" href="#">TO CART</Link>
             </section>
         </Fragment>
     )
