@@ -1,5 +1,5 @@
 // 函式元件
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import {
   BrowserRouter as Router,
   Route,
@@ -30,6 +30,12 @@ import '../../../../assets/scss/blog_edit.scss'
 // -------------------- func --------------------
 
 function BlogEdit(props) {
+
+  // const[editBlogTitle, setEditBlogTitle] = useState('');
+  // const[editBlogContent01, setEditBlogContent01] = useState('');
+  // const[editBlogContent02, setEditBlogContent02] = useState('');
+
+
   return (
     <>
       <div className="blog-edit-spacing"></div>
@@ -39,7 +45,14 @@ function BlogEdit(props) {
       <div class="wrap-mid">
         <div class="blog-edit blog-d-flex">
           <div class="blog-edit-main">
-            <BlogMainEditInputs />
+            <BlogMainEditInputs 
+              // editBlogTitle = {editBlogTitle}
+              // setEditBlogTitle ={setEditBlogTitle}
+              // editBlogContent01 = {editBlogContent01}
+              // setEditBlogContent01 ={setEditBlogContent01}
+              // editBlogContent02 ={editBlogContent02}
+              // setEditBlogContent02 ={setEditBlogContent02}
+            />
           </div>
           <div class="blog-edit-aside">
             <BlogAsidePhoto />

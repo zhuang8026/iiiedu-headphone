@@ -1,5 +1,7 @@
 // 函式元件
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
+
+
 import {
   BrowserRouter as Router,
   Route,
@@ -25,12 +27,38 @@ import PrevPageHover from '../../../../assets/img/blog-img/blog-standard/prev-pa
 // -------------------- func --------------------
 
 function BlogMainUserListByUser(props) {
+
+  const [listUserBlogdata, setlistUserBlogdata] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:3009/blog/listUserBlog/2/1', {
+      method: 'get',
+      headers: new Headers({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }),
+    })
+      .then((response) => {
+        return response.json()
+      })
+      .then((response) => {
+        console.log(response.rows)
+        setlistUserBlogdata(response.rows)
+      })
+  }, [])
+
+
   return (
     <>
       <div className="blog-btns blog-d-flex blog-justify-content-between">
         <div className="blog-btns-left">
-          <Link to="../BlogStandard" className="blog-btns-left-Link">全部文章</Link>
-          <Link to="../BlogUser" className="blog-btns-left-Link">個人文章</Link>
+        <button className="blog-btns-left-Link" onClick={()=>props.history.push('/Blog/YongBlog')}>
+            全部文章
+          </button>
+          
+          <button className="blog-btns-left-Link" onClick={()=>props.history.push('/Blog/YongMyBlog')}>
+            個人文章
+          </button>
         </div>
         <div className="blog-btns-right blog-d-flex blog-justify-content-between">
           <select name="" id="">
@@ -49,196 +77,37 @@ function BlogMainUserListByUser(props) {
         </div>
       </div>
       <div className="blog-list blog-d-flex">
-        <div className="blog-card">
-          <figure className="blog-card-fig">
-            <img className="blog-cover" src={BlogCard} alt="" />
-          </figure>
-          <div className="blog-card-btns"></div>
-          <div className="blog-card-title">文章標題</div>
-          <div className="blog-card-content">
-            兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字
-          </div>
-          <div className="blog-card-calendar">
-            <div className="blog-card-calendar-in">
-              <h2>01</h2>
-              <h5>6月</h5>
+      {listUserBlogdata.map((data, index) => {
+          console.log(data)
+          return (
+            <div className="blog-card">
+              <figure className="blog-card-fig">
+                <img className="blog-cover" src={BlogCard} alt="" />
+              </figure>
+              <div className="blog-card-btns"></div>
+              <div className="blog-card-title">{data.blogTitle}</div>
+              <div className="blog-card-content">{data.blogContent01}</div>
+              <div className="blog-card-calendar">
+                <div className="blog-card-calendar-in">
+                  <h2>01</h2>
+                  <h5>6月</h5>
+                </div>
+              </div>
+              <div className="read-more">
+                <button className="read-more-btn">閱讀文章</button>
+              </div>
             </div>
-          </div>
-          <div className="read-more">
-            <button className="read-more-btn">閱讀文章</button>
-          </div>
-        </div>
-        <div className="blog-card">
-          <figure className="blog-card-fig">
-            <img className="blog-cover" src={BlogCard} alt="" />
-          </figure>
-          <div className="blog-card-btns"></div>
-          <div className="blog-card-title">文章標題</div>
-          <div className="blog-card-content">
-            兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字
-          </div>
-          <div className="blog-card-calendar">
-            <div className="blog-card-calendar-in">
-              <h2>01</h2>
-              <h5>6月</h5>
-            </div>
-          </div>
-          <div className="read-more">
-            <button className="read-more-btn">閱讀文章</button>
-          </div>
-        </div>
-        <div className="blog-card">
-          <figure className="blog-card-fig">
-            <img className="blog-cover" src={BlogCard} alt="" />
-          </figure>
-          <div className="blog-card-btns"></div>
-          <div className="blog-card-title">文章標題</div>
-          <div className="blog-card-content">
-            兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字
-          </div>
-          <div className="blog-card-calendar">
-            <div className="blog-card-calendar-in">
-              <h2>01</h2>
-              <h5>6月</h5>
-            </div>
-          </div>
-          <div className="read-more">
-            <button className="read-more-btn">閱讀文章</button>
-          </div>
-        </div>
-        <div className="blog-card">
-          <figure className="blog-card-fig">
-            <img className="blog-cover" src={BlogCard} alt="" />
-          </figure>
-          <div className="blog-card-btns"></div>
-          <div className="blog-card-title">文章標題</div>
-          <div className="blog-card-content">
-            兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字
-          </div>
-          <div className="blog-card-calendar">
-            <div className="blog-card-calendar-in">
-              <h2>01</h2>
-              <h5>6月</h5>
-            </div>
-          </div>
-          <div className="read-more">
-            <button className="read-more-btn">閱讀文章</button>
-          </div>
-        </div>
-        <div className="blog-card">
-          <figure className="blog-card-fig">
-            <img className="blog-cover" src={BlogCard} alt="" />
-          </figure>
-          <div className="blog-card-btns"></div>
-          <div className="blog-card-title">文章標題</div>
-          <div className="blog-card-content">
-            兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字
-          </div>
-          <div className="blog-card-calendar">
-            <div className="blog-card-calendar-in">
-              <h2>01</h2>
-              <h5>6月</h5>
-            </div>
-          </div>
-          <div className="read-more">
-            <button className="read-more-btn">閱讀文章</button>
-          </div>
-        </div>
-        <div className="blog-card">
-          <figure className="blog-card-fig">
-            <img className="blog-cover" src={BlogCard} alt="" />
-          </figure>
-          <div className="blog-card-btns"></div>
-          <div className="blog-card-title">文章標題</div>
-          <div className="blog-card-content">
-            兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字
-          </div>
-          <div className="blog-card-calendar">
-            <div className="blog-card-calendar-in">
-              <h2>01</h2>
-              <h5>6月</h5>
-            </div>
-          </div>
-          <div className="read-more">
-            <button className="read-more-btn">閱讀文章</button>
-          </div>
-        </div>
-        <div className="blog-card">
-          <figure className="blog-card-fig">
-            <img className="blog-cover" src={BlogCard} alt="" />
-          </figure>
-          <div className="blog-card-btns"></div>
-          <div className="blog-card-title">文章標題</div>
-          <div className="blog-card-content">
-            兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字
-          </div>
-          <div className="blog-card-calendar">
-            <div className="blog-card-calendar-in">
-              <h2>01</h2>
-              <h5>6月</h5>
-            </div>
-          </div>
-          <div className="read-more">
-            <button className="read-more-btn">閱讀文章</button>
-          </div>
-        </div>
-        <div className="blog-card">
-          <figure className="blog-card-fig">
-            <img className="blog-cover" src={BlogCard} alt="" />
-          </figure>
-          <div className="blog-card-btns"></div>
-          <div className="blog-card-title">文章標題</div>
-          <div className="blog-card-content">
-            兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字
-          </div>
-          <div className="blog-card-calendar">
-            <div className="blog-card-calendar-in">
-              <h2>01</h2>
-              <h5>6月</h5>
-            </div>
-          </div>
-          <div className="read-more">
-            <button className="read-more-btn">閱讀文章</button>
-          </div>
-        </div>
-        <div className="blog-card">
-          <figure className="blog-card-fig">
-            <img className="blog-cover" src={BlogCard} alt="" />
-          </figure>
-          <div className="blog-card-btns"></div>
-          <div className="blog-card-title">文章標題</div>
-          <div className="blog-card-content">
-            兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字
-          </div>
-          <div className="blog-card-calendar">
-            <div className="blog-card-calendar-in">
-              <h2>01</h2>
-              <h5>6月</h5>
-            </div>
-          </div>
-          <div className="read-more">
-            <button className="read-more-btn">閱讀文章</button>
-          </div>
-        </div>
-        <div className="blog-card">
-          <figure className="blog-card-fig">
-            <img className="blog-cover" src={BlogCard} alt="" />
-          </figure>
-          <div className="blog-card-btns"></div>
-          <div className="blog-card-title">文章標題</div>
-          <div className="blog-card-content">
-            兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字兩行內容文字
-          </div>
-          <div className="blog-card-calendar">
-            <div className="blog-card-calendar-in">
-              <h2>01</h2>
-              <h5>6月</h5>
-            </div>
-          </div>
-          <div className="read-more">
-            <button className="read-more-btn">閱讀文章</button>
-          </div>
-        </div>
+          )
+        })}
+        
+        
+        
+        
+        
+        
+        
+        
+        
       </div>
       <div className="blog-standard-pages blog-d-flex">
         <div className="prev-page">

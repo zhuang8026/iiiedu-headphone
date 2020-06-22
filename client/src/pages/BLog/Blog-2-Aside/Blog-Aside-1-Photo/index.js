@@ -25,7 +25,7 @@ function BlogAsidePhoto(props) {
   return (
     <>
       <div className="post-map">
-        <button>我要發文</button>
+        <button className="i-want-post" onClick={() => props.history.push('/Blog/BlogAdd')}>我要發文</button>
         <figure>
           <img src={WorldMap} alt="" />
         </figure>

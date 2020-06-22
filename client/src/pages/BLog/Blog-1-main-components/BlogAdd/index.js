@@ -1,5 +1,5 @@
 // 函式元件
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import {
   BrowserRouter as Router,
   Route,
@@ -11,9 +11,9 @@ import {
 } from 'react-router-dom'
 
 // -------------------- components --------------------
-import MyNavBar from '../../../../components/Navbar'
-import MyMenu from '../../../../components/NavbarMenu'
-import MyFooter from '../../../../components/Footer'
+// import MyNavBar from '../../../../components/Navbar'
+// import MyMenu from '../../../../components/NavbarMenu'
+// import MyFooter from '../../../../components/Footer'
 // 麵包削
 import BlogCrumb from '../BlogCrumb'
 // 引入Main
@@ -30,6 +30,19 @@ import '../../../../assets/scss/blog_add.scss'
 // -------------------- func --------------------
 
 function BlogAdd(props) {
+  const[blogTitle, setBlogTitle] = useState('');
+  const[blogContent01, setBlogContent01] = useState('');
+  const[blogContent02, setBlogContent02] = useState('');
+
+  // const {
+  //   blogTitle,
+  //   setBlogTitle,
+  //   blogContent01,
+  //   setBlogContent01,
+  //   blogContent02,
+  //   setBlogContent02,
+  //    } = props;
+
   return (
     <>
       <div className="blog-add-spacing"></div>
@@ -39,7 +52,14 @@ function BlogAdd(props) {
       <div class="wrap-mid">
         <div class="blog-add blog-d-flex">
           <div class="blog-add-main">
-            <BlogMainAddInputs />
+            <BlogMainAddInputs 
+              blogTitle = {blogTitle}
+              setBlogTitle ={setBlogTitle}
+              blogContent01 = {blogContent01}
+              setBlogContent01 ={setBlogContent01}
+              blogContent02 ={blogContent02}
+              setBlogContent02 ={setBlogContent02}
+            />
           </div>
           <div class="blog-add-aside">
             <BlogAsidePhoto />
