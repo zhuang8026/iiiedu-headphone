@@ -131,3 +131,37 @@ main {
         }   
     }
 }
+
+.file-upload {
+	position: relative;
+	display: inline-block;
+}
+
+.file-upload__label {
+    display: block;
+    padding: 6px 12px;
+    color: #211e55;
+    font-size: 14px;
+    background: #fff;
+    border-radius: 2px;
+    border: 1px solid #211e55;
+    transition: background .3s;
+    
+    &:hover {
+        cursor: pointer;
+        color: #fff;
+        background: #211e55;
+    }
+}
+    
+.file-upload__input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 1;
+    width:0;
+    height: 100%;
+    opacity: 0;
+}

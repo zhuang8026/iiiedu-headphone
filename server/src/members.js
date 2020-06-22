@@ -4,7 +4,6 @@ const upload = require(__dirname + '/upload-module');
 const db = require(__dirname + '/db_connect');
 const router = express.Router();
 
-
 router.use((req,res,next)=>{
 /*
 // 這裡要記錄session的資料
@@ -61,8 +60,13 @@ router.post('/login', (req, res)=>{
                 req.session.name = loginInfo.name
                 req.session.password = loginInfo.password
                 req.session.user_access = loginInfo.access
-                console.log('req.session',req.session)
-                res.json(loginInfo)//傳輸資料到前端
+                // console.log('req.session',req.session)
+
+                res.json({
+                    loginInfo,
+                    session: req.session
+                })//傳輸資料到前端
+                
             } else {
                 // console.log('false',req.session)
                 res.json(loginInfo)
@@ -91,6 +95,7 @@ router.get('/logout',(req, res)=>{
 
 // 取得會員資料
 router.get('/user/:username?/:pwd?', (req, res)=>{ // upload.none() 回傳的是 表單欄位 每一個的值，并包裝成對象
+    // console.log('session', req.session)
     let username = req.params.username;
     let pwd = req.params.pwd;
 

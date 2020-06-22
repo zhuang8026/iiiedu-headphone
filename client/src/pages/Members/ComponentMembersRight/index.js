@@ -1,11 +1,9 @@
 // 函式元件
-import React, { useState } from 'react';
+import React from 'react';
 import {withRouter} from 'react-router-dom'
 
 // antd
 import { Radio } from 'antd';
-import { Upload, Button } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
 
 // 測試圖片
 // import logo from '../../../assets/img/tw.jpg';
@@ -13,10 +11,10 @@ import { UploadOutlined } from '@ant-design/icons';
 
 function KMembers(props) {
     const {userdata, setUserdata} = props;
-    const [todos, setTodos] = useState(1); 
+    // const [todos, setTodos] = useState(1); 
     const onChange = (event) => {
         console.log('radio checked', event.target.value);
-        setTodos(event.target.value);
+        // setTodos(event.target.value);
     };
 
     // const onDataChange = (date, dateString) => {
@@ -62,7 +60,7 @@ function KMembers(props) {
                                 <div className="r_bottom_nodel">
                                     <label htmlFor="use">使用者帳號</label>
                                     <span className="iconfont icon-gerenziliao"></span>
-                                    <input id="use" className="mem_input" placeholder="otis0710@gmail.com" readOnly value={userdata.username}/>
+                                    <input id="use" className="mem_input" placeholder="otis0710@gmail.com" readOnly defaultValue={userdata.username}/>
                                 </div>
                                 <span className="r_bottom_err">賬號不可修改</span>
                             </li>
@@ -70,7 +68,13 @@ function KMembers(props) {
                                 <div className="r_bottom_del">
                                     <label htmlFor="name">姓名</label>
                                     <span className="iconfont icon-Personal"></span>
-                                    <input id="name" className="mem_input" placeholder="Otis" value={userdata.name}/>
+                                    <input 
+                                        type="text" 
+                                        id="name" 
+                                        className="mem_input" 
+                                        placeholder="您的大名" 
+                                        defaultValue={userdata.name}
+                                    />
                                 </div>
                                 <span className="r_bottom_err">姓名不符合格式</span>
                             </li>
@@ -78,7 +82,13 @@ function KMembers(props) {
                                 <div className="r_bottom_del">
                                     <label htmlFor="email">Email</label>
                                     <span className="iconfont icon-email"></span>
-                                    <input id="email" className="mem_input" placeholder="otis0710@gmail.com" value={userdata.username}/>
+                                    <input 
+                                        type="email" 
+                                        id="email" 
+                                        className="mem_input" 
+                                        placeholder="您的電子郵箱" 
+                                        defaultValue={userdata.username}
+                                    />
                                 </div>
                                 <span className="r_bottom_err">email格式做錯</span>
                             </li>
@@ -86,7 +96,14 @@ function KMembers(props) {
                                 <div className="r_bottom_del">
                                     <label htmlFor="phone">手機號碼</label>
                                     <span className="iconfont icon-phone"></span>
-                                    <input id="phone" className="mem_input" placeholder="098888888" value={userdata.phoneNumber}/>
+                                    <input 
+                                        type="tel" 
+                                        id="phone" 
+                                        className="mem_input" 
+                                        placeholder="您的手機號碼" 
+                                        pattern="[0-9]{2}[0-9]{8}" 
+                                        defaultValue={userdata.phoneNumber} 
+                                    />
                                 </div>
                                 <span className="r_bottom_err">手機號碼格式錯誤</span>
                             </li>
@@ -104,10 +121,16 @@ function KMembers(props) {
                             </li>
                             <li>
                                 <div className="r_bottom_del">
-                                    <label for="birthday">生日</label>
+                                    <label htmlFor="birthday">生日</label>
                                     <span className="iconfont icon-shengri"></span>
                                     <span className="mem_input">
-                                        <input type="date" id="birthday" className="ant-picker" name="birthday" value={userdata.birthday}/>
+                                        <input 
+                                            type="date" 
+                                            id="birthday" 
+                                            className="ant-picker" 
+                                            name="birthday" 
+                                            defaultValue={userdata.birthday}
+                                        />
                                     </span>
                                 </div>
                                 <span className="r_bottom_err">生日格式錯誤</span>
@@ -120,12 +143,10 @@ function KMembers(props) {
                     {/* 右側圖片 */}
                     <div className="r_bottom_right">
                         <img src={`/user_img/${userdata.userlogo}`} alt="image"/>
-                        {/* <button>選擇圖片</button> */}
-                        <Upload {...props}>
-                            <Button>
-                                <UploadOutlined /> 上傳圖片
-                            </Button>
-                        </Upload>
+                        <div className="file-upload">
+                            <label htmlFor="upload" className="file-upload__label">上傳圖片</label>
+                            <input type="file" id="upload" className="file-upload__input" name="file-upload" defaultValue="" placeholder="商品圖片"/>
+                        </div>
                         <div className="r_bottom_logo_update_text">
                             <p>檔案大小: 最大10KB</p>
                             <p>檔案限制: .JPEG / .PNG</p>

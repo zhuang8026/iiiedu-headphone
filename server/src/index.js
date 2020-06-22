@@ -13,6 +13,10 @@ const MysqlStore = require('express-mysql-session')(session);   // npm install e
 const db = require(__dirname + '/db_connect');
 const sessionStore = new MysqlStore({}, db);
 
+var credentials = require('./credential.js');
+var cookieParser = require('cookie-parser');
+app.use(cookieParser(credentials.cookieSecret));
+
 app.use(session({
     saveUninitialized: false,
     resave: false, // 沒變更內容是否強制回存
@@ -44,6 +48,13 @@ app.use(cors(corsOptions));
 
 app.get('/', (req, res)=>{ // req=> 请求 res => 響應
     res.send('hello! welcome to william node.js api.');
+    
+    // 測試 session
+    // req.session.userName = 'Pusheen';
+    // var colorScheme = req.session.colorScheme || 'dark';
+
+    // console.log(req.session.userName); // Pusheen
+    // console.log(colorScheme); // Dark
 });
 
 // 存储session 

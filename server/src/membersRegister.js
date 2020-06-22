@@ -14,12 +14,12 @@ router.post('/Add', (req, res)=>{ // upload.none() 回傳的是 表單欄位 每
     const output = {
         success: false,
     }
-    
-    let memberId = "";
-    let idd = '1';
-    memberId = `M${moment(new Date()).format('YYMM')}${idd.padStart(4, '0')}`;
 
-    console.log(memberId);
+    // let memberId = "";
+    // let idd = '1';
+    // memberId = `M${moment(new Date()).format('YYMM')}${idd.padStart(4, '0')}`;
+    // console.log(memberId);
+
     let name = req.body.name;
     let username = req.body.username;
     let pwd = req.body.pwd;

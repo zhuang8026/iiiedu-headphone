@@ -12,7 +12,8 @@ import MembersLeft from '../ComponentMembersLeft'
 // 測試圖片
 import logo from '../../../assets/img/tw.jpg';
 
-function MembersCartList() {
+function MembersCartList(props) {
+    const {userdata, setUserdata} = props;
     return (
         <Fragment>
             <header>
@@ -21,7 +22,10 @@ function MembersCartList() {
             </header>
             <main>
                 <div className="members_all">
-                    <MembersLeft/>
+                    <MembersLeft
+                        userdata = {userdata}
+                        setUserdata = {setUserdata}
+                    />
                     <div className="members_right">
                         <div className="members_right_inner">
                             {/* title */}

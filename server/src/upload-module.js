@@ -14,17 +14,18 @@ const extMap = {
 
 const storage = multer.diskStorage({
     destination : (req, file, cb)=>{    // 文件上传路径
-        cb(null, __dirname + '/../public/img-uploads')
+        cb(null, __dirname + '/public/img-uploads')
     },
     filename: (req, file, cb)=>{        // 文件上传之后名称
         // cb(null, req.file.originalname)
         let ext = extMap[file.mimetype];
-        if(ext) {
-            // console.log(uuidv4()+ext)
-            cb(null, uuidv4()+ext);
-        }else {
-            cd(new Error('无副档名'));
-        }
+        cb(null, Date.now() + ext)
+        // if(ext) {
+        //     // console.log(uuidv4()+ext)
+        //     cb(null, uuidv4()+ext);
+        // }else {
+        //     cd(new Error('无副档名'));
+        // }
         
     }
 });

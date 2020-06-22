@@ -25,10 +25,12 @@ function MembersLogin(props) {
     })
       .then(result=>result.json())
       .then(obj=>{
-        if(obj.success){
-          if(obj.password === password){
-            localStorage.setItem('memberData', JSON.stringify(obj));
-            message.success(`Hello! ${obj.name}`);
+        console.log(obj);
+        let userdata = obj['loginInfo'];
+        if(userdata.success){
+          if(userdata.password === password){
+            localStorage.setItem('memberData', JSON.stringify(userdata));
+            message.success(`Hello! ${userdata.name}`);
             setTimeout(()=>{
               // props.history.goBack()
               props.history.push('/');

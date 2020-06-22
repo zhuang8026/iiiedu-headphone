@@ -7,13 +7,14 @@ import { message } from 'antd';
 import MembersLeft from '../ComponentMembersLeft'
 
 function MembersAdress(props) {
+    const key = 'updatable';
     const {userdata, setUserdata} = props;
     const [name, setName] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [address, setAddress] = useState('');
-    // const [uid, setuid] = useState('');
-    const localUser = JSON.parse(localStorage.getItem('memberData')) || '';  
     console.log('userdata', userdata);
+
+    console.log(name, phoneNumber, address) // 問題：第一次存儲無跳轉資料
 
     const membersEditCallback = () => {
         fetch('http://localhost:3009/membersEdit/edit', {
@@ -22,7 +23,8 @@ function MembersAdress(props) {
                 name:  name,
                 phoneNumber: phoneNumber,
                 address: address,
-                username:localUser['username']
+                id: userdata['id']
+                // username:localUser['username']
             }),
             headers: new Headers({
                 'Accept': 'application/json',
@@ -31,14 +33,29 @@ function MembersAdress(props) {
         })
             .then(result=>result.json())
             .then(obj=>{
-                // console.log(obj);
-                message.success(`修改成功`);
+                console.log(obj);
+                // obj.success ? message.success(`修改成功`) : message.info(`資料無改變`);
+                if(obj.success) {
+                    message.loading({ content: 'Loading...', key });
+                    setTimeout(() => {
+                        message.success({ content: '修改成功!', key, duration: 2 });
+                        props.history.push('/KMembers/MembersAdress');
+                    }, 1000);
+                    
+                } else {
+                    message.info(`資料無改變`)
+                }
+                
             })
     }
 
     useEffect(()=>{
-        membersEditCallback()
-    },[])
+        // console.log("測試測試")
+        setName(userdata.name);
+        setPhoneNumber(userdata.phoneNumber);
+        setAddress(userdata.address);
+
+    },[userdata])
 
     return (
         <main>
@@ -67,7 +84,7 @@ function MembersAdress(props) {
                                                 id="use" 
                                                 className="address_input"
                                                 placeholder="您的大名" 
-                                                defaultValue={userdata.name}
+                                                defaultValue={name}
                                                 onChange={e => setName(e.target.value)}
                                             />
                                         </div>
@@ -78,12 +95,12 @@ function MembersAdress(props) {
                                             <label htmlFor="name">手機</label>
                                             <span className="iconfont icon-phone"></span> 
                                             <input 
-                                                type="tel" 
                                                 id="name" 
+                                                type="tel"
                                                 className="address_input" 
                                                 placeholder="您的手機號碼" 
                                                 pattern="[0-9]{2}[0-9]{8}" 
-                                                defaultValue={userdata.phoneNumber} 
+                                                defaultValue={phoneNumber} 
                                                 onChange={e => setPhoneNumber(e.target.value)}
                                             />
                                         </div>
@@ -98,7 +115,7 @@ function MembersAdress(props) {
                                                 id="email" 
                                                 className="address_input" 
                                                 placeholder="您的送貨地址" 
-                                                defaultValue={userdata.address} 
+                                                defaultValue={address} 
                                                 onChange={e => setAddress(e.target.value)}
                                             />
                                         </div>
@@ -106,11 +123,11 @@ function MembersAdress(props) {
                                     </li>
                                 </ul>
                                 <div className="address_bottom_btn_inner">
-                                    <button className="address_btn" onClick={membersEditCallback()}>修改</button>
-                                    <button className="address_btn">删除</button>
+                                    <button className="address_btn" onClick={()=>membersEditCallback()}>修改</button>
+                                    <button className="address_btn">清空</button>
                                 </div>
                             </div>
-                            <button className="address_add_btn">新增</button>
+                            {/* <button className="address_add_btn">新增</button> */}
                         </div>
                     </div>
                 </div>
