@@ -1,8 +1,9 @@
 // 函式元件
-import React, { useEffect } from 'react'
+import React, { useState,useEffect } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 
 function CartBuyerInfo(props) {
+  const {userdata, setUserdata} = props
   return (
     <>
       <div className="cart-crumb">
@@ -52,17 +53,17 @@ function CartBuyerInfo(props) {
             <div>
               <div>
                 <label htmlFor="name">姓名*</label>
-                <input type="text" id="name" name="name" required />
+                <input type="text" id="name" name="name" required value={userdata.name}/>
                 <div className="error">姓名必填*</div>
               </div>
               <div>
                 <label htmlFor="address">地址*</label>
-                <input type="text" id="address" name="address" required />
+                <input type="text" id="address" name="address" required value={userdata.address}/>
                 <div className="error">地址必填*</div>
               </div>
               <div>
                 <label htmlFor="tel">電話*</label>
-                <input type="tel" id="tel" name="tel" required />
+                <input type="tel" id="tel" name="tel" required value={userdata.phoneNumber}/>
                 <div className="error">電話必填*</div>
               </div>
             </div>
