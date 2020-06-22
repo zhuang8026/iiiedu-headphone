@@ -11,9 +11,9 @@ import {
 } from 'react-router-dom'
 
 // -------------------- components --------------------
-import MyNavBar from '../../../components/Navbar'
-import MyMenu from '../../../components/NavbarMenu'
-import MyFooter from '../../../components/Footer'
+// import MyNavBar from '../../../components/Navbar'
+// import MyMenu from '../../../components/NavbarMenu'
+// import MyFooter from '../../../components/Footer'
 //blog
 import BlogUser from '../Blog-1-main-components/BlogUser'
 // -------------------- scss --------------------

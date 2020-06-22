@@ -29,36 +29,41 @@ import PrevPageHover from '../../../../assets/img/blog-img/blog-standard/prev-pa
 
 function BlogMainStandardList(props) {
 
-const [listAllBlogdata, setlistAllBlogdata] = useState([])
+  const [listAllBlogdata, setlistAllBlogdata] = useState([])
 
-  useEffect(()=>{
-      fetch('http://localhost:3009/blog/listAllBlog/3',  {
-          method: 'get',
-          headers: new Headers({
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-          }),
+  useEffect(() => {
+    fetch('http://localhost:3009/blog/listAllBlog/1', {
+      method: 'get',
+      headers: new Headers({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }),
+    })
+      .then((response) => {
+        return response.json()
       })
-      .then((response)=>{
-          return response.json()
-      })
-      .then((response)=>{
+      .then((response) => {
         console.log(response.rows)
         setlistAllBlogdata(response.rows)
       })
-  },[])
+  }, [])
 
 
   return (
     <>
       <div className="blog-btns blog-d-flex blog-justify-content-between">
         <div className="blog-btns-left">
-          <Link to="../BlogStandard" className="blog-btns-left-Link">
+          <button className="blog-btns-left-Link" onClick={() => props.history.push('/Blog/YongBlog')}>
             全部文章
-          </Link>
-          <Link to="../BlogUser" className="blog-btns-left-Link">
+          </button>
+          {/* <Link to="../BlogStandard" className="blog-btns-left-Link">
+            全部文章
+          </Link> */}
+          <button className="blog-btns-left-Link" onClick={() => props.history.push('/Blog/YongMyBlog')}>
             個人文章
-          </Link>
+          </button>
+          {/* <Link to="/Blog/YongMyBlog" className="blog-btns-left-Link">個人文章</Link> */}
+
         </div>
         <div className="blog-btns-right blog-d-flex blog-justify-content-between">
           <select name="" id="">
@@ -77,31 +82,31 @@ const [listAllBlogdata, setlistAllBlogdata] = useState([])
         </div>
       </div>
       <div className="blog-list blog-d-flex">
-        
-      {listAllBlogdata.map((data, index)=>{
-              console.log(data)
-              return(
-                <div className="blog-card">
-          <figure className="blog-card-fig">
-            <img className="blog-cover" src={BlogCard} alt="" />
-          </figure>
-          <div className="blog-card-btns"></div>
-          <div className="blog-card-title">{data.blogTitle}</div>
-          <div className="blog-card-content">{data.blogContent01}</div>
-          <div className="blog-card-calendar">
-            <div className="blog-card-calendar-in">
-              <h2>01</h2>
-              <h5>6月</h5>
+
+        {listAllBlogdata.map((data, index) => {
+          console.log(data)
+          return (
+            <div className="blog-card">
+              <figure className="blog-card-fig">
+                <img className="blog-cover" src={BlogCard} alt="" />
+              </figure>
+              <div className="blog-card-btns"></div>
+              <div className="blog-card-title">{data.blogTitle}</div>
+              <div className="blog-card-content">{data.blogContent01}</div>
+              <div className="blog-card-calendar">
+                <div className="blog-card-calendar-in">
+                  <h2>01</h2>
+                  <h5>6月</h5>
+                </div>
+              </div>
+              <div className="read-more">
+                <button className="read-more-btn">閱讀文章</button>
+              </div>
             </div>
-          </div>
-          <div className="read-more">
-            <button className="read-more-btn">閱讀文章</button>
-          </div>
-        </div>
-              )
-            })}
-        
-            {/* <div className="Yyaside_pro">
+          )
+        })}
+
+        {/* <div className="Yyaside_pro">
                   <div className="item_image">
                     <img className="item_images" src={`/items_img/${data.itemImg}`} />
                     <div className="item_imagebtnout">
@@ -124,13 +129,13 @@ const [listAllBlogdata, setlistAllBlogdata] = useState([])
                   <p>{data.itemPrice}</p>
                 </div>
          */}
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
       </div>
       <div className="blog-standard-pages blog-d-flex">
         <div className="prev-page">

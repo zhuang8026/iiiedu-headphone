@@ -62,20 +62,20 @@ function BlogMainStandardSlide(props) {
               <li></li>
               <li></li>
             </ul>
-            <a
+            <Link to=""
               role="button"
               id="goNext"
               className="dir-btn position-absolute dir-right"
             >
               <i className="fas fa-chevron-right"></i>
-            </a>
-            <a
+            </Link>
+            <Link to=""
               role="button"
               id="goPrev"
               className="dir-btn position-absolute dir-left"
             >
               <i className="fas fa-chevron-left"></i>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
