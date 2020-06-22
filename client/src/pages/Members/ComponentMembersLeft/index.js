@@ -1,10 +1,7 @@
 // 函式元件
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect, Link, NavLink, withRouter} from 'react-router-dom'
+import { NavLink, withRouter} from 'react-router-dom'
 
-
-// 測試圖片
-import logo from '../../../assets/img/tw.jpg';
 // http://localhost:3009/members/user/s001
 
 

@@ -53,7 +53,7 @@ app.use((req, res, next)=>{
     next();
 });
 
-// 會員
+// 會員 登入 登出 顯示資料
 app.use('/members', require(__dirname+'/members.js'));
 // 会员註冊
 app.use('/membersRegister', require(__dirname+'/membersRegister.js'));
