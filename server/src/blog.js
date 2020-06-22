@@ -227,22 +227,17 @@ router.post('/edit/:blogId', upload.none(), (req, res) => {
         success: false,
         body: req.body
     }
+
+
+    
     // let blogId = parseInt(req.body.blogId);
     let blogId = req.params.blogId;
 
-    // let editBlogTitle = req.body.editBlogTitle;
-    // let editBlogContent01 = req.body.editBlogContent01;
-    // let editBlogContent02 = req.body.editBlogContent02;
+    let editBlogTitle = req.body.editBlogTitle;
+    let editBlogContent01 = req.body.editBlogContent01;
+    let editBlogContent02 = req.body.editBlogContent02;    
 
-    let editBlogTitle = 1234;
-    let editBlogContent01 = 1234;
-    let editBlogContent02 = 1234;
-
-    const sql = `UPDATE blogs
-    SET editBlogTitle=${editBlogTitle},
-    editBlogContent01=${editBlogContent01},
-    editBlogContent02=${editBlogContent02}
-    WHERE blogId=${blogId}`;
+    const sql = "UPDATE `blogs` SET `blogTitle`=?, `blogContent01`=?, `blogContent02`=? WHERE `blogId`=?";
 
     if (!blogId) {
         output.error = '沒有主鍵';
@@ -251,7 +246,7 @@ router.post('/edit/:blogId', upload.none(), (req, res) => {
     // const sql = "UPDATE `blogs` SET ? WHERE blogId=?";
     // 把req.body.blogId刪掉，但宣告的blogId還存在
     delete req.body.blogId;
-    db.query(sql)
+    db.query(sql, [editBlogTitle, editBlogContent01, editBlogContent02, blogId])
         .then(([r]) => {
             output.results = r;
             if (r.affectedRows && r.changedRows) {
