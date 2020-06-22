@@ -111,7 +111,7 @@ function App() {
     addFromServer()
   }
 
-  const localUser = JSON.parse(localStorage.getItem('memberData')) // 取得localStorage資料
+  const localUser = JSON.parse(localStorage.getItem('memberData')) || '';  // 取得localStorage資料
   const getUserData = (usernameData, pwdData) => {
     fetch(`http://localhost:3009/members/user/${usernameData}/${pwdData}`, {
       method: 'get',
