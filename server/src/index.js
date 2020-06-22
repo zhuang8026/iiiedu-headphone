@@ -53,12 +53,15 @@ app.use((req, res, next)=>{
     next();
 });
 
-// 會員
+// 會員 登入 登出 顯示資料
 app.use('/members', require(__dirname+'/members.js'));
 // 会员註冊
 app.use('/membersRegister', require(__dirname+'/membersRegister.js'));
 // 会员修改
 app.use('/membersEdit', require(__dirname+'/membersEdit.js'));
+
+// 賣家
+app.use('/sellers', require(__dirname+'/sellers.js'));
 
 // 產品
 app.use('/products', require(__dirname+'/products.js'));

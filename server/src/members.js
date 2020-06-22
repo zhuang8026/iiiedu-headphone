@@ -1,4 +1,5 @@
 const express = require('express');
+const moment = require('moment-timezone');
 const upload = require(__dirname + '/upload-module');
 const db = require(__dirname + '/db_connect');
 const router = express.Router();
@@ -88,24 +89,21 @@ router.get('/logout',(req, res)=>{
     // res.redirect('/members/login'); // 從哪裡來
 });
 
-router.post('/members', (req, res)=>{ // upload.none() 回傳的是 表單欄位 每一個的值，并包裝成對象
-    const output = {
-        success: false,
-    }
-    // let name = req.body.name;
-    let username = req.body.username;
-    let pwd = req.body.pwd;
+// 取得會員資料
+router.get('/user/:username?/:pwd?', (req, res)=>{ // upload.none() 回傳的是 表單欄位 每一個的值，并包裝成對象
+    let username = req.params.username;
+    let pwd = req.params.pwd;
 
-    const sql = "SELECT * FROM `users` WHERE `username`=? AND `pwd`=?"; 
-    console.log('req.body',[req.body])
-    db.query(sql, [username, pwd])
-        .then((result)=>{
-            console.log('result',result)
-            output.results = result;
-            if(result.affectedRows && r.insertId){
-                output.success = true;
-            }
-            res.json(output);
+    const sql = `SELECT * FROM users WHERE username='${username}' AND pwd ='${pwd}'`; 
+    db.query(sql)
+        .then(([result])=>{
+            result[0].birthday = moment(result[0].birthday).format('YYYY-MM-DD');
+            // const fm = 'YYYY-MM-DD';
+            // for(let i of result){
+            //     i.birthday = moment(i.birthday).format(fm);
+            // }
+            // console.log('result', result)
+            res.json(result);
         })
 })
 
