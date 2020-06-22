@@ -1,16 +1,8 @@
 // 函式元件
-import React, { Fragment, useEffect, useState } from 'react'
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-  Link,
-  NavLink,
-  withRouter,
-} from 'react-router-dom'
+import React, { useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
 //antd
-// import { Radio } from 'antd'
+import { message } from 'antd';
 // import { Pagination } from 'antd'
 // import WHH8101 from '../../../assets/items_img/WH-H810-01.png'
 // scss

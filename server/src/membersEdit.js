@@ -11,23 +11,26 @@ router.get('/', (req, res)=>{
 });
 
 // 會員修改
+// http://localhost:3009/membersEdit/edit
 router.post('/edit', upload.none(), (req, res)=>{ // upload.none() 回傳的是 表單欄位 每一個的值，并包裝成對象
-    // let name = req.body.name;
-    // let username = req.body.username;
-    // let pwd = req.body.pwd;
-    // // let gender = '1';
-    // let phoneNumber = '0988888888';
-    // let card = '1234-5555-8448-8888';
-    // let birthday = '2020-01-17';
-    // let address = '台北市中山區林森北路1號';
-    const sql = "INSERT INTO `users`(`name`,`username`, `pwd`) VALUES (?, ?, ?)"; // phpmyadmin 能使用
-    db.query(sql, [name, username, pwd])                        // 和php "?" 對應 值 一樣 
-        .then(([r])=>{
-            output.results = r;
-            // console.log("r.insertId", r.insertId)
-            if(r.affectedRows && r.insertId){
+    const output = {
+        success: false,
+    }
+    let name = req.body.name;
+    let phoneNumber = req.body.phoneNumber;
+    let address = req.body.address;
+    let username = req.body.username;
+
+    // const sql = "UPDATE `users` SET `name`=?, `phoneNumber`=?, `address`=? WHERE `id`=?"; 
+    const sql = "UPDATE `users` SET `name`=?, `phoneNumber`=?, `address`=? WHERE `username`=?"; 
+    console.log(username);
+    db.query(sql, [name, phoneNumber, address, username])                   
+        .then(([results])=>{
+            output.results = results;
+            if(results.affectedRows && results.changedRows){
                 output.success = true;
             }
+            console.log(output);
             res.json(output);
         })
 

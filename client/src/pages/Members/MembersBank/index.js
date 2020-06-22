@@ -10,6 +10,7 @@ import visa from '../../../assets/img/visa.png';
 
 function MembersBank(props) {
     const {userdata, setUserdata} = props;
+    // console.log('userdata', userdata);
     return (
         <main>
             <div className="members_all">
@@ -27,27 +28,31 @@ function MembersBank(props) {
                         {/* 主要內容 */}
                         <div className="members_pwa_r_bottom">
                             <ul className="members_pwa_r_inner">
-                                {/* {
-                                    userdata.
-                                } */}
+                            
+                            {/* 因為不是array, 所以無法使用 map  */}
+                            {/* { userdata.map((data, index)=>{
+                                return (
+                                    <li kry>
+                                        <div className="members_card">
+                                            <img src={visa}/>
+                                            <h3>VISA</h3>
+                                            <span><input value={data.card}/></span>
+                                            <span>PIN : {data.pin}</span>
+                                        </div>
+                                        <div className="members_card_button">
+                                            <button className="members_update men_btn_style">修改</button>
+                                            <button className="members_del men_btn_style">刪除</button>
+                                        </div>
+                                    </li>
+                                )
+                            }) } */}
+
                                 <li>
                                     <div className="members_card">
                                         <img src={visa}/>
                                         <h3>VISA</h3>
                                         <span><input value={userdata.card}/></span>
                                         <span>PIN : {userdata.pin}</span>
-                                    </div>
-                                    <div className="members_card_button">
-                                        <button className="members_update men_btn_style">修改</button>
-                                        <button className="members_del men_btn_style">刪除</button>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="members_card">
-                                        <img src={visa}/>
-                                        <h3>VISA</h3>
-                                        <span>1111-2222-3333-4444</span>
-                                        <span>PIN : 876</span>
                                     </div>
                                     <div className="members_card_button">
                                         <button className="members_update men_btn_style">修改</button>
