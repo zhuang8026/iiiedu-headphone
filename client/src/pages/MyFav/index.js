@@ -29,14 +29,14 @@ function MyFav(props) {
         <main>
           <div className="MyFav_container">
             <div className="MyFav_select">
-              <div>
+              <div className="MyFav_Crumb">
               {/* 麵包屑 */}
               <a href="../">首頁</a> / <a href="#">我的最愛</a>
               </div>
               <div>
-                <select className="Yyorder">
-                  <option>按價格排序-由高到低</option>
+                <select >
                   <option>按價格排序-由低到高</option>
+                  <option>按價格排序-由高到低</option>
                 </select>
               </div>
             </div>
@@ -45,30 +45,20 @@ function MyFav(props) {
               <ul className="MyFav_pwa_r_inner">
                   <li>
                       <div className="MyFav_card">
-                          <span className="iconfont icon-error"></span>
-                          <img src={visa}/>
-                          <h3>GS2000e</h3>
-                          <h3>GRADO</h3>
-                          <h4>$8,700</h4>
+                          <div className="MyFav_item">
+                            <span className="iconfont icon-error"></span>
+                            <img src={visa}/>
+                            <h3>GS2000e</h3>
+                            <h3>GRADO</h3>
+                          </div>
                       </div>
+                      <div><h4>$8,700</h4></div>
                       <div className="MyFav_card_button">
-                          <button className="MyFav_update men_btn_style">前往細節頁</button>
-                          <button className="MyFav_del men_btn_style">加入購物車</button>
+                          <button className="MyFav_update MyFav_btn_style">前往細節頁</button>
+                          <button className="MyFav_del MyFav_btn_style">加入購物車</button>
                       </div>
                   </li>
-                  <li>
-                      <div className="MyFav_card">
-                          <span className="iconfont icon-error"></span>
-                          <img src={visa}/>
-                          <h3>GS2000e</h3>
-                          <h3>GRADO</h3>
-                          <h4>$8,700</h4>
-                      </div>
-                      <div className="MyFav_card_button">
-                          <button className="MyFav_update men_btn_style">前往細節頁</button>
-                          <button className="MyFav_del men_btn_style">加入購物車</button>
-                      </div>
-                  </li>
+          
                 </ul>
                 <div className="page"><Pagination defaultCurrent={1} total={50} /></div>
             </div>
