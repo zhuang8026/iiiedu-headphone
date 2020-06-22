@@ -10,17 +10,38 @@ import {
   withRouter,
 } from 'react-router-dom'
 //antd
-import { Radio } from 'antd'
+// import { Radio } from 'antd'
 // import { Pagination } from 'antd'
-import WHH8101 from '../../../assets/items_img/WH-H810-01.png'
+// import WHH8101 from '../../../assets/items_img/WH-H810-01.png'
 // scss
 // import '../../../assets/scss/Product_Main.scss'
 // import './_menu.scss'
 
-function ProductMain() {
-  const [itemsdata, setItemsdata] = useState([])
+function ProductMain(props) {
+  const { itemsdata, setItemsdata, itemsid, setItemsid } = props;
+
+  console.log('itemsid:', itemsid) // text button id 
+
+  const goToDetail = ( id )=> {
+    fetch(`http://localhost:3009/products/detail/${id}`, {
+        method: 'get',
+        headers: new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        })
+    })
+        .then((res)=>{
+            return res.json()
+        })
+        .then((res)=>{
+            console.log(res)
+            // setUserdata(res[0]);
+            // console.log(userdata);
+        })
+}
 
   useEffect(()=>{
+      goToDetail(itemsid)
       fetch('http://localhost:3009/products/listpage/1',  {
           method: 'get',
           headers: new Headers({
@@ -37,9 +58,9 @@ function ProductMain() {
       })
   },[])
 
-  const onChange = (event) => {
-    console.log('radio checked', event.target.value)
-  }
+  // const onChange = (event) => {
+  //   console.log('radio checked', event.target.value)
+  // }
   return (
     <>
       <div className="Yybodyin">
@@ -115,14 +136,22 @@ function ProductMain() {
           <div className="Yyasidebody">
             
             {itemsdata.map((data, index)=>{
-              console.log(data)
+              // console.log(data)
               return(
                 <div className="Yyaside_pro">
                   <div className="item_image">
                     <img className="item_images" src={`/items_img/${data.itemImg}`} />
                     <div className="item_imagebtnout">
-                      <buttun className="item_imagebtn btn">加入購物車</buttun>
-                      <buttun className="item_imagebtn2 btn">立即查看</buttun>
+                      <buttun className="item_imagebtn btn" id={data.itemId}>加入購物車</buttun>
+                      <buttun 
+                        className="item_imagebtn2 btn" 
+                        id={data.itemId} 
+                        onClick={e =>{
+                          setItemsid(e.target.id)  
+                          goToDetail(e.target.id)
+                          props.history.push(`/ProductDetail/${e.target.id}`)
+                        }}
+                      >立即查看</buttun>
                     </div>
                   </div>
                   <div className="item_cover"></div>

@@ -1,9 +1,9 @@
 // 函式元件
-import React, { Fragment } from 'react';
-import { withRouter} from 'react-router-dom'
+import React from 'react';
+import { withRouter} from 'react-router-dom';
 
 
-import MembersLeft from '../ComponentMembersLeft'
+import MembersLeft from '../ComponentMembersLeft';
 
 // 測試圖片
 import visa from '../../../assets/img/visa.png';
@@ -27,12 +27,15 @@ function MembersBank(props) {
                         {/* 主要內容 */}
                         <div className="members_pwa_r_bottom">
                             <ul className="members_pwa_r_inner">
+                                {/* {
+                                    userdata.
+                                } */}
                                 <li>
                                     <div className="members_card">
                                         <img src={visa}/>
                                         <h3>VISA</h3>
-                                        <span>1111-2222-3333-4444</span>
-                                        <span>PIN : 876</span>
+                                        <span><input value={userdata.card}/></span>
+                                        <span>PIN : {userdata.pin}</span>
                                     </div>
                                     <div className="members_card_button">
                                         <button className="members_update men_btn_style">修改</button>

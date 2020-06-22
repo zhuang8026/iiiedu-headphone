@@ -8,7 +8,7 @@ import { Upload, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 
 // 測試圖片
-import logo from '../../../assets/img/tw.jpg';
+// import logo from '../../../assets/img/tw.jpg';
 
 
 function KMembers(props) {

@@ -64,11 +64,16 @@ import YfangCart from './pages/Cart'
 import NotFoundPage404 from './pages/404'
 
 function App() {
+  // 會員
   const [name, setName] = useState('')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [loginErrors, setLoginErrors] = useState([])
   const [userdata, setUserdata] = useState([])
+
+  // 產品列表
+  const [itemsdata, setItemsdata] = useState([])
+  const [itemsid, setItemsid] = useState("")
 
   // 登入 & 狀態判斷
   const loginProcess = (loginSuccessCallback) => {
@@ -143,8 +148,13 @@ function App() {
         </Route>
 
         {/* 產品列表 */}
-        <Route exact path="/YyProduct/:head?">
-          <YyProduct />
+        <Route exact path="/YyProduct">
+          <YyProduct 
+            itemsdata = {itemsdata}
+            setItemsdata = {setItemsdata}
+            itemsid = {itemsid}
+            setItemsid = {setItemsid}
+          />
         </Route>
 
         <Route exact path="/YyProduct/:air?">
@@ -154,7 +164,8 @@ function App() {
         <Route exact path="/YyProduct/:box?">
           <YyProduct />
         </Route>
-        <Route path="/ProductDetail">
+
+        <Route path="/ProductDetail/:id?">
           <ProductDetail />
         </Route>
 
@@ -254,11 +265,6 @@ function App() {
             setUserdata={setUserdata}/>
         </Route>
 
-        {/* <Route
-          exact
-          path="/about/WiOurClients"
-          render={() => <WiOurClients allprops={{ username, setUsername }} />}
-        /> */}
 
         {/* Blog */}
         <Route path="/Blog/YongBlog">
@@ -318,10 +324,10 @@ function App() {
         {/* 404 必须放在最后一个 */}
         {/* Redirect 重新導向 / 需要先引入 */}
 
-        <Route path="/404">
+        {/* <Route path="/404">
           <NotFoundPage404 />
         </Route>
-        <Redirect to="/404" />
+        <Redirect to="/404" /> */}
       </Switch>
 
       <MyFooter />

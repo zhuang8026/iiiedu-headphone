@@ -63,6 +63,7 @@ router.get('/listpage/:page?', async (req, res)=>{
 })
 
 // 單筆資料
+// http://localhost:3009/products/detail/2
 router.get("/detail/:id", (req, res) => {
     // console.log(req.params.id);
     let id = req.params.id;
@@ -78,7 +79,7 @@ router.get("/detail/:id", (req, res) => {
             res.json(relatedProduct[0])
             // sql = `SELECT * FROM items WHERE product_category = '${relatedProduct.product_category}' AND product_id != ${relatedProduct.product_id}`;
             // console.log(sql)
-            return db.query(sql);
+            // return db.query(sql);
         })
         // .then(results => {
         //     console.log(results)
