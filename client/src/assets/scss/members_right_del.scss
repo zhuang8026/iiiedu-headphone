@@ -114,7 +114,9 @@ main {
                             width: 200px;
                             height: 200px;
                             border-radius: 50%;
+                            border: 2px dashed #211e55;
                             margin: 0 auto;
+                            padding: 6px;
                         }
                         .ant-upload {
                             margin: 20px auto;
@@ -134,7 +136,8 @@ main {
 
 .file-upload {
 	position: relative;
-	display: inline-block;
+    display: inline-block;
+    padding: 16px 0;
 }
 
 .file-upload__label {

@@ -148,7 +148,7 @@ function KMembers(props) {
                             <input type="file" id="upload" className="file-upload__input" name="file-upload" defaultValue="" placeholder="商品圖片"/>
                         </div>
                         <div className="r_bottom_logo_update_text">
-                            <p>檔案大小: 最大10KB</p>
+                            <p>檔案大小: 最大200KB</p>
                             <p>檔案限制: .JPEG / .PNG</p>
                         </div>
                     </div>

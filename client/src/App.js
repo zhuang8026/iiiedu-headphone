@@ -77,6 +77,8 @@ function App() {
   const [password, setPassword] = useState('')
   const [loginErrors, setLoginErrors] = useState([])
   const [userdata, setUserdata] = useState([])
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [address, setAddress] = useState('');
 
   // 產品列表
   const [itemsdata, setItemsdata] = useState([])
@@ -246,7 +248,18 @@ function App() {
           </Route>
 
           <Route path="/KMembers/MembersAdress">
-            <MembersAdress userdata={userdata} setUserdata={setUserdata} />
+            <MembersAdress 
+              allprops={{
+                userdata,
+                setUserdata,
+                name,
+                setName,
+                phoneNumber, 
+                setPhoneNumber,
+                address, 
+                setAddress
+              }}
+            />
           </Route>
 
           <Route path="/KMembers/MembersCartList">

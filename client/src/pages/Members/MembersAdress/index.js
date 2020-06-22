@@ -8,10 +8,7 @@ import MembersLeft from '../ComponentMembersLeft'
 
 function MembersAdress(props) {
     const key = 'updatable';
-    const {userdata, setUserdata} = props;
-    const [name, setName] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [address, setAddress] = useState('');
+    const {userdata, setUserdata,name, setName, phoneNumber, setPhoneNumber, address, setAddress} = props.allprops;
     console.log('userdata', userdata);
 
     console.log(name, phoneNumber, address) // 問題：第一次存儲無跳轉資料
