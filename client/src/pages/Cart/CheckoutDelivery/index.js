@@ -74,7 +74,7 @@ function CartDelivery(props) {
           />
           <label htmlFor="deliveryId2"> 新竹物流</label>
           <div>
-            <button>下一步</button>
+            <button type="button"><Link to="/CheckoutPayment">下一步</Link></button>
           </div>
         </form>
       </div>

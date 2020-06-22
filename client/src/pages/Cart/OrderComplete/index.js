@@ -79,7 +79,7 @@ function CartDone(props) {
           <tfoot>
             <tr>
               <td>
-                <button>回到首頁</button>
+                <button type="button"><Link to="/">回首頁</Link></button>
               </td>
             </tr>
           </tfoot>

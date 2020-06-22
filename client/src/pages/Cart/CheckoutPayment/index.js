@@ -86,7 +86,7 @@ function CartPayment(props) {
             lue="2025-01"
           />
           <div>
-            <button>下一步</button>
+            <button type="button"><Link to="/OrderComplete">下一步</Link></button>
           </div>
         </form>
       </div>

@@ -79,7 +79,7 @@ function CartBuyerInfo(props) {
             </div>
           </div>
           <div>
-            <button>下一步</button>
+            <button type="button"><Link to="/CheckoutDelivery">下一步</Link></button>
           </div>
         </form>
       </div>

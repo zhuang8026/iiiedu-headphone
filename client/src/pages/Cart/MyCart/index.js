@@ -168,7 +168,7 @@ function CartTable(props) {
             </tr>
             <tr>
               <td>
-                <button>去結帳</button>
+                <button type="button"><Link to="/CheckoutInfo">去結帳</Link></button>
               </td>
             </tr>
           </tfoot>
