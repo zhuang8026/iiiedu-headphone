@@ -68,6 +68,7 @@ function App() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [loginErrors, setLoginErrors] = useState([])
+  const [userdata, setUserdata] = useState([])
 
   // 登入 & 狀態判斷
   const loginProcess = (loginSuccessCallback) => {
@@ -160,7 +161,10 @@ function App() {
 
         {/* 會員 */}
         <Route exact path="/KMembers">
-          <KMembers />
+          <KMembers 
+            userdata={userdata}
+            setUserdata={setUserdata}
+          />
         </Route>
         <Route path="/KMembers/MembersLogin">
           <MembersLogin
@@ -187,31 +191,45 @@ function App() {
           />
         </Route>
         <Route path="/KMembers/MembersForget">
-          <MembersForget />
+          <MembersForget 
+            userdata={userdata}
+            setUserdata={setUserdata}/>
         </Route>
 
         <Route path="/KMembers/MembersRegister">
-          <MembersRegister />
+          <MembersRegister 
+            userdata={userdata}
+            setUserdata={setUserdata}/>
         </Route>
 
         <Route path="/KMembers/MembersPwa">
-          <MembersPwa />
+          <MembersPwa 
+            userdata={userdata}
+            setUserdata={setUserdata}/>
         </Route>
 
         <Route path="/KMembers/MembersBank">
-          <MembersBank />
+          <MembersBank 
+            userdata={userdata}
+            setUserdata={setUserdata}/>
         </Route>
 
         <Route path="/KMembers/MembersAdress">
-          <MembersAdress />
+          <MembersAdress 
+            userdata={userdata}
+            setUserdata={setUserdata}/>
         </Route>
 
         <Route path="/KMembers/MembersCartList">
-          <MembersCartList />
+          <MembersCartList 
+            userdata={userdata}
+            setUserdata={setUserdata}/>
         </Route>
 
         <Route path="/KMembers/MembersCartDetail">
-          <MembersCartDetail />
+          <MembersCartDetail 
+            userdata={userdata}
+            setUserdata={setUserdata}/>
         </Route>
 
         {/* <Route
@@ -219,59 +237,6 @@ function App() {
           path="/about/WiOurClients"
           render={() => <WiOurClients allprops={{ username, setUsername }} />}
         /> */}
-
-        {/* 會員 */}
-        {/* <Route
-            exact
-            path="/KMembers"
-            render={({ match: { url } }) => (
-              <>
-                <Route path={`${url}`}>
-                  <KMembers />
-                </Route>
-
-                <Route path={`${url}/MembersLogin`}>
-                  <MembersLogin 
-                    allprops={{
-                      username, 
-                      setUsername,
-                      password, 
-                      setPassword,
-                      loginProcess
-                    }}
-                  />
-                </Route>
-
-                <Route path={`${url}/MembersForget`}>
-                  <MembersForget />
-                </Route>
-
-                <Route path={`${url}/MembersRegister`}>
-                  <MembersRegister />
-                </Route>
-
-                <Route path={`${url}/MembersPwa`}>
-                  <MembersPwa />
-                </Route>
-
-                <Route path={`${url}/MembersBank`}>
-                  <MembersBank />
-                </Route>
-
-                <Route path={`${url}/MembersAdress`}>
-                  <MembersAdress />
-                </Route>
-
-                <Route path={`${url}/MembersCartList`}>
-                  <MembersCartList />
-                </Route>
-
-                <Route path={`${url}/MembersCartDetail`}>
-                  <MembersCartDetail />
-                </Route>
-              </>
-            )}
-          /> */}
 
         {/* Blog */}
         <Route path="/Blog/YongBlog">
