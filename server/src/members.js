@@ -88,5 +88,25 @@ router.get('/logout',(req, res)=>{
     // res.redirect('/members/login'); // 從哪裡來
 });
 
+router.post('/members', (req, res)=>{ // upload.none() 回傳的是 表單欄位 每一個的值，并包裝成對象
+    const output = {
+        success: false,
+    }
+    // let name = req.body.name;
+    let username = req.body.username;
+    let pwd = req.body.pwd;
+
+    const sql = "SELECT * FROM `users` WHERE `username`=? AND `pwd`=?"; 
+    console.log('req.body',[req.body])
+    db.query(sql, [username, pwd])
+        .then((result)=>{
+            console.log('result',result)
+            output.results = result;
+            if(result.affectedRows && r.insertId){
+                output.success = true;
+            }
+            res.json(output);
+        })
+})
 
 module.exports = router;
