@@ -15,7 +15,7 @@ function MembersAdress(props) {
     const localUser = JSON.parse(localStorage.getItem('memberData')) || '';  
     console.log('userdata', userdata);
 
-    const membersEditCallback = (value) => {
+    const membersEditCallback = () => {
         fetch('http://localhost:3009/membersEdit/edit', {
             method: 'post',
             body:JSON.stringify({
