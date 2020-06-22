@@ -291,19 +291,19 @@ function App() {
 
           {/* 購物車 */}
           <Route path="/MyCart">
-            <MyCart />
+            <MyCart userdata={userdata} setUserdata={setUserdata}/>
           </Route>
           <Route path="/CheckoutInfo">
-            <CheckoutInfo />
+            <CheckoutInfo userdata={userdata} setUserdata={setUserdata}/>
           </Route>
           <Route path="/CheckoutDelivery">
-            <CheckoutDelivery />
+            <CheckoutDelivery userdata={userdata} setUserdata={setUserdata}/>
           </Route>
           <Route path="/CheckoutPayment">
-            <CheckoutPayment />
+            <CheckoutPayment userdata={userdata} setUserdata={setUserdata}/>
           </Route>
           <Route path="/OrderComplete">
-            <OrderComplete />
+            <OrderComplete userdata={userdata} setUserdata={setUserdata}/>
           </Route>
 
           {/* ProtectdRoute 這是 utils */}
