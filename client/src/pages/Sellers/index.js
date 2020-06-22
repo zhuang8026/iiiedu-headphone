@@ -16,16 +16,9 @@ function AliceSellers(props) {
   return (
     <Router>
       <Fragment>
-        <header>
-          <MyNavBar />
-          <MyMenu />
-        </header>
-
         <div>
           <IndexBase />
         </div>
-
-        <MyFooter />
       </Fragment>
     </Router>
   )

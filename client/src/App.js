@@ -6,14 +6,14 @@ import {
   Redirect,
 } from 'react-router-dom'
 
-import { message } from 'antd';
+import { message } from 'antd'
 
 // navbar & footer
 import MyNavBar from './components/Navbar'
 import MyMenu from './components/NavbarMenu'
 import MyFooter from './components/Footer'
 
-// home 
+// home
 import WiHome from './pages/Home'
 
 // Product
@@ -78,7 +78,7 @@ function App() {
 
     if (errors.length > 0) {
       setLoginErrors(errors)
-      message.warning(errors);
+      message.warning(errors)
       return
     }
     // 清空錯誤訊息陣列 + 登入
@@ -97,7 +97,7 @@ function App() {
 
     if (errors.length > 0) {
       setLoginErrors(errors)
-      message.warning(errors);
+      message.warning(errors)
       return
     }
     // 清空錯誤訊息陣列 + 登入
@@ -174,7 +174,7 @@ function App() {
           />
         </Route>
         <Route path="/KMembers/MembersRegister">
-          <MembersRegister 
+          <MembersRegister
             allprops={{
               name,
               setName,
@@ -182,7 +182,7 @@ function App() {
               setUsername,
               password,
               setPassword,
-              RegisterProcess
+              RegisterProcess,
             }}
           />
         </Route>
@@ -291,27 +291,13 @@ function App() {
         </Route>
 
         {/* 賣家 */}
-        <Route exact path="/AliceSellers">
-          <AliceSellers />
-        </Route>
-        <Route path="/AliceSellers/my-sale">
-          <MySale />
-        </Route>
-        <Route path="/AliceSellers/order">
-          <Order />
-        </Route>
-        <Route path="/AliceSellers/refund">
-          <Refund />
-        </Route>
-        <Route path="/AliceSellers/seller-product">
-          <SellerProduct />
-        </Route>
-        <Route path="/AliceSellers/seller-account">
-          <SellerAccount />
-        </Route>
-        <Route path="/AliceSellers/seller-address">
-          <SellerAddress />
-        </Route>
+        <Route exact path="/AliceSellers" component={AliceSellers} />
+        <Route path="/AliceSellers/my-sale" component={MySale} />
+        <Route path="/AliceSellers/order" component={Order} />
+        <Route path="/AliceSellers/refund" component={Refund} />
+        <Route path="/AliceSellers/seller-product" component={SellerProduct} />
+        <Route path="/AliceSellers/seller-account" component={SellerAccount} />
+        <Route path="/AliceSellers/seller-address" component={SellerAddress} />
 
         {/* 我的最愛 */}
         <Route path="/MyFav">
