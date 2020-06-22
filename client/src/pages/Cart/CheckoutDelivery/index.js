@@ -60,6 +60,7 @@ function CartDelivery(props) {
             id="deliveryId1"
             value="黑貓宅急便"
             required
+            checked
           />
           <label htmlFor="deliveryId1"> 黑貓宅急便</label>
           <div className="line">

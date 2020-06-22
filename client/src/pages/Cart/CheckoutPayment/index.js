@@ -60,6 +60,7 @@ function CartPayment(props) {
             id="paymentId1"
             value="貨到付款"
             required
+            checked
           />
           <label htmlFor="paymentId1"> 貨到付款</label>
           <div className="line">

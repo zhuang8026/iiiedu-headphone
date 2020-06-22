@@ -31,27 +31,29 @@ import '../../../../assets/scss/blog_edit.scss'
 
 function BlogEdit(props) {
 
-  // const[editBlogTitle, setEditBlogTitle] = useState('');
-  // const[editBlogContent01, setEditBlogContent01] = useState('');
-  // const[editBlogContent02, setEditBlogContent02] = useState('');
+  const[editBlogTitle, setEditBlogTitle] = useState('');
+  const[editBlogContent01, setEditBlogContent01] = useState('');
+  const[editBlogContent02, setEditBlogContent02] = useState('');
 
 
   return (
     <>
       <div className="blog-edit-spacing"></div>
       <div class="wrap-top">
-        <BlogCrumb />
+      <div className="blog-crumb">        
+        <Link to="../">首頁</Link>/<Link to="./YongMyBlog">部落格個人頁</Link>/<Link to="./BlogEdit">部落格編輯頁</Link>
+      </div>
       </div>
       <div class="wrap-mid">
         <div class="blog-edit blog-d-flex">
           <div class="blog-edit-main">
             <BlogMainEditInputs 
-              // editBlogTitle = {editBlogTitle}
-              // setEditBlogTitle ={setEditBlogTitle}
-              // editBlogContent01 = {editBlogContent01}
-              // setEditBlogContent01 ={setEditBlogContent01}
-              // editBlogContent02 ={editBlogContent02}
-              // setEditBlogContent02 ={setEditBlogContent02}
+              editBlogTitle = {editBlogTitle}
+              setEditBlogTitle ={setEditBlogTitle}
+              editBlogContent01 = {editBlogContent01}
+              setEditBlogContent01 ={setEditBlogContent01}
+              editBlogContent02 ={editBlogContent02}
+              setEditBlogContent02 ={setEditBlogContent02}
             />
           </div>
           <div class="blog-edit-aside">

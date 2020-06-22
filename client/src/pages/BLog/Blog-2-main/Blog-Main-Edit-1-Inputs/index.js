@@ -24,56 +24,56 @@ import {
 
 function BlogMainEditInputs(props) {
 
-    // const {
-    //     editBlogTitle,
-    //     setEditBlogTitle,
-    //     editBlogContent01,
-    //     setEditBlogContent01,
-    //     editBlogContent02,
-    //     setEditBlogContent02
-    // } = props;
+    const {
+        editBlogTitle,
+        setEditBlogTitle,
+        editBlogContent01,
+        setEditBlogContent01,
+        editBlogContent02,
+        setEditBlogContent02
+    } = props;
 
-    // const goBlogEdit = () => {
-    //     fetch('http://localhost:3009/blog/edit/2', {
-    //         method: 'post',
-    //         body: JSON.stringify({
-    //             editBlogTitle: editBlogTitle,
-    //             editBlogContent01: editBlogContent01,
-    //             editBlogContent02: editBlogContent02
-    //         }),
-    //         headers: new Headers({
-    //             'Accept': 'application/json',
-    //             'Content-Type': 'application/json',
-    //         })
-    //     })
-    //         .then(result => result.json())
-    //         .then(obj => {
-    //             console.log(obj)
-    //             // localStorage.setItem('memberData', JSON.stringify(obj));
-    //             message.success(`修改成功！`);
-    //             setTimeout(() => {
-    //                 // props.history.goBack()
-    //                 props.history.push('/Blog/YongMyBlog');
-    //             }, 2000)
-    //             // if(obj.success){
-    //             //   if(obj.password === password){
-    //             //     localStorage.setItem('memberData', JSON.stringify(obj));
-    //             //     message.success(`Hello!`);
-    //             //     setTimeout(()=>{
-    //             //       // props.history.goBack()
-    //             //       props.history.push('/');
-    //             //     },2000)
-    //             //   } else {
-    //             //     message.error(`密碼不正確`);
-    //             //     localStorage.removeItem('memberData');
-    //             //   }
-    //             // } else {
-    //             //   message.error(`登入失敗`);
-    //             //   localStorage.removeItem('memberData');
-    //             // }
-    //         })
+    const goBlogEdit = () => {
+        fetch('http://localhost:3009/blog/edit/31', {
+            method: 'post',
+            body: JSON.stringify({
+                editBlogTitle: editBlogTitle,
+                editBlogContent01: editBlogContent01,
+                editBlogContent02: editBlogContent02
+            }),
+            headers: new Headers({
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            })
+        })
+            .then(result => result.json())
+            .then(obj => {
+                console.log(obj)
+                // localStorage.setItem('memberData', JSON.stringify(obj));
+                message.success(`修改成功！`);
+                setTimeout(() => {
+                    // props.history.goBack()
+                    props.history.push('/Blog/YongMyBlog');
+                }, 2000)
+                // if(obj.success){
+                //   if(obj.password === password){
+                //     localStorage.setItem('memberData', JSON.stringify(obj));
+                //     message.success(`Hello!`);
+                //     setTimeout(()=>{
+                //       // props.history.goBack()
+                //       props.history.push('/');
+                //     },2000)
+                //   } else {
+                //     message.error(`密碼不正確`);
+                //     localStorage.removeItem('memberData');
+                //   }
+                // } else {
+                //   message.error(`登入失敗`);
+                //   localStorage.removeItem('memberData');
+                // }
+            })
 
-    // }
+    }
 
 
     return (
@@ -85,9 +85,14 @@ function BlogMainEditInputs(props) {
                 <h1>編輯部落格</h1>
                 <div class="underline-1"></div>
                 <h2 class="title-h2">文章標題</h2>
-                <input class="input-title" type="text" name="" id="" />
+                <input 
+                class="input-title" 
+                type="text" 
+                name="" 
+                id=""
+                onChange={e => setEditBlogTitle(e.target.value)} />
                 <h2 class="first-h2">第一篇文章</h2>
-                <textarea name="" id="" ></textarea>
+                <textarea name="" id="" onChange={e => setEditBlogContent01(e.target.value)} ></textarea>
                 <div class="btn-and-info blog-d-flex">
                     <input type="file" class="btn-and-info-input" name="" id="" />
                     <div class="blog-edit-info"></div>
@@ -103,7 +108,7 @@ function BlogMainEditInputs(props) {
                     </figure>
                 </div>
                 <h2 class="second-h2">第二篇文章</h2>
-                <textarea name="" id="" ></textarea>
+                <textarea name="" id="" onChange={e => setEditBlogContent02(e.target.value)} ></textarea>
                 <div class="btn-and-info blog-d-flex">
                     <input type="file" class="btn-and-info-input" name="" id="" />
                     <div class="blog-edit-info"></div>
@@ -118,7 +123,7 @@ function BlogMainEditInputs(props) {
                         <img src="" alt="" />
                     </figure>
                 </div>
-                <button class="blog-edit-submit">送出</button>
+                <button class="blog-edit-submit" onClick={() => { goBlogEdit() }}>送出</button>
             </div>
         </>
     )
