@@ -67,14 +67,10 @@ function BlogMainStandardList(props) {
         </div>
         <div className="blog-btns-right blog-d-flex blog-justify-content-between">
           <select name="" id="">
-            <option value="0">依順序</option>
-            <option value="1">依順序</option>
-          </select>
-          <select name="" id="">
             <option value="0">依最新發文</option>
             <option value="1">依最舊發文</option>
-            <option value="2">依最後修改</option>
-            <option value="3">依最後回覆</option>
+            <option value="2">依最新修改</option>
+            <option value="3">依最新回覆</option>
           </select>
           <figure className="blog-cover">
             <img src={IconSearch} alt="" />

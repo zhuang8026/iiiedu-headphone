@@ -47,7 +47,9 @@ function BlogAdd(props) {
     <>
       <div className="blog-add-spacing"></div>
       <div class="wrap-top">
-        <BlogCrumb />
+      <div className="blog-crumb">        
+        <Link to="../">首頁</Link>/<Link to="./YongMyBlog">部落格個人頁</Link>/<Link to="./BlogAdd">部落格新增頁</Link>
+      </div>
       </div>
       <div class="wrap-mid">
         <div class="blog-add blog-d-flex">

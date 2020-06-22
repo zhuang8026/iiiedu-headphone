@@ -52,24 +52,21 @@ function BlogMainUserListByUser(props) {
     <>
       <div className="blog-btns blog-d-flex blog-justify-content-between">
         <div className="blog-btns-left">
-        <button className="blog-btns-left-Link" onClick={()=>props.history.push('/Blog/YongBlog')}>
+          <button className="blog-btns-left-Link" onClick={() => props.history.push('/Blog/YongBlog')}>
             全部文章
           </button>
-          
-          <button className="blog-btns-left-Link" onClick={()=>props.history.push('/Blog/YongMyBlog')}>
+
+          <button className="blog-btns-left-Link" onClick={() => props.history.push('/Blog/YongMyBlog')}>
             個人文章
           </button>
         </div>
         <div className="blog-btns-right blog-d-flex blog-justify-content-between">
-          <select name="" id="">
-            <option value="0">依順序</option>
-            <option value="1">依順序</option>
-          </select>
+          
           <select name="" id="">
             <option value="0">依最新發文</option>
             <option value="1">依最舊發文</option>
-            <option value="2">依最後修改</option>
-            <option value="3">依最後回覆</option>
+            <option value="2">依最新修改</option>
+            <option value="3">依最新回覆</option>
           </select>
           <figure className="blog-cover">
             <img src={IconSearch} alt="" />
@@ -77,7 +74,7 @@ function BlogMainUserListByUser(props) {
         </div>
       </div>
       <div className="blog-list blog-d-flex">
-      {listUserBlogdata.map((data, index) => {
+        {listUserBlogdata.map((data, index) => {
           console.log(data)
           return (
             <div className="blog-card">
@@ -99,15 +96,15 @@ function BlogMainUserListByUser(props) {
             </div>
           )
         })}
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
       </div>
       <div className="blog-standard-pages blog-d-flex">
         <div className="prev-page">

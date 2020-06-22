@@ -33,6 +33,7 @@
   .blog-crumb {
     width: 100%;
     height: 90px;
+    margin-left: 5%;
     h5 {
       font-size: $font-size-16;
       line-height: 90px;
@@ -60,7 +61,7 @@
       .blog-edit-top-img {
         width: 100%;
         height: 193px;
-        background:$bg-btn-l;
+        background: $bg-btn-l;
         h1 {
           font-size: $font-size-24;
           color: $font-color-w;
@@ -145,6 +146,9 @@
           border-radius: 10px;
           margin: 10px 0;
         }
+        .blog-edit-submit:hover {
+          cursor: pointer;
+        }
       }
     }
     /* ---------- aside ---------- */
@@ -162,7 +166,7 @@
           color: $font-color-x;
           background: $btn-color-s;
         }
-        .i-want-post:hover{
+        .i-want-post:hover {
           cursor: pointer;
         }
         figure {

@@ -40,7 +40,9 @@ function BlogEdit(props) {
     <>
       <div className="blog-edit-spacing"></div>
       <div class="wrap-top">
-        <BlogCrumb />
+      <div className="blog-crumb">        
+        <Link to="../">首頁</Link>/<Link to="./YongMyBlog">部落格個人頁</Link>/<Link to="./BlogEdit">部落格編輯頁</Link>
+      </div>
       </div>
       <div class="wrap-mid">
         <div class="blog-edit blog-d-flex">
