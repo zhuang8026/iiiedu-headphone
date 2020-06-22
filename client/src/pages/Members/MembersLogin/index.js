@@ -15,7 +15,7 @@ function MembersLogin(props) {
     fetch('http://localhost:3009/members/login', {
       method: 'post',
       body:JSON.stringify({
-        username: username,
+        username:  username,
         pwd: password
       }),
       headers: new Headers({
