@@ -18,6 +18,19 @@ import {
 // import './_menu.scss'
 
 function ProductMain(props) {
+  const [mycart, setMycart] = useState([])
+  const [dataLoading, setDataLoading] = useState(false)
+  const updateCartToLocalStorage = (value) => {
+    // 開啟載入指示
+    //setDataLoading(true)
+    const Memberman = JSON.parse(localStorage.getItem('memberData'))|| []
+    console.log(Memberman)
+    const currentCart = JSON.parse(localStorage.getItem('cart')) || []
+    const newCart = [...currentCart, value]
+    localStorage.setItem('cart', JSON.stringify(newCart))
+  }
+
+
   const { itemsdata, setItemsdata, itemsid, setItemsid } = props;
 
   console.log('itemsid:', itemsid) // text button id 
@@ -142,7 +155,20 @@ function ProductMain(props) {
                   <div className="item_image">
                     <img className="item_images" src={`/items_img/${data.itemImg}`} />
                     <div className="item_imagebtnout">
-                      <buttun className="item_imagebtn btn" id={data.itemId}>加入購物車</buttun>
+                      <buttun className="item_imagebtn btn"
+                       id={data.itemId}
+                       onClick={() => {
+                       updateCartToLocalStorage({
+                          id: `${data.itemId}`,
+                          itemName:`${data.itemName}`,
+                          itemBrand:`${data.itemsbrand}`,
+                          itemImg:`${data.itemImg}`,
+                           })
+                        }}
+                      >
+                     
+                       
+                       加入購物車</buttun>
                       <buttun 
                         className="item_imagebtn2 btn" 
                         id={data.itemId} 
