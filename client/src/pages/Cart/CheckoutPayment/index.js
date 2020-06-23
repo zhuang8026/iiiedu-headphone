@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { addValue, minusValue, addValueAsync, initValueAsync } from '../../../actions/cart'
+import { paymentValue } from '../../../actions/cart'
 
 
 function CartPayment(props) {
