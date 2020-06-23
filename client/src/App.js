@@ -39,7 +39,7 @@ import MembersBank from './pages/Members/MembersBank'
 import MembersAdress from './pages/Members/MembersAdress'
 import MembersCartList from './pages/Members/MembersCartList'
 import MembersCartDetail from './pages/Members/MembersCartDetail'
-import MembersForget from './pages/Members/MembersForget'
+// import MembersForget from './pages/Members/MembersForget'
 
 // Alice's part
 import AliceSellers from './pages/Sellers'
@@ -134,7 +134,7 @@ function App() {
         return res.json()
       })
       .then((res) => {
-        console.log(res)
+        // console.log(res)
         setUserdata(res[0])
         // console.log(userdata);
       })
@@ -205,7 +205,18 @@ function App() {
 
           {/* 會員 */}
           <Route exact path="/KMembers">
-            <KMembers userdata={userdata} setUserdata={setUserdata} />
+            <KMembers 
+              allprops={{
+                userdata,
+                setUserdata,
+                name,
+                setName,
+                phoneNumber, 
+                setPhoneNumber,
+                address, 
+                setAddress
+              }}
+            />
           </Route>
           <Route path="/KMembers/MembersLogin">
             <MembersLogin
@@ -231,9 +242,9 @@ function App() {
               }}
             />
           </Route>
-          <Route path="/KMembers/MembersForget">
+          {/* <Route path="/KMembers/MembersForget">
             <MembersForget userdata={userdata} setUserdata={setUserdata} />
-          </Route>
+          </Route> */}
 
           <Route path="/KMembers/MembersRegister">
             <MembersRegister userdata={userdata} setUserdata={setUserdata} />

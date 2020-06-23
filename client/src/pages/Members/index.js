@@ -1,12 +1,12 @@
 // 函式元件
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import {withRouter} from 'react-router-dom'
 
 import MembersLeft from './ComponentMembersLeft'
 import MembersRight from './ComponentMembersRight'
 
 function KMembers(props) {
-  const {userdata, setUserdata} = props;
+  const {userdata, setUserdata, name, setName, phoneNumber, setPhoneNumber, address, setAddress} = props.allprops;
   // const localUser = JSON.parse(localStorage.getItem('memberData')); // 取得localStorage資料
   // const getUserData = (usernameData,pwdData )=> {
   //     fetch(`http://localhost:3009/members/user/${usernameData}/${pwdData}`, {
@@ -33,12 +33,22 @@ function KMembers(props) {
       <main>
         <div className="members_all">
           <MembersLeft 
-            userdata={userdata}
-            setUserdata={setUserdata}
+            userdata = {userdata}
+            setUserdata = {setUserdata}
+
           />
           <MembersRight 
-            userdata={userdata}
-            setUserdata={setUserdata}/>
+            allprops={{
+                userdata,
+                setUserdata,
+                name,
+                setName,
+                phoneNumber, 
+                setPhoneNumber,
+                address, 
+                setAddress
+              }}
+          />
         </div>
       </main>
   )

@@ -1,19 +1,18 @@
 // 函式元件
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { NavLink, withRouter} from 'react-router-dom'
 
 // http://localhost:3009/members/user/s001
 
 
 function MembersLeft(props) {
-    // const [userdata, setUserdata] = useState([])
-    const {userdata, setUserdata} = props;
+    const {userdata} = props;
 
     return (
         <div className="members_left">
             <div className="members_header">
                 <div className="mem_top_inner">
-                    <img  src={`/user_img/${userdata.userlogo}`} />
+                    <img  src={`/user_img/${userdata.userlogo}`} alt="photo/icon"/>
                     <div className="men_text">
                         <h2>Hello !</h2>
                         <p>親愛的 <strong>{userdata.name}</strong></p>

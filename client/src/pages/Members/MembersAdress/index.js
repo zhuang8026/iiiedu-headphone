@@ -97,6 +97,7 @@ function MembersAdress(props) {
                                                 className="address_input" 
                                                 placeholder="您的手機號碼" 
                                                 pattern="[0-9]{2}[0-9]{8}" 
+                                                maxLength="10" 
                                                 defaultValue={phoneNumber} 
                                                 onChange={e => setPhoneNumber(e.target.value)}
                                             />
