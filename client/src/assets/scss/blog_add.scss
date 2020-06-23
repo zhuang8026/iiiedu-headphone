@@ -135,8 +135,14 @@
           figure {
             width: 99%;
             height: 200px;
+            // height: 100%;
             margin: 5px auto;
             border: 1px solid $border-color-l;
+          }
+          img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
           }
         }
         .blog-add-submit {

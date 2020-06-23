@@ -175,7 +175,7 @@ router.post('/add', upload.none(), (req, res) => {
         success: false
     }
     // 沒有創建時間的input欄位，就直接給它函數方法
-    let id = 99;
+    let id = 2;
 
     let blogTitle = req.body.blogTitle;
     let blogContent01 = req.body.blogContent01;

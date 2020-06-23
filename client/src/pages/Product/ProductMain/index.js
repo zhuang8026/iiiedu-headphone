@@ -106,7 +106,7 @@ function ProductMain(props) {
               </li>
             </ul>
         </div>
-        <div className="Yybrand">
+        {/* <div className="Yybrand">
             <div className="Yywearstyle">類型 </div>
             <ul>
               <li>
@@ -118,7 +118,7 @@ function ProductMain(props) {
                 <label for="check-2">非入耳式</label>
               </li>
             </ul>
-        </div>
+        </div> */}
         
           <div className="Yysubmit">
             <button className="btn" type="button">
@@ -156,6 +156,8 @@ function ProductMain(props) {
                           itemName:`${data.itemName}`,
                           itemBrand:`${data.itemsbrand}`,
                           itemImg:`${data.itemImg}`,
+                          itemPrice:`${data.itemPrice}`,
+                          amount:1,
                            })
                         }}
                       >
