@@ -6,6 +6,7 @@ const upload = require(__dirname + '/upload-module');
 const db = require(__dirname + '/db_connect');
 const cors = require('cors');
 const fs = require('fs');
+const { serialize } = require('v8');
 
 
 const router = express.Router();
@@ -130,7 +131,7 @@ const getUserBlogList = async (req) => {
 // 所有文章
 // http://localhost:3009/blog/listAllBlog
 router.get("/listAllBlog", (req, res) => {
-    const sql = "SELECT * FROM `blogs`ORDER BY blogId desc";
+    const sql = `SELECT * FROM blogs ORDER BY blogId desc`;
     db.query(sql, (error, results, fields) => {
         if (error) throw error;
         res.json(results);
@@ -228,14 +229,12 @@ router.post('/edit/:blogId', upload.none(), (req, res) => {
         body: req.body
     }
 
-
-    
     // let blogId = parseInt(req.body.blogId);
     let blogId = req.params.blogId;
 
     let editBlogTitle = req.body.editBlogTitle;
     let editBlogContent01 = req.body.editBlogContent01;
-    let editBlogContent02 = req.body.editBlogContent02;    
+    let editBlogContent02 = req.body.editBlogContent02;
 
     const sql = "UPDATE `blogs` SET `blogTitle`=?, `blogContent01`=?, `blogContent02`=? WHERE `blogId`=?";
 
@@ -257,19 +256,79 @@ router.post('/edit/:blogId', upload.none(), (req, res) => {
 })
 
 //================================================== blogSearch ==============================================================
-// (未完成)
+// (半完成)
 // 搜尋結果(分頁)的func
-const getSearchList = async (req) => {
-    const perPage = 5;
-    let page = parseInt(req.params.page) || 1;
+const getSearchAllList = async (req) => {
+    const searchInput = '%9%';
+    const searchSort = '4';
+    const searchOrder = '2';
+    const perPage = 20;
+    let page = 1;
+    // let page = parseInt(req.params.page) || 1;
     const output = {
-        page: page,
+        searchInput: searchInput,
+        searchSort: searchSort,
+        searchOrder: searchOrder,
+        page: 1,
         perPage: perPage,
         totalRows: 0, // 總共有幾筆資料
         totalPages: 0, //總共有幾頁
         rows: []
     }
-    const [r1] = await db.query(`SELECT COUNT(1) num FROM blogs`);
+
+    let toCount = `SELECT COUNT(1) num FROM blogs`;
+    let toSearch=`SELECT * FROM blogs`;
+    toCount+=` WHERE id LIKE '%9%' OR blogTitle LIKE '%9%' OR blogContent01 LIKE '%9%'`;
+    toSearch+=` WHERE id LIKE '%9%' OR blogTitle LIKE '%9%' OR blogContent01 LIKE '%9%'`;
+
+    if (searchSort) {
+        switch (searchSort) {
+            case '1':
+                toCount += " ORDER BY blogExpectedDate";
+                toSearch += " ORDER BY blogExpectedDate";
+                break;
+            case '2':
+                toCount += " ORDER BY blogPublishDate";
+                toSearch += " ORDER BY blogPublishDate";
+                break;
+            case '3':
+                toCount += " ORDER BY blogUpdateDate";
+                toSearch += " ORDER BY blogUpdateDate";
+                break;
+            case '4':
+                toCount += " ORDER BY blogId";
+                toSearch += " ORDER BY blogId";
+                break;
+            case '5':
+                toCount += " ORDER BY id";
+                toSearch += " ORDER BY id";
+                break;
+            default:
+                break;
+        }
+    }
+
+    if (searchOrder) {
+        switch (searchOrder) {
+            case '1':
+                toCount += " ASC";
+                toSearch += " ASC";
+                break;
+            case '2':
+                toCount += " DESC";
+                toSearch += " DESC";
+                break;
+            default:
+                break;
+        }
+    }
+    console.log('===================================================');
+    console.log('toCount = ', toCount);
+    console.log('===================================================');
+    
+    const [r1] = await db.query(toCount);
+    
+    // const [r1] = await db.query("SELECT COUNT(1) num FROM blogs");
 
     output.totalRows = r1[0].num;
     output.totalPages = Math.ceil(output.totalRows / perPage);
@@ -280,7 +339,15 @@ const getSearchList = async (req) => {
     if (!output.page) {
         return output;
     }
-    const sql = `SELECT * FROM blogs ORDER BY blogId desc LIMIT ${(page - 1) * perPage}, ${perPage}`
+
+    toSearch+=` LIMIT ${(page - 1) * perPage}, ${perPage}`;
+    console.log('===================================================');
+    console.log('toSearch = ', toSearch);
+    console.log('===================================================');
+    const sql = toSearch;
+    console.log('sql = ', sql);
+    console.log('===================================================');
+    // const sql = `SELECT * FROM blogs ORDER BY blogId desc LIMIT ${(page - 1) * perPage}, ${perPage}`;
     const [r2] = await db.query(sql);
     if (r2) output.rows = r2;
     console.log(output)
@@ -293,6 +360,14 @@ const getSearchList = async (req) => {
     }
     return output;
 };
+
+
+// 搜尋所有文章(分頁)
+// http://localhost:3009/blog/searchAllBlog/
+router.get('/searchAllBlog/', async (req, res) => {
+    const output = await getSearchAllList(req);
+    res.json(output);
+})
 
 
 //================================================== 圖片上傳 ==============================================================
