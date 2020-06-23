@@ -78,28 +78,28 @@ function BlogMainEditInputs(props) {
 
     return (
         <>
-            <figure class="blog-edit-top-img">
+            <figure className="blog-edit-top-img">
                 <h1>部落格編輯頁</h1>
             </figure>
-            <div class="blog-edit-in">
+            <div className="blog-edit-in">
                 <h1>編輯部落格</h1>
-                <div class="underline-1"></div>
-                <h2 class="title-h2">文章標題</h2>
+                <div className="underline-1"></div>
+                <h2 className="title-h2">文章標題</h2>
                 <input 
-                class="input-title" 
+                className="input-title" 
                 type="text" 
                 name="" 
                 id=""
                 onChange={e => setEditBlogTitle(e.target.value)} />
-                <h2 class="first-h2">第一篇文章</h2>
+                <h2 className="first-h2">第一篇文章</h2>
                 <textarea name="" id="" onChange={e => setEditBlogContent01(e.target.value)} ></textarea>
-                <div class="btn-and-info blog-d-flex">
-                    <input type="file" class="btn-and-info-input" name="" id="" />
-                    <div class="blog-edit-info"></div>
-                    <div class="blog-edit-info"></div>
-                    <div class="blog-edit-info"></div>
+                <div className="btn-and-info blog-d-flex">
+                    <input type="file" className="btn-and-info-input" name="" id="" />
+                    <div className="blog-edit-info"></div>
+                    <div className="blog-edit-info"></div>
+                    <div className="blog-edit-info"></div>
                 </div>
-                <div class="upload-imgs">
+                <div className="upload-imgs">
                     <figure>
                         <img src="" alt="" />
                     </figure>
@@ -107,15 +107,15 @@ function BlogMainEditInputs(props) {
                         <img src="" alt="" />
                     </figure>
                 </div>
-                <h2 class="second-h2">第二篇文章</h2>
+                <h2 className="second-h2">第二篇文章</h2>
                 <textarea name="" id="" onChange={e => setEditBlogContent02(e.target.value)} ></textarea>
-                <div class="btn-and-info blog-d-flex">
-                    <input type="file" class="btn-and-info-input" name="" id="" />
-                    <div class="blog-edit-info"></div>
-                    <div class="blog-edit-info"></div>
-                    <div class="blog-edit-info"></div>
+                <div className="btn-and-info blog-d-flex">
+                    <input type="file" className="btn-and-info-input" name="" id="" />
+                    <div className="blog-edit-info"></div>
+                    <div className="blog-edit-info"></div>
+                    <div className="blog-edit-info"></div>
                 </div>
-                <div class="upload-imgs">
+                <div className="upload-imgs">
                     <figure>
                         <img src="" alt="" />
                     </figure>
@@ -123,7 +123,7 @@ function BlogMainEditInputs(props) {
                         <img src="" alt="" />
                     </figure>
                 </div>
-                <button class="blog-edit-submit" onClick={() => { goBlogEdit() }}>送出</button>
+                <button className="blog-edit-submit" onClick={() => { goBlogEdit() }}>送出</button>
             </div>
         </>
     )

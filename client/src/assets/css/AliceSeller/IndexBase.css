@@ -75,6 +75,9 @@
   margin: 10px;
   padding: 20px;
 }
+.seller-num{
+  font-size:32px;
+}
 /* 待辦清單 */
 .seller-todo-list {
   background: #fff;
@@ -389,7 +392,7 @@
 
 /* seller-product */
 .seller-myproduct {
-  height: 150vh;
+  height: 1100px;
   background: #fff;
   border: 1px solid #ccc;
   margin: 10px;
@@ -462,7 +465,14 @@
   height: 30px;
   width: 100px;
   border: 1px solid #707070;
+  cursor: pointer;
+  color:#707070;
 }
+
+/* .seller-btn-style:hover{
+  background: $btn-color-l;
+  color: #fff;
+} */
 
 .seller-exportbtn,
 #startdate,

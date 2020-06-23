@@ -1,5 +1,5 @@
 // 函式元件
-import React from 'react';
+import React ,{useEffect, useState} from 'react';
 import {withRouter} from 'react-router-dom'
 
 // antd
@@ -10,38 +10,46 @@ import { Radio } from 'antd';
 
 
 function KMembers(props) {
-    const {userdata, setUserdata} = props;
-    // const [todos, setTodos] = useState(1); 
-    const onChange = (event) => {
-        console.log('radio checked', event.target.value);
-        // setTodos(event.target.value);
-    };
+    const {userdata, setUserdata, name, setName, phoneNumber, setPhoneNumber, address, setAddress} = props.allprops;
 
-    // const onDataChange = (date, dateString) => {
-    //     console.log(date, dateString);
-    // };
+    // const { userlogo, setUserlogo } = useState([]);
+    const [userlogo2, setUserlogo2 ] = useState();
 
-    // Upload
-    // const propss = {
-    //     name: 'file',
-    //     multiple: false,
-    //     accept:"image/png, image/jpeg",
-    //     action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-    //     headers: {
-    //         authorization: 'authorization-text',
-    //     },
-    //     onChange(info) {
-    //         console.log(info.file.status)
-    //         if (info.file.status !== 'uploading') {
-    //         console.log(info.file, info.fileList);
-    //         }
-    //         if (info.file.status === 'done') {
-    //             message.success(`${info.file.name} file uploaded successfully`);
-    //         } else if (info.file.status === 'error') {
-    //             message.error(`${info.file.name} file upload failed.`);
-    //         }
-    //     },
-    // };
+    console.log(userlogo2);
+
+    const myDataEditCallback = () => {
+    fetch('http://localhost:3009/membersEdit/userUpload', {
+        method: 'post',
+        body:JSON.stringify({
+            name:  name,
+            // phoneNumber,
+            // gender,
+            userlogo: userlogo2,
+            // birthday,
+            // id
+        }),
+        headers: new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        })
+        })
+        .then(result=>result.json())
+        .then(obj=>{
+            console.log(obj);
+            
+        })
+    
+    }
+
+
+    useEffect(()=>{
+        // myDataEditCallback()
+        // console.log("測試測試")
+        setUserlogo2(userdata.userlogo)
+        setName(userdata.name);
+        setPhoneNumber(userdata.phoneNumber);
+        setAddress(userdata.address);
+    },[userdata])
 
     return (
         <div className="members_right">
@@ -60,7 +68,7 @@ function KMembers(props) {
                                 <div className="r_bottom_nodel">
                                     <label htmlFor="use">使用者帳號</label>
                                     <span className="iconfont icon-gerenziliao"></span>
-                                    <input id="use" className="mem_input" placeholder="otis0710@gmail.com" readOnly defaultValue={userdata.username}/>
+                                    <input id="use" className="mem_input" placeholder="otis0710@gmail.com" readOnly defaultValue={userdata.name}/>
                                 </div>
                                 <span className="r_bottom_err">賬號不可修改</span>
                             </li>
@@ -86,8 +94,9 @@ function KMembers(props) {
                                         type="email" 
                                         id="email" 
                                         className="mem_input" 
-                                        placeholder="您的電子郵箱" 
-                                        defaultValue={userdata.username}
+                                        placeholder="您的電子郵箱 暫時無此欄位"
+                                        readOnly 
+                                        // defaultValue={userdata.username}
                                     />
                                 </div>
                                 <span className="r_bottom_err">email格式做錯</span>
@@ -102,6 +111,7 @@ function KMembers(props) {
                                         className="mem_input" 
                                         placeholder="您的手機號碼" 
                                         pattern="[0-9]{2}[0-9]{8}" 
+                                        maxLength="10" 
                                         defaultValue={userdata.phoneNumber} 
                                     />
                                 </div>
@@ -111,11 +121,10 @@ function KMembers(props) {
                                 <div className="r_bottom_del">
                                     <label>性別</label>
                                     <span className="iconfont icon-sex"></span>
-                                    {/* <input className="mem_input" placeholder="男"/> */}
-                                    <Radio.Group onChange={onChange} value={Number(userdata.gender)}>
-                                        <Radio value={1}>男</Radio>
-                                        <Radio value={2}>女</Radio>
-                                    </Radio.Group>
+                                    <select className="mem_input" defaultValue={userdata.gender}>
+                                        <option defaultValue ="1">男</option>
+                                        <option defaultValue ="2">女</option>
+                                    </select>
                                 </div>
                                 <span className="r_bottom_err">請選擇性別</span>
                             </li>
@@ -136,7 +145,7 @@ function KMembers(props) {
                                 <span className="r_bottom_err">生日格式錯誤</span>
                             </li>
                             <li>
-                                <button className="r_sumbit" type="sumbit">確認</button>
+                                <button className="r_sumbit" type="sumbit" onClick={()=>{ myDataEditCallback() }}>確認</button>
                             </li>
                         </ul>
                     </div>
@@ -144,8 +153,20 @@ function KMembers(props) {
                     <div className="r_bottom_right">
                         <img src={`/user_img/${userdata.userlogo}`} alt="image"/>
                         <div className="file-upload">
-                            <label htmlFor="upload" className="file-upload__label">上傳圖片</label>
-                            <input type="file" id="upload" className="file-upload__input" name="file-upload" defaultValue="" placeholder="商品圖片"/>
+                            <label htmlFor="file_upload" className="file-upload__label">上傳圖片</label>
+                            <input 
+                                type="file" 
+                                id="file_upload" 
+                                className="file_upload" 
+                                name="file_upload" 
+                                defaultValue="" 
+                                placeholder="商品圖片"
+                                onChange = {(e)=>{
+                                    console.log(e.target.files[0])
+                                    // console.log(e.target.files[0].name)
+                                    setUserlogo2(e.target.files[0].name)
+                                }}
+                            />
                         </div>
                         <div className="r_bottom_logo_update_text">
                             <p>檔案大小: 最大200KB</p>

@@ -29,7 +29,7 @@ function Refund(props) {
           </span>
           <div className="seller-container">
             <LeftNav />
-            <div className="seller-main">
+            <div className="seller-w100-main">
               <div className="seller-refund">
                 <div className="w-90">
                   <div class="seller-toggle">

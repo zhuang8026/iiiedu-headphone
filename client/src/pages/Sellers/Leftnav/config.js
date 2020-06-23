@@ -2,45 +2,45 @@
 //我的帳戶
 export const ProfileLi = [
   {
-    linkUrl: 'https://treefonts.com/',
+    linkUrl: '',
     name: '個人檔案',
   },
   {
-    linkUrl: 'https://treefonts.com/',
+    linkUrl: '',
     name: '銀行帳戶',
   },
   {
-    linkUrl: 'https://treefonts.com/',
+    linkUrl: '',
     name: '地址',
   },
   {
-    linkUrl: 'https://treefonts.com/',
+    linkUrl: '',
     name: '更改密碼',
   },
 ]
 //訂單管理
 export const OrderLi = [
   {
-    linkUrl: 'https://treefonts.com/',
+    linkUrl: '/AliceSellers/my-sale',
     name: '我的銷售',
   },
   {
-    linkUrl: 'https://treefonts.com/',
+    linkUrl: '/AliceSellers/order',
     name: '訂單出貨',
   },
   {
-    linkUrl: 'https://treefonts.com/',
+    linkUrl: '/AliceSellers/refund',
     name: '退貨/退款',
   },
 ]
 //商品管理
 export const ProductLi = [
   {
-    linkUrl: 'https://treefonts.com/',
+    linkUrl: '/AliceSellers/seller-product',
     name: '我的商品',
   },
   {
-    linkUrl: 'https://treefonts.com/',
+    linkUrl: '/AliceSellers/add-product',
     name: '新增商品',
   },
 ]

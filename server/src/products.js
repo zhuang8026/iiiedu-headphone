@@ -8,6 +8,7 @@ const router = express.Router();
 //http://localhost:3009/products/ 
 router.get('/', (req, res)=>{
     res.send('產品列表')
+    
 });
 
 const getDataList = async (req)=>{ 
@@ -43,6 +44,7 @@ const getDataList = async (req)=>{
 
 
 // 所有資料
+// http://localhost:3009/products/list
 router.get("/list", (req, res) => {
     const sql = "SELECT * FROM `items`";
 

@@ -106,7 +106,7 @@ function ProductMain(props) {
               </li>
             </ul>
         </div>
-        <div className="Yybrand">
+        {/* <div className="Yybrand">
             <div className="Yywearstyle">類型 </div>
             <ul>
               <li>
@@ -118,7 +118,7 @@ function ProductMain(props) {
                 <label for="check-2">非入耳式</label>
               </li>
             </ul>
-        </div>
+        </div> */}
         
           <div className="Yysubmit">
             <button className="btn" type="button">
@@ -148,7 +148,7 @@ function ProductMain(props) {
                   <div className="item_image">
                     <img className="item_images" src={`/items_img/${data.itemImg}`} />
                     <div className="item_imagebtnout">
-                      <buttun className="item_imagebtn btn"
+                      <button className="item_imagebtn btn"
                        id={data.itemId}
                        onClick={() => {
                        updateCartToLocalStorage({
@@ -156,13 +156,15 @@ function ProductMain(props) {
                           itemName:`${data.itemName}`,
                           itemBrand:`${data.itemsbrand}`,
                           itemImg:`${data.itemImg}`,
+                          itemPrice:`${data.itemPrice}`,
+                          amount:1,
                            })
                         }}
                       >
                      
                        
-                       加入購物車</buttun>
-                      <buttun 
+                       加入購物車</button>
+                      <button 
                         className="item_imagebtn2 btn" 
                         id={data.itemId} 
                         onClick={e =>{
@@ -170,7 +172,7 @@ function ProductMain(props) {
                           goToDetail(e.target.id)
                           props.history.push(`/ProductDetail/${e.target.id}`)
                         }}
-                      >立即查看</buttun>
+                      >立即查看</button>
                     </div>
                   </div>
                   <div className="item_cover"></div>

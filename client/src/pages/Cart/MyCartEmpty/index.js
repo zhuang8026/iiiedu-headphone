@@ -12,7 +12,7 @@ function CartEmpty(props) {
     <>
       <div className="cart-crumb">
         <div></div>
-        <Link to="/">首頁</Link> / <Link to="/YfangCart">購物車</Link>
+        <Link to="/">首頁</Link> / <Link to="/MyCart">購物車</Link>
       </div>
       <div className="cart-container">
         <ul class="cart-empty">
