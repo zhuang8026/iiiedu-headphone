@@ -36,7 +36,7 @@ router.post('/edit', (req, res)=>{
 
 })
 
-router.post('/userUpload', upload.single('avatafile_upload'), (req, res)=>{
+router.post('/userUpload', upload.single('file_upload'), (req, res)=>{
     console.log(req.body); // 图片以外的资料
     console.log(req.file); // 图片上传
     const output = {
