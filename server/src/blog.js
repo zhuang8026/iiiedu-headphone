@@ -8,27 +8,17 @@ const cors = require('cors');
 const fs = require('fs');
 const { serialize } = require('v8');
 
-
 const router = express.Router();
 
 // 建立 web server 物件
 const app = express();
 
-
-
-
 // middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-
-
-
 // blogAdd
 // app.use('/blogAdd', require(__dirname+'/blogAdd.js'));
-
-
-
 
 //================================================== session ==============================================================
 // (未完成)
@@ -257,30 +247,32 @@ router.post('/edit/:blogId', upload.none(), (req, res) => {
 
 //================================================== blogSearch ==============================================================
 // (半完成)
-// 搜尋結果(分頁)的func
+// 搜尋所有文章(分頁)的function
 const getSearchAllList = async (req) => {
-    const searchInput = '%9%';
-    const searchSort = '4';
-    const searchOrder = '2';
-    const perPage = 20;
-    let page = 1;
+    // 給資料的部分可改成接req.body的資料
+    const searchInput = '%9%';  // 給字串
+    const searchSort = '4';     // 給排序方式
+    const searchOrder = '2';    // 給正逆向
+    const perPage = 20;         // 給每頁幾筆
+    let page = 1;               // 給當前頁
     // let page = parseInt(req.params.page) || 1;
     const output = {
-        searchInput: searchInput,
-        searchSort: searchSort,
-        searchOrder: searchOrder,
-        page: 1,
-        perPage: perPage,
-        totalRows: 0, // 總共有幾筆資料
-        totalPages: 0, //總共有幾頁
-        rows: []
+        searchInput: searchInput,    // 字串
+        searchSort: searchSort,      // 排序方式
+        searchOrder: searchOrder,    // 正逆向
+        page: page,                  // 當前頁 
+        perPage: perPage,            // 每頁幾筆
+        totalRows: 0,                // 總共有幾筆資料
+        totalPages: 0,               // 總共有幾頁
+        rows: []                     // 資料 
     }
-
+    //設變數，toCount給計算頁數的sql用，toSearch給找出當頁的sql用。
     let toCount = `SELECT COUNT(1) num FROM blogs`;
-    let toSearch=`SELECT * FROM blogs`;
-    toCount+=` WHERE id LIKE '%9%' OR blogTitle LIKE '%9%' OR blogContent01 LIKE '%9%'`;
-    toSearch+=` WHERE id LIKE '%9%' OR blogTitle LIKE '%9%' OR blogContent01 LIKE '%9%'`;
-
+    let toSearch = `SELECT * FROM blogs`;
+    //分別加上LIKE搜尋
+    toCount += ` WHERE id LIKE '%9%' OR blogTitle LIKE '%9%' OR blogContent01 LIKE '%9%'`;
+    toSearch += ` WHERE id LIKE '%9%' OR blogTitle LIKE '%9%' OR blogContent01 LIKE '%9%'`;
+    //依case加上ORDER BY
     if (searchSort) {
         switch (searchSort) {
             case '1':
@@ -307,7 +299,7 @@ const getSearchAllList = async (req) => {
                 break;
         }
     }
-
+    // 依case加上ASC/DESC
     if (searchOrder) {
         switch (searchOrder) {
             case '1':
@@ -322,14 +314,9 @@ const getSearchAllList = async (req) => {
                 break;
         }
     }
-    console.log('===================================================');
-    console.log('toCount = ', toCount);
-    console.log('===================================================');
-    
+    // 取出sql符合的總共有幾筆
     const [r1] = await db.query(toCount);
-    
-    // const [r1] = await db.query("SELECT COUNT(1) num FROM blogs");
-
+    // 算資料給output
     output.totalRows = r1[0].num;
     output.totalPages = Math.ceil(output.totalRows / perPage);
     if (page < 1) page = 1;
@@ -339,15 +326,10 @@ const getSearchAllList = async (req) => {
     if (!output.page) {
         return output;
     }
-
-    toSearch+=` LIMIT ${(page - 1) * perPage}, ${perPage}`;
-    console.log('===================================================');
-    console.log('toSearch = ', toSearch);
-    console.log('===================================================');
+    // 加上當前頁的LIMIT
+    toSearch += ` LIMIT ${(page - 1) * perPage}, ${perPage}`;
+    // 丟給sql去取出當前頁的資料
     const sql = toSearch;
-    console.log('sql = ', sql);
-    console.log('===================================================');
-    // const sql = `SELECT * FROM blogs ORDER BY blogId desc LIMIT ${(page - 1) * perPage}, ${perPage}`;
     const [r2] = await db.query(sql);
     if (r2) output.rows = r2;
     console.log(output)
