@@ -73,79 +73,80 @@ function MyCart(props) {
   function sum(items) {
     let total = 0
     for (let i = 0; i < items.length; i++) {
-      total += items[i].amount * items[i].price
+      total += items[i].amount * items[i].itemPrice
     }
     return total
   }
 
   const spinner = <></>
-  const display = <>
-    <table className="cart-table">
-          <thead>
-            <tr>
-              <th>刪除</th>
-              <th>商品圖片</th>
-              <th>商品名稱</th>
-              <th>單價</th>
-              <th>數量</th>
-              <th>小計</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            {mycartDisplay.map((value, index) => {
-              return (
-                <tr>
-                  <td>
-                    <i>X</i>
-                  </td>
-                  <td>
-                    <img src={`/items_img/${value.itemImg}`} alt="icon" />
-                  </td>
-                  <td>{value.itemName}</td>
-                  <td>{value.itemPrice}</td>
-                  <td className="td-qut">{value.amount}</td>
-                  <td>{value.itemPrice}</td>
-                  <td className="td-function">
-                    <button className="btn_wish btn_width">加入願望</button>
-                    <button className="btn_booking btn_width">加入比較</button>
-                  </td>
-                </tr>
-              )
-            })}
-          </tbody>
-          <tfoot>
-            <tr>
-              <td>
-                <input type="text" placeholder=" 請輸入優惠碼" />
-                <button>去取得優惠卷</button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span>總計 </span>
-                <span>24,000</span>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <button type="button">
-                  <Link to="/CheckoutInfo">去結帳</Link>
-                </button>
-              </td>
-            </tr>
-          </tfoot>
-        </table>
-  </>
+  const display = (
+    <>
+      <table className="cart-table">
+        <thead>
+          <tr>
+            <th>刪除</th>
+            <th>商品圖片</th>
+            <th>商品名稱</th>
+            <th>單價</th>
+            <th>數量</th>
+            <th>小計</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          {mycartDisplay.map((value, index) => {
+            return (
+              <tr>
+                <td>
+                  <i>X</i>
+                </td>
+                <td>
+                  <img src={`/items_img/${value.itemImg}`} alt="icon" />
+                </td>
+                <td>{value.itemName}</td>
+                <td>{value.itemPrice}</td>
+                <td className="td-qut">{value.amount}</td>
+                <td>{value.amount * value.itemPrice}</td>
+                <td className="td-function">
+                  <button className="btn_wish btn_width">加入願望</button>
+                  <button className="btn_booking btn_width">加入比較</button>
+                </td>
+              </tr>
+            )
+          })}
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>
+              <input type="text" placeholder=" 請輸入優惠碼" />
+              <button>去取得優惠卷</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>總計</span>
+               {/* 判斷mycartDisplay是否在初次render的階段 */}
+      {mycartDisplay.length > 0 ? <span>{sum(mycartDisplay)}</span> : ''}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button type="button">
+                <Link to="/CheckoutInfo">去結帳</Link>
+              </button>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </>
+  )
   return (
     <>
       <div className="cart-crumb">
         <div></div>
         <Link to="/">首頁</Link> / <Link to="/MyCart">購物車</Link>
       </div>
-      <div className="cart-container">
-      {dataLoading ? spinner : display}
-      </div>
+      <div className="cart-container">{dataLoading ? spinner : display}</div>
     </>
   )
 }
