@@ -9,10 +9,10 @@ import {
   NavLink,
   withRouter,
 } from 'react-router-dom'
-import SRH184001 from '../../../assets/items_img/SRH1840-01.png'
+// import SRH184001 from '../../../assets/items_img/SRH1840-01.png'
 
-function CartTable(props) {
-  const {userdata, setUserdata} = props
+function MyCart(props) {
+  const { userdata, setUserdata } = props
   const [mycart, setMycart] = useState([])
   const [mycartDisplay, setMycartDisplay] = useState([])
   const [dataLoading, setDataLoading] = useState(false)
@@ -21,7 +21,7 @@ function CartTable(props) {
     // 開啟指示(spinner)
     setDataLoading(true)
 
-    console.log(localStorage.getItem('cart'))
+    console.log("localStorage.getItem('cart'):", localStorage.getItem('cart'))
 
     // 得到值(字串) !!重要
     const initCart = localStorage.getItem('cart') || '[]'
@@ -78,38 +78,9 @@ function CartTable(props) {
     return total
   }
 
-  const spinner = (
-    <div className="spinner-border text-primary" role="status">
-      <span className="sr-only">Loading...</span>
-    </div>
-  )
-
-  const display = (
-    <>
-      <ul className="list-group">
-        {mycartDisplay.map((value, index) => {
-          return (
-            <li className="list-group-item" key={value.id}>
-              產品：{value.name}/數量：{value.amount} /單價：{value.price}/
-              {'   '}
-              小計：{value.amount * value.price}
-            </li>
-          )
-        })}
-      </ul>
-      {/* 判斷mycartDisplay是否在初次render的階段 */}
-      {mycartDisplay.length > 0 ? <h3>總價：{sum(mycartDisplay)}</h3> : ''}
-    </>
-  )
-
-  return (
-    <>
-      <div className="cart-crumb">
-        <div></div>
-        <Link to="/">首頁</Link> / <Link to="/MyCart">購物車</Link>
-      </div>
-      <div className="cart-container">
-        <table className="cart-table">
+  const spinner = <></>
+  const display = <>
+    <table className="cart-table">
           <thead>
             <tr>
               <th>刪除</th>
@@ -122,126 +93,26 @@ function CartTable(props) {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <i>X</i>
-              </td>
-              <td>
-                <img src={SRH184001} alt="icon" />
-              </td>
-              <td>ATH-PDG1a</td>
-              <td>2,000</td>
-              <td className="td-qut">
-                <button>-</button>
-                <input type="text" name="qut" id="" readOnly />
-                <button>+</button>
-              </td>
-              <td>6,000</td>
-              <td className="td-function">
-                <button className="btn_wish btn_width">加入願望</button>
-                <button className="btn_booking btn_width">加入比較</button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <i>X</i>
-              </td>
-              <td>
-                <img src={SRH184001} alt="icon" />
-              </td>
-              <td>ATH-PDG1a</td>
-              <td>2,000</td>
-              <td className="td-qut">
-                <button>-</button>
-                <input type="text" name="qut" id="" readOnly />
-                <button>+</button>
-              </td>
-              <td>6,000</td>
-              <td className="td-function">
-                <button className="btn_wish btn_width">加入願望</button>
-                <button className="btn_booking btn_width">加入比較</button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <i>X</i>
-              </td>
-              <td>
-                <img src={SRH184001} alt="icon" />
-              </td>
-              <td>ATH-PDG1a</td>
-              <td>2,000</td>
-              <td className="td-qut">
-                <button>-</button>
-                <input type="text" name="qut" id="" readOnly />
-                <button>+</button>
-              </td>
-              <td>6,000</td>
-              <td className="td-function">
-                <button className="btn_wish btn_width">加入願望</button>
-                <button className="btn_booking btn_width">加入比較</button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <i>X</i>
-              </td>
-              <td>
-                <img src={SRH184001} alt="icon" />
-              </td>
-              <td>ATH-PDG1a</td>
-              <td>2,000</td>
-              <td className="td-qut">
-                <button>-</button>
-                <input type="text" name="qut" id="" readOnly />
-                <button>+</button>
-              </td>
-              <td>6,000</td>
-              <td className="td-function">
-                <button className="btn_wish btn_width">加入願望</button>
-                <button className="btn_booking btn_width">加入比較</button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <i>X</i>
-              </td>
-              <td>
-                <img src={SRH184001} alt="icon" />
-              </td>
-              <td>ATH-PDG1a</td>
-              <td>2,000</td>
-              <td className="td-qut">
-                <button>-</button>
-                <input type="text" name="qut" id="" readOnly />
-                <button>+</button>
-              </td>
-              <td>6,000</td>
-              <td className="td-function">
-                <button className="btn_wish btn_width">加入願望</button>
-                <button className="btn_booking btn_width">加入比較</button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <i>X</i>
-              </td>
-              <td>
-                <img src={SRH184001} alt="icon" />
-              </td>
-              <td>ATH-PDG1a</td>
-              <td>2,000</td>
-              <td className="td-qut">
-                <button>-</button>
-                <input type="text" name="qut" id="" readOnly />
-                <button>+</button>
-              </td>
-              <td>6,000</td>
-              <td className="td-function">
-                <button className="btn_wish btn_width">加入願望</button>
-                <button className="btn_booking btn_width">加入比較</button>
-              </td>
-            </tr>
+            {mycartDisplay.map((value, index) => {
+              return (
+                <tr>
+                  <td>
+                    <i>X</i>
+                  </td>
+                  <td>
+                    <img src={`/items_img/${value.itemImg}`} alt="icon" />
+                  </td>
+                  <td>{value.itemName}</td>
+                  <td>{value.itemPrice}</td>
+                  <td className="td-qut">{value.amount}</td>
+                  <td>{value.itemPrice}</td>
+                  <td className="td-function">
+                    <button className="btn_wish btn_width">加入願望</button>
+                    <button className="btn_booking btn_width">加入比較</button>
+                  </td>
+                </tr>
+              )
+            })}
           </tbody>
           <tfoot>
             <tr>
@@ -258,13 +129,24 @@ function CartTable(props) {
             </tr>
             <tr>
               <td>
-                <button type="button"><Link to="/CheckoutInfo">去結帳</Link></button>
+                <button type="button">
+                  <Link to="/CheckoutInfo">去結帳</Link>
+                </button>
               </td>
             </tr>
           </tfoot>
         </table>
+  </>
+  return (
+    <>
+      <div className="cart-crumb">
+        <div></div>
+        <Link to="/">首頁</Link> / <Link to="/MyCart">購物車</Link>
+      </div>
+      <div className="cart-container">
+      {dataLoading ? spinner : display}
       </div>
     </>
   )
 }
-export default withRouter(CartTable)
+export default withRouter(MyCart)
