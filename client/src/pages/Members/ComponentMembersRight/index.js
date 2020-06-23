@@ -3,52 +3,62 @@ import React ,{useEffect, useState} from 'react';
 import {withRouter} from 'react-router-dom'
 
 // antd
-import { Radio } from 'antd';
-
-// 測試圖片
-// import logo from '../../../assets/img/tw.jpg';
-
+// import { message } from 'antd';
 
 function KMembers(props) {
-    const {userdata, setUserdata, name, setName, phoneNumber, setPhoneNumber, address, setAddress} = props.allprops;
+    const {userdata, name, setName, phoneNumber, setPhoneNumber, gender, setGender, birthday, setBirthday} = props.allprops;
 
-    // const { userlogo, setUserlogo } = useState([]);
-    const [userlogo2, setUserlogo2 ] = useState();
+    const [logoData, setLogoData ] = useState();
 
-    console.log(userlogo2);
+    const myImgEditCallback = () =>{
+        const filedata = new FormData(document.formUserData);
+        console.log(filedata)
+        fetch('http://localhost:3009/membersEdit/imgUpload', {
+            method: 'POST',
+            body:filedata,
+            // headers: new Headers({
+            //     'Accept': 'application/json',
+            //     'Content-Type': 'application/json',
+            // })
+        })
+            .then((res)=>{
+                return res.json() // json()	返回 Promise，resolves 是 JSON 物件
+            })
+            .then(obj=>{
+                console.log(obj);
+            })
+    }
 
     const myDataEditCallback = () => {
-    fetch('http://localhost:3009/membersEdit/userUpload', {
-        method: 'post',
-        body:JSON.stringify({
-            name:  name,
-            // phoneNumber,
-            // gender,
-            userlogo: userlogo2,
-            // birthday,
-            // id
-        }),
-        headers: new Headers({
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        })
-        })
-        .then(result=>result.json())
-        .then(obj=>{
-            console.log(obj);
-            
-        })
+        fetch('http://localhost:3009/membersEdit/userUpload', {
+            method: 'post',
+            body:JSON.stringify({
+                name:  name,
+                phoneNumber: phoneNumber,
+                gender: gender,
+                userlogo: logoData,
+                birthday: birthday,
+                id: userdata['id']
+            }),
+            headers: new Headers({
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            })
+            })
+            .then(result=>result.json())
+            .then(obj=>{
+                console.log(obj);
+                
+            })
     
     }
 
 
     useEffect(()=>{
-        // myDataEditCallback()
-        // console.log("測試測試")
-        setUserlogo2(userdata.userlogo)
-        setName(userdata.name);
-        setPhoneNumber(userdata.phoneNumber);
-        setAddress(userdata.address);
+        setLogoData(userdata.userlogo)
+        setPhoneNumber(userdata.phoneNumber)
+        setGender(userdata.gender)
+        setBirthday(userdata.birthday)
     },[userdata])
 
     return (
@@ -60,7 +70,7 @@ function KMembers(props) {
                     <p>管理你的檔案以保護你的帳戶</p>
                 </div>
                 {/* 主要內容 */}
-                <form className="members_r_bottom">
+                <form className="members_r_bottom" name="formUserData">
                     {/* 左側表單 */}
                     <div className="r_bottom_left">
                         <ul>
@@ -68,7 +78,7 @@ function KMembers(props) {
                                 <div className="r_bottom_nodel">
                                     <label htmlFor="use">使用者帳號</label>
                                     <span className="iconfont icon-gerenziliao"></span>
-                                    <input id="use" className="mem_input" placeholder="otis0710@gmail.com" readOnly defaultValue={userdata.name}/>
+                                    <input id="use" className="mem_input" placeholder="otis0710@gmail.com" readOnly defaultValue={userdata.username}/>
                                 </div>
                                 <span className="r_bottom_err">賬號不可修改</span>
                             </li>
@@ -82,11 +92,14 @@ function KMembers(props) {
                                         className="mem_input" 
                                         placeholder="您的大名" 
                                         defaultValue={userdata.name}
+                                        onChange = {(e)=>{
+                                            setName(e.target.value)
+                                        }} 
                                     />
                                 </div>
                                 <span className="r_bottom_err">姓名不符合格式</span>
                             </li>
-                            <li>
+                            {/* <li>
                                 <div className="r_bottom_del">
                                     <label htmlFor="email">Email</label>
                                     <span className="iconfont icon-email"></span>
@@ -96,11 +109,11 @@ function KMembers(props) {
                                         className="mem_input" 
                                         placeholder="您的電子郵箱 暫時無此欄位"
                                         readOnly 
-                                        // defaultValue={userdata.username}
+                                        defaultValue={userdata.username}
                                     />
                                 </div>
                                 <span className="r_bottom_err">email格式做錯</span>
-                            </li>
+                            </li> */}
                             <li>
                                 <div className="r_bottom_del">
                                     <label htmlFor="phone">手機號碼</label>
@@ -112,7 +125,10 @@ function KMembers(props) {
                                         placeholder="您的手機號碼" 
                                         pattern="[0-9]{2}[0-9]{8}" 
                                         maxLength="10" 
-                                        defaultValue={userdata.phoneNumber} 
+                                        defaultValue={userdata.phoneNumber}
+                                        onChange = {(e)=>{
+                                            setPhoneNumber(e.target.value)
+                                        }} 
                                     />
                                 </div>
                                 <span className="r_bottom_err">手機號碼格式錯誤</span>
@@ -121,9 +137,18 @@ function KMembers(props) {
                                 <div className="r_bottom_del">
                                     <label>性別</label>
                                     <span className="iconfont icon-sex"></span>
-                                    <select className="mem_input" defaultValue={userdata.gender}>
-                                        <option defaultValue ="1">男</option>
-                                        <option defaultValue ="2">女</option>
+                                    <select 
+                                        className="mem_input" 
+                                        defaultValue={gender}
+                                        value = {gender}
+                                        onChange = {(e)=>{
+                                            // console.log(e.target.selectedIndex+1)
+                                            setGender(e.target.selectedIndex)
+                                        }} 
+                                    >
+                                        <option value = "0">請選擇性別</option>
+                                        <option value = "1">男</option>
+                                        <option value = "2">女</option>
                                     </select>
                                 </div>
                                 <span className="r_bottom_err">請選擇性別</span>
@@ -139,6 +164,11 @@ function KMembers(props) {
                                             className="ant-picker" 
                                             name="birthday" 
                                             defaultValue={userdata.birthday}
+                                            value = {birthday}
+                                            onChange = {(e)=>{
+                                                console.log(e.target.value)
+                                                setBirthday(e.target.value)
+                                            }} 
                                         />
                                     </span>
                                 </div>
@@ -153,7 +183,7 @@ function KMembers(props) {
                     <div className="r_bottom_right">
                         <img src={`/user_img/${userdata.userlogo}`} alt="image"/>
                         <div className="file-upload">
-                            <label htmlFor="file_upload" className="file-upload__label">上傳圖片</label>
+                            {/* <label htmlFor="file_upload" className="file-upload__label">上傳圖片</label> */}
                             <input 
                                 type="file" 
                                 id="file_upload" 
@@ -164,8 +194,10 @@ function KMembers(props) {
                                 onChange = {(e)=>{
                                     console.log(e.target.files[0])
                                     // console.log(e.target.files[0].name)
-                                    setUserlogo2(e.target.files[0].name)
+                                    setLogoData(e.target.files[0].name)
+                                    myImgEditCallback(e.target.files[0])
                                 }}
+                                // onClick={()=>{ myImgEditCallback() }}
                             />
                         </div>
                         <div className="r_bottom_logo_update_text">

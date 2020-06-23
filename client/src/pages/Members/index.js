@@ -6,7 +6,7 @@ import MembersLeft from './ComponentMembersLeft'
 import MembersRight from './ComponentMembersRight'
 
 function KMembers(props) {
-  const {userdata, setUserdata, name, setName, phoneNumber, setPhoneNumber, address, setAddress} = props.allprops;
+  const {userdata, setUserdata, name, setName, phoneNumber, setPhoneNumber, address, setAddress, gender, setGender, birthday, setBirthday} = props.allprops;
   // const localUser = JSON.parse(localStorage.getItem('memberData')); // 取得localStorage資料
   // const getUserData = (usernameData,pwdData )=> {
   //     fetch(`http://localhost:3009/members/user/${usernameData}/${pwdData}`, {
@@ -46,7 +46,11 @@ function KMembers(props) {
                 phoneNumber, 
                 setPhoneNumber,
                 address, 
-                setAddress
+                setAddress,
+                gender, 
+                setGender,
+                birthday, 
+                setBirthday
               }}
           />
         </div>

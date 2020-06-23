@@ -4,7 +4,6 @@ const upload = require(__dirname + '/upload-module');
 const db = require(__dirname + '/db_connect');
 
 const router = express.Router();
-const sql = "INSERT INTO `users`(`username`, `pwd`, `name`) VALUES (?, ?, ?)";
 
 router.get('/', (req, res)=>{
     res.send('會員修改 api')
@@ -38,23 +37,24 @@ router.post('/edit', (req, res)=>{
 
 // 會員基本資料 + 圖片 修改
 // http://localhost:3009/membersEdit/userUpload
-router.post('/userUpload', upload.single('file_upload'), (req, res)=>{
-    console.log(req.body); // 图片以外的资料
-    console.log(req.file); // 图片上传
+router.post('/userUpload', upload.single('file_upload'),(req, res)=>{
+    // console.log(req.body); // 图片以外的资料
+    // console.log(req.file); // 图片上传
     // return res.send('hh');
     const output = {
         success: false,
-        uploadedImg: '',
-        errorMsg: '',
-        file: req.file,
-        body: req.body
+        // uploadedImg: '',
+        // errorMsg: '',
+        // file: req.file,
+        // body: req.body
     }
 
     const sql = "UPDATE `users` SET `name`=?, `phoneNumber`=?, `gender`=?, `userlogo`=?, `birthday`=? WHERE `id`=?"; 
 
-    db.query(sql, [req.body.name, req.body.phoneNumber, req.body.gender, req.file.filename, req.body.birthday, req.body.id ])                   
+    db.query(sql, [req.body.name, req.body.phoneNumber, req.body.gender, req.body.userlogo, req.body.birthday, req.body.id ])                   
+    // db.query(sql, [req.body.name, req.body.phoneNumber, req.body.gender, req.file.filename, req.body.birthday, req.body.id ])                   
         .then(([results])=>{
-            console.log(results)
+            console.log('results', results)
             output.results = results;
             if(results.affectedRows && results.changedRows){
                 output.success = true;
@@ -62,6 +62,18 @@ router.post('/userUpload', upload.single('file_upload'), (req, res)=>{
             // console.log(output);
             res.json(output);
         })
+});
+
+// 會員基本資料 + 圖片 修改
+// http://localhost:3009/membersEdit/imgUpload
+router.post('/imgUpload', upload.single('file_upload'), (req, res)=>{
+    // console.log('req.file', req.file);
+    // console.log('req', req); // 可看到 所有的 request(取得客户端资料) 内容
+    res.json({
+        filename: req.file.originalname,
+        body: req.body
+    });
+    // res.end("ok");
 });
 
 module.exports = router;

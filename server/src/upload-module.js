@@ -17,9 +17,11 @@ const storage = multer.diskStorage({
         cb(null, __dirname + '/../../client/public/user_img')
     },
     filename: (req, file, cb)=>{        // 文件上传之后名称
+        console.log('upload-module', file)
         // cb(null, req.file.originalname)
-        let ext = extMap[file.mimetype];
-        cb(null, Date.now() + ext)
+        // let ext = extMap[file.mimetype];
+        // cb(null, Date.now() + ext)
+        cb(null, file.originalname)
         // if(ext) {
         //     // console.log(uuidv4()+ext)
         //     cb(null, uuidv4()+ext);
