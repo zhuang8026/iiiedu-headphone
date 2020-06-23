@@ -21,6 +21,8 @@ import BlogCard from '../../../../assets/img/blog-img/blog-standard/Blog-card.pn
 import IconSearch from '../../../../assets/img/blog-img/blog-standard/icon-search.svg'
 import NextPage from '../../../../assets/img/blog-img/blog-standard/next-page.svg'
 import PrevPage from '../../../../assets/img/blog-img/blog-standard/prev-page.svg'
+import Pan from '../../../../assets/img/blog-img/blog-standard/pan.svg'
+import TrashBarrel from '../../../../assets/img/blog-img/blog-standard/trashBarrel.svg'
 import NextPageHover from '../../../../assets/img/blog-img/blog-standard/next-page-hover.svg'
 import PrevPageHover from '../../../../assets/img/blog-img/blog-standard/prev-page-hover.svg'
 
@@ -61,7 +63,7 @@ function BlogMainUserListByUser(props) {
           </button>
         </div>
         <div className="blog-btns-right blog-d-flex blog-justify-content-between">
-          
+
           <select name="" id="">
             <option value="0">依最新發文</option>
             <option value="1">依最舊發文</option>
@@ -78,21 +80,36 @@ function BlogMainUserListByUser(props) {
           console.log(data)
           return (
             <div className="blog-card">
-              <figure className="blog-card-fig">
-                <img className="blog-cover" src={BlogCard} alt="" />
-              </figure>
-              <div className="blog-card-btns"></div>
-              <div className="blog-card-title">{data.blogTitle}</div>
-              <div className="blog-card-content">{data.blogContent01}</div>
-              <div className="blog-card-calendar">
-                <div className="blog-card-calendar-in">
-                  <h2>01</h2>
-                  <h5>6月</h5>
+              <div className="blog-card-in">
+
+
+                <figure className="blog-card-fig">
+                  <img className="blog-cover" src={BlogCard} alt="" />
+                </figure>
+                <div className="blog-card-btns blog-d-flex blog-justify-content-between">
+                  <figure>
+                    <img src={Pan}></img>
+                  </figure>
+                  <figure>
+                    <img src={TrashBarrel}></img>
+                  </figure>
+
                 </div>
+                <div className="blog-card-title">{data.blogTitle}</div>
+                <div className="blog-card-content">{data.blogContent01}</div>
+                <div className="blog-card-calendar">
+                  <div className="blog-card-calendar-in">
+                    <h2>01</h2>
+                    <h5>6月</h5>
+                  </div>
+                </div>
+                <div className="read-more">
+                  <button className="read-more-btn">閱讀文章</button>
+                </div>
+
+
               </div>
-              <div className="read-more">
-                <button className="read-more-btn">閱讀文章</button>
-              </div>
+
             </div>
           )
         })}
