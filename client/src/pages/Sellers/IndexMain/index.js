@@ -1,50 +1,21 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 
-//import li tag
-// import { Todoli } from './config'
-//import css
-// import '../../../assets/css/AliceSeller/IndexMain.css'
+//import 
+import SellerTodoItem from '../SellerTodoItem'
+// import Dashboard from '../DashBoard'
 
-function IndexMain() {
+function IndexMain(props) {
   return (
     <>
       <div className="seller-main">
-        <div className="seller-todo-list">
-          <h2>待辦事項清單</h2>
-          <p>您的待處理事項</p>
-          <ul className="seller-todo-item">
-            <li>
-              <a className="seller-a">待付款訂單</a>
-            </li>
-            <li>
-              <a className="seller-a">待出貨訂單</a>
-            </li>
-            <li>
-              <a className="seller-a">已出貨訂單</a>
-            </li>
-            <li>
-              <a className="seller-a">待退貨/退款訂單</a>
-            </li>
-            <li>
-              <a className="seller-a">待取消訂單</a>
-            </li>
-            <li>
-              <a className="seller-a">未通過商品</a>
-            </li>
-            <li>
-              <a className="seller-a">已售完商品</a>
-            </li>
-            <li>
-              <a className="seller-a">待確認活動</a>
-            </li>
-          </ul>
-        </div>
+        <SellerTodoItem />
         <div className="seller-marketing">
           <h2>我的行銷活動</h2>
           <p>部落格文章管理</p>
           <div className="d-flex">
             <div className="seller-graph"></div>
+            {/* <Dashboard /> */}
             <div className="seller-button">
               <div className="seller-card">
                 <div className="d-flex">

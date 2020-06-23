@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment,useState } from 'react'
 import { withRouter, BrowserRouter as Router } from 'react-router-dom'
 
 //import components
@@ -13,14 +13,37 @@ import LeftNav from '../../Sellers/Leftnav'
 import searchImg from '../../../assets/img/seller/my-sale/search.svg'
 
 function MySale(props) {
+
+  // const SellerProductDataFetch =()=>{
+  //   const [SellerProductData, setSellerProductData] = useState([]) 
+  //   let SellerDataInner=[];
+  //   fetch('http://localhost:3009/products/list',{
+  //     method: 'get',
+  //     headers: new Headers({
+  //         'Accept': 'application/json',
+  //         'Content-Type': 'application/json',
+  //     }),
+  // })
+  //   .then((response)=>{
+  //     return response.json()
+  //   })
+  //   .then((response)=>{
+  //     console.log('response', response);
+  //       [...SellerDataInner]=response;
+  //       setSellerData(SellerDataInner)
+
+  //     console.log('SellerDataInner',SellerDataInner)
+      
+  //   })
+  // }
+
+  // useEffect(()=>{
+  //   SellerProductDataFetch()
+  // },[])
+
   return (
     <Router>
       <Fragment>
-        <header>
-          <MyNavBar />
-          <MyMenu />
-        </header>
-
         <div>
           <div className="h-100"></div>
           <span className="breadcrumb">
@@ -109,14 +132,20 @@ function MySale(props) {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tr>
+                        {/* {SellerProductData.map((data,index)=>{
+                          return(
+                            <>
+                              <tr>
+                              <td>{data.}</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                            </tr>
+                            </>
+                          )
+                        })} */}
                     </tbody>
                   </table>
                 </div>

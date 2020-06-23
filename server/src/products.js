@@ -44,6 +44,7 @@ const getDataList = async (req)=>{
 
 
 // 所有資料
+// http://localhost:3009/products/list
 router.get("/list", (req, res) => {
     const sql = "SELECT * FROM `items`";
 

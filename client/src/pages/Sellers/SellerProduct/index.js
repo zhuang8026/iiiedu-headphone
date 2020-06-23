@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react'
-import { withRouter, BrowserRouter as Router } from 'react-router-dom'
+import React, { Fragment,useState,useRef,useEffect } from 'react'
+import { withRouter, BrowserRouter as Router,useParams } from 'react-router-dom'
 
 //import components
 import MyNavBar from '../../../components/Navbar'
@@ -13,14 +13,55 @@ import LeftNav from '../Leftnav'
 import searchImg from '../../../assets/img/seller/my-sale/search.svg'
 
 function SellerProduct(props) {
+  const productSearchBar = useRef(null);
+  const startdate = useRef(null);
+  const enddate = useRef(null);
+  const minquan = useRef(null);
+  const maxquan = useRef(null);
+  const soldminquan = useRef(null);
+  const soldmaxquan = useRef(null);
+  const [SellerProductData, setSellerProductData] = useState([]) 
+  let SellerDataInner=[];
+  let {id} = useParams();
+  
+  const SellerProductDataFetch =()=>{
+    // fetch('http://localhost:3009/products/list',{
+    fetch(`http://localhost:3009/sellers/seller-product/detail/${id}`,{
+      method: 'get',
+      headers: new Headers({
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+      }),
+  })
+    .then((response)=>{
+      return response.json()
+    })
+    .then((response)=>{
+      console.log('response', response);
+        [...SellerDataInner]=response;
+        setSellerProductData(SellerDataInner)
+
+      console.log('SellerDataInner',SellerDataInner)
+      
+    })
+  }
+
+  useEffect(()=>{
+    SellerProductDataFetch()
+  },[])
+
+ const handleReset=(e)=>{
+  document.getElementById("product-search-bar").value = "";
+  document.getElementById("startdate").value = "";
+  document.getElementById("enddate").value = "";
+  document.getElementById("minquan").value = "";
+  document.getElementById("maxquan").value = "";
+  document.getElementById("soldminquan").value = "";
+  document.getElementById("soldmaxquan").value = "";
+  }
   return (
     <Router>
       <Fragment>
-        <header>
-          <MyNavBar />
-          <MyMenu />
-        </header>
-
         <div>
           <div className="h-100"></div>
           <span className="breadcrumb">
@@ -37,12 +78,13 @@ function SellerProduct(props) {
                     <div>已售完</div>
                     <div>未上架</div>
                   </div>
-                  <htmlForm className="seller-form" action="" method="post">
+                  <htmlForm id="seller-product-form" className="seller-form" action="" method="post">
                     <div className="product-wrapper">
                       <div className="search-wrapper">
                         <div className="product-search">
                           <input
                             className="product-search-bar"
+                            id="product-search-bar"
                             type="text"
                             name="search"
                             placeholder="搜尋訂單"
@@ -57,9 +99,9 @@ function SellerProduct(props) {
                       </div>
                       <div className="product-createdate">
                         <label for="createdate">訂單成立時間</label>
-                        <input type="date" id="startdate" />
+                        <input type="date" id="startdate" ref={startdate} />
                         &nbsp;-&nbsp;
-                        <input type="date" id="enddate" />
+                        <input type="date" id="enddate" ref={enddate} />
                         <button className="seller-btn seller-exportbtn">
                           匯出
                         </button>
@@ -67,9 +109,9 @@ function SellerProduct(props) {
 
                       <div className="seller-quantity">
                         <label>商品數量</label>
-                        <input type="text" id="minquan" placeholder="請輸入" />
+                        <input type="text" id="minquan" placeholder="請輸入" ref={minquan} />
                         &nbsp;-&nbsp;
-                        <input type="text" id="maxquan" placeholder="請輸入" />
+                        <input type="text" id="maxquan" placeholder="請輸入" ref={maxquan} />
                       </div>
                       <div className="seller-soldproduct">
                         <label>已售出</label>
@@ -77,20 +119,22 @@ function SellerProduct(props) {
                           type="text"
                           id="soldminquan"
                           placeholder="請輸入"
+                          ref={soldminquan}
                         />
                         &nbsp;-&nbsp;
                         <input
                           type="text"
                           id="soldmaxquan"
                           placeholder="請輸入"
+                          ref={soldmaxquan}
                         />
                       </div>
                     </div>
                     <div className="seller-btnset">
-                      <button className="seller-btn-style seller-resetbtn">
+                      <button type="reset" onClick={handleReset} className="seller-btn-style seller-resetbtn">
                         重置
                       </button>
-                      <button className="seller-btn-style seller-searchbtn">
+                      <button type="submit" className="seller-btn-style seller-searchbtn">
                         搜尋
                       </button>
                     </div>
@@ -127,16 +171,22 @@ function SellerProduct(props) {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
+                      {SellerProductData.map((data,index)=>{
+                          return(
+                            <>
+                              <tr>
+                              <td><input type="checkbox" /></td>
+                              <td>{data.itemName}</td>
+                              <td>{data.itemId}</td>
+                              <td>{data.itemstype}</td>
+                              <td>{data.itemPrice}</td>
+                              <td>{data.itemQty}</td>
+                              <td>{data.itemsales}</td>
+                              <td></td>
+                            </tr>
+                            </>
+                          )
+                        })}
                       </tbody>
                     </table>
                   </div>
@@ -145,7 +195,6 @@ function SellerProduct(props) {
             </div>
           </div>
         </div>
-        <MyFooter />
       </Fragment>
     </Router>
   )

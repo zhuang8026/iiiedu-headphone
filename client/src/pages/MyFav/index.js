@@ -48,8 +48,8 @@ function MyFav(props) {
                           <div className="MyFav_item">
                             <span className="iconfont icon-error"></span>
                             <img src={visa}/>
-                            <h3>GS2000e</h3>
                             <h3>GRADO</h3>
+                            <h3>GS2000e</h3>
                           </div>
                       </div>
                       <div><h4>$8,700</h4></div>

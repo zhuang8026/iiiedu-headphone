@@ -1,6 +1,6 @@
 // 函式元件
 import React, { Fragment, useEffect } from 'react'
-import $ from 'jquery'
+// import $ from 'jquery'
 import { message } from 'antd';
 
 import {

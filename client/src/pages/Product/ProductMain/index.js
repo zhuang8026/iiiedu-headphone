@@ -148,7 +148,7 @@ function ProductMain(props) {
                   <div className="item_image">
                     <img className="item_images" src={`/items_img/${data.itemImg}`} />
                     <div className="item_imagebtnout">
-                      <buttun className="item_imagebtn btn"
+                      <button className="item_imagebtn btn"
                        id={data.itemId}
                        onClick={() => {
                        updateCartToLocalStorage({
@@ -163,8 +163,8 @@ function ProductMain(props) {
                       >
                      
                        
-                       加入購物車</buttun>
-                      <buttun 
+                       加入購物車</button>
+                      <button 
                         className="item_imagebtn2 btn" 
                         id={data.itemId} 
                         onClick={e =>{
@@ -172,7 +172,7 @@ function ProductMain(props) {
                           goToDetail(e.target.id)
                           props.history.push(`/ProductDetail/${e.target.id}`)
                         }}
-                      >立即查看</buttun>
+                      >立即查看</button>
                     </div>
                   </div>
                   <div className="item_cover"></div>

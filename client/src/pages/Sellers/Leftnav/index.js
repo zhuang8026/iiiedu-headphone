@@ -40,16 +40,16 @@ function LeftNav(props) {
         <div className="sidebar-box">
           <ul>
             <img className="icon-size" src={AccountImg} alt="" />
-            <span>我的帳戶</span>
-            {ProfileLi.map((item, index) => {
+            <a href='/KMembers'className="seller-a">我的帳戶</a>
+            {/* {ProfileLi.map((item, index) => {
               return (
                 <li key={index}>
-                  <a className="seller-a" href={item.linkUrl}>
+                  <Link className="seller-a"  to={item.linkUrl}>
                     {item.name}
-                  </a>
+                  </Link>
                 </li>
               )
-            })}
+            })} */}
           </ul>
         </div>
         <ul>
@@ -82,7 +82,7 @@ function LeftNav(props) {
           <img className="icon-size" src={MarketingImg} alt="" />
           <span>行銷管理</span>
           <li>
-            <a className="seller-a" href="#">
+            <a className="seller-a" href="/Blog/YongBlog" >
               部落格文章
             </a>
           </li>
