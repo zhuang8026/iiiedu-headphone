@@ -156,6 +156,7 @@ function ProductMain(props) {
                           itemName:`${data.itemName}`,
                           itemBrand:`${data.itemsbrand}`,
                           itemImg:`${data.itemImg}`,
+                          itemPrice:`${data.itemPrice}`,
                            })
                         }}
                       >
