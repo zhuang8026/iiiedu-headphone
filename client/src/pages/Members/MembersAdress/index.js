@@ -8,10 +8,10 @@ import MembersLeft from '../ComponentMembersLeft'
 
 function MembersAdress(props) {
     const key = 'updatable';
-    const {userdata, setUserdata,name, setName, phoneNumber, setPhoneNumber, address, setAddress} = props.allprops;
+    const {userdata, setUserdata, name, setName, phoneNumber, setPhoneNumber, address, setAddress} = props.allprops;
     console.log('userdata', userdata);
 
-    console.log(name, phoneNumber, address) // 問題：第一次存儲無跳轉資料
+    // console.log(name, phoneNumber, address) // 問題：第一次存儲無跳轉資料
 
     const membersEditCallback = () => {
         fetch('http://localhost:3009/membersEdit/edit', {
@@ -36,7 +36,7 @@ function MembersAdress(props) {
                     message.loading({ content: 'Loading...', key });
                     setTimeout(() => {
                         message.success({ content: '修改成功!', key, duration: 2 });
-                        props.history.push('/KMembers/MembersAdress');
+                        // props.history.push('/KMembers/MembersAdress');
                     }, 1000);
                     
                 } else {
@@ -47,6 +47,7 @@ function MembersAdress(props) {
     }
 
     useEffect(()=>{
+        // membersEditCallback();
         // console.log("測試測試")
         setName(userdata.name);
         setPhoneNumber(userdata.phoneNumber);

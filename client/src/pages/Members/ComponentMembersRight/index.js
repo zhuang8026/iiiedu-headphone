@@ -1,5 +1,5 @@
 // 函式元件
-import React ,{useEffect} from 'react';
+import React ,{useEffect, useState} from 'react';
 import {withRouter} from 'react-router-dom'
 
 // antd
@@ -10,15 +10,42 @@ import { Radio } from 'antd';
 
 
 function KMembers(props) {
-    const {userdata, setUserdata,name, setName, phoneNumber, setPhoneNumber, address, setAddress} = props.allprops;
-    // const [todos, setTodos] = useState(1); 
-    const onChange = (event) => {
-        console.log('radio checked', event.target.value);
-        // setTodos(event.target.value);
-    };
+    const {userdata, setUserdata, name, setName, phoneNumber, setPhoneNumber, address, setAddress} = props.allprops;
+
+    // const { userlogo, setUserlogo } = useState([]);
+    const [userlogo2, setUserlogo2 ] = useState();
+
+    console.log(userlogo2);
+
+    const myDataEditCallback = () => {
+    fetch('http://localhost:3009/membersEdit/userUpload', {
+        method: 'post',
+        body:JSON.stringify({
+            name:  name,
+            // phoneNumber,
+            // gender,
+            userlogo: userlogo2,
+            // birthday,
+            // id
+        }),
+        headers: new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        })
+        })
+        .then(result=>result.json())
+        .then(obj=>{
+            console.log(obj);
+            
+        })
+    
+    }
+
 
     useEffect(()=>{
+        // myDataEditCallback()
         // console.log("測試測試")
+        setUserlogo2(userdata.userlogo)
         setName(userdata.name);
         setPhoneNumber(userdata.phoneNumber);
         setAddress(userdata.address);
@@ -41,7 +68,7 @@ function KMembers(props) {
                                 <div className="r_bottom_nodel">
                                     <label htmlFor="use">使用者帳號</label>
                                     <span className="iconfont icon-gerenziliao"></span>
-                                    <input id="use" className="mem_input" placeholder="otis0710@gmail.com" readOnly defaultValue={userdata.username}/>
+                                    <input id="use" className="mem_input" placeholder="otis0710@gmail.com" readOnly defaultValue={userdata.name}/>
                                 </div>
                                 <span className="r_bottom_err">賬號不可修改</span>
                             </li>
@@ -67,8 +94,9 @@ function KMembers(props) {
                                         type="email" 
                                         id="email" 
                                         className="mem_input" 
-                                        placeholder="您的電子郵箱" 
-                                        defaultValue={userdata.username}
+                                        placeholder="您的電子郵箱 暫時無此欄位"
+                                        readOnly 
+                                        // defaultValue={userdata.username}
                                     />
                                 </div>
                                 <span className="r_bottom_err">email格式做錯</span>
@@ -117,7 +145,7 @@ function KMembers(props) {
                                 <span className="r_bottom_err">生日格式錯誤</span>
                             </li>
                             <li>
-                                <button className="r_sumbit" type="sumbit">確認</button>
+                                <button className="r_sumbit" type="sumbit" onClick={()=>{ myDataEditCallback() }}>確認</button>
                             </li>
                         </ul>
                     </div>
@@ -126,7 +154,19 @@ function KMembers(props) {
                         <img src={`/user_img/${userdata.userlogo}`} alt="image"/>
                         <div className="file-upload">
                             <label htmlFor="file_upload" className="file-upload__label">上傳圖片</label>
-                            <input type="file" id="file_upload" className="file_upload" name="file_upload" defaultValue="" placeholder="商品圖片"/>
+                            <input 
+                                type="file" 
+                                id="file_upload" 
+                                className="file_upload" 
+                                name="file_upload" 
+                                defaultValue="" 
+                                placeholder="商品圖片"
+                                onChange = {(e)=>{
+                                    console.log(e.target.files[0])
+                                    // console.log(e.target.files[0].name)
+                                    setUserlogo2(e.target.files[0].name)
+                                }}
+                            />
                         </div>
                         <div className="r_bottom_logo_update_text">
                             <p>檔案大小: 最大200KB</p>

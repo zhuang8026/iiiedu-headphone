@@ -83,21 +83,28 @@ function BlogMainStandardList(props) {
           console.log(data)
           return (
             <div className="blog-card">
-              <figure className="blog-card-fig">
-                <img className="blog-cover" src={BlogCard} alt="" />
-              </figure>
-              <div className="blog-card-btns"></div>
-              <div className="blog-card-title">{data.blogTitle}</div>
-              <div className="blog-card-content">{data.blogContent01}</div>
-              <div className="blog-card-calendar">
-                <div className="blog-card-calendar-in">
-                  <h2>01</h2>
-                  <h5>6月</h5>
+              <div className="blog-card-in">
+
+                <figure className="blog-card-fig">
+                  <img className="blog-cover" src={BlogCard} alt="" />
+                </figure>
+                <div className="blog-card-btns"></div>
+                <div className="blog-card-title">{data.blogTitle}</div>
+                <div className="blog-card-content">{data.blogContent01}</div>
+                <div className="blog-card-calendar">
+                  <div className="blog-card-calendar-in">
+                    <h2>01</h2>
+                    <h5>6月</h5>
+                  </div>
                 </div>
+                <div className="read-more">
+                  <button className="read-more-btn">閱讀文章</button>
+                </div>
+
               </div>
-              <div className="read-more">
-                <button className="read-more-btn">閱讀文章</button>
-              </div>
+
+
+
             </div>
           )
         })}
