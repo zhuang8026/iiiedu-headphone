@@ -14,7 +14,7 @@ const extMap = {
 
 const storage = multer.diskStorage({
     destination : (req, file, cb)=>{    // 文件上传路径
-        cb(null, __dirname + '/public/img-uploads')
+        cb(null, __dirname + '/../../client/public/user_img')
     },
     filename: (req, file, cb)=>{        // 文件上传之后名称
         // cb(null, req.file.originalname)

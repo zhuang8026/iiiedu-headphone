@@ -27,6 +27,7 @@ function MembersLogin(props) {
       .then(obj=>{
         console.log(obj);
         let userdata = obj['loginInfo'];
+        // let userdata = obj;
         if(userdata.success){
           if(userdata.password === password){
             localStorage.setItem('memberData', JSON.stringify(userdata));

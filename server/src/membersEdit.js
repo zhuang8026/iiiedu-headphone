@@ -36,40 +36,32 @@ router.post('/edit', (req, res)=>{
 
 })
 
+// 會員基本資料 + 圖片 修改
+// http://localhost:3009/membersEdit/userUpload
 router.post('/userUpload', upload.single('file_upload'), (req, res)=>{
     console.log(req.body); // 图片以外的资料
     console.log(req.file); // 图片上传
+    // return res.send('hh');
     const output = {
         success: false,
         uploadedImg: '',
-        nickname: '',
-        errorMsg: ''
+        errorMsg: '',
+        file: req.file,
+        body: req.body
     }
-    output.nickname = req.body.nickname || '';
-    //req.file 官网有说明
-    if(req.file && req.file.originalname){
 
-        switch(req.file.mimetype){
-            case 'image/png':
-            case 'image/jpeg':
-                // rename 是node.js api
-                // rename 功能是 修改文件名称，可更改文件的存放路径
-                // fs.rename(oldPath, newPath, [callback(err)])
-                fs.rename(req.file.path, './public/img/'+ req.file.originalname, error=>{
-                    if(!error){
-                        output.success = true;
-                        output.uploadedImg = '/img/' + req.file.originalname;
-                    }
-                    // res.render('try-upload.ejs', output);
-                })
-                break;
-            default:
-                // unlink 是node.js api
-                fs.unlink(req.file.path, error=>{
-                    output.errorMsg = '檔案類型錯誤'
-                })
-        }
-    }
+    const sql = "UPDATE `users` SET `name`=?, `phoneNumber`=?, `gender`=?, `userlogo`=?, `birthday`=? WHERE `id`=?"; 
+
+    db.query(sql, [req.body.name, req.body.phoneNumber, req.body.gender, req.file.filename, req.body.birthday, req.body.id ])                   
+        .then(([results])=>{
+            console.log(results)
+            output.results = results;
+            if(results.affectedRows && results.changedRows){
+                output.success = true;
+            }
+            // console.log(output);
+            res.json(output);
+        })
 });
 
 module.exports = router;
