@@ -8,6 +8,7 @@ const router = express.Router();
 //http://localhost:3009/products/ 
 router.get('/', (req, res)=>{
     res.send('產品列表')
+    
 });
 
 const getDataList = async (req)=>{ 
