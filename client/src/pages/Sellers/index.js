@@ -2,11 +2,6 @@
 import React, { Fragment } from 'react'
 import { BrowserRouter as Router, withRouter } from 'react-router-dom'
 
-//import components
-import MyNavBar from '../../components/Navbar'
-import MyMenu from '../../components/NavbarMenu'
-import MyFooter from '../../components/Footer'
-
 //import scss
 import '../../assets/scss/index.scss'
 //import main
@@ -17,7 +12,7 @@ function AliceSellers(props) {
     <Router>
       <Fragment>
         <div>
-          <IndexBase />
+          <IndexBase/>
         </div>
       </Fragment>
     </Router>

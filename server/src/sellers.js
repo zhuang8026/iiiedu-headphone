@@ -4,16 +4,19 @@ const db = require(__dirname + '/db_connect');
 const router = express.Router();
 
 //http://localhost:3009/seller/
-router.get('/list',(res,req)=>{
-    // res.send('賣家中心')
-    const sql = "SELECT * FROM `orders` ORDER BY `payment` DESC";
-    
-    db.query(sql, (error, results, fields) => {
-        if (error) throw error;
-        // console.log(results);
-        res.json(results);
-    });
+router.get('/', (req, res)=>{
+    res.send('seller')
 });
+
+//http://localhost:3009/sellers/list
+router.get('/list',(req,res)=>{
+    const sql = "SELECT *, SUM(`orders`.`delivery`='已送達') AS delivery_arrived, SUM(`orders`.`delivery`='未出貨') AS unsent,SUM(`orders`.`delivery`='配送中') AS sending FROM orders GROUP BY`orders`.`delivery`";
+    db.query(sql)
+    .then((result)=>{
+        console.log(result)
+        res.json(result[0]);
+});
+})
 //http://localhost:3009/seller/my-sale
 
 //http://localhost:3009/seller/order

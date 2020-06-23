@@ -13,6 +13,10 @@ import LeftNav from '../Leftnav'
 import searchImg from '../../../assets/img/seller/my-sale/search.svg'
 
 function SellerProduct(props) {
+   
+ const handleReset=()=>{
+    document.getElementById("seller-product-form").reset();
+  }
   return (
     <Router>
       <Fragment>
@@ -37,7 +41,7 @@ function SellerProduct(props) {
                     <div>已售完</div>
                     <div>未上架</div>
                   </div>
-                  <htmlForm className="seller-form" action="" method="post">
+                  <htmlForm id="seller-product-form" className="seller-form" action="" method="post">
                     <div className="product-wrapper">
                       <div className="search-wrapper">
                         <div className="product-search">
@@ -57,9 +61,9 @@ function SellerProduct(props) {
                       </div>
                       <div className="product-createdate">
                         <label for="createdate">訂單成立時間</label>
-                        <input type="date" id="startdate" />
+                        <input type="date" id="startdate" ref="startdate" />
                         &nbsp;-&nbsp;
-                        <input type="date" id="enddate" />
+                        <input type="date" id="enddate" ref="enddate" />
                         <button className="seller-btn seller-exportbtn">
                           匯出
                         </button>
@@ -67,9 +71,9 @@ function SellerProduct(props) {
 
                       <div className="seller-quantity">
                         <label>商品數量</label>
-                        <input type="text" id="minquan" placeholder="請輸入" />
+                        <input type="text" id="minquan" placeholder="請輸入" ref="eminquan" />
                         &nbsp;-&nbsp;
-                        <input type="text" id="maxquan" placeholder="請輸入" />
+                        <input type="text" id="maxquan" placeholder="請輸入" ref="maxquan" />
                       </div>
                       <div className="seller-soldproduct">
                         <label>已售出</label>
@@ -87,10 +91,10 @@ function SellerProduct(props) {
                       </div>
                     </div>
                     <div className="seller-btnset">
-                      <button className="seller-btn-style seller-resetbtn">
+                      <button type="reset" onClick={()handleReset} className="seller-btn-style seller-resetbtn">
                         重置
                       </button>
-                      <button className="seller-btn-style seller-searchbtn">
+                      <button type="submit" className="seller-btn-style seller-searchbtn">
                         搜尋
                       </button>
                     </div>
