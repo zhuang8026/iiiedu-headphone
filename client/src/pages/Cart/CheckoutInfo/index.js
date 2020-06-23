@@ -8,7 +8,7 @@ function CartBuyerInfo(props) {
     <>
       <div className="cart-crumb">
         <div></div>
-        <Link to="/">首頁</Link> / <Link to="/YfangCart">購物車</Link>
+        <Link to="/">首頁</Link> / <Link to="/MyCart">購物車</Link>
       </div>  
       <div className="cart-container">
         {/* 購物車步驟圖 */}
@@ -53,17 +53,17 @@ function CartBuyerInfo(props) {
             <div>
               <div>
                 <label htmlFor="name">姓名*</label>
-                <input type="text" id="name" name="name" required value={userdata.name}/>
+                <input type="text" id="name" name="name" defaultValue={userdata.name} onChange=""/>
                 <div className="error">姓名必填*</div>
               </div>
               <div>
                 <label htmlFor="address">地址*</label>
-                <input type="text" id="address" name="address" required value={userdata.address}/>
+                <input type="text" id="address" name="address" defaultValue={userdata.address} onChange=""/>
                 <div className="error">地址必填*</div>
               </div>
               <div>
                 <label htmlFor="tel">電話*</label>
-                <input type="tel" id="tel" name="tel" required value={userdata.phoneNumber}/>
+                <input type="tel" id="tel" name="tel" defaultValue={userdata.phoneNumber} onChange=""/>
                 <div className="error">電話必填*</div>
               </div>
             </div>
@@ -75,7 +75,8 @@ function CartBuyerInfo(props) {
                   id="remark"
                   cols="30"
                   rows="10"
-                ></textarea>
+                  defaultValue=""
+                  onChange=""></textarea>
               </div>
             </div>
           </div>
