@@ -85,6 +85,7 @@ function App() {
 
   //賣家中心
   // const [SellerData, setSellerData] = useState([]) 
+  const [SellerProductId,setsellerProductId] = useState([])
   // 登入 & 狀態判斷
   const loginProcess = (loginSuccessCallback) => {
     const errors = []
@@ -314,7 +315,9 @@ function App() {
             <Refund />
           </Route>
           <Route path="/AliceSellers/seller-product">
-            <SellerProduct />
+            <SellerProduct           
+                SellerProductId={SellerProductId}
+                setsellerProductId={setsellerProductId} />
           </Route>
           {/* <Route path="/AliceSellers/add-product">
             <SellerAddProduct />

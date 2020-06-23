@@ -38,7 +38,7 @@ function SellerTodoItem() {
           <h2>待辦事項清單</h2>
           <p>您的待處理事項</p>
           <ul className="seller-todo-item">
-              {SellerData.map((data, index)=>{
+              {SellerData.map(data=>{
               return(
                 <>
                 <li>
