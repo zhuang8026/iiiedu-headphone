@@ -70,6 +70,7 @@ router.get("/seller-product/detail/:id?", (req, res) => {
     });
 //http://localhost:3009/sellers/seller-account
 
+//http://localhost:3009/sellers/add-product
 
 
 

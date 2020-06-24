@@ -47,6 +47,7 @@ import MySale from './pages/Sellers/MySale'
 import Order from './pages/Sellers/Order'
 import Refund from './pages/Sellers/Refund'
 import SellerProduct from './pages/Sellers/SellerProduct'
+import SellerAddProduct from './pages/Sellers/AddProduct'
 
 
 //我的最愛
@@ -340,9 +341,9 @@ function App() {
                 SellerProductId={SellerProductId}
                 setsellerProductId={setsellerProductId} />
           </Route>
-          {/* <Route path="/AliceSellers/add-product">
+          <Route path="/AliceSellers/add-product">
             <SellerAddProduct />
-          </Route> */}
+          </Route>
 
           {/* 我的最愛 */}
           <Route path="/MyFav">
