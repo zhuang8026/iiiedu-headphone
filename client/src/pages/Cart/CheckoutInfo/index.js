@@ -95,10 +95,10 @@ function CheckoutInfo(props) {
                   type="tel"
                   id="tel"
                   name="tel"
-                  defaultValue={userdata.phoneNumber}
-                  onChange={(event) => {
-                    setTel(event.target.value)
-                  }}
+                  // defaultValue={userdata.phoneNumber}
+                  // onChange={(event) => {
+                  //   setTel(event.target.value)
+                  // }}
                 />
                 <div className="error">電話必填*</div>
               </div>

@@ -1,5 +1,5 @@
 // 函式元件
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { withRouter} from 'react-router-dom'
 
 import { message } from 'antd';
@@ -8,7 +8,7 @@ import MembersLeft from '../ComponentMembersLeft'
 
 function MembersAdress(props) {
     const key = 'updatable';
-    const {userdata, setUserdata, name, setName, phoneNumber, setPhoneNumber, address, setAddress} = props.allprops;
+    const {userdata, setUserdata} = props.allprops;
     console.log('userdata', userdata);
 
     // console.log(name, phoneNumber, address) // 問題：第一次存儲無跳轉資料
@@ -17,11 +17,10 @@ function MembersAdress(props) {
         fetch('http://localhost:3009/membersEdit/edit', {
             method: 'post',
             body:JSON.stringify({
-                name:  name,
-                phoneNumber: phoneNumber,
-                address: address,
-                id: userdata['id']
-                // username:localUser['username']
+                name:  userdata.name,
+                phoneNumber: userdata.phoneNumber,
+                address: userdata.address,
+                id: userdata.id
             }),
             headers: new Headers({
                 'Accept': 'application/json',
@@ -49,9 +48,9 @@ function MembersAdress(props) {
     useEffect(()=>{
         // membersEditCallback();
         // console.log("測試測試")
-        setName(userdata.name);
-        setPhoneNumber(userdata.phoneNumber);
-        setAddress(userdata.address);
+        // setName(userdata.name);
+        // setPhoneNumber(userdata.phoneNumber);
+        // setAddress(userdata.address);
 
     },[userdata])
 
@@ -82,8 +81,13 @@ function MembersAdress(props) {
                                                 id="use" 
                                                 className="address_input"
                                                 placeholder="您的大名" 
-                                                defaultValue={name}
-                                                onChange={e => setName(e.target.value)}
+                                                defaultValue={userdata.name}
+                                                onChange = {(e)=>{
+                                                    setUserdata({
+                                                        ...userdata,
+                                                        name: e.target.value
+                                                    })
+                                                }}
                                             />
                                         </div>
                                         <span className="address_bottom_err">姓名不符合格式</span>
@@ -99,8 +103,13 @@ function MembersAdress(props) {
                                                 placeholder="您的手機號碼" 
                                                 pattern="[0-9]{2}[0-9]{8}" 
                                                 maxLength="10" 
-                                                defaultValue={phoneNumber} 
-                                                onChange={e => setPhoneNumber(e.target.value)}
+                                                defaultValue={userdata.phoneNumber} 
+                                                onChange = {(e)=>{
+                                                    setUserdata({
+                                                        ...userdata,
+                                                        phoneNumber: e.target.value
+                                                    })
+                                                }}
                                             />
                                         </div>
                                         <span className="address_bottom_err">手機號碼不符合格式</span>
@@ -114,8 +123,13 @@ function MembersAdress(props) {
                                                 id="email" 
                                                 className="address_input" 
                                                 placeholder="您的送貨地址" 
-                                                defaultValue={address} 
-                                                onChange={e => setAddress(e.target.value)}
+                                                defaultValue={userdata.address} 
+                                                onChange = {(e)=>{
+                                                    setUserdata({
+                                                        ...userdata,
+                                                        address: e.target.value
+                                                    })
+                                                }}
                                             />
                                         </div>
                                         <span className="address_bottom_err">地址格式錯誤</span>

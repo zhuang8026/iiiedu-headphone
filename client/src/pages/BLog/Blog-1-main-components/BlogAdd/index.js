@@ -30,9 +30,10 @@ import '../../../../assets/scss/blog_add.scss'
 // -------------------- func --------------------
 
 function BlogAdd(props) {
-  const[blogTitle, setBlogTitle] = useState('');
-  const[blogContent01, setBlogContent01] = useState('');
-  const[blogContent02, setBlogContent02] = useState('');
+  const { userdata, setUserdata, name, setName } = props.allprops;
+  const [blogTitle, setBlogTitle] = useState('');
+  const [blogContent01, setBlogContent01] = useState('');
+  const [blogContent02, setBlogContent02] = useState('');
 
   // const {
   //   blogTitle,
@@ -47,20 +48,26 @@ function BlogAdd(props) {
     <>
       <div className="blog-add-spacing"></div>
       <div class="wrap-top">
-      <div className="blog-crumb">        
-        <Link to="../">首頁</Link>/<Link to="./YongMyBlog">部落格個人頁</Link>/<Link to="./BlogAdd">部落格新增頁</Link>
-      </div>
+        <div className="blog-crumb">
+          <Link to="../">首頁</Link>/<Link to="./YongMyBlog">部落格個人頁</Link>/<Link to="./BlogAdd">部落格新增頁</Link>
+        </div>
       </div>
       <div class="wrap-mid">
         <div class="blog-add blog-d-flex">
           <div class="blog-add-main">
-            <BlogMainAddInputs 
-              blogTitle = {blogTitle}
-              setBlogTitle ={setBlogTitle}
-              blogContent01 = {blogContent01}
-              setBlogContent01 ={setBlogContent01}
-              blogContent02 ={blogContent02}
-              setBlogContent02 ={setBlogContent02}
+            <BlogMainAddInputs
+              allprops={{
+                userdata,
+                setUserdata,
+                name,
+                setName
+              }}
+              blogTitle={blogTitle}
+              setBlogTitle={setBlogTitle}
+              blogContent01={blogContent01}
+              setBlogContent01={setBlogContent01}
+              blogContent02={blogContent02}
+              setBlogContent02={setBlogContent02}
             />
           </div>
           <div class="blog-add-aside">

@@ -25,7 +25,7 @@ import BlogStandard from '../Blog-1-main-components/BlogStandard'
 
 function YongBlog(props) {
 
-  
+  const { userdata, setUserdata } = props
 
 
   return (

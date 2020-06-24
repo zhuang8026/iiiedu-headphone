@@ -124,7 +124,7 @@
         .blog-btns-right {
           position: relative;
           select {
-            position: absolute;
+            // position: absolute;
             width: 10rem;
             height: 60%;
             top: 50%;
@@ -145,6 +145,9 @@
               font-weight: $font-w;
               text-align: center;
             }
+          }
+          .s1 {
+            transform: translate(-240%, -50%);
           }
           figure {
             position: relative;
@@ -269,10 +272,9 @@
                 border-radius: 5px;
               }
               .read-more-btn:hover {
-              cursor: pointer;
+                cursor: pointer;
+              }
             }
-            }
-            
           }
         }
       }

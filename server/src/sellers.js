@@ -76,6 +76,7 @@ router.post('/add-product',(req,res)=>{
             success: false,
         }
 
+<<<<<<< HEAD
     
         let itemName = req.body.itemName;
         let colorid = req.body.colorid;
@@ -110,6 +111,25 @@ router.post('/add-product',(req,res)=>{
                 res.json(output);
             })
     })
+=======
+
+    // const sql="INSERT INTO `items`(`itemName`, `itemscontent`, `colorid`, `itemstype`,`itemPrice`) VALUES (?,?,?,?,?,?,?,?,?,?)"
+    // db.query(sql,[addItem,
+    //     ItemClassification,
+    //     addItemDescription,
+    //     addItemSize,
+    //     addItemColor,
+    //     addItemPrice])
+    //     .then((result)=>{
+    //         console.log('result',result)
+    //         // output.results = result;
+    //         // if(result.affectedRows && r.insertId){
+    //             // output.success = true;
+    //         // }
+    //         res.json(output);
+    //     })
+        });
+>>>>>>> 68337e6a6cd70b61e94ea3471bc5df1b0f7b7788
 
 
 

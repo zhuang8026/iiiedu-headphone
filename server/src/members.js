@@ -36,7 +36,7 @@ router.post('/login', (req, res)=>{
         username: "",   //儲存使用者帳號
         access:"",      //儲存使用者權限
         name:"",        //儲存使用者姓名
-        password:"",
+        pwd:"",
     }
 
     db.query(sql)
@@ -51,14 +51,14 @@ router.post('/login', (req, res)=>{
                     loginInfo.access = "擁有使用權限";
                     loginInfo.username = value.username;
                     loginInfo.name = value.name;
-                    loginInfo.password = value.pwd;
+                    loginInfo.pwd = value.pwd;
                 }
             })
             
             if(loginInfo.success) {
                 req.session.username = loginInfo.username
                 req.session.name = loginInfo.name
-                req.session.password = loginInfo.password
+                req.session.password = loginInfo.pwd
                 req.session.user_access = loginInfo.access
                 // console.log('req.session',req.session)
 
@@ -96,13 +96,15 @@ router.get('/logout',(req, res)=>{
 // 取得會員資料 / 在註冊組件中
 // http://localhost:3009/membersRegister/add 
 router.get('/user/:username?/:pwd?', (req, res)=>{ // upload.none() 回傳的是 表單欄位 每一個的值，并包裝成對象
-    // console.log('session', req.session)
+    console.log('membersRegister', username)
+    console.log('membersRegister', pwd)
     let username = req.params.username;
     let pwd = req.params.pwd;
 
     const sql = `SELECT * FROM users WHERE username='${username}' AND pwd ='${pwd}'`; 
     db.query(sql)
         .then(([result])=>{
+            console.log(result)
             result[0].birthday = moment(result[0].birthday).format('YYYY-MM-DD');
             // const fm = 'YYYY-MM-DD';
             // for(let i of result){

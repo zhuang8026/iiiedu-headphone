@@ -10,7 +10,7 @@ import MembersLeft from '../ComponentMembersLeft'
 import logo from '../../../assets/img/tw.jpg';
 
 function MembersCartDetail(props) {
-    const {userdata, setUserdata, name, setName, phoneNumber, setPhoneNumber, address, setAddress, gender, setGender, birthday, setBirthday} = props.allprops;
+    const {userdata, setUserdata} = props.allprops;
     return (
         <main>
             <div className="members_all">

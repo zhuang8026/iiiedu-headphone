@@ -26,10 +26,12 @@ function MembersLogin(props) {
       .then(result=>result.json())
       .then(obj=>{
         console.log(obj);
-        let userdata = obj['loginInfo'];
+
+        let userdata = obj['loginInfo'] ? obj['loginInfo']: '';
         // let userdata = obj;
+
         if(userdata.success){
-          if(userdata.password === password){
+          if(userdata.pwd === password){
             localStorage.setItem('memberData', JSON.stringify(userdata));
             message.success(`Hello! ${userdata.name}`);
             setTimeout(()=>{

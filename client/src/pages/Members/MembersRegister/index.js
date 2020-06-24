@@ -12,28 +12,7 @@ function MembersRegister(props) {
           password,
           setPassword,
           RegisterProcess} = props.allprops;
-  // console.log(name, username, password)
-  
-//   async function addFromServer() {
-//     const request = new Request('http://localhost:3009/membersRegister/add', {
-//         method: 'POST',
-//         body:JSON.stringify({
-//           name: name,
-//           username: username,
-//           pwd: password
-//         }),
-//         headers: new Headers({
-//             Accept: 'application/json',
-//             'Content-Type': 'application/json',
-//         }),
-//     })
-//     const response = await fetch(request)
-//     const data = await response.json()
-//     // console.log(data)
-//     // const todoData = [...todos, data]
-//     console.log('伺服器回傳的json資料', data)
-//     // setTodos(todoData)
-// }
+
 
 const addFromServer = () =>{
   fetch('http://localhost:3009/membersRegister/add', {
@@ -57,22 +36,6 @@ const addFromServer = () =>{
           // props.history.goBack()
           props.history.push('/');
         },2000)
-      // if(obj.success){
-      //   if(obj.password === password){
-      //     localStorage.setItem('memberData', JSON.stringify(obj));
-      //     message.success(`Hello!`);
-      //     setTimeout(()=>{
-      //       // props.history.goBack()
-      //       props.history.push('/');
-      //     },2000)
-      //   } else {
-      //     message.error(`密碼不正確`);
-      //     localStorage.removeItem('memberData');
-      //   }
-      // } else {
-      //   message.error(`登入失敗`);
-      //   localStorage.removeItem('memberData');
-      // }
   })
 
 }
