@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment,useState,useEffect } from 'react'
 import { withRouter, BrowserRouter as Router } from 'react-router-dom'
 
 //import components
@@ -6,9 +6,6 @@ import MyNavBar from '../../../components/Navbar'
 import MyMenu from '../../../components/NavbarMenu'
 import MyFooter from '../../../components/Footer'
 import LeftNav from '../../Sellers/Leftnav'
-
-//import css
-// import '../../../assets/css/AliceSeller/order.css'
 
 //import image
 import LeftArrow from '../../../assets/img/seller/order/left-arrow.svg'
@@ -18,14 +15,11 @@ import Download from '../../../assets/img/seller/order/download.svg'
 import Truck from '../../../assets/img/seller/order/order.svg'
 
 function Order(props) {
+  console.log(props)
+  const [StartDate,setStartDate] = useState
   return (
     <Router>
       <Fragment>
-        <header>
-          <MyNavBar />
-          <MyMenu />
-        </header>
-
         <div>
           <div className="h-100"></div>
           <span className="breadcrumb">

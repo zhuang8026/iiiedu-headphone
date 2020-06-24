@@ -59,6 +59,7 @@ function SellerProduct(props) {
   document.getElementById("soldminquan").value = "";
   document.getElementById("soldmaxquan").value = "";
   }
+  
   return (
     <Router>
       <Fragment>
