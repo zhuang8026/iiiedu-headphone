@@ -326,14 +326,14 @@ function MyNavBar(props) {
                                     {/* 我的最愛 */}
                                     <li>
                                         <div id="wishlist" className="otis-wishlist">
-                                            <a className="otis-wishlist-widget-link">
+                                            <Link className="otis-wishlist-widget-link" to='/MyFav'>
                                                 <Popover content={loves} placement="bottom">
                                                     <span className="otis-wishlist-widget-icon">
                                                         <i className="iconfont icon-like"></i>
                                                     </span>
                                                     <span className="otis-wishlist-widget-count"> 1 </span>
                                                 </Popover>
-                                            </a>
+                                            </Link>
                                         </div>
                                     </li>
 

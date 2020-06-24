@@ -6,8 +6,8 @@ import { withRouter, Link } from 'react-router-dom';
 // import { message } from 'antd';
 
 function ProductMain(props) {
-  const [mycart, setMycart] = useState([])
-  const [dataLoading, setDataLoading] = useState(false)
+  // const [mycart, setMycart] = useState([])
+  // const [dataLoading, setDataLoading] = useState(false)
   const updateCartToLocalStorage = (value) => {
     // 開啟載入指示
     //setDataLoading(true)
@@ -61,40 +61,25 @@ function ProductMain(props) {
       })
   },[])
 
-  // const onChange = (event) => {
-  //   console.log('radio checked', event.target.value)
-  // }
   return (
     <>
       <div className="Yybodyin">
+        
+        {/* 左側menu */}
         <div className="Yybodyleft">
-        <div className="Yybrand">
-            <div className="Yywearstyle">BRAND</div>
-            <ul className="Yybrand_ul">
-              <li><Link to='/'> AUDIOTECHNICA (1) </Link></li>
-              <li><Link to='/'> AKG (1) </Link></li>
-              <li><Link to='/'> BANGOLUFSEN (1) </Link></li>
-              <li><Link to='/'> FINAL (1) </Link></li>
-              <li><Link to='/'> GRADO (1) </Link></li>
-              <li><Link to='/'> SHURE (1) </Link></li>
-              <li><Link to='/'> SONY (1) </Link></li>
-              <li><Link to='/'> SENHEIER (1) </Link></li>
-            </ul>
-        </div>
-          
-        {/* <form method="get" action="">
-          <div class="price_slider_wrapper">
-              <div class="price_slider_amount" data-step="10">
-              <input type="text" id="min_price" name="min_price" value="10" data-min="10" placeholder="Min price" />
-              <input type="text" id="max_price" name="max_price" value="300" data-max="300" placeholder="Max price" />
-              <button type="submit" class="button">Filter</button>
-              <div class="price_label" >
-                Price: <span class="from"></span> &mdash; <span class="to"></span>
-              </div>
-              <div class="clear"></div>
-            </div>
+          <div className="Yybrand">
+              <div className="Yywearstyle">BRAND</div>
+              <ul className="Yybrand_ul">
+                <li><Link to='/'> AUDIOTECHNICA (1) </Link></li>
+                <li><Link to='/'> AKG (1) </Link></li>
+                <li><Link to='/'> BANGOLUFSEN (1) </Link></li>
+                <li><Link to='/'> FINAL (1) </Link></li>
+                <li><Link to='/'> GRADO (1) </Link></li>
+                <li><Link to='/'> SHURE (1) </Link></li>
+                <li><Link to='/'> SONY (1) </Link></li>
+                <li><Link to='/'> SENHEIER (1) </Link></li>
+              </ul>
           </div>
-        </form> */}
         
           <div className="Yysearch_container">
             <input type="text" placeholder=" search..." />
@@ -103,6 +88,8 @@ function ProductMain(props) {
             </button>
           </div>
         </div>
+
+        {/* 右側商品 */}
         <div className="Yybodyright">
           <div className="Yybodyheader">
             <span>SHOWING 1–12 OF 130 RESULTS</span>
@@ -166,12 +153,11 @@ function ProductMain(props) {
               )
             })}
             
-  
-            {/* <div class="Yypagination">
-              <Pagination simple defaultCurrent={2} total={50} />
-            </div> */}
           </div>
         </div>
+
+        <div>我是遮罩層</div>
+        
       </div>
     </>
   )
