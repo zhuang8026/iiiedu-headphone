@@ -1,5 +1,5 @@
 // 函式元件
-import React from 'react'
+import React,{useEffect} from 'react'
 import {Link, withRouter} from 'react-router-dom'
 
 import { message } from 'antd';
@@ -44,42 +44,42 @@ function SellerAddProduct(props) {
     setItemsFeature
           } = props.allprops;
 
-const addFormServer = () =>{
-  fetch('http://localhost:3009/sellers/add-product', {
-      method: 'post',
-      body:JSON.stringify({
-        itemName:itemName,
-        itemImg:itemImg, 
-        colorid:colorid,
-        itemsbrand:itemsbrand, 
-        itemstype:itemstype, 
-        itemPrice:itemPrice, 
-        itemQty:itemQty, 
-        itemsales:itemsales, 
-        itemscontent:itemscontent, 
-        itemsweight:itemsweight, 
-        itemsdrive:itemsdrive, 
-        itemfrequency:itemfrequency, 
-        itemsSensitivity:itemsSensitivity,  
-        itemsconnect:itemsconnect, 
-        itemsmains:itemsmains, 
-        itemsEndurance:itemsEndurance, 
-        itemswaterlight:itemswaterlight, 
-        itemsfeature:itemsfeature, 
-      }),
-      headers: new Headers({
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-      })
-    })
-    .then(result=>result.json())
-    .then(obj=>{
-        console.log(obj)
+     const addFormServer = () =>{
+        fetch('http://localhost:3009/sellers/add-product', {
+            method: 'post',
+            body:JSON.stringify({
+              itemName:itemName,
+              itemImg:itemImg, 
+              colorid:colorid,
+              itemsbrand:itemsbrand, 
+              itemstype:itemstype, 
+              itemPrice:itemPrice, 
+              itemQty:itemQty, 
+              itemsales:itemsales, 
+              itemscontent:itemscontent, 
+              itemsweight:itemsweight, 
+              itemsdrive:itemsdrive, 
+              itemfrequency:itemfrequency, 
+              itemsSensitivity:itemsSensitivity,  
+              itemsconnect:itemsconnect, 
+              itemsmains:itemsmains, 
+              itemsEndurance:itemsEndurance, 
+              itemswaterlight:itemswaterlight, 
+              itemsfeature:itemsfeature, 
+            }),
+            headers: new Headers({
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            })
+          })
+          .then(result=>result.json())
+          .then(obj=>{
+              console.log(obj)
+        })
+      
+      }
+      
 
-
-  })
-
-}
 
 
   return (

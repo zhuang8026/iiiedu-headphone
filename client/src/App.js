@@ -84,7 +84,6 @@ function App() {
 
   //賣家中心
   // const [SellerData, setSellerData] = useState([]) 
-<<<<<<< HEAD
   const [SellerProductId,setsellerProductId] = useState([])
   const [itemName,setItemName] = useState('')
   const [itemImg,setItemImg] = useState(null)
@@ -104,9 +103,6 @@ function App() {
   const[itemsEndurance,setItemsEndurance] = useState('')
   const[itemswaterlight,setItemwaterlight] = useState('')
   const[itemsfeature,setItemsFeature] = useState('')
-=======
-  const [SellerProductId, setsellerProductId] = useState([])
->>>>>>> 68337e6a6cd70b61e94ea3471bc5df1b0f7b7788
   // 登入 & 狀態判斷
   const loginProcess = (loginSuccessCallback) => {
     const errors = []
