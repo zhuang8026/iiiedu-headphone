@@ -96,12 +96,12 @@ function App() {
   const[itemscontent,setItemscontent] = useState(null)
   const[itemsweight,setItemsweight] = useState('')
   const[itemsdrive,setItemsDrive] = useState('')
-  const[itemfrequency,setItemFrequency] = useState('')
+  const[itemsfrequency,setitemsfrequency] = useState('')
   const[itemsSensitivity,setItemsSensitivity] = useState('')
   const[itemsconnect,setItemsconnect] = useState('')
   const[itemsmains,setItemsmains] = useState('')
   const[itemsEndurance,setItemsEndurance] = useState('')
-  const[itemswaterlight,setItemwaterlight] = useState('')
+  const[itemswatertight,setItemswatertight] = useState('')
   const[itemsfeature,setItemsFeature] = useState('')
   // 登入 & 狀態判斷
   const loginProcess = (loginSuccessCallback) => {
@@ -386,8 +386,8 @@ function App() {
                     setItemsweight, 
                     itemsdrive, 
                     setItemsDrive, 
-                    itemfrequency, 
-                    setItemFrequency, 
+                    itemsfrequency, 
+                    setitemsfrequency, 
                     itemsSensitivity, 
                     setItemsSensitivity, 
                     itemsconnect, 
@@ -396,8 +396,8 @@ function App() {
                     setItemsmains, 
                     itemsEndurance, 
                     setItemsEndurance, 
-                    itemswaterlight, 
-                    setItemwaterlight, 
+                    itemswatertight, 
+                    setItemswatertight, 
                     itemsfeature, 
                     setItemsFeature
                   }} />
@@ -416,12 +416,12 @@ function App() {
               itemscontent={itemscontent} setItemscontent={setItemscontent}
               itemsweight={itemsweight} setItemsweight={setItemsweight}
               itemsdrive={itemsdrive} setItemsDrive={setItemsDrive}
-              itemfrequency={itemfrequency} setItemFrequency={setItemFrequency}
+              itemsfrequency={itemsfrequency} setitemsfrequency={setitemsfrequency}
               itemsSensitivity={itemsSensitivity} setItemsSensitivity={setItemsSensitivity}
               itemsconnect={itemsconnect} setItemsconnect={setItemsconnect}
               itemsmains={itemsmains} setItemsmains={setItemsmains}
               itemsEndurance={itemsEndurance} setItemsEndurance={setItemsEndurance}
-              itemswaterlight={itemswaterlight} setItemwaterlight={setItemwaterlight}
+              itemswatertight={itemswatertight} setItemswatertight={setItemswatertight}
               itemsfeature={itemsfeature} setItemsFeature={setItemsFeature}
             />
           </Route>

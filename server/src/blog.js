@@ -70,7 +70,7 @@ const getAllBlogList = async (req) => {
     const sql = `SELECT * FROM blogs ORDER BY blogId LIMIT ${(page - 1) * perPage}, ${perPage}`
     const [r2] = await db.query(sql);
     if (r2) output.rows = r2;
-    console.log(output)
+    // console.log(output)
     // 將r2裡的Date改成正常時間格式
     for (let i of r2) {
         // 要先放到moment才能使用.format('YYYY-MM-DD')
@@ -94,8 +94,8 @@ const getUserBlogList = async (req) => {
         totalPages: 0, //總共有幾頁
         rows: []
     }
-    console.log(id)
-    const [r1] = await db.query(`SELECT COUNT(1) num FROM blogs WHERE id=${id}`);
+    // console.log(id)
+    const [r1] = await db.query(`SELECT COUNT(1) num FROM blogs WHERE id='${id}'`);
     output.totalRows = r1[0].num;
     output.totalPages = Math.ceil(output.totalRows / perPage);
     if (page < 1) page = 1;
@@ -121,6 +121,7 @@ const getUserBlogList = async (req) => {
 // 所有文章
 // http://localhost:3009/blog/listAllBlog
 router.get("/listAllBlog", (req, res) => {
+    console.log('========== react(get) -> 所有文章 ==========')    
     const sql = `SELECT * FROM blogs ORDER BY blogId desc`;
     db.query(sql, (error, results, fields) => {
         if (error) throw error;
@@ -131,6 +132,7 @@ router.get("/listAllBlog", (req, res) => {
 // 所有文章(分頁)
 // http://localhost:3009/blog/listAllBlog/(第幾頁)
 router.get('/listAllBlog/:page?', async (req, res) => {
+    console.log('========== react(get) -> 所有文章(分頁) ==========') 
     const output = await getAllBlogList(req);
     res.json(output);
 })
@@ -138,6 +140,7 @@ router.get('/listAllBlog/:page?', async (req, res) => {
 // (個人)所有文章
 // http://localhost:3009/blog/listUserBlog/(個人id編號)
 router.get("/listUserBlog/:id", (req, res) => {
+    console.log('========== react(get) -> (個人)所有文章 ==========') 
     let id = req.params.id;
     let sql = `SELECT * FROM blogs WHERE id=${id}`;
     let output = {}
@@ -152,8 +155,8 @@ router.get("/listUserBlog/:id", (req, res) => {
 // (個人)所有文章(分頁)
 // http://localhost:3009/blog/listUserBlog/(個人id編號)/(第幾頁)
 router.post('/listUserBlog/:id/:page?', async (req, res) => {    
-    console.log('=====================req.body=========================')
-    console.log(req.body)
+    console.log('========== react(送會員id) -> (個人)所有文章(分頁) ==========')
+    console.log('req.body = ',req.body)
     const output = await getUserBlogList(req);
     res.json(output);
 })
@@ -177,13 +180,9 @@ router.post('/add', upload.none(), (req, res) => {
         blogContent02: blogContent02,         
         rows: []
     }
-    
-   
-
-    
-
     const sql = "INSERT INTO `blogs`(`id`,`blogTitle`,`blogContent01`,`blogContent02`) VALUES (?, ?, ?, ?)";
-    console.log('req.body', [req.body])
+    console.log('========== react(送id和新增文章) -> 新增部落格文章 ==========')
+    console.log('req.body = ', [req.body])
     db.query(sql, [id, blogTitle, blogContent01, blogContent02])
         .then(([r]) => {
             output.results = r;

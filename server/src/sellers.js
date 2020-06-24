@@ -71,9 +71,45 @@ router.get("/seller-product/detail/:id?", (req, res) => {
 //http://localhost:3009/sellers/seller-account
 
 //http://localhost:3009/sellers/add-product
-router.post('/add-product',(req,res)=>{
+router.post('/add-product',upload.none(),(req,res)=>{
+        let itemNames = req.body.itemName;
+        let colorids = req.body.colorid;
+        let itemsbrand = req.body.itemsbrand;
+        let itemstype = req.body.itemstype;
+        let itemPrice = req.body.itemPrice;
+        let i=itemQty = req.body.itemQty;
+        let itemsales = req.body.itemsales;
+        let itemscontent = req.body.itemscontent;
+        let itemsweight = req.body.itemsweight;
+        let itemsdrive = req.body.itemsdrive;
+        let itemsfrequency = req.body.itemsfrequency;
+        let itemsSensitivity = req.body.itemsSensitivity;
+        let itemsconnect = req.body.itemsconnect;
+        let itemsmains = req.body.itemsmains;
+        let itemsEndurance = req.body.itemsEndurance;
+        let itemswatertight = req.body.itemswatertight;
+        let itemsfeature  = req.body.itemsfeature ;
+
         const output = {
             success: false,
+            itemName:itemNames,
+            itemImg:itemImg, 
+            colorid:colorids,
+            itemsbrand:itemsbrand, 
+            itemstype:itemstype, 
+            itemPrice:itemPrice, 
+            itemQty:itemQty, 
+            itemsales:itemsales, 
+            itemscontent:itemscontent, 
+            itemsweight:itemsweight, 
+            itemsdrive:itemsdrive, 
+            itemsfrequency:itemsfrequency, 
+            itemsSensitivity:itemsSensitivity,  
+            itemsconnect:itemsconnect, 
+            itemsmains:itemsmains, 
+            itemsEndurance:itemsEndurance, 
+            itemswatertight:itemswatertight, 
+            itemsfeature:itemsfeature
         }
 
         let itemName = req.body.itemName;
@@ -81,6 +117,7 @@ router.post('/add-product',(req,res)=>{
         let itemweight = req.body.itemweight;
     
         const sql = "`INSERT INTO `items`(`itemName`, `itemImg`, `colorid`, `itemsbrand`, `itemstype`,`itemPrice`, `itemQty`,`itemsales`, `itemscontent`, `itemsweight`, `itemsdrive`, `itemfrequency`, `itemsSensitivity`, `itemsconnect`, `itemsmains`, `itemsEndurance`, `itemswaterlight`, `itemsfeature`) VALUES (?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"; 
+
         console.log('req.body',[req.body])
         db.query(sql, [itemName, 
             itemImg, 
@@ -93,14 +130,14 @@ router.post('/add-product',(req,res)=>{
             itemscontent, 
             itemsweight, 
             itemsdrive, 
-            itemfrequency, 
+            itemsfrequency, 
             itemsSensitivity, 
             itemsconnect, 
             itemsmains, 
             itemsEndurance, 
-            itemswaterlight, 
+            itemswatertight, 
             itemsfeature ])
-            .then((result)=>{
+            .then(([r])=>{
                 console.log('result',result)
                 output.results = result;
                 if(result.affectedRows && r.insertId){
