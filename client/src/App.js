@@ -84,7 +84,29 @@ function App() {
 
   //賣家中心
   // const [SellerData, setSellerData] = useState([]) 
+<<<<<<< HEAD
+  const [SellerProductId,setsellerProductId] = useState([])
+  const [itemName,setItemName] = useState('')
+  const [itemImg,setItemImg] = useState(null)
+  const[colorid,setColorId] = useState(null)
+  const [itemsbrand,setItemsBrand] = useState('')
+  const [itemstype,setItemstype] = useState('')
+  const [itemPrice,setItemPrice] = useState([])
+  const [itemQty,setItemQty] = useState([])
+  const[itemsales,setItemsales] = useState([])
+  const[itemscontent,setItemscontent] = useState(null)
+  const[itemsweight,setItemsweight] = useState('')
+  const[itemsdrive,setItemsDrive] = useState('')
+  const[itemfrequency,setItemFrequency] = useState('')
+  const[itemsSensitivity,setItemsSensitivity] = useState('')
+  const[itemsconnect,setItemsconnect] = useState('')
+  const[itemsmains,setItemsmains] = useState('')
+  const[itemsEndurance,setItemsEndurance] = useState('')
+  const[itemswaterlight,setItemwaterlight] = useState('')
+  const[itemsfeature,setItemsFeature] = useState('')
+=======
   const [SellerProductId, setsellerProductId] = useState([])
+>>>>>>> 68337e6a6cd70b61e94ea3471bc5df1b0f7b7788
   // 登入 & 狀態判斷
   const loginProcess = (loginSuccessCallback) => {
     const errors = []
@@ -343,9 +365,73 @@ function App() {
               SellerProductId={SellerProductId}
               setsellerProductId={setsellerProductId} />
           </Route>
+
           <Route path="/AliceSellers/add-product">
-            <SellerAddProduct />
+          <SellerAddProduct allprops={{
+                    itemName, 
+                    setItemName, 
+                    itemImg, 
+                    setItemImg, 
+                    colorid, 
+                    setColorId, 
+                    itemsbrand, 
+                    setItemsBrand, 
+                    itemstype, 
+                    setItemstype, 
+                    itemPrice, 
+                    setItemPrice, 
+                    itemQty, 
+                    setItemQty, 
+                    itemsales, 
+                    setItemsales, 
+                    itemscontent, 
+                    setItemscontent, 
+                    itemsweight, 
+                    setItemsweight, 
+                    itemsdrive, 
+                    setItemsDrive, 
+                    itemfrequency, 
+                    setItemFrequency, 
+                    itemsSensitivity, 
+                    setItemsSensitivity, 
+                    itemsconnect, 
+                    setItemsconnect, 
+                    itemsmains, 
+                    setItemsmains, 
+                    itemsEndurance, 
+                    setItemsEndurance, 
+                    itemswaterlight, 
+                    setItemwaterlight, 
+                    itemsfeature, 
+                    setItemsFeature
+                  }} />
+                  </Route>
+
+          <Route path="/AliceSellers/add-product">
+            <SellerAddProduct 
+              itemName={itemName} setItemName={setItemName}
+              itemImg={itemImg} setItemImg={setItemImg}
+              colorid={colorid} setColorId={setColorId}
+              itemsbrand={itemsbrand} setItemsBrand={setItemsBrand}
+              itemstype={itemstype} setItemstype={setItemstype}
+              itemPrice={itemPrice} setItemPrice={setItemPrice}
+              itemQty={itemQty} setItemQty={setItemQty}
+              itemsales={itemsales} setItemsales={setItemsales}
+              itemscontent={itemscontent} setItemscontent={setItemscontent}
+              itemsweight={itemsweight} setItemsweight={setItemsweight}
+              itemsdrive={itemsdrive} setItemsDrive={setItemsDrive}
+              itemfrequency={itemfrequency} setItemFrequency={setItemFrequency}
+              itemsSensitivity={itemsSensitivity} setItemsSensitivity={setItemsSensitivity}
+              itemsconnect={itemsconnect} setItemsconnect={setItemsconnect}
+              itemsmains={itemsmains} setItemsmains={setItemsmains}
+              itemsEndurance={itemsEndurance} setItemsEndurance={setItemsEndurance}
+              itemswaterlight={itemswaterlight} setItemwaterlight={setItemwaterlight}
+              itemsfeature={itemsfeature} setItemsFeature={setItemsFeature}
+            />
           </Route>
+
+
+
 
           {/* 我的最愛 */}
           <Route path="/MyFav">
