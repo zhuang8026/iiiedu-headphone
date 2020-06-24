@@ -47,7 +47,7 @@ router.get('/', (req, res) => {
 
 // 所有文章(分頁)的function
 const getAllBlogList = async (req) => {
-    const perPage = 5;
+    const perPage = 12;
     let page = parseInt(req.params.page) || 1;
     const output = {
         page: page,
@@ -83,9 +83,9 @@ const getAllBlogList = async (req) => {
 
 // (個人)所有文章(分頁)的function
 const getUserBlogList = async (req) => {
-    const perPage = 5;
+    const perPage = 12;
     let page = parseInt(req.params.page) || 1;
-    let id = parseInt(req.params.id);
+    let id = req.body.id;
     const output = {
         id: id,
         page: page,
@@ -151,7 +151,9 @@ router.get("/listUserBlog/:id", (req, res) => {
 
 // (個人)所有文章(分頁)
 // http://localhost:3009/blog/listUserBlog/(個人id編號)/(第幾頁)
-router.get('/listUserBlog/:id/:page?', async (req, res) => {
+router.post('/listUserBlog/:id/:page?', async (req, res) => {    
+    console.log('=====================req.body=========================')
+    console.log(req.body)
     const output = await getUserBlogList(req);
     res.json(output);
 })
@@ -162,15 +164,23 @@ router.get('/listUserBlog/:id/:page?', async (req, res) => {
 // http://localhost:3009/blog/add
 // router.get('/add', (req, res)=>{
 router.post('/add', upload.none(), (req, res) => {
-    const output = {
-        success: false
-    }
-    // 沒有創建時間的input欄位，就直接給它函數方法
-    let id = 2;
-
+    
+    let id = req.body.id;
     let blogTitle = req.body.blogTitle;
     let blogContent01 = req.body.blogContent01;
     let blogContent02 = req.body.blogContent02;
+    const output = {
+        success: false,
+        id: id,
+        blogTitle: blogTitle,
+        blogContent01: blogContent01,
+        blogContent02: blogContent02,         
+        rows: []
+    }
+    
+   
+
+    
 
     const sql = "INSERT INTO `blogs`(`id`,`blogTitle`,`blogContent01`,`blogContent02`) VALUES (?, ?, ?, ?)";
     console.log('req.body', [req.body])

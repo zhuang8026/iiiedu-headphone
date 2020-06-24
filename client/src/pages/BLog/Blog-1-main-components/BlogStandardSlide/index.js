@@ -22,6 +22,7 @@ import top from '../../../../assets/img/blog-img/blog-standard/top.png'
 // -------------------- func --------------------
 
 function BlogMainStandardSlide(props) {
+  const { userdata, setUserdata } = props
   return (
     <>
       <div className="carouselWall">

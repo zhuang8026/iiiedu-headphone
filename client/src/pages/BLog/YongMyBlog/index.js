@@ -23,11 +23,26 @@ import BlogUser from '../Blog-1-main-components/BlogUser'
 // -------------------- func --------------------
 
 function YongMyBlog(props) {
+  const { userdata, setUserdata, name, setName } = props.allprops;
+  const updateCheckoutInfoToLocalStorage = (value) => {
+    const Blogman = JSON.parse(localStorage.getItem('memberData')) || []
+    console.log('====================', Blogman)
+    // const currentCart = JSON.parse(localStorage.getItem('CheckoutInfo')) || []
+    // const newCheckoutInfo = [...currentCart, value]
+    // localStorage.setItem('CheckoutInfo', JSON.stringify(newCheckoutInfo))
+  }
   return (
     <Route>
       <Fragment>
         <main>
-          <BlogUser />
+          <BlogUser
+            allprops={{
+              userdata,
+              setUserdata,
+              name,
+              setName
+            }}
+          />
         </main>
       </Fragment>
     </Route>
