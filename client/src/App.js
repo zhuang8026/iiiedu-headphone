@@ -47,7 +47,7 @@ import MySale from './pages/Sellers/MySale'
 import Order from './pages/Sellers/Order'
 import Refund from './pages/Sellers/Refund'
 import SellerProduct from './pages/Sellers/SellerProduct'
-import SellerAddProduct from './pages/Sellers/AddProduct/index-hook'
+import SellerAddProduct from './pages/Sellers/AddProduct'
 
 
 //我的最愛

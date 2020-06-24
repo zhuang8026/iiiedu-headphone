@@ -1,6 +1,7 @@
 import React from 'react'
 import { withRouter, BrowserRouter as Router } from 'react-router-dom'
-import AddProductForm from '../AddProductForm'
+import LeftNav from '../Leftnav'
+import AddProductForm from '../AddProductForm/index'
 class SellerAddProduct extends React.Component{
 
 render(){

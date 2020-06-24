@@ -29,15 +29,14 @@ class AddProductForm extends React.Component{
     }
 
 
-
-
-    handleitemName(e){
-        this.setState({itemName:e.target.value})
-    }
+    // handleitemName(e){
+    //     this.setState({itemName:e.target.value})
+    // }
 
     async handleSubmit(e){
         // alert("testing");!
         e.preventDefault();
+        const {itemName} = this.state
         try{
             let result = await fetch('https://localhost:3009/sellers/add-product',{
                 method:'post',
@@ -51,6 +50,8 @@ class AddProductForm extends React.Component{
                 })
             })
             console.log('result'+result)
+        }catch(err){
+            console.log(err)
         }
 }
     render(){
