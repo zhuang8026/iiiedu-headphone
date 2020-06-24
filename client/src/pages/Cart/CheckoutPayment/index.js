@@ -1,13 +1,24 @@
 // 函式元件
-import React, { useEffect } from 'react'
+import React, { useState,useEffect } from 'react'
 import {
   BrowserRouter as Router,
   Route,
   Link,
   withRouter,
 } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { paymentValue } from '../../../actions/cart'
+
 
 function CartPayment(props) {
+  const { userdata, setUserdata } = props
+  const [payment, setPayment] = useState('')  
+  const updateCheckoutPaymentToLocalStorage = (value) => {
+    const currentCheckoutPayment = JSON.parse(localStorage.getItem('CheckoutPayment')) || []
+    const newCheckoutPayment = [...currentCheckoutPayment, value]
+    localStorage.setItem('CheckoutInfo', JSON.stringify(newCheckoutPayment))
+  }
   return (
     <>
       <div className="cart-crumb">

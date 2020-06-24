@@ -6,28 +6,19 @@ const upload = require(__dirname + '/upload-module');
 const db = require(__dirname + '/db_connect');
 const cors = require('cors');
 const fs = require('fs');
-
+const { serialize } = require('v8');
 
 const router = express.Router();
 
 // 建立 web server 物件
 const app = express();
 
-
-
-
 // middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-
-
-
 // blogAdd
 // app.use('/blogAdd', require(__dirname+'/blogAdd.js'));
-
-
-
 
 //================================================== session ==============================================================
 // (未完成)
@@ -130,7 +121,7 @@ const getUserBlogList = async (req) => {
 // 所有文章
 // http://localhost:3009/blog/listAllBlog
 router.get("/listAllBlog", (req, res) => {
-    const sql = "SELECT * FROM `blogs`ORDER BY blogId desc";
+    const sql = `SELECT * FROM blogs ORDER BY blogId desc`;
     db.query(sql, (error, results, fields) => {
         if (error) throw error;
         res.json(results);
@@ -228,14 +219,12 @@ router.post('/edit/:blogId', upload.none(), (req, res) => {
         body: req.body
     }
 
-
-    
     // let blogId = parseInt(req.body.blogId);
     let blogId = req.params.blogId;
 
     let editBlogTitle = req.body.editBlogTitle;
     let editBlogContent01 = req.body.editBlogContent01;
-    let editBlogContent02 = req.body.editBlogContent02;    
+    let editBlogContent02 = req.body.editBlogContent02;
 
     const sql = "UPDATE `blogs` SET `blogTitle`=?, `blogContent01`=?, `blogContent02`=? WHERE `blogId`=?";
 
@@ -257,20 +246,77 @@ router.post('/edit/:blogId', upload.none(), (req, res) => {
 })
 
 //================================================== blogSearch ==============================================================
-// (未完成)
-// 搜尋結果(分頁)的func
-const getSearchList = async (req) => {
-    const perPage = 5;
-    let page = parseInt(req.params.page) || 1;
+// (半完成)
+// 搜尋所有文章(分頁)的function
+const getSearchAllList = async (req) => {
+    // 給資料的部分可改成接req.body的資料
+    const searchInput = '%9%';  // 給字串
+    const searchSort = '4';     // 給排序方式
+    const searchOrder = '2';    // 給正逆向
+    const perPage = 20;         // 給每頁幾筆
+    let page = 1;               // 給當前頁
+    // let page = parseInt(req.params.page) || 1;
     const output = {
-        page: page,
-        perPage: perPage,
-        totalRows: 0, // 總共有幾筆資料
-        totalPages: 0, //總共有幾頁
-        rows: []
+        searchInput: searchInput,    // 字串
+        searchSort: searchSort,      // 排序方式
+        searchOrder: searchOrder,    // 正逆向
+        page: page,                  // 當前頁 
+        perPage: perPage,            // 每頁幾筆
+        totalRows: 0,                // 總共有幾筆資料
+        totalPages: 0,               // 總共有幾頁
+        rows: []                     // 資料 
     }
-    const [r1] = await db.query(`SELECT COUNT(1) num FROM blogs`);
-
+    //設變數，toCount給計算頁數的sql用，toSearch給找出當頁的sql用。
+    let toCount = `SELECT COUNT(1) num FROM blogs`;
+    let toSearch = `SELECT * FROM blogs`;
+    //分別加上LIKE搜尋
+    toCount += ` WHERE id LIKE '%9%' OR blogTitle LIKE '%9%' OR blogContent01 LIKE '%9%'`;
+    toSearch += ` WHERE id LIKE '%9%' OR blogTitle LIKE '%9%' OR blogContent01 LIKE '%9%'`;
+    //依case加上ORDER BY
+    if (searchSort) {
+        switch (searchSort) {
+            case '1':
+                toCount += " ORDER BY blogExpectedDate";
+                toSearch += " ORDER BY blogExpectedDate";
+                break;
+            case '2':
+                toCount += " ORDER BY blogPublishDate";
+                toSearch += " ORDER BY blogPublishDate";
+                break;
+            case '3':
+                toCount += " ORDER BY blogUpdateDate";
+                toSearch += " ORDER BY blogUpdateDate";
+                break;
+            case '4':
+                toCount += " ORDER BY blogId";
+                toSearch += " ORDER BY blogId";
+                break;
+            case '5':
+                toCount += " ORDER BY id";
+                toSearch += " ORDER BY id";
+                break;
+            default:
+                break;
+        }
+    }
+    // 依case加上ASC/DESC
+    if (searchOrder) {
+        switch (searchOrder) {
+            case '1':
+                toCount += " ASC";
+                toSearch += " ASC";
+                break;
+            case '2':
+                toCount += " DESC";
+                toSearch += " DESC";
+                break;
+            default:
+                break;
+        }
+    }
+    // 取出sql符合的總共有幾筆
+    const [r1] = await db.query(toCount);
+    // 算資料給output
     output.totalRows = r1[0].num;
     output.totalPages = Math.ceil(output.totalRows / perPage);
     if (page < 1) page = 1;
@@ -280,7 +326,10 @@ const getSearchList = async (req) => {
     if (!output.page) {
         return output;
     }
-    const sql = `SELECT * FROM blogs ORDER BY blogId desc LIMIT ${(page - 1) * perPage}, ${perPage}`
+    // 加上當前頁的LIMIT
+    toSearch += ` LIMIT ${(page - 1) * perPage}, ${perPage}`;
+    // 丟給sql去取出當前頁的資料
+    const sql = toSearch;
     const [r2] = await db.query(sql);
     if (r2) output.rows = r2;
     console.log(output)
@@ -293,6 +342,14 @@ const getSearchList = async (req) => {
     }
     return output;
 };
+
+
+// 搜尋所有文章(分頁)
+// http://localhost:3009/blog/searchAllBlog/
+router.get('/searchAllBlog/', async (req, res) => {
+    const output = await getSearchAllList(req);
+    res.json(output);
+})
 
 
 //================================================== 圖片上傳 ==============================================================

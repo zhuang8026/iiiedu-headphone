@@ -1,15 +1,27 @@
 // 函式元件
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 
-function CartBuyerInfo(props) {
-  const {userdata, setUserdata} = props
+function CheckoutInfo(props) {
+  const { userdata, setUserdata } = props
+  const [name, setName] = useState('')
+  const [address, setAddress] = useState('')
+  const [tel, setTel] = useState('')
+  const [remarks, setRemarks] = useState('')
+  const updateCheckoutInfoToLocalStorage = (value) => {
+    const Memberman = JSON.parse(localStorage.getItem('memberData')) || []
+    console.log(Memberman)
+    const currentCart = JSON.parse(localStorage.getItem('CheckoutInfo')) || []
+    const newCheckoutInfo = [...currentCart, value]
+    localStorage.setItem('CheckoutInfo', JSON.stringify(newCheckoutInfo))
+  }
+
   return (
     <>
       <div className="cart-crumb">
         <div></div>
         <Link to="/">首頁</Link> / <Link to="/MyCart">購物車</Link>
-      </div>  
+      </div>
       <div className="cart-container">
         {/* 購物車步驟圖 */}
         <ul className="cart-step-ul">
@@ -53,17 +65,41 @@ function CartBuyerInfo(props) {
             <div>
               <div>
                 <label htmlFor="name">姓名*</label>
-                <input type="text" id="name" name="name" defaultValue={userdata.name} onChange=""/>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  defaultValue={userdata.name}
+                  onChange={(event) => {
+                    setName(event.target.value)
+                  }}
+                />
                 <div className="error">姓名必填*</div>
               </div>
               <div>
                 <label htmlFor="address">地址*</label>
-                <input type="text" id="address" name="address" defaultValue={userdata.address} onChange=""/>
+                <input
+                  type="text"
+                  id="address"
+                  name="address"
+                  defaultValue={userdata.address}
+                  onChange={(event) => {
+                    setAddress(event.target.value)
+                  }}
+                />
                 <div className="error">地址必填*</div>
               </div>
               <div>
                 <label htmlFor="tel">電話*</label>
-                <input type="tel" id="tel" name="tel" defaultValue={userdata.phoneNumber} onChange=""/>
+                <input
+                  type="tel"
+                  id="tel"
+                  name="tel"
+                  defaultValue={userdata.phoneNumber}
+                  onChange={(event) => {
+                    setTel(event.target.value)
+                  }}
+                />
                 <div className="error">電話必填*</div>
               </div>
             </div>
@@ -75,17 +111,31 @@ function CartBuyerInfo(props) {
                   id="remark"
                   cols="30"
                   rows="10"
-                  defaultValue=""
-                  onChange=""></textarea>
+                  onChange={(event) => {
+                    setRemarks(event.target.value)
+                  }}
+                ></textarea>
               </div>
             </div>
           </div>
           <div>
-            <button type="button"><Link to="/CheckoutDelivery">下一步</Link></button>
+            <button
+              type="button"
+              onClick={() => {
+                updateCheckoutInfoToLocalStorage({
+                  name: `${name ? name : userdata.name}`,
+                  address: `${address ? address : userdata.address}`,
+                  tel: `${tel ? tel : userdata.phoneNumber}`,
+                  remarks: `${remarks}`,
+                })
+              }}
+            >
+              <Link to="/CheckoutDelivery">下一步</Link>
+            </button>
           </div>
         </form>
       </div>
     </>
   )
 }
-export default withRouter(CartBuyerInfo)
+export default withRouter(CheckoutInfo)
