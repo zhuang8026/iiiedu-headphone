@@ -30,7 +30,7 @@ import '../../../../assets/scss/blog_edit.scss'
 // -------------------- func --------------------
 
 function BlogEdit(props) {
-
+  const { userdata, setUserdata } = props
   const[editBlogTitle, setEditBlogTitle] = useState('');
   const[editBlogContent01, setEditBlogContent01] = useState('');
   const[editBlogContent02, setEditBlogContent02] = useState('');

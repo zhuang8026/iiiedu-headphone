@@ -34,6 +34,7 @@ import '../../../../assets/scss/blog_detail.scss'
 // -------------------- func --------------------
 
 function BlogDetail(props) {
+  const { userdata, setUserdata } = props
   return (
     <>
       <div className="blog-detail-spacing"></div>

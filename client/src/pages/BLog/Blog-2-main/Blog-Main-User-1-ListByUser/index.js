@@ -12,6 +12,9 @@ import {
   withRouter,
 } from 'react-router-dom'
 
+// antd
+import { message } from 'antd';
+
 // -------------------- components --------------------
 
 // -------------------- scss --------------------
@@ -29,16 +32,24 @@ import PrevPageHover from '../../../../assets/img/blog-img/blog-standard/prev-pa
 // -------------------- func --------------------
 
 function BlogMainUserListByUser(props) {
-
+  const { userdata, setUserdata, name, setName } = props.allprops;
+  const [test, setTest] = useState(['111', '222'])
   const [listUserBlogdata, setlistUserBlogdata] = useState([])
+  console.log('================================React================================')
+  console.log({ userdata })
 
   useEffect(() => {
     fetch('http://localhost:3009/blog/listUserBlog/2/1', {
-      method: 'get',
+      method: 'post',
+      body: JSON.stringify({
+        id: userdata.id,
+        username: userdata.username
+      }),
       headers: new Headers({
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       }),
+
     })
       .then((response) => {
         return response.json()
@@ -47,11 +58,12 @@ function BlogMainUserListByUser(props) {
         console.log(response.rows)
         setlistUserBlogdata(response.rows)
       })
-  }, [])
+  }, [userdata])
 
 
   return (
     <>
+
       <div className="blog-btns blog-d-flex blog-justify-content-between">
         <div className="blog-btns-left">
           <button className="blog-btns-left-Link" onClick={() => props.history.push('/Blog/YongBlog')}>
@@ -64,11 +76,14 @@ function BlogMainUserListByUser(props) {
         </div>
         <div className="blog-btns-right blog-d-flex blog-justify-content-between">
 
-          <select name="" id="">
-            <option value="0">依最新發文</option>
-            <option value="1">依最舊發文</option>
-            <option value="2">依最新修改</option>
-            <option value="3">依最新回覆</option>
+          <select className="s1" name="" id="">
+            <option value="0">ASC</option>
+            <option value="1">DESC</option>
+          </select>
+          <select className="s2" name="" id="">
+            <option value="0">依發文日期</option>
+            <option value="1">依修改日期</option>
+            <option value="2">依回覆日期</option>
           </select>
           <figure className="blog-cover">
             <img src={IconSearch} alt="" />
@@ -77,7 +92,7 @@ function BlogMainUserListByUser(props) {
       </div>
       <div className="blog-list blog-d-flex">
         {listUserBlogdata.map((data, index) => {
-          console.log(data)
+          {/* console.log(data) */ }
           return (
             <div className="blog-card">
               <div className="blog-card-in">

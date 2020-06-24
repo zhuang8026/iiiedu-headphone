@@ -25,7 +25,7 @@ import testImg from '../../../../assets/img/blog-img/blog-detail/test.png'
 // -------------------- func --------------------
 
 function BlogMainAdd(props) {
-
+    const { userdata, setUserdata, name, setName } = props.allprops;
     const {
         blogTitle,
         setBlogTitle,
@@ -40,6 +40,7 @@ function BlogMainAdd(props) {
         fetch('http://localhost:3009/blog/add', {
             method: 'post',
             body: JSON.stringify({
+                id: userdata.id,
                 blogTitle: blogTitle,
                 blogContent01: blogContent01,
                 blogContent02: blogContent02

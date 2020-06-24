@@ -88,7 +88,7 @@ function App() {
 
   //賣家中心
   // const [SellerData, setSellerData] = useState([]) 
-  const [SellerProductId,setsellerProductId] = useState([])
+  const [SellerProductId, setsellerProductId] = useState([])
   // 登入 & 狀態判斷
   const loginProcess = (loginSuccessCallback) => {
     const errors = []
@@ -218,9 +218,9 @@ function App() {
                 setName,
                 phoneNumber,
                 setPhoneNumber,
-                address, 
+                address,
                 setAddress,
-                gender, 
+                gender,
                 setGender,
                 birthday,
                 setBirthday
@@ -287,17 +287,17 @@ function App() {
           </Route>
 
           <Route path="/KMembers/MembersCartDetail">
-            <MembersCartDetail 
+            <MembersCartDetail
               allprops={{
                 userdata,
                 setUserdata,
                 name,
                 setName,
-                phoneNumber, 
+                phoneNumber,
                 setPhoneNumber,
-                address, 
+                address,
                 setAddress,
-                gender, 
+                gender,
                 setGender,
                 birthday,
                 setBirthday
@@ -308,19 +308,50 @@ function App() {
 
           {/* Blog */}
           <Route path="/Blog/YongBlog">
-            <YongBlog />
+            <YongBlog
+              allprops={{
+                userdata,
+                setUserdata,
+                name,
+                setName
+              }}
+            />
           </Route>
           <Route path="/Blog/YongMyBlog">
-            <YongMyBlog />
+            <YongMyBlog
+              allprops={{
+                userdata,
+                setUserdata,
+                name,
+                setName
+              }} />
           </Route>
           <Route path="/Blog/BlogDetail">
-            <BlogDetail />
+            <BlogDetail
+              allprops={{
+                userdata,
+                setUserdata,
+                name,
+                setName
+              }} />
           </Route>
           <Route path="/Blog/BlogAdd">
-            <BlogAdd />
+            <BlogAdd
+              allprops={{
+                userdata,
+                setUserdata,
+                name,
+                setName
+              }} />
           </Route>
           <Route path="/Blog/BlogEdit">
-            <BlogEdit />
+            <BlogEdit
+              allprops={{
+                userdata,
+                setUserdata,
+                name,
+                setName
+              }} />
           </Route>
 
           {/* 賣家 */}
@@ -337,9 +368,9 @@ function App() {
             <Refund />
           </Route>
           <Route path="/AliceSellers/seller-product">
-            <SellerProduct           
-                SellerProductId={SellerProductId}
-                setsellerProductId={setsellerProductId} />
+            <SellerProduct
+              SellerProductId={SellerProductId}
+              setsellerProductId={setsellerProductId} />
           </Route>
           <Route path="/AliceSellers/add-product">
             <SellerAddProduct />
@@ -349,40 +380,40 @@ function App() {
           <Route path="/MyFav">
             <MyFav />
           </Route>
-            {/* 購物車 */}
-            <Route path="/MyCart">
-              <MyCart userdata={userdata} setUserdata={setUserdata} />
-            </Route>
-            <Route path="/CheckoutInfo">
-              <CheckoutInfo userdata={userdata} setUserdata={setUserdata} />
-            </Route>
-            <Route path="/CheckoutDelivery">
-              <CheckoutDelivery userdata={userdata} setUserdata={setUserdata} />
-            </Route>
-            <Route path="/CheckoutPayment">
-              <CheckoutPayment userdata={userdata} setUserdata={setUserdata} />
-            </Route>
-            <Route path="/OrderComplete">
-              <OrderComplete userdata={userdata} setUserdata={setUserdata} />
-            </Route>
+          {/* 購物車 */}
+          <Route path="/MyCart">
+            <MyCart userdata={userdata} setUserdata={setUserdata} />
+          </Route>
+          <Route path="/CheckoutInfo">
+            <CheckoutInfo userdata={userdata} setUserdata={setUserdata} />
+          </Route>
+          <Route path="/CheckoutDelivery">
+            <CheckoutDelivery userdata={userdata} setUserdata={setUserdata} />
+          </Route>
+          <Route path="/CheckoutPayment">
+            <CheckoutPayment userdata={userdata} setUserdata={setUserdata} />
+          </Route>
+          <Route path="/OrderComplete">
+            <OrderComplete userdata={userdata} setUserdata={setUserdata} />
+          </Route>
 
-            {/* ProtectdRoute 這是 utils */}
-            {/* <ProtectedRoute path="/todoapp">
+          {/* ProtectdRoute 這是 utils */}
+          {/* <ProtectedRoute path="/todoapp">
                               <TodoApp todos={todos} setTodos={setTodos} isAuth={auth}/>
                           </ProtectedRoute> */}
 
-            {/* 404 必须放在最后一个 */}
-            {/* Redirect 重新導向 / 需要先引入 */}
+          {/* 404 必须放在最后一个 */}
+          {/* Redirect 重新導向 / 需要先引入 */}
 
-            <Route path="/404">
-              <NotFoundPage404 />
-            </Route>
-            <Redirect to="/404" />
+          <Route path="/404">
+            <NotFoundPage404 />
+          </Route>
+          <Redirect to="/404" />
 
         </Switch>
       </ScrollToTop>
 
-        <MyFooter />
+      <MyFooter />
     </Router>
   )
 }

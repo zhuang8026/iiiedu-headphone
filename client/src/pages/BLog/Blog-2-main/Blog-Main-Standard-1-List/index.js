@@ -66,11 +66,14 @@ function BlogMainStandardList(props) {
 
         </div>
         <div className="blog-btns-right blog-d-flex blog-justify-content-between">
-          <select name="" id="">
-            <option value="0">依最新發文</option>
-            <option value="1">依最舊發文</option>
-            <option value="2">依最新修改</option>
-            <option value="3">依最新回覆</option>
+          <select className="s1" name="" id="">
+            <option value="0">ASC</option>
+            <option value="1">DESC</option>
+          </select>
+          <select className="s2" name="" id="">
+            <option value="0">依發文日期</option>
+            <option value="1">依修改日期</option>
+            <option value="2">依回覆日期</option>
           </select>
           <figure className="blog-cover">
             <img src={IconSearch} alt="" />
@@ -80,7 +83,7 @@ function BlogMainStandardList(props) {
       <div className="blog-list blog-d-flex">
 
         {listAllBlogdata.map((data, index) => {
-          console.log(data)
+          {/* console.log(data) */ }
           return (
             <div className="blog-card">
               <div className="blog-card-in">

@@ -29,6 +29,7 @@ import '../../../../assets/scss/blog_user.scss'
 
 // -------------------- func --------------------
 function BlogUser(props) {
+  const { userdata, setUserdata, name, setName } = props.allprops;
   return (
     <>
       <div className="blog-user-spacing"></div>
@@ -47,7 +48,14 @@ function BlogUser(props) {
                 這裡是Otis'耳機專門站為各位耳機使用者建立的部落格空間，以提供使用者交流之用，如使用心得、測試報告、時尚穿搭以及各種交流文章。這裡是Otis'耳機專門站為各位耳機使用者建立的部落格空間，以提供使用者交流之用，如使用心得、測試報告、時尚穿搭以及各種交流文章。這裡是Otis'耳機專門站為各位耳機使用者建立的部落格空間，以提供使用者交流之用，如使用心得、測試報告、時尚穿搭以及各種交流文章。這裡是Otis'耳機專門站為各位耳機使用者建立的部落格空間，以提供使用者交流之用，如使用心得、測試報告、時尚穿搭以及各種交流文章。
               </p>
             </div>
-            <BlogMainUserListByUser />
+            <BlogMainUserListByUser 
+              allprops={{
+              userdata,
+              setUserdata,
+              name,
+              setName
+            }}
+            />
           </div>
           <div className="blog-aside">
             <BlogAsidePhoto />
