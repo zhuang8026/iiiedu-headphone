@@ -186,12 +186,12 @@ function App() {
               setItemsid={setItemsid}
             />
           </Route>
-          <Route exact path="/YyProduct/:air?">
+          <Route exact path="/YyProduct">
             <YyProduct />
           </Route>
-          <Route exact path="/YyProduct/:box?">
+          {/* <Route exact path="/YyProduct/:box?">
             <YyProduct />
-          </Route>
+          </Route> */}
 
           {/* 產品細節 */}
           <Route path="/ProductDetail/:id?">

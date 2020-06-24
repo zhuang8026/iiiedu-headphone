@@ -1,18 +1,10 @@
 // 函式元件
-import React, { Fragment } from 'react';
-import { 
-    BrowserRouter as Router,
-    Route,
-    Switch,
-    Redirect,
-    Link,
-    NavLink,
-    withRouter,
- } from 'react-router-dom'
+import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 // components
-import ProductCrumb from './ProductCrumb'
-import ProductMain from './ProductMain'
+import ProductCrumb from './ProductCrumb';
+import ProductMain from './ProductMain';
 
 function YyProduct(props) {
     const { itemsdata, setItemsdata, itemsid, setItemsid } = props;

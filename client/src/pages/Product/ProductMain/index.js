@@ -1,14 +1,9 @@
 // 函式元件
 import React, { useEffect,useState } from 'react';
 
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 //antd
-import { message } from 'antd';
-// import { Pagination } from 'antd'
-// import WHH8101 from '../../../assets/items_img/WH-H810-01.png'
-// scss
-// import '../../../assets/scss/Product_Main.scss'
-// import './_menu.scss'
+// import { message } from 'antd';
 
 function ProductMain(props) {
   const [mycart, setMycart] = useState([])
@@ -74,125 +69,99 @@ function ProductMain(props) {
       <div className="Yybodyin">
         <div className="Yybodyleft">
         <div className="Yybrand">
-            <div className="Yywearstyle">品牌</div>
-            <ul>
-              <li>
-                  <input id='check-1' type="checkbox" name='check-1'/>
-                  <label for="check-1">Apples</label>
-              </li>
-              <li>
-                  <input id='check-1' type="checkbox" name='check-1'/>
-                  <label for="check-1">鐵三角</label>
-              </li>
-              <li>
-                  <input id='check-1' type="checkbox" name='check-1'/>
-                  <label for="check-1">Akg</label>
-              </li>
-              <li>
-                  <input id='check-1' type="checkbox" name='check-1'/>
-                  <label for="check-1">Sony</label>
-              </li>
+            <div className="Yywearstyle">BRAND</div>
+            <ul className="Yybrand_ul">
+              <li><Link to='/'> AUDIOTECHNICA (1) </Link></li>
+              <li><Link to='/'> AKG (1) </Link></li>
+              <li><Link to='/'> BANGOLUFSEN (1) </Link></li>
+              <li><Link to='/'> FINAL (1) </Link></li>
+              <li><Link to='/'> GRADO (1) </Link></li>
+              <li><Link to='/'> SHURE (1) </Link></li>
+              <li><Link to='/'> SONY (1) </Link></li>
+              <li><Link to='/'> SENHEIER (1) </Link></li>
             </ul>
         </div>
           
-        <div className="Yybrand">
-            <div className="Yywearstyle">配戴方式</div>
-            <ul>
-              <li>
-                <input id='check-2' type="checkbox" name='check-1'/>
-                <label for="check-2">入耳</label>
-              </li>
-              <li>
-                <input id='check-3' type="checkbox" name='check-1'/>
-                <label for="check-3">非入耳</label>
-              </li>
-              <li>
-                
-              </li>
-            </ul>
-        </div>
-        {/* <div className="Yybrand">
-            <div className="Yywearstyle">類型 </div>
-            <ul>
-              <li>
-                <input id='check-2' type="checkbox" name='check-1'/>
-                <label for="check-2">入耳式</label>
-              </li>
-              <li>
-                <input id='check-2' type="checkbox" name='check-1'/>
-                <label for="check-2">非入耳式</label>
-              </li>
-            </ul>
-        </div> */}
-        
-          <div className="Yysubmit">
-            <button className="btn" type="button">
-              送出勾選資料
-            </button>
+        {/* <form method="get" action="">
+          <div class="price_slider_wrapper">
+              <div class="price_slider_amount" data-step="10">
+              <input type="text" id="min_price" name="min_price" value="10" data-min="10" placeholder="Min price" />
+              <input type="text" id="max_price" name="max_price" value="300" data-max="300" placeholder="Max price" />
+              <button type="submit" class="button">Filter</button>
+              <div class="price_label" >
+                Price: <span class="from"></span> &mdash; <span class="to"></span>
+              </div>
+              <div class="clear"></div>
+            </div>
           </div>
+        </form> */}
+        
           <div className="Yysearch_container">
-            {/* <span class="iconfont icon-search"></span> */}
             <input type="text" placeholder=" search..." />
+            <button>
+              <i class="iconfont icon-search"></i>
+            </button>
           </div>
         </div>
         <div className="Yybodyright">
           <div className="Yybodyheader">
-            <span>一共12筆結果</span>
+            <span>SHOWING 1–12 OF 130 RESULTS</span>
             <select className="Yyorder">
-              <option>按價格排序-由高到低</option>
-              <option>按價格排序-由低到高</option>
+              <option value="high">Price: Low to High</option>
+              <option value="low">Price: High to Low</option>
             </select>
           </div>
 
           <div className="Yyasidebody">
             
             {itemsdata.map((data, index)=>{
-              // console.log(data)
               return(
-                <div className="Yyaside_pro">
+                <div className="Yyaside_pro" key={index}>
                   <div className="item_image">
-                    <img className="item_images" src={`/items_img/${data.itemImg}`} />
-                    <div className="item_imagebtnout">
-                      <button className="item_imagebtn btn"
-                       id={data.itemId}
-                       onClick={() => {
-                       updateCartToLocalStorage({
-                          id: `${data.itemId}`,
-                          itemName:`${data.itemName}`,
-                          itemBrand:`${data.itemsbrand}`,
-                          itemImg:`${data.itemImg}`,
-                          itemPrice:`${data.itemPrice}`,
-                          amount:1,
-                           })
-                        }}
-                      >
-                     
-                       
-                       加入購物車</button>
-                      <button 
-                        className="item_imagebtn2 btn" 
-                        id={data.itemId} 
-                        onClick={e =>{
-                          setItemsid(e.target.id)  
-                          goToDetail(e.target.id)
-                          props.history.push(`/ProductDetail/${e.target.id}`)
-                        }}
-                      >立即查看</button>
-                    </div>
+                    <img className="item_img" src={`/items_img/${data.itemImg}`} />
                   </div>
-                  <div className="item_cover"></div>
-                  <ul className="itemul">
-                    <li className="pro_name">
+                  <ul className="item_inner">
+                    <li className="item_inner_li item_inner_flex">
                       <p>{data.itemName}</p>
-                      <div className="pro_new">NEW</div>
+                      {/* <p className="item_inner_new">NEW</p> */}
+                      <i className="item_inner_like iconfont icon-like"></i>
                     </li>
-
-                    <li>
-                      <div className="pro_c"></div>
+                    <li className="item_inner_li">
+                      <p className="">{data.itemsbrand}</p>
+                    </li>
+                    <li className="item_inner_li">
+                      <p className="">$ {data.itemPrice}.00</p>
                     </li>
                   </ul>
-                  <p> {data.itemsbrand} </p>
-                  <p>{data.itemPrice}</p>
+                  
+                  <div className="item_btn_inner_all">
+                      <div className="item_btn_inner">
+                        {/* <button className="item_add item_btn"btn-navy btn-fill-vert-o */}
+                        <button className="item_btn_an btn-navy btn-fill-vert-o"
+                          id={data.itemId}
+                          onClick={() => {
+                          updateCartToLocalStorage({
+                              id: `${data.itemId}`,
+                              itemName:`${data.itemName}`,
+                              itemBrand:`${data.itemsbrand}`,
+                              itemImg:`${data.itemImg}`,
+                              itemPrice:`${data.itemPrice}`,
+                              amount:1,
+                              })
+                            }}
+                        >加入購物車</button>
+                        <button className="item_btn_an_s btn-navy_s btn-fill-vert-o_s">加入最愛</button>
+                        <button 
+                          className="item_btn_an_s btn-navy_s btn-fill-vert-o_s" 
+                          id={data.itemId} 
+                          onClick={e =>{
+                            setItemsid(e.target.id)  
+                            goToDetail(e.target.id)
+                            props.history.push(`/ProductDetail/${e.target.id}`)
+                          }}
+                        >立即查看</button>
+                      </div>
+                    </div>
                 </div>
               )
             })}
