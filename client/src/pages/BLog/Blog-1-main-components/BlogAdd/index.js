@@ -47,14 +47,14 @@ function BlogAdd(props) {
   return (
     <>
       <div className="blog-add-spacing"></div>
-      <div class="wrap-top">
+      <div className="wrap-top">
         <div className="blog-crumb">
           <Link to="../">首頁</Link>/<Link to="./YongMyBlog">部落格個人頁</Link>/<Link to="./BlogAdd">部落格新增頁</Link>
         </div>
       </div>
-      <div class="wrap-mid">
-        <div class="blog-add blog-d-flex">
-          <div class="blog-add-main">
+      <div className="wrap-mid">
+        <div className="blog-add blog-d-flex">
+          <div className="blog-add-main">
             <BlogMainAddInputs
               allprops={{
                 userdata,
@@ -70,7 +70,7 @@ function BlogAdd(props) {
               setBlogContent02={setBlogContent02}
             />
           </div>
-          <div class="blog-add-aside">
+          <div className="blog-add-aside">
             <BlogAsidePhoto />
             <BlogAsideCommunity />
           </div>
