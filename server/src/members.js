@@ -93,7 +93,8 @@ router.get('/logout',(req, res)=>{
     // res.redirect('/members/login'); // 從哪裡來
 });
 
-// 取得會員資料
+// 取得會員資料 / 在註冊組件中
+// http://localhost:3009/membersRegister/add 
 router.get('/user/:username?/:pwd?', (req, res)=>{ // upload.none() 回傳的是 表單欄位 每一個的值，并包裝成對象
     // console.log('session', req.session)
     let username = req.params.username;

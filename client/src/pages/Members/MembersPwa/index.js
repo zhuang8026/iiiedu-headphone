@@ -1,11 +1,14 @@
 // 函式元件
-import React from 'react'
+import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 
 import MembersLeft from '../ComponentMembersLeft'
 
 function MembersPwa(props) {
   const {userdata, setUserdata} = props;
+  const [a, seta] = useState('');
+  const [b, setb] = useState('');
+  const [c, setc] = useState('');
   return (
       <main>
         <div className="members_all">
@@ -33,6 +36,7 @@ function MembersPwa(props) {
                           id="memDel_pwa"
                           className="mem_input"
                           placeholder="請輸入密碼"
+                          onChange = {(e)=>{ seta(e.target.value) }}
                         />
                       </div>
                       <span className="memDel_click">
@@ -48,6 +52,7 @@ function MembersPwa(props) {
                           id="memDel_pwa"
                           className="mem_input"
                           placeholder="請輸入密碼"
+                          onChange = {(e)=>{ setb(e.target.value) }}
                         />
                       </div>
                       <span className="memDel_click">
@@ -63,6 +68,7 @@ function MembersPwa(props) {
                           id="memDel_pwa"
                           className="mem_input"
                           placeholder="請輸入密碼"
+                          onChange = {(e)=>{ setc(e.target.value) }}
                         />
                       </div>
                       <span className="memDel_click">
