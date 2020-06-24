@@ -21,9 +21,9 @@ const storage = multer.diskStorage({
         // console.log('upload-module-req', req)
         // console.log('file.mimetype', file.mimetype)
         // cb(null, req.file.originalname)
+        
         let ext = extMap[file.mimetype];
-        cb(null, ext)
-        // cb(null, Date.now() + ext)
+        cb(null, Date.now() + ext)
 
         // cb(null, file.originalname)
 

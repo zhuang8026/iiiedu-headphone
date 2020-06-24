@@ -12,36 +12,15 @@ function KMembers(props) {
 
     const [logoData, setLogoData ] = useState();
 
-    // const onFilesChange =(files)=>{
-    //     console.log(files)
-    //     fetch('http://localhost:3009/membersEdit/imgUpload', {
-    //         method: 'POST',
-    //         body:files,
-    //         // headers: new Headers({
-    //         //     'Accept': 'application/json',
-    //         //     'Content-Type': 'application/json',
-    //         // })
-    //     })
-    //         .then((res)=>{
-    //             return res.json() // json()	返回 Promise，resolves 是 JSON 物件
-    //         })
-    //         .then(obj=>{
-    //             console.log(obj);
-    //         })
-    // }
-
-    // const onFilesError= (error, file) =>{
-    //     console.log('error code ' + error.code + ': ' + error.message)
-    // }
-
     // 圖片上傳
     const myImgEditCallback = (data) =>{
         console.log(data)
-        // const filedata = new FormData(document.formUserData);
-        // console.log(filedata)
+        const filedata = new FormData(document.formUserData);
+        console.log(filedata)
+
         fetch('http://localhost:3009/membersEdit/imgUpload', {
             method: 'POST',
-            body:data,
+            body:filedata,
             // headers: new Headers({
             //     'Accept': 'application/json',
             //     'Content-Type': 'application/json',
@@ -51,7 +30,7 @@ function KMembers(props) {
                 return res.json() // json()	返回 Promise，resolves 是 JSON 物件
             })
             .then(obj=>{
-                console.log(obj);
+                console.log(obj.filename);
             })
     }   
 
@@ -106,7 +85,7 @@ function KMembers(props) {
                     <p>管理你的檔案以保護你的帳戶</p>
                 </div>
                 {/* 主要內容 */}
-                <div className="members_r_bottom" name="formUserData">
+                <form className="members_r_bottom" name="formUserData">
                     {/* 左側表單 */}
                     <div className="r_bottom_left">
                         <ul>
@@ -235,25 +214,7 @@ function KMembers(props) {
                                     myImgEditCallback(e.target.files[0])
                                 }}
                             />
-                            {/* <Files
-                                className='files-dropzone'
-                                onChange = {(e)=>{
-                                    // console.log(e.target.files[0])
-                                    // console.log(e.target.files[0].name)
-                                    onFilesChange(e)
-                                    // setLogoData(e.target.files[0].name)
-                                    // myImgEditCallback(e.target.files[0])
-                                }}
-                                onError={onFilesError}
-                                accepts={['image/png', '.pdf', 'audio/*']}
-                                multiple
-                                maxFiles={3}
-                                maxFileSize={10000000}
-                                minFileSize={0}
-                                clickable
-                                >
-                                Drop files here or click to upload
-                            </Files> */}
+                            
                         </div>
                         <div className="r_bottom_logo_update_text">
                             <p>檔案大小: 最大200KB</p>
@@ -261,7 +222,7 @@ function KMembers(props) {
                         </div>
                     </div>
                     
-                </div>
+                </form>
             </div>
         </div>
     )
