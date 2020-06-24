@@ -28,6 +28,8 @@ function ProductMain(props) {
 
   console.log('itemsid:', itemsid) // text button id 
 
+
+  
   const goToDetail = ( id )=> {
     fetch(`http://localhost:3009/products/detail/${id}`, {
         method: 'get',
@@ -44,7 +46,7 @@ function ProductMain(props) {
             // setUserdata(res[0]);
             // console.log(userdata);
         })
-}
+  }
 
   useEffect(()=>{
       goToDetail(itemsid)
@@ -103,6 +105,9 @@ function ProductMain(props) {
               <li>
                 <input id='check-3' type="checkbox" name='check-1'/>
                 <label for="check-3">非入耳</label>
+              </li>
+              <li>
+                
               </li>
             </ul>
         </div>
