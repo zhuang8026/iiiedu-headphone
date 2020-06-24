@@ -67,10 +67,12 @@ router.post('/userUpload', upload.single('file_upload'),(req, res)=>{
 // 會員基本資料 + 圖片 修改
 // http://localhost:3009/membersEdit/imgUpload
 router.post('/imgUpload', upload.single('file_upload'), (req, res)=>{
-    // console.log('req.file', req.file);
+    console.log('req.file', req.file);
     // console.log('req', req); // 可看到 所有的 request(取得客户端资料) 内容
+    // console.log('imgUpload',req.file)
     res.json({
-        filename: req.file.originalname,
+        // filename: req.file.originalname,
+        filename: req.file,
         body: req.body
     });
     // res.end("ok");
