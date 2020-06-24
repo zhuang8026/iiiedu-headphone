@@ -28,7 +28,7 @@ function SellerAddProduct(props) {
     itemsdrive, 
     setItemsDrive, 
     itemfrequency, 
-    setItemFrequency, 
+    setitemsfrequency, 
     itemsSensitivity, 
     setItemsSensitivity, 
     itemsconnect, 
@@ -38,7 +38,7 @@ function SellerAddProduct(props) {
     itemsEndurance, 
     setItemsEndurance, 
     itemswaterlight, 
-    setItemwaterlight, 
+    setItemswatertight, 
     itemsfeature, 
     setItemsFeature
           } = props.allprops;
@@ -59,7 +59,7 @@ function SellerAddProduct(props) {
                     <p>請為您的商品選擇一個正確的分類。</p>
                   </div>
                   <AddProductForm allprops={{
-                    itemName, setItemName, itemImg, setItemImg, colorid, setColorId, itemsbrand, setItemsBrand, itemstype, setItemstype, itemPrice, setItemPrice, itemQty, setItemQty, itemsales, setItemsales, itemscontent, setItemscontent, itemsweight, setItemsweight, itemsdrive, setItemsDrive, itemfrequency, setItemFrequency, itemsSensitivity, setItemsSensitivity, itemsconnect, setItemsconnect, itemsmains, setItemsmains, itemsEndurance, setItemsEndurance, itemswaterlight, setItemwaterlight, itemsfeature, setItemsFeature
+                    itemName, setItemName, itemImg, setItemImg, colorid, setColorId, itemsbrand, setItemsBrand, itemstype, setItemstype, itemPrice, setItemPrice, itemQty, setItemQty, itemsales, setItemsales, itemscontent, setItemscontent, itemsweight, setItemsweight, itemsdrive, setItemsDrive, itemfrequency, setitemsfrequency, itemsSensitivity, setItemsSensitivity, itemsconnect, setItemsconnect, itemsmains, setItemsmains, itemsEndurance, setItemsEndurance, itemswaterlight, setItemswatertight, itemsfeature, setItemsFeature
                   }} />
                 </div>
               </div>

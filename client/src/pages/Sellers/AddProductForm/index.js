@@ -28,8 +28,8 @@ function SellerAddProduct(props) {
     setItemsweight, 
     itemsdrive, 
     setItemsDrive, 
-    itemfrequency, 
-    setItemFrequency, 
+    itemsfrequency, 
+    setitemsfrequency, 
     itemsSensitivity, 
     setItemsSensitivity, 
     itemsconnect, 
@@ -38,8 +38,8 @@ function SellerAddProduct(props) {
     setItemsmains, 
     itemsEndurance, 
     setItemsEndurance, 
-    itemswaterlight, 
-    setItemwaterlight, 
+    itemswatertight, 
+    setItemswatertight, 
     itemsfeature, 
     setItemsFeature
           } = props.allprops;
@@ -59,12 +59,12 @@ function SellerAddProduct(props) {
               itemscontent:itemscontent, 
               itemsweight:itemsweight, 
               itemsdrive:itemsdrive, 
-              itemfrequency:itemfrequency, 
+              itemsfrequency:itemsfrequency, 
               itemsSensitivity:itemsSensitivity,  
               itemsconnect:itemsconnect, 
               itemsmains:itemsmains, 
               itemsEndurance:itemsEndurance, 
-              itemswaterlight:itemswaterlight, 
+              itemswatertight:itemswatertight, 
               itemsfeature:itemsfeature, 
             }),
             headers: new Headers({
@@ -226,7 +226,7 @@ function SellerAddProduct(props) {
                 type="text" 
                 placeholder="請輸入六位數密碼" 
                 id="registerPwa"
-                onChange={e => setItemFrequency(e.target.value)}
+                onChange={e => setitemsfrequency(e.target.value)}
               />
               <p className="login_err"></p>
 
@@ -281,7 +281,7 @@ function SellerAddProduct(props) {
                 type="text" 
                 placeholder="請輸入六位數密碼" 
                 id="registerPwa"
-                onChange={e => setItemwaterlight(e.target.value)}
+                onChange={e => setItemswatertight(e.target.value)}
               />
               <p className="login_err"></p>
 
@@ -305,7 +305,7 @@ function SellerAddProduct(props) {
               <button 
                 type="submit" 
                 className="login_btn register_btn"
-                onClick={ ()=>{return (addFormServer)} }>註冊</button>
+                onClick={ ()=>{addFormServer()} }>註冊</button>
             </div>
           </div>
         </div>
