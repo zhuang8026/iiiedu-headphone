@@ -72,15 +72,11 @@ import NotFoundPage404 from './pages/404'
 
 function App() {
   // 會員
+  const [userdata, setUserdata] = useState([])
   const [name, setName] = useState('')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [loginErrors, setLoginErrors] = useState([])
-  const [userdata, setUserdata] = useState([])
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [gender, setGender] = useState();
-  const [address, setAddress] = useState('');
-  const [birthday, setBirthday] = useState('');
 
   // 產品列表
   const [itemsdata, setItemsdata] = useState([])
@@ -129,6 +125,7 @@ function App() {
   const localUser = JSON.parse(localStorage.getItem('memberData')) || '';  // 取得localStorage資料
   const getUserData = (usernameData, pwdData) => {
     fetch(`http://localhost:3009/members/user/${usernameData}/${pwdData}`, {
+    // fetch(`http://localhost:3009/members/user/${usernameData}/${pwdData}`, {
       method: 'get',
       headers: new Headers({
         Accept: 'application/json',
@@ -145,7 +142,7 @@ function App() {
       })
   }
   useEffect(() => {
-    getUserData(localUser['username'], localUser['password'])
+    getUserData(localUser['username'], localUser['pwd'])
   }, [])
 
   return (
@@ -214,16 +211,6 @@ function App() {
               allprops={{
                 userdata,
                 setUserdata,
-                name,
-                setName,
-                phoneNumber,
-                setPhoneNumber,
-                address, 
-                setAddress,
-                gender, 
-                setGender,
-                birthday,
-                setBirthday
               }}
             />
           </Route>
@@ -272,12 +259,6 @@ function App() {
               allprops={{
                 userdata,
                 setUserdata,
-                name,
-                setName,
-                phoneNumber,
-                setPhoneNumber,
-                address,
-                setAddress
               }}
             />
           </Route>
@@ -293,14 +274,6 @@ function App() {
                 setUserdata,
                 name,
                 setName,
-                phoneNumber, 
-                setPhoneNumber,
-                address, 
-                setAddress,
-                gender, 
-                setGender,
-                birthday,
-                setBirthday
               }}
             />
           </Route>

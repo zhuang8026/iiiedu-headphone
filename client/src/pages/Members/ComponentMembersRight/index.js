@@ -8,42 +8,50 @@ import { message } from 'antd';
 
 function KMembers(props) {
     const key = 'updatable';
-    const {userdata, name, setName, phoneNumber, setPhoneNumber, gender, setGender, birthday, setBirthday} = props.allprops;
-
-    const [logoData, setLogoData ] = useState();
-
+    const {userdata, setUserdata} = props.allprops;
+    const [selectedFile, setSelectedFile] = useState();
+    // console.log(userdata)
     // 圖片上傳
+    
     const myImgEditCallback = (data) =>{
-        console.log(data)
-        const filedata = new FormData(document.formUserData);
-        console.log(filedata)
 
-        fetch('http://localhost:3009/membersEdit/imgUpload', {
+        const datafiles = new FormData();
+        datafiles.append('file', data);
+        // console.log(data);
+
+        fetch('http://localhost:3009/membersEdit/upload', {
             method: 'POST',
-            body:filedata,
+            body: datafiles,
             // headers: new Headers({
             //     'Accept': 'application/json',
             //     'Content-Type': 'application/json',
             // })
         })
             .then((res)=>{
+                console.log(res)
+                console.log(res.statusText)
                 return res.json() // json()	返回 Promise，resolves 是 JSON 物件
             })
             .then(obj=>{
-                console.log(obj.filename);
+                console.log(obj);
+                setUserdata({
+                    ...userdata,
+                    userlogo: obj.filename
+                })
             })
     }   
 
+    // http://localhost:3009/membersEdit/imgUpload
     const myDataEditCallback = () => {
         fetch('http://localhost:3009/membersEdit/userUpload', {
             method: 'post',
             body:JSON.stringify({
-                name:  name,
-                phoneNumber: phoneNumber,
-                gender: gender,
-                userlogo: logoData,
-                birthday: birthday,
-                id: userdata['id']
+                name:  userdata.name,
+                phoneNumber:  userdata.phoneNumber,
+                gender:  userdata.gender,
+                userlogo: userdata.userlogo,
+                birthday:  userdata.birthday,
+                id: userdata.id,
             }),
             headers: new Headers({
                 'Accept': 'application/json',
@@ -70,10 +78,10 @@ function KMembers(props) {
 
 
     useEffect(()=>{
-        setLogoData(userdata.userlogo)
-        setPhoneNumber(userdata.phoneNumber)
-        setGender(userdata.gender)
-        setBirthday(userdata.birthday)
+        // setLogoData(userdata.userlogo)
+        // setPhoneNumber(userdata.phoneNumber)
+        // setGender(userdata.gender)
+        // setBirthday(userdata.birthday)
     },[userdata])
 
     return (
@@ -85,7 +93,7 @@ function KMembers(props) {
                     <p>管理你的檔案以保護你的帳戶</p>
                 </div>
                 {/* 主要內容 */}
-                <form className="members_r_bottom" name="formUserData">
+                <div className="members_r_bottom" name="formUserData">
                     {/* 左側表單 */}
                     <div className="r_bottom_left">
                         <ul>
@@ -109,7 +117,12 @@ function KMembers(props) {
                                         defaultValue={userdata.name}
                                         // value={userdata.name} 
                                         onChange = {(e)=>{
-                                            setName(e.target.value)
+                                            // setName(e.target.value)
+                                            console.log(e.target.value)
+                                            setUserdata({
+                                                ...userdata,
+                                                name: e.target.value
+                                            })
                                         }} 
                                     />
                                 </div>
@@ -143,7 +156,11 @@ function KMembers(props) {
                                         maxLength="10" 
                                         defaultValue={userdata.phoneNumber}
                                         onChange = {(e)=>{
-                                            setPhoneNumber(e.target.value)
+                                            // setPhoneNumber(e.target.value)
+                                            setUserdata({
+                                                ...userdata,
+                                                phoneNumber: e.target.value
+                                            })
                                         }} 
                                     />
                                 </div>
@@ -155,11 +172,15 @@ function KMembers(props) {
                                     <span className="iconfont icon-sex"></span>
                                     <select 
                                         className="mem_input" 
-                                        defaultValue={gender}
-                                        value = {gender}
+                                        defaultValue={userdata.gender}
+                                        value = {userdata.gender}
                                         onChange = {(e)=>{
                                             // console.log(e.target.selectedIndex+1)
-                                            setGender(e.target.selectedIndex)
+                                            // setGender(e.target.selectedIndex)
+                                            setUserdata({
+                                                ...userdata,
+                                                gender: e.target.selectedIndex
+                                            })
                                         }} 
                                     >
                                         <option value = "0">請選擇性別</option>
@@ -181,10 +202,14 @@ function KMembers(props) {
                                             name="birthday" 
                                             // defaultValue={null}
                                             defaultValue={userdata.birthday}
-                                            value = {birthday || ''}
+                                            value = {userdata.birthday || ''}
                                             onChange = {(e)=>{
-                                                console.log(e.target.value)
-                                                setBirthday(e.target.value)
+                                                // console.log(e.target.value)
+                                                // setBirthday(e.target.value)
+                                                setUserdata({
+                                                    ...userdata,
+                                                    birthday: e.target.value
+                                                })
                                             }} 
                                         />
                                     </span>
@@ -206,11 +231,16 @@ function KMembers(props) {
                                 id="file_upload" 
                                 className="file_upload" 
                                 name="file_upload" 
-                                multiple="multiple"
                                 defaultValue="" 
                                 placeholder="商品圖片"
                                 onChange = {(e)=>{
-                                    setLogoData(e.target.files[0].name)
+                                    // setLogoData(e.target.files[0].name)
+                                    setUserdata({
+                                        ...userdata,
+                                        userlogo: e.target.files[0].name
+                                    })
+                                    // console.log(e.target.files[0])
+                                    setSelectedFile(e.target.files[0])
                                     myImgEditCallback(e.target.files[0])
                                 }}
                             />
@@ -222,7 +252,7 @@ function KMembers(props) {
                         </div>
                     </div>
                     
-                </form>
+                </div>
             </div>
         </div>
     )

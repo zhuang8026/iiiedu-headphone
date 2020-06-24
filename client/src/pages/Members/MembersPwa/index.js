@@ -2,13 +2,50 @@
 import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 
+import { message } from 'antd';
+
 import MembersLeft from '../ComponentMembersLeft'
 
 function MembersPwa(props) {
+  const key = 'updatable';
   const {userdata, setUserdata} = props;
-  const [a, seta] = useState('');
-  const [b, setb] = useState('');
-  const [c, setc] = useState('');
+  const [pwd, setpwd] = useState();
+  const [oldpwd, setoldpwd] = useState();
+
+  console.log('userdata', userdata);
+
+  const newPasswordCallback = () => {
+    fetch('http://localhost:3009/membersEdit/newpassword', {
+        method: 'POST',
+        body:JSON.stringify({
+          pwd:  userdata.pwd,
+          id: userdata.id
+      }),
+      headers: new Headers({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      })
+    })
+      .then((res)=>{
+          return res.json() // json()	返回 Promise，resolves 是 JSON 物件
+      })
+      .then(obj=>{
+          console.log(obj);
+          if(obj.success) {
+            localStorage.removeItem('memberData');
+            message.loading({ content: 'Loading...', key });
+            setTimeout(() => {
+              localStorage.setItem('memberData', JSON.stringify(userdata));
+              message.success({ content: '修改成功!', key, duration: 2 });
+              // props.history.push('/KMembers/MembersAdress');
+            }, 1000);
+            
+        } else {
+            message.info(`資料無改變`)
+        }
+      })
+  }
+
   return (
       <main>
         <div className="members_all">
@@ -25,7 +62,7 @@ function MembersPwa(props) {
               </div>
               {/* 主要內容 */}
               <div className="members_pwa_r_bottom">
-                <form action="/" className="members_pwa_form">
+                <div action="/" className="members_pwa_form">
                   <ul className="members_pwa_ul">
                     <li>
                       <div className="r_bottom_del">
@@ -36,7 +73,8 @@ function MembersPwa(props) {
                           id="memDel_pwa"
                           className="mem_input"
                           placeholder="請輸入密碼"
-                          onChange = {(e)=>{ seta(e.target.value) }}
+                          defaultValue={oldpwd}
+                          onChange = {(e)=>{ setoldpwd(e.target.value) }}
                         />
                       </div>
                       <span className="memDel_click">
@@ -52,7 +90,15 @@ function MembersPwa(props) {
                           id="memDel_pwa"
                           className="mem_input"
                           placeholder="請輸入密碼"
-                          onChange = {(e)=>{ setb(e.target.value) }}
+                          maxLength="6"
+                          defaultValue={pwd}
+                          onChange = {(e)=>{ 
+                            setpwd(e.target.value) 
+                            setUserdata({
+                              ...userdata,
+                              pwd: pwd
+                            })
+                          }}
                         />
                       </div>
                       <span className="memDel_click">
@@ -68,7 +114,15 @@ function MembersPwa(props) {
                           id="memDel_pwa"
                           className="mem_input"
                           placeholder="請輸入密碼"
-                          onChange = {(e)=>{ setc(e.target.value) }}
+                          maxLength="6"
+                          defaultValue={pwd}
+                          onChange = {(e)=>{ 
+                            setpwd(e.target.value) 
+                            setUserdata({
+                              ...userdata,
+                              pwd: pwd
+                            })
+                          }}
                         />
                       </div>
                       <span className="memDel_click">
@@ -76,8 +130,13 @@ function MembersPwa(props) {
                       </span>
                     </li>
                   </ul>
-                  <input type="submit" id="mem_submit" className="mem_submit" />
-                </form>
+                  <input 
+                    type="submit" 
+                    id="mem_submit" 
+                    className="mem_submit" 
+                    onClick={()=> newPasswordCallback()}
+                  />
+                </div>
               </div>
             </div>
           </div>

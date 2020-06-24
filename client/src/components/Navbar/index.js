@@ -41,10 +41,10 @@ function MyNavBar(props) {
     }
 
     // 點擊跳轉到 賣家
-    const goToStore =()=>{
-        // document.location.href='/AliceSellers'
-        props.history.push('/AliceSellers')
-    }
+    // const goToStore =()=>{
+    //     // document.location.href='/AliceSellers'
+    //     props.history.push('/AliceSellers')
+    // }
     const loves = (
         <Fragment>
             <span className="IconP">我的最愛</span>
