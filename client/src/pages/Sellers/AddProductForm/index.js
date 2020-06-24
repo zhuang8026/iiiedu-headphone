@@ -1,102 +1,315 @@
+// 函式元件
 import React from 'react'
-import { withRouter, BrowserRouter as Router } from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 
-class AddProductForm extends React.Component{
-    constructor(props){
-        super(props);
-        this.state={
-            itemName:'',
-            // itemImg:null,
-            // colorid:null ,
-            // itemsbrand:'',
-            // itemstype:'',
-            // itemPrice:null,
-            // itemQty:null,
-            // itemsales:null,
-            // itemstoreNumber:null,
-            // itemscontent:'',
-            // itemsweight:'',
-            // itemsdrive:'',
-            // itemsfrequency:'',
-            // itemsSensitivity:'',
-            // itemsconnect:'',
-            // itemsmains:'',
-            // itemsEndurance:'',
-            // itemswatertight:'',
-            // itemsfeature:''
-        }
-        // this.handleSubmit = this.handleSubmit.bind(this);
-    }
+import { message } from 'antd';
+
+function SellerAddProduct(props) {
+  const {                    
+    itemName, 
+    setItemName, 
+    itemImg, 
+    setItemImg, 
+    colorid, 
+    setColorId, 
+    itemsbrand, 
+    setItemsBrand, 
+    itemstype, 
+    setItemstype, 
+    itemPrice, 
+    setItemPrice, 
+    itemQty, 
+    setItemQty, 
+    itemsales, 
+    setItemsales, 
+    itemscontent, 
+    setItemscontent, 
+    itemsweight, 
+    setItemsweight, 
+    itemsdrive, 
+    setItemsDrive, 
+    itemfrequency, 
+    setItemFrequency, 
+    itemsSensitivity, 
+    setItemsSensitivity, 
+    itemsconnect, 
+    setItemsconnect, 
+    itemsmains, 
+    setItemsmains, 
+    itemsEndurance, 
+    setItemsEndurance, 
+    itemswaterlight, 
+    setItemwaterlight, 
+    itemsfeature, 
+    setItemsFeature
+          } = props.allprops;
+
+const addFormServer = () =>{
+  fetch('http://localhost:3009/sellers/add-product', {
+      method: 'post',
+      body:JSON.stringify({
+        itemName:itemName,
+        itemImg:itemImg, 
+        colorid:colorid,
+        itemsbrand:itemsbrand, 
+        itemstype:itemstype, 
+        itemPrice:itemPrice, 
+        itemQty:itemQty, 
+        itemsales:itemsales, 
+        itemscontent:itemscontent, 
+        itemsweight:itemsweight, 
+        itemsdrive:itemsdrive, 
+        itemfrequency:itemfrequency, 
+        itemsSensitivity:itemsSensitivity,  
+        itemsconnect:itemsconnect, 
+        itemsmains:itemsmains, 
+        itemsEndurance:itemsEndurance, 
+        itemswaterlight:itemswaterlight, 
+        itemsfeature:itemsfeature, 
+      }),
+      headers: new Headers({
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+      })
+    })
+    .then(result=>result.json())
+    .then(obj=>{
+        console.log(obj)
 
 
-    // handleitemName(e){
-    //     this.setState({itemName:e.target.value})
-    // }
+  })
 
-    async handleSubmit(e){
-        // alert("testing");!
-        e.preventDefault();
-        const {itemName} = this.state
-        try{
-            let result = await fetch('https://localhost:3009/sellers/add-product',{
-                method:'post',
-                mode:'no-cors',
-                headers:{
-                    'Accept':'application/json',
-                    'Content-type':'application/json',
-                },
-                body:JSON.stringify({
-                    itemName:itemName
-                })
-            })
-            console.log('result'+result)
-        }catch(err){
-            console.log(err)
-        }
 }
-    render(){
-        const {itemName} = this.state
-        return(
-            <>
-            <htmlForm >
-                             <div className="seller-productname">
-                                 <label>新增商品</label>
-                                 <input type="text" className="seller-addinput" placeholder="例：藍牙耳機" value={itemName} onChange={this.handleitemName}/>
-                             </div>
-                             <input type="text" className="seller-productclassname" placeholder="分類名稱" />
-                             <div>
-                                <img className="seller-addproductimg" src="./asset/img/index/seller-center-png/blog-revenue.png"
-                                    alt="" />
-                            </div>
-                            <div>
-                                <label>商品描述</label>
-                                <textarea className="seller-addinput" placeholder="例：大明星愛用款" ></textarea>
-                            </div>
-                            <div>
-                                <label>商品規格</label>
-                                <div className="d-flex">
-                                    <div>
-                                        <label for="seller-productsize">規格/尺寸</label>
-                                        <input className="addinput" id="seller-productsize" placeholder="例：大明星愛用款" />     
-                                    </div>
-                                    <div>
-                                        <label for="seller-productcolor">顏色</label>
-                                        <input className="addinput" id="seller-productcolor" />     
-                                    </div>
-                                    <div>
-                                        <label for="seller-productreserve">商品庫存</label>
-                                        <input className="addinput" id="seller-productreserve" />     
-                                    </div>
-                                    <div>
-                                        <label for="seller-productsoldprice">售價</label>
-                                        <input className="addinput" id="seller-productsoldprice" />     
-                                    </div>
-                                </div>
-                            </div>
-                        <button type="submit" className="seller-add" onClick={()=>this.handleSubmit}>新增</button>
-                        </htmlForm>
-            </>
-        )
-    }
+
+
+  return (
+      <main>
+        <div className="login_container">
+          {/* 登入 */}
+          <div className="login_Breadcrumb">
+            <a href="#">首頁</a> / <a href="#">註冊</a>
+          </div>
+          <div className="login_inner">
+            <h1 className="login_inner_p1">註冊</h1>
+            <p className="login_inner_p2">
+            </p>
+          </div>
+          {/* form input */}
+          <div className="form_all">
+            <div className="login_form">
+              <label htmlFor="registerNick" className="gray">itemName *</label>
+              <input 
+                required
+                className="input01" 
+                type="text" 
+                placeholder="請輸入您的暱稱" 
+                id="registerNick" 
+                onChange={e => setItemName(e.target.value)}
+              />
+              <p className="login_err"></p>
+
+              <label htmlFor="registerNick" className="gray">圖片 ＊</label>
+              <input 
+                required
+                className="input01" 
+                type="text" 
+                placeholder="請輸入您的暱稱" 
+                id="registerNick" 
+                onChange={e => setItemImg(e.target.value)}
+              />
+              <p className="login_err"></p>
+
+
+              <label htmlFor="registerEmail" className="gray">colorid *</label>
+              <input 
+                required
+                className="input01" 
+                type="text" 
+                placeholder="請輸入您的郵箱" 
+                id="registerEmail"
+                onChange={e => setColorId(e.target.value)}
+              />
+              <p className="login_err"></p>
+
+              <label htmlFor="registerPwa" className="gray">密碼 *</label>
+              <input 
+                required
+                className="input01" 
+                type="text" 
+                placeholder="請輸入六位數密碼" 
+                id="registerPwa"
+                onChange={e => setItemsBrand(e.target.value)}
+              />
+              <p className="login_err"></p>
+
+              <label htmlFor="registerPwa" className="gray">密碼 *</label>
+              <input 
+                required
+                className="input01" 
+                type="text" 
+                placeholder="請輸入六位數密碼" 
+                id="registerPwa"
+                onChange={e => setItemstype(e.target.value)}
+              />
+              <p className="login_err"></p>
+
+              <label htmlFor="registerPwa" className="gray">密碼 *</label>
+              <input 
+                required
+                className="input01" 
+                type="text" 
+                placeholder="請輸入六位數密碼" 
+                id="registerPwa"
+                onChange={e => setItemPrice(e.target.value)}
+              />
+              <p className="login_err"></p>
+
+              <label htmlFor="registerPwa" className="gray">密碼 *</label>
+              <input 
+                required
+                className="input01" 
+                type="text" 
+                placeholder="請輸入六位數密碼" 
+                id="registerPwa"
+                onChange={e => setItemQty(e.target.value)}
+              />
+              <p className="login_err"></p>
+
+              <label htmlFor="registerPwa" className="gray">密碼 *</label>
+              <input 
+                required
+                className="input01" 
+                type="text" 
+                placeholder="請輸入六位數密碼" 
+                id="registerPwa"
+                onChange={e => setItemsales(e.target.value)}
+              />
+              <p className="login_err"></p>
+
+              <label htmlFor="registerPwa" className="gray">密碼 *</label>
+              <input 
+                required
+                className="input01" 
+                type="text" 
+                placeholder="請輸入六位數密碼" 
+                id="registerPwa"
+                onChange={e => setItemscontent(e.target.value)}
+              />
+              <p className="login_err"></p>
+
+              <label htmlFor="registerPwa" className="gray">密碼 *</label>
+              <input 
+                required
+                className="input01" 
+                type="text" 
+                placeholder="請輸入六位數密碼" 
+                id="registerPwa"
+                onChange={e => setItemsweight(e.target.value)}
+              />
+              <p className="login_err"></p>
+
+              <label htmlFor="registerPwa" className="gray">密碼 *</label>
+              <input 
+                required
+                className="input01" 
+                type="text" 
+                placeholder="請輸入六位數密碼" 
+                id="registerPwa"
+                onChange={e => setItemsDrive(e.target.value)}
+              />
+              <p className="login_err"></p>
+
+              <label htmlFor="registerPwa" className="gray">密碼 *</label>
+              <input 
+                required
+                className="input01" 
+                type="text" 
+                placeholder="請輸入六位數密碼" 
+                id="registerPwa"
+                onChange={e => setItemFrequency(e.target.value)}
+              />
+              <p className="login_err"></p>
+
+              <label htmlFor="registerPwa" className="gray">密碼 *</label>
+              <input 
+                required
+                className="input01" 
+                type="text" 
+                placeholder="請輸入六位數密碼" 
+                id="registerPwa"
+                onChange={e => setItemsSensitivity(e.target.value)}
+              />
+              <p className="login_err"></p>
+
+              <label htmlFor="registerPwa" className="gray">密碼 *</label>
+              <input 
+                required
+                className="input01" 
+                type="text" 
+                placeholder="請輸入六位數密碼" 
+                id="registerPwa"
+                onChange={e => setItemsconnect(e.target.value)}
+              />
+              <p className="login_err"></p>
+
+              <label htmlFor="registerPwa" className="gray">密碼 *</label>
+              <input 
+                required
+                className="input01" 
+                type="text" 
+                placeholder="請輸入六位數密碼" 
+                id="registerPwa"
+                onChange={e => setItemsmains(e.target.value)}
+              />
+              <p className="login_err"></p>
+
+              <label htmlFor="registerPwa" className="gray">密碼 *</label>
+              <input 
+                required
+                className="input01" 
+                type="text" 
+                placeholder="請輸入六位數密碼" 
+                id="registerPwa"
+                onChange={e => setItemsEndurance(e.target.value)}
+              />
+              <p className="login_err"></p>
+
+              <label htmlFor="registerPwa" className="gray">密碼 *</label>
+              <input 
+                required
+                className="input01" 
+                type="text" 
+                placeholder="請輸入六位數密碼" 
+                id="registerPwa"
+                onChange={e => setItemwaterlight(e.target.value)}
+              />
+              <p className="login_err"></p>
+
+              <label htmlFor="registerPwa" className="gray">密碼 *</label>
+              <input 
+                required
+                className="input01" 
+                type="text" 
+                placeholder="請輸入六位數密碼" 
+                id="registerPwa"
+                onChange={e => setItemsFeature(e.target.value)}
+              />
+              <p className="login_err"></p>
+
+              <div className="login_form_pwa">
+                <input type="checkbox" id="registerForget"/>
+                <label htmlFor="registerForget">記住帳號</label>
+                <p><a href="">忘記密碼?</a></p>
+              </div>
+
+              <button 
+                type="submit" 
+                className="login_btn register_btn"
+                onClick={ ()=>{return (addFormServer)} }>註冊</button>
+            </div>
+          </div>
+        </div>
+      </main>
+  )
 }
-export default withRouter(AddProductForm);
+export default withRouter(SellerAddProduct)

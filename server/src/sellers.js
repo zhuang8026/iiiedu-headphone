@@ -71,30 +71,45 @@ router.get("/seller-product/detail/:id?", (req, res) => {
 //http://localhost:3009/sellers/seller-account
 
 //http://localhost:3009/sellers/add-product
-router.get('/add-product',(req,res)=>{
-    // let itemName = req.body.addItem;
-    // let itemscontent = req.body.addItemDescription;
-    // let colorid = req.body.addItemColor;
-    // let itemstype = req.body.addItemSize;
-    // let itemPrice = req.body.addItemPrice;
+router.post('/add-product',(req,res)=>{
+        const output = {
+            success: false,
+        }
 
-
-    // const sql="INSERT INTO `items`(`itemName`, `itemscontent`, `colorid`, `itemstype`,`itemPrice`) VALUES (?,?,?,?,?,?,?,?,?,?)"
-    // db.query(sql,[addItem,
-    //     ItemClassification,
-    //     addItemDescription,
-    //     addItemSize,
-    //     addItemColor,
-    //     addItemPrice])
-    //     .then((result)=>{
-    //         console.log('result',result)
-    //         // output.results = result;
-    //         // if(result.affectedRows && r.insertId){
-    //             // output.success = true;
-    //         // }
-    //         res.json(output);
-    //     })
-    //     });
+    
+        let itemName = req.body.itemName;
+        let colorid = req.body.colorid;
+        let itemweight = req.body.itemweight;
+    
+        const sql = "`INSERT INTO `items`(`itemName`, `itemImg`, `colorid`, `itemsbrand`, `itemstype`,`itemPrice`, `itemQty`,`itemsales`, `itemscontent`, `itemsweight`, `itemsdrive`, `itemfrequency`, `itemsSensitivity`, `itemsconnect`, `itemsmains`, `itemsEndurance`, `itemswaterlight`, `itemsfeature`) VALUES (?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"; 
+        console.log('req.body',[req.body])
+        db.query(sql, [itemName, 
+            itemImg, 
+            colorid, 
+            itemsbrand, 
+            itemstype,
+            itemPrice, 
+            itemQty,
+            itemsales, 
+            itemscontent, 
+            itemsweight, 
+            itemsdrive, 
+            itemfrequency, 
+            itemsSensitivity, 
+            itemsconnect, 
+            itemsmains, 
+            itemsEndurance, 
+            itemswaterlight, 
+            itemsfeature ])
+            .then((result)=>{
+                console.log('result',result)
+                output.results = result;
+                if(result.affectedRows && r.insertId){
+                    output.success = true;
+                }
+                res.json(output);
+            })
+    })
 
 
 
