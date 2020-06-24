@@ -45,8 +45,11 @@
         font-family: Muli, sans-serif;
         -webkit-appearance: none;
       }
-      i {
-        color: #2c3e50;
+      button {
+        background: transparent;
+        i {
+          color: #2c3e50;
+        }
       }
     }
   }
@@ -122,7 +125,7 @@
           transition: 0.3s ease-in;
         }
         &:hover {
-          background: #f8f8f9ee;
+          background: #f8f8f9f5;
           // background: linear-gradient(#f8f8f9, #f8f8f9ee);
         }
         &:hover .item_btn_inner{
