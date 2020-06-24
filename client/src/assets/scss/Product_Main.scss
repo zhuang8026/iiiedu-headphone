@@ -123,6 +123,7 @@
         }
         &:hover {
           background: #f8f8f9ee;
+          // background: linear-gradient(#f8f8f9, #f8f8f9ee);
         }
         &:hover .item_btn_inner{
           opacity: 1;
@@ -142,6 +143,7 @@
     transition: all 0.3s;
     width: 60%;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .btn-fill-vert-o {
@@ -168,6 +170,7 @@
 }
 .btn-fill-vert-o:hover {
   color: #211e55;
+  // border: 1px solid #fff;
 }
 
 .btn-fill-vert-o:hover:before, .btn-fill-vert-o:hover:after {
@@ -196,16 +199,6 @@
 
 
 // button-2 ----- 立即查看
-.item_btn_an_s {
-  font-size: 14px;
-  padding: 8px 0;
-  position: relative; 
-  opacity: .999;
-  transition: all 0.3s;
-  width: 60%;
-  margin-bottom: 10px;
-}
-
 .btn-fill-vert-o_s {
 background-color: transparent;
 border: 1px solid $btn-color-l;

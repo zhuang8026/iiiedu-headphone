@@ -150,9 +150,9 @@ function ProductMain(props) {
                               })
                             }}
                         >加入購物車</button>
-                        <button className="item_btn_an_s btn-navy_s btn-fill-vert-o_s">加入最愛</button>
+                        <button className="item_btn_an btn-navy_s btn-fill-vert-o_s">加入最愛</button>
                         <button 
-                          className="item_btn_an_s btn-navy_s btn-fill-vert-o_s" 
+                          className="item_btn_an btn-navy_s btn-fill-vert-o_s" 
                           id={data.itemId} 
                           onClick={e =>{
                             setItemsid(e.target.id)  
