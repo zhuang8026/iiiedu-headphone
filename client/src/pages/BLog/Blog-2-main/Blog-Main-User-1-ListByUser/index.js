@@ -48,7 +48,7 @@ function BlogMainUserListByUser(props) {
       headers: new Headers({
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-      }),
+      })
 
     })
       .then((response) => {
@@ -96,8 +96,6 @@ function BlogMainUserListByUser(props) {
           return (
             <div className="blog-card">
               <div className="blog-card-in">
-
-
                 <figure className="blog-card-fig">
                   <img className="blog-cover" src={BlogCard} alt="" />
                 </figure>
