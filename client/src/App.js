@@ -125,7 +125,6 @@ function App() {
   const localUser = JSON.parse(localStorage.getItem('memberData')) || '';  // 取得localStorage資料
   const getUserData = (usernameData, pwdData) => {
     fetch(`http://localhost:3009/members/user/${usernameData}/${pwdData}`, {
-    // fetch(`http://localhost:3009/members/user/${usernameData}/${pwdData}`, {
       method: 'get',
       headers: new Headers({
         Accept: 'application/json',
@@ -136,11 +135,10 @@ function App() {
         return res.json()
       })
       .then((res) => {
-        // console.log(res)
         setUserdata(res[0])
-        // console.log(userdata);
       })
   }
+
   useEffect(() => {
     getUserData(localUser['username'], localUser['pwd'])
   }, [])
@@ -234,7 +232,7 @@ function App() {
                 setUsername,
                 password,
                 setPassword,
-                RegisterProcess,
+                RegisterProcess
               }}
             />
           </Route>

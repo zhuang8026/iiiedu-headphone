@@ -1,5 +1,5 @@
 // 函式元件
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 
 import { message } from 'antd';
@@ -18,7 +18,7 @@ function MembersPwa(props) {
     fetch('http://localhost:3009/membersEdit/newpassword', {
         method: 'POST',
         body:JSON.stringify({
-          pwd:  userdata.pwd,
+          pwd:  pwd,
           id: userdata.id
       }),
       headers: new Headers({
@@ -30,7 +30,11 @@ function MembersPwa(props) {
           return res.json() // json()	返回 Promise，resolves 是 JSON 物件
       })
       .then(obj=>{
-          console.log(obj);
+          console.log('obj:', obj);
+          setUserdata({
+            ...userdata,
+            pwd: pwd
+          })
           if(obj.success) {
             localStorage.removeItem('memberData');
             message.loading({ content: 'Loading...', key });
@@ -46,6 +50,9 @@ function MembersPwa(props) {
       })
   }
 
+  useEffect(()=>{
+    setpwd(pwd)
+  },[pwd])
   return (
       <main>
         <div className="members_all">
