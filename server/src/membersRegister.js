@@ -28,7 +28,7 @@ router.post('/Add', (req, res)=>{ // upload.none() 回傳的是 表單欄位 每
     console.log('req.body',[req.body])
     db.query(sql, [name, username, pwd])
         .then((result)=>{
-            console.log('result',result)
+            // console.log('result',result)
             output.results = result;
             if(result.affectedRows && r.insertId){
                 output.success = true;

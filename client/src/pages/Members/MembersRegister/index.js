@@ -85,6 +85,7 @@ const addFromServer = () =>{
                 className="input01" 
                 type="password" 
                 placeholder="請輸入六位數密碼" 
+                maxLength="6"
                 id="registerPwa"
                 onChange={e => setPassword(e.target.value)}
               />

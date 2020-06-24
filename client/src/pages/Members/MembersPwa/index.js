@@ -18,7 +18,7 @@ function MembersPwa(props) {
     fetch('http://localhost:3009/membersEdit/newpassword', {
         method: 'POST',
         body:JSON.stringify({
-          pwd:  pwd,
+          pwd: pwd,
           id: userdata.id
       }),
       headers: new Headers({
@@ -53,6 +53,7 @@ function MembersPwa(props) {
   useEffect(()=>{
     setpwd(pwd)
   },[pwd])
+
   return (
       <main>
         <div className="members_all">
@@ -80,8 +81,8 @@ function MembersPwa(props) {
                           id="memDel_pwa"
                           className="mem_input"
                           placeholder="請輸入密碼"
-                          defaultValue={oldpwd}
-                          onChange = {(e)=>{ setoldpwd(e.target.value) }}
+                          defaultValue={userdata.pwd}
+                          // onChange = {(e)=>{ setoldpwd(e.target.value) }}
                         />
                       </div>
                       <span className="memDel_click">
