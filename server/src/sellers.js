@@ -94,7 +94,7 @@ router.get('/add-product',(req,res)=>{
     //         // }
     //         res.json(output);
     //     })
-    //     });
+        });
 
 
 
