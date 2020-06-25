@@ -61,13 +61,13 @@ import CheckoutPayment from './pages/Cart/CheckoutPayment' //選擇付款方式
 import OrderComplete from './pages/Cart/OrderComplete' //購買完成頁
 
 // 靜態頁面
-// import WiAbout from './pages/About'
-// import WiStore from './pages/Store'
-// import WiConnect from './pages/Connect'
-// import WiGift from './pages/Gift'
-// import WiProblem from './pages/Problem'
-// import WiOurClients from './pages/OurClients'
-// import WiWarranty from './pages/Warranty'
+import WiAbout from './pages/About'
+import WiStore from './pages/Store'
+import WiConnect from './pages/Connect'
+import WiGift from './pages/Gift'
+import WiProblem from './pages/Problem'
+import WiOurClients from './pages/OurClients'
+import WiWarranty from './pages/Warranty'
 import NotFoundPage404 from './pages/404'
 
 function App() {
@@ -103,6 +103,7 @@ function App() {
   const[itemsEndurance,setItemsEndurance] = useState('')
   const[itemswatertight,setItemswatertight] = useState('')
   const[itemsfeature,setItemsFeature] = useState('')
+
   // 登入 & 狀態判斷
   const loginProcess = (loginSuccessCallback) => {
     const errors = []
@@ -197,29 +198,6 @@ function App() {
           <Route path="/ProductDetail/:id?">
             <ProductDetail />
           </Route>
-
-          {/* 靜態頁面 */}
-          {/* <Route path="/about/WiGift">
-            <WiGift />
-          </Route>
-          <Route path="/about/WiWarranty">
-            <WiWarranty />
-          </Route>
-          <Route path="/about/WiAbout">
-            <WiAbout />
-          </Route>
-          <Route path="/about/WiConnect">
-            <WiConnect />
-          </Route>
-          <Route path="/about/WiStore">
-            <WiStore />
-          </Route>
-          <Route path="/about/WiProblem">
-            <WiProblem />
-          </Route>
-          <Route path="/about/WiOurClients">
-            <WiOurClients />
-          </Route> */}
 
           {/* 會員 */}
           <Route exact path="/KMembers">
@@ -450,6 +428,30 @@ function App() {
           <Route path="/OrderComplete">
             <OrderComplete userdata={userdata} setUserdata={setUserdata} />
           </Route>
+          
+
+          {/* 靜態頁面 */}
+          <Route path="/about/WiGift">
+            <WiGift />
+          </Route>
+          <Route path="/about/WiWarranty">
+            <WiWarranty />
+          </Route>
+          <Route path="/about/WiAbout">
+            <WiAbout />
+          </Route>
+          <Route path="/about/WiConnect">
+            <WiConnect />
+          </Route>
+          <Route path="/about/WiStore">
+            <WiStore />
+          </Route>
+          <Route path="/about/WiProblem">
+            <WiProblem />
+          </Route>
+          <Route path="/about/WiOurClients">
+            <WiOurClients />
+          </Route>
 
           {/* ProtectdRoute 這是 utils */}
           {/* <ProtectedRoute path="/todoapp">
@@ -465,6 +467,7 @@ function App() {
           <Redirect to="/404" />
 
         </Switch>
+
       </ScrollToTop>
 
       <MyFooter />

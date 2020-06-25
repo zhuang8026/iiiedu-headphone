@@ -213,31 +213,31 @@ function MyNavBar(props) {
                                         <ul>
                                             <li className="nav-menu-object">
                                                 <i className="iconfont icon-gift"></i>
-                                                <a href="/about/WiGift"><span>禮物卡</span></a>
+                                                <Link to="/about/WiGift"><span>禮物卡</span></Link>
                                             </li>
                                             <li className="nav-menu-object">
                                                 <i className="iconfont icon-card"></i>
-                                                <a href="/about/WiWarranty"><span>保固卡</span></a>
+                                                <Link to="/about/WiWarranty"><span>保固卡</span></Link>
                                             </li>
                                             <li className="nav-menu-object">
                                                 <i className="iconfont icon-user_2"></i>
-                                                <a href="/about/WiAbout"><span>關於我們</span></a>
+                                                <Link to="/about/WiAbout"><span>關於我們</span></Link>
                                             </li>
                                             <li className="nav-menu-object">
                                                 <i className="iconfont icon-message"></i>
-                                                <a href="/about/WiConnect"><span>聯係我們</span></a>
+                                                <Link to="/about/WiConnect"><span>聯係我們</span></Link>
                                             </li>
                                             <li className="nav-menu-object">
                                                 <i className="iconfont icon-location"></i>
-                                                <a href="/about/WiStore"><span>商店定位</span></a>
+                                                <Link to="/about/WiStore"><span>商店定位</span></Link>
                                             </li>
                                             <li className="nav-menu-object">
                                                 <i className="iconfont icon-warning"></i>
-                                                <a href="/about/WiProblem"><span>常見問題</span></a>
+                                                <Link to="/about/WiProblem"><span>常見問題</span></Link>
                                             </li>
                                             <li className="nav-menu-object">
                                                 <i className="iconfont icon-geren"></i>
-                                                <a href="/about/WiOurClients"><span>我們的客戶</span></a>
+                                                <Link to="/about/WiOurClients"><span>我們的客戶</span></Link>
                                             </li>
                                         </ul>
                                         </div>

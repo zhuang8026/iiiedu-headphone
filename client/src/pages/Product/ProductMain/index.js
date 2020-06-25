@@ -23,7 +23,9 @@ function ProductMain(props) {
 
   console.log('itemsid:', itemsid) // text button id 
 
-
+  const itemsChangeFunction =()=>{
+    
+  }
   
   const goToDetail = ( id )=> {
     fetch(`http://localhost:3009/products/detail/${id}`, {
@@ -42,7 +44,7 @@ function ProductMain(props) {
             // console.log(userdata);
         })
   }
-
+  
   useEffect(()=>{
       goToDetail(itemsid)
       fetch('http://localhost:3009/products/listpage/1',  {
@@ -93,10 +95,17 @@ function ProductMain(props) {
         <div className="Yybodyright">
           <div className="Yybodyheader">
             <span>SHOWING 1–12 OF 130 RESULTS</span>
-            <select className="Yyorder">
-              <option value="high">Price: Low to High</option>
-              <option value="low">Price: High to Low</option>
-            </select>
+            <div className="item_change">
+              <div className="item_css_change" onClick={()=>{
+                itemsChangeFunction()
+              }}> 
+                <span class="iconfont icon-more_1"></span>
+              </div>
+              <select className="Yyorder">
+                <option value="high">Price: Low to High</option>
+                <option value="low">Price: High to Low</option>
+              </select>
+            </div>
           </div>
 
           <div className="Yyasidebody">
@@ -137,7 +146,6 @@ function ProductMain(props) {
                               })
                             }}
                         >加入購物車</button>
-                        <button className="item_btn_an btn-navy_s btn-fill-vert-o_s">加入最愛</button>
                         <button 
                           className="item_btn_an btn-navy_s btn-fill-vert-o_s" 
                           id={data.itemId} 
@@ -147,6 +155,8 @@ function ProductMain(props) {
                             props.history.push(`/ProductDetail/${e.target.id}`)
                           }}
                         >立即查看</button>
+                        <button className="item_btn_an btn-navy_s btn-fill-vert-o_s">加入最愛</button>
+                        <button className="item_btn_an btn-navy_s btn-fill-vert-o_s">加入比較</button>
                       </div>
                     </div>
                 </div>
@@ -155,8 +165,39 @@ function ProductMain(props) {
             
           </div>
         </div>
+        <div className="items-quick-view-modal">
+          <div className="items-quick-view-overlay">我是遮罩層</div>
+          <div className="items-wrapper">
+            <div className="items-main">
+              <div className="items-close-head">
+                <div className="items-close"><span class="iconfont icon-error"></span></div>
+              </div>
+              <div className="items-product" id="items-product-view">
+                <div className="items-inner">
+                  <div id="items-simple">
+                    <div className="items-img">
 
-        {/* <div>我是遮罩層</div> */}
+                    </div>
+                    <div className="items-content">
+                      <h1>PILLOW BLUE</h1>
+                      <p className="items-price">$20000</p>
+                      <p className="items-text">Saepe in venir cu quo, mel et epics de salu tatus si que, has eu graecis aco moda. Vix ei mucius iriure dolors umin, mel ad nobis esentis adis dio. Etiam ultricies nisi velt.</p>
+                      <div className="items-add-btn">
+                        <span>數量: 1</span>
+                        <button className="tems-add-btn-inner">ADD TO CART</button>
+                      </div>
+                      <div className="items-wish-btn">
+                      <span class="iconfont icon-like"></span>
+                      <span class="items-wish-text">ADD TO WISHLIST</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
         
       </div>
     </>

@@ -62,6 +62,21 @@
       padding: 0 12px;
       span {
         color: #a4a4a4;
+        margin: 0;
+      }
+      .item_change {
+        display: flex;
+        align-items: center;
+        .item_css_change {
+          padding: 0;
+          margin-right: 16px;
+          height: 32px;
+          line-height: 32px;
+          cursor: pointer;
+          .icon-more_1 {
+            font-size: 28px;
+          }
+        }
       }
       select {
         color: #a4a4a4;
@@ -119,7 +134,7 @@
           flex-wrap: wrap;
           transition: 0.3s ease-in;
         .item_btn_inner {
-          width: 100%;
+          width: 60%;
           text-align: center;
           opacity: 0;
           transition: 0.3s ease-in;
@@ -137,15 +152,19 @@
   }
 }
 
+.Yybodyin .Yybodyright .Yyasidebody .Yyaside_pro_change {
+  width: 50%;
+}
+
 /* button-1 */
 .item_btn_an {
     font-size: 14px;
-    padding: 8px 0;
+    padding: 28px 0;
     position: relative; 
     opacity: .999;
     transition: all 0.3s;
-    width: 60%;
-    margin-bottom: 10px;
+    width: 45%;
+    margin: 4px;
     cursor: pointer;
 }
 
