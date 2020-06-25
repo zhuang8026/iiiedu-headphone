@@ -1,11 +1,15 @@
 const express = require('express');
+const fileUpload = require('express-fileupload');
+const upload = require(__dirname + '/upload-module');
 const moment = require('moment-timezone');
 const session = require('express-session');
 const MysqlStore = require('express-mysql-session')(session);
-const upload = require(__dirname + '/upload-module');
+const multer = require('multer');
 const db = require(__dirname + '/db_connect');
 const cors = require('cors');
 const fs = require('fs');
+const bodyParser = require('body-parser');
+// const morgan = require('morgan');
 const { serialize } = require('v8');
 
 const router = express.Router();
@@ -13,9 +17,19 @@ const router = express.Router();
 // 建立 web server 物件
 const app = express();
 
+
+// enable files upload
+// 啟動檔案上傳
+app.use(fileUpload({
+    createParentPath: true
+}));
+
 // middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+// app.use(morgan('dev'));
+app.use(cors());
+app.use('/avatar', express.static('uploads'));
 
 // blogAdd
 // app.use('/blogAdd', require(__dirname+'/blogAdd.js'));
@@ -121,7 +135,7 @@ const getUserBlogList = async (req) => {
 // 所有文章
 // http://localhost:3009/blog/listAllBlog
 router.get("/listAllBlog", (req, res) => {
-    console.log('========== react(get) -> 所有文章 ==========')    
+    console.log('========== react(get) -> 所有文章 ==========')
     const sql = `SELECT * FROM blogs ORDER BY blogId desc`;
     db.query(sql, (error, results, fields) => {
         if (error) throw error;
@@ -132,7 +146,7 @@ router.get("/listAllBlog", (req, res) => {
 // 所有文章(分頁)
 // http://localhost:3009/blog/listAllBlog/(第幾頁)
 router.get('/listAllBlog/:page?', async (req, res) => {
-    console.log('========== react(get) -> 所有文章(分頁) ==========') 
+    console.log('========== react(get) -> 所有文章(分頁) ==========')
     const output = await getAllBlogList(req);
     res.json(output);
 })
@@ -140,7 +154,7 @@ router.get('/listAllBlog/:page?', async (req, res) => {
 // (個人)所有文章
 // http://localhost:3009/blog/listUserBlog/(個人id編號)
 router.get("/listUserBlog/:id", (req, res) => {
-    console.log('========== react(get) -> (個人)所有文章 ==========') 
+    console.log('========== react(get) -> (個人)所有文章 ==========')
     let id = req.params.id;
     let sql = `SELECT * FROM blogs WHERE id=${id}`;
     let output = {}
@@ -154,9 +168,9 @@ router.get("/listUserBlog/:id", (req, res) => {
 
 // (個人)所有文章(分頁)
 // http://localhost:3009/blog/listUserBlog/(個人id編號)/(第幾頁)
-router.post('/listUserBlog/:id/:page?', async (req, res) => {    
+router.post('/listUserBlog/:id/:page?', async (req, res) => {
     console.log('========== react(送會員id) -> (個人)所有文章(分頁) ==========')
-    console.log('req.body = ',req.body)
+    console.log('req.body = ', req.body)
     const output = await getUserBlogList(req);
     res.json(output);
 })
@@ -167,7 +181,7 @@ router.post('/listUserBlog/:id/:page?', async (req, res) => {
 // http://localhost:3009/blog/add
 // router.get('/add', (req, res)=>{
 router.post('/add', upload.none(), (req, res) => {
-    
+
     let id = req.body.id;
     let blogTitle = req.body.blogTitle;
     let blogContent01 = req.body.blogContent01;
@@ -177,7 +191,7 @@ router.post('/add', upload.none(), (req, res) => {
         id: id,
         blogTitle: blogTitle,
         blogContent01: blogContent01,
-        blogContent02: blogContent02,         
+        blogContent02: blogContent02,
         rows: []
     }
     const sql = "INSERT INTO `blogs`(`id`,`blogTitle`,`blogContent01`,`blogContent02`) VALUES (?, ?, ?, ?)";
@@ -363,42 +377,56 @@ router.get('/searchAllBlog/', async (req, res) => {
 
 //================================================== 圖片上傳 ==============================================================
 // (未完成)
-// 測試upload
-app.post('/try-upload', upload.single('avatar'), (req, res) => {
-    console.log(req.file);
-    console.log(req.body);
-    const output = {
-        success: false,
-        uploadedImg: '',
-        nickname: '',
-        errorMsg: ''
+
+const doUpload = async (req) => {
+    const extMap = {
+        'image/jpeg': '.jpg',
+        'image/jpg': '.jpg',
+        'image/png': '.png',
+        'image/gif': '.gif',
     }
-    output.nickname = req.body.nickname || '';
-    if (req.file && req.file.originalname) {
-        // 判斷是否為圖檔
-        // 下面的寫法，不管是png還是jpeg都會進入fs.rename
-        switch (req.file.mimetype) {
-            case 'image/png':
-            case 'image/jpeg':
-                // 將檔案搬至公開的資料夾
-                fs.rename(req.file.path, './public/img/' + req.file.originalname, error => {
-                    if (!error) {
-                        output.success = true;
-                        output.uploadedImg = '/img/' + req.file.originalname;
-                    }
-                    res.render('try-upload', output);
-                })
-                break;
-            default:
-                fs.unlink(req.file.path, error => {
-                    output.errorMsg = '檔案類型錯誤'
-                    res.render('try-upload', output);
-                })  // 刪除暫存檔
+
+
+    // storage是處理儲存區
+    const storage = multer.diskStorage({
+        // cb是callback function
+        destination: (req, file, cb) => {
+            cb(null, __dirname + '/../../client/public/user_img')
+        },
+        filename: (req, file, cb) => {
+            //使用uuid
+            let ext = extMap[file.mimetype];
+            // 檔名 + ext(副檔名);
+            cb(null, file.originalname +'-'+ Date.now() + ext)
+
+            // cb(null, req.file.originalname)
+            // cb(null, filename)
         }
-    }
-    // 上面使用render，send就要拿掉。
-    // res.send('ok')
-});
+    });
+
+    // fileFilter是處理檔案類型
+    // 如果傳5個檔案，則這邊會被呼叫5次，req被呼叫5次都是同一個req，file一次接一個，不在規則內就過濾掉。
+    let fileFilter = (req, file, cb) => {
+        // !!將後面的東西轉換成布林值
+        // 下面表示如果file的mime type沒有在extMap裡面，則不通過。
+        cb(null, !!extMap[file.mimetype]);
+    };
+
+    const upload = multer({ storage, fileFilter });
+
+    return upload;
+}
+
+// 搜尋所有文章(分頁)
+// http://localhost:3009/blog/try-upload/
+router.post('/try-upload/', upload.single('avatar'), async (req, res) => {
+    const output = await doUpload(req);
+    res.json(output);
+    // res.json({
+    //     filename: req.file.filename,
+    //     body: req.body
+    // });
+})
 
 
 //================================================== 測試區 ==============================================================
