@@ -10,50 +10,79 @@
   display: flex;
   width: 80%;
   .Yybodyleft {
-    width: 20%;
-    .Yysubmit {
-      button {
-        background: $link-hover-color-s;
-        color: white;
-        border-radius: 12px;
-        width: 250px;
-      }
-    }
+    width: 15%;
     .Yybrand {
       .Yywearstyle {
         font-size: 16px;
+        color: $font-color-s;
+        padding-bottom: 16px;
       }
-      ul {
+      .Yybrand_ul {
+        margin-bottom: 16px;
         li {
-          padding-bottom: 16px;
-          input {
-            -webkit-appearance: auto;
+          padding-bottom: 12px;
+          a {
+            color: $font-color-m;
+            transition: 0.3s ease-in-out;
+            padding-bottom: 12px;
+          }
+          &:hover a{
+            color: $font-color-s;
           }
         }
       }
     }
     .Yysearch_container {
-      margin-top: 10px;
       input {
-        border-radius: 12px;
-        width: 250px;
-        border: $bg-btn-l solid 1px;
-        padding: 5px;
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 16px;
+        color: #4e4f97;
+        background-color: transparent;
+        border: 1px solid transparent;
+        border-bottom: 1px solid #e1e1e1;
+        line-height: 1.3em;
+        font-family: Muli, sans-serif;
+        -webkit-appearance: none;
+      }
+      button {
+        background: transparent;
+        i {
+          color: #2c3e50;
+        }
       }
     }
   }
   .Yybodyright {
-    width: 80%;
+    width: 85%;
     // border: blue solid 2px;
     .Yybodyheader {
-      height: 50px;
-      /* border: rgb(255, 176, 5) solid 2px; */
-      position: relative;
       display: flex;
       justify-content: space-between;
+      padding: 0 12px;
+      span {
+        color: #a4a4a4;
+        margin: 0;
+      }
+      .item_change {
+        display: flex;
+        align-items: center;
+        .item_css_change {
+          padding: 0;
+          margin-right: 16px;
+          height: 32px;
+          line-height: 32px;
+          cursor: pointer;
+          .icon-more_1 {
+            font-size: 28px;
+          }
+        }
+      }
       select {
-        width: 150px;
-        padding-left: 7px;
+        color: #a4a4a4;
+        padding: 6px 12px;
+        background: transparent;
+        border: 1px solid #c2c2c2;
       }
     }
     .Yyasidebody {
@@ -62,83 +91,181 @@
       /* justify-content: flex-end; */
       flex-wrap: wrap;
       .Yyaside_pro {
-        padding: 6px;
+        padding:12px;
         width: 33.3%;
-        p {
-          margin-bottom: 0em;
-        }
-        .item_image:hover .item_images {
-          opacity: 0.3;
-          transition: ease 0.5s;
-        }
-        .item_image:hover .item_imagebtnout {
-          opacity: 1;
-          transition: ease 0.5s;
-        }
+        position: relative;
         .item_image {
-          background: $bg-theme;
+          background: #f4f4f4;
           opacity: 1;
-
-          .item_images {
+          position: relative;
+          .item_img {
             width: 100%;
-          }
-          .item_imagebtnout {
-            opacity: 1;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            .item_imagebtn {
-              background: $link-hover-color-s;
-              color: white;
-              border: 1px solid transparent;
-              width: 80%;
-            }
-            .item_imagebtn:hover {
-              background: white;
-              color: #211e55;
-              border: #adadad solid 1px;
-            }
-            .item_imagebtn2 {
-              background: $link-hover-color-s;
-              color: white;
-              width: 80%;
-              border: 1px solid transparent;
-              margin-top: 5px;
-            }
-            .item_imagebtn2:hover {
-              background: white;
-              color: #211e55;
-              border: #adadad solid 1px;
-            }
           }
         }
 
-        .itemul {
-          display: flex;
-          justify-content: space-between;
-          margin-bottom: 0em;
-          margin-top: 20px;
-          li {
-            display: flex;
-            .pro_new {
-              color: #cb4042;
-              border: 1px solid #cb4042;
-              height: 25px;
+        .item_inner {
+          margin: 12px 0;
+          .item_inner_li {
+            padding-bottom: 6px;
+            .item_inner_like {
+              color: #8b8b8b;
+              font-size: 18px;
             }
             p {
-              margin-right: 10px;
+              color: #8b8b8b;
+              margin-bottom: 0;
             }
-            .pro_c {
-              width: 15px;
-              height: 15px;
-              background-color: #cb4042;
-              border-radius: 50%;
-            }
+          }
+          .item_inner_flex {
+            display: flex;
+            justify-content: space-between;
           }
         }
       }
+      .item_btn_inner_all {
+        position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+          transition: 0.3s ease-in;
+        .item_btn_inner {
+          width: 60%;
+          text-align: center;
+          opacity: 0;
+          transition: 0.3s ease-in;
+        }
+        &:hover {
+          background: #f8f8f9f5;
+          // background: linear-gradient(#f8f8f9, #f8f8f9ee);
+        }
+        &:hover .item_btn_inner{
+          opacity: 1;
+        }
+      }
+
     }
   }
+}
+
+.Yybodyin .Yybodyright .Yyasidebody .Yyaside_pro_change {
+  width: 50%;
+}
+
+/* button-1 */
+.item_btn_an {
+    font-size: 14px;
+    padding: 28px 0;
+    position: relative; 
+    opacity: .999;
+    transition: all 0.3s;
+    width: 45%;
+    margin: 4px;
+    cursor: pointer;
+}
+
+.btn-fill-vert-o {
+  background-color: #211e55;
+  border: 1px solid $btn-color-l;
+  color: #fff;
+  overflow: hidden;
+}
+// .btn-fill-vert-o.btn-navy:before, .btn-fill-vert-o.btn-navy:after {
+//     background-color: #34495e;
+// }
+.btn-fill-vert-o:before {
+  top: 50%;
+}
+.btn-fill-vert-o:before, .btn-fill-vert-o:after {
+  content: '';
+  width: 100%;
+  height: 0;
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  z-index: -1;
+  transition: all 0.3s;
+}
+.btn-fill-vert-o:hover {
+  color: #211e55;
+  // border: 1px solid #fff;
+}
+
+.btn-fill-vert-o:hover:before, .btn-fill-vert-o:hover:after {
+  height: 50%;
+  opacity: 1;
+}
+.btn-fill-vert-o.btn-navy:before, .btn-fill-vert-o.btn-navy:after {
+  background-color: #f8f8f9;
+}
+.btn-fill-vert-o:after {
+  bottom: 50%;
+}
+.btn-fill-vert-o:before, .btn-fill-vert-o:after {
+  content: '';
+  width: 100%;
+  height: 0;
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  z-index: -1;
+}
+.btn-fill-vert-o:after {
+  transition: all 0.3s;
+}
+
+
+
+// button-2 ----- 立即查看
+.btn-fill-vert-o_s {
+background-color: transparent;
+border: 1px solid $btn-color-l;
+color: $btn-color-l;
+overflow: hidden;
+}
+// .btn-fill-vert-o.btn-navy:before, .btn-fill-vert-o.btn-navy:after {
+//     background-color: #34495e;
+// }
+.btn-fill-vert-o_s:before {
+top: 50%;
+}
+.btn-fill-vert-o_s:before, .btn-fill-vert-o_s:after {
+content: '';
+width: 100%;
+height: 0;
+opacity: 0;
+position: absolute;
+left: 0;
+z-index: -1;
+transition: all 0.3s;
+}
+.btn-fill-vert-o_s:hover {
+color: #fff;
+}
+
+.btn-fill-vert-o_s:hover:before, .btn-fill-vert-o_s:hover:after {
+height: 50%;
+opacity: 1;
+}
+.btn-fill-vert-o_s.btn-navy_s:before, .btn-fill-vert-o_s.btn-navy_s:after {
+background-color: $btn-color-l;
+}
+.btn-fill-vert-o_s:after {
+bottom: 50%;
+}
+.btn-fill-vert-o_s:before, .btn-fill-vert-o_s:after {
+content: '';
+width: 100%;
+height: 0;
+opacity: 0;
+position: absolute;
+left: 0;
+z-index: -1;
+}
+.btn-fill-vert-o_s:after {
+transition: all 0.3s;
 }

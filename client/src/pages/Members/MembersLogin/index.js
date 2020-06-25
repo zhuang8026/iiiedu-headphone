@@ -25,7 +25,7 @@ function MembersLogin(props) {
     })
       .then(result=>result.json())
       .then(obj=>{
-        console.log(obj);
+        // console.log(obj);
 
         let userdata = obj['loginInfo'] ? obj['loginInfo']: '';
         // let userdata = obj;
@@ -74,7 +74,7 @@ function MembersLogin(props) {
               <p className="login_err"></p>
 
               <label htmlFor="" className="gray">密碼 *</label>
-              <input className="input01" type="password" placeholder="請輸入密碼" onChange={e => setPassword(e.target.value)}/>
+              <input className="input01" type="password" placeholder="請輸入密碼" onChange={e => setPassword(e.target.value)} maxLength="6"/>
               <p className="login_err"></p>
 
               <div className="login_form_pwa">

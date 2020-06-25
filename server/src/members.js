@@ -96,15 +96,15 @@ router.get('/logout',(req, res)=>{
 // 取得會員資料 / 在註冊組件中
 // http://localhost:3009/membersRegister/add 
 router.get('/user/:username?/:pwd?', (req, res)=>{ // upload.none() 回傳的是 表單欄位 每一個的值，并包裝成對象
-    console.log('membersRegister', username)
-    console.log('membersRegister', pwd)
+    // console.log('membersRegister', username)
+    // console.log('membersRegister', pwd)
     let username = req.params.username;
     let pwd = req.params.pwd;
 
     const sql = `SELECT * FROM users WHERE username='${username}' AND pwd ='${pwd}'`; 
     db.query(sql)
         .then(([result])=>{
-            console.log(result)
+            // console.log(result)
             result[0].birthday = moment(result[0].birthday).format('YYYY-MM-DD');
             // const fm = 'YYYY-MM-DD';
             // for(let i of result){

@@ -190,7 +190,7 @@ router.post('/add-product',(req,res)=>{
             itemstoreNumber:id,
             itemName:itemName,
             itemImg:itemImg, 
-            colorid:colorid,
+            colorid:colorids,
             itemsbrand:itemsbrand, 
             itemstype:itemstype, 
             itemPrice:itemPrice, 
@@ -208,7 +208,17 @@ router.post('/add-product',(req,res)=>{
             itemsfeature:itemsfeature,
             rows:[]
         }
+<<<<<<< HEAD
         const sql = "INSERT INTO `items`(`itemName`, `itemImg`, `colorid`, `itemsbrand`, `itemstype`,`itemPrice`, `itemQty`,`itemsales`, `itemstoreNumber`,`itemscontent`, `itemsweight`, `itemsdrive`, `itemsfrequency`, `itemsSensitivity`, `itemsconnect`, `itemsmains`, `itemsEndurance`, `itemswatertight`, `itemsfeature`) VALUES (?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"; 
+=======
+
+        let itemName = req.body.itemName;
+        let colorid = req.body.colorid;
+        let itemweight = req.body.itemweight;
+    
+        const sql = "`INSERT INTO `items`(`itemName`, `itemImg`, `colorid`, `itemsbrand`, `itemstype`,`itemPrice`, `itemQty`,`itemsales`, `itemscontent`, `itemsweight`, `itemsdrive`, `itemfrequency`, `itemsSensitivity`, `itemsconnect`, `itemsmains`, `itemsEndurance`, `itemswaterlight`, `itemsfeature`) VALUES (?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"; 
+
+>>>>>>> ba47a0cc37c6fc0ff2cff42a01c2a03d14121558
         console.log('req.body',[req.body])
         db.query(sql, [itemName, 
             itemImg, 
@@ -238,9 +248,5 @@ router.post('/add-product',(req,res)=>{
                 res.json(output);
             })
     })
-
-
-
-
 
 module.exports = router;

@@ -62,13 +62,13 @@ import CheckoutPayment from './pages/Cart/CheckoutPayment' //選擇付款方式
 import OrderComplete from './pages/Cart/OrderComplete' //購買完成頁
 
 // 靜態頁面
-// import WiAbout from './pages/About'
-// import WiStore from './pages/Store'
-// import WiConnect from './pages/Connect'
-// import WiGift from './pages/Gift'
-// import WiProblem from './pages/Problem'
-// import WiOurClients from './pages/OurClients'
-// import WiWarranty from './pages/Warranty'
+import WiAbout from './pages/About'
+import WiStore from './pages/Store'
+import WiConnect from './pages/Connect'
+import WiGift from './pages/Gift'
+import WiProblem from './pages/Problem'
+import WiOurClients from './pages/OurClients'
+import WiWarranty from './pages/Warranty'
 import NotFoundPage404 from './pages/404'
 
 function App() {
@@ -86,6 +86,27 @@ function App() {
   //賣家中心
   // const [SellerData, setSellerData] = useState([]) 
   const [SellerProductId,setsellerProductId] = useState([])
+<<<<<<< HEAD
+=======
+  const [itemName,setItemName] = useState('')
+  const [itemImg,setItemImg] = useState(null)
+  const[colorid,setColorId] = useState(null)
+  const [itemsbrand,setItemsBrand] = useState('')
+  const [itemstype,setItemstype] = useState('')
+  const [itemPrice,setItemPrice] = useState([])
+  const [itemQty,setItemQty] = useState([])
+  const[itemsales,setItemsales] = useState([])
+  const[itemscontent,setItemscontent] = useState(null)
+  const[itemsweight,setItemsweight] = useState('')
+  const[itemsdrive,setItemsDrive] = useState('')
+  const[itemsfrequency,setitemsfrequency] = useState('')
+  const[itemsSensitivity,setItemsSensitivity] = useState('')
+  const[itemsconnect,setItemsconnect] = useState('')
+  const[itemsmains,setItemsmains] = useState('')
+  const[itemsEndurance,setItemsEndurance] = useState('')
+  const[itemswatertight,setItemswatertight] = useState('')
+  const[itemsfeature,setItemsFeature] = useState('')
+>>>>>>> ba47a0cc37c6fc0ff2cff42a01c2a03d14121558
 
   // 登入 & 狀態判斷
   const loginProcess = (loginSuccessCallback) => {
@@ -170,12 +191,12 @@ function App() {
               setItemsid={setItemsid}
             />
           </Route>
-          <Route exact path="/YyProduct/:air?">
+          <Route exact path="/YyProduct">
             <YyProduct />
           </Route>
-          <Route exact path="/YyProduct/:box?">
+          {/* <Route exact path="/YyProduct/:box?">
             <YyProduct />
-          </Route>
+          </Route> */}
 
           {/* 產品細節 */}
           <Route path="/ProductDetail/:id?">
@@ -389,6 +410,7 @@ function App() {
           <Route path="/MyFav">
             <MyFav />
           </Route>
+          
           {/* 購物車 */}
           <Route path="/MyCart">
             <MyCart userdata={userdata} setUserdata={setUserdata} />
@@ -405,6 +427,30 @@ function App() {
           <Route path="/OrderComplete">
             <OrderComplete userdata={userdata} setUserdata={setUserdata} />
           </Route>
+          
+
+          {/* 靜態頁面 */}
+          <Route path="/about/WiGift">
+            <WiGift />
+          </Route>
+          <Route path="/about/WiWarranty">
+            <WiWarranty />
+          </Route>
+          <Route path="/about/WiAbout">
+            <WiAbout />
+          </Route>
+          <Route path="/about/WiConnect">
+            <WiConnect />
+          </Route>
+          <Route path="/about/WiStore">
+            <WiStore />
+          </Route>
+          <Route path="/about/WiProblem">
+            <WiProblem />
+          </Route>
+          <Route path="/about/WiOurClients">
+            <WiOurClients />
+          </Route>
 
           {/* ProtectdRoute 這是 utils */}
           {/* <ProtectedRoute path="/todoapp">
@@ -420,6 +466,7 @@ function App() {
           <Redirect to="/404" />
 
         </Switch>
+
       </ScrollToTop>
 
       <MyFooter />
