@@ -1,0 +1,73 @@
+@import './variables';
+.WiHeader {
+  .swiper-container {
+    // border: red solid 2px;
+    .swiper-wrapper {
+      height: 350px;
+      > div {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        > h1 {
+          position: absolute;
+          font-size: 48px;
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+.WiIntroduce {
+  width: 80%;
+  margin: 50px auto;
+  display: flex;
+  justify-content: space-around;
+  //   border: red solid 2px;
+  > p {
+    width: 40%;
+    font-size: 14px;
+    line-height: 28px;
+    // padding: 50px;
+  }
+  .Introduce_pic {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    > img {
+      width: 50%;
+    }
+  }
+}
+.Introduce_fashion {
+  width: 80%;
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //   border: green solid 2px;
+  img {
+    border-radius: 50%;
+    width: 300px;
+    padding: 30px;
+  }
+  p {
+    text-align: center;
+    font-size: 16px;
+  }
+}
+.Introduce_way {
+  width: 80%;
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+  div {
+    padding-left: 50px;
+    .Wipway {
+      font-size: 45px;
+    }
+  }
+
+  //   align-items: center;
+}

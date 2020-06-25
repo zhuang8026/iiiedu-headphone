@@ -2,17 +2,22 @@ import React, { Fragment,useState,useRef,useEffect } from 'react'
 import { withRouter, BrowserRouter as Router,useParams } from 'react-router-dom'
 
 //import components
-import MyNavBar from '../../../components/Navbar'
-import MyMenu from '../../../components/NavbarMenu'
-import MyFooter from '../../../components/Footer'
 import LeftNav from '../Leftnav'
 
-//import css
-// import '../../../assets/css/AliceSeller/seller-product.css'
 //import image
 import searchImg from '../../../assets/img/seller/my-sale/search.svg'
 
 function SellerProduct(props) {
+  const{
+    userdata,
+    setUserdata,
+    name,
+    setName,
+    id,
+    page
+  }= props.allprops;
+  const [SellerProductData, setSellerProductData] = useState([]) 
+//reset用
   const productSearchBar = useRef(null);
   const startdate = useRef(null);
   const enddate = useRef(null);
@@ -20,35 +25,44 @@ function SellerProduct(props) {
   const maxquan = useRef(null);
   const soldminquan = useRef(null);
   const soldmaxquan = useRef(null);
-  const [SellerProductData, setSellerProductData] = useState([]) 
   let SellerDataInner=[];
-  let {id} = useParams();
+  // let {id} = useParams();
   
-  const SellerProductDataFetch =()=>{
-    // fetch('http://localhost:3009/products/list',{
-    fetch(`http://localhost:3009/sellers/seller-product/detail/${id}`,{
-      method: 'get',
+
+  useEffect((id,page) => {
+    fetch(`http://localhost:3009/sellers/listSellerUserProduct/${id}/${page}`,{
+      method: 'post',
+      Origin: `http://localhost:3000`,
       headers: new Headers({
           'Accept': 'application/json',
           'Content-Type': 'application/json',
       }),
+      body:{
+        id:userdata.id,
+        username:userdata.username
+      }
   })
     .then((response)=>{
       return response.json()
     })
     .then((response)=>{
-      console.log('response', response);
-        [...SellerDataInner]=response;
-        setSellerProductData(SellerDataInner)
-
-      console.log('SellerDataInner',SellerDataInner)
-      
+      console.log('response', response.rows);
+      setSellerProductData(response.rows)
+      // [...SellerDataInner]=response;
+      // setSellerProductData(SellerDataInner)
+      // console.log('SellerDataInner',SellerDataInner)
     })
-  }
+  }, [userdata])
 
-  useEffect(()=>{
-    SellerProductDataFetch()
-  },[])
+
+  // const SellerProductDataFetch =()=>{
+    // fetch('http://localhost:3009/products/list',{
+
+  // }
+
+  // useEffect(()=>{
+  //   SellerProductDataFetch()
+  // },[userdata])
 
  const handleReset=(e)=>{
   document.getElementById("product-search-bar").value = "";
@@ -79,7 +93,7 @@ function SellerProduct(props) {
                     <div>已售完</div>
                     <div>未上架</div>
                   </div>
-                  <htmlForm id="seller-product-form" className="seller-form" action="" method="post">
+                  <form id="seller-product-form" className="seller-form" action="" method="post">
                     <div className="product-wrapper">
                       <div className="search-wrapper">
                         <div className="product-search">
@@ -99,7 +113,7 @@ function SellerProduct(props) {
                         </div>
                       </div>
                       <div className="product-createdate">
-                        <label for="createdate">訂單成立時間</label>
+                        <label htmlFor="createdate">訂單成立時間</label>
                         <input type="date" id="startdate" ref={startdate} />
                         &nbsp;-&nbsp;
                         <input type="date" id="enddate" ref={enddate} />
@@ -139,7 +153,7 @@ function SellerProduct(props) {
                         搜尋
                       </button>
                     </div>
-                  </htmlForm>
+                  </form>
                   <div className="seller-item-wrapper">
                     <h1>0項商品</h1>
                     <div className="seller-btnset">

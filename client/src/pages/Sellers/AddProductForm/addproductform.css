@@ -1,0 +1,8 @@
+.seller-form-binding {
+  width: 50%;
+}
+
+.seller-layout {
+  display: flex;
+  flex-wrap: wrap;
+}
