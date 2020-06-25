@@ -1,14 +1,16 @@
 // 函式元件
 import React, { Fragment } from 'react';
 import { Link, NavLink, withRouter } from 'react-router-dom'
-
+import AboutHeader from './AboutHeader';
 // scss
 // import './_menu.scss'
 
 function WiAbout(props) {
     return (
         <Fragment>
-        關於我們
+      <main>
+            <AboutHeader />
+     </main>
         </Fragment>
     )
 
