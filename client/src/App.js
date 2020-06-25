@@ -86,27 +86,6 @@ function App() {
   //賣家中心
   // const [SellerData, setSellerData] = useState([]) 
   const [SellerProductId,setsellerProductId] = useState([])
-<<<<<<< HEAD
-=======
-  const [itemName,setItemName] = useState('')
-  const [itemImg,setItemImg] = useState(null)
-  const[colorid,setColorId] = useState(null)
-  const [itemsbrand,setItemsBrand] = useState('')
-  const [itemstype,setItemstype] = useState('')
-  const [itemPrice,setItemPrice] = useState([])
-  const [itemQty,setItemQty] = useState([])
-  const[itemsales,setItemsales] = useState([])
-  const[itemscontent,setItemscontent] = useState(null)
-  const[itemsweight,setItemsweight] = useState('')
-  const[itemsdrive,setItemsDrive] = useState('')
-  const[itemsfrequency,setitemsfrequency] = useState('')
-  const[itemsSensitivity,setItemsSensitivity] = useState('')
-  const[itemsconnect,setItemsconnect] = useState('')
-  const[itemsmains,setItemsmains] = useState('')
-  const[itemsEndurance,setItemsEndurance] = useState('')
-  const[itemswatertight,setItemswatertight] = useState('')
-  const[itemsfeature,setItemsFeature] = useState('')
->>>>>>> ba47a0cc37c6fc0ff2cff42a01c2a03d14121558
 
   // 登入 & 狀態判斷
   const loginProcess = (loginSuccessCallback) => {
