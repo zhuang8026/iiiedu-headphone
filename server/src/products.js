@@ -22,7 +22,7 @@ const getDataList = async (req)=>{
         totalPages: 0, //總共有幾頁
         rows: []
     }
-    console.log(output);
+    // console.log(output);
     const [r1] = await db.query("SELECT COUNT(1) num FROM `items`");
     output.totalRows = r1[0].num;
     output.totalPages = Math.ceil(output.totalRows/perPage);
@@ -59,7 +59,7 @@ router.get("/list", (req, res) => {
 // 分頁
 // http://localhost:3009/products/listpage/1 (Page) ~ ... 
 router.get('/listpage/:page?', async (req, res)=>{
-    console.log(req);
+    // console.log(req);
     const output = await getDataList(req);
     res.json(output);
 })
@@ -77,7 +77,7 @@ router.get("/detail/:id", (req, res) => {
             // console.log(results);
             output.results = results;
             let relatedProduct = results[0];
-            console.log(relatedProduct[0])
+            // console.log(relatedProduct[0])
             res.json(relatedProduct[0])
             // sql = `SELECT * FROM items WHERE product_category = '${relatedProduct.product_category}' AND product_id != ${relatedProduct.product_id}`;
             // console.log(sql)

@@ -68,22 +68,22 @@ router.post('/userUpload', upload.none() ,(req, res)=>{
         })
 });
 
-// 會員圖片 修改
+// 會員圖片 修改 - 不使用
 // http://localhost:3009/membersEdit/imgUpload
-router.post('/imgUpload', upload.single('file_upload'), (req, res)=>{
-    // console.log('req.file', req.file);
-    // console.log('req', req); // 可看到 所有的 request(取得客户端资料) 内容
-    console.log('imgUpload',req.File)  // 無接收到 client資料
-    res.json({
-        // filename: req.file.filename,
-        filename: req.name,
-        body: req.body
-    });
-    // res.end("ok");
-});
+// router.post('/imgUpload', upload.single('file_upload'), (req, res)=>{
+//     // console.log('req.file', req.file);
+//     // console.log('req', req); // 可看到 所有的 request(取得客户端资料) 内容
+//     // console.log('imgUpload',req.File)  // 無接收到 client資料
+//     res.json({
+//         // filename: req.file.filename,
+//         filename: req.name,
+//         body: req.body
+//     });
+//     // res.end("ok");
+// });
 
 
-// 測試 
+// 測試  ok  可使用 圖片上傳 - 20200625 / 會員圖片 修改 
 // https://programmingwithmosh.com/javascript/react-file-upload-proper-server-side-nodejs-easy/
 router.post('/upload',function(req, res) {
     upload2(req, res, function (err) {
@@ -117,7 +117,7 @@ router.post('/newpassword', (req, res)=>{
 
         db.query(sql, [pwd, id])                   
             .then(([results])=>{
-                console.log(results)
+                // console.log(results)
                 output.results = results;
                 if(results.affectedRows && results.changedRows){
                     output.success = true;

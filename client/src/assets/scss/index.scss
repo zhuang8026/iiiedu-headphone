@@ -27,6 +27,8 @@
 @import './home_mostPopular.scss';
 @import './home_bottomIG.scss';
 @import './home_store.sass';
+// 關於我們
+@import './Aboutus.scss';
 
 // 會員
 @import './members_left.scss';
@@ -39,12 +41,13 @@
 @import './members_cartList_list.scss';
 @import './members_cartdetail.scss';
 
-//Product
-@import './Product_Detail.scss';
-@import './Product_DetailRight.scss';
+// Product
 @import './Product_Main.scss';
-@import './Product_DetailBottom.scss';
-@import './Product_Checkbox.scss';
+@import './Product_Main_Detail.scss';
+// Product細細節頁 不使用
+@import './Product_Detail.scss'; // 不使用
+@import './Product_DetailRight.scss'; // 不使用
+@import './Product_DetailBottom.scss'; // 不使用
 
 // Cart
 @import './cart_table.scss';
@@ -52,5 +55,4 @@
 // BLog
 
 //MyFav
-@import'./MyFav.scss';
-
+@import './MyFav.scss';

@@ -1,9 +1,12 @@
 @import '../../../assets/scss/variables';
 
 .Productaside {
-  height: 200px;
-  margin-left: 30px;
-  div {
-    height: 130px;
+  width: 80%;
+  margin: 0 auto;
+  padding: 150px 0 50px 0;
+  .yycrumb {
+    a  {
+      color: #8b8b8b;
+    }
   }
 }
