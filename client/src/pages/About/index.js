@@ -2,6 +2,7 @@
 import React, { Fragment } from 'react';
 import { Link, NavLink, withRouter } from 'react-router-dom'
 import AboutHeader from './AboutHeader';
+import AboutIntroduce from './AboutIntroduce'
 // scss
 // import './_menu.scss'
 
@@ -10,6 +11,7 @@ function WiAbout(props) {
         <Fragment>
       <main>
             <AboutHeader />
+            <AboutIntroduce />
      </main>
         </Fragment>
     )
