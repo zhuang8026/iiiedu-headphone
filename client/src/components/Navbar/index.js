@@ -108,8 +108,8 @@ function MyNavBar(props) {
                 menu_otis_menu.add('menu_add_li');
             }
             // lastScrollY = window_higth;
-            });
-        }, [])
+        });
+    }, [])
 
 
     return (

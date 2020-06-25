@@ -5,14 +5,12 @@ import { withRouter, Link } from 'react-router-dom';
 //antd
 // import { message } from 'antd';
 
+import ProductMainDrtail from '../ProductMainDrtail';
+
 function ProductMain(props) {
-  // const [mycart, setMycart] = useState([])
-  // const [dataLoading, setDataLoading] = useState(false)
   const updateCartToLocalStorage = (value) => {
-    // 開啟載入指示
-    //setDataLoading(true)
-    const Memberman = JSON.parse(localStorage.getItem('memberData'))|| []
-    console.log(Memberman)
+    // const Memberman = JSON.parse(localStorage.getItem('memberData'))|| []
+    // console.log(Memberman)
     const currentCart = JSON.parse(localStorage.getItem('cart')) || []
     const newCart = [...currentCart, value]
     localStorage.setItem('cart', JSON.stringify(newCart))
@@ -23,6 +21,7 @@ function ProductMain(props) {
 
   console.log('itemsid:', itemsid) // text button id 
 
+  // 點擊 css 樣式變換
   const itemsChangeFunction =()=>{
     
   }
@@ -45,6 +44,13 @@ function ProductMain(props) {
         })
   }
   
+  const addCsstyle =() =>{
+    let quick_view_modal = document.getElementsByClassName('items-quick-view-modal')[0];
+    let items_wrapper = document.getElementsByClassName('items-wrapper')[0];
+    quick_view_modal.classList.add('quick_view_modal_open');
+    items_wrapper.classList.add('items_wrapper_open');
+  }
+
   useEffect(()=>{
       goToDetail(itemsid)
       fetch('http://localhost:3009/products/listpage/1',  {
@@ -61,6 +67,20 @@ function ProductMain(props) {
         console.log(response.rows)
         setItemsdata(response.rows)
       })
+
+      let quick_view_modal = document.getElementsByClassName('items-quick-view-modal')[0];
+      let items_close_head = document.getElementsByClassName('items-close-head')[0];
+      let items_wrapper = document.getElementsByClassName('items-wrapper')[0];
+      let items_quick_view_overlay = document.getElementsByClassName('items-quick-view-overlay')[0];
+      items_quick_view_overlay.addEventListener('click', () => {
+        quick_view_modal.classList.remove('quick_view_modal_open')
+        items_wrapper.classList.remove('items_wrapper_open')
+      })
+      items_close_head.addEventListener('click', () => {
+        quick_view_modal.classList.remove('quick_view_modal_open')
+        items_wrapper.classList.remove('items_wrapper_open')
+      })
+
   },[])
 
   return (
@@ -108,8 +128,9 @@ function ProductMain(props) {
             </div>
           </div>
 
+          <ProductMainDrtail/>
+
           <div className="Yyasidebody">
-            
             {itemsdata.map((data, index)=>{
               return(
                 <div className="Yyaside_pro" key={index}>
@@ -147,12 +168,13 @@ function ProductMain(props) {
                             }}
                         >加入購物車</button>
                         <button 
-                          className="item_btn_an btn-navy_s btn-fill-vert-o_s" 
+                          className="item_btn_an btn-navy_s btn-fill-vert-o_s item_btn_search" 
                           id={data.itemId} 
                           onClick={e =>{
                             setItemsid(e.target.id)  
                             goToDetail(e.target.id)
-                            props.history.push(`/ProductDetail/${e.target.id}`)
+                            // props.history.push(`/ProductDetail/${e.target.id}`)
+                            addCsstyle()
                           }}
                         >立即查看</button>
                         <button className="item_btn_an btn-navy_s btn-fill-vert-o_s">加入最愛</button>
@@ -162,43 +184,8 @@ function ProductMain(props) {
                 </div>
               )
             })}
-            
           </div>
         </div>
-        <div className="items-quick-view-modal">
-          <div className="items-quick-view-overlay">我是遮罩層</div>
-          <div className="items-wrapper">
-            <div className="items-main">
-              <div className="items-close-head">
-                <div className="items-close"><span class="iconfont icon-error"></span></div>
-              </div>
-              <div className="items-product" id="items-product-view">
-                <div className="items-inner">
-                  <div id="items-simple">
-                    <div className="items-img">
-
-                    </div>
-                    <div className="items-content">
-                      <h1>PILLOW BLUE</h1>
-                      <p className="items-price">$20000</p>
-                      <p className="items-text">Saepe in venir cu quo, mel et epics de salu tatus si que, has eu graecis aco moda. Vix ei mucius iriure dolors umin, mel ad nobis esentis adis dio. Etiam ultricies nisi velt.</p>
-                      <div className="items-add-btn">
-                        <span>數量: 1</span>
-                        <button className="tems-add-btn-inner">ADD TO CART</button>
-                      </div>
-                      <div className="items-wish-btn">
-                      <span class="iconfont icon-like"></span>
-                      <span class="items-wish-text">ADD TO WISHLIST</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        
       </div>
     </>
   )
