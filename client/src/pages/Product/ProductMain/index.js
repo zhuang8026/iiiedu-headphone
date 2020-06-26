@@ -6,6 +6,7 @@ import { withRouter, Link } from 'react-router-dom';
 // import { message } from 'antd';
 
 import ProductMainDrtail from '../ProductMainDrtail';
+import Pagination from '../Pagination';
 
 function ProductMain(props) {
   const updateCartToLocalStorage = (value) => {
@@ -19,7 +20,11 @@ function ProductMain(props) {
 
   const { itemsdata, setItemsdata, itemsid, setItemsid } = props;
   const [detailitems, setdetailitems] = useState('');
-  console.log('itemsid:', itemsid) // text button id 
+  const [currentTotalPages, setCurrentTotalPages] = useState();
+  const [currentPage, setCurrentPage] = useState(1); 
+
+  // console.log('itemsid:', itemsid) // text button id 
+  // console.log('currentPage:', currentPage) 
 
   // 點擊 css 樣式變換
   const itemsChangeFunction =()=>{
@@ -38,10 +43,8 @@ function ProductMain(props) {
             return res.json()
         })
         .then((res)=>{
-            console.log(res)
+            // console.log(res)
             setdetailitems(res)
-            // setUserdata(res[0]);
-            // console.log(userdata);
         })
   }
   
@@ -53,7 +56,7 @@ function ProductMain(props) {
   }
 
   useEffect(()=>{
-      fetch('http://localhost:3009/products/listpage/1',  {
+      fetch('http://localhost:3009/products/listpage/'+currentPage,  {
           method: 'get',
           headers: new Headers({
               'Accept': 'application/json',
@@ -64,8 +67,10 @@ function ProductMain(props) {
           return response.json()
       })
       .then((response)=>{
-        console.log(response.rows)
+        // console.log(response)
         setItemsdata(response.rows)
+        setCurrentTotalPages(response.totalPages) //總page
+        setCurrentPage(response.page) //此刻的頁數
       })
 
       let quick_view_modal = document.getElementsByClassName('items-quick-view-modal')[0];
@@ -81,7 +86,7 @@ function ProductMain(props) {
         items_wrapper.classList.remove('items_wrapper_open')
       })
 
-  },[])
+  },[currentPage])
 
   return (
     <>
@@ -189,6 +194,12 @@ function ProductMain(props) {
           </div>
         </div>
       </div>
+      <Pagination 
+        currentTotalPages={currentTotalPages}
+        setCurrentTotalPages={setCurrentTotalPages}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
     </>
   )
 }

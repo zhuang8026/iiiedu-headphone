@@ -162,7 +162,7 @@ function App() {
           </Route>
 
           {/* 產品列表 */}
-          <Route exact path="/YyProduct">
+          <Route exact path="/YyProduct/:page?">
             <YyProduct
               itemsdata={itemsdata}
               setItemsdata={setItemsdata}
@@ -170,9 +170,9 @@ function App() {
               setItemsid={setItemsid}
             />
           </Route>
-          <Route exact path="/YyProduct">
+          {/* <Route exact path="/YyProduct">
             <YyProduct />
-          </Route>
+          </Route> */}
           {/* <Route exact path="/YyProduct/:box?">
             <YyProduct />
           </Route> */}
@@ -438,10 +438,10 @@ function App() {
           {/* 404 必须放在最后一个 */}
           {/* Redirect 重新導向 / 需要先引入 */}
 
-          <Route path="/404">
+          {/* <Route path="/404">
             <NotFoundPage404 />
           </Route>
-          <Redirect to="/404" />
+          <Redirect to="/404" /> */}
 
         </Switch>
 

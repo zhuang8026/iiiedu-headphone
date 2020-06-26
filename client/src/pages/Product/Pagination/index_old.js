@@ -7,6 +7,7 @@ import { withRouter, Link } from 'react-router-dom';
 
 
 function ProductMain(props) {
+  // const { currentPage } = props;
   const [currentPage, setCurrentPage] = useState(4); // 一開始 只顯示 4page
   let maxPages = 10;
   let items = [];
@@ -16,7 +17,7 @@ function ProductMain(props) {
   if(rightSide>maxPages) rightSide = maxPages;
   for (let number = leftSide ; number <= rightSide; number++) {
     items.push(
-      <div key={number} className={(number === currentPage ? 'round-effect active' : 'round-effect')} onClick={()=>{ setCurrentPage(number)}}>
+      <div key={number} className={(number === currentPage ? 'round-effect activepage' : 'round-effect')} onClick={()=>{ setCurrentPage(number)}}>
         {number}
       </div>,
     );
@@ -33,7 +34,7 @@ function ProductMain(props) {
   }
   return (
     <div className="flex-container">
-      <div> currentPage : { currentPage } </div>
+      <div> 測試 currentPage : { currentPage } </div>
         
       <div className="paginate-ctn">
         <div className="round-effect" onClick={prevPage}> &lsaquo; </div>
