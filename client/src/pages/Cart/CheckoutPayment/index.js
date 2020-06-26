@@ -1,21 +1,21 @@
 // 函式元件
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   BrowserRouter as Router,
   Route,
   Link,
   withRouter,
 } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { paymentValue } from '../../../actions/cart'
-
+import creditCardImg from '../../../assets/img/cart/16e924c936e000006ebf.png'
 
 function CartPayment(props) {
   const { userdata, setUserdata } = props
-  const [payment, setPayment] = useState('')  
+  const [payment, setPayment] = useState('1')
+  const [name, setName] = useState('')
+
   const updateCheckoutPaymentToLocalStorage = (value) => {
-    const currentCheckoutPayment = JSON.parse(localStorage.getItem('CheckoutPayment')) || []
+    const currentCheckoutPayment =
+      JSON.parse(localStorage.getItem('CheckoutPayment')) || []
     const newCheckoutPayment = [...currentCheckoutPayment, value]
     localStorage.setItem('CheckoutInfo', JSON.stringify(newCheckoutPayment))
   }
@@ -65,40 +65,91 @@ function CartPayment(props) {
         {/* 選擇配送方式表單 */}
         <form className="payment-form">
           <div>請選擇付款方式:</div>
-          <input
-            type="radio"
-            name="payment"
-            id="paymentId1"
-            value="貨到付款"
-            required
-            checked
-          />
-          <label htmlFor="paymentId1"> 貨到付款</label>
-          <div className="line">
-            <div></div>
+          <select
+            value={payment}
+            onChange={(event) => {
+              // const v = e.target.selectedIndex
+              const v = event.target.value
+              setPayment(v)
+            }}
+          >
+            <option value="1">貨到付款</option>
+            <option value="2">信用卡</option>
+          </select>
+          {/* <div >除錯用:{payment}</div> */}
+          {/* <div className="line"></div> */}
+          {/* <div>信用卡資料:</div> */}
+          <div className="payment-form-flex">
+            <div>
+              <img src={creditCardImg} alt="" />
+            </div>
+            <div>
+              <ul>
+                <li>信用卡資料:</li>
+                <li>
+                  <label htmlFor="creditCardNum">卡號</label>
+                </li>
+                <li>
+                  <input
+                    type="text"
+                    name="creditCardNum"
+                    id="creditCardNum"
+                    defaultValue={userdata.card}
+                    maxlength="18"
+                  />
+                </li>
+                <li>
+                  <label htmlFor="Name">姓名</label>
+                </li>
+                <li>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    defaultValue={userdata.name}
+                    onChange={(event) => {
+                      setName(event.target.value)
+                    }}
+                  />
+                </li>
+                <li>
+                  <label>有效時間</label>
+                </li>
+                <li>
+                  <input
+                    type="text"
+                    name="cardMonth"
+                    id="cardMonth"
+                    maxlength="2"
+                  />
+                  <label htmlFor="cardMonth">月</label>
+                  <input
+                    type="text"
+                    name="cardYear"
+                    id="cardYearr"
+                    maxlength="2"
+                  />
+                  <label htmlFor="cardYear">年</label>
+                </li>
+                <li>
+                  <label htmlFor="cardPin">背面末三碼</label>
+                </li>
+                <li>
+                  <input
+                    type="text"
+                    name="cardPin"
+                    id="cardPin"
+                    maxlength="3"
+                  />
+                </li>
+                <li></li>
+              </ul>
+            </div>
           </div>
-          <input
-            type="radio"
-            name="payment"
-            id="paymentId2"
-            value="信用卡"
-            required
-          />
-          <label htmlFor="paymentId2"> 信用卡</label>
-          <div className="line">
-            <div></div>
-          </div>
-          <p>以下暫用 待修改</p>
-          <input type="text" name="creditCardNum" />
-          <input type="text" name="creditCardName" />
-          <input
-            type="month"
-            name="creditCardMonth"
-            min="218-01"
-            lue="2025-01"
-          />
           <div>
-            <button type="button"><Link to="/OrderComplete">下一步</Link></button>
+            <button type="button">
+              <Link to="/OrderComplete">下一步</Link>
+            </button>
           </div>
         </form>
       </div>

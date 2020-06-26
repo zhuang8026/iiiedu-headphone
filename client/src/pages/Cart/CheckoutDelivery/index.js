@@ -7,8 +7,8 @@ import {
   withRouter,
 } from 'react-router-dom'
 
-function CartDelivery(props) {
-
+function CheckoutDelivery(props) {
+  const [delivery, setDelivery] = useState('1')
   return (
     <>
       <div className="cart-crumb">
@@ -54,32 +54,33 @@ function CartDelivery(props) {
         </ul>
         {/* 選擇配送方式表單 */}
         <form className="delivery-form">
-          <div>請選擇配送方式:</div>
-          <input
-            type="radio"
-            name="deliveryId"
-            id="deliveryId1"
-            value="黑貓宅急便"
-            required
-          />
-          <label htmlFor="deliveryId1"> 黑貓宅急便</label>
-          <div className="line">
-            <div></div>
-          </div>
-          <input
-            type="radio"
-            name="deliveryId"
-            id="deliveryId2"
-            value="新竹物流"
-            required
-          />
-          <label htmlFor="deliveryId2"> 新竹物流</label>
+          <div>選擇配送方式:</div>
+          <select
+            className="delivery"
+            // defaultValue="1"
+            value={delivery}
+            onChange={(event) => {
+              // const v = e.target.selectedIndex
+              const v = event.target.value
+              setDelivery(v)
+            }}
+          >           
+            <option value="1">黑貓宅急便</option>
+            <option value="2">7-11</option>
+            <option value="3">全家</option>
+            <option value="4">萊爾富</option>
+          </select>
+           {/* <div>除錯用:{delivery}</div> */}
           <div>
-            <button type="button"><Link to="/CheckoutPayment">下一步</Link></button>
-          </div>
+            <button 
+            type="button"            
+            >
+              <Link to="/CheckoutPayment">下一步</Link>
+            </button>
+          </div>          
         </form>
       </div>
     </>
   )
 }
-export default withRouter(CartDelivery)
+export default withRouter(CheckoutDelivery)
