@@ -9,12 +9,15 @@ function CheckoutInfo(props) {
   const [tel, setTel] = useState('')
   const [remarks, setRemarks] = useState('')
   const updateCheckoutInfoToLocalStorage = (value) => {
-    const Memberman = JSON.parse(localStorage.getItem('memberData')) || []
-    console.log(Memberman)
-    const currentCart = JSON.parse(localStorage.getItem('CheckoutInfo')) || []
-    const newCheckoutInfo = [...currentCart, value]
-    localStorage.setItem('CheckoutInfo', JSON.stringify(newCheckoutInfo))
+    const currentCheckoutInfo =
+      JSON.parse(localStorage.getItem('checkoutInfo')) || []
+    const newCheckoutInfo = [...currentCheckoutInfo, value]
+    localStorage.setItem('checkoutInfo', JSON.stringify(newCheckoutInfo))
   }
+  
+  useEffect(() => {
+    localStorage.removeItem('checkoutInfo')
+  }, [])
 
   return (
     <>
@@ -95,10 +98,10 @@ function CheckoutInfo(props) {
                   type="tel"
                   id="tel"
                   name="tel"
-                  // defaultValue={userdata.phoneNumber}
-                  // onChange={(event) => {
-                  //   setTel(event.target.value)
-                  // }}
+                  defaultValue={userdata.phoneNumber}
+                  onChange={(event) => {
+                    setTel(event.target.value)
+                  }}
                 />
                 <div className="error">電話必填*</div>
               </div>
@@ -120,7 +123,6 @@ function CheckoutInfo(props) {
           </div>
           <div>
             <button
-              type="button"
               onClick={() => {
                 updateCheckoutInfoToLocalStorage({
                   name: `${name ? name : userdata.name}`,

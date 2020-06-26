@@ -21,7 +21,7 @@ function MyCart(props) {
     // 開啟指示(spinner)
     setDataLoading(true)
 
-    console.log("localStorage.getItem('cart'):", localStorage.getItem('cart'))
+    // console.log("localStorage.getItem('cart'):", localStorage.getItem('cart'))
 
     // 得到值(字串) !!重要
     const initCart = localStorage.getItem('cart') || '[]'
