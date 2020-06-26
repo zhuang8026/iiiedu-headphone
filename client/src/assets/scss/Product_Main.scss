@@ -157,7 +157,7 @@
 }
 
 /* button-1 */
-.item_btn_an {
+.item_btn_add {
     font-size: 14px;
     padding: 28px 0;
     position: relative; 
@@ -168,7 +168,7 @@
     cursor: pointer;
 }
 
-.btn-fill-vert-o {
+.btn_fill_vert_add {
   background-color: #211e55;
   border: 1px solid $btn-color-l;
   color: #fff;
@@ -177,10 +177,10 @@
 // .btn-fill-vert-o.btn-navy:before, .btn-fill-vert-o.btn-navy:after {
 //     background-color: #34495e;
 // }
-.btn-fill-vert-o:before {
+.btn_fill_vert_add:before {
   top: 50%;
 }
-.btn-fill-vert-o:before, .btn-fill-vert-o:after {
+.btn_fill_vert_add:before, .btn_fill_vert_add:after {
   content: '';
   width: 100%;
   height: 0;
@@ -190,22 +190,22 @@
   z-index: -1;
   transition: all 0.3s;
 }
-.btn-fill-vert-o:hover {
+.btn_fill_vert_add:hover {
   color: #211e55;
   // border: 1px solid #fff;
 }
 
-.btn-fill-vert-o:hover:before, .btn-fill-vert-o:hover:after {
+.btn_fill_vert_add:hover:before, .btn_fill_vert_add:hover:after {
   height: 50%;
   opacity: 1;
 }
-.btn-fill-vert-o.btn-navy:before, .btn-fill-vert-o.btn-navy:after {
+.btn_fill_vert_add.btn_navy_add:before, .btn_fill_vert_add.btn_navy_add:after {
   background-color: #f8f8f9;
 }
-.btn-fill-vert-o:after {
+.btn_fill_vert_add:after {
   bottom: 50%;
 }
-.btn-fill-vert-o:before, .btn-fill-vert-o:after {
+.btn_fill_vert_add:before, .btn_fill_vert_add:after {
   content: '';
   width: 100%;
   height: 0;
@@ -214,7 +214,7 @@
   left: 0;
   z-index: -1;
 }
-.btn-fill-vert-o:after {
+.btn_fill_vert_add:after {
   transition: all 0.3s;
 }
 

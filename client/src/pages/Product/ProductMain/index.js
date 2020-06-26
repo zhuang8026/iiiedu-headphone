@@ -1,5 +1,5 @@
 // 函式元件
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { withRouter, Link } from 'react-router-dom';
 //antd
@@ -18,7 +18,7 @@ function ProductMain(props) {
 
 
   const { itemsdata, setItemsdata, itemsid, setItemsid } = props;
-
+  const [detailitems, setdetailitems] = useState('');
   console.log('itemsid:', itemsid) // text button id 
 
   // 點擊 css 樣式變換
@@ -39,6 +39,7 @@ function ProductMain(props) {
         })
         .then((res)=>{
             console.log(res)
+            setdetailitems(res)
             // setUserdata(res[0]);
             // console.log(userdata);
         })
@@ -52,7 +53,6 @@ function ProductMain(props) {
   }
 
   useEffect(()=>{
-      goToDetail(itemsid)
       fetch('http://localhost:3009/products/listpage/1',  {
           method: 'get',
           headers: new Headers({
@@ -106,7 +106,7 @@ function ProductMain(props) {
           <div className="Yysearch_container">
             <input type="text" placeholder=" search..." />
             <button>
-              <i class="iconfont icon-search"></i>
+              <i className="iconfont icon-search"></i>
             </button>
           </div>
         </div>
@@ -119,7 +119,7 @@ function ProductMain(props) {
               <div className="item_css_change" onClick={()=>{
                 itemsChangeFunction()
               }}> 
-                <span class="iconfont icon-more_1"></span>
+                <span className="iconfont icon-more_1"></span>
               </div>
               <select className="Yyorder">
                 <option value="high">Price: Low to High</option>
@@ -128,7 +128,9 @@ function ProductMain(props) {
             </div>
           </div>
 
-          <ProductMainDrtail/>
+          <ProductMainDrtail 
+            detailitems={detailitems}
+          />
 
           <div className="Yyasidebody">
             {itemsdata.map((data, index)=>{
@@ -154,7 +156,7 @@ function ProductMain(props) {
                   <div className="item_btn_inner_all">
                       <div className="item_btn_inner">
                         {/* <button className="item_add item_btn"btn-navy btn-fill-vert-o */}
-                        <button className="item_btn_an btn-navy btn-fill-vert-o"
+                        <button className="item_btn_add btn_navy_add btn_fill_vert_add"
                           id={data.itemId}
                           onClick={() => {
                           updateCartToLocalStorage({
@@ -168,7 +170,7 @@ function ProductMain(props) {
                             }}
                         >加入購物車</button>
                         <button 
-                          className="item_btn_an btn-navy_s btn-fill-vert-o_s item_btn_search" 
+                          className="item_btn_add btn-navy_s btn-fill-vert-o_s item_btn_search" 
                           id={data.itemId} 
                           onClick={e =>{
                             setItemsid(e.target.id)  
@@ -177,8 +179,8 @@ function ProductMain(props) {
                             addCsstyle()
                           }}
                         >立即查看</button>
-                        <button className="item_btn_an btn-navy_s btn-fill-vert-o_s">加入最愛</button>
-                        <button className="item_btn_an btn-navy_s btn-fill-vert-o_s">加入比較</button>
+                        <button className="item_btn_add btn-navy_s btn-fill-vert-o_s">加入最愛</button>
+                        <button className="item_btn_add btn-navy_s btn-fill-vert-o_s">加入比較</button>
                       </div>
                     </div>
                 </div>

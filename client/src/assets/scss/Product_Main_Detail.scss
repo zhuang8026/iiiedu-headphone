@@ -74,6 +74,7 @@
                 height: 100%;
                 .swiper-slide {
                   width: 100% !important;
+                  background: #f4f4f4;
                 }
               }
             }
@@ -100,21 +101,26 @@
                 margin-top: 24px;
                 align-items: flex-end;
                 .items-btn-margin {
-                  margin-right: 12px;
+                  width: 120px;
+                  text-align: center;
                   padding: 4px 8px;
                   font-size: 12px;
-                  border: 1px solid transparent;
+                  border-bottom: 1px solid transparent;
                   cursor: pointer;
-                  transition: 0.3s ease-in;
+                  transition: 0.1s ease-in-out;
                   span {
+                    color: #747474;
                     padding-right: 6px;
                     transition: 0.3s ease-in;
                   }
                   &:hover {
-                    border: 1px solid #211e55;
+                    border-bottom: 1px solid #211e55;
                   }
-                  &:hover span{ 
+                  &:hover span{
                     color: #211e55;
+                  }
+                  &:active {
+                    transform: translateZ(0) scale(0.9);
                   }
                 }
               }
