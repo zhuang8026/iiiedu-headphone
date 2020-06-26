@@ -1,5 +1,5 @@
 // 函式元件
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   BrowserRouter as Router,
   Route,
@@ -52,7 +52,7 @@ function CartDone(props) {
           </li>
         </ul>
         {/* 購買完成顯示 */}
-        <table class="cartDone-table">
+        <table className="cartDone-table">
           <tbody>
             <tr>
               <td>謝謝。您的訂單已收到。</td>

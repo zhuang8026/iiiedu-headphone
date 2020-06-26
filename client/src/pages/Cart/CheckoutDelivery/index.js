@@ -1,5 +1,5 @@
 // 函式元件
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   BrowserRouter as Router,
   Route,
@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom'
 
 function CartDelivery(props) {
+
   return (
     <>
       <div className="cart-crumb">
@@ -60,7 +61,6 @@ function CartDelivery(props) {
             id="deliveryId1"
             value="黑貓宅急便"
             required
-            checked
           />
           <label htmlFor="deliveryId1"> 黑貓宅急便</label>
           <div className="line">
