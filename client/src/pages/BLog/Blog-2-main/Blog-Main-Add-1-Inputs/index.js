@@ -1,5 +1,6 @@
 // 函式元件
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
+import Files from 'react-files'
 // import $ from 'jquery'
 import { message } from 'antd';
 
@@ -35,7 +36,76 @@ function BlogMainAdd(props) {
         setBlogContent02,
         // RegisterProcess 
     } = props;
+    const [drag11, setDrag11] = useState(testImg);
+    const [drag12, setDrag12] = useState(testImg);
+    const [drag13, setDrag13] = useState(testImg);
+    const [drag21, setDrag21] = useState(testImg);
+    const [drag22, setDrag22] = useState(testImg);
+    const [drag23, setDrag23] = useState(testImg);
+    const [selectedFile, setSelectedFile] = useState([]);
 
+    useEffect(() => {
+
+       
+
+    }, [userdata]);
+
+    useEffect(() => {
+        console.log('=====================================')
+        console.log('selectedFile', selectedFile)
+    }, [selectedFile]);
+
+
+    const goAddImg1 = (data) => {
+        console.log('=====================================')
+        console.log('data', data)
+        console.log(JSON.stringify(data))
+        // var result = Object.keys(data).map(function (key) { 
+          
+        //     // Using Number() to convert key to number type 
+        //     // Using obj[key] to retrieve key value 
+        //     return [Number(key), data[key]]; 
+        // });
+
+        // console.log('=====================================')
+        // console.log('result', result)
+        // console.log(JSON.stringify(result))
+
+        let formData = new FormData();
+        
+        formData.append('file', data);
+        // result.map((file, index) => {
+        //     formData.append(`file${index}`, file);
+        //   });
+        console.log('================================ datafiles ================================')
+        console.log(formData.get('file'))
+        fetch('http://localhost:3009/blog/try-upload', {
+            method: 'POST',
+            body: formData,
+            // headers: new Headers({
+            //     'Accept': 'multipart/form-data',
+            //     'Content-Type': 'multipart/form-data',
+            // })
+        })
+            .then((res) => {
+                console.log(res)
+                console.log(res.statusText)
+                return res.json()
+            })
+            .then(obj => {
+                console.log('================================ datafiles2 ================================')
+        console.log(formData.get('file'))
+                console.log(obj);
+                setUserdata({
+                    ...userdata,
+                    userblogimg: obj.filename
+                })
+            })
+
+
+
+    }
+    // const goAddImg2 = () => { }
     const goBlogAdd = () => {
         fetch('http://localhost:3009/blog/add', {
             method: 'post',
@@ -59,25 +129,12 @@ function BlogMainAdd(props) {
                     // props.history.goBack()
                     props.history.push('/Blog/YongMyBlog');
                 }, 2000)
-                // if(obj.success){
-                //   if(obj.password === password){
-                //     localStorage.setItem('memberData', JSON.stringify(obj));
-                //     message.success(`Hello!`);
-                //     setTimeout(()=>{
-                //       // props.history.goBack()
-                //       props.history.push('/');
-                //     },2000)
-                //   } else {
-                //     message.error(`密碼不正確`);
-                //     localStorage.removeItem('memberData');
-                //   }
-                // } else {
-                //   message.error(`登入失敗`);
-                //   localStorage.removeItem('memberData');
-                // }
-            })
 
+            })
     }
+
+
+
 
     return (
         <>
@@ -97,40 +154,43 @@ function BlogMainAdd(props) {
                 <h2 className="first-h2">第一篇文章</h2>
                 <textarea name="" id="" onChange={e => setBlogContent01(e.target.value)}></textarea>
                 <div className="btn-and-info blog-d-flex">
-                    <input type="file" className="btn-and-info-input" name="" id="" />
+                    <input
+                        type="file"
+                        className="btn-and-info-input"
+                        id="blog_file_upload"
+                        name="blog_file_upload"
+                        // defaultValue=""
+                        // placeholder=""
+                        onChange={(e) => {
+                            // setLogoData(e.target.files[0].name)
+                            setUserdata({
+                                ...userdata,
+                                userblogimg: e.target.files[0].name
+                            })
+                            // console.log(e.target.files[0])
+                            setSelectedFile(e.target.files[0])
+                            goAddImg1(e.target.files[0])
+                        }}
+
+                    />
                     <div className="blog-add-info"></div>
                     <div className="blog-add-info"></div>
                     <div className="blog-add-info"></div>
                 </div>
                 <div className="upload-imgs">
                     <div className="drags d-flex">
-                        <figure className="dragImg dragA" draggable="true">
-                            <img src={testImg} alt="" />
+                        <figure className="dragImg drag11" draggable="true">
+                            <img src={drag11} alt="" />
                         </figure>
-                        <figure className="dragImg dragB" draggable="true">
-                            <img src={testImg} alt="" />
+                        <figure className="dragImg drag12" draggable="true">
+                            <img src={drag12} alt="" />
                         </figure>
-                        <figure className="dragImg dragC" draggable="true">
-                            <img src={testImg} alt="" />
+                        <figure className="dragImg drag13" draggable="true">
+                            <img src={drag13} alt="" />
                         </figure>
-                        <figure className="dragImg dragD" draggable="true">
-                            <img src={testImg} alt="" />
-                        </figure>
+
                     </div>
-                    <div className="drops d-flex">
-                        <figure className="dropImg dropA">
-                            <img src="" alt="" />
-                        </figure>
-                        <figure className="dropImg dropB">
-                            <img src="" alt="" />
-                        </figure>
-                        <figure className="dropImg dropC">
-                            <img src="" alt="" />
-                        </figure>
-                        <figure className="dropImg dropD">
-                            <img src="" alt="" />
-                        </figure>
-                    </div>
+
 
                 </div>
                 <h2 className="second-h2">第二篇文章</h2>
@@ -142,12 +202,18 @@ function BlogMainAdd(props) {
                     <div className="blog-add-info"></div>
                 </div>
                 <div className="upload-imgs">
-                    <figure>
-                        <img src="" alt="" />
-                    </figure>
-                    <figure>
-                        <img src="" alt="" />
-                    </figure>
+                    <div className="drags d-flex">
+                        <figure className="dragImg drag21" draggable="true">
+                            <img src={drag21} alt="" />
+                        </figure>
+                        <figure className="dragImg drag22" draggable="true">
+                            <img src={drag22} alt="" />
+                        </figure>
+                        <figure className="dragImg drag23" draggable="true">
+                            <img src={drag23} alt="" />
+                        </figure>
+
+                    </div>
                 </div>
                 <button className="blog-add-submit" onClick={() => { goBlogAdd() }}>送出</button>
             </div>

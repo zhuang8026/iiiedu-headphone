@@ -1,11 +1,16 @@
 const express = require('express');
+const fileUpload = require('express-fileupload');
+const upload = require(__dirname + '/upload-module');
+// const upload2 = require(__dirname + '/upload');
 const moment = require('moment-timezone');
 const session = require('express-session');
 const MysqlStore = require('express-mysql-session')(session);
-const upload = require(__dirname + '/upload-module');
+const multer = require('multer');
 const db = require(__dirname + '/db_connect');
-const cors = require('cors');
+// const cors = require('cors');
 const fs = require('fs');
+const bodyParser = require('body-parser');
+// const morgan = require('morgan');
 const { serialize } = require('v8');
 
 const router = express.Router();
@@ -13,9 +18,19 @@ const router = express.Router();
 // 建立 web server 物件
 const app = express();
 
+
+// enable files upload
+// 啟動檔案上傳
+app.use(fileUpload({
+    createParentPath: true
+}));
+
 // middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+// app.use(morgan('dev'));
+// app.use(cors());
+app.use('/avatar', express.static('uploads'));
 
 // blogAdd
 // app.use('/blogAdd', require(__dirname+'/blogAdd.js'));
@@ -84,7 +99,7 @@ const getAllBlogList = async (req) => {
 // (個人)所有文章(分頁)的function
 const getUserBlogList = async (req) => {
     const perPage = 12;
-    let page = parseInt(req.params.page) || 1;
+    let page = parseInt(req.body.page) || 1;
     let id = req.body.id;
     const output = {
         id: id,
@@ -121,7 +136,7 @@ const getUserBlogList = async (req) => {
 // 所有文章
 // http://localhost:3009/blog/listAllBlog
 router.get("/listAllBlog", (req, res) => {
-    console.log('========== react(get) -> 所有文章 ==========')    
+    console.log('========== react(get) -> 所有文章 ==========')
     const sql = `SELECT * FROM blogs ORDER BY blogId desc`;
     db.query(sql, (error, results, fields) => {
         if (error) throw error;
@@ -132,7 +147,7 @@ router.get("/listAllBlog", (req, res) => {
 // 所有文章(分頁)
 // http://localhost:3009/blog/listAllBlog/(第幾頁)
 router.get('/listAllBlog/:page?', async (req, res) => {
-    console.log('========== react(get) -> 所有文章(分頁) ==========') 
+    console.log('========== react(get) -> 所有文章(分頁) ==========')
     const output = await getAllBlogList(req);
     res.json(output);
 })
@@ -140,7 +155,7 @@ router.get('/listAllBlog/:page?', async (req, res) => {
 // (個人)所有文章
 // http://localhost:3009/blog/listUserBlog/(個人id編號)
 router.get("/listUserBlog/:id", (req, res) => {
-    console.log('========== react(get) -> (個人)所有文章 ==========') 
+    console.log('========== react(get) -> (個人)所有文章 ==========')
     let id = req.params.id;
     let sql = `SELECT * FROM blogs WHERE id=${id}`;
     let output = {}
@@ -153,10 +168,10 @@ router.get("/listUserBlog/:id", (req, res) => {
 });
 
 // (個人)所有文章(分頁)
-// http://localhost:3009/blog/listUserBlog/(個人id編號)/(第幾頁)
-router.post('/listUserBlog/:id/:page?', async (req, res) => {    
-    console.log('========== react(送會員id) -> (個人)所有文章(分頁) ==========')
-    console.log('req.body = ',req.body)
+// http://localhost:3009/blog/listUserBlog/
+router.post('/listUserBlog/', upload.none(), async (req, res) => {
+    console.log('========== react(post)id和頁數 -> (個人)所有文章(分頁) ==========')
+    console.log('req.body = ', req.body)
     const output = await getUserBlogList(req);
     res.json(output);
 })
@@ -167,7 +182,7 @@ router.post('/listUserBlog/:id/:page?', async (req, res) => {
 // http://localhost:3009/blog/add
 // router.get('/add', (req, res)=>{
 router.post('/add', upload.none(), (req, res) => {
-    
+
     let id = req.body.id;
     let blogTitle = req.body.blogTitle;
     let blogContent01 = req.body.blogContent01;
@@ -177,12 +192,12 @@ router.post('/add', upload.none(), (req, res) => {
         id: id,
         blogTitle: blogTitle,
         blogContent01: blogContent01,
-        blogContent02: blogContent02,         
+        blogContent02: blogContent02,
         rows: []
     }
     const sql = "INSERT INTO `blogs`(`id`,`blogTitle`,`blogContent01`,`blogContent02`) VALUES (?, ?, ?, ?)";
-    console.log('========== react(送id和新增文章) -> 新增部落格文章 ==========')
-    console.log('req.body = ', [req.body])
+    console.log('========== react(post)id和文章 -> 新增部落格文章 ==========')
+    console.log('req.body = ', req.body)
     db.query(sql, [id, blogTitle, blogContent01, blogContent02])
         .then(([r]) => {
             output.results = r;
@@ -198,23 +213,19 @@ router.post('/add', upload.none(), (req, res) => {
 // (測試ok)
 // 刪除部落格文章
 // http://localhost:3009/blog/del/(部落格編號)
-router.get('/del/:blogId', (req, res) => {
+router.post('/del/', async (req, res) => {
     // 找檔頭裡面有沒有'Referer'，就是有沒有從哪裡來
     // let referer = req.get('Referer'); 
-    let referer = 1;
-    let blogId = req.params.blogId;
+    let referer = 1;    
+    let id = req.body.id;
+    let blogId = req.body.blogId;
+    
     const sql = `DELETE FROM blogs WHERE blogId=${blogId}`;
     db.query(sql, [req.params.blogId])
         .then(([r]) => {
-            res.json(req.params);
-            // if(referer){
-            //     // 如果有則回到原本那一頁
-            //     res.redirect(referer)
-            // } else {
-            //     // 如果沒有則回到第一頁
-            //     // res.redirect('/address-book/list')
-            // }
+            
         })
+
 })
 
 //================================================== blogEdit ==============================================================
@@ -256,16 +267,17 @@ router.post('/edit/:blogId', upload.none(), (req, res) => {
 
 //================================================== blogSearch ==============================================================
 // (半完成)
+
 // 搜尋所有文章(分頁)的function
 const getSearchAllList = async (req) => {
-    // 給資料的部分可改成接req.body的資料
-    const searchInput = '%9%';  // 給字串
-    const searchSort = '4';     // 給排序方式
-    const searchOrder = '2';    // 給正逆向
-    const perPage = 20;         // 給每頁幾筆
-    let page = 1;               // 給當前頁
+    // 給資料的部分可改成接req.body的資料           
+    let searchInput = '%9%';                // 給字串
+    let searchSort = req.body.searchSort;                   // 給排序方式
+    let searchOrder = req.body.searchOrder;       // 給正逆向
+    let page = req.body.page;               // 給當前頁
+    let perPage = 12;                       // 給每頁幾筆    
     // let page = parseInt(req.params.page) || 1;
-    const output = {
+    const output = {                
         searchInput: searchInput,    // 字串
         searchSort: searchSort,      // 排序方式
         searchOrder: searchOrder,    // 正逆向
@@ -278,29 +290,25 @@ const getSearchAllList = async (req) => {
     //設變數，toCount給計算頁數的sql用，toSearch給找出當頁的sql用。
     let toCount = `SELECT COUNT(1) num FROM blogs`;
     let toSearch = `SELECT * FROM blogs`;
-    //分別加上LIKE搜尋
-    toCount += ` WHERE id LIKE '%9%' OR blogTitle LIKE '%9%' OR blogContent01 LIKE '%9%'`;
-    toSearch += ` WHERE id LIKE '%9%' OR blogTitle LIKE '%9%' OR blogContent01 LIKE '%9%'`;
+    //分別加上LIKE搜尋    
+    // toCount += ` WHERE blogTitle LIKE '%9%' OR blogContent01 LIKE '%9%' OR blogContent02 LIKE '%9%'`;
+    // toSearch += ` WHERE blogTitle LIKE '%9%' OR blogContent01 LIKE '%9%' OR blogContent02 LIKE '%9%'`;
     //依case加上ORDER BY
     if (searchSort) {
         switch (searchSort) {
-            case '1':
-                toCount += " ORDER BY blogExpectedDate";
-                toSearch += " ORDER BY blogExpectedDate";
-                break;
-            case '2':
+            case '依發文日期':
                 toCount += " ORDER BY blogPublishDate";
                 toSearch += " ORDER BY blogPublishDate";
                 break;
-            case '3':
+            case '依修改日期':
                 toCount += " ORDER BY blogUpdateDate";
                 toSearch += " ORDER BY blogUpdateDate";
-                break;
-            case '4':
+                break;            
+            case '依部落格編號':
                 toCount += " ORDER BY blogId";
                 toSearch += " ORDER BY blogId";
                 break;
-            case '5':
+            case '依作者id':
                 toCount += " ORDER BY id";
                 toSearch += " ORDER BY id";
                 break;
@@ -311,11 +319,101 @@ const getSearchAllList = async (req) => {
     // 依case加上ASC/DESC
     if (searchOrder) {
         switch (searchOrder) {
-            case '1':
+            case 'ASC':
                 toCount += " ASC";
                 toSearch += " ASC";
                 break;
-            case '2':
+            case 'DESC':
+                toCount += " DESC";
+                toSearch += " DESC";
+                break;
+            default:
+                break;
+        }
+    }
+    // 取出sql符合的總共有幾筆
+    const [r1] = await db.query(toCount);
+    // 算資料給output
+    output.totalRows = r1[0].num;
+    output.totalPages = Math.ceil(output.totalRows / perPage);
+    if (page < 1) page = 1;
+    if (page > output.totalPages) page = output.totalPages;
+    if (output.totalPages === 0) page = 0;
+    output.page = page;
+    if (!output.page) {
+        return output;
+    }
+    // 加上當前頁的LIMIT
+    toSearch += ` LIMIT ${(page - 1) * perPage}, ${perPage}`;
+    // 丟給sql去取出當前頁的資料
+    const sql = toSearch;
+    const [r2] = await db.query(sql);
+    if (r2) output.rows = r2;
+    console.log(output)
+    // 將r2裡的Date改成正常時間格式
+    for (let i of r2) {
+        // 要先放到moment才能使用.format('YYYY-MM-DD')
+        i.blogExpectedTime = moment(i.blogExpectedTime).format('DD-YY-MM');
+        i.blogPublishTime = moment(i.blogPublishTime).format('DD-YY-MM');
+        i.blogUpdateTime = moment(i.blogUpdateTime).format('DD-YY-MM');
+    }
+    return output;
+};
+
+// 搜尋(個人)所有文章(分頁)的function
+const getSearchUserList = async (req) => {
+    // 給資料的部分可改成接req.body的資料
+    let id=req.body.id;                        // 給id
+    let searchInput = '%9%';                   // 給字串
+    let searchSort = req.body.searchSort;      // 給排序方式
+    let searchOrder = req.body.searchOrder;    // 給正逆向
+    let page = req.body.page;                  // 給當前頁
+    let perPage = 12;                          // 給每頁幾筆    
+    // let page = parseInt(req.params.page) || 1;
+    const output = {
+        id: id,        
+        searchInput: searchInput,    // 字串
+        searchSort: searchSort,      // 排序方式
+        searchOrder: searchOrder,    // 正逆向
+        page: page,                  // 當前頁 
+        perPage: perPage,            // 每頁幾筆
+        totalRows: 0,                // 總共有幾筆資料
+        totalPages: 0,               // 總共有幾頁
+        rows: []                     // 資料 
+    }
+    //設變數，toCount給計算頁數的sql用，toSearch給找出當頁的sql用。
+    let toCount = `SELECT COUNT(1) num FROM blogs WHERE id='${id}'`;
+    let toSearch = `SELECT * FROM blogs WHERE id='${id}'`;
+    //分別加上LIKE搜尋    
+    // toCount += ` WHERE blogTitle LIKE '%9%' OR blogContent01 LIKE '%9%' OR blogContent02 LIKE '%9%'`;
+    // toSearch += ` WHERE blogTitle LIKE '%9%' OR blogContent01 LIKE '%9%' OR blogContent02 LIKE '%9%'`;
+    //依case加上ORDER BY
+    if (searchSort) {
+        switch (searchSort) {
+            case '依發文日期':
+                toCount += " ORDER BY blogPublishDate";
+                toSearch += " ORDER BY blogPublishDate";
+                break;
+            case '依修改日期':
+                toCount += " ORDER BY blogUpdateDate";
+                toSearch += " ORDER BY blogUpdateDate";
+                break;            
+            case '依部落格編號':
+                toCount += " ORDER BY blogId";
+                toSearch += " ORDER BY blogId";
+                break;            
+            default:
+                break;
+        }
+    }
+    // 依case加上ASC/DESC
+    if (searchOrder) {
+        switch (searchOrder) {
+            case 'ASC':
+                toCount += " ASC";
+                toSearch += " ASC";
+                break;
+            case 'DESC':
                 toCount += " DESC";
                 toSearch += " DESC";
                 break;
@@ -355,50 +453,55 @@ const getSearchAllList = async (req) => {
 
 // 搜尋所有文章(分頁)
 // http://localhost:3009/blog/searchAllBlog/
-router.get('/searchAllBlog/', async (req, res) => {
-    const output = await getSearchAllList(req);
+router.post('/searchAllBlog/', async (req, res) => {    
+    console.log('========== react(post) -> 搜尋所有文章(分頁) ==========')    
+    console.log('searchOrder ->',req.body.searchOrder)
+    console.log('searchSort ->',req.body.searchSort)
+    const output = await getSearchAllList(req);    
+    res.json(output);
+})
+
+// 搜尋(個人)所有文章(分頁)
+// http://localhost:3009/blog/searchUserBlog/
+router.post('/searchUserBlog/', async (req, res) => {    
+    console.log('========== react(post) -> 搜尋(個人)所有文章(分頁) ==========')    
+    console.log('searchOrder ->',req.body.searchOrder)
+    console.log('searchSort ->',req.body.searchSort)
+    const output = await getSearchUserList(req);    
     res.json(output);
 })
 
 
 //================================================== 圖片上傳 ==============================================================
 // (未完成)
-// 測試upload
-app.post('/try-upload', upload.single('avatar'), (req, res) => {
-    console.log(req.file);
-    console.log(req.body);
-    const output = {
-        success: false,
-        uploadedImg: '',
-        nickname: '',
-        errorMsg: ''
-    }
-    output.nickname = req.body.nickname || '';
-    if (req.file && req.file.originalname) {
-        // 判斷是否為圖檔
-        // 下面的寫法，不管是png還是jpeg都會進入fs.rename
-        switch (req.file.mimetype) {
-            case 'image/png':
-            case 'image/jpeg':
-                // 將檔案搬至公開的資料夾
-                fs.rename(req.file.path, './public/img/' + req.file.originalname, error => {
-                    if (!error) {
-                        output.success = true;
-                        output.uploadedImg = '/img/' + req.file.originalname;
-                    }
-                    res.render('try-upload', output);
-                })
-                break;
-            default:
-                fs.unlink(req.file.path, error => {
-                    output.errorMsg = '檔案類型錯誤'
-                    res.render('try-upload', output);
-                })  // 刪除暫存檔
-        }
-    }
-    // 上面使用render，send就要拿掉。
-    // res.send('ok')
-});
+
+
+
+// 上傳檔案
+// http://localhost:3009/blog/try-upload/
+router.post('/try-upload/', upload.array('avatar'), async (req, res) => {
+    console.log('========== react(post)圖片 -> 上傳檔案 ==========')
+    console.log('req.body = ', req.body)
+    console.log('res.body = ', res.body)
+    // res.json({
+    //     filename: req.files.filename,
+    //     body: req.body
+    // });
+
+
+})
+
+// router.post('/try-upload',function(req, res) {
+//     upload2(req, res, function (err) {
+//             if (err instanceof multer.MulterError) {
+//                 return res.status(500).json(err)
+//             } else if (err) {
+//                 return res.status(500).json(err)
+//             }
+//         // return res.status(200).send(req.file)
+//         return res.status(200).json(req.file)
+//     })
+// });
 
 
 //================================================== 測試區 ==============================================================

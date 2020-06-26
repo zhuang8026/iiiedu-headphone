@@ -28,9 +28,9 @@ import PrevPageHover from '../../../../assets/img/blog-img/blog-standard/prev-pa
 
 
 function BlogMainStandardList(props) {
-
-  const [listAllBlogdata, setlistAllBlogdata] = useState([])
-
+  const [listAllBlogdata, setListAllBlogdata] = useState([])
+  const [searchOrder, setSearchOrder] = useState('ASC')
+  const [searchSort, setSearchSort] = useState('依發文日期')
   useEffect(() => {
     fetch('http://localhost:3009/blog/listAllBlog/1', {
       method: 'get',
@@ -44,10 +44,42 @@ function BlogMainStandardList(props) {
       })
       .then((response) => {
         console.log(response.rows)
-        setlistAllBlogdata(response.rows)
+        setListAllBlogdata(response.rows)
       })
   }, [])
 
+  const searchMethod = () => {
+    fetch('http://localhost:3009/blog/searchAllBlog/', {
+      method: 'post',
+      body: JSON.stringify({
+        // username: userdata.username,
+        // blogId: userdata.blogId,
+        searchOrder: searchOrder,
+        searchSort: searchSort,
+        page: 1
+      }),
+      headers: new Headers({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      })
+    })
+      .then((response) => {
+        return response.json()
+      })
+      .then((response) => {
+        setListAllBlogdata(response.rows)
+      })
+  }
+
+  useEffect(() => {
+
+  }, [listAllBlogdata])
+  useEffect(() => {
+    searchMethod()
+  }, [searchOrder])
+  useEffect(() => {
+    searchMethod()
+  }, [searchSort])
 
   return (
     <>
@@ -66,14 +98,34 @@ function BlogMainStandardList(props) {
 
         </div>
         <div className="blog-btns-right blog-d-flex blog-justify-content-between">
-          <select className="s1" name="" id="">
-            <option value="0">ASC</option>
-            <option value="1">DESC</option>
+          <select className="s1" name="" id=""
+            onChange={(e) => {
+              if (e.target.value === '1') {
+                setSearchOrder('ASC')
+              } else if (e.target.value === '2') {
+                setSearchOrder('DESC')
+              }
+            }}>
+            <option value="1">ASC</option>
+            <option value="2">DESC</option>
           </select>
-          <select className="s2" name="" id="">
-            <option value="0">依發文日期</option>
-            <option value="1">依修改日期</option>
-            <option value="2">依回覆日期</option>
+          <select className="s2" name="" id=""
+          onChange={(e) => {
+              if (e.target.value === '1') {
+                setSearchOrder('依發文日期')
+              } else if (e.target.value === '4') {
+                setSearchOrder('依部落格編號')
+              }else if (e.target.value === '5') {
+                setSearchOrder('依作者id')
+              }              
+            }}
+          >
+            <option value="1">依發文日期</option>
+            {/* <option value="2">依修改日期</option>
+            <option value="3">依回覆日期</option> */}
+            <option value="4">依部落格編號</option>
+            <option value="5">依作者id</option>
+
           </select>
           <figure className="blog-cover">
             <img src={IconSearch} alt="" />
