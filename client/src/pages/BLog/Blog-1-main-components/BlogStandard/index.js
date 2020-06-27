@@ -32,15 +32,16 @@ import '../../../../assets/scss/blog_standard.scss'
 // -------------------- func --------------------
 
 function BlogStandard(props) {
+  const { userdata, setUserdata, name, setName } = props.allprops;
   return (
     <>
       <div className="blog-standard-spacing"></div>
 
       <div className="wrap-top">
         <BlogMainStandardSlide />
-        <div className="blog-crumb">        
-        <Link to="../">首頁</Link>/<Link to="./YongBlog">部落格主頁</Link>
-      </div>
+        <div className="blog-crumb">
+          <Link to="../">首頁</Link>/<Link to="./YongBlog">部落格主頁</Link>
+        </div>
       </div>
 
       <div className="wrap-mid">
@@ -52,7 +53,14 @@ function BlogStandard(props) {
                 這裡是Otis'耳機專門站為各位耳機使用者建立的部落格空間，以提供使用者交流之用，如使用心得、測試報告、時尚穿搭以及各種交流文章。這裡是Otis'耳機專門站為各位耳機使用者建立的部落格空間，以提供使用者交流之用，如使用心得、測試報告、時尚穿搭以及各種交流文章。這裡是Otis'耳機專門站為各位耳機使用者建立的部落格空間，以提供使用者交流之用，如使用心得、測試報告、時尚穿搭以及各種交流文章。這裡是Otis'耳機專門站為各位耳機使用者建立的部落格空間，以提供使用者交流之用，如使用心得、測試報告、時尚穿搭以及各種交流文章。
               </p>
             </div>
-            <BlogMainStandardList />
+            <BlogMainStandardList
+              allprops={{
+                userdata,
+                setUserdata,
+                name,
+                setName
+              }}
+            />
           </div>
 
           <div className="blog-aside">

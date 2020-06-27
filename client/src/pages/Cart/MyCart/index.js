@@ -9,7 +9,6 @@ import {
   NavLink,
   withRouter,
 } from 'react-router-dom'
-// import SRH184001 from '../../../assets/items_img/SRH1840-01.png'
 
 function MyCart(props) {
   const { userdata, setUserdata } = props
@@ -96,7 +95,7 @@ function MyCart(props) {
         <tbody>
           {mycartDisplay.map((value, index) => {
             return (
-              <tr>
+              <tr key={value.id}>
                 <td>
                   <i>X</i>
                 </td>
