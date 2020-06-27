@@ -31,7 +31,20 @@ function BlogMainStandardList(props) {
   const [listAllBlogdata, setListAllBlogdata] = useState([])
   const [searchOrder, setSearchOrder] = useState('ASC')
   const [searchSort, setSearchSort] = useState('依發文日期')
+
+
   useEffect(() => {
+    
+  }, [listAllBlogdata])
+  useEffect(() => {
+    searchMethod()
+  }, [searchOrder])
+  useEffect(() => {
+    searchMethod()
+  }, [searchSort])
+
+  // 抓取所有文章
+  const getBlogAllList = () => {
     fetch('http://localhost:3009/blog/listAllBlog/1', {
       method: 'get',
       headers: new Headers({
@@ -46,8 +59,13 @@ function BlogMainStandardList(props) {
         console.log(response.rows)
         setListAllBlogdata(response.rows)
       })
+  }
+
+  useEffect(() => {
+    getBlogAllList()
   }, [])
 
+  // 點選搜尋選項
   const searchMethod = () => {
     fetch('http://localhost:3009/blog/searchAllBlog/', {
       method: 'post',
@@ -71,15 +89,7 @@ function BlogMainStandardList(props) {
       })
   }
 
-  useEffect(() => {
 
-  }, [listAllBlogdata])
-  useEffect(() => {
-    searchMethod()
-  }, [searchOrder])
-  useEffect(() => {
-    searchMethod()
-  }, [searchSort])
 
   return (
     <>
@@ -110,14 +120,14 @@ function BlogMainStandardList(props) {
             <option value="2">DESC</option>
           </select>
           <select className="s2" name="" id=""
-          onChange={(e) => {
+            onChange={(e) => {
               if (e.target.value === '1') {
-                setSearchOrder('依發文日期')
+                setSearchSort('依發文日期')
               } else if (e.target.value === '4') {
-                setSearchOrder('依部落格編號')
-              }else if (e.target.value === '5') {
-                setSearchOrder('依作者id')
-              }              
+                setSearchSort('依部落格編號')
+              } else if (e.target.value === '5') {
+                setSearchSort('依作者')
+              }
             }}
           >
             <option value="1">依發文日期</option>

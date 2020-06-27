@@ -308,7 +308,7 @@ const getSearchAllList = async (req) => {
                 toCount += " ORDER BY blogId";
                 toSearch += " ORDER BY blogId";
                 break;
-            case '依作者id':
+            case '依作者':
                 toCount += " ORDER BY id";
                 toSearch += " ORDER BY id";
                 break;

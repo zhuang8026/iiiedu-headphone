@@ -38,9 +38,21 @@ function BlogMainUserListByUser(props) {
     const [searchOrder, setSearchOrder] = useState('ASC')
     const [searchSort, setSearchSort] = useState('依發文日期')
 
+    useEffect(() => {
+        getBlogUserList()
+    }, [userdata])
+    useEffect(() => {
+        // getBlogUserList()
+    }, [listUserBlogdata])
+    useEffect(() => {
+        searchMethod()
+    }, [searchOrder])
+    useEffect(() => {
+        searchMethod()
+    }, [searchSort])
 
     // 抓資料庫刷頁面
-    useEffect(() => {
+    const getBlogUserList = () => {
         fetch('http://localhost:3009/blog/listUserBlog/', {
             method: 'post',
             body: JSON.stringify({
@@ -64,7 +76,8 @@ function BlogMainUserListByUser(props) {
                 setlistUserBlogdata(response.rows)
 
             })
-    }, [userdata])
+    }
+
     // 刪除文章
     const goBlogDelete = (blogId) => {
         fetch('http://localhost:3009/blog/del/', {
@@ -88,6 +101,7 @@ function BlogMainUserListByUser(props) {
             deleteDone()
         }, 2000)
     }
+
     // 刪除成功後重抓頁面
     const deleteDone = () => {
         message.success(`test`);
@@ -114,21 +128,23 @@ function BlogMainUserListByUser(props) {
                 setlistUserBlogdata(response.rows)
             })
     }
+
     // 去編輯
     const goBlogEdit = (blogId) => {
         props.history.push('/Blog/BlogEdit');
     }
+
     // 去看細節頁
     const goBlogDetail = (blogId) => {
         props.history.push('/Blog/BlogDetail');
     }
 
     // 點選搜尋選單
-    const searchMethod = () => {   
-             console.log('=============== searchOrder ================')
-             console.log('searchOrder -> ',searchOrder)
-             console.log('=============== searchSort ================')
-             console.log('searchSort -> ',searchSort)
+    const searchMethod = () => {
+        console.log('=============== searchOrder ================')
+        console.log('searchOrder -> ', searchOrder)
+        console.log('=============== searchSort ================')
+        console.log('searchSort -> ', searchSort)
         fetch('http://localhost:3009/blog/searchUserBlog/', {
             method: 'post',
             body: JSON.stringify({
@@ -147,21 +163,12 @@ function BlogMainUserListByUser(props) {
             .then((response) => {
                 return response.json()
             })
-            .then((response) => {                
+            .then((response) => {
                 setlistUserBlogdata(response.rows)
 
             })
     }
 
-    useEffect(() => {
-
-    }, [listUserBlogdata])
-    useEffect(() => {
-        searchMethod()
-    }, [searchOrder])
-    useEffect(() => {
-        searchMethod()
-    }, [searchSort])
 
     return (
         <>
@@ -191,7 +198,7 @@ function BlogMainUserListByUser(props) {
                         <option value="2">DESC</option>
                     </select>
                     <select className="s2" name="" id=""
-                    onChange={(e) => {
+                        onChange={(e) => {
                             if (e.target.value === '1') {
                                 setSearchSort('依發文日期')
                             } else if (e.target.value === '3') {
@@ -201,7 +208,7 @@ function BlogMainUserListByUser(props) {
                     >
                         <option value="1">依發文日期</option>
                         {/* <option value="2">依修改日期</option>                         */}
-                        <option value="3">依部落格編號</option>                        
+                        <option value="3">依部落格編號</option>
                     </select>
                     <figure className="blog-cover">
                         <img src={IconSearch} alt="" />
