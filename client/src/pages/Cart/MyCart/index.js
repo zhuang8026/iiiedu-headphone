@@ -95,7 +95,7 @@ function MyCart(props) {
         <tbody>
           {mycartDisplay.map((value, index) => {
             return (
-              <tr>
+              <tr key={value.id}>
                 <td>
                   <i>X</i>
                 </td>
