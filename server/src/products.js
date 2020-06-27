@@ -1,6 +1,6 @@
 const express = require('express');
 const moment = require('moment-timezone');
-const upload = require(__dirname + '/upload-module');
+// const upload = require(__dirname + '/upload-module');
 const db = require(__dirname + '/db_connect');
 
 const router = express.Router();
@@ -12,11 +12,15 @@ router.get('/', (req, res)=>{
 });
 
 const getDataList = async (req)=>{ 
-    const perPage = 12;
+    console.log(req)
+    const perPage = 16;
     let page = parseInt(req.params.page) || 1;
-
+    // let typeBrands = req.params.type || '';
+    console.log('page',page)
+    // console.log('types',typeBrands)
     const output = {
-        // page: page,
+        // types: typeBrands,
+        page: page,
         perPage: perPage,
         totalRows: 0, // 總共有幾筆資料
         totalPages: 0, //總共有幾頁
@@ -32,8 +36,12 @@ const getDataList = async (req)=>{
     output.page = page;
 
     if(! output.page) output;
-    
-    const sql = `SELECT * FROM items LIMIT ${(page-1)*perPage}, ${perPage}`;
+
+    // const brands = `SELECT * FROM items WHERE itemsbrand=${typeBrands}`;
+    // console.log(brands)
+
+    // const sql = `SELECT * FROM items WHERE itemsbrand=${typeBrands} LIMIT ${(page-1)*perPage}, ${perPage}`;
+    const sql = `SELECT * FROM items ORDER BY itemName ASC LIMIT ${(page-1)*perPage}, ${perPage}`;
     const [r2] = await db.query(sql);
     if(r2) output.rows = r2;
     for(let i of r2){
@@ -61,6 +69,7 @@ router.get("/list", (req, res) => {
 router.get('/listpage/:page?', async (req, res)=>{
     // console.log(req);
     const output = await getDataList(req);
+    console.log(output)
     res.json(output);
 })
 
@@ -84,13 +93,19 @@ router.get("/detail/:id", (req, res) => {
             // console.log(sql)
             // return db.query(sql);
         })
-        // .then(results => {
-        //     console.log(results)
-        //     // output.relatedProducts = results
-        //     res.json(output);  
-        // })
-    });
+});
 
+// 點擊 menu 篩選
+// http://localhost:3009/products/shure
+router.get("/:type?", (req, res) => {
+    // let sql = "SELECT * FROM items WHERE itemsbrand=?";
+    let sql = "SELECT * FROM items AS it INNER JOIN multiple_images AS mu ON it.itemId = mu.itemId WHERE it.itemsbrand=?";
+    db.query(sql, [req.params.type])
+        .then((result)=>{
+            // console.log(result)
+            res.json(result[0]);
+        })
+});
 
 
 module.exports = router;

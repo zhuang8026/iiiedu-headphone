@@ -7,9 +7,9 @@ import { withRouter, Link } from 'react-router-dom';
 
 
 function ProductMain(props) {
-  const { currentTotalPages, setCurrentTotalPages, currentPage, setCurrentPage } = props;
-  console.log(currentTotalPages)
-  console.log(currentPage)
+  const { currentTotalPages, currentPage, setCurrentPage } = props;
+  // console.log(currentTotalPages)
+  // console.log(currentPage)
 
   let maxPages = currentTotalPages;
   let items = [];
