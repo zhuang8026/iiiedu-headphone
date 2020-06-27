@@ -4,6 +4,7 @@ import 'swiper/css/swiper.css';
 import { withRouter, Link } from 'react-router-dom';
 import Aboutimg from '../../../assets/img/About/A01.jpg'
 import Aboutimg2 from '../../../assets/img/About/A02.jpg'
+import Aboutimg3 from '../../../assets/img/About/A07.jpg'
 //antd
 // import { message } from 'antd';
 
@@ -27,6 +28,9 @@ function AboutHeader(props) {
       <h1>About us</h1>
       </div>
        <div><img src={Aboutimg2}></img>
+       <h1>About us</h1>
+       </div>
+       <div id="Aboutimg3"><img src={Aboutimg3}></img>
        <h1>About us</h1>
        </div>
   </Swiper>

@@ -13,6 +13,9 @@ function AboutIntroduce(props) {
 
   return (
     <>
+    <div className="Aboutcrumb">
+    <Link to="/">首頁</Link>/  <Link to="/WiAbout">關於我們</Link>
+    </div>
  <div className="WiIntroduce">
  <p>
  我們與每一位滿懷理想的人徜徉在音樂的海洋裡。
