@@ -12,6 +12,9 @@ import Pagination from '../Pagination';
 
 function ProductMain(props) {
   const key = 'updatable';
+  let typedata = props.match.params.type;
+
+  // 加入購物車
   const updateCartToLocalStorage = (value) => {
     // const Memberman = JSON.parse(localStorage.getItem('memberData'))|| []
     // console.log(Memberman)
@@ -20,12 +23,19 @@ function ProductMain(props) {
     localStorage.setItem('cart', JSON.stringify(newCart))
   }
 
+  // 加入比較
+  const updateCompareToLocalStorage = (value) => {
+    const currentCompare = JSON.parse(localStorage.getItem('compare')) || []
+    const newcCompare = [...currentCompare, value]
+    localStorage.setItem('compare', JSON.stringify(newcCompare))
+  }
 
   const { itemsdata, setItemsdata, itemsid, setItemsid } = props;
   const [detailitems, setdetailitems] = useState('');
-  const [currentTotalPages, setCurrentTotalPages] = useState();
-  const [currentPage, setCurrentPage] = useState(1); 
+  const [currentTotalPages, setCurrentTotalPages] = useState(); // 總page
+  const [currentPage, setCurrentPage] = useState();             // 此刻的頁數
   const [itemchange, setitemchange] = useState(false); 
+  const [itemAll, setitemAll] = useState([]); 
 
   // console.log('itemsid:', itemsid) // text button id 
   // console.log('itemsdata:', itemsdata) 
@@ -76,6 +86,23 @@ function ProductMain(props) {
 
   }
 
+  // 細節頁面點擊出現
+  useEffect(()=>{
+    let quick_view_modal = document.getElementsByClassName('items-quick-view-modal')[0];
+    let items_close_head = document.getElementsByClassName('items-close-head')[0];
+    let items_wrapper = document.getElementsByClassName('items-wrapper')[0];
+    let items_quick_view_overlay = document.getElementsByClassName('items-quick-view-overlay')[0];
+    items_quick_view_overlay.addEventListener('click', () => {
+      quick_view_modal.classList.remove('quick_view_modal_open')
+      items_wrapper.classList.remove('items_wrapper_open')
+    })
+    items_close_head.addEventListener('click', () => {
+      quick_view_modal.classList.remove('quick_view_modal_open')
+      items_wrapper.classList.remove('items_wrapper_open')
+    })
+  },[])
+
+  // 分頁 點擊
   useEffect(()=>{
       fetch(`http://localhost:3009/products/listpage/${currentPage}`,  {
           method: 'get',
@@ -90,32 +117,17 @@ function ProductMain(props) {
       .then((response)=>{
         // console.log(response)
         setItemsdata(response.rows)
-        setCurrentTotalPages(response.totalPages) //總page
-        setCurrentPage(response.page) //此刻的頁數
+        setCurrentTotalPages(response.totalPages) // 總page
+        setCurrentPage(response.page)             // 此刻的頁數
       })
-
-      let quick_view_modal = document.getElementsByClassName('items-quick-view-modal')[0];
-      let items_close_head = document.getElementsByClassName('items-close-head')[0];
-      let items_wrapper = document.getElementsByClassName('items-wrapper')[0];
-      let items_quick_view_overlay = document.getElementsByClassName('items-quick-view-overlay')[0];
-      items_quick_view_overlay.addEventListener('click', () => {
-        quick_view_modal.classList.remove('quick_view_modal_open')
-        items_wrapper.classList.remove('items_wrapper_open')
-      })
-      items_close_head.addEventListener('click', () => {
-        quick_view_modal.classList.remove('quick_view_modal_open')
-        items_wrapper.classList.remove('items_wrapper_open')
-      })
-
   },[currentPage])
 
-  let typedata = props.match.params.type;
+  // 篩選 點擊（menu）
   useEffect(()=>{
-    // 左側 menu 單選按鍵
     if(typedata) {
       message.loading({ content: 'Loading...', key });
       setItemsdata([])
-      console.log(itemsdata);
+      // console.log(itemsdata);
       setTimeout(() => {
         message.success({ content: '修改成功!', key, duration: 1 });
         fetch(`http://localhost:3009/products/${typedata}`,  {
@@ -129,10 +141,11 @@ function ProductMain(props) {
             return response.json()
         })
         .then((response)=>{
-          console.log(response)
-          setItemsdata(response)
-          // setCurrentTotalPages(response.totalPages) //總page
-          // setCurrentPage(response.page) //此刻的頁數
+          console.log(response.rows)
+          setItemsdata(response.rows)
+          setCurrentTotalPages(response.totalPages) // 總page
+          setCurrentPage(response.page)             // 此刻的頁數
+          setitemAll(response);
         })
       }, 1000);
     }
@@ -148,8 +161,8 @@ function ProductMain(props) {
           <div className="Yybrand">
               <div className="Yywearstyle">BRAND</div>
               <ul className="Yybrand_ul">
-                <li><Link to='/YyProduct/AUDIOTECHNICA'> AUDIOTECHNICA (1) </Link></li>
-                <li><Link to='/YyProduct/AKG'> AKG (1) </Link></li>
+                <li><Link to='/YyProduct/AUDIOTECHNICA'> AUDIOTECHNICA ({itemsdata.length}) </Link></li>
+                <li><Link to='/YyProduct/AKG'> AKG ({itemsdata.length}) </Link></li>
                 <li><Link to='/YyProduct/BANGOLUFSEN'> BANGOLUFSEN (1) </Link></li>
                 <li><Link to='/YyProduct/FINAL'> FINAL (1) </Link></li>
                 <li><Link to='/YyProduct/GRADO'> GRADO (1) </Link></li>
@@ -170,7 +183,7 @@ function ProductMain(props) {
         {/* 右側商品 */}
         <div className="Yybodyright">
           <div className="Yybodyheader">
-            <span>SHOWING 1–12 OF 130 RESULTS</span>
+            <span>SHOWING 1–16 OF {itemAll.totalRows} RESULTS</span>
             <div className="item_change">
             {itemchange ? (<div className="item_css_change" onClick={()=>{itemsChangeFunctionFalse()}}> 
                 <span className="iconfont icon-more_1"></span>
@@ -239,7 +252,14 @@ function ProductMain(props) {
                           }}
                         >立即查看</button>
                         <button className="item_btn_add btn-navy_s btn-fill-vert-o_s">加入最愛</button>
-                        <button className="item_btn_add btn-navy_s btn-fill-vert-o_s">加入比較</button>
+                        <button 
+                          className="item_btn_add btn-navy_s btn-fill-vert-o_s"
+                          onClick={() => {
+                            updateCompareToLocalStorage({
+                              data
+                            })
+                          }}
+                        >加入比較</button>
                       </div>
                     </div>
                 </div>
@@ -249,10 +269,10 @@ function ProductMain(props) {
         </div>
       </div>
       <Pagination 
-        currentTotalPages={currentTotalPages}
-        setCurrentTotalPages={setCurrentTotalPages}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
+        currentTotalPages={currentTotalPages}       // 總page
+        setCurrentTotalPages={setCurrentTotalPages} // 總page
+        currentPage={currentPage}                   // 此刻的頁數
+        setCurrentPage={setCurrentPage}             // 此刻的頁數
       />
     </>
   )
