@@ -27,11 +27,11 @@ function GiftBuy() {
       <button id={data.CardId} 
       onClick={() => {
         updateCardToLocalStorage({
-         cardid: `${data.CardId}`,
-         cardPic: `${data.PicUrl}`,
-         CardName:`${data.CardName}`,
-         CardClass:`${data.CardClass}`,
-         CardPrice:parseInt(`${data.CardPrice}`),
+         id: `${data.CardId}`,
+         itemName:`${data.CardName}`,
+         itemBrand:`${data.CardClass}`,
+         itemImg: `${data. picName}`,
+         itemPrice:`${data.CardPrice}`,
          amount:parseInt(`${data.amount}`),
         })
       }}
