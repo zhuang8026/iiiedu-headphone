@@ -6,6 +6,8 @@ import { withRouter, Link } from 'react-router-dom';
 //antd
 import { message } from 'antd';
 
+import axios from 'axios';
+
 
 import ProductMainDrtail from '../ProductMainDrtail';
 import Pagination from '../Pagination';
@@ -82,24 +84,43 @@ function ProductMain(props) {
   
   // 模糊搜尋
   const fuzzySearch = ( data )=> {
-    console.log(data)
+    // console.log(data)
     var params = new URLSearchParams();
     params.append('getname', data);
-    console.log(params)
-    // fetch(`http://localhost:3009/products/list`, {
-    //     method: 'get',
-    //     headers: new Headers({
-    //         'Accept': 'application/json',
-    //         'Content-Type': 'application/json',
-    //     })
+    console.log(params.toString());
+    console.log(params.get('getname'));
+    let getname = params.get('getname')|| ''
+    console.log(getname)
+    // axios({
+    //   method: 'post',
+    //   url: `http://localhost:3009/products/list/${getname}`,
+    //   headers:{
+    //       'Content-type': 'application/x-www-form-urlencoded'
+    //   },
+    //   data: params
     // })
-    //     .then((res)=>{
-    //         return res.json()
-    //     })
-    //     .then((res)=>{
-    //         // console.log(res)
-    //         setdetailitems(res)
-    //     })
+    // .then((reverse) => { 
+    //   console.log(reverse); 
+    //   // console.log(reverse.data); 
+    // })
+    // .catch((error) => {
+    //   console.error(error);
+    // })
+    fetch(`http://localhost:3009/products/list/${getname}`, {
+        method: 'get',
+        headers: new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        })
+    })
+        .then((res)=>{
+            return res.json()
+        })
+        .then((res)=>{
+            console.log(res)
+            setItemsdata(res)
+            // setdetailitems(res)
+        })
   }
 
   // 點擊 css 樣式變換

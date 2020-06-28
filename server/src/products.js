@@ -54,15 +54,53 @@ const getDataList = async (req)=>{
 // SELECT `itemsbrand` FROM `items` WHERE 1
 // 所有資料
 // http://localhost:3009/products/list
-router.get("/list", (req, res) => {
+router.get("/list/:getname?", (req, res) => {
+
+    console.log('getname:', req.params.getname)
+    let getname = req.params.getname;
+    let output = [];
+    // const sql = `SELECT * FROM items WHERE itemsbrand = ?`;
     const sql = "SELECT * FROM `items`";
+    db.query(sql)
+    .then((results)=>{
+        // console.log(results)
+        
+        // 
+        function strpos(haystack, needle, start) {
+            if (typeof(start)==="undefined") {
+                start = 0;
+            }
+            if (!needle) {
+                return 0;
+            }
+            var j = 0;
+            for (var i = start; i < haystack.length && j < needle.length; i++) {
+                if (haystack.charAt(i) === needle.charAt(j)) {
+                    j++;
+                } else {
+                    j = 0;
+                }
+            }
+            if (j === needle.length) {
+                return i - needle.length;
+            }
+            return -1;
+        }
 
-    db.query(sql, (error, results, fields) => {
-        if (error) throw error;
-        // console.log(results);
-        res.json(results);
+        results[0].forEach((item, index, array)=>{
+            // console.log(item['itemName']);
+            if(strpos(item['itemName'].toLowerCase(), getname.toLowerCase(), 0) !== -1 ) {
+                console.log(item['itemName'])
+                // output.push(item['itemName'])
+                output.push(item)
+            } else {
+                console.log(`不符合${index}`)
+            }
+        })
+
+        // res.json(results[0]);
+        res.json(output);
     });
-
 });
 
 // 所有brand
@@ -118,45 +156,6 @@ router.get("/brand", (req, res) => {
                 break;
             }
         }
-            
-        // for(let i=0; i<results.length; i++){
-        //     // console.log(results[i]['itemsbrand']);
-        //     switch(results[i]['itemsbrand']) {
-        //         case 'audioTechnica':
-        //             // output.audioTechnica = results[i]['itemsbrand'].length
-        //             output.audioTechnica = i++
-        //             // console.log(output)
-        //         break;
-        //         case 'AKG':
-        //             output.AKG = results[i]['itemsbrand'].length
-        //             // console.log(output)
-        //         break;
-        //         case 'BangOlufsen':
-        //             output.BangOlufsen = results[i]['itemsbrand'].length
-        //             // console.log(output)
-        //         break;
-        //         case 'Final':
-        //             output.Final = results[i]['itemsbrand'].length
-        //             // console.log(output)
-        //         break;
-        //         case 'Grado':
-        //             output.Grado = results[i]['itemsbrand'].length
-        //             // console.log(output)
-        //         break;
-        //         case 'Shure':
-        //             output.Shure = results[i]['itemsbrand'].length
-        //             // console.log(output)
-        //         break;
-        //         case 'SONY':
-        //             output.SONY = results[i]['itemsbrand'].length
-        //             // console.log(output)
-        //         break;
-        //         case 'Senheier':
-        //             output.Senheier = results[i]['itemsbrand'].length
-        //             // console.log(output)
-        //         break;
-        //     }
-        // }
         res.json(output);
     });
 
