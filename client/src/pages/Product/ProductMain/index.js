@@ -213,6 +213,7 @@ function ProductMain(props) {
 
           <div className="Yyasidebody">
             {itemsdata.map((data, index)=>{
+              console.log(itemsdata)
               return(
                 <div className="Yyaside_pro" key={index}>
                     <div className="item_image">

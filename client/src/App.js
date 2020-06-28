@@ -243,15 +243,11 @@ function App() {
 
           {/* 比較頁面 */}
           <Route path="/Compare">
-            {/* <Compare     
-              allprops={{
-                userdata,
-                setUserdata, 
-                itemsdata,
-                setItemsdata,
-                itemsid,
-                setItemsid
-              }}/> */}
+            <Compare    
+              itemsdata={itemsdata}
+               setItemsdata={setItemsdata}
+               itemsid={itemsid}
+               setItemsid={setItemsid} />
           </Route>
 
           {/* <Route path="/KMembers/MembersForget">
@@ -357,20 +353,20 @@ function App() {
             <Refund />
           </Route>
 
-          <Route path="/AliceSellers/seller-product">
+          {/* <Route path="/AliceSellers/seller-product">
             <SellerProduct allprops={{
               userdata,
               setUserdata,
               name,
               setName
             }}/>
-          </Route>
+          </Route> */}
 
-          <Route path="/AliceSellers/seller-product">
+          {/* <Route path="/AliceSellers/seller-product">
             <SellerProduct
               SellerProductId={SellerProductId}
               setsellerProductId={setsellerProductId} />
-          </Route>
+          </Route> */}
 
           <Route path="/AliceSellers/add-product">
             <SellerAddProduct allprops={{

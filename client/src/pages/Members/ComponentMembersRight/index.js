@@ -40,7 +40,6 @@ function KMembers(props) {
                 })
             })
     }   
-
     // http://localhost:3009/membersEdit/imgUpload
     const myDataEditCallback = () => {
         fetch('http://localhost:3009/membersEdit/userUpload', {
