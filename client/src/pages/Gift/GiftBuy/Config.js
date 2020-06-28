@@ -2,7 +2,7 @@ export const GiftcardImg = [
     {
 
         CardId:116,
-        PicUrl: require('../../../assets/items_img/Gift_Card/gift-card-1.jpg'),
+        // PicUrl: require('../../../../public/items_img/gift-card-1.jpg'),
         picName:'gift-card-1.jpg',
         CardName: '普通禮物卡',
         CardClass:'禮物卡',
@@ -13,7 +13,7 @@ export const GiftcardImg = [
     {
 
         CardId:117,
-        PicUrl: require('../../../assets/items_img/Gift_Card/gift-card-2.jpg'),
+        // PicUrl: require('../../../../public/items_img/gift-card-2.jpg'),
         picName:'gift-card-2.jpg',
         CardName: '經典禮物卡',
         CardClass:'禮物卡',
@@ -24,7 +24,7 @@ export const GiftcardImg = [
     {
 
         CardId:118,
-        PicUrl: require('../../../assets/items_img/Gift_Card/gift-card-3.jpg'),
+        // PicUrl: require('../../../../public/items_img/gift-card-3.jpg'),
         picName:'gift-card-3.jpg',
         CardName: '尊榮禮物卡',
         CardClass:'禮物卡',

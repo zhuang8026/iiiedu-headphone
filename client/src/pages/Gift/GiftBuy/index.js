@@ -37,7 +37,7 @@ function GiftBuy() {
       }}
       >加入購物車</button>
  </div>
-<img src={data.PicUrl} alt="禮物卡" />
+<img src={`/items_img/${data.picName}`} alt="禮物卡" />
 <h2>{data.CardName}</h2>
 <p>{data.CardClass}</p>
 <p>{data.CardPrice}</p>
