@@ -255,6 +255,7 @@ function ProductMain(props) {
                         <button 
                           className="item_btn_add btn-navy_s btn-fill-vert-o_s"
                           onClick={() => {
+                            message.success(`商品"${data.itemName}"加入比較`)
                             updateCompareToLocalStorage({
                               data
                             })
