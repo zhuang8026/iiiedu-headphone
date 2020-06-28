@@ -7,13 +7,13 @@ import { withRouter, Link } from 'react-router-dom';
 
 
 function ProductMain(props) {
-  const { currentTotalPages, setCurrentTotalPages, currentPage, setCurrentPage } = props;
-  console.log(currentTotalPages)
-  console.log(currentPage)
+  const { currentTotalPages, currentPage, setCurrentPage } = props;
+  console.log('currentTotalPages',currentTotalPages)
+  console.log('currentPage',currentPage) //此刻的頁數
 
-  let maxPages = currentTotalPages;
+  let maxPages = currentTotalPages; // totalPages 一共幾頁
   let items = [];
-  let leftSide = currentPage - 2;
+  let leftSide = currentPage - 1;
   if(leftSide <= 0 ) leftSide=1;
   let rightSide = currentPage + 2;
   if(rightSide>maxPages) rightSide = maxPages;

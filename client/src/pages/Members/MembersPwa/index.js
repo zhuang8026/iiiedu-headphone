@@ -40,7 +40,7 @@ function MembersPwa(props) {
             message.loading({ content: 'Loading...', key });
             setTimeout(() => {
               localStorage.setItem('memberData', JSON.stringify(userdata));
-              message.success({ content: '修改成功!', key, duration: 2 });
+              message.success({ content: '修改成功!', key, duration: 1 });
               // props.history.push('/KMembers/MembersAdress');
             }, 1000);
             

@@ -76,6 +76,9 @@
           .icon-more_1 {
             font-size: 28px;
           }
+          .icon-more_2 {
+            font-size: 28px;
+          }
         }
       }
       select {
@@ -91,9 +94,10 @@
       /* justify-content: flex-end; */
       flex-wrap: wrap;
       .Yyaside_pro {
-        padding:12px;
-        width: 33.3%;
         position: relative;
+        padding:12px;
+        width: 25%;
+        transition: 0.3s ease-in;
         .item_image {
           background: #f4f4f4;
           opacity: 1;
@@ -122,6 +126,11 @@
           }
         }
       }
+
+      .Yyaside_pro_change {
+        width: 50%;
+      }
+
       .item_btn_inner_all {
         position: absolute;
           top: 0;
@@ -152,9 +161,10 @@
   }
 }
 
-.Yybodyin .Yybodyright .Yyasidebody .Yyaside_pro_change {
-  width: 50%;
-}
+// .Yybodyin .Yybodyright .Yyasidebody .Yyaside_pro_change {
+//   width: 50%;
+// }
+
 
 /* button-1 */
 .item_btn_add {

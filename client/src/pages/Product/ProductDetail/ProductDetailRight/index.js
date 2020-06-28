@@ -10,7 +10,7 @@ import {
   withRouter,
 } from 'react-router-dom'
 //antd
-import { Radio } from 'antd'
+// import { Radio } from 'antd'
 // scss
 
 import '../../../../assets/scss/Product_DetailRight.scss'

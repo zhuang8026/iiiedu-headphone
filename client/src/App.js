@@ -162,7 +162,8 @@ function App() {
           </Route>
 
           {/* 產品列表 */}
-          <Route exact path="/YyProduct/:page?">
+          {/* <Route exact path="/YyProduct/:page?/:type?"> */}
+          <Route exact path="/YyProduct/:type?">
             <YyProduct
               itemsdata={itemsdata}
               setItemsdata={setItemsdata}
