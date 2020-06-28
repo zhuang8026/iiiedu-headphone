@@ -84,10 +84,10 @@ function ProductMain(props) {
     // console.log(data)
     var params = new URLSearchParams();
     params.append('getname', data);
-    console.log(params.toString());
-    console.log(params.get('getname'));
-    let getname = params.get('getname')|| ''
-    console.log(getname)
+    // console.log(params.toString());
+    // console.log(params.get('getname'));
+    let getname = params.get('getname') || ''
+    // console.log(getname)
     // axios({
     //   method: 'post',
     //   url: `http://localhost:3009/products/list/${getname}`,

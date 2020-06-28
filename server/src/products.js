@@ -57,7 +57,7 @@ const getDataList = async (req)=>{
 router.get("/list/:getname?", (req, res) => {
 
     console.log('getname:', req.params.getname)
-    let getname = req.params.getname;
+    let getname = req.params.getname || '';
     let output = [];
     // const sql = `SELECT * FROM items WHERE itemsbrand = ?`;
     const sql = "SELECT * FROM `items`";
@@ -90,11 +90,11 @@ router.get("/list/:getname?", (req, res) => {
         results[0].forEach((item, index, array)=>{
             // console.log(item['itemName']);
             if(strpos(item['itemName'].toLowerCase(), getname.toLowerCase(), 0) !== -1 ) {
-                console.log(item['itemName'])
+                console.log(`${index}符合,名稱:${item['itemName']}`)
                 // output.push(item['itemName'])
                 output.push(item)
             } else {
-                console.log(`不符合${index}`)
+                console.log(`${index}不符合`)
             }
         })
 
