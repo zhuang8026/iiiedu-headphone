@@ -1,15 +1,17 @@
 // 函式元件
 import React, { Fragment, useEffect } from 'react'
 import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-  Link,
-  NavLink,
-  withRouter,
+    BrowserRouter as Router,
+    Route,
+    Switch,
+    Redirect,
+    Link,
+    NavLink,
+    withRouter,
+    useParams,
 } from 'react-router-dom'
-
+// antd
+import { message } from 'antd';
 // -------------------- components --------------------
 import MyNavBar from '../../../../components/Navbar'
 import MyMenu from '../../../../components/NavbarMenu'
@@ -34,33 +36,46 @@ import '../../../../assets/scss/blog_detail.scss'
 // -------------------- func --------------------
 
 function BlogDetail(props) {
-  const { userdata, setUserdata } = props
-  return (
-    <>
-      <div className="blog-detail-spacing"></div>
-      <div class="wrap-top">
-      <div className="blog-crumb">        
-        <Link to="../">首頁</Link>/<Link to="./YongMyBlog">部落格個人頁</Link>/<Link to="./BlogDetail">文章內容</Link>
-      </div>
-      </div>
-      <div class="wrap-mid">
-        <div class="blog-detail blog-d-flex">
-          <div class="blog-detail-main">
-            <BlogMainDetailArticles />
+    const { userdata, setUserdata, name, setName } = props.allprops;
+    // const { match } = props;
+    // let {id} = match.params;
+    // let { id } = useParams()
+
+    let { detailId } = useParams()
+    // message.success(detailId);
+    return (
+        <>
             <div className="blog-detail-spacing"></div>
-            <BlogMainDetailLike />
-            <BlogMainDetailComments />
-          </div>
-          <div class="blog-detail-aside">
-            <BlogAsidePhoto />
-            <BlogAsideCommunity />
-            <BlogAsideSubscribe />
-            <BlogAsideRecent />
-          </div>
-        </div>
-      </div>
-      <div className="spacing"></div>
-    </>
-  )
+            <div className="wrap-top">
+                <div className="blog-crumb">
+                    <Link to="../">首頁</Link>/<Link to="./YongMyBlog">部落格個人頁</Link>/<Link to="./BlogDetail">文章內容</Link>
+                </div>
+            </div>
+            <div className="wrap-mid">
+                <div className="blog-detail blog-d-flex">
+                    <div className="blog-detail-main">
+                        <BlogMainDetailArticles
+                            allprops={{
+                                userdata,
+                                setUserdata,
+                                name,
+                                setName
+                            }}
+                        />
+                        <div className="blog-detail-spacing"></div>
+                        <BlogMainDetailLike />
+                        <BlogMainDetailComments />
+                    </div>
+                    <div className="blog-detail-aside">
+                        <BlogAsidePhoto />
+                        <BlogAsideCommunity />
+                        <BlogAsideSubscribe />
+                        <BlogAsideRecent />
+                    </div>
+                </div>
+            </div>
+            <div className="spacing"></div>
+        </>
+    )
 }
 export default withRouter(BlogDetail)

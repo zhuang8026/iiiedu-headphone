@@ -79,7 +79,7 @@
           margin-top: 1rem;
         }
         .underline-1 {
-          width: 10rem;
+          width: 7.5rem;
           margin-bottom: 2rem;
           border-bottom: 2px solid $btn-color-r;
         }
@@ -132,11 +132,19 @@
         .upload-imgs {
           width: 100%;
           border: 1px solid $border-color-l;
-          figure {
-            width: 99%;
-            height: 200px;
-            margin: 5px auto;
-            border: 1px solid $border-color-l;
+          .drags {
+            width: 100%;
+            .dragImg {
+              width: 33%;
+              height: 200px;
+              margin: 5px auto;
+              border: 1px solid $border-color-l;
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
           }
         }
         .blog-edit-submit {
@@ -207,11 +215,13 @@
           .linkFB,
           .linkIG,
           .linkLINE {
-            width: $icon-size-45;
-            height: $icon-size-45;
-            margin: 10px auto;
-            background: $btn-color-r;
-            border-radius: 50%;
+            width: 70%;
+            height: 70%;
+            margin: 0 auto;
+            img {
+              width: 100%;
+              height: 100%;
+            }
           }
           h2 {
             font-size: $font-size-12;

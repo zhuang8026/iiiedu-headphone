@@ -40,11 +40,11 @@ function BlogMainStandardList(props) {
     const [listAllBlogdata, setListAllBlogdata] = useState([])
     const [listPage, setListPage] = useState([])
     const [currentPage, setCurrentPage] = useState('')
-    const [searchOrder, setSearchOrder] = useState('ASC')
+    const [searchOrder, setSearchOrder] = useState('DESC')
     const [searchSort, setSearchSort] = useState('依發文日期')
 
     useEffect(() => {
-
+        searchMethod()
     }, [])
     useEffect(() => {
         searchMethod()
@@ -66,32 +66,7 @@ function BlogMainStandardList(props) {
         searchMethod()
     }, [currentPage])
 
-    // 抓取所有文章
-    // const getBlogAllList = () => {
-    //     fetch('http://localhost:3009/blog/listAllBlog/', {
-    //         method: 'post',
-    //         body: JSON.stringify({
-    //             searchOrder: searchOrder,
-    //             searchSort: searchSort,
-    //             page: 1
-    //         }),
-    //         headers: new Headers({
-    //             'Accept': 'application/json',
-    //             'Content-Type': 'application/json',
-    //         }),
-    //     })
-    //         .then((response) => {
-    //             return response.json()
-    //         })
-    //         .then((response) => {
-    //             console.log(response.rows)
-    //             setListAllBlogdata(response.rows)
-    //         })
-    // }
-
-
-
-    // 點選搜尋選項
+    // 搜尋方法
     const searchMethod = () => {
         fetch('http://localhost:3009/blog/searchAllBlog/', {
             method: 'post',
@@ -124,7 +99,8 @@ function BlogMainStandardList(props) {
 
     // 去看細節頁
     const goBlogDetail = (blogId) => {
-        props.history.push('/Blog/BlogDetail');
+        // props.history.push(`/ProductDetail/${e.target.id}`)
+
     }
 
     return (
@@ -147,13 +123,13 @@ function BlogMainStandardList(props) {
                     <select className="s1" name="" id=""
                         onChange={(e) => {
                             if (e.target.value === '1') {
-                                setSearchOrder('ASC')
-                            } else if (e.target.value === '2') {
                                 setSearchOrder('DESC')
+                            } else if (e.target.value === '2') {
+                                setSearchOrder('ASC')
                             }
                         }}>
-                        <option value="1">ASC</option>
-                        <option value="2">DESC</option>
+                        <option value="1">DESC</option>
+                        <option value="2">ASC</option>
                     </select>
                     <select className="s2" name="" id=""
                         onChange={(e) => {
@@ -202,8 +178,8 @@ function BlogMainStandardList(props) {
                                     <button
                                         className="read-more-btn"
                                         onClick={() => {
-                                            message.success(data.blogId);
-                                            goBlogDetail(data.blogId) //data有blog的資料
+                                            props.history.push(`/Blog/BlogDetail/${data.blogId}`);
+                                            // goBlogDetail(data.blogId) //data有blog的資料
                                         }}
                                     >閱讀文章</button>
                                 </div>
