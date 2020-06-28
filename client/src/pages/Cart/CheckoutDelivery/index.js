@@ -8,7 +8,14 @@ import {
 } from 'react-router-dom'
 
 function CheckoutDelivery(props) {
-  const [delivery, setDelivery] = useState('1')
+  // const [orderDelivery, setOrderDelivery] = useState('1')
+  const {
+    userdata,
+    setUserdata,
+    orderDelivery,
+    setOrderDelivery
+  } = props.allprops
+
   return (
     <>
       <div className="cart-crumb">
@@ -58,11 +65,11 @@ function CheckoutDelivery(props) {
           <select
             className="delivery"
             // defaultValue="1"
-            value={delivery}
+            value={orderDelivery}
             onChange={(event) => {
               // const v = e.target.selectedIndex
               const v = event.target.value
-              setDelivery(v)
+              setOrderDelivery(v)
             }}
           >           
             <option value="1">黑貓宅急便</option>
@@ -70,7 +77,7 @@ function CheckoutDelivery(props) {
             <option value="3">全家</option>
             <option value="4">萊爾富</option>
           </select>
-           {/* <div>除錯用:{delivery}</div> */}
+           {/* <div>除錯用:{orderDelivery}</div> */}
           <div>
             <button 
             type="button"            

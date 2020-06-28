@@ -3,18 +3,36 @@ import React, { useState, useEffect } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 
 function CheckoutInfo(props) {
-  const { userdata, setUserdata } = props
-  const [name, setName] = useState('')
-  const [address, setAddress] = useState('')
-  const [tel, setTel] = useState('')
-  const [remarks, setRemarks] = useState('')
+  const {
+    userdata,
+    setUserdata,
+    orderName,
+    setOrderName,
+    orderAddress,
+    setOrderAddress,
+    orderTel,
+    setOrderTel,
+    orderRemarks,
+    setOrderRemarks,
+  } = props.allprops
+
+  // const { userdata, setUserdata } = props
+  // const { orderName, setOrderName } = props
+  // const { orderAddress, setOrderAddress } = props
+  // const { orderTel, setOrderTel } = props
+  // const { orderRemarks, setOrderRemarks } = props
+
+  // const [orderName, setName] = useState('')
+  // const [address, setAddress] = useState('')
+  // const [tel, setTel] = useState('')
+  // const [remarks, setRemarks] = useState('')
   const updateCheckoutInfoToLocalStorage = (value) => {
     const currentCheckoutInfo =
       JSON.parse(localStorage.getItem('checkoutInfo')) || []
     const newCheckoutInfo = [...currentCheckoutInfo, value]
     localStorage.setItem('checkoutInfo', JSON.stringify(newCheckoutInfo))
   }
-  
+
   useEffect(() => {
     localStorage.removeItem('checkoutInfo')
   }, [])
@@ -72,9 +90,11 @@ function CheckoutInfo(props) {
                   type="text"
                   id="name"
                   name="name"
-                  defaultValue={userdata.name}
+                  value={orderName?orderName:userdata.name}
+                  // defaultValue={userdata.name}
                   onChange={(event) => {
-                    setName(event.target.value)
+                    const v = event.target.value
+                    setOrderName(v)
                   }}
                 />
                 <div className="error">姓名必填*</div>
@@ -85,9 +105,11 @@ function CheckoutInfo(props) {
                   type="text"
                   id="address"
                   name="address"
-                  defaultValue={userdata.address}
+                  value={orderAddress?orderAddress:userdata.address}
+                  // defaultValue={userdata.address}
                   onChange={(event) => {
-                    setAddress(event.target.value)
+                    const v = event.target.value
+                    setOrderAddress(v)
                   }}
                 />
                 <div className="error">地址必填*</div>
@@ -98,9 +120,12 @@ function CheckoutInfo(props) {
                   type="tel"
                   id="tel"
                   name="tel"
-                  defaultValue={userdata.phoneNumber}
+                  maxlength="10"
+                  value={orderTel?orderTel:userdata.phoneNumber}
+                  // defaultValue={userdata.phoneNumber}
                   onChange={(event) => {
-                    setTel(event.target.value)
+                    const v = event.target.value
+                    setOrderTel(v)
                   }}
                 />
                 <div className="error">電話必填*</div>
@@ -113,24 +138,32 @@ function CheckoutInfo(props) {
                   name="remark"
                   id="remark"
                   cols="30"
-                  rows="10"
+                  rows="10"                  
                   onChange={(event) => {
-                    setRemarks(event.target.value)
+                    const v = event.target.value
+                    setOrderRemarks(v)
                   }}
                 ></textarea>
               </div>
             </div>
           </div>
           <div>
+            {/* <div>除錯用姓名:{orderName}</div>
+            <div>除錯用地址:{orderAddress}</div>
+            <div>除錯用電話:{orderTel}</div>
+            <div>除錯用備註:{orderRemarks}</div> */}
             <button
-              onClick={() => {
-                updateCheckoutInfoToLocalStorage({
-                  name: `${name ? name : userdata.name}`,
-                  address: `${address ? address : userdata.address}`,
-                  tel: `${tel ? tel : userdata.phoneNumber}`,
-                  remarks: `${remarks}`,
-                })
-              }}
+              type="button"
+              // onClick={() => {
+              //   updateCheckoutInfoToLocalStorage({
+              //     orderName: `${orderName ? orderName : userdata.name}`,
+              //     orderAddress: `${
+              //       orderAddress ? orderAddress : userdata.address
+              //     }`,
+              //     orderTel: `${orderTel ? orderTel : userdata.phoneNumber}`,
+              //     orderRemarks: `${orderRemarks}`,
+              //   })
+              // }}
             >
               <Link to="/CheckoutDelivery">下一步</Link>
             </button>
