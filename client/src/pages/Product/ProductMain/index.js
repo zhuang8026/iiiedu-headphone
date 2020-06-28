@@ -6,9 +6,6 @@ import { withRouter, Link } from 'react-router-dom';
 //antd
 import { message } from 'antd';
 
-import axios from 'axios';
-
-
 import ProductMainDrtail from '../ProductMainDrtail';
 import Pagination from '../Pagination';
 
