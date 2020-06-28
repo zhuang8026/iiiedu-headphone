@@ -314,7 +314,7 @@ function App() {
                 setName
               }} />
           </Route>
-          <Route path="/Blog/BlogDetail">
+          <Route path="/Blog/BlogDetail/:detailId">
             <BlogDetail
               allprops={{
                 userdata,
@@ -323,7 +323,7 @@ function App() {
                 setName
               }} />
           </Route>
-          <Route path="/Blog/BlogAdd">
+          <Route path="/Blog/BlogAdd/">
             <BlogAdd
               allprops={{
                 userdata,
@@ -332,7 +332,7 @@ function App() {
                 setName
               }} />
           </Route>
-          <Route path="/Blog/BlogEdit">
+          <Route path="/Blog/BlogEdit/:editId">
             <BlogEdit
               allprops={{
                 userdata,
