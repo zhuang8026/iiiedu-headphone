@@ -69,22 +69,95 @@ router.get("/list", (req, res) => {
 // http://localhost:3009/products/brand
 router.get("/brand", (req, res) => {
     const sql = "SELECT `itemsbrand` FROM `items` WHERE 1";
-
+    let output = {}
+    let audioTechnica =[]
+    let AKG =[]
+    let BangOlufsen =[]
+    let Final =[]
+    let Grado =[]
+    let Shure =[]
+    let SONY =[]
+    let Senheier =[]
     db.query(sql, (error, results, fields) => {
-        if (error) throw error;
-        // console.log(results);
-        for(let i=1; i<results.length; i++){
-            console.log(results[i])
-            switch(results[i]) {
+        if (error) throw error;    
+        for (let [key, value] of Object.entries(results)) {
+            // console.log(`${key}: ${value}`); 
+            // console.log(value['itemsbrand']); 
+            switch(value['itemsbrand']) {
+                case 'audioTechnica':
+                    audioTechnica.push(value['itemsbrand']);
+                    output.audioTechnica = audioTechnica.length
+                break;
+                case 'AKG':
+                    AKG.push(value['itemsbrand']);
+                    output.AKG = AKG.length
+                break;
                 case 'BangOlufsen':
-                    console.log('1')
+                    BangOlufsen.push(value['itemsbrand']);
+                    output.BangOlufsen = BangOlufsen.length
+                break;
+                case 'Final':
+                    Final.push(value['itemsbrand']);
+                    output.Final = Final.length
+                break;
+                case 'Grado':
+                    Grado.push(value['itemsbrand']);
+                    output.Grado = Grado.length
                 break;
                 case 'Shure':
-                    console.log('2')
+                    Shure.push(value['itemsbrand']);
+                    output.Shure = Shure.length
+                break;
+                case 'SONY':
+                    SONY.push(value['itemsbrand']);
+                    output.SONY = SONY.length
+                break;
+                case 'Senheier':
+                    Senheier.push(value['itemsbrand']);
+                    output.Senheier = Senheier.length
                 break;
             }
         }
-        res.json(results);
+            
+        // for(let i=0; i<results.length; i++){
+        //     // console.log(results[i]['itemsbrand']);
+        //     switch(results[i]['itemsbrand']) {
+        //         case 'audioTechnica':
+        //             // output.audioTechnica = results[i]['itemsbrand'].length
+        //             output.audioTechnica = i++
+        //             // console.log(output)
+        //         break;
+        //         case 'AKG':
+        //             output.AKG = results[i]['itemsbrand'].length
+        //             // console.log(output)
+        //         break;
+        //         case 'BangOlufsen':
+        //             output.BangOlufsen = results[i]['itemsbrand'].length
+        //             // console.log(output)
+        //         break;
+        //         case 'Final':
+        //             output.Final = results[i]['itemsbrand'].length
+        //             // console.log(output)
+        //         break;
+        //         case 'Grado':
+        //             output.Grado = results[i]['itemsbrand'].length
+        //             // console.log(output)
+        //         break;
+        //         case 'Shure':
+        //             output.Shure = results[i]['itemsbrand'].length
+        //             // console.log(output)
+        //         break;
+        //         case 'SONY':
+        //             output.SONY = results[i]['itemsbrand'].length
+        //             // console.log(output)
+        //         break;
+        //         case 'Senheier':
+        //             output.Senheier = results[i]['itemsbrand'].length
+        //             // console.log(output)
+        //         break;
+        //     }
+        // }
+        res.json(output);
     });
 
 });
