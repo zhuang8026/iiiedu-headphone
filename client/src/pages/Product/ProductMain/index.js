@@ -35,8 +35,22 @@ function ProductMain(props) {
     const currentLove = JSON.parse(localStorage.getItem('love')) || []
     const newcLompare = [...currentLove, value]
     localStorage.setItem('love', JSON.stringify(newcLompare))
+    // console.log(currentLove);
+    console.log('value',value);
+
+    message.success(`商品"${value.data.itemName}"加入最愛`)
+
+
+    currentLove.map(element => {
+      // console.log(element['amount'])
+      if(element.data.itemName === value.data.itemName){
+        window.localStorage.setItem('love', JSON.stringify(currentLove));
+        message.warning(`商品"${element.data.itemName}"重複了`)
+      }
+    });
   }
 
+  // hooks們
   const { itemsdata, setItemsdata, itemsid, setItemsid } = props;
   const [detailitems, setdetailitems] = useState('');
   const [currentTotalPages, setCurrentTotalPages] = useState(); // 總page
@@ -93,6 +107,7 @@ function ProductMain(props) {
 
   }
 
+  // componentDidMount 們
   // 細節頁面點擊出現
   useEffect(()=>{
     let quick_view_modal = document.getElementsByClassName('items-quick-view-modal')[0];
@@ -260,19 +275,20 @@ function ProductMain(props) {
                         >立即查看</button>
                         <button 
                           className="item_btn_add btn-navy_s btn-fill-vert-o_s"
-                          onClick={() => {
-                            message.success(`商品"${data.itemName}"加入最愛`)
+                          onClick={(event) => {
                             updateLoveToLocalStorage({
-                              data
+                              data,
+                              count:0
                             })
                           }}
                         >加入最愛</button>
                         <button 
                           className="item_btn_add btn-navy_s btn-fill-vert-o_s"
-                          onClick={() => {
+                          onClick={(event) => {
                             message.success(`商品"${data.itemName}"加入比較`)
                             updateCompareToLocalStorage({
-                              data
+                              data,
+                              count:0
                             })
                           }}
                         >加入比較</button>
