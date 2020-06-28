@@ -28,6 +28,14 @@ function ProductMain(props) {
     const currentCompare = JSON.parse(localStorage.getItem('compare')) || []
     const newcCompare = [...currentCompare, value]
     localStorage.setItem('compare', JSON.stringify(newcCompare))
+
+    currentCompare.map(element => {
+      if(element.data.itemName === value.data.itemName){
+        window.localStorage.setItem('compare', JSON.stringify(currentCompare));
+        message.warning(`商品"${element.data.itemName}"重複了`)
+        return 
+      }
+    });
   }
 
   // 加入最愛
@@ -35,19 +43,15 @@ function ProductMain(props) {
     const currentLove = JSON.parse(localStorage.getItem('love')) || []
     const newcLompare = [...currentLove, value]
     localStorage.setItem('love', JSON.stringify(newcLompare))
-    // console.log(currentLove);
-    console.log('value',value);
-
-    message.success(`商品"${value.data.itemName}"加入最愛`)
-
 
     currentLove.map(element => {
-      // console.log(element['amount'])
       if(element.data.itemName === value.data.itemName){
         window.localStorage.setItem('love', JSON.stringify(currentLove));
         message.warning(`商品"${element.data.itemName}"重複了`)
+        return 
       }
     });
+    
   }
 
   // hooks們
@@ -58,8 +62,6 @@ function ProductMain(props) {
   const [itemchange, setitemchange] = useState(false); 
   const [itemAll, setitemAll] = useState([]); 
 
-  // console.log('itemsid:', itemsid) // text button id 
-  // console.log('itemsdata:', itemsdata) 
 
   const goToDetail = ( id )=> {
     fetch(`http://localhost:3009/products/detail/${id}`, {
@@ -277,18 +279,16 @@ function ProductMain(props) {
                           className="item_btn_add btn-navy_s btn-fill-vert-o_s"
                           onClick={(event) => {
                             updateLoveToLocalStorage({
-                              data,
-                              count:0
+                              data
                             })
                           }}
                         >加入最愛</button>
                         <button 
                           className="item_btn_add btn-navy_s btn-fill-vert-o_s"
                           onClick={(event) => {
-                            message.success(`商品"${data.itemName}"加入比較`)
+                            // message.success(`商品"${data.itemName}"加入比較`)
                             updateCompareToLocalStorage({
-                              data,
-                              count:0
+                              data
                             })
                           }}
                         >加入比較</button>
