@@ -8,7 +8,7 @@ import Aboutimg3 from '../../../assets/img/About/A07.jpg'
 //antd
 // import { message } from 'antd';
 
-function AboutHeader(props) {
+function GiftHeader() {
   const params = {
     autoplay: {
       delay: 3000,
@@ -25,13 +25,13 @@ function AboutHeader(props) {
     <div className="WiHeader">
       <Swiper {...params}>
       <div><img src={Aboutimg}></img>
-      <h1>About us</h1>
+      <h1>禮物卡</h1>
       </div>
        <div><img src={Aboutimg2}></img>
-       <h1>About us</h1>
+       <h1>禮物卡</h1>
        </div>
        <div id="Aboutimg3"><img src={Aboutimg3}></img>
-       <h1>About us</h1>
+       <h1>禮物卡</h1>
        </div>
   </Swiper>
     </div>
@@ -41,4 +41,4 @@ function AboutHeader(props) {
 
   )
 }
-export default withRouter(AboutHeader)
+export default withRouter(GiftHeader)
