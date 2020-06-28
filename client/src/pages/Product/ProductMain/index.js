@@ -30,6 +30,13 @@ function ProductMain(props) {
     localStorage.setItem('compare', JSON.stringify(newcCompare))
   }
 
+  // 加入最愛
+  const updateLoveToLocalStorage = (value) => {
+    const currentLove = JSON.parse(localStorage.getItem('love')) || []
+    const newcLompare = [...currentLove, value]
+    localStorage.setItem('love', JSON.stringify(newcLompare))
+  }
+
   const { itemsdata, setItemsdata, itemsid, setItemsid } = props;
   const [detailitems, setdetailitems] = useState('');
   const [currentTotalPages, setCurrentTotalPages] = useState(); // 總page
@@ -251,7 +258,15 @@ function ProductMain(props) {
                             addCsstyle()
                           }}
                         >立即查看</button>
-                        <button className="item_btn_add btn-navy_s btn-fill-vert-o_s">加入最愛</button>
+                        <button 
+                          className="item_btn_add btn-navy_s btn-fill-vert-o_s"
+                          onClick={() => {
+                            message.success(`商品"${data.itemName}"加入最愛`)
+                            updateLoveToLocalStorage({
+                              data
+                            })
+                          }}
+                        >加入最愛</button>
                         <button 
                           className="item_btn_add btn-navy_s btn-fill-vert-o_s"
                           onClick={() => {
