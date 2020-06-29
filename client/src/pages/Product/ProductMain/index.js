@@ -6,7 +6,6 @@ import { withRouter, Link } from 'react-router-dom';
 //antd
 import { message } from 'antd';
 
-
 import ProductMainDrtail from '../ProductMainDrtail';
 import Pagination from '../Pagination';
 
@@ -43,9 +42,13 @@ function ProductMain(props) {
   const [currentPage, setCurrentPage] = useState();             // 此刻的頁數
   const [itemchange, setitemchange] = useState(false); 
   const [itemAll, setitemAll] = useState([]); 
+<<<<<<< HEAD
 
   // console.log('itemsid:', itemsid) // text button id 
   // console.log('itemsdata:', itemsdata) 
+=======
+  const [howManyTotal, sethowManyTotal] = useState({});
+>>>>>>> 239046d28a4255ca1ceed125067dc06bda50a0bf
 
   const goToDetail = ( id )=> {
     fetch(`http://localhost:3009/products/detail/${id}`, {
@@ -64,6 +67,47 @@ function ProductMain(props) {
         })
   }
   
+  // 模糊搜尋
+  const fuzzySearch = ( data )=> {
+    // console.log(data)
+    var params = new URLSearchParams();
+    params.append('getname', data);
+    // console.log(params.toString());
+    // console.log(params.get('getname'));
+    let getname = params.get('getname') || ''
+    // console.log(getname)
+    // axios({
+    //   method: 'post',
+    //   url: `http://localhost:3009/products/list/${getname}`,
+    //   headers:{
+    //       'Content-type': 'application/x-www-form-urlencoded'
+    //   },
+    //   data: params
+    // })
+    // .then((reverse) => { 
+    //   console.log(reverse); 
+    //   // console.log(reverse.data); 
+    // })
+    // .catch((error) => {
+    //   console.error(error);
+    // })
+    fetch(`http://localhost:3009/products/list/${getname}`, {
+        method: 'get',
+        headers: new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        })
+    })
+        .then((res)=>{
+            return res.json()
+        })
+        .then((res)=>{
+            console.log(res)
+            setItemsdata(res)
+            // setdetailitems(res)
+        })
+  }
+
   // 點擊 css 樣式變換
   const itemsChangeFunctionTrue =()=>{
     setitemchange(true);
@@ -109,6 +153,24 @@ function ProductMain(props) {
     })
   },[])
 
+  // 商品數量
+  useEffect(()=>{
+    fetch("http://localhost:3009/products/brand", {
+      method: 'get',
+      headers: {
+        'Accept': 'application/json',
+          'Content-Type': 'application/json',
+      },
+    })
+    .then((response)=>{
+      return response.json()
+    })
+    .then((response)=>{
+      // console.log(response)
+      sethowManyTotal(response);
+    })
+  },[])
+  
   // 分頁 點擊
   useEffect(()=>{
       fetch(`http://localhost:3009/products/listpage/${currentPage}`,  {
@@ -148,7 +210,7 @@ function ProductMain(props) {
             return response.json()
         })
         .then((response)=>{
-          console.log(response.rows)
+          // console.log(response.rows)
           setItemsdata(response.rows)
           setCurrentTotalPages(response.totalPages) // 總page
           setCurrentPage(response.page)             // 此刻的頁數
@@ -168,19 +230,25 @@ function ProductMain(props) {
           <div className="Yybrand">
               <div className="Yywearstyle">BRAND</div>
               <ul className="Yybrand_ul">
-                <li><Link to='/YyProduct/AUDIOTECHNICA'> AUDIOTECHNICA ({itemsdata.length}) </Link></li>
-                <li><Link to='/YyProduct/AKG'> AKG ({itemsdata.length}) </Link></li>
-                <li><Link to='/YyProduct/BANGOLUFSEN'> BANGOLUFSEN (1) </Link></li>
-                <li><Link to='/YyProduct/FINAL'> FINAL (1) </Link></li>
-                <li><Link to='/YyProduct/GRADO'> GRADO (1) </Link></li>
-                <li><Link to='/YyProduct/SHURE'> SHURE (1) </Link></li>
-                <li><Link to='/YyProduct/SONY'> SONY (1) </Link></li>
-                <li><Link to='/YyProduct/SENHEIER'> SENHEIER (1) </Link></li>
+                <li><Link to='/YyProduct/AUDIOTECHNICA'> AUDIOTECHNICA ({howManyTotal.audioTechnica}) </Link></li>
+                <li><Link to='/YyProduct/AKG'> AKG ({howManyTotal.AKG}) </Link></li>
+                <li><Link to='/YyProduct/BANGOLUFSEN'> BANGOLUFSEN ({howManyTotal.BangOlufsen}) </Link></li>
+                <li><Link to='/YyProduct/FINAL'> FINAL ({howManyTotal.Final}) </Link></li>
+                <li><Link to='/YyProduct/GRADO'> GRADO ({howManyTotal.Grado}) </Link></li>
+                <li><Link to='/YyProduct/SHURE'> SHURE ({howManyTotal.Shure}) </Link></li>
+                <li><Link to='/YyProduct/SONY'> SONY ({howManyTotal.SONY}) </Link></li>
+                <li><Link to='/YyProduct/SENHEIER'> SENHEIER ({howManyTotal.Senheier}) </Link></li>
               </ul>
           </div>
         
           <div className="Yysearch_container">
-            <input type="text" placeholder=" search..." />
+            <input 
+              type="text" 
+              placeholder=" search..." 
+              id="fuzzySearch" 
+              onKeyUp={ (event)=>{ fuzzySearch(event.target.value) } }
+              onChange={ (event)=>{ fuzzySearch(event.target.value) } }
+            />
             <button>
               <i className="iconfont icon-search"></i>
             </button>

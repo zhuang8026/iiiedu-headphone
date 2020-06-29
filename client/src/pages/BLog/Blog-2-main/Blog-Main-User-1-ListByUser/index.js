@@ -36,11 +36,11 @@ function BlogMainUserListByUser(props) {
     const [listPage, setListPage] = useState([])
     const [currentPage, setCurrentPage] = useState('')
     const [listUserBlogdata, setlistUserBlogdata] = useState([])
-    const [searchOrder, setSearchOrder] = useState('ASC')
+    const [searchOrder, setSearchOrder] = useState('DESC')
     const [searchSort, setSearchSort] = useState('依發文日期')
 
     useEffect(() => {
-
+        searchMethod()
     }, [])
     useEffect(() => {
         searchMethod()
@@ -60,34 +60,7 @@ function BlogMainUserListByUser(props) {
     useEffect(() => {
         console.log('更新currentPage -> ', currentPage)
         searchMethod()
-    }, [currentPage])
-
-    // 抓資料庫刷頁面
-    // const getBlogUserList = () => {
-    //     fetch('http://localhost:3009/blog/listUserBlog/', {
-    //         method: 'post',
-    //         body: JSON.stringify({
-    //             id: userdata.id,
-    //             username: userdata.username,
-    //             blogId: userdata.blogId,
-    //             searchOrder: searchOrder,
-    //             searchSort: searchSort,
-    //             page: 1
-    //         }),
-    //         headers: new Headers({
-    //             'Accept': 'application/json',
-    //             'Content-Type': 'application/json',
-    //         })
-    //     })
-    //         .then((response) => {
-    //             return response.json()
-    //         })
-    //         .then((response) => {
-
-    //             setlistUserBlogdata(response.rows)
-
-    //         })
-    // }
+    }, [currentPage])    
 
     // 刪除文章
     const goBlogDelete = (blogId) => {
@@ -163,7 +136,7 @@ function BlogMainUserListByUser(props) {
                 blogId: userdata.blogId,
                 searchOrder: searchOrder,
                 searchSort: searchSort,
-                page: 1
+                page: currentPage
             }),
             headers: new Headers({
                 'Accept': 'application/json',
@@ -202,14 +175,14 @@ function BlogMainUserListByUser(props) {
                     <select className="s1" name="" id=""
                         onChange={(e) => {
                             if (e.target.value === '1') {
-                                setSearchOrder('ASC')
-                            } else if (e.target.value === '2') {
                                 setSearchOrder('DESC')
+                            } else if (e.target.value === '2') {
+                                setSearchOrder('ACS')
                             }
                         }}
                     >
-                        <option value="1">ASC</option>
-                        <option value="2">DESC</option>
+                        <option value="1">DESC</option>
+                        <option value="2">ASC</option>
                     </select>
                     <select className="s2" name="" id=""
                         onChange={(e) => {
@@ -243,9 +216,8 @@ function BlogMainUserListByUser(props) {
                                         <img
                                             src={Pan}
                                             onClick={() => {
-                                                message.success(data.blogId);
-                                                goBlogEdit(data) //data有blog的資料
-                                            }}
+                                            props.history.push(`/Blog/BlogEdit/${data.blogId}`);  
+                                        }}
                                         ></img>
                                     </figure>
                                     <figure>
@@ -268,9 +240,9 @@ function BlogMainUserListByUser(props) {
                                     <button
                                         className="read-more-btn"
                                         onClick={() => {
-                                            message.success(data.blogId);
-                                            goBlogDetail(data.blogId) //data有blog的資料
-                                        }}>閱讀文章</button>
+                                            props.history.push(`/Blog/BlogDetail/${data.blogId}`);  
+                                        }}
+                                        >閱讀文章</button>
                                 </div>
                             </div>
                         </div>

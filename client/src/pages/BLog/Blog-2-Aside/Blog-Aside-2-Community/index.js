@@ -15,6 +15,12 @@ import {
 // -------------------- scss --------------------
 
 // -------------------- imgs --------------------
+import iconFb from '../../../../assets/img/blog-img/blog-aside/iconFb.png'
+import iconFb_h from '../../../../assets/img/blog-img/blog-aside/iconFb_h.png'
+import iconIg from '../../../../assets/img/blog-img/blog-aside/iconIg.png'
+import iconIg_h from '../../../../assets/img/blog-img/blog-aside/iconIg_h.png'
+import iconLine from '../../../../assets/img/blog-img/blog-aside/iconLine.png'
+import iconLine_h from '../../../../assets/img/blog-img/blog-aside/iconLine_h.png'
 
 // -------------------- func --------------------
 
@@ -27,16 +33,23 @@ function BlogAsideCommunity(props) {
           <img src="" alt="" />
         </figure>
         <div className="link-btns blog-d-flex">
-          <div className="link-one-btn">
-            <div className="linkFB"></div>
+          <div className="link-one-btn">            
+            <figure className="linkFB">
+              {/* <img src={`/blog-aside/${iconFb.png}`}></img> */}
+              <img className="linkFB_h blog-cover" src={iconFb}></img>
+            </figure>
             <h2>FACEBOOK</h2>
           </div>
-          <div className="link-one-btn">
-            <div className="linkIG"></div>
+          <div className="link-one-btn">            
+            <figure className="linkIG">
+              <img className="linkIG_h blog-cover" src={iconIg}></img>
+            </figure>
             <h2>INSTAGRAM</h2>
           </div>
-          <div className="link-one-btn">
-            <div className="linkLINE"></div>
+          <div className="link-one-btn">            
+            <figure className="linkLINE">
+              <img className="linkLINE_h blog-cover" src={iconLine}></img>
+            </figure>
             <h2>LINE</h2>
           </div>
         </div>

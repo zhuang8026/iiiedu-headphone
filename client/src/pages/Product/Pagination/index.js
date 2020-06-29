@@ -8,8 +8,8 @@ import { withRouter, Link } from 'react-router-dom';
 
 function ProductMain(props) {
   const { currentTotalPages, currentPage, setCurrentPage } = props;
-  console.log('currentTotalPages',currentTotalPages)
-  console.log('currentPage',currentPage) //此刻的頁數
+  // console.log('currentTotalPages',currentTotalPages)
+  // console.log('currentPage',currentPage) //此刻的頁數
 
   let maxPages = currentTotalPages; // totalPages 一共幾頁
   let items = [];

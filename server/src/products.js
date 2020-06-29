@@ -54,37 +54,109 @@ const getDataList = async (req)=>{
 // SELECT `itemsbrand` FROM `items` WHERE 1
 // 所有資料
 // http://localhost:3009/products/list
-router.get("/list", (req, res) => {
+router.get("/list/:getname?", (req, res) => {
+
+    console.log('getname:', req.params.getname)
+    let getname = req.params.getname || '';
+    let output = [];
+    // const sql = `SELECT * FROM items WHERE itemsbrand = ?`;
     const sql = "SELECT * FROM `items`";
+    db.query(sql)
+    .then((results)=>{
+        // console.log(results)
+        
+        // 
+        function strpos(haystack, needle, start) {
+            if (typeof(start)==="undefined") {
+                start = 0;
+            }
+            if (!needle) {
+                return 0;
+            }
+            var j = 0;
+            for (var i = start; i < haystack.length && j < needle.length; i++) {
+                if (haystack.charAt(i) === needle.charAt(j)) {
+                    j++;
+                } else {
+                    j = 0;
+                }
+            }
+            if (j === needle.length) {
+                return i - needle.length;
+            }
+            return -1;
+        }
 
-    db.query(sql, (error, results, fields) => {
-        if (error) throw error;
-        // console.log(results);
-        res.json(results);
+        results[0].forEach((item, index, array)=>{
+            // console.log(item['itemName']);
+            if(strpos(item['itemName'].toLowerCase(), getname.toLowerCase(), 0) !== -1 ) {
+                console.log(`${index}符合,名稱:${item['itemName']}`)
+                // output.push(item['itemName'])
+                output.push(item)
+            } else {
+                console.log(`${index}不符合`)
+            }
+        })
+
+        // res.json(results[0]);
+        res.json(output);
     });
-
 });
 
 // 所有brand
 // http://localhost:3009/products/brand
 router.get("/brand", (req, res) => {
     const sql = "SELECT `itemsbrand` FROM `items` WHERE 1";
-
+    let output = {}
+    let audioTechnica =[]
+    let AKG =[]
+    let BangOlufsen =[]
+    let Final =[]
+    let Grado =[]
+    let Shure =[]
+    let SONY =[]
+    let Senheier =[]
     db.query(sql, (error, results, fields) => {
-        if (error) throw error;
-        // console.log(results);
-        for(let i=1; i<results.length; i++){
-            console.log(results[i])
-            switch(results[i]) {
+        if (error) throw error;    
+        for (let [key, value] of Object.entries(results)) {
+            // console.log(`${key}: ${value}`); 
+            // console.log(value['itemsbrand']); 
+            switch(value['itemsbrand']) {
+                case 'audioTechnica':
+                    audioTechnica.push(value['itemsbrand']);
+                    output.audioTechnica = audioTechnica.length
+                break;
+                case 'AKG':
+                    AKG.push(value['itemsbrand']);
+                    output.AKG = AKG.length
+                break;
                 case 'BangOlufsen':
-                    console.log('1')
+                    BangOlufsen.push(value['itemsbrand']);
+                    output.BangOlufsen = BangOlufsen.length
+                break;
+                case 'Final':
+                    Final.push(value['itemsbrand']);
+                    output.Final = Final.length
+                break;
+                case 'Grado':
+                    Grado.push(value['itemsbrand']);
+                    output.Grado = Grado.length
                 break;
                 case 'Shure':
-                    console.log('2')
+                    Shure.push(value['itemsbrand']);
+                    output.Shure = Shure.length
+                break;
+                case 'SONY':
+                    SONY.push(value['itemsbrand']);
+                    output.SONY = SONY.length
+                break;
+                case 'Senheier':
+                    Senheier.push(value['itemsbrand']);
+                    output.Senheier = Senheier.length
                 break;
             }
         }
-        res.json(results);
+        res.json(output);
     });
 
 });

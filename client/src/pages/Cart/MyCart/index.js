@@ -11,9 +11,18 @@ import {
 } from 'react-router-dom'
 
 function MyCart(props) {
-  const { userdata, setUserdata } = props
-  const [mycart, setMycart] = useState([])
-  const [mycartDisplay, setMycartDisplay] = useState([])
+  // const { userdata, setUserdata } = props
+
+  // const [mycart, setMycart] = useState([])
+  // const [mycartDisplay, setMycartDisplay] = useState([])
+  const {
+    mycart,
+    setMycart,
+    mycartDisplay,
+    setMycartDisplay,
+    orderTotal,
+    setOrderTotal,
+  } = props.allprops
   const [dataLoading, setDataLoading] = useState(false)
   // 模擬componentDidMount
   useEffect(() => {
@@ -67,6 +76,7 @@ function MyCart(props) {
     console.log('newMycartDisplay', newMycartDisplay)
     setMycartDisplay(newMycartDisplay)
   }, [mycart])
+  
 
   // 計算總價用的函式
   function sum(items) {
@@ -107,8 +117,12 @@ function MyCart(props) {
                 <td className="td-qut">{value.amount}</td>
                 <td>{value.amount * value.itemPrice}</td>
                 <td className="td-function">
-                  <button className="btn_wish btn_width">加入願望</button>
-                  <button className="btn_booking btn_width">加入比較</button>
+                  <button type="button" className="btn_wish btn_width">
+                    加入願望
+                  </button>
+                  <button type="button" className="btn_booking btn_width">
+                    加入比較
+                  </button>
                 </td>
               </tr>
             )
@@ -118,19 +132,26 @@ function MyCart(props) {
           <tr>
             <td>
               <input type="text" placeholder=" 請輸入優惠碼" />
-              <button>去取得優惠卷</button>
+              <button type="button">去取得優惠卷</button>
             </td>
           </tr>
           <tr>
             <td>
               <span>總計</span>
-               {/* 判斷mycartDisplay是否在初次render的階段 */}
-      {mycartDisplay.length > 0 ? <span>{sum(mycartDisplay)}</span> : ''}
+              {/* 判斷mycartDisplay是否在初次render的階段 */}
+              {mycartDisplay.length > 0 ? (
+                <span>{sum(mycartDisplay)}</span>
+              ) : (
+                ''
+              )}
             </td>
           </tr>
           <tr>
             <td>
-              <button type="button">
+              <button 
+              type="button"
+              onClick={setOrderTotal(sum(mycartDisplay))}
+              >
                 <Link to="/CheckoutInfo">去結帳</Link>
               </button>
             </td>

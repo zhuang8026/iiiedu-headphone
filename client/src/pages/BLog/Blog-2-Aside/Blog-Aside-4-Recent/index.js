@@ -1,5 +1,5 @@
 // 函式元件
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import {
   BrowserRouter as Router,
   Route,
@@ -9,7 +9,9 @@ import {
   NavLink,
   withRouter,
 } from 'react-router-dom'
-
+// react-moment
+import Moment from 'react-moment';
+import 'moment-timezone';
 // -------------------- components --------------------
 
 // -------------------- scss --------------------
@@ -19,39 +21,63 @@ import {
 // -------------------- func --------------------
 
 function BlogAsideRecent(props) {
+  const [listRecent, setListRecent] = useState([])
+  useEffect(() => {
+    fetch('http://localhost:3009/blog/searchAllBlog/', {
+      method: 'post',
+      body: JSON.stringify({
+        // id: userdata.id,
+        // username: userdata.username,
+        // blogId: userdata.blogId,
+        searchOrder: 'DESC',
+        searchSort: '依發文日期',
+        perPage: 4,
+        page: 1
+      }),
+      headers: new Headers({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      })
+    })
+      .then((response) => {
+        return response.json()
+      })
+      .then((response) => {
+        setListRecent(response.rows)
+        // let pageArr = [];
+        // for (let i = 1; i <= response.totalPages; i++) {
+        //     pageArr.push(i);
+        // }
+        console.log('組成pageArr -> ', response.rows)
+        // setListPage(pageArr)
+        // setCurrentPage(response.page)
+      })
+  }, [])
+
   return (
     <>
       <div className="recent-post">
         <div className="recent-post-in">
-          <h2>相關文章</h2>
-          <div className="recent-post-in-one blog-d-flex">
-            <div className="recent-post-in-one-img"></div>
-            <div className="recent-post-in-one-txt">
-              <h4>文章標題文章標題</h4>
-              <h5>日期日期日期日期</h5>
-            </div>
-          </div>
-          <div className="recent-post-in-one blog-d-flex">
-            <div className="recent-post-in-one-img"></div>
-            <div className="recent-post-in-one-txt">
-              <h4>文章標題文章標題</h4>
-              <h5>日期日期日期日期</h5>
-            </div>
-          </div>
-          <div className="recent-post-in-one blog-d-flex">
-            <div className="recent-post-in-one-img"></div>
-            <div className="recent-post-in-one-txt">
-              <h4>文章標題文章標題</h4>
-              <h5>日期日期日期日期</h5>
-            </div>
-          </div>
-          <div className="recent-post-in-one blog-d-flex">
-            <div className="recent-post-in-one-img"></div>
-            <div className="recent-post-in-one-txt">
-              <h4>文章標題文章標題</h4>
-              <h5>日期日期日期日期</h5>
-            </div>
-          </div>
+          <h2>最新發文</h2>
+          {listRecent.map((data, index) => {
+            {/* console.log(data) */ }
+            return (
+              <div className="recent-post-in-one blog-d-flex" key={data.blogId}>
+              <figure className="recent-post-in-one-img">
+                <img className="blog-cover" src={`/blogs_img/${data.blogContent01_img01}`}></img>
+              </figure>                
+                <div className="recent-post-in-one-txt">
+                  <h4 className="recent-post-in-one-txt-title">{data.blogTitle}</h4>
+                  <h5 className="recent-post-in-one-txt-date"><Moment format="DD M月, YYYY">{data.blogPublishDate}</Moment></h5>
+                </div>
+              </div>
+
+
+
+            )
+          })}
+
+
         </div>
       </div>
     </>

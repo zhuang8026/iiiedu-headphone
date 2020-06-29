@@ -87,6 +87,18 @@ function App() {
   // const [SellerData, setSellerData] = useState([]) 
   const [SellerProductId,setsellerProductId] = useState([])
 
+  //購物流程
+  const [mycart, setMycart] = useState([])
+  const [mycartDisplay, setMycartDisplay] = useState([])
+  const [orderTotal, setOrderTotal] = useState('')  
+  const [orderName, setOrderName] = useState('')  
+  const [orderAddress, setOrderAddress] = useState('')
+  const [orderTel, setOrderTel] = useState('')
+  const [orderRemarks, setOrderRemarks] = useState('')
+  const [orderDelivery, setOrderDelivery] = useState('1')
+  const [orderPayment, setOrderPayment] = useState('1')
+  const [orderCard, setOrderCard] = useState('')
+
   // 登入 & 狀態判斷
   const loginProcess = (loginSuccessCallback) => {
     const errors = []
@@ -311,7 +323,7 @@ function App() {
                 setName
               }} />
           </Route>
-          <Route path="/Blog/BlogDetail">
+          <Route path="/Blog/BlogDetail/:detailId">
             <BlogDetail
               allprops={{
                 userdata,
@@ -320,7 +332,7 @@ function App() {
                 setName
               }} />
           </Route>
-          <Route path="/Blog/BlogAdd">
+          <Route path="/Blog/BlogAdd/">
             <BlogAdd
               allprops={{
                 userdata,
@@ -329,7 +341,7 @@ function App() {
                 setName
               }} />
           </Route>
-          <Route path="/Blog/BlogEdit">
+          <Route path="/Blog/BlogEdit/:editId">
             <BlogEdit
               allprops={{
                 userdata,
@@ -386,22 +398,102 @@ function App() {
             <MyFav />
           </Route>
           
-          {/* 購物車 */}
-          <Route path="/MyCart">
-            <MyCart userdata={userdata} setUserdata={setUserdata} />
+         {/* 購物車 */}
+         <Route path="/MyCart">
+            <MyCart
+              allprops={{               
+                mycart,
+                setMycart,
+                mycartDisplay,
+                setMycartDisplay,
+                orderTotal,
+                setOrderTotal,
+              }}
+            />
           </Route>
           <Route path="/CheckoutInfo">
-            <CheckoutInfo userdata={userdata} setUserdata={setUserdata} />
+            <CheckoutInfo
+              allprops={{
+                userdata,
+                setUserdata,
+                mycart,
+                setMycart,
+                mycartDisplay,
+                setMycartDisplay,
+                orderName,
+                setOrderName,
+                orderAddress,
+                setOrderAddress,
+                orderTel,
+                setOrderTel,
+                orderRemarks,
+                setOrderRemarks,
+              }}
+            />
           </Route>
           <Route path="/CheckoutDelivery">
-            <CheckoutDelivery userdata={userdata} setUserdata={setUserdata} />
+            <CheckoutDelivery
+              allprops={{
+                userdata,
+                setUserdata,                
+                orderDelivery,
+                setOrderDelivery,                
+              }}
+            />
           </Route>
           <Route path="/CheckoutPayment">
-            <CheckoutPayment userdata={userdata} setUserdata={setUserdata} />
+            <CheckoutPayment
+              allprops={{
+                userdata,
+                setUserdata,
+                mycart,
+                setMycart,
+                mycartDisplay,
+                setMycartDisplay,
+                orderTotal,
+                setOrderTotal,
+                orderName,
+                setOrderName,
+                orderAddress,
+                setOrderAddress,
+                orderTel,
+                setOrderTel,
+                orderRemarks,
+                setOrderRemarks,
+                orderDelivery,
+                setOrderDelivery,
+                orderPayment,
+                setOrderPayment,
+                orderCard,
+                setOrderCard,
+              }}
+            />
           </Route>
           <Route path="/OrderComplete">
-            <OrderComplete userdata={userdata} setUserdata={setUserdata} />
+            <OrderComplete
+             allprops={{
+                userdata,
+                setUserdata,
+		orderTotal,
+                setOrderTotal,
+                orderName,
+                setOrderName,
+                orderAddress,
+                setOrderAddress,
+                orderTel,
+                setOrderTel,
+                orderRemarks,
+                setOrderRemarks,
+                orderDelivery,
+                setOrderDelivery,
+                orderPayment,
+                setOrderPayment,
+                orderCard,
+                setOrderCard,
+              }}
+            />
           </Route>
+
           
 
           {/* 靜態頁面 */}

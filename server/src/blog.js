@@ -38,13 +38,13 @@ app.use('/avatar', express.static('uploads'));
 // 搜尋所有文章(分頁)的function
 const getSearchAllList = async (req) => {
     // 給資料的部分可改成接req.body的資料           
-    let searchInput = '%9%';                      // 給字串
-    let searchSort = req.body.searchSort;         // 給排序方式
-    let searchOrder = req.body.searchOrder;       // 給正逆向
-    let page = req.body.page;                     // 給當前頁
-    let perPage = 12;                             // 給每頁幾筆    
+    let searchInput = '%9%';                          // 給字串
+    let searchSort = req.body.searchSort;             // 給排序方式
+    let searchOrder = req.body.searchOrder;           // 給正逆向
+    let page = req.body.page;                         // 給當前頁
+    let perPage = parseInt(req.body.perPage) || 12;   // 給每頁幾筆    
     // let page = parseInt(req.params.page) || 1;
-    const output = {                
+    const output = {
         searchInput: searchInput,    // 字串
         searchSort: searchSort,      // 排序方式
         searchOrder: searchOrder,    // 正逆向
@@ -70,7 +70,7 @@ const getSearchAllList = async (req) => {
             case '依修改日期':
                 toCount += " ORDER BY blogUpdateDate";
                 toSearch += " ORDER BY blogUpdateDate";
-                break;            
+                break;
             case '依部落格編號':
                 toCount += " ORDER BY blogId";
                 toSearch += " ORDER BY blogId";
@@ -130,12 +130,12 @@ const getSearchAllList = async (req) => {
 // 搜尋(個人)所有文章(分頁)的function
 const getSearchUserList = async (req) => {
     // 給資料的部分可改成接req.body的資料
-    let id=req.body.id;                        // 給id
-    let searchInput = '%9%';                   // 給字串
-    let searchSort = req.body.searchSort;      // 給排序方式
-    let searchOrder = req.body.searchOrder;    // 給正逆向
-    let page = req.body.page;                  // 給當前頁
-    let perPage = 12;                          // 給每頁幾筆    
+    let id = req.body.id;                             // 給id
+    let searchInput = '%9%';                          // 給字串
+    let searchSort = req.body.searchSort;             // 給排序方式
+    let searchOrder = req.body.searchOrder;           // 給正逆向
+    let page = req.body.page;                         // 給當前頁
+    let perPage = parseInt(req.body.perPage) || 12;   // 給每頁幾筆    
     // let page = parseInt(req.params.page) || 1;
     const output = {
         id: id,                      // id
@@ -164,11 +164,11 @@ const getSearchUserList = async (req) => {
             case '依修改日期':
                 toCount += " ORDER BY blogUpdateDate";
                 toSearch += " ORDER BY blogUpdateDate";
-                break;            
+                break;
             case '依部落格編號':
                 toCount += " ORDER BY blogId";
                 toSearch += " ORDER BY blogId";
-                break;            
+                break;
             default:
                 break;
         }
@@ -223,22 +223,6 @@ router.get('/', (req, res) => {
     res.send('blog root');
 });
 
-//================================================== blogSearch ==============================================================
-// (測試ok)
-// 搜尋所有文章(分頁)
-// http://localhost:3009/blog/searchAllBlog/
-router.post('/searchAllBlog/', async (req, res) => {        
-    const output = await getSearchAllList(req);    
-    res.json(output);
-})
-
-// 搜尋(個人)所有文章(分頁)
-// http://localhost:3009/blog/searchUserBlog/
-router.post('/searchUserBlog/', async (req, res) => {        
-    const output = await getSearchUserList(req);    
-    res.json(output);
-})
-
 //================================================== blogAdd ==============================================================
 // (測試ok)
 // 新增部落格文章
@@ -278,35 +262,34 @@ router.post('/add', upload.none(), (req, res) => {
 router.post('/del/', async (req, res) => {
     // 找檔頭裡面有沒有'Referer'，就是有沒有從哪裡來
     // let referer = req.get('Referer'); 
-    let referer = 1;    
+    let referer = 1;
     let id = req.body.id;
     let blogId = req.body.blogId;
-    
+
     const sql = `DELETE FROM blogs WHERE blogId=${blogId}`;
     db.query(sql, [req.params.blogId])
         .then(([r]) => {
-            
+
         })
 })
 
 //================================================== blogEdit ==============================================================
 // (測試ok)
 // 編輯部落格文章
-// http://localhost:3009/blog/edit/(部落格編號)
+// http://localhost:3009/blog/edit/
 // 提交表單才要改成PUT
-router.post('/edit/:blogId', upload.none(), (req, res) => {
+router.post('/edit/', upload.none(), (req, res) => {
     const output = {
         success: false,
         body: req.body
     }
 
     // let blogId = parseInt(req.body.blogId);
-    let blogId = req.params.blogId;
-
+    let blogId = req.body.blogId;
     let editBlogTitle = req.body.editBlogTitle;
     let editBlogContent01 = req.body.editBlogContent01;
     let editBlogContent02 = req.body.editBlogContent02;
-
+    console.log('更新的blogId ----> ',blogId);
     const sql = "UPDATE `blogs` SET `blogTitle`=?, `blogContent01`=?, `blogContent02`=? WHERE `blogId`=?";
 
     if (!blogId) {
@@ -326,6 +309,50 @@ router.post('/edit/:blogId', upload.none(), (req, res) => {
         })
 })
 
+//================================================== blogSearch ==============================================================
+// (測試ok)
+// 搜尋所有文章(分頁)
+// http://localhost:3009/blog/searchAllBlog/
+router.post('/searchAllBlog/', async (req, res) => {
+    const output = await getSearchAllList(req);
+    res.json(output);
+})
+
+// 搜尋(個人)所有文章(分頁)
+// http://localhost:3009/blog/searchUserBlog/
+router.post('/searchUserBlog/', async (req, res) => {
+    const output = await getSearchUserList(req);
+    res.json(output);
+})
+
+//================================================== blogId取文章 ==============================================================
+// 搜尋(個人)所有文章(分頁)
+// http://localhost:3009/blog/getDetail/
+router.post('/getDetail/', async (req, res) => {
+    const output = {
+        success: false,
+        body: req.body
+    }
+    let blogId = req.body.blogId;
+    console.log('blogId -> ', blogId)
+    if (!blogId) {
+        output.error = '沒有主鍵';
+        return res.json(output);
+    }
+    const sql = `SELECT * FROM blogs WHERE blogID=${blogId}`;
+
+    db.query(sql)
+        .then(([r]) => {
+            output.results = r;
+            if (r.affectedRows && r.changedRows) {
+                output.success = true;
+            }
+            res.json(output);
+        })
+
+    // const output = await getSearchUserList(req);    
+    // res.json(output);
+})
 
 
 //================================================== 圖片上傳 ==============================================================

@@ -46,7 +46,7 @@ function BlogMainAdd(props) {
 
     useEffect(() => {
 
-       
+
 
     }, [userdata]);
 
@@ -61,7 +61,7 @@ function BlogMainAdd(props) {
         console.log('data', data)
         console.log(JSON.stringify(data))
         // var result = Object.keys(data).map(function (key) { 
-          
+
         //     // Using Number() to convert key to number type 
         //     // Using obj[key] to retrieve key value 
         //     return [Number(key), data[key]]; 
@@ -72,7 +72,7 @@ function BlogMainAdd(props) {
         // console.log(JSON.stringify(result))
 
         let formData = new FormData();
-        
+
         formData.append('file', data);
         // result.map((file, index) => {
         //     formData.append(`file${index}`, file);
@@ -94,7 +94,7 @@ function BlogMainAdd(props) {
             })
             .then(obj => {
                 console.log('================================ datafiles2 ================================')
-        console.log(formData.get('file'))
+                console.log(formData.get('file'))
                 console.log(obj);
                 setUserdata({
                     ...userdata,
@@ -179,19 +179,16 @@ function BlogMainAdd(props) {
                 </div>
                 <div className="upload-imgs">
                     <div className="drags d-flex">
-                        <figure className="dragImg drag11" draggable="true">
-                            <img src={drag11} alt="" />
+                        <figure className="dragImg drag11" id="drag11" draggable="true">
+                            <img className="blog-cover" src="" id="drag11_img" alt="" />
                         </figure>
-                        <figure className="dragImg drag12" draggable="true">
-                            <img src={drag12} alt="" />
+                        <figure className="dragImg drag12" id="drag12" draggable="true">
+                            <img className="blog-cover" src="" id="drag12_img" alt="" />
                         </figure>
-                        <figure className="dragImg drag13" draggable="true">
-                            <img src={drag13} alt="" />
+                        <figure className="dragImg drag13" id="drag13" draggable="true">
+                            <img className="blog-cover" src="" id="drag13_img" alt="" />
                         </figure>
-
                     </div>
-
-
                 </div>
                 <h2 className="second-h2">第二篇文章</h2>
                 <textarea name="" id="" onChange={e => setBlogContent02(e.target.value)}></textarea>
@@ -203,16 +200,15 @@ function BlogMainAdd(props) {
                 </div>
                 <div className="upload-imgs">
                     <div className="drags d-flex">
-                        <figure className="dragImg drag21" draggable="true">
-                            <img src={drag21} alt="" />
+                        <figure className="dragImg drag21" id="drag21" draggable="true">
+                            <img className="blog-cover" src="" id="drag21_img" alt="" />
                         </figure>
-                        <figure className="dragImg drag22" draggable="true">
-                            <img src={drag22} alt="" />
+                        <figure className="dragImg drag22" id="drag22" draggable="true">
+                            <img className="blog-cover" src="" id="drag22_img" alt="" />
                         </figure>
-                        <figure className="dragImg drag23" draggable="true">
-                            <img src={drag23} alt="" />
+                        <figure className="dragImg drag23" id="drag23" draggable="true">
+                            <img className="blog-cover" src="" id="drag23_img" alt="" />
                         </figure>
-
                     </div>
                 </div>
                 <button className="blog-add-submit" onClick={() => { goBlogAdd() }}>送出</button>

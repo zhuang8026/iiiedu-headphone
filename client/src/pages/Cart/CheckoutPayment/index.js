@@ -9,9 +9,32 @@ import {
 import creditCardImg from '../../../assets/img/cart/16e924c936e000006ebf.png'
 
 function CartPayment(props) {
-  const { userdata, setUserdata } = props
-  const [payment, setPayment] = useState('1')
-  const [name, setName] = useState('')
+  const {
+    userdata,
+    setUserdata,
+    mycart,
+    setMycart,
+    mycartDisplay,
+    setMycartDisplay,
+    orderTotal,
+    setOrderTotal,
+    orderName,
+    setOrderName,
+    orderAddress,
+    setOrderAddress,
+    orderTel,
+    setOrderTel,
+    orderRemarks,
+    setOrderRemarks,
+    orderDelivery,
+    setOrderDelivery,
+    orderPayment,
+    setOrderPayment,
+    orderCard,
+    setOrderCard,
+  } = props.allprops
+
+  // const [orderPayment, setOrderPayment] = useState('1')
 
   const updateCheckoutPaymentToLocalStorage = (value) => {
     const currentCheckoutPayment =
@@ -66,19 +89,16 @@ function CartPayment(props) {
         <form className="payment-form">
           <div>請選擇付款方式:</div>
           <select
-            value={payment}
+            value={orderPayment}
             onChange={(event) => {
               // const v = e.target.selectedIndex
               const v = event.target.value
-              setPayment(v)
+              setOrderPayment(v)
             }}
           >
             <option value="1">貨到付款</option>
             <option value="2">信用卡</option>
           </select>
-          {/* <div >除錯用:{payment}</div> */}
-          {/* <div className="line"></div> */}
-          {/* <div>信用卡資料:</div> */}
           <div className="payment-form-flex">
             <div>
               <img src={creditCardImg} alt="" />
@@ -94,8 +114,13 @@ function CartPayment(props) {
                     type="text"
                     name="creditCardNum"
                     id="creditCardNum"
-                    defaultValue={userdata.card}
-                    maxlength="18"
+                    maxlength="19"
+                    // defaultValue={userdata.card}
+                    value={orderCard ? orderCard : userdata.card}
+                    onChange={(event) => {
+                      const v = event.target.value
+                      setOrderCard(v)
+                    }}
                   />
                 </li>
                 <li>
@@ -106,9 +131,11 @@ function CartPayment(props) {
                     type="text"
                     id="name"
                     name="name"
-                    defaultValue={userdata.name}
+                    // defaultValue={userdata.name}
+                    value={orderName ? orderName : userdata.name}
                     onChange={(event) => {
-                      setName(event.target.value)
+                      const v = event.target.value
+                      setOrderName(v)
                     }}
                   />
                 </li>
@@ -146,6 +173,14 @@ function CartPayment(props) {
               </ul>
             </div>
           </div>
+          <div>除錯用姓名:{orderName}</div>
+          <div>除錯用地址:{orderAddress}</div>
+          <div>除錯用電話:{orderTel}</div>
+          <div>除錯用備註:{orderRemarks}</div>
+          <div>除錯用配送方式:{orderDelivery}</div>
+          <div>除錯用付款方式:{orderPayment}</div>
+          <div>除錯用卡號:{orderCard}</div>
+          <div>除錯用總計:{orderTotal}</div>          
           <div>
             <button type="button">
               <Link to="/OrderComplete">下一步</Link>
