@@ -50,6 +50,11 @@ function MyNavBar(props) {
             <span className="IconP">我的最愛</span>
         </Fragment>
     );
+    const compare = (
+        <Fragment>
+            <span className="IconP">商品比較</span>
+        </Fragment>
+    );
     const carts = (
         <Fragment>
             <span className="IconP">購物車</span>
@@ -322,7 +327,7 @@ function MyNavBar(props) {
                                         }
                                         </div>
                                     </li>
-
+                                    
                                     {/* 我的最愛 */}
                                     <li>
                                         <div id="wishlist" className="otis-wishlist">
@@ -330,6 +335,20 @@ function MyNavBar(props) {
                                                 <Popover content={loves} placement="bottom">
                                                     <span className="otis-wishlist-widget-icon">
                                                         <i className="iconfont icon-like"></i>
+                                                    </span>
+                                                    <span className="otis-wishlist-widget-count"> 1 </span>
+                                                </Popover>
+                                            </Link>
+                                        </div>
+                                    </li>
+                                    
+                                    {/* 比較功能 */}
+                                    <li>
+                                        <div id="wishlist" className="otis-wishlist">
+                                            <Link className="otis-wishlist-widget-link" to='/Compare'>
+                                                <Popover content={compare} placement="bottom">
+                                                    <span className="otis-wishlist-widget-icon">
+                                                        <i className="iconfont icon-binding"></i>
                                                     </span>
                                                     <span className="otis-wishlist-widget-count"> 1 </span>
                                                 </Popover>

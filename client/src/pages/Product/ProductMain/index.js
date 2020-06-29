@@ -27,6 +27,15 @@ function ProductMain(props) {
     const currentCompare = JSON.parse(localStorage.getItem('compare')) || []
     const newcCompare = [...currentCompare, value]
     localStorage.setItem('compare', JSON.stringify(newcCompare))
+
+    currentCompare.map(element => {
+      if(element.itemName === value.itemName){
+        window.localStorage.setItem('compare', JSON.stringify(currentCompare));
+        message.warning(`商品"${element.itemName}"重複了`)
+        return 
+      }
+    });
+
   }
 
   // 加入最愛
@@ -34,6 +43,15 @@ function ProductMain(props) {
     const currentLove = JSON.parse(localStorage.getItem('love')) || []
     const newcLompare = [...currentLove, value]
     localStorage.setItem('love', JSON.stringify(newcLompare))
+
+    currentLove.map(element => {
+      if(element.itemName === value.itemName){
+        window.localStorage.setItem('love', JSON.stringify(currentLove));
+        message.warning(`商品"${element.itemName}"重複了`)
+        return 
+      }
+    });
+
   }
 
   const { itemsdata, setItemsdata, itemsid, setItemsid } = props;
@@ -329,10 +347,10 @@ function ProductMain(props) {
                             message.success(`商品"${data.itemName}"加入最愛`)
                             updateLoveToLocalStorage({
                               itemid: `${data.itemId}`,
-                        itemName:`${data.itemName}`,
-                        itemBrand:`${data.itemsbrand}`,
-                        itemImg:`${data.itemImg}`,
-                        itemPrice:`${data.itemPrice}`,
+                              itemName:`${data.itemName}`,
+                              itemBrand:`${data.itemsbrand}`,
+                              itemImg:`${data.itemImg}`,
+                              itemPrice:`${data.itemPrice}`,
                             })
                           }}
                         >加入最愛</button>
@@ -341,11 +359,11 @@ function ProductMain(props) {
                           onClick={() => {
                             message.success(`商品"${data.itemName}"加入比較`)
                             updateCompareToLocalStorage({
-                        itemid: `${data.itemId}`,
-                        itemName:`${data.itemName}`,
-                        itemBrand:`${data.itemsbrand}`,
-                        itemImg:`${data.itemImg}`,
-                        itemPrice:`${data.itemPrice}`,
+                              itemid: `${data.itemId}`,
+                              itemName:`${data.itemName}`,
+                              itemBrand:`${data.itemsbrand}`,
+                              itemImg:`${data.itemImg}`,
+                              itemPrice:`${data.itemPrice}`,
                             })
                           }}
                         >加入比較</button>
