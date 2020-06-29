@@ -43,32 +43,32 @@ function Compare(props) {
       const newCart = [...currentCart, value]
       localStorage.setItem('cart', JSON.stringify(newCart))
     }  
-    //取得該會員的比較資料
-    const CompareProductDataFetch =()=>{
-        fetch('http://localhost:3009/compare/listCompareUserProduct',{
-          method: 'post',
-          headers: new Headers({
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-          }),
-          body: JSON.stringify({
-            id: id
-          })
-      })
-        .then(response=>{
-          return response.json() })
-        .then(response=>{
-          console.log('response', response);
-           [...CompareProductDataInner]=response;
-          setCompareProductData(CompareProductDataInner)
-          console.log('CompareProudctDataInner',CompareProductDataInner)
+    // //取得該會員的比較資料
+    // const CompareProductDataFetch =()=>{
+    //     fetch('http://localhost:3009/compare/listCompareUserProduct',{
+    //       method: 'post',
+    //       headers: new Headers({
+    //           'Accept': 'application/json',
+    //           'Content-Type': 'application/json',
+    //       }),
+    //       body: JSON.stringify({
+    //         id: id
+    //       })
+    //   })
+    //     .then(response=>{
+    //       return response.json() })
+    //     .then(response=>{
+    //       console.log('response', response);
+    //        [...CompareProductDataInner]=response;
+    //       setCompareProductData(CompareProductDataInner)
+    //       console.log('CompareProudctDataInner',CompareProductDataInner)
           
-        })
-      }
+    //     })
+    //   }
     
-      useEffect(()=>{
-        CompareProductDataFetch()
-      },[])
+    //   useEffect(()=>{
+    //     CompareProductDataFetch()
+    //   },[])
     
     // 點擊 css 樣式變換
     const itemsChangeFunctionTrue =()=>{
@@ -197,7 +197,7 @@ function Compare(props) {
                     compareList.splice(compareList.indexOf(index), 1);
                     setCompareList(compareList)
                     localStorage.setItem("compare", JSON.stringify(compareList)); }}></span>
-                      <img src={}/>
+                      <img src={visa}/>
                       <h3>{data.itemsbrand}</h3>
                       <h3>{data.itemName}</h3>
                     </div>
