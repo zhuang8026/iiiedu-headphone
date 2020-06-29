@@ -40,26 +40,27 @@ function BlogMainUserListByUser(props) {
     const [searchSort, setSearchSort] = useState('依發文日期')
 
     useEffect(() => {
-        searchMethod()
+        //searchMethod()
     }, [])
+
     useEffect(() => {
         searchMethod()
-    }, [userdata])
+    }, [userdata,searchOrder,searchSort,currentPage])
     useEffect(() => {
 
     }, [listUserBlogdata])
-    useEffect(() => {
-        searchMethod()
-    }, [searchOrder])
-    useEffect(() => {
-        searchMethod()
-    }, [searchSort])
+    // useEffect(() => {
+    //     searchMethod()
+    // }, [searchOrder])
+    // useEffect(() => {
+    //     searchMethod()
+    // }, [searchSort])
     useEffect(() => {
         console.log('更新pageList -> ', listPage)
     }, [listPage])
     useEffect(() => {
         console.log('更新currentPage -> ', currentPage)
-        searchMethod()
+        //searchMethod()
     }, [currentPage])    
 
     // 刪除文章
