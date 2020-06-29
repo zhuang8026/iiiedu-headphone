@@ -197,7 +197,7 @@ function Compare(props) {
                     compareList.splice(compareList.indexOf(index), 1);
                     setCompareList(compareList)
                     localStorage.setItem("compare", JSON.stringify(compareList)); }}></span>
-                      <img src={visa}/>
+                      <img src={}/>
                       <h3>{data.itemsbrand}</h3>
                       <h3>{data.itemName}</h3>
                     </div>
