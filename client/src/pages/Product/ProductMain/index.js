@@ -328,7 +328,11 @@ function ProductMain(props) {
                           onClick={() => {
                             message.success(`商品"${data.itemName}"加入最愛`)
                             updateLoveToLocalStorage({
-                              data
+                              itemid: `${data.itemId}`,
+                        itemName:`${data.itemName}`,
+                        itemBrand:`${data.itemsbrand}`,
+                        itemImg:`${data.itemImg}`,
+                        itemPrice:`${data.itemPrice}`,
                             })
                           }}
                         >加入最愛</button>

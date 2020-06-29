@@ -401,7 +401,18 @@ function App() {
 
           {/* 我的最愛 */}
           <Route path="/MyFav">
-            <MyFav />
+          <MyFav    
+              itemsdata={itemsdata}
+               setItemsdata={setItemsdata}
+               itemsid={itemsid}
+               setItemsid={setItemsid}
+               allprops={{
+              userdata,
+              setUserdata,
+              name,
+              setName
+            }}
+                />
           </Route>
 
           {/* 購物車 */}

@@ -44,31 +44,31 @@ function Compare(props) {
       localStorage.setItem('cart', JSON.stringify(newCart))
     }  
     //取得該會員的比較資料
-    const CompareProductDataFetch =()=>{
-        fetch('http://localhost:3009/compare/listCompareUserProduct',{
-          method: 'post',
-          headers: new Headers({
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-          }),
-          body: JSON.stringify({
-            id: id
-          })
-      })
-        .then(response=>{
-          return response.json() })
-        .then(response=>{
-          console.log('response', response);
-           [...CompareProductDataInner]=response;
-          setCompareProductData(CompareProductDataInner)
-          console.log('CompareProudctDataInner',CompareProductDataInner)
+    // const CompareProductDataFetch =()=>{
+    //     fetch('http://localhost:3009/compare/listCompareUserProduct',{
+    //       method: 'post',
+    //       headers: new Headers({
+    //           'Accept': 'application/json',
+    //           'Content-Type': 'application/json',
+    //       }),
+    //       body: JSON.stringify({
+    //         id: id
+    //       })
+    //   })
+    //     .then(response=>{
+    //       return response.json() })
+    //     .then(response=>{
+    //       console.log('response', response);
+    //        [...CompareProductDataInner]=response;
+    //       setCompareProductData(CompareProductDataInner)
+    //       console.log('CompareProudctDataInner',CompareProductDataInner)
           
-        })
-      }
+    //     })
+    //   }
     
-      useEffect(()=>{
-        CompareProductDataFetch()
-      },[])
+    //   useEffect(()=>{
+    //     CompareProductDataFetch()
+    //   },[])
     
     // 點擊 css 樣式變換
     const itemsChangeFunctionTrue =()=>{
