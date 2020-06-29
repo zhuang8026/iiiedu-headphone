@@ -259,7 +259,14 @@ function App() {
               itemsdata={itemsdata}
                setItemsdata={setItemsdata}
                itemsid={itemsid}
-               setItemsid={setItemsid} />
+               setItemsid={setItemsid}
+               allprops={{
+              userdata,
+              setUserdata,
+              name,
+              setName
+            }}
+                />
           </Route>
 
           {/* <Route path="/KMembers/MembersForget">
@@ -474,7 +481,7 @@ function App() {
              allprops={{
                 userdata,
                 setUserdata,
-		orderTotal,
+		            orderTotal,
                 setOrderTotal,
                 orderName,
                 setOrderName,

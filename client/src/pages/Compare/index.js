@@ -17,48 +17,58 @@ import { message } from 'antd';
 // import { Pagination } from 'antd';
 
 function Compare(props) {
+      const{userdata,setUserdata,name,setName}= props.allprops;
     const { itemsdata, setItemsdata, itemsid, setItemsid } = props;
+    const [CompareProductData, setCompareProductData] = useState([])
     const [detailitems, setdetailitems] = useState('');
     const [currentTotalPages, setCurrentTotalPages] = useState();
     const [currentPage, setCurrentPage] = useState(1); 
     const [itemchange, setitemchange] = useState(false); 
     let [compareList,setCompareList] = useState([])
     const key = 'updatable';
+    //打開會員的localstorage
+    const Memberman = JSON.parse(localStorage.getItem('memberData'))|| []
+    // console.log(Memberman)
+    let id = Memberman.id;
+    var CompareProductDataInner=[];
 
     //抓取compare的localstorage
     let comparearray = []
     const objcompare = JSON.parse(localStorage.getItem('compare'))|| []
     compareList = [...objcompare]
 
- 
-
-
-
+    //更新購物車localstorage
     const updateCartToLocalStorage = (value) => {
-      // const Memberman = JSON.parse(localStorage.getItem('memberData'))|| []
-      // console.log(Memberman)
       const currentCart = JSON.parse(localStorage.getItem('cart')) || []
       const newCart = [...currentCart, value]
       localStorage.setItem('cart', JSON.stringify(newCart))
     }  
-  
-    //go to detail 是向資料庫請求資料
-    // const goToDetail = ( id )=> {
-    //   fetch(`http://localhost:3009/products/detail/${id}`, {
-    //       method: 'get',
-    //       headers: new Headers({
-    //           'Accept': 'application/json',
-    //           'Content-Type': 'application/json',
-    //       })
-    //   })
-    //       .then((res)=>{
-    //           return res.json()
-    //       })
-    //       .then((res)=>{
-    //           // console.log(res)
-    //           setdetailitems(res)
-    //       })
-    // }
+    //取得該會員的比較資料
+    const CompareProductDataFetch =()=>{
+        fetch('http://localhost:3009/compare/listCompareUserProduct',{
+          method: 'post',
+          headers: new Headers({
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+          }),
+          body: JSON.stringify({
+            id: id
+          })
+      })
+        .then(response=>{
+          return response.json() })
+        .then(response=>{
+          console.log('response', response);
+           [...CompareProductDataInner]=response;
+          setCompareProductData(CompareProductDataInner)
+          console.log('CompareProudctDataInner',CompareProductDataInner)
+          
+        })
+      }
+    
+      useEffect(()=>{
+        CompareProductDataFetch()
+      },[])
     
     // 點擊 css 樣式變換
     const itemsChangeFunctionTrue =()=>{
@@ -176,7 +186,7 @@ function Compare(props) {
             </div>
             <div className="MyFav_list">
         <ul className="MyFav_pwa_r_inner">
-        {compareList.map((data,index)=>{
+        {CompareProductData.map((data,index)=>{
             return(
           <li key={index}>
                 <div className="MyFav_card">
@@ -204,7 +214,7 @@ function Compare(props) {
                     }}>前往細節頁</button>
                     <button className="MyFav_del MyFav_btn_style"                          
                     id={data.itemId}
-                    onClick={(e) => {
+                    onClick={() => {
                     updateCartToLocalStorage({
                         id: `${data.itemId}`,
                         itemName:`${data.itemName}`,

@@ -42,13 +42,7 @@ function ProductMain(props) {
   const [currentPage, setCurrentPage] = useState();             // 此刻的頁數
   const [itemchange, setitemchange] = useState(false); 
   const [itemAll, setitemAll] = useState([]); 
-<<<<<<< HEAD
-
-  // console.log('itemsid:', itemsid) // text button id 
-  // console.log('itemsdata:', itemsdata) 
-=======
   const [howManyTotal, sethowManyTotal] = useState({});
->>>>>>> 239046d28a4255ca1ceed125067dc06bda50a0bf
 
   const goToDetail = ( id )=> {
     fetch(`http://localhost:3009/products/detail/${id}`, {
