@@ -186,7 +186,7 @@ function Compare(props) {
             </div>
             <div className="MyFav_list">
         <ul className="MyFav_pwa_r_inner">
-        {CompareProductData.map((data,index)=>{
+        {compareList.map((data,index)=>{
             return(
           <li key={index}>
                 <div className="MyFav_card">

@@ -1,0 +1,1 @@
+SELECT * FROM compare AS t1 JOIN (SELECT users.id,users.username,users.name FROM users WHERE users.id = 2 ORDER BY id desc) AS t2 ON t1.userId = t2.id JOIN(SELECT items.itemId,items.itemName,items.itemsbrand,items.itemPrice FROM items) AS t3 ON t1.productId = t3.itemId

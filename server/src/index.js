@@ -80,6 +80,10 @@ app.use('/products', require(__dirname+'/products.js'));
 // blog
 app.use('/blog', require(__dirname+'/blog.js'));
 
+
+//比較
+app.use('/compare', require(__dirname+'/compare.js'));
+
 // 404
 app.use((req, res)=>{
     res.type('text/html');  // 类型
