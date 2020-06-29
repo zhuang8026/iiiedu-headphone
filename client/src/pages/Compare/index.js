@@ -186,7 +186,7 @@ function Compare(props) {
             </div>
             <div className="MyFav_list">
         <ul className="MyFav_pwa_r_inner">
-        {CompareProductData.map((data,index)=>{
+        {compareList.map((data,index)=>{
             return(
           <li key={index}>
                 <div className="MyFav_card">
@@ -197,7 +197,7 @@ function Compare(props) {
                     compareList.splice(compareList.indexOf(index), 1);
                     setCompareList(compareList)
                     localStorage.setItem("compare", JSON.stringify(compareList)); }}></span>
-                      <img src={visa}/>
+                      <img src={`/items_img/${data.itemImg}`}/>
                       <h3>{data.itemsbrand}</h3>
                       <h3>{data.itemName}</h3>
                     </div>
