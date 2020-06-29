@@ -28,14 +28,10 @@ function Compare(props) {
     //抓取compare的localstorage
     let comparearray = []
     const objcompare = JSON.parse(localStorage.getItem('compare'))|| []
-    comparearray = [...objcompare]
-    // console.log(compareList)
-    for(let i=0;i<comparearray.length;i++){
-        compareList.push(comparearray[i].data)
-        console.log(compareList)
-    }
-    // console.log(compareList[0].data)
-    // console.log(compareList[0].data.itemName)
+    compareList = [...objcompare]
+
+ 
+
 
 
     const updateCartToLocalStorage = (value) => {
@@ -155,14 +151,12 @@ function Compare(props) {
       }
       
     },[typedata])
-    const handleDelete = (id)=>{
-        for(let i=0;i<comparearray.length;i++){
-            compareList.push(comparearray[i].data)
-            console.log(compareList)
-        }
-        localStorage.setItem("compare", JSON.stringify(compareList)); 
-        }
 
+    // const handleDelete = (e,id)=>{
+    //     compareList.splice(compareList.indexOf(index), 1);
+    //     setCompareList(compareList)
+    //     localStorage.setItem("compare", JSON.stringify(compareList)); 
+    //     }
   return (
     <Router>
       <Fragment>
@@ -188,8 +182,11 @@ function Compare(props) {
                 <div className="MyFav_card">
                     <div className="MyFav_item">
                       <span className="iconfont icon-error" 
-                                      id={data.itemId} 
-                                      onClick={handleDelete}></span>
+                    id={data.itemId} 
+                    onClick={(index)=>{        
+                    compareList.splice(compareList.indexOf(index), 1);
+                    setCompareList(compareList)
+                    localStorage.setItem("compare", JSON.stringify(compareList)); }}></span>
                       <img src={visa}/>
                       <h3>{data.itemsbrand}</h3>
                       <h3>{data.itemName}</h3>
@@ -207,7 +204,7 @@ function Compare(props) {
                     }}>前往細節頁</button>
                     <button className="MyFav_del MyFav_btn_style"                          
                     id={data.itemId}
-                    onClick={() => {
+                    onClick={(e) => {
                     updateCartToLocalStorage({
                         id: `${data.itemId}`,
                         itemName:`${data.itemName}`,
