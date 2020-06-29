@@ -45,16 +45,12 @@ function BlogMainAdd(props) {
     const [selectedFile, setSelectedFile] = useState([]);
 
     useEffect(() => {
-
-
-
     }, [userdata]);
 
     useEffect(() => {
         console.log('=====================================')
         console.log('selectedFile', selectedFile)
     }, [selectedFile]);
-
 
     const goAddImg1 = (data) => {
         console.log('=====================================')
@@ -70,18 +66,16 @@ function BlogMainAdd(props) {
         // console.log('=====================================')
         // console.log('result', result)
         // console.log(JSON.stringify(result))
-
         let formData = new FormData();
-
         formData.append('file', data);
         // result.map((file, index) => {
         //     formData.append(`file${index}`, file);
         //   });
         console.log('================================ datafiles ================================')
-        console.log(formData.get('file'))
+        console.log(formData.get('file').name)
         fetch('http://localhost:3009/blog/try-upload', {
             method: 'POST',
-            body: formData,
+            body: { filename: formData.get('file') },
             // headers: new Headers({
             //     'Accept': 'multipart/form-data',
             //     'Content-Type': 'multipart/form-data',
@@ -101,9 +95,6 @@ function BlogMainAdd(props) {
                     userblogimg: obj.filename
                 })
             })
-
-
-
     }
     // const goAddImg2 = () => { }
     const goBlogAdd = () => {
