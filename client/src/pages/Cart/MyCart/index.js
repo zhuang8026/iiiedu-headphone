@@ -33,8 +33,8 @@ function MyCart(props) {
 
     // 得到值(字串) !!重要
     const initCart = localStorage.getItem('cart') || '[]'
-    // 設定到mycart，轉為真正的陣列 !!重要
-    setMycart(JSON.parse(initCart),()=>{console.log('mycart',mycart)})
+    // 設定到mycart，轉為真正的陣列 !!重要index.js:1 Warning: State updates from the useState() and useReducer() Hooks don't support the second callback argument. To execute a side effect after rendering, declare it in the component body with useEffect().
+    setMycart(JSON.parse(initCart))
     
     // 1000ms(一秒後)關閉指示(spinner)
     setTimeout(() => {

@@ -24,22 +24,24 @@ router.get("/list", async (req, res) => {
 
 //新增訂單(未完成)
 //http://localhost:3009/order/add
+// router.post('/add', upload.none(), async (req, res)=>{
 router.post('/add', upload.none(), async (req, res)=>{
-    console.log(req.body)
+console.log(req.body)
     const output ={
       success: false,
       error:'',
       status: 0,
       body: req.body,
     }
-    const sql = "INSERT INTO `orders`(`username`,`payment`,`delivery`,`orderRemark`) VALUES(?,?,?,?)"
+    const sql = "INSERT INTO `orders`(`userId`,`total`,`orderRemark`,`delivery`,`payment`) VALUES(?,?,?,?,?)"
   
   
     const [r] = await db.query(sql , [
-      req.body.id,
-      req.body.payment,
-      req.body.delivery,
+      req.body.userId,
+      req.body.total,
       req.body.orderRemark,
+      req.body.delivery,
+      req.body.payment,
       ])
     if (r) {
         output.result = r;
