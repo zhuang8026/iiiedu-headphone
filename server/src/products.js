@@ -65,7 +65,7 @@ router.get("/list/:getname?", (req, res) => {
     .then((results)=>{
         // console.log(results)
         
-        // 
+        // 模糊搜尋 主要功能
         function strpos(haystack, needle, start) {
             if (typeof(start)==="undefined") {
                 start = 0;
@@ -235,7 +235,7 @@ const getDataListChange = async (req)=>{
 };
 
 // http://localhost:3009/products/1/sony 
-router.get('/:type?', async (req, res)=>{
+router.get('/:type?/:page?', async (req, res)=>{
     // console.log(req);
     const output = await getDataListChange(req);
     // console.log(output)

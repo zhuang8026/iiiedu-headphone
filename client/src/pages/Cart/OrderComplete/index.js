@@ -7,7 +7,34 @@ import {
   withRouter,
 } from 'react-router-dom'
 
-function CartDone(props) {
+function OrderComplete(props) {
+  const {
+    userdata,
+    setUserdata,
+    mycart,
+    setMycart,
+    mycartDisplay,
+    setMycartDisplay,
+    orderTotal,
+    setOrderTotal,
+    orderName,
+    setOrderName,
+    orderAddress,
+    setOrderAddress,
+    orderTel,
+    setOrderTel,
+    orderRemarks,
+    setOrderRemarks,
+    orderDelivery,
+    setOrderDelivery,
+    orderPayment,
+    setOrderPayment,
+    orderCard,
+    setOrderCard,
+    orderId,
+    setOrderId
+  } = props.allprops
+
   return (
     <>
       <div className="cart-crumb">
@@ -60,7 +87,7 @@ function CartDone(props) {
             </tr>
             <tr>
               <td>訂單號:</td>
-              <td>9527</td>
+              <td>{orderId}</td>
             </tr>
             <tr>
               <td>日期：</td>
@@ -72,20 +99,22 @@ function CartDone(props) {
             </tr>
             <tr>
               <td>合計:</td>
-              <td>$ 5200</td>
+              <td>{orderTotal}</td>
             </tr>
           </tbody>
 
           <tfoot>
             <tr>
               <td>
-                <button type="button"><Link to="/">回首頁</Link></button>
+                <button type="button">
+                  <Link to="/">回首頁</Link>
+                </button>
               </td>
             </tr>
           </tfoot>
         </table>
-      </div>
+      </div>     
     </>
   )
 }
-export default withRouter(CartDone)
+export default withRouter(OrderComplete)

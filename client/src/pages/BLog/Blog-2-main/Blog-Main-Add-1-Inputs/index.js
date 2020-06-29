@@ -1,7 +1,7 @@
 // 函式元件
 import React, { Fragment, useEffect, useState } from 'react'
 import Files from 'react-files'
-// import $ from 'jquery'
+import $ from 'jquery'
 import { message } from 'antd';
 
 import {
@@ -22,6 +22,7 @@ import {
 
 // -------------------- imgs --------------------
 import testImg from '../../../../assets/img/blog-img/blog-detail/test.png'
+// import testtest from './../../../../../public/blogs_img/world-map.jpg'
 
 // -------------------- func --------------------
 
@@ -43,13 +44,17 @@ function BlogMainAdd(props) {
     const [drag22, setDrag22] = useState(testImg);
     const [drag23, setDrag23] = useState(testImg);
     const [selectedFile, setSelectedFile] = useState([]);
-
+    const [testtest, setTesttest] = useState('')
+    
+    useEffect(() => {
+    }, []);
     useEffect(() => {
     }, [userdata]);
 
     useEffect(() => {
         console.log('=====================================')
         console.log('selectedFile', selectedFile)
+        $('#drag13').attr("src",`/blogs_img/${selectedFile.originalname}`)
     }, [selectedFile]);
 
     const goAddImg1 = (data) => {
@@ -67,34 +72,26 @@ function BlogMainAdd(props) {
         // console.log('result', result)
         // console.log(JSON.stringify(result))
         let formData = new FormData();
-        formData.append('file', data);
+        formData.append('avatar', data);
         // result.map((file, index) => {
         //     formData.append(`file${index}`, file);
         //   });
         console.log('================================ datafiles ================================')
-        console.log(formData.get('file').name)
+        console.log(formData.get('avatar'))
+
         fetch('http://localhost:3009/blog/try-upload', {
             method: 'POST',
-            body: { filename: formData.get('file') },
-            // headers: new Headers({
-            //     'Accept': 'multipart/form-data',
-            //     'Content-Type': 'multipart/form-data',
-            // })
+            body: formData
         })
-            .then((res) => {
-                console.log(res)
-                console.log(res.statusText)
-                return res.json()
-            })
+            .then(r => r.json())
             .then(obj => {
-                console.log('================================ datafiles2 ================================')
-                console.log(formData.get('file'))
-                console.log(obj);
-                setUserdata({
-                    ...userdata,
-                    userblogimg: obj.filename
-                })
+                // setTesttest(obj.filename)
+                // console.log('@@@@',obj.filename)
+                // $('#drag11').attr('src', '../../../../../public/blogs_img/'+ obj.filename)
+                // {`/blogs_img/${obj.filename}`}
+                // console.log('@@@@',testtest)
             })
+            // console.log('@@@@',testtest)  
     }
     // const goAddImg2 = () => { }
     const goBlogAdd = () => {
@@ -120,12 +117,8 @@ function BlogMainAdd(props) {
                     // props.history.goBack()
                     props.history.push('/Blog/YongMyBlog');
                 }, 2000)
-
             })
     }
-
-
-
 
     return (
         <>
@@ -150,6 +143,7 @@ function BlogMainAdd(props) {
                         className="btn-and-info-input"
                         id="blog_file_upload"
                         name="blog_file_upload"
+                        multiple="multiple"
                         // defaultValue=""
                         // placeholder=""
                         onChange={(e) => {
@@ -158,11 +152,12 @@ function BlogMainAdd(props) {
                                 ...userdata,
                                 userblogimg: e.target.files[0].name
                             })
-                            // console.log(e.target.files[0])
-                            setSelectedFile(e.target.files[0])
+                            
                             goAddImg1(e.target.files[0])
+                            setSelectedFile(e.target.files[0])
+                            console.log('---',e.target.files[0])
+                            // setTesttest(e.target.files[0].name)
                         }}
-
                     />
                     <div className="blog-add-info"></div>
                     <div className="blog-add-info"></div>

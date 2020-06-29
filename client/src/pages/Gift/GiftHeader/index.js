@@ -11,7 +11,7 @@ import Aboutimg3 from '../../../assets/img/About/A07.jpg'
 function GiftHeader() {
   const params = {
     autoplay: {
-      delay: 3000,
+      delay: 4000,
       disableOnInteraction: false
   },
     navigation: {

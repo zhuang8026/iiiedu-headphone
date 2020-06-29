@@ -363,30 +363,57 @@ router.post('/getDetail/', async (req, res) => {
 
 // 上傳檔案
 // http://localhost:3009/blog/try-upload/
-router.post('/try-upload/', upload.array('avatar'), async (req, res) => {
-    console.log('========== react(post)圖片 -> 上傳檔案 ==========')
-    console.log('req.body = ', req.body)
-    
+router.post('/try-upload/', upload.single('avatar'), async (req, res) => {
+    console.log('========== react(post) 圖片 -> 上傳檔案 ==========')
+    console.log('req.file = ', req.file)
     res.json({
-        filename: req.files.filename,
+        filename: req.file,
         body: req.body
     });
-    console.log('res.body = ', res.body)
-    console.log('res--->',req.files)
 
 })
 
-// router.post('/try-upload',function(req, res) {
-//     upload2(req, res, function (err) {
-//             if (err instanceof multer.MulterError) {
-//                 return res.status(500).json(err)
-//             } else if (err) {
-//                 return res.status(500).json(err)
-//             }
-//         // return res.status(200).send(req.file)
-//         return res.status(200).json(req.file)
-//     })
-// });
+// router.post('/try-upload/', async (req, res) => {
+//     console.log('========== react(post) 圖片 -> 上傳檔案 ==========')
+//     console.log('req.file = ', req.file)
+//     console.log('1')
+//     try {
+//         if(!req.files) {
+//             console.log('2')
+//             res.send({
+//                 status: false,
+//                 message: 'No file uploaded'
+//             });
+//         } else {
+//             let data = []; 
+//             console.log('3')
+//             //loop all files
+//             _.forEach(_.keysIn(req.files.photos), (key) => {
+//                 let photo = req.files.photos[key];
+                
+//                 //move photo to uploads directory
+//                 photo.mv('/../../client/public/blogs_img/' + photo.name);
+  
+//                 //push file details
+//                 data.push({
+//                     name: photo.name,
+//                     mimetype: photo.mimetype,
+//                     size: photo.size
+//                 });
+//             });
+    
+//             //return response
+//             res.send({
+//                 status: true,
+//                 message: 'Files are uploaded',
+//                 data: data
+//             });
+//         }
+//     } catch (err) {
+//         console.log('4')
+//         res.status(500).send(err);
+//     }
+//   });
 
 
 //================================================== 測試區 ==============================================================
