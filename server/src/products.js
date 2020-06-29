@@ -65,7 +65,7 @@ router.get("/list/:getname?", (req, res) => {
     .then((results)=>{
         // console.log(results)
         
-        // 
+        // 模糊搜尋 主要功能
         function strpos(haystack, needle, start) {
             if (typeof(start)==="undefined") {
                 start = 0;
