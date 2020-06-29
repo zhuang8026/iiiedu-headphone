@@ -5,10 +5,12 @@ import { Link, NavLink, withRouter } from 'react-router-dom'
 // scss
 // import './_menu.scss'
 import WarrantyHeader from './WarrantyHeader'
+import WarrantyAbout from './WarrantyAbout'
 function WiWarranty(props) {
     return (
         <Fragment>
         <WarrantyHeader />
+        <WarrantyAbout />
         </Fragment>
     )
 

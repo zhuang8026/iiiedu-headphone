@@ -5,11 +5,12 @@ import { withRouter, Link } from 'react-router-dom';
 import Aboutimg from '../../../assets/img/About/A01.jpg'
 import Aboutimg2 from '../../../assets/img/About/A02.jpg'
 import Aboutimg3 from '../../../assets/img/About/A07.jpg'
+import Aboutimg4 from '../../../assets/img/About/wearing.jpg'
 
 function WarrantyHeader(props) {
     const params = {
       autoplay: {
-        delay: 3000,
+        delay: 4000,
         disableOnInteraction: false
     },
       navigation: {
@@ -28,7 +29,7 @@ function WarrantyHeader(props) {
          <div><img src={Aboutimg2}></img>
          <h1>保固卡</h1>
          </div>
-         <div id="Aboutimg3"><img src={Aboutimg3}></img>
+         <div id="Aboutimg3"><img src={Aboutimg4}></img>
          <h1>保固卡</h1>
          </div>
     </Swiper>
