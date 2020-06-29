@@ -389,20 +389,21 @@
           .link-one-btn {
             width: 33.33%;
             text-align: center;
-
             .linkFB,
             .linkIG,
             .linkLINE {
-              width: $icon-size-45;
-              height: $icon-size-45;
-              margin: 10px auto;
-              background: $btn-color-r;
-              border-radius: 50%;
-            }
-            h2 {
-              font-size: $font-size-12;
+              width: 70%;
+              height: 70%;
+              margin: 0 auto;
+              img {
+                width: 100%;
+                height: 100%;
+              }
             }
           }
+          h2 {
+              font-size: $font-size-12;
+            }
         }
       }
 
@@ -464,11 +465,21 @@
               width: 100px;
               height: 100px;
               border: 1px solid $border-color-l;
+              img {
+                width: 100%;
+                height: 100%;
+              }
             }
 
             .recent-post-in-one-txt {
               margin-left: 10px;
-              h5 {
+              width: calc(100% - 100px);
+              .recent-post-in-one-txt-title {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+              .recent-post-in-one-txt-date {
                 margin-top: 10px;
                 font-size: $font-size-16;
                 color: $font-color-m;

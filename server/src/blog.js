@@ -1,6 +1,6 @@
 const express = require('express');
 const fileUpload = require('express-fileupload');
-const upload = require(__dirname + '/upload-module');
+const upload = require(__dirname + '/upload-module-blogs');
 // const upload2 = require(__dirname + '/upload');
 const moment = require('moment-timezone');
 const session = require('express-session');
@@ -317,7 +317,7 @@ router.post('/searchAllBlog/', async (req, res) => {
     const output = await getSearchAllList(req);
     res.json(output);
 })
-
+// (測試ok)
 // 搜尋(個人)所有文章(分頁)
 // http://localhost:3009/blog/searchUserBlog/
 router.post('/searchUserBlog/', async (req, res) => {
@@ -326,6 +326,7 @@ router.post('/searchUserBlog/', async (req, res) => {
 })
 
 //================================================== blogId取文章 ==============================================================
+// (測試ok)
 // 搜尋(個人)所有文章(分頁)
 // http://localhost:3009/blog/getDetail/
 router.post('/getDetail/', async (req, res) => {
@@ -365,12 +366,13 @@ router.post('/getDetail/', async (req, res) => {
 router.post('/try-upload/', upload.array('avatar'), async (req, res) => {
     console.log('========== react(post)圖片 -> 上傳檔案 ==========')
     console.log('req.body = ', req.body)
+    
+    res.json({
+        filename: req.files.filename,
+        body: req.body
+    });
     console.log('res.body = ', res.body)
-    // res.json({
-    //     filename: req.files.filename,
-    //     body: req.body
-    // });
-
+    console.log('res--->',req.files)
 
 })
 
