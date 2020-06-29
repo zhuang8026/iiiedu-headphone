@@ -34,6 +34,8 @@ function CartPayment(props) {
     setOrderCard,
   } = props.allprops
 
+  console.log('mycart',mycart)
+  console.log('mycartDisplay',mycartDisplay)
   // const [orderPayment, setOrderPayment] = useState('1')
 
   const updateCheckoutPaymentToLocalStorage = (value) => {
@@ -114,7 +116,7 @@ function CartPayment(props) {
                     type="text"
                     name="creditCardNum"
                     id="creditCardNum"
-                    maxlength="19"
+                    maxLength="19"
                     // defaultValue={userdata.card}
                     value={orderCard ? orderCard : userdata.card}
                     onChange={(event) => {
@@ -147,14 +149,14 @@ function CartPayment(props) {
                     type="text"
                     name="cardMonth"
                     id="cardMonth"
-                    maxlength="2"
+                    maxLength="2"
                   />
                   <label htmlFor="cardMonth">月</label>
                   <input
                     type="text"
                     name="cardYear"
                     id="cardYearr"
-                    maxlength="2"
+                    maxLength="2"
                   />
                   <label htmlFor="cardYear">年</label>
                 </li>
@@ -166,7 +168,7 @@ function CartPayment(props) {
                     type="text"
                     name="cardPin"
                     id="cardPin"
-                    maxlength="3"
+                    maxLength="3"
                   />
                 </li>
                 <li></li>
