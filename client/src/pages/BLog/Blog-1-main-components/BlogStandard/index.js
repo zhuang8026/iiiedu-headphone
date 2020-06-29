@@ -40,7 +40,7 @@ function BlogStandard(props) {
       <div className="wrap-top">
         <BlogMainStandardSlide />
         <div className="blog-crumb">
-          <Link to="../">首頁</Link>/<Link to="./YongBlog">部落格主頁</Link>
+          <Link to="/">首頁</Link>/<Link to="./YongBlog">部落格主頁</Link>
         </div>
       </div>
 

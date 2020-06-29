@@ -35,7 +35,7 @@ function BlogUser(props) {
       <div className="blog-user-spacing"></div>
       <div className="wrap-top">
       <div className="blog-crumb">        
-        <Link to="../">首頁</Link>/<Link to="./YongMyBlog">部落格個人頁</Link>
+        <Link to="/">首頁</Link>/<Link to="./YongMyBlog">部落格個人頁</Link>
       </div>
       </div>
 

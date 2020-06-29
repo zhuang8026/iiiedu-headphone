@@ -37,40 +37,31 @@ function BlogMainAdd(props) {
         setBlogContent02,
         // RegisterProcess 
     } = props;
-    const [drag11, setDrag11] = useState(testImg);
-    const [drag12, setDrag12] = useState(testImg);
-    const [drag13, setDrag13] = useState(testImg);
-    const [drag21, setDrag21] = useState(testImg);
-    const [drag22, setDrag22] = useState(testImg);
-    const [drag23, setDrag23] = useState(testImg);
-    const [selectedFile, setSelectedFile] = useState([]);
+    const [drag11, setDrag11] = useState('default.jpg');
+    const [drag12, setDrag12] = useState('default.jpg');
+    const [drag13, setDrag13] = useState('default.jpg');
+    const [drag21, setDrag21] = useState('default.jpg');
+    const [drag22, setDrag22] = useState('default.jpg');
+    const [drag23, setDrag23] = useState('default.jpg');
+    const [imgPoing01, setImgPoint01] = useState(0);
+    const [imgPoing02, setImgPoint02] = useState(0);
+    // const [selectedFile, setSelectedFile] = useState([]);
     const [testtest, setTesttest] = useState('')
+
+    // useEffect(() => {
+    // }, []);
+    // useEffect(() => {
+    //     console.log('=====================================')
+    //     console.log('testtest -> ', testtest)
+    // }, [testtest]);
     
-    useEffect(() => {
-    }, []);
-    useEffect(() => {
-    }, [userdata]);
+    // useEffect(() => {
+    //     console.log('=====================================')
+    //     console.log('selectedFile', selectedFile)
+    //     $('#drag13').attr("src", `/blogs_img/${selectedFile.originalname}`)
+    // }, [selectedFile]);
 
-    useEffect(() => {
-        console.log('=====================================')
-        console.log('selectedFile', selectedFile)
-        $('#drag13').attr("src",`/blogs_img/${selectedFile.originalname}`)
-    }, [selectedFile]);
-
-    const goAddImg1 = (data) => {
-        console.log('=====================================')
-        console.log('data', data)
-        console.log(JSON.stringify(data))
-        // var result = Object.keys(data).map(function (key) { 
-
-        //     // Using Number() to convert key to number type 
-        //     // Using obj[key] to retrieve key value 
-        //     return [Number(key), data[key]]; 
-        // });
-
-        // console.log('=====================================')
-        // console.log('result', result)
-        // console.log(JSON.stringify(result))
+    const goAddImg = (data) => {
         let formData = new FormData();
         formData.append('avatar', data);
         // result.map((file, index) => {
@@ -83,15 +74,17 @@ function BlogMainAdd(props) {
             method: 'POST',
             body: formData
         })
-            .then(r => r.json())
-            .then(obj => {
-                // setTesttest(obj.filename)
-                // console.log('@@@@',obj.filename)
-                // $('#drag11').attr('src', '../../../../../public/blogs_img/'+ obj.filename)
-                // {`/blogs_img/${obj.filename}`}
-                // console.log('@@@@',testtest)
+            .then((res) => {
+                console.log(res)
+                console.log(res.statusText)
+                return res.json() // json()	返回 Promise，resolves 是 JSON 物件
             })
-            // console.log('@@@@',testtest)  
+            .then(obj => {
+                setTimeout(() => {
+                    setDrag13(obj.filename)
+                }, 2000)                                               
+            })
+            
     }
     // const goAddImg2 = () => { }
     const goBlogAdd = () => {
@@ -148,14 +141,17 @@ function BlogMainAdd(props) {
                         // placeholder=""
                         onChange={(e) => {
                             // setLogoData(e.target.files[0].name)
-                            setUserdata({
-                                ...userdata,
-                                userblogimg: e.target.files[0].name
-                            })
-                            
-                            goAddImg1(e.target.files[0])
-                            setSelectedFile(e.target.files[0])
-                            console.log('---',e.target.files[0])
+                            // setUserdata({
+                            //     ...userdata,
+                            //     userblogimg: e.target.files[0].name
+                            // })
+                            if (imgPoing01 <= 3) {
+                                message.success(userdata.id)
+                                goAddImg(e.target.files[0])
+                            }
+
+                            // setSelectedFile(e.target.files[0])
+                            // conso/le.log('---', e.target.files[0])
                             // setTesttest(e.target.files[0].name)
                         }}
                     />
@@ -166,13 +162,13 @@ function BlogMainAdd(props) {
                 <div className="upload-imgs">
                     <div className="drags d-flex">
                         <figure className="dragImg drag11" id="drag11" draggable="true">
-                            <img className="blog-cover" src="" id="drag11_img" alt="" />
+                            <img className="blog-cover" src={`/blogs_img/${drag11}`} id="drag11_img" alt="" />
                         </figure>
                         <figure className="dragImg drag12" id="drag12" draggable="true">
-                            <img className="blog-cover" src="" id="drag12_img" alt="" />
+                            <img className="blog-cover" src={`/blogs_img/${drag12}`} id="drag12_img" alt="" />
                         </figure>
                         <figure className="dragImg drag13" id="drag13" draggable="true">
-                            <img className="blog-cover" src="" id="drag13_img" alt="" />
+                            <img className="blog-cover" src={`/blogs_img/${drag13}`} id="drag13_img" alt="" />
                         </figure>
                     </div>
                 </div>
@@ -187,13 +183,13 @@ function BlogMainAdd(props) {
                 <div className="upload-imgs">
                     <div className="drags d-flex">
                         <figure className="dragImg drag21" id="drag21" draggable="true">
-                            <img className="blog-cover" src="" id="drag21_img" alt="" />
+                            <img className="blog-cover" src={`/blogs_img/${drag21}`} id="drag21_img" alt="" />
                         </figure>
                         <figure className="dragImg drag22" id="drag22" draggable="true">
-                            <img className="blog-cover" src="" id="drag22_img" alt="" />
+                            <img className="blog-cover" src={`/blogs_img/${drag22}`} id="drag22_img" alt="" />
                         </figure>
                         <figure className="dragImg drag23" id="drag23" draggable="true">
-                            <img className="blog-cover" src="" id="drag23_img" alt="" />
+                            <img className="blog-cover" src={`/blogs_img/${drag23}`} id="drag23_img" alt="" />
                         </figure>
                     </div>
                 </div>
