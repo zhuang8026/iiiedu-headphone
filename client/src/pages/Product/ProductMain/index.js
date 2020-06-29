@@ -186,6 +186,8 @@ function ProductMain(props) {
   
   // 分頁 點擊
   useEffect(()=>{
+    if(typedata) return
+
       fetch(`http://localhost:3009/products/listpage/${currentPage}`,  {
           method: 'get',
           headers: new Headers({
@@ -212,7 +214,7 @@ function ProductMain(props) {
       // console.log(itemsdata);
       setTimeout(() => {
         message.success({ content: '修改成功!', key, duration: 1 });
-        fetch(`http://localhost:3009/products/${typedata}`,  {
+        fetch(`http://localhost:3009/products/${typedata}/${currentPage}`,  {
           method: 'get',
           headers: new Headers({
               'Accept': 'application/json',
@@ -232,7 +234,7 @@ function ProductMain(props) {
       }, 1000);
     }
     
-  },[typedata])
+  },[typedata, currentPage])
 
   return (
     <>

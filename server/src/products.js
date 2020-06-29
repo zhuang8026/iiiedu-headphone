@@ -235,7 +235,7 @@ const getDataListChange = async (req)=>{
 };
 
 // http://localhost:3009/products/1/sony 
-router.get('/:type?', async (req, res)=>{
+router.get('/:type?/:page?', async (req, res)=>{
     // console.log(req);
     const output = await getDataListChange(req);
     // console.log(output)
