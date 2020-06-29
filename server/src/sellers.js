@@ -103,15 +103,6 @@ const getSellerIdProductList = async (req) => {
 };
 
 // 所有產品
-// http://localhost:3009/sellers/listAllSellerProduct
-router.get("/listAllSellerProduct", (req, res) => {
-    console.log('========== react(get) -> 所有文章 ==========')    
-    const sql = `SELECT * FROM items ORDER BY itemstoreNumber desc`;
-    db.query(sql, (error, results, fields) => {
-        if (error) throw error;
-        res.json(results);
-    });
-});
 // http://localhost:3009/sellers/listAllSellerProduct/(第幾頁)
 router.get('/listAllSellerProduct/:page?', async (req, res) => {
     console.log('========== react(get) -> 所有文章(分頁) ==========') 
@@ -120,8 +111,8 @@ router.get('/listAllSellerProduct/:page?', async (req, res) => {
 })
 
 // (個人)所有商品
-// http://localhost:3009/sellers/listSellerUserProduct/(個人id編號)
-router.get("/listSellerUserProduct/:id", (req, res) => {
+// http://localhost:3009/sellers/listSellerUserProduct
+router.post("/listSellerUserProduct", (req, res) => {
     console.log('========== react(get) -> (個人)所有文章 ==========') 
     let id = req.params.id;
     let sql = `SELECT *,users.id,users.username,users.name,users.shopopen FROM items LEFT JOIN users ON items.itemstoreNumber=users.id WHERE users.isActivated=1 AND users.shopopen=1 AND users.id =${id}`;

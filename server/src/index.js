@@ -77,8 +77,15 @@ app.use('/sellers', require(__dirname+'/sellers.js'));
 // 產品
 app.use('/products', require(__dirname+'/products.js'));
 
+// 購物流程
+app.use('/order', require(__dirname+'/order.js'));
+
 // blog
 app.use('/blog', require(__dirname+'/blog.js'));
+
+
+//比較
+app.use('/compare', require(__dirname+'/compare.js'));
 
 // 404
 app.use((req, res)=>{

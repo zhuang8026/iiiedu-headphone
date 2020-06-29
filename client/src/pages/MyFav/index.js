@@ -15,7 +15,7 @@ import {
 // components
 
 import { Pagination } from 'antd';
-
+import { message } from 'antd';
 
 // 測試圖片
 import visa from '../../assets/img/IG_4.png';
@@ -54,7 +54,7 @@ function MyFav(props) {
                       </div>
                       <div><h4>$8,700</h4></div>
                       <div className="MyFav_card_button">
-                          <button className="MyFav_update MyFav_btn_style">前往細節頁</button>
+                          <button className="MyFav_update MyFav_btn_style">加入比較頁</button>
                           <button className="MyFav_del MyFav_btn_style">加入購物車</button>
                       </div>
                   </li>

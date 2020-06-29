@@ -9,7 +9,7 @@ import {
 import { message } from 'antd'
 
 // ScrollToTop
-import ScrollToTop from './components/ScrollToTop';
+import ScrollToTop from './components/ScrollToTop'
 
 // navbar & footer
 import MyNavBar from './components/Navbar'
@@ -50,7 +50,6 @@ import Refund from './pages/Sellers/Refund'
 import SellerProduct from './pages/Sellers/SellerProduct'
 import SellerAddProduct from './pages/Sellers/AddProduct'
 
-
 //我的最愛
 import MyFav from './pages/MyFav'
 
@@ -81,23 +80,24 @@ function App() {
 
   // 產品列表
   const [itemsdata, setItemsdata] = useState([])
-  const [itemsid, setItemsid] = useState("")
+  const [itemsid, setItemsid] = useState('')
 
   //賣家中心
-  // const [SellerData, setSellerData] = useState([]) 
-  const [SellerProductId,setsellerProductId] = useState([])
+  // const [SellerData, setSellerData] = useState([])
+  const [SellerProductId, setsellerProductId] = useState([])
 
   //購物流程
   const [mycart, setMycart] = useState([])
   const [mycartDisplay, setMycartDisplay] = useState([])
-  const [orderTotal, setOrderTotal] = useState('')  
-  const [orderName, setOrderName] = useState('')  
+  const [orderTotal, setOrderTotal] = useState('')
+  const [orderName, setOrderName] = useState('')
   const [orderAddress, setOrderAddress] = useState('')
   const [orderTel, setOrderTel] = useState('')
   const [orderRemarks, setOrderRemarks] = useState('')
   const [orderDelivery, setOrderDelivery] = useState('1')
   const [orderPayment, setOrderPayment] = useState('1')
   const [orderCard, setOrderCard] = useState('')
+  const [orderId, setOrderId] = useState([])
 
   // 登入 & 狀態判斷
   const loginProcess = (loginSuccessCallback) => {
@@ -136,7 +136,7 @@ function App() {
     addFromServer()
   }
 
-  const localUser = JSON.parse(localStorage.getItem('memberData')) || '';  // 取得localStorage資料
+  const localUser = JSON.parse(localStorage.getItem('memberData')) || '' // 取得localStorage資料
   const getUserData = (usernameData, pwdData) => {
     fetch(`http://localhost:3009/members/user/${usernameData}/${pwdData}`, {
       method: 'get',
@@ -166,7 +166,6 @@ function App() {
 
       {/* ScrollToTop是為了讓連到另一頁內容時，頁面回到最上方 */}
       <ScrollToTop>
-
         <Switch>
           {/* 首頁 */}
           <Route exact path="/">
@@ -194,7 +193,6 @@ function App() {
           <Route path="/ProductDetail/:id?">
             <ProductDetail />
           </Route>
-
 
           {/* 靜態頁面 */}
           {/* <Route path="/about/WiGift">
@@ -248,22 +246,25 @@ function App() {
                 setUsername,
                 password,
                 setPassword,
-                RegisterProcess
+                RegisterProcess,
               }}
             />
           </Route>
 
           {/* 比較頁面 */}
           <Route path="/Compare">
-            {/* <Compare     
+            <Compare
+              itemsdata={itemsdata}
+              setItemsdata={setItemsdata}
+              itemsid={itemsid}
+              setItemsid={setItemsid}
               allprops={{
                 userdata,
-                setUserdata, 
-                itemsdata,
-                setItemsdata,
-                itemsid,
-                setItemsid
-              }}/> */}
+                setUserdata,
+                name,
+                setName,
+              }}
+            />
           </Route>
 
           {/* <Route path="/KMembers/MembersForget">
@@ -306,7 +307,6 @@ function App() {
             />
           </Route>
 
-
           {/* Blog */}
           <Route path="/Blog/YongBlog">
             <YongBlog
@@ -314,7 +314,7 @@ function App() {
                 userdata,
                 setUserdata,
                 name,
-                setName
+                setName,
               }}
             />
           </Route>
@@ -324,8 +324,9 @@ function App() {
                 userdata,
                 setUserdata,
                 name,
-                setName
-              }} />
+                setName,
+              }}
+            />
           </Route>
           <Route path="/Blog/BlogDetail/:detailId">
             <BlogDetail
@@ -333,8 +334,9 @@ function App() {
                 userdata,
                 setUserdata,
                 name,
-                setName
-              }} />
+                setName,
+              }}
+            />
           </Route>
           <Route path="/Blog/BlogAdd/">
             <BlogAdd
@@ -342,8 +344,9 @@ function App() {
                 userdata,
                 setUserdata,
                 name,
-                setName
-              }} />
+                setName,
+              }}
+            />
           </Route>
           <Route path="/Blog/BlogEdit/:editId">
             <BlogEdit
@@ -351,61 +354,60 @@ function App() {
                 userdata,
                 setUserdata,
                 name,
-                setName
-              }} />
+                setName,
+              }}
+            />
           </Route>
 
           {/* 賣家 */}
           <Route exact path="/AliceSellers">
             <AliceSellers />
           </Route>
-          <Route path="/AliceSellers/my-sale" >
+          <Route path="/AliceSellers/my-sale">
             <MySale />
           </Route>
-          <Route path="/AliceSellers/order"  >
+          <Route path="/AliceSellers/order">
             <Order />
           </Route>
-          <Route path="/AliceSellers/refund" >
+          <Route path="/AliceSellers/refund">
             <Refund />
           </Route>
 
-          <Route path="/AliceSellers/seller-product">
+          {/* <Route path="/AliceSellers/seller-product">
             <SellerProduct allprops={{
               userdata,
               setUserdata,
               name,
               setName
             }}/>
-          </Route>
+          </Route> */}
 
-          <Route path="/AliceSellers/seller-product">
+          {/* <Route path="/AliceSellers/seller-product">
             <SellerProduct
               SellerProductId={SellerProductId}
               setsellerProductId={setsellerProductId} />
-          </Route>
+          </Route> */}
 
           <Route path="/AliceSellers/add-product">
-            <SellerAddProduct allprops={{
-              userdata,
-              setUserdata,
-              name,
-              setName
-            }}/>
+            <SellerAddProduct
+              allprops={{
+                userdata,
+                setUserdata,
+                name,
+                setName,
+              }}
+            />
           </Route>
-
-
-
-
 
           {/* 我的最愛 */}
           <Route path="/MyFav">
             <MyFav />
           </Route>
-          
-         {/* 購物車 */}
-         <Route path="/MyCart">
+
+          {/* 購物車 */}
+          <Route path="/MyCart">
             <MyCart
-              allprops={{               
+              allprops={{
                 mycart,
                 setMycart,
                 mycartDisplay,
@@ -439,9 +441,9 @@ function App() {
             <CheckoutDelivery
               allprops={{
                 userdata,
-                setUserdata,                
+                setUserdata,
                 orderDelivery,
-                setOrderDelivery,                
+                setOrderDelivery,
               }}
             />
           </Route>
@@ -470,15 +472,21 @@ function App() {
                 setOrderPayment,
                 orderCard,
                 setOrderCard,
+                orderId,
+                setOrderId,
               }}
             />
           </Route>
           <Route path="/OrderComplete">
             <OrderComplete
-             allprops={{
+              allprops={{
                 userdata,
                 setUserdata,
-		orderTotal,
+                mycart,
+                setMycart,
+                mycartDisplay,
+                setMycartDisplay,
+                orderTotal,
                 setOrderTotal,
                 orderName,
                 setOrderName,
@@ -494,11 +502,11 @@ function App() {
                 setOrderPayment,
                 orderCard,
                 setOrderCard,
+                orderId,
+                setOrderId,
               }}
             />
           </Route>
-
-          
 
           {/* 靜態頁面 */}
           <Route path="/about/WiGift">
@@ -535,9 +543,7 @@ function App() {
             <NotFoundPage404 />
           </Route>
           <Redirect to="/404" /> */}
-
         </Switch>
-
       </ScrollToTop>
 
       <MyFooter />

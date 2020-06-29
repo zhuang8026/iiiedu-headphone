@@ -32,9 +32,13 @@ function CartPayment(props) {
     setOrderPayment,
     orderCard,
     setOrderCard,
+    orderId,
+    setOrderId,
   } = props.allprops
-
-  // const [orderPayment, setOrderPayment] = useState('1')
+  const [orderNum,setOrderNum]=useState([])
+  console.log('setOrderId',setOrderId)
+  // console.log('mycart', mycart)
+  // console.log('mycartDisplay', mycartDisplay) 
 
   const updateCheckoutPaymentToLocalStorage = (value) => {
     const currentCheckoutPayment =
@@ -42,6 +46,56 @@ function CartPayment(props) {
     const newCheckoutPayment = [...currentCheckoutPayment, value]
     localStorage.setItem('CheckoutInfo', JSON.stringify(newCheckoutPayment))
   }
+
+  //新增訂單
+  const addOrderContentDataAsync = async (addOrderFormData, callback) => {
+    const request = new Request('http://localhost:3009/order/add', {
+      method: 'POST',
+      body: addOrderFormData,
+    })
+    const response = await fetch(request)
+    console.log('response', response)
+    const data = await response.json()
+    console.log('res data', data)
+  }
+  //取得訂單編號
+  const getOrderIdAsync = async (addOrderFormData, callback) => {
+    const request = new Request('http://localhost:3009/order/newOrderId', {
+      method: 'GET',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'appliaction/json',
+      }),
+    })
+    const response = await fetch(request)
+    // console.log('response', response)
+    const data = await response.json()
+    // console.log('orderID data row', data.row)
+    // console.log('orderID new data', data.row[0][0].orderId)
+    await setOrderId(data.row[0][0].orderId)
+    await console.log('orderNum',orderNum)
+  }
+
+
+
+
+  //Submit
+  const handleSubmit = async(event) => {
+    const addOrderFormData = new FormData()
+    addOrderFormData.append('userId', userdata.id)
+    addOrderFormData.append('total', orderTotal)
+    addOrderFormData.append('orderRemark', orderRemarks)
+    addOrderFormData.append('delivery', orderDelivery)
+    addOrderFormData.append('payment', orderPayment)
+    // console.log('userId', addOrderFormData.get('userId'))
+    // console.log('total', addOrderFormData.get('total'))
+    // console.log('orderRemark', addOrderFormData.get('orderRemark'))
+    // console.log('payment', addOrderFormData.get('payment'))
+   
+   await addOrderContentDataAsync(addOrderFormData)
+   await getOrderIdAsync()
+  }
+
   return (
     <>
       <div className="cart-crumb">
@@ -114,7 +168,7 @@ function CartPayment(props) {
                     type="text"
                     name="creditCardNum"
                     id="creditCardNum"
-                    maxlength="19"
+                    maxLength="19"
                     // defaultValue={userdata.card}
                     value={orderCard ? orderCard : userdata.card}
                     onChange={(event) => {
@@ -147,14 +201,14 @@ function CartPayment(props) {
                     type="text"
                     name="cardMonth"
                     id="cardMonth"
-                    maxlength="2"
+                    maxLength="2"
                   />
                   <label htmlFor="cardMonth">月</label>
                   <input
                     type="text"
                     name="cardYear"
                     id="cardYearr"
-                    maxlength="2"
+                    maxLength="2"
                   />
                   <label htmlFor="cardYear">年</label>
                 </li>
@@ -166,25 +220,31 @@ function CartPayment(props) {
                     type="text"
                     name="cardPin"
                     id="cardPin"
-                    maxlength="3"
+                    maxLength="3"
                   />
                 </li>
                 <li></li>
               </ul>
             </div>
           </div>
-          {/* <div>除錯用姓名:{orderName}</div>
+          <div>除錯用姓名:{orderName}</div>
           <div>除錯用地址:{orderAddress}</div>
           <div>除錯用電話:{orderTel}</div>
           <div>除錯用備註:{orderRemarks}</div>
           <div>除錯用配送方式:{orderDelivery}</div>
           <div>除錯用付款方式:{orderPayment}</div>
           <div>除錯用卡號:{orderCard}</div>
-          <div>除錯用總計:{orderTotal}</div> */}
-          {/* <div>除錯用總計:{sum(mycartDisplay)}</div>       */}
+          <div>除錯用總計:{orderTotal}</div>
+          {/* <div>除錯用:{orderNum}</div> */}
           <div>
-            <button type="button">
-              <Link to="/OrderComplete">下一步</Link>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault()
+                handleSubmit()
+              }}
+            >
+              <Link to="/OrderComplete">確定結帳</Link>
             </button>
           </div>
         </form>

@@ -27,14 +27,6 @@ function ProductMain(props) {
     const currentCompare = JSON.parse(localStorage.getItem('compare')) || []
     const newcCompare = [...currentCompare, value]
     localStorage.setItem('compare', JSON.stringify(newcCompare))
-
-    currentCompare.map(element => {
-      if(element.data.itemName === value.data.itemName){
-        window.localStorage.setItem('compare', JSON.stringify(currentCompare));
-        message.warning(`商品"${element.data.itemName}"重複了`)
-        return 
-      }
-    });
   }
 
   // 加入最愛
@@ -42,18 +34,8 @@ function ProductMain(props) {
     const currentLove = JSON.parse(localStorage.getItem('love')) || []
     const newcLompare = [...currentLove, value]
     localStorage.setItem('love', JSON.stringify(newcLompare))
-
-    currentLove.map(element => {
-      if(element.data.itemName === value.data.itemName){
-        window.localStorage.setItem('love', JSON.stringify(currentLove));
-        message.warning(`商品"${element.data.itemName}"重複了`)
-        return 
-      }
-    });
-    
   }
 
-  // hooks們
   const { itemsdata, setItemsdata, itemsid, setItemsid } = props;
   const [detailitems, setdetailitems] = useState('');
   const [currentTotalPages, setCurrentTotalPages] = useState(); // 總page
@@ -149,7 +131,6 @@ function ProductMain(props) {
 
   }
 
-  // componentDidMount 們
   // 細節頁面點擊出現
   useEffect(()=>{
     let quick_view_modal = document.getElementsByClassName('items-quick-view-modal')[0];
@@ -296,6 +277,7 @@ function ProductMain(props) {
 
           <div className="Yyasidebody">
             {itemsdata.map((data, index)=>{
+              console.log(itemsdata)
               return(
                 <div className="Yyaside_pro" key={index}>
                     <div className="item_image">
@@ -343,7 +325,8 @@ function ProductMain(props) {
                         >立即查看</button>
                         <button 
                           className="item_btn_add btn-navy_s btn-fill-vert-o_s"
-                          onClick={(event) => {
+                          onClick={() => {
+                            message.success(`商品"${data.itemName}"加入最愛`)
                             updateLoveToLocalStorage({
                               data
                             })
@@ -351,10 +334,14 @@ function ProductMain(props) {
                         >加入最愛</button>
                         <button 
                           className="item_btn_add btn-navy_s btn-fill-vert-o_s"
-                          onClick={(event) => {
-                            // message.success(`商品"${data.itemName}"加入比較`)
+                          onClick={() => {
+                            message.success(`商品"${data.itemName}"加入比較`)
                             updateCompareToLocalStorage({
-                              data
+                        itemid: `${data.itemId}`,
+                        itemName:`${data.itemName}`,
+                        itemBrand:`${data.itemsbrand}`,
+                        itemImg:`${data.itemImg}`,
+                        itemPrice:`${data.itemPrice}`,
                             })
                           }}
                         >加入比較</button>

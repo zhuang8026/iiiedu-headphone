@@ -120,7 +120,7 @@ function CheckoutInfo(props) {
                   type="tel"
                   id="tel"
                   name="tel"
-                  maxlength="10"
+                  maxLength="10"
                   value={orderTel?orderTel:userdata.phoneNumber}
                   // defaultValue={userdata.phoneNumber}
                   onChange={(event) => {
