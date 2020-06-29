@@ -173,15 +173,14 @@ function CartPayment(props) {
               </ul>
             </div>
           </div>
-          {/* <div>除錯用姓名:{orderName}</div>
+          <div>除錯用姓名:{orderName}</div>
           <div>除錯用地址:{orderAddress}</div>
           <div>除錯用電話:{orderTel}</div>
           <div>除錯用備註:{orderRemarks}</div>
           <div>除錯用配送方式:{orderDelivery}</div>
           <div>除錯用付款方式:{orderPayment}</div>
           <div>除錯用卡號:{orderCard}</div>
-          <div>除錯用總計:{orderTotal}</div> */}
-          {/* <div>除錯用總計:{sum(mycartDisplay)}</div>       */}
+          <div>除錯用總計:{orderTotal}</div>          
           <div>
             <button type="button">
               <Link to="/OrderComplete">下一步</Link>

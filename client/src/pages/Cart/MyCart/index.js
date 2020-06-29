@@ -148,7 +148,10 @@ function MyCart(props) {
           </tr>
           <tr>
             <td>
-              <button type="button">
+              <button 
+              type="button"
+              onClick={setOrderTotal(sum(mycartDisplay))}
+              >
                 <Link to="/CheckoutInfo">去結帳</Link>
               </button>
             </td>
