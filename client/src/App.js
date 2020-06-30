@@ -47,7 +47,7 @@ import AliceSellers from './pages/Sellers'
 import MySale from './pages/Sellers/MySale'
 import Order from './pages/Sellers/Order'
 import Refund from './pages/Sellers/Refund'
-import SellerProduct from './pages/Sellers/SellerProduct'
+// import SellerProduct from './pages/Sellers/SellerProduct'
 import SellerAddProduct from './pages/Sellers/AddProduct'
 
 //我的最愛
@@ -71,6 +71,11 @@ import WiWarranty from './pages/Warranty'
 import NotFoundPage404 from './pages/404'
 
 function App() {
+  // navbar 
+  const [lovechange, setlovechange]=useState([]);
+  const [compareschange, setcompareschange]=useState([]);
+  const [cartchange, setcartchange]=useState([]);
+
   // 會員
   const [userdata, setUserdata] = useState([])
   const [name, setName] = useState('')
@@ -82,9 +87,9 @@ function App() {
   const [itemsdata, setItemsdata] = useState([])
   const [itemsid, setItemsid] = useState('')
 
-  //賣家中心
+  //賣家中心 - 暫不使用
   // const [SellerData, setSellerData] = useState([])
-  const [SellerProductId, setsellerProductId] = useState([])
+  // const [SellerProductId, setsellerProductId] = useState([])
 
   //購物流程
   const [mycart, setMycart] = useState([])
@@ -160,8 +165,19 @@ function App() {
   return (
     <Router>
       <header>
-        <MyNavBar />
-        <MyMenu />
+        <MyNavBar 
+          lovechange={lovechange}
+          compareschange={compareschange}
+          cartchange={cartchange}
+          setlovechange={setlovechange}
+          setcompareschange={setcompareschange}
+          setcartchange={setcartchange}
+          setItemsdata={setItemsdata}
+        />
+        <MyMenu 
+          cartchange={cartchange}
+          setcartchange={setcartchange}
+        />
       </header>
 
       {/* ScrollToTop是為了讓連到另一頁內容時，頁面回到最上方 */}
@@ -180,6 +196,9 @@ function App() {
               setItemsdata={setItemsdata}
               itemsid={itemsid}
               setItemsid={setItemsid}
+              setlovechange={setlovechange}
+              setcompareschange={setcompareschange}
+              setcartchange={setcartchange}
             />
           </Route>
           {/* <Route exact path="/YyProduct">
@@ -190,7 +209,7 @@ function App() {
           </Route> */}
 
           {/* 產品細節 */}
-          <Route path="/ProductDetail/:id?">
+          <Route path="/ProductDetail/:id">
             <ProductDetail />
           </Route>
 
