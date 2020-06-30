@@ -77,6 +77,7 @@ function MyCart(props) {
     setMycartDisplay(newMycartDisplay)
   }, [mycart])
   
+  
 
   // 計算總價用的函式
   function sum(items) {
