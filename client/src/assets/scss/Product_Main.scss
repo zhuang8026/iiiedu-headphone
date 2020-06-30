@@ -404,7 +404,8 @@ transition: all 0.3s;
               width: 80%;
               .item_btn_add {
                 padding: 10px 0;
-                width: 50%;
+                width: 60%;
+                font-size: 12px;
               }
             }
           }
@@ -413,6 +414,57 @@ transition: all 0.3s;
     }
   }
 } /* iPad mini & iphone */
-@media (min-width:374px) and (max-width:413px){} /* iphone */
+@media (min-width:374px) and (max-width:413px){
+  .Yybodyin {
+    width: 99% !important;
+    display: block !important;
+    .Yybodyleft {
+      width: 98%;
+      margin: 50px auto;
+      .Yybrand {
+        .Yybrand_ul {
+          li {
+            a {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+      .Yysearch_container {
+        input {
+          width: 80%;
+        }
+      }
+    }
+    .Yybodyright {
+      width: 100%;
+      .Yybodyheader {
+        span,select {
+          font-size: 12px;
+        }
+      }
+      .Yyasidebody {
+        .Yyaside_pro {
+          width: 50%;
+          padding: 6px;
+          .item_inner .item_inner_li p {
+            font-size: 12px;
+          }
+          .item_btn_inner_all {
+            .item_btn_inner {
+              width: 100%;
+              .item_btn_add {
+                width: 45%;
+                font-size: 12px;
+                padding: 22px 0;
+                margin: 2px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+} /* iphone */
 @media screen and (max-width: 373px){}/* iphone */
 
