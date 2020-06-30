@@ -210,7 +210,9 @@ function App() {
 
           {/* 產品細節 */}
           <Route path="/ProductDetail/:id">
-            <ProductDetail />
+            <ProductDetail 
+              userdata={userdata}
+            />
           </Route>
 
           {/* 靜態頁面 */}

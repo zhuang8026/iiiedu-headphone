@@ -309,6 +309,9 @@ function ProductMain(props) {
 
           <ProductMainDrtail 
             detailitems={detailitems}
+            setlovechange={setlovechange}
+            setcompareschange={setcompareschange}
+            setcartchange={setcartchange}
           />
 
           <div className="Yyasidebody">
@@ -377,7 +380,6 @@ function ProductMain(props) {
                           <button 
                             className="item_btn_add btn-navy_s btn-fill-vert-o_s"
                             onClick={() => {
-                              console.log(data)
                               message.success(`商品"${data.itemName}"加入比較`)
                               updateCompareToLocalStorage({
                                 itemid: data.itemId,

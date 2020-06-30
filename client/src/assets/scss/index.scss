@@ -53,10 +53,8 @@
 @import './Product_Main.scss';
 @import './Product_Main_Detail.scss';
 @import './product_Pagination.scss';
-// Product細細節頁 不使用
-@import './Product_Detail.scss'; // 不使用
-@import './Product_DetailRight.scss'; // 不使用
-@import './Product_DetailBottom.scss'; // 不使用
+// Product細細節頁 
+@import './Product_Detail.scss';
 
 // Cart
 @import './cart_table.scss';
