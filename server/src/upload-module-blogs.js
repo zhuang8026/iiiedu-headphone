@@ -22,7 +22,7 @@ const storage = multer.diskStorage({
         //使用uuid
         let ext = extMap[files.mimetype];
         // let filename = uuidv4() + ext;
-        cb(null, Date.now() + '-' +files.originalname)
+        cb(null, files.originalname)
 
         // cb(null, req.file.originalname)
         // cb(null, filename)
@@ -40,3 +40,7 @@ let fileFilter = (req, file, cb)=>{
 const upload = multer({storage, fileFilter});
 
 module.exports = upload;
+
+
+
+

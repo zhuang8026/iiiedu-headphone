@@ -1,5 +1,5 @@
 // 函式元件
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Link, NavLink, withRouter } from 'react-router-dom'
 
 import OtisGif from "../../assets/img/Otis.gif";
@@ -10,6 +10,9 @@ import ticket from '../../assets/img/ticket.png';
 // import './_menu.scss'
 
 function MyNavBar(props) {
+    const {cartchange, setcartchange} =props;
+    console.log(cartchange);
+
     return (
         <Fragment>
             <section className="header-side-menu">
@@ -48,87 +51,43 @@ function MyNavBar(props) {
                 </div>
                 <div className="otis_cart">
                     <div className="otis_cart_inner">
-                        <div className="cart_row">
-                            <figure>
-                                <img src={Otispng} alt="商品圖片"/>
-                            </figure>
-                            <div className="cart_text">
+                        {
+                            cartchange ? (
+                                <Fragment>
+                                {cartchange.map((data, index)=>{
+                                    return(
+                                        <div className="cart_row" key={index}>
+                                            <figure>
+                                                <img src={`/items_img/${data.itemImg}`} alt="商品圖片"/>
+                                            </figure>
+                                            <div className="cart_text">
+                                                <div className="cart_price">
+                                                    <span className="item_name">{data.itemName}</span>
+                                                    <span className="item_num">{data.amount}/副</span>
+                                                    <span className="item_price">$ {data.itemPrice}</span>
+                                                </div>
+                                                <div className="cart_btn">
+                                                    <button className="btn_wish btn_width">加入願望</button>
+                                                    <button className="btn_booking btn_width">加入比較</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                        </Fragment>
+                            ) : (
+                                <div className="cart_row" >
+                                <figure>
+                                    <img src={"/user_img/fail.gif"} alt="商品圖片"/>
+                                </figure>
                                 <div className="cart_price">
-                                    <span className="item_name">MDR-XB950N1</span>
-                                    <span className="item_num">1/副</span>
-                                    <span className="item_price">NT. 6999</span>
+                                哎呀...沒有商品...
                                 </div>
-                                <div className="cart_btn">
-                                    <button className="btn_wish btn_width">加入願望</button>
-                                    <button className="btn_booking btn_width">加入比較</button>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div className="cart_row">
-                            <figure>
-                                <img src={Otispng} alt="商品圖片"/>
-                            </figure>
-                            <div className="cart_text">
-                                <div className="cart_price">
-                                    <span className="item_name">MDR-XB950N1</span>
-                                    <span className="item_num">1/副</span>
-                                    <span className="item_price">NT. 6999</span>
-                                </div>
-                                <div className="cart_btn">
-                                    <button className="btn_wish btn_width">加入願望</button>
-                                    <button className="btn_booking btn_width">加入比較</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="cart_row">
-                            <figure>
-                                <img src={Otispng} alt="商品圖片"/>
-                            </figure>
-                            <div className="cart_text">
-                                <div className="cart_price">
-                                    <span className="item_name">MDR-XB950N1</span>
-                                    <span className="item_num">1/副</span>
-                                    <span className="item_price">NT. 6999</span>
-                                </div>
-                                <div className="cart_btn">
-                                    <button className="btn_wish btn_width">加入願望</button>
-                                    <button className="btn_booking btn_width">加入比較</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="cart_row">
-                            <figure>
-                                <img src={Otispng} alt="商品圖片"/>
-                            </figure>
-                            <div className="cart_text">
-                                <div className="cart_price">
-                                    <span className="item_name">MDR-XB950N1</span>
-                                    <span className="item_num">1/副</span>
-                                    <span className="item_price">NT. 6999</span>
-                                </div>
-                                <div className="cart_btn">
-                                    <button className="btn_wish btn_width">加入願望</button>
-                                    <button className="btn_booking btn_width">加入比較</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="cart_row">
-                            <figure>
-                                <img src={Otispng} alt="商品圖片"/>
-                            </figure>
-                            <div className="cart_text">
-                                <div className="cart_price">
-                                    <span className="item_name">MDR-XB950N1</span>
-                                    <span className="item_num">1/副</span>
-                                    <span className="item_price">NT. 6999</span>
-                                </div>
-                                <div className="cart_btn">
-                                    <button className="btn_wish btn_width">加入願望</button>
-                                    <button className="btn_booking btn_width">加入比較</button>
-                                </div>
-                            </div>
-                        </div>
+                            )
+                        }
+                        
+                        
                     </div>
                 </div>
                 <Link to="/MyCart" type="button" className="add_cart" href="#">TO CART</Link>

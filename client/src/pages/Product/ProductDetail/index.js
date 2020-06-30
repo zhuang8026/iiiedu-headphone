@@ -6,14 +6,11 @@ import { Link ,withRouter, useParams } from 'react-router-dom'
 import ProductCrumb from '../ProductCrumb'
 import ProductDetailLeft from '../ProductDetail/ProductDetailLeft'
 import ProductDetailRight from '../ProductDetail/ProductDetailRight'
-import ProductDetailBottom from '../ProductDetail/ProductDetailBottom'
+// import ProductDetailBottom from '../ProductDetail/ProductDetailBottom'
 
 function ProductDetail(props) {
-    // console.log(props)
-    // const { match } = props;
-    let { id } = useParams()
-    // let {id} = match.params;
-    console.log(id);
+  let { id } = useParams()
+  console.log(id);
   return (
     <Fragment>
       <main>
@@ -22,7 +19,7 @@ function ProductDetail(props) {
       <div className="Yybodyin">
         <ProductDetailLeft />
         <ProductDetailRight />
-        <ProductDetailBottom />
+        {/* <ProductDetailBottom /> */}
       </div>
     </Fragment>
   )

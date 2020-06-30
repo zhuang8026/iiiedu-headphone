@@ -31,6 +31,10 @@ function MembersPwa(props) {
       })
       .then(obj=>{
           console.log('obj:', obj);
+          const newUserdata = {
+            ...userdata,
+            pwd: pwd
+          }
           setUserdata({
             ...userdata,
             pwd: pwd
@@ -39,7 +43,7 @@ function MembersPwa(props) {
             localStorage.removeItem('memberData');
             message.loading({ content: 'Loading...', key });
             setTimeout(() => {
-              localStorage.setItem('memberData', JSON.stringify(userdata));
+              localStorage.setItem('memberData', JSON.stringify(newUserdata));
               message.success({ content: '修改成功!', key, duration: 1 });
               // props.history.push('/KMembers/MembersAdress');
             }, 1000);

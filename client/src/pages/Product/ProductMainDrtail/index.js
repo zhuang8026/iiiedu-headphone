@@ -1,7 +1,7 @@
 // 函式元件
 import React from 'react';
 
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 // 測試
 // import logo from '../../../assets/img/tw.jpg';
 // import logo2 from '../../../assets/img/usa.jpg';
@@ -94,6 +94,14 @@ function ProductMainDrtail(props) {
                       <span className="iconfont icon-wuliu"></span>
                       <span className="items-wish-text">加入購物車</span>
                     </div>
+                    <Link 
+                      id={detailitems.itemId}
+                      className="items-wish-btn items-btn-margin"
+                      to={"/ProductDetail/"+detailitems.itemId}
+                    >
+                      <span className="iconfont icon-search"></span>
+                      <span className="items-wish-text">查看細節</span>
+                    </Link>
                     <div className="items-wish-btn items-btn-margin">
                       <span className="iconfont icon-like"></span>
                       <span className="items-wish-text">加入最愛</span>

@@ -1,8 +1,8 @@
 // 函式元件
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom'
 
-// antd
+// antd Popover message
 import { Popover } from 'antd';
 import { message } from 'antd';
 
@@ -16,9 +16,17 @@ import {NavItemsAir} from './config';
 
 
 function MyNavBar(props) {
+    const {lovechange, setlovechange, compareschange, setcompareschange, cartchange, setcartchange, setItemsdata} = props;
+
     const memberData = JSON.parse(localStorage.getItem('memberData'))
-    // console.log('localStorage', memberData)
-    
+
+    const love = JSON.parse(localStorage.getItem('love'))
+    const compares = JSON.parse(localStorage.getItem('compare'))
+    const cart = JSON.parse(localStorage.getItem('cart'))
+
+    // console.log('love',love);
+    // console.log('compare',compares);
+
     // 登出
     const logoutCallback = () => {
         fetch('http://localhost:3009/members/logout', {
@@ -40,14 +48,40 @@ function MyNavBar(props) {
             })
     }
 
-    // 點擊跳轉到 賣家
-    // const goToStore =()=>{
-    //     // document.location.href='/AliceSellers'
-    //     props.history.push('/AliceSellers')
-    // }
+    // 模糊搜尋
+    const fuzzySearch = ( data )=> {
+        // console.log(data)
+        var params = new URLSearchParams();
+        params.append('getname', data);
+        // console.log(params.toString());
+        // console.log(params.get('getname'));
+        let getname = params.get('getname') || ''
+
+        fetch(`http://localhost:3009/products/list/${getname}`, {
+            method: 'get',
+            headers: new Headers({
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            })
+        })
+            .then((res)=>{
+                return res.json()
+            })
+            .then((res)=>{
+                // console.log(res)
+                setItemsdata(res)
+                props.history.push('/YyProduct')
+            })
+    }
+
     const loves = (
         <Fragment>
             <span className="IconP">我的最愛</span>
+        </Fragment>
+    );
+    const compare = (
+        <Fragment>
+            <span className="IconP">商品比較</span>
         </Fragment>
     );
     const carts = (
@@ -73,6 +107,13 @@ function MyNavBar(props) {
             <p className="IconP" onClick={logoutCallback}>登出</p>
         </Fragment>
     );
+
+    useEffect(()=>{
+        setlovechange(love)
+        setcompareschange(compares)
+        setcartchange(cart)
+    },[])
+
     useEffect(() => {
         // navbar
         let shop_btn = document.getElementById('shopping')
@@ -110,7 +151,7 @@ function MyNavBar(props) {
             // lastScrollY = window_higth;
         });
     }, [])
-
+    
 
     return (
         <Fragment>
@@ -280,8 +321,9 @@ function MyNavBar(props) {
                                                 type="search"
                                                 className="search-field"
                                                 required=""
-                                                name="s"
+                                                name="homeNavSearch"
                                                 title="Search for:"
+                                                onChange={ (event)=>{ fuzzySearch(event.target.value) } }
                                             />
                                             <button type="submit" className="otis-search-submit">
                                                 <i className="iconfont icon-search"></i>
@@ -291,38 +333,29 @@ function MyNavBar(props) {
                                         </div>
                                     </li>
                                     
-                                    {/* 賣家 */}
-                                    {/* <li>
-                                        <div id="members" className="otis-members">
-                                            <Link className="otis-login-opener" to="/AliceSellers">
-                                                <Popover content={sellers} placement="bottom">
-                                                    <span className="otis-login-text">
-                                                        <i className="iconfont icon-geren"></i>
-                                                    </span>
-                                                </Popover>
-                                            </Link>
-                                        </div>
-                                    </li> */}
-
                                     {/* 會員 */}
                                     <li>
                                         <div id="members" className="otis-members">
                                         { 
-                                            memberData ? (<Fragment>
-                                                                {/* <Link className="otis-login-opener" to="/KMembers/"> */}
-                                                                    <Popover content={membersInside} placement="bottom">
-                                                                        <span className="otis-login-text"><i className="iconfont icon-Personal"></i>{memberData.name}</span>
-                                                                    </Popover>
-                                                                {/* </Link> */}
-                                                            </Fragment>) : (<Link className="otis-login-opener" to="/KMembers/MembersLogin">
-                                                                                <Popover content={membersOutside} placement="bottom">
-                                                                                    <span className="otis-login-text"><i className="iconfont icon-Personal"></i></span>
-                                                                                </Popover>
-                                                                            </Link>) 
+                                            memberData ? (
+                                                <Fragment>
+                                                    {/* <Link className="otis-login-opener" to="/KMembers/"> */}
+                                                        <Popover content={membersInside} placement="bottom">
+                                                            <span className="otis-login-text"><i className="iconfont icon-Personal"></i>{memberData.name}</span>
+                                                        </Popover>
+                                                    {/* </Link> */}
+                                                </Fragment>
+                                            ) : (
+                                                <Link className="otis-login-opener" to="/KMembers/MembersLogin">
+                                                    <Popover content={membersOutside} placement="bottom">
+                                                        <span className="otis-login-text"><i className="iconfont icon-Personal"></i></span>
+                                                    </Popover>
+                                                </Link>
+                                            ) 
                                         }
                                         </div>
                                     </li>
-
+                                    
                                     {/* 我的最愛 */}
                                     <li>
                                         <div id="wishlist" className="otis-wishlist">
@@ -331,7 +364,21 @@ function MyNavBar(props) {
                                                     <span className="otis-wishlist-widget-icon">
                                                         <i className="iconfont icon-like"></i>
                                                     </span>
-                                                    <span className="otis-wishlist-widget-count"> 1 </span>
+                                                    <span className="otis-wishlist-widget-count"> {lovechange?lovechange.length: '0'} </span>
+                                                </Popover>
+                                            </Link>
+                                        </div>
+                                    </li>
+                                    
+                                    {/* 比較功能 */}
+                                    <li>
+                                        <div id="wishlist" className="otis-wishlist">
+                                            <Link className="otis-wishlist-widget-link" to='/Compare'>
+                                                <Popover content={compare} placement="bottom">
+                                                    <span className="otis-wishlist-widget-icon">
+                                                        <i className="iconfont icon-binding"></i>
+                                                    </span>
+                                                    <span className="otis-wishlist-widget-count"> {compareschange?compareschange.length: '0'} </span>
                                                 </Popover>
                                             </Link>
                                         </div>
@@ -349,7 +396,7 @@ function MyNavBar(props) {
                                                         <span className="otis-sc-opener-icon">
                                                             <i className="iconfont icon-cart"></i>
                                                         </span>
-                                                        <span className="otis-sc-opener-count"> 5 </span>
+                                                        <span className="otis-sc-opener-count"> {cartchange? cartchange.length: '0'} </span>
                                                     </Popover>
                                                 </a>
                                             </div>

@@ -217,6 +217,29 @@ const getSearchUserList = async (req) => {
     return output;
 };
 
+// 搜尋回文的function
+const get_r_List = async (req) => {             
+    let blogId = req.body.blogId;                              
+    const output = {
+        blogId:blogId,
+        rows: []                     
+    }
+    //設變數
+    let _r = `SELECT * FROM blogs_reply WHERE blogId=${blogId} ORDER BY b_r_date DESC`;        
+    // 取出sql符合的rows
+    const [r1] = await db.query(_r);            
+    if (r1) output.rows = r1;
+    // console.log(output)
+    // 將r2裡的Date改成正常時間格式
+    // for (let i of r2) {
+    //     // 要先放到moment才能使用.format('YYYY-MM-DD')
+    //     i.blogExpectedTime = moment(i.blogExpectedTime).format('DD-YY-MM');
+    //     i.blogPublishTime = moment(i.blogPublishTime).format('DD-YY-MM');
+    //     i.blogUpdateTime = moment(i.blogUpdateTime).format('DD-YY-MM');
+    // }
+    return output;
+};
+
 //================================================== blog root ==============================================================
 // http://localhost:3009/blog
 router.get('/', (req, res) => {
@@ -289,7 +312,7 @@ router.post('/edit/', upload.none(), (req, res) => {
     let editBlogTitle = req.body.editBlogTitle;
     let editBlogContent01 = req.body.editBlogContent01;
     let editBlogContent02 = req.body.editBlogContent02;
-    console.log('更新的blogId ----> ',blogId);
+    console.log('更新的blogId ----> ', blogId);
     const sql = "UPDATE `blogs` SET `blogTitle`=?, `blogContent01`=?, `blogContent02`=? WHERE `blogId`=?";
 
     if (!blogId) {
@@ -357,37 +380,60 @@ router.post('/getDetail/', async (req, res) => {
 
 
 //================================================== 圖片上傳 ==============================================================
-// (未完成)
+// (可上傳)
 
 
 
 // 上傳檔案
 // http://localhost:3009/blog/try-upload/
-router.post('/try-upload/', upload.array('avatar'), async (req, res) => {
-    console.log('========== react(post)圖片 -> 上傳檔案 ==========')
-    console.log('req.body = ', req.body)
-    
+router.post('/try-upload/', upload.single('avatar'), async (req, res) => {
+    console.log('========== react(post) 圖片 -> 上傳檔案 ==========')
+    console.log('req.file = ', req.file.filename)
     res.json({
-        filename: req.files.filename,
+        filename: req.file.filename,
         body: req.body
     });
-    console.log('res.body = ', res.body)
-    console.log('res--->',req.files)
 
 })
 
-// router.post('/try-upload',function(req, res) {
-//     upload2(req, res, function (err) {
-//             if (err instanceof multer.MulterError) {
-//                 return res.status(500).json(err)
-//             } else if (err) {
-//                 return res.status(500).json(err)
-//             }
-//         // return res.status(200).send(req.file)
-//         return res.status(200).json(req.file)
-//     })
-// });
+//================================================== 部落格回文 ==============================================================
 
+// (未測試)
+// 部落格回文
+// http://localhost:3009/blog/add-reply
+// router.get('/add', (req, res)=>{
+router.post('/add-reply', upload.none(), (req, res) => {
+    let blogId = req.body.blogId;
+    let id = 0;
+    let r_nick = '訪客';
+    let b_r_content = req.body.b_r_content;
+    let b_r_replys = 0;
+    const output = {
+        success: false,
+        blogId: blogId,
+        id: id,
+        r_nick: r_nick,
+        b_r_content: b_r_content,
+        b_r_replys: b_r_replys,
+        rows: []
+    }
+    const sql = "INSERT INTO `blogs_reply`(`blogId`,`id`,`r_nick`,`b_r_content`,`b_r_replys`) VALUES (?, ?, ?, ?, ?)";
+    console.log('========== react(post) -> 部落格回文 ==========')
+    console.log('req.body = ', req.body)
+    db.query(sql, [blogId, id, r_nick, b_r_content, b_r_replys])
+        .then(([r]) => {
+            output.results = r;
+            output.success = true;
+            res.send(output);
+        })
+})
+
+// 搜尋回文
+// http://localhost:3009/blog/list_reply/
+router.post('/list_reply/', async (req, res) => {
+    const output = await get_r_List(req);
+    res.json(output);
+})
 
 //================================================== 測試區 ==============================================================
 

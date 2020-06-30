@@ -96,7 +96,6 @@ function Compare(props) {
       const newCart = [...currentCart, value]
       localStorage.setItem('cart', JSON.stringify(newCart))
     }  
-
     
     // 點擊 css 樣式變換
     const itemsChangeFunctionTrue =()=>{
