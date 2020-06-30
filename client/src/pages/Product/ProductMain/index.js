@@ -48,8 +48,9 @@ function ProductMain(props) {
     
     setcompareschange(newcCompare)
   }
-  const currentLove = JSON.parse(localStorage.getItem('love')) || []
+
   // 加入最愛
+  const currentLove = JSON.parse(localStorage.getItem('love')) || []
   const updateLoveToLocalStorage = (value) => {
     const newcLove = [...currentLove, value]
     localStorage.setItem('love', JSON.stringify(newcLove))
@@ -138,6 +139,12 @@ function ProductMain(props) {
 
   }
 
+  // 點擊 手机版 menu 出现
+  const BrandSelecteCssChange = () =>{
+    let YybrandUl = document.getElementsByClassName('Yybrand_ul')[0]
+    YybrandUl.classList.toggle('Willbrand_change')
+  }
+
   // 細節頁面點擊出現
   useEffect(()=>{
     let quick_view_modal = document.getElementsByClassName('items-quick-view-modal')[0];
@@ -153,6 +160,22 @@ function ProductMain(props) {
       items_wrapper.classList.remove('items_wrapper_open')
     })
   },[])
+
+    // // 細節頁面點擊出現
+    // useEffect(()=>{
+    //   let quick_view_modal = document.getElementsByClassName('items-quick-view-modal')[0];
+    //   let items_close_head = document.getElementsByClassName('items-close-head')[0];
+    //   let items_wrapper = document.getElementsByClassName('items-wrapper')[0];
+    //   let items_quick_view_overlay = document.getElementsByClassName('items-quick-view-overlay')[0];
+    //   items_quick_view_overlay.addEventListener('click', () => {
+    //     quick_view_modal.classList.remove('quick_view_modal_open')
+    //     items_wrapper.classList.remove('items_wrapper_open')
+    //   })
+    //   items_close_head.addEventListener('click', () => {
+    //     quick_view_modal.classList.remove('quick_view_modal_open')
+    //     items_wrapper.classList.remove('items_wrapper_open')
+    //   })
+    // },[])
 
   // 商品數量
   useEffect(()=>{
@@ -232,6 +255,12 @@ function ProductMain(props) {
         <div className="Yybodyleft">
           <div className="Yybrand">
               <div className="Yywearstyle">BRAND</div>
+                  <div 
+                    className="Yywearstyle YywearstylePhone"
+                    onClick={
+                      ()=>{ BrandSelecteCssChange() }
+                    }
+                  >Brand Selecte</div>
               <ul className="Yybrand_ul">
                 <li><Link to='/YyProduct/AUDIOTECHNICA'> AUDIOTECHNICA ({howManyTotal.audioTechnica}) </Link></li>
                 <li><Link to='/YyProduct/AKG'> AKG ({howManyTotal.AKG}) </Link></li>
