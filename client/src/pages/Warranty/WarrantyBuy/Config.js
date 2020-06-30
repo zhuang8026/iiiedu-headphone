@@ -1,0 +1,26 @@
+export const WarrantyImg = [
+    {
+        CardId:119,
+        picName:'Warrantycard1.jpg',
+        CardName:'一年保固卡',
+        CardClass:'保固卡',
+        CardPrice:3000,
+        amount:1
+    },
+    {
+        CardId:120,
+        picName:'Warrantycard2.jpg',
+        CardName:'三年保固卡',
+        CardClass:'保固卡',
+        CardPrice:6000,
+        amount:1
+    },
+    {
+        CardId:121,
+        picName:'Warrantycard3.jpg',
+        CardName:'五年保固卡',
+        CardClass:'保固卡',
+        CardPrice:9000,
+        amount:1
+    },
+]

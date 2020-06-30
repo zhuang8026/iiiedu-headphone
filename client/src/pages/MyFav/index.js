@@ -2,14 +2,9 @@
 import React, { Fragment, useState,useEffect} from 'react'
 import {
   BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-  Link,
-  NavLink,
   withRouter,
 } from 'react-router-dom'
-import visa from '../../assets/img/IG_4.png';
+
 
 
 // components
@@ -17,25 +12,83 @@ import { message } from 'antd';
 // import { Pagination } from 'antd';
 
 function MyFav(props) {
-      const{userdata,setUserdata,name,setName}= props.allprops;
+    //   const{userdata,setUserdata,name,setName}= props.allprops;
     const { itemsdata, setItemsdata, itemsid, setItemsid } = props;
-    const [MyFavProductData, setMyFavProductData] = useState([])
-    const [detailitems, setdetailitems] = useState('');
+    // const [CompareProductData, setCompareProductData] = useState([])
+    // const [detailitems, setdetailitems] = useState('');
     const [currentTotalPages, setCurrentTotalPages] = useState();
     const [currentPage, setCurrentPage] = useState(1); 
     const [itemchange, setitemchange] = useState(false); 
-    let [loveList,setloveList] = useState([])
+    let [compareList,setCompareList] = useState([])
     const key = 'updatable';
     //打開會員的localstorage
     const Memberman = JSON.parse(localStorage.getItem('memberData'))|| []
     // console.log(Memberman)
     let id = Memberman.id;
-    var MyFavProductDataInner=[];
+    var CompareProductDataInner=[];
+    const[selectValue,setSelectValue] = useState([])
+
+    // console.log('selectValue',selectValue)
 
     //抓取compare的localstorage
-    let MyFavarray = []
-    const objlove = JSON.parse(localStorage.getItem('love'))|| []
-    loveList = [...objlove]
+    let comparearray = []
+    const objcompare = JSON.parse(localStorage.getItem('love'))|| []
+    compareList = [...objcompare]
+    // itemPrice
+    console.log(compareList)
+    let ascList = [...compareList]
+    let descList = [...compareList]
+    ascList.sort(function(a, b) {
+        return a.itemPrice - b.itemPrice;
+    });
+    descList.sort(function(a, b) {
+        return b.itemPrice - a.itemPrice;
+    });
+    // localStorage.setItem("compare", JSON.stringify(ascList))
+    // localStorage.setItem("compare", JSON.stringify(descList))
+
+    const handleSelect =(e)=>{
+        if(e === '1'){
+        //     ascList = ascList.sort(function(a, b) {
+        //         return a.itemPrice - b.itemPrice;
+        //     });
+        // console.log('asclist', ascList)  
+            compareList = ascList
+            setCompareList(compareList)
+        // localStorage.removeItem("compare")
+        localStorage.setItem("love", JSON.stringify(compareList))
+        } else if(e === '2'){
+            // descList = descList.sort(function(a, b) {
+            //     return b.itemPrice - a.itemPrice;
+            // });
+            // console.log('desclist', descList)
+            compareList = descList
+            setCompareList(compareList)
+            // localStorage.removeItem("compare")
+
+            localStorage.setItem("love", JSON.stringify(compareList))
+
+        }
+
+        console.log(e)
+        setSelectValue(e)
+    }
+
+    // const handleOp1 = (e)=>{
+    //     setSelectValue(e)
+    //     compareList = ascList
+    //     setCompareList(compareList)
+    // // localStorage.removeItem("compare")
+    // localStorage.setItem("compare", JSON.stringify(compareList))
+    // }
+    // const handleOp2 = ()=>{
+    //     setSelectValue(e)
+    //     compareList = descList
+    //     setCompareList(compareList)
+    //     // localStorage.removeItem("compare")
+
+    //     localStorage.setItem("compare", JSON.stringify(compareList))
+    // }
 
     //更新購物車localstorage
     const updateCartToLocalStorage = (value) => {
@@ -43,33 +96,12 @@ function MyFav(props) {
       const newCart = [...currentCart, value]
       localStorage.setItem('cart', JSON.stringify(newCart))
     }  
-    //取得該會員的比較資料
-    // const MyFavProductDataFetch =()=>{
-    //     fetch('http://localhost:3009/compare/listCompareUserProduct',{
-    //       method: 'post',
-    //       headers: new Headers({
-    //           'Accept': 'application/json',
-    //           'Content-Type': 'application/json',
-    //       }),
-    //       body: JSON.stringify({
-    //         id: id
-    //       })
-    //   })
-    //     .then(response=>{
-    //       return response.json() })
-    //     .then(response=>{
-    //       console.log('response', response);
-    //        [...CompareProductDataInner]=response;
-    //       setCompareProductData(CompareProductDataInner)
-    //       console.log('CompareProudctDataInner',CompareProductDataInner)
-          
-    //     })
-    //   }
-    
-      // useEffect(()=>{
-      //   CompareProductDataFetch()
-      // },[])
-    
+    //更新比較功能localstorage
+    const updateCompareToLocalStorage = (value) =>{
+      const currentCompare = JSON.parse(localStorage.getItem('compare')) || []
+      const newCompare = [...currentCompare, value]
+      localStorage.setItem('compare',JSON.stringify(newCompare))
+    }
     // 點擊 css 樣式變換
     const itemsChangeFunctionTrue =()=>{
       setitemchange(true);
@@ -98,39 +130,8 @@ function MyFav(props) {
       items_wrapper.classList.add('items_wrapper_open');
   
     }
-  
-    useEffect(()=>{
-        fetch(`http://localhost:3009/products/listpage/${currentPage}`,  {
-            method: 'get',
-            headers: new Headers({
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            }),
-        })
-        .then((response)=>{
-            return response.json()
-        })
-        .then((response)=>{
-          // console.log(response)
-          setItemsdata(response.rows)
-          setCurrentTotalPages(response.totalPages) //總page
-          setCurrentPage(response.page) //此刻的頁數
-        })
-  
-            // let quick_view_modal = document.getElementsByClassName('items-quick-view-modal')[0];
-            // let items_close_head = document.getElementsByClassName('items-close-head')[0];
-            // let items_wrapper = document.getElementsByClassName('items-wrapper')[0];
-            // let items_quick_view_overlay = document.getElementsByClassName('items-quick-view-overlay')[0];
-            // items_quick_view_overlay.addEventListener('click', () => {
-            // quick_view_modal.classList.remove('quick_view_modal_open')
-            // items_wrapper.classList.remove('items_wrapper_open')
-            // })
-            // items_close_head.addEventListener('click', () => {
-            // quick_view_modal.classList.remove('quick_view_modal_open')
-            // items_wrapper.classList.remove('items_wrapper_open')
-            // })
-  
-    },[currentPage])
+    
+
   
     let typedata = props.match.params.type;
     useEffect(()=>{
@@ -178,56 +179,93 @@ function MyFav(props) {
               <a href="../">首頁</a> / <a href="#">我的最愛</a>
               </div>
               <div>
-                <select >
-                  <option>按價格排序-由低到高</option>
-                  <option>按價格排序-由高到低</option>
+                <select 
+                defaultValue = {selectValue}
+                onChange={(event)=>{
+                    handleSelect(event.target.value)
+                }}
+                >
+                  <option value="1" >按價格排序-由低到高</option>
+                  <option value="2" >按價格排序-由高到低</option>
                 </select>
               </div>
             </div>
             <div className="MyFav_list">
-        <ul className="MyFav_pwa_r_inner">
-        {loveList.map((data,index)=>{
-            return(
-          <li key={index}>
-                <div className="MyFav_card">
-                    <div className="MyFav_item">
-                      <span className="iconfont icon-error" 
-                    id={data.itemId} 
-                    onClick={(index)=>{        
-                    loveList.splice(loveList.indexOf(index), 1);
-                    setloveList(loveList)
-                    localStorage.setItem("MyFav", JSON.stringify(loveList)); }}></span>
-                      <img src={`/items_img/${data.itemImg}`}/>
-                      <h3>{data.itemsbrand}</h3>
-                      <h3>{data.itemName}</h3>
-                    </div>
-                </div>
-                <div><h4>{data.itemPrice}</h4></div>
-                <div className="MyFav_card_button">
-                    <button className="MyFav_update MyFav_btn_style"
-                    id={data.itemId} 
-                    onClick={e =>{
-                      setItemsid(e.target.id)  
-                      // goToDetail(e.target.id)
-                      // addCsstyle()
-                      props.history.push(`/ProductDetail/${e.target.id}`)
-                    }}>加入比較</button>
-                    <button className="MyFav_del MyFav_btn_style"                          
-                    id={data.itemId}
-                    onClick={() => {
-                    updateCartToLocalStorage({
-                        id: `${data.itemId}`,
-                        itemName:`${data.itemName}`,
-                        itemBrand:`${data.itemsbrand}`,
-                        itemImg:`${data.itemImg}`,
-                        itemPrice:`${data.itemPrice}`,
-                        amount:1,
-                        })
-                      }}>加入購物車</button>
-                </div>
-            </li>
-        )})}
-          </ul>
+                <ul className="MyFav_pwa_r_inner">
+                {console.log('compareList',compareList)}
+                {compareList !== [] ? (
+                    <>
+                    {compareList.map((data,index)=>{
+                    console.log(data);
+                    return(
+                        <li key={index}>
+                            <div className="MyFav_card">
+                                <div className="MyFav_item">
+                                <span className="iconfont icon-error" 
+                                id={data.itemId} 
+                                data-id={index}
+                                onClick={()=>{        
+                                const newList = [...compareList]
+                                newList.splice(index, 1);
+                                setCompareList(newList)
+                                localStorage.setItem("love", JSON.stringify(newList)); }}></span>
+                                <img src={`/items_img/${data.itemImg}`}/>
+                                <h3>{data.itemsbrand}</h3>
+                                <h3>{data.itemName}</h3>
+                                </div>
+                            </div>
+                            <div><h4>{data.itemPrice}</h4></div>
+                            <div className="MyFav_card_button">
+                                <button className=" MyFav_btn_style"
+                                id={data.itemId} 
+                                onClick={() =>{
+                                updateCompareToLocalStorage({
+                                  itemid: data.itemId,
+                                  itemName:data.itemName,
+                                  itemBrand: data.itemsbrand,
+                                  itemImg: data.itemImg,
+                                  itemPrice: data.itemPrice,
+                                  created_at: data.created_at,
+                                  itemQty: data.itemQty,
+                                  itemsEndurance: data.itemsEndurance,
+                                  itemsSensitivity: data.itemsSensitivity,
+                                  itemsales: data.itemsales,
+                                  itemsconnect: data.itemsconnect,
+                                  itemscontent: data.itemscontent,
+                                  itemsdrive: data.itemsdrive,
+                                  itemsfeature: data.itemsfeature,
+                                  itemsfrequency: data.itemsfrequency,
+                                  itemsmains: data.itemsmains,
+                                  itemsstar: data.itemsstar,
+                                  itemstoreNumber: data.itemstoreNumber,
+                                  itemstype: data.itemstype,
+                                  itemswatertight: data.itemswatertight,
+                                  itemsweight: data.itemsweight
+                                })
+                                }}>加入比較</button>
+                                <button className=" MyFav_btn_style2"                          
+                                id={data.itemId}
+                                onClick={() => {
+                                updateCartToLocalStorage({
+                                    id:data.itemid,
+                                    itemName:data.itemName,
+                                    itemBrand:data.itemsbrand,
+                                    itemImg:data.itemImg,
+                                    itemPrice:data.itemPrice,
+                                    amount:1,
+                                    })
+                                }}>加入購物車</button>
+                            </div>
+                        </li>
+                    )})}
+                    </>
+                ):(
+                    <>
+                        <div>1111111</div>
+                    </>
+                )}
+                
+            </ul>
           {/* <div className="page"><Pagination defaultCurrent={1} total={50} /></div> */}
       </div>
           </div>

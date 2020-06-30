@@ -117,10 +117,13 @@
                 align-items: flex-end;
                 background-color: #FAFAFA;
                 margin-bottom: 16px;
+                box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
                 figure {
-                    width: 100px;
+                    width: 102px;
+                    margin: 0;
                     img {
                         width: 100%;
+                        background: #fff;
                     }
                 }
                 .cart_text {
@@ -128,9 +131,12 @@
                     .cart_price {
                         display: flex;
                         justify-content: space-between;
+                        flex-wrap: wrap;
                         span {
+                            width: 100%;
                             font-size: 14px;
                             font-weight: 300;
+                            padding-right: 10px;
                         }
                     }
                     .cart_btn {

@@ -1,18 +1,67 @@
 .AboutWarrantyCrumb {
-    width: 90%;
-    margin: 0 auto;
-    padding: 30px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 30px;
+}
+.AboutWarrantyCard {
+  width: 90%;
+  margin: 0 auto;
+  h1 {
+    font-size: 45px;
+    text-align: center;
   }
-  .AboutWarrantyCard {
-    width: 90%;
-    margin: 0 auto;
-    h1 {
-      font-size: 45px;
-      text-align: center;
-    }
-    div {
+  div {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.BuyWarrantyCard {
+  margin: 30px auto;
+  width: 80%;
+  h1 {
+    font-size: 45px;
+    text-align: center;
+  }
+}
+.WarrantyCardContainer {
+  margin: 0 auto;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  .WarrantyCard:hover .WiWarrantyButton {
+    opacity: 1;
+  }
+  .WarrantyCard {
+    width: 30%;
+    position: relative;
+    .WiWarrantyButton {
       display: flex;
       justify-content: center;
+      opacity: 0;
+      button {
+        width: 80%;
+        position: absolute;
+        bottom: 57%;
+        height: 50px;
+        background: #e1e1e1;
+      }
+      button:hover {
+        background: #4e4f97;
+        color: white;
+        border: white solid 1px;
+      }
+    }
+
+    img {
+      width: 100%;
+    }
+    h2 {
+      text-align: center;
+      padding-top: 20px;
+    }
+    p {
+      text-align: center;
     }
   }
-  
+}

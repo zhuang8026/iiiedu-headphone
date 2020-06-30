@@ -10,6 +10,14 @@ import ProductMainDrtail from '../ProductMainDrtail';
 import Pagination from '../Pagination';
 
 function ProductMain(props) {
+  const { itemsdata, setItemsdata, itemsid, setItemsid, setlovechange, setcompareschange, setcartchange} = props;
+  const [detailitems, setdetailitems] = useState('');
+  const [currentTotalPages, setCurrentTotalPages] = useState(); // 總page
+  const [currentPage, setCurrentPage] = useState();             // 此刻的頁數
+  const [itemchange, setitemchange] = useState(false); 
+  const [itemAll, setitemAll] = useState([]); 
+  const [howManyTotal, sethowManyTotal] = useState({});
+
   const key = 'updatable';
   let typedata = props.match.params.type;
 
@@ -20,6 +28,8 @@ function ProductMain(props) {
     const currentCart = JSON.parse(localStorage.getItem('cart')) || []
     const newCart = [...currentCart, value]
     localStorage.setItem('cart', JSON.stringify(newCart))
+
+    setcartchange(newCart);
   }
 
   // 加入比較
@@ -27,7 +37,7 @@ function ProductMain(props) {
     const currentCompare = JSON.parse(localStorage.getItem('compare')) || []
     const newcCompare = [...currentCompare, value]
     localStorage.setItem('compare', JSON.stringify(newcCompare))
-
+    
     currentCompare.map(element => {
       if(element.itemName === value.itemName){
         window.localStorage.setItem('compare', JSON.stringify(currentCompare));
@@ -35,14 +45,15 @@ function ProductMain(props) {
         return 
       }
     });
-
+    
+    setcompareschange(newcCompare)
   }
 
   // 加入最愛
+  const currentLove = JSON.parse(localStorage.getItem('love')) || []
   const updateLoveToLocalStorage = (value) => {
-    const currentLove = JSON.parse(localStorage.getItem('love')) || []
-    const newcLompare = [...currentLove, value]
-    localStorage.setItem('love', JSON.stringify(newcLompare))
+    const newcLove = [...currentLove, value]
+    localStorage.setItem('love', JSON.stringify(newcLove))
 
     currentLove.map(element => {
       if(element.itemName === value.itemName){
@@ -52,15 +63,9 @@ function ProductMain(props) {
       }
     });
 
-  }
+    setlovechange(newcLove)
 
-  const { itemsdata, setItemsdata, itemsid, setItemsid } = props;
-  const [detailitems, setdetailitems] = useState('');
-  const [currentTotalPages, setCurrentTotalPages] = useState(); // 總page
-  const [currentPage, setCurrentPage] = useState();             // 此刻的頁數
-  const [itemchange, setitemchange] = useState(false); 
-  const [itemAll, setitemAll] = useState([]); 
-  const [howManyTotal, sethowManyTotal] = useState({});
+  }
 
   const goToDetail = ( id )=> {
     fetch(`http://localhost:3009/products/detail/${id}`, {
@@ -87,22 +92,7 @@ function ProductMain(props) {
     // console.log(params.toString());
     // console.log(params.get('getname'));
     let getname = params.get('getname') || ''
-    // console.log(getname)
-    // axios({
-    //   method: 'post',
-    //   url: `http://localhost:3009/products/list/${getname}`,
-    //   headers:{
-    //       'Content-type': 'application/x-www-form-urlencoded'
-    //   },
-    //   data: params
-    // })
-    // .then((reverse) => { 
-    //   console.log(reverse); 
-    //   // console.log(reverse.data); 
-    // })
-    // .catch((error) => {
-    //   console.error(error);
-    // })
+
     fetch(`http://localhost:3009/products/list/${getname}`, {
         method: 'get',
         headers: new Headers({
@@ -110,14 +100,14 @@ function ProductMain(props) {
             'Content-Type': 'application/json',
         })
     })
-        .then((res)=>{
-            return res.json()
-        })
-        .then((res)=>{
-            console.log(res)
-            setItemsdata(res)
-            // setdetailitems(res)
-        })
+      .then((res)=>{
+          return res.json()
+      })
+      .then((res)=>{
+          // console.log(res)
+          setItemsdata(res)
+          // setdetailitems(res)
+      })
   }
 
   // 點擊 css 樣式變換
@@ -149,6 +139,12 @@ function ProductMain(props) {
 
   }
 
+  // 點擊 手机版 menu 出现
+  const BrandSelecteCssChange = () =>{
+    let YybrandUl = document.getElementsByClassName('Yybrand_ul')[0]
+    YybrandUl.classList.toggle('Willbrand_change')
+  }
+
   // 細節頁面點擊出現
   useEffect(()=>{
     let quick_view_modal = document.getElementsByClassName('items-quick-view-modal')[0];
@@ -164,6 +160,22 @@ function ProductMain(props) {
       items_wrapper.classList.remove('items_wrapper_open')
     })
   },[])
+
+    // // 細節頁面點擊出現
+    // useEffect(()=>{
+    //   let quick_view_modal = document.getElementsByClassName('items-quick-view-modal')[0];
+    //   let items_close_head = document.getElementsByClassName('items-close-head')[0];
+    //   let items_wrapper = document.getElementsByClassName('items-wrapper')[0];
+    //   let items_quick_view_overlay = document.getElementsByClassName('items-quick-view-overlay')[0];
+    //   items_quick_view_overlay.addEventListener('click', () => {
+    //     quick_view_modal.classList.remove('quick_view_modal_open')
+    //     items_wrapper.classList.remove('items_wrapper_open')
+    //   })
+    //   items_close_head.addEventListener('click', () => {
+    //     quick_view_modal.classList.remove('quick_view_modal_open')
+    //     items_wrapper.classList.remove('items_wrapper_open')
+    //   })
+    // },[])
 
   // 商品數量
   useEffect(()=>{
@@ -243,6 +255,12 @@ function ProductMain(props) {
         <div className="Yybodyleft">
           <div className="Yybrand">
               <div className="Yywearstyle">BRAND</div>
+                  <div 
+                    className="Yywearstyle YywearstylePhone"
+                    onClick={
+                      ()=>{ BrandSelecteCssChange() }
+                    }
+                  >Brand Selecte</div>
               <ul className="Yybrand_ul">
                 <li><Link to='/YyProduct/AUDIOTECHNICA'> AUDIOTECHNICA ({howManyTotal.audioTechnica}) </Link></li>
                 <li><Link to='/YyProduct/AKG'> AKG ({howManyTotal.AKG}) </Link></li>
@@ -257,7 +275,7 @@ function ProductMain(props) {
         
           <div className="Yysearch_container">
             <input 
-              type="text" 
+              type="search" 
               placeholder=" search..." 
               id="fuzzySearch" 
               onKeyUp={ (event)=>{ fuzzySearch(event.target.value) } }
@@ -295,11 +313,99 @@ function ProductMain(props) {
 
           <div className="Yyasidebody">
             {itemsdata.map((data, index)=>{
-              console.log(itemsdata)
+              {/* console.log(itemsdata) */}
               return(
                 <div className="Yyaside_pro" key={index}>
                     <div className="item_image">
                       <img className="item_img" src={`/items_img/${data.itemImg}`} />
+                      <div className="item_btn_inner_all">
+                        <div className="item_btn_inner">
+                          {/* <button className="item_add item_btn"btn-navy btn-fill-vert-o */}
+                          <button className="item_btn_add btn_navy_add btn_fill_vert_add"
+                            id={data.itemId}
+                            onClick={() => {
+                              message.success(`商品"${data.itemName}"加入購物車`)
+                              updateCartToLocalStorage({
+                                  id: `${data.itemId}`,
+                                  itemName:`${data.itemName}`,
+                                  itemBrand:`${data.itemsbrand}`,
+                                  itemImg:`${data.itemImg}`,
+                                  itemPrice:`${data.itemPrice}`,
+                                  amount:1,
+                              })
+                            }}
+                          >加入購物車</button>
+                          <button 
+                            className="item_btn_add btn-navy_s btn-fill-vert-o_s item_btn_search" 
+                            id={data.itemId} 
+                            onClick={e =>{
+                              setItemsid(e.target.id)  
+                              goToDetail(e.target.id)
+                              // props.history.push(`/ProductDetail/${e.target.id}`)
+                              addCsstyle()
+                            }}
+                          >立即查看</button>
+                          <button 
+                            className="item_btn_add btn-navy_s btn-fill-vert-o_s"
+                            onClick={() => {
+                              message.success(`商品"${data.itemName}"加入最愛`)
+                              updateLoveToLocalStorage({
+                                itemid: data.itemId,
+                                itemName:data.itemName,
+                                itemBrand: data.itemsbrand,
+                                itemImg: data.itemImg,
+                                itemPrice: data.itemPrice,
+                                created_at: data.created_at,
+                                itemQty: data.itemQty,
+                                itemsEndurance: data.itemsEndurance,
+                                itemsSensitivity: data.itemsSensitivity,
+                                itemsales: data.itemsales,
+                                itemsconnect: data.itemsconnect,
+                                itemscontent: data.itemscontent,
+                                itemsdrive: data.itemsdrive,
+                                itemsfeature: data.itemsfeature,
+                                itemsfrequency: data.itemsfrequency,
+                                itemsmains: data.itemsmains,
+                                itemsstar: data.itemsstar,
+                                itemstoreNumber: data.itemstoreNumber,
+                                itemstype: data.itemstype,
+                                itemswatertight: data.itemswatertight,
+                                itemsweight: data.itemsweight
+                              })
+                            }}
+                          >加入最愛</button>
+                          <button 
+                            className="item_btn_add btn-navy_s btn-fill-vert-o_s"
+                            onClick={() => {
+                              console.log(data)
+                              message.success(`商品"${data.itemName}"加入比較`)
+                              updateCompareToLocalStorage({
+                                itemid: data.itemId,
+                                itemName:data.itemName,
+                                itemBrand: data.itemsbrand,
+                                itemImg: data.itemImg,
+                                itemPrice: data.itemPrice,
+                                created_at: data.created_at,
+                                itemQty: data.itemQty,
+                                itemsEndurance: data.itemsEndurance,
+                                itemsSensitivity: data.itemsSensitivity,
+                                itemsales: data.itemsales,
+                                itemsconnect: data.itemsconnect,
+                                itemscontent: data.itemscontent,
+                                itemsdrive: data.itemsdrive,
+                                itemsfeature: data.itemsfeature,
+                                itemsfrequency: data.itemsfrequency,
+                                itemsmains: data.itemsmains,
+                                itemsstar: data.itemsstar,
+                                itemstoreNumber: data.itemstoreNumber,
+                                itemstype: data.itemstype,
+                                itemswatertight: data.itemswatertight,
+                                itemsweight: data.itemsweight
+                              })
+                            }}
+                          >加入比較</button>
+                        </div>
+                      </div>
                     </div>
                   <ul className="item_inner">
                     <li className="item_inner_li item_inner_flex">
@@ -315,60 +421,6 @@ function ProductMain(props) {
                     </li>
                   </ul>
                   
-                  <div className="item_btn_inner_all">
-                      <div className="item_btn_inner">
-                        {/* <button className="item_add item_btn"btn-navy btn-fill-vert-o */}
-                        <button className="item_btn_add btn_navy_add btn_fill_vert_add"
-                          id={data.itemId}
-                          onClick={() => {
-                          updateCartToLocalStorage({
-                              id: `${data.itemId}`,
-                              itemName:`${data.itemName}`,
-                              itemBrand:`${data.itemsbrand}`,
-                              itemImg:`${data.itemImg}`,
-                              itemPrice:`${data.itemPrice}`,
-                              amount:1,
-                              })
-                            }}
-                        >加入購物車</button>
-                        <button 
-                          className="item_btn_add btn-navy_s btn-fill-vert-o_s item_btn_search" 
-                          id={data.itemId} 
-                          onClick={e =>{
-                            setItemsid(e.target.id)  
-                            goToDetail(e.target.id)
-                            // props.history.push(`/ProductDetail/${e.target.id}`)
-                            addCsstyle()
-                          }}
-                        >立即查看</button>
-                        <button 
-                          className="item_btn_add btn-navy_s btn-fill-vert-o_s"
-                          onClick={() => {
-                            message.success(`商品"${data.itemName}"加入最愛`)
-                            updateLoveToLocalStorage({
-                              itemid: `${data.itemId}`,
-                              itemName:`${data.itemName}`,
-                              itemBrand:`${data.itemsbrand}`,
-                              itemImg:`${data.itemImg}`,
-                              itemPrice:`${data.itemPrice}`,
-                            })
-                          }}
-                        >加入最愛</button>
-                        <button 
-                          className="item_btn_add btn-navy_s btn-fill-vert-o_s"
-                          onClick={() => {
-                            message.success(`商品"${data.itemName}"加入比較`)
-                            updateCompareToLocalStorage({
-                              itemid: `${data.itemId}`,
-                              itemName:`${data.itemName}`,
-                              itemBrand:`${data.itemsbrand}`,
-                              itemImg:`${data.itemImg}`,
-                              itemPrice:`${data.itemPrice}`,
-                            })
-                          }}
-                        >加入比較</button>
-                      </div>
-                    </div>
                 </div>
               )
             })}
