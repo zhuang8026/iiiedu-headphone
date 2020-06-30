@@ -1,7 +1,7 @@
 @import './variables.scss';
 main {
   .MyFav_container {
-    width: 80%;
+    max-width: 80%;
     margin: 0 auto;
     padding-top: 150px;
     .MyFav_select {
@@ -61,7 +61,6 @@ main {
               width: 128px;
               height: 45px;
               margin: 0 3px;
-              background: transparent;
               border: 1px solid $btn-color-l;
               background: transparent;
               // cursor: pointer;
@@ -69,6 +68,20 @@ main {
               &:hover {
                 background: $btn-color-l;
                 color: #fff;
+              }
+            }
+            .MyFav_btn_style2 {
+              width: 128px;
+              height: 45px;
+              margin: 0 3px;
+              border: 1px solid $btn-color-l;
+              background: $btn-color-l;
+              color: #fff;
+              // cursor: pointer;
+              transition: 0.3s ease-in;
+              &:hover {
+                background: transparent;
+                color: $btn-color-l;
               }
             }
           }
@@ -124,7 +137,7 @@ main {
         // padding: 0 10px;
         padding-left: 25px;
         .MyFav_Crumb {
-          display: none;
+          // display: none;
         }
       }
       .MyFav_list {
