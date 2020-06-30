@@ -332,13 +332,30 @@ function ProductMain(props) {
                           <button 
                             className="item_btn_add btn-navy_s btn-fill-vert-o_s"
                             onClick={() => {
+                              console.log(data)
                               message.success(`商品"${data.itemName}"加入比較`)
                               updateCompareToLocalStorage({
-                                itemid: `${data.itemId}`,
-                                itemName:`${data.itemName}`,
-                                itemBrand:`${data.itemsbrand}`,
-                                itemImg:`${data.itemImg}`,
-                                itemPrice:`${data.itemPrice}`,
+                                itemid: data.itemId,
+                                itemName:data.itemName,
+                                itemBrand: data.itemsbrand,
+                                itemImg: data.itemImg,
+                                itemPrice: data.itemPrice,
+                                created_at: data.created_at,
+                                itemQty: data.itemQty,
+                                itemsEndurance: data.itemsEndurance,
+                                itemsSensitivity: data.itemsSensitivity,
+                                itemsales: data.itemsales,
+                                itemsconnect: data.itemsconnect,
+                                itemscontent: data.itemscontent,
+                                itemsdrive: data.itemsdrive,
+                                itemsfeature: data.itemsfeature,
+                                itemsfrequency: data.itemsfrequency,
+                                itemsmains: data.itemsmains,
+                                itemsstar: data.itemsstar,
+                                itemstoreNumber: data.itemstoreNumber,
+                                itemstype: data.itemstype,
+                                itemswatertight: data.itemswatertight,
+                                itemsweight: data.itemsweight
                               })
                             }}
                           >加入比較</button>
