@@ -9,7 +9,6 @@ import {
   NavLink,
   withRouter,
 } from 'react-router-dom'
-import visa from '../../assets/img/IG_4.png';
 
 
 // components
@@ -186,7 +185,10 @@ function MyFav(props) {
             </div>
             <div className="MyFav_list">
         <ul className="MyFav_pwa_r_inner">
-        {loveList.map((data,index)=>{
+        {
+        loveList ? (
+            <Fragment>
+            {loveList.map((data,index)=>{
             return(
           <li key={index}>
                 <div className="MyFav_card">
@@ -215,18 +217,26 @@ function MyFav(props) {
                     <button className="MyFav_del MyFav_btn_style"                          
                     id={data.itemId}
                     onClick={() => {
-                    updateCartToLocalStorage({
-                        id: `${data.itemId}`,
-                        itemName:`${data.itemName}`,
-                        itemBrand:`${data.itemsbrand}`,
-                        itemImg:`${data.itemImg}`,
-                        itemPrice:`${data.itemPrice}`,
+                      updateCartToLocalStorage({
+                        id: data.itemId,
+                        itemName:data.itemName,
+                        itemBrand:data.itemsbrand,
+                        itemImg:data.itemImg,
+                        itemPrice:data.itemPrice,
                         amount:1,
                         })
                       }}>加入購物車</button>
                 </div>
             </li>
-        )})}
+      )})}
+                        </Fragment>
+                            ) : (
+                                <li>
+                                  55555555
+                                </li>
+                            )
+                        }
+  
           </ul>
           {/* <div className="page"><Pagination defaultCurrent={1} total={50} /></div> */}
       </div>
