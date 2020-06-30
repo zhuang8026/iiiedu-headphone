@@ -196,7 +196,7 @@ function MyFav(props) {
                     onClick={(index)=>{        
                     loveList.splice(loveList.indexOf(index), 1);
                     setloveList(loveList)
-                    localStorage.setItem("MyFav", JSON.stringify(loveList)); }}></span>
+                    localStorage.setItem("love", JSON.stringify(loveList)); }}></span>
                       <img src={`/items_img/${data.itemImg}`}/>
                       <h3>{data.itemsbrand}</h3>
                       <h3>{data.itemName}</h3>
