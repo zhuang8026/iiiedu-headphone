@@ -82,18 +82,30 @@
             border: 1px solid #2c3e50;
             margin-right: 12px;
             color: #2c3e50;
+            transition: 0.1s ease-in;
+            &:active {
+              transform: translateZ(0) scale(0.98);
+            }
           }
           h2 {
             color: #2c3e50;
           }
           .DetailAddInput {
             width: 150px;
-            height: 34px;
+            height: 42px;
+            line-height: 42px;
             background: transparent;
-            border: 1px solid #2c3e50;
+            border: 1px solid #211E55;
+            background: #211E55;
             margin-right: 6px;
             text-align: center;
-            color: #2c3e50;
+            color: #fff;
+            transition: 0.3s ease-in;
+            &:hover {
+              background: transparent;
+              color: $btn-color-r;
+              border: 1px solid $btn-color-r;
+            }
           }
         }
       }
@@ -123,6 +135,7 @@ $img-url: "https://gradolabs.com/images/Hero-Desktop-GS3000ePlants.jpg";
     background-color: #fff;
     overflow: hidden;
     transition: 0.3s ease-in;
+    cursor: pointer;
     &:before {
       content: "";
       z-index: 99;
@@ -179,7 +192,6 @@ $img-url: "https://gradolabs.com/images/Hero-Desktop-GS3000ePlants.jpg";
       right: 75px;
       bottom: 15px;
       font-size: 40px;
-      cursor: pointer;
     }
     p {
       z-index: 99;
@@ -203,37 +215,37 @@ $img-url: "https://gradolabs.com/images/Hero-Desktop-GS3000ePlants.jpg";
       filter: grayscale(100%);
     }
 
-    .social {
-      position: absolute;
-      left: 60px;
-      top: 0;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-pack: distribute;
-      justify-content: space-around;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-      width: 180px;
-      height: 64px;
-      border-radius: 80px;
-    }
+    // .social {
+    //   position: absolute;
+    //   left: 60px;
+    //   top: 0;
+    //   display: -webkit-box;
+    //   display: -ms-flexbox;
+    //   display: flex;
+    //   -ms-flex-pack: distribute;
+    //   justify-content: space-around;
+    //   -webkit-box-align: center;
+    //   -ms-flex-align: center;
+    //   align-items: center;
+    //   width: 180px;
+    //   height: 64px;
+    //   border-radius: 80px;
+    // }
 
-    .social i:nth-of-type(1) {
-      -webkit-transition-delay: 0.4s;
-      transition-delay: 0.4s;
-    }
+    // .social i:nth-of-type(1) {
+    //   -webkit-transition-delay: 0.4s;
+    //   transition-delay: 0.4s;
+    // }
 
-    .social i:nth-of-type(2) {
-      -webkit-transition-delay: 0.3s;
-      transition-delay: 0.3s;
-    }
+    // .social i:nth-of-type(2) {
+    //   -webkit-transition-delay: 0.3s;
+    //   transition-delay: 0.3s;
+    // }
 
-    .social i:nth-of-type(3) {
-      -webkit-transition-delay: 0.2s;
-      transition-delay: 0.2s;
-    }
+    // .social i:nth-of-type(3) {
+    //   -webkit-transition-delay: 0.2s;
+    //   transition-delay: 0.2s;
+    // }
 
     .social i:nth-of-type(4) {
       -webkit-transition-delay: 0.1s;
@@ -279,6 +291,9 @@ $img-url: "https://gradolabs.com/images/Hero-Desktop-GS3000ePlants.jpg";
     }
     &:hover {
       box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3);
+    }
+    &:active {
+      transform: translateZ(0) scale(0.98);
     }
   }
 

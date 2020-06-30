@@ -1,12 +1,12 @@
 // 函式元件
 import React, { Fragment, useState, useEffect } from 'react'
-import { Link , withRouter, useParams } from 'react-router-dom'
+import { withRouter, useParams } from 'react-router-dom'
 
 // components
 import ProductCrumb from '../ProductCrumb'
 import ProductDetailLeft from '../ProductDetail/ProductDetailLeft'
 import ProductDetailRight from '../ProductDetail/ProductDetailRight'
-
+import ProductDetailBottom from '../ProductDetail/ProductDetailBottom'
 
 function ProductDetail(props) {
   let { id } = useParams()
@@ -46,7 +46,7 @@ function ProductDetail(props) {
         />
       </div>
       <div className="WiDetailBottom">
-
+        <ProductDetailBottom/>
       </div>
     </Fragment>
   )

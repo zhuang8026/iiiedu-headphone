@@ -1,13 +1,14 @@
 // 函式元件
-import React, { useEffect, useState } from 'react'
-import {withRouter} from 'react-router-dom'
+import React, { useState } from 'react'
+import {withRouter, Link} from 'react-router-dom'
 
-import ProductDetailBottom from '../ProductDetailBottom'
+import ProductDetailBtn from '../ProductDetailBtn'
 
 function ProductDetailRight(props) {
   const [total, setTotal] = useState(1);
-  const {detaildata, userdata} = props;
-  console.log(userdata)
+  const {detaildata} = props;
+  let memberdatacallback = localStorage.getItem('memberData');
+
   return (
     <>
       <div className="YyDetailRight">
@@ -37,14 +38,14 @@ function ProductDetailRight(props) {
                   onClick={() => {
                     setTotal(total - 1)
                   }}
-                > <i class="iconfont icon-reduce_1"></i> </button>
+                > <i className="iconfont icon-reduce_1"></i> </button>
                 <span>{total}</span>
                 <button
                   className="DetailBtnAdd"
                   onClick={() => {
                     setTotal(total + 1)
                   }}
-                > <i class="iconfont icon-add_1"></i> </button>
+                > <i className="iconfont icon-add_1"></i> </button>
               </div>
               <p>庫存：{ detaildata.itemQty } / 副</p>
             </div>
@@ -56,12 +57,12 @@ function ProductDetailRight(props) {
             </div>
             <div className="DetailAddbtn">
               <h2>折扣碼</h2>
-              {userdata? (
+              {memberdatacallback? (
                 <>
-                  <ProductDetailBottom/>
+                  <ProductDetailBtn/>
                 </>
               ):(
-                  <input className="DetailAddInput" type="text" defaultValue="MFEE0706NICE"/>
+                  <Link className="DetailAddInput" type="button" to='/KMembers/MembersLogin'>請登入會員</Link>
               )}
             </div>
           </div>
