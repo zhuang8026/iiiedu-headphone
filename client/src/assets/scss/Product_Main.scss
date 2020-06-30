@@ -278,7 +278,9 @@ transition: all 0.3s;
 /* 版本尺寸 */
 @media screen and (min-width: 1920px){}
 @media (min-width:1366px) and (max-width:1920px){
-
+  .Yybodyin .Yybodyright .Yyasidebody .item_btn_inner_all .item_btn_inner {
+    width: 80%;
+}
   } /* 電腦 */
 @media (min-width:1024px) and (max-width:1365px){
   .Yybodyin {
