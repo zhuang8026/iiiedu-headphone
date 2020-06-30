@@ -253,15 +253,15 @@ router.get('/', (req, res) => {
 // router.get('/add', (req, res)=>{
 router.post('/add', upload.none(), (req, res) => {
     let id = req.body.id;
-    let blogTitle = req.body.blogTitle;
-    let blogContent01 = req.body.blogContent01;
-    let blogContent01_img01 = req.body.blogContent01_img01;
-    let blogContent01_img02 = req.body.blogContent01_img02;
-    let blogContent01_img03 = req.body.blogContent01_img03;
-    let blogContent02 = req.body.blogContent02;
-    let blogContent02_img01 = req.body.blogContent02_img01;
-    let blogContent02_img02 = req.body.blogContent02_img02;
-    let blogContent02_img03 = req.body.blogContent02_img03;
+    let blogTitle = req.body.addBlogTitle;
+    let blogContent01 = req.body.addBlogContent01;
+    let blogContent01_img01 = req.body.addBlogContent01_img01;
+    let blogContent01_img02 = req.body.addBlogContent01_img02;
+    let blogContent01_img03 = req.body.addBlogContent01_img03;
+    let blogContent02 = req.body.addBlogContent02;
+    let blogContent02_img01 = req.body.addBlogContent02_img01;
+    let blogContent02_img02 = req.body.addBlogContent02_img02;
+    let blogContent02_img03 = req.body.addBlogContent02_img03;
     const output = {
         success: false,
         id: id,
@@ -279,7 +279,7 @@ router.post('/add', upload.none(), (req, res) => {
     const sql = "INSERT INTO `blogs`(`id`,`blogTitle`,`blogContent01`,`blogContent01_img01`,`blogContent01_img02`,`blogContent01_img03`,`blogContent02`,`blogContent02_img01`,`blogContent02_img02`,`blogContent02_img03`) VALUES (?, ?, ?, ?,?,?,?,?,?,?)";
     console.log('========== react(post)id和文章 -> 新增部落格文章 ==========')
     console.log('req.body = ', req.body)
-    db.query(sql, [id, blogTitle, blogContent01,blogContent01_img01,blogContent01_img02,blogContent01_img03, blogContent02,blogContent02_img01,blogContent02_img02,blogContent02_img03])
+    db.query(sql, [id, blogTitle, blogContent01, blogContent01_img01, blogContent01_img02, blogContent01_img03, blogContent02, blogContent02_img01, blogContent02_img02, blogContent02_img03])
         .then(([r]) => {
             output.results = r;
             if (r.affectedRows && r.insertId) {
@@ -323,15 +323,15 @@ router.post('/edit/', upload.none(), (req, res) => {
     let blogId = req.body.blogId;
     let blogTitle = req.body.editBlogTitle;
     let blogContent01 = req.body.editBlogContent01;
-    let blogContent01_img01 = req.body.blogContent01_img01;
-    let blogContent01_img02 = req.body.blogContent01_img02;
-    let blogContent01_img03 = req.body.blogContent01_img03;
+    let blogContent01_img01 = req.body.editBlogContent01_img01;
+    let blogContent01_img02 = req.body.editBlogContent01_img02;
+    let blogContent01_img03 = req.body.editBlogContent01_img03;
     let blogContent02 = req.body.editBlogContent02;
-    let blogContent02_img01 = req.body.blogContent02_img01;
-    let blogContent02_img02 = req.body.blogContent02_img02;
-    let blogContent02_img03 = req.body.blogContent02_img03;
+    let blogContent02_img01 = req.body.editBlogContent02_img01;
+    let blogContent02_img02 = req.body.editBlogContent02_img02;
+    let blogContent02_img03 = req.body.editBlogContent02_img03;
     console.log('更新的blogId ----> ', blogId);
-    const sql = "UPDATE `blogs` SET `blogTitle`=?, `blogContent01`=?, `blogContent01_img01`=?, `blogContent01_img02`=?, `blogContent01_img03`=?, `blogContent02`=?, `blogContent02_img01`=?, `blogContent02_img02`=?, `blogContent02_img03`=?, WHERE `blogId`=?";
+    const sql = "UPDATE `blogs` SET `blogTitle`=?, `blogContent01`=?, `blogContent01_img01`=?, `blogContent01_img02`=?, `blogContent01_img03`=?, `blogContent02`=?, `blogContent02_img01`=?, `blogContent02_img02`=?, `blogContent02_img03`=?, `blogUpdateDate` = NOW() WHERE `blogId`=?";
 
     if (!blogId) {
         output.error = '沒有主鍵';
@@ -340,7 +340,7 @@ router.post('/edit/', upload.none(), (req, res) => {
     // const sql = "UPDATE `blogs` SET ? WHERE blogId=?";
     // 把req.body.blogId刪掉，但宣告的blogId還存在
     delete req.body.blogId;
-    db.query(sql, [editBlogTitle, editBlogContent01, editBlogContent02, blogId])
+    db.query(sql, [blogTitle, blogContent01, blogContent01_img01, blogContent01_img02, blogContent01_img03, blogContent02, blogContent02_img01, blogContent02_img02, blogContent02_img03, blogId])
         .then(([r]) => {
             output.results = r;
             if (r.affectedRows && r.changedRows) {
@@ -413,8 +413,7 @@ router.post('/try-upload/', upload.single('avatar'), async (req, res) => {
 })
 
 //================================================== 部落格回文 ==============================================================
-
-// (未測試)
+// (測試ok)
 // 部落格回文
 // http://localhost:3009/blog/add-reply
 // router.get('/add', (req, res)=>{
