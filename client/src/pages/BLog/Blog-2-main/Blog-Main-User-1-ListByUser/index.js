@@ -45,7 +45,7 @@ function BlogMainUserListByUser(props) {
 
     useEffect(() => {
         searchMethod()
-    }, [userdata,searchOrder,searchSort,currentPage])
+    }, [userdata, searchOrder, searchSort, currentPage])
     useEffect(() => {
 
     }, [listUserBlogdata])
@@ -61,7 +61,7 @@ function BlogMainUserListByUser(props) {
     useEffect(() => {
         console.log('更新currentPage -> ', currentPage)
         //searchMethod()
-    }, [currentPage])    
+    }, [currentPage])
 
     // 刪除文章
     const goBlogDelete = (blogId) => {
@@ -210,15 +210,15 @@ function BlogMainUserListByUser(props) {
                         <div className="blog-card" key={data.blogId}>
                             <div className="blog-card-in">
                                 <figure className="blog-card-fig">
-                                    <img className="blog-cover" src={`/blogs_img/${data.blogContent01_img01}`} alt="" />
+                                    <img className="blog-cover" src={`http://localhost:3009/blogs_img/${data.blogContent01_img01}`} alt="" />
                                 </figure>
                                 <div className="blog-card-btns blog-d-flex blog-justify-content-between">
                                     <figure>
                                         <img
                                             src={Pan}
                                             onClick={() => {
-                                            props.history.push(`/Blog/BlogEdit/${data.blogId}`);  
-                                        }}
+                                                props.history.push(`/Blog/BlogEdit/${data.blogId}`);
+                                            }}
                                         ></img>
                                     </figure>
                                     <figure>
@@ -241,9 +241,9 @@ function BlogMainUserListByUser(props) {
                                     <button
                                         className="read-more-btn"
                                         onClick={() => {
-                                            props.history.push(`/Blog/BlogDetail/${data.blogId}`);  
+                                            props.history.push(`/Blog/BlogDetail/${data.blogId}`);
                                         }}
-                                        >閱讀文章</button>
+                                    >閱讀文章</button>
                                 </div>
                             </div>
                         </div>

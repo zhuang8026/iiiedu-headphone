@@ -161,7 +161,7 @@ function BlogMainStandardList(props) {
                             <div className="blog-card-in">
                                 <figure className="blog-card-fig">
                                     <img className="blog-cover"
-                                        src={`/blogs_img/${data.blogContent01_img01}`}
+                                        src={`http://localhost:3009/blogs_img/${data.blogContent01_img01}`}
                                         alt=""
                                     />
                                 </figure>

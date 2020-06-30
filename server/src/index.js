@@ -17,6 +17,9 @@ var credentials = require('./credential.js');
 var cookieParser = require('cookie-parser');
 app.use(cookieParser(credentials.cookieSecret));
 
+
+app.use(express.static("public"));
+
 app.use(session({
     saveUninitialized: false,
     resave: false, // 沒變更內容是否強制回存

@@ -112,7 +112,7 @@ function BlogMainDetailArticles(props) {
                         console.log('===============', data)
                         return (
                             <figure key={data.index}>
-                                <img className="blog-cover" src={`/blogs_img/${data}`} alt="" />
+                                <img className="blog-cover" src={`http://localhost:3009/blogs_img/${data}`} alt="" />
                             </figure>
                         )
                     })}                    
@@ -124,7 +124,7 @@ function BlogMainDetailArticles(props) {
                         console.log('===============', data)
                         return (
                             <figure key={data.index}>
-                                <img className="blog-cover" src={`/blogs_img/${data}`} alt="" />
+                                <img className="blog-cover" src={`http://localhost:3009/blogs_img/${data}`} alt="" />
                             </figure>
 
                         )
