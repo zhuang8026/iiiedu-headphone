@@ -6,8 +6,6 @@ import { withRouter, Link } from 'react-router-dom';
 import {GiftcardImg} from './Config'
 function GiftBuy() {
     const updateCardToLocalStorage = (value) => {
-        // const Memberman = JSON.parse(localStorage.getItem('memberData'))|| []
-        // console.log(Memberman)
         const currentCart = JSON.parse(localStorage.getItem('cart')) || []
         const newCart = [...currentCart, value]
         localStorage.setItem('cart', JSON.stringify(newCart))

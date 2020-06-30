@@ -10,7 +10,7 @@ function GiftAbout() {
 
   return ( <>
 <div className="AboutgiftCrumb">
-<Link to="/">首頁</Link>/  <Link to="/WiGift">禮物卡</Link>
+<Link to="/">首頁</Link>/  <Link to="/about/WiGift">禮物卡</Link>
 </div>
 <div className="AboutGiftCard">
   <h1>關於禮物卡</h1>
