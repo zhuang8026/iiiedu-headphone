@@ -39,14 +39,8 @@ function BlogMainAdd(props) {
     } = props;
     // ==================== 欄位資料 ==================== 
     const [addBlogTitle, setAddBlogTitle] = useState('');
-    const [addBlogContent01, setAddBlogContent01] = useState('');
-    const [addBlogContent01_img01, setAddBlogContent01_img01] = useState('');
-    const [addBlogContent01_img02, setAddBlogContent01_img02] = useState('');
-    const [addBlogContent01_img03, setAddBlogContent01_img03] = useState('');
-    const [addBlogContent02, setAddBlogContent02] = useState('');
-    const [addBlogContent02_img01, setAddBlogContent02_img01] = useState('');
-    const [addBlogContent02_img02, setAddBlogContent02_img02] = useState('');
-    const [addBlogContent02_img03, setAddBlogContent02_img03] = useState('');
+    const [addBlogContent01, setAddBlogContent01] = useState('');    
+    const [addBlogContent02, setAddBlogContent02] = useState('');    
     // ==================== 圖片欄位 ==================== 
     const [drag11, setDrag11] = useState('default.jpg');
     const [drag12, setDrag12] = useState('default.jpg');
@@ -54,6 +48,7 @@ function BlogMainAdd(props) {
     const [drag21, setDrag21] = useState('default.jpg');
     const [drag22, setDrag22] = useState('default.jpg');
     const [drag23, setDrag23] = useState('default.jpg');
+    // ==================== 指標 ==================== 
     const [imgPoint01, setImgPoint01] = useState(1);
     const [imgPoint02, setImgPoint02] = useState(1);
     // const [selectedFile, setSelectedFile] = useState([]);
@@ -65,15 +60,15 @@ function BlogMainAdd(props) {
         console.log('=====================================')
         console.log('addBlogTitle ==============> ', addBlogTitle)
         console.log('addBlogContent01 ==========> ', addBlogContent01)
-        console.log('addBlogContent01_img01 ====> ', addBlogContent01_img01)
-        console.log('addBlogContent01_img02 ====> ', addBlogContent01_img02)
-        console.log('addBlogContent01_img03 ====> ', addBlogContent01_img03)
+        console.log('addBlogContent01_img01 ====> ', drag11)
+        console.log('addBlogContent01_img02 ====> ', drag12)
+        console.log('addBlogContent01_img03 ====> ', drag13)
         console.log('addBlogContent02 ==========> ', addBlogContent02)
-        console.log('addBlogContent02_img01 ====> ', addBlogContent02_img01)
-        console.log('addBlogContent02_img02 ====> ', addBlogContent02_img02)
-        console.log('addBlogContent02_img03 ====> ', addBlogContent02_img03)
-    }, [addBlogTitle, addBlogContent01, addBlogContent01_img01, addBlogContent01_img02, addBlogContent01_img03,
-        addBlogContent02, addBlogContent02_img01, addBlogContent02_img02, addBlogContent02_img03]);
+        console.log('addBlogContent02_img01 ====> ', drag21)
+        console.log('addBlogContent02_img02 ====> ', drag22)
+        console.log('addBlogContent02_img03 ====> ', drag23)
+    }, [addBlogTitle, addBlogContent01, drag11, drag12, drag13,
+        addBlogContent02, drag21, drag22, drag23]);
 
     // useEffect(() => {
     //     console.log('=====================================')
@@ -84,13 +79,9 @@ function BlogMainAdd(props) {
     // 上傳圖片
     const goAddImg = (data) => {
         let formData = new FormData();
-        formData.append('avatar', data);
-        // result.map((file, index) => {
-        //     formData.append(`file${index}`, file);
-        //   });
+        formData.append('avatar', data);        
         console.log('================================ datafiles ================================')
         console.log(formData.get('avatar'))
-
         fetch('http://localhost:3009/blog/try-upload', {
             method: 'POST',
             body: formData
@@ -118,15 +109,15 @@ function BlogMainAdd(props) {
             method: 'POST',
             body: JSON.stringify({
                 id: userdata.id,
-                blogTitle: addBlogTitle,
-                blogContent01: addBlogContent01,
-                blogContent01_img01: addBlogContent01_img01,
-                blogContent01_img02: addBlogContent01_img02,
-                blogContent01_img03: addBlogContent01_img03,
-                blogContent02: addBlogContent02,
-                blogContent02_img01: addBlogContent02_img01,
-                blogContent02_img02: addBlogContent02_img02,
-                blogContent02_img03: addBlogContent02_img03,
+                addBlogTitle: addBlogTitle,
+                addBlogContent01: addBlogContent01,
+                addBlogContent01_img01: drag11,
+                addBlogContent01_img02: drag12,
+                addBlogContent01_img03: drag13,
+                addBlogContent02: addBlogContent02,
+                addBlogContent02_img01: drag21,
+                addBlogContent02_img02: drag22,
+                addBlogContent02_img03: drag23,
             }),
             headers: new Headers({
                 'Accept': 'application/json',
@@ -171,13 +162,7 @@ function BlogMainAdd(props) {
                         multiple="multiple"
                         // defaultValue=""
                         // placeholder=""
-                        onChange={(e) => {
-                            // setLogoData(e.target.files[0].name)
-                            // setUserdata({
-                            //     ...userdata,
-                            //     userblogimg: e.target.files[0].name
-                            // })
-
+                        onChange={(e) => {                            
                             if (imgPoint01 === 4) {
                                 message.success('圖片上限是 3 張')
                             } else if (imgPoint01 <= 3) {
@@ -188,26 +173,19 @@ function BlogMainAdd(props) {
                                     let temp=imgPoint01;
                                     if (imgPoint01 === 1) {
                                         // 兩欄是一樣的->測試用
-                                        setDrag11(obj01.name)
-                                        setAddBlogContent01_img01(obj01.name)
+                                        setDrag11(obj01.name)                                        
                                     }
                                     if (imgPoint01 === 2) {
-                                        setDrag12(obj01.name)
-                                        setAddBlogContent01_img02(obj01.name)
+                                        setDrag12(obj01.name)                                       
                                     }
                                     if (imgPoint01 === 3) {
-                                        setDrag13(obj01.name)
-                                        setAddBlogContent01_img03(obj01.name)
+                                        setDrag13(obj01.name)                                       
                                     }
                                     temp+=1;
                                     setImgPoint01(temp);
                                     
                                 }, 1000)
-                            }
-
-                            // setSelectedFile(e.target.files[0])
-                            // conso/le.log('---', e.target.files[0])
-                            // setTesttest(e.target.files[0].name)
+                            }                          
                         }}
                     />
                     <div className="blog-add-info"></div>
@@ -231,13 +209,7 @@ function BlogMainAdd(props) {
                 <textarea name="" id="" onChange={e => setAddBlogContent02(e.target.value)}></textarea>
                 <div className="btn-and-info blog-d-flex">
                     <input type="file" className="btn-and-info-input" name="" id="" 
-                        onChange={(e) => {
-                            // setLogoData(e.target.files[0].name)
-                            // setUserdata({
-                            //     ...userdata,
-                            //     userblogimg: e.target.files[0].name
-                            // })
-
+                        onChange={(e) => {                           
                             if (imgPoint02 === 4) {
                                 message.success('圖片上限是 3 張')
                             } else if (imgPoint02 <= 3) {
@@ -246,25 +218,18 @@ function BlogMainAdd(props) {
                                 setTimeout(() => {
                                     let temp=imgPoint02;
                                     if (imgPoint02 === 1) {
-                                        setDrag21(obj02.name)
-                                        setAddBlogContent02_img01(obj02.name)
+                                        setDrag21(obj02.name)                                        
                                     }
                                     if (imgPoint02 === 2) {
-                                        setDrag22(obj02.name)
-                                        setAddBlogContent02_img02(obj02.name)
+                                        setDrag22(obj02.name)                                       
                                     }
                                     if (imgPoint02 === 3) {
-                                        setDrag23(obj02.name)
-                                        setAddBlogContent02_img03(obj02.name)
+                                        setDrag23(obj02.name)                                        
                                     }
                                     temp+=1;
                                     setImgPoint02(temp);
                                 }, 1000)
                             }
-
-                            // setSelectedFile(e.target.files[0])
-                            // conso/le.log('---', e.target.files[0])
-                            // setTesttest(e.target.files[0].name)
                         }}
                     />
                     <div className="blog-add-info"></div>
