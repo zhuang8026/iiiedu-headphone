@@ -104,47 +104,19 @@ function BlogMainDetailComments(props) {
                                 <div className="comment-one-in blog-d-flex">
                                     <div className="user-post-icon">
                                         <figure className="user-post-fig"></figure>
-                                        <button className="list-reply blog-d-flex">
-                                            <figure className="user-list-reply-fig">
-                                                <img src={CaretDown} alt="" />
-                                            </figure>
-                                            <h5>回覆</h5>
-                                        </button>
+                                        
                                     </div>
                                     <div className="user-post-content">
                                         <h3 className="user-post-name">{data.r_nick}</h3>
                                         <h5 className="user-post-date"><Moment format="DD M月, YYYY">{data.b_r_date}</Moment></h5>
                                         <p>{data.b_r_content}</p>
-                                        <button className="post-reply">回覆</button>
+                                        
                                     </div>
                                 </div>
                             </div>
                             
 
-                            {/* <div className="comment-reply">
-            <div className="comment-reply-in blog-d-flex">
-              <div className="user-reply-icon">
-                <figure className="user-reply-fig"></figure>
-              </div>
-              <div className="user-reply-content">
-                <h3 className="user-reply-name">回覆者暱稱</h3>
-                <h5 className="user-reply-date">回覆日期</h5>
-                <p>
-                  回覆內容回覆內容回覆內容回覆內容
-                  回覆內容回覆內容回覆內容回覆內容
-                  回覆內容回覆內容回覆內容回覆內容
-                  回覆內容回覆內容回覆內容回覆內容
-                  回覆內容回覆內容回覆內容回覆內容
-                  回覆內容回覆內容回覆內容回覆內容
-                  回覆內容回覆內容回覆內容回覆內容
-                  回覆內容回覆內容回覆內容回覆內容
-                  回覆內容回覆內容回覆內容回覆內容
-                  回覆內容回覆內容回覆內容回覆內容
-                </p>
-                <button className="reply-reply">回覆</button>
-              </div>
-            </div>
-          </div> */}
+            
 
 
                         </div>
