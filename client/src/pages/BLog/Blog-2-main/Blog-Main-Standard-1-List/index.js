@@ -190,25 +190,25 @@ function BlogMainStandardList(props) {
             </div>
             <div className="blog-standard-pages blog-d-flex">
                 <div
-                    className="prev-page"
+                    className="round-effect"
                     onClick={() => {
                         setCurrentPage(currentPage - 1)
                     }}
-                >
-                    <img
+                >﹤
+                    {/* <img
                         src={PrevPage}
                         alt=""
                         onClick={() => {
                             setCurrentPage(currentPage - 1)
                         }}
-                    />
+                    /> */}
                 </div>
                 <div className="all-blog-page-list blog-d-flex">
                     {listPage.map((data, index) => {
                         {/* console.log(data) */ }
                         return (
                             <div
-                                className="pages"
+                                className="round-effect"
                                 key={data}
                                 onClick={() => {
                                     setCurrentPage(data)
@@ -220,18 +220,18 @@ function BlogMainStandardList(props) {
 
                 {/* <div className="mores">...</div> */}
                 <div
-                    className="next-page"
+                    className="round-effect"
                     onClick={() => {
                         setCurrentPage(currentPage + 1)
                     }}
-                >
-                    <img
+                >﹥
+                    {/* <img
                         src={NextPage}
                         alt=""
                         onClick={() => {
                             setCurrentPage(currentPage + 1)
                         }}
-                    />
+                    /> */}
                 </div>
             </div>
         </>
