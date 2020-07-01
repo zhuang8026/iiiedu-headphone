@@ -214,7 +214,7 @@ function MyFav(props) {
                                 <h3>{data.itemName}</h3>
                                 </div>
                             </div>
-                            <div><h4>{data.itemPrice}</h4></div>
+                            <div><h4>{`$${data.itemPrice}`}</h4></div>
                             <div className="MyFav_card_button">
                                 <button className=" MyFav_btn_style"
                                 id={data.itemId} 
