@@ -69,6 +69,7 @@ import WiProblem from './pages/Problem'
 import WiOurClients from './pages/OurClients'
 import WiWarranty from './pages/Warranty'
 import NotFoundPage404 from './pages/404'
+import MyLoading from './components/Loading'
 
 function App() {
   // navbar 
@@ -164,6 +165,9 @@ function App() {
 
   return (
     <Router>
+      {/* 過場動畫 */}
+      {/* <MyLoading/> */}
+      
       <header>
         <MyNavBar 
           lovechange={lovechange}
@@ -201,40 +205,11 @@ function App() {
               setcartchange={setcartchange}
             />
           </Route>
-          {/* <Route exact path="/YyProduct">
-            <YyProduct />
-          </Route> */}
-          {/* <Route exact path="/YyProduct/:box?">
-            <YyProduct />
-          </Route> */}
 
           {/* 產品細節 */}
           <Route path="/ProductDetail/:id">
             <ProductDetail/>
           </Route>
-
-          {/* 靜態頁面 */}
-          {/* <Route path="/about/WiGift">
-            <WiGift />
-          </Route>
-          <Route path="/about/WiWarranty">
-            <WiWarranty />
-          </Route>
-          <Route path="/about/WiAbout">
-            <WiAbout />
-          </Route>
-          <Route path="/about/WiConnect">
-            <WiConnect />
-          </Route>
-          <Route path="/about/WiStore">
-            <WiStore />
-          </Route>
-          <Route path="/about/WiProblem">
-            <WiProblem />
-          </Route>
-          <Route path="/about/WiOurClients">
-            <WiOurClients />
-          </Route> */}
 
           {/* 會員 */}
           <Route exact path="/KMembers">
@@ -422,16 +397,16 @@ function App() {
           <Route path="/MyFav">
           <MyFav    
               itemsdata={itemsdata}
-               setItemsdata={setItemsdata}
-               itemsid={itemsid}
-               setItemsid={setItemsid}
-               allprops={{
-              userdata,
-              setUserdata,
-              name,
-              setName
-            }}
-                />
+              setItemsdata={setItemsdata}
+              itemsid={itemsid}
+              setItemsid={setItemsid}
+              allprops={{
+                userdata,
+                setUserdata,
+                name,
+                setName
+              }}
+          />
           </Route>
 
           {/* 購物車 */}
@@ -563,8 +538,8 @@ function App() {
 
           {/* ProtectdRoute 這是 utils */}
           {/* <ProtectedRoute path="/todoapp">
-                              <TodoApp todos={todos} setTodos={setTodos} isAuth={auth}/>
-                          </ProtectedRoute> */}
+              <TodoApp todos={todos} setTodos={setTodos} isAuth={auth}/>
+          </ProtectedRoute> */}
 
           {/* 404 必须放在最后一个 */}
           {/* Redirect 重新導向 / 需要先引入 */}

@@ -1,6 +1,6 @@
 // 函式元件
 import React, { Fragment } from 'react';
-import { Link, NavLink, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 // scss
 // import './_menu.scss'

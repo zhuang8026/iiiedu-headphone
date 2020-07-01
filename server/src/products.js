@@ -103,6 +103,21 @@ router.get("/list/:getname?", (req, res) => {
     });
 });
 
+
+// 全站 搜索 navbar search 
+// http://localhost:3009/products/search/a80
+router.get("/search/:getSearch?", (req, res) => {
+    let getSearch = req.params.getSearch;
+    // console.log('getSearch:', getSearch)
+    const sql = `SELECT * FROM items WHERE itemName LIKE '%${getSearch}%' OR itemsbrand LIKE '%${getSearch}%' `;
+    db.query(sql)
+        .then(([results])=>{
+            // console.log(results)
+            res.json(results);
+        });
+});
+
+
 // 所有brand
 // http://localhost:3009/products/brand
 router.get("/brand", (req, res) => {
@@ -169,6 +184,7 @@ router.get('/listpage/:page?', async (req, res)=>{
     // console.log(output)
     res.json(output);
 })
+
 
 // 單筆資料
 // http://localhost:3009/products/detail/2
@@ -241,8 +257,6 @@ router.get('/:type?/:page?', async (req, res)=>{
     // console.log(output)
     res.json(output);
 })
-
-
 
 
 // 點擊 menu 篩選 不使用
