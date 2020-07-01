@@ -84,7 +84,7 @@ function BlogMainDetailComments(props) {
         })
             .then(result => result.json())
             .then(obj => {
-                message.success(`新增成功！`);
+                message.success(`新留言已建立！`);
                 setB_r_content('')
                 setTimeout(() => {
                     list_reply()

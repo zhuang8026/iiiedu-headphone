@@ -148,9 +148,9 @@ function Compare(props) {
     // <Router>
       <Fragment>
         <main>
-          <div className="MyFav_container">
-            <div className="MyFav_select">
-              <div className="MyFav_Crumb">
+          <div className="MyCom_container">
+            <div className="MyCom_select">
+              <div className="MyCom_Crumb">
               {/* 麵包屑 */}
               <a href="../">首頁</a> / <a href="#">商品比較</a>
               {/* <Link to="/">首頁</Link> / <a href="#">商品比較</a> */}

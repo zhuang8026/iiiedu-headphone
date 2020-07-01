@@ -1,0 +1,178 @@
+@import './variables.scss';
+main {
+  .MyCom_container {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 150px;
+    .MyCom_select {
+      display: flex;
+      justify-content: space-between;
+      a {
+        font-size: $font-size-16;
+        color: $font-color-s;
+      }
+      select {
+        color: $font-color-s;
+        border: 1px solid $font-color-s;
+        width: 280px;
+        height: 45px;
+        padding-left: 70px;
+        background: transparent;
+        option {
+          background: #f4f4f5;
+        }
+      }
+    }
+    .MyCom_list {
+      .MyCom_pwa_r_inner {
+        display: flex;
+        margin: 15px 0;
+        .comparecard_decoration {
+          //   border: 1px solid #707070;
+          //   border-radius: 5px;
+          //   width: 400px;
+          display: flex;
+        }
+
+        .sty-1 {
+          display: flex;
+          flex-direction: column;
+        }
+        .comparecard_content_decoration {
+          //   border: 1px solid #707070;
+          display: flex;
+          //   padding: 0 5px;
+          width: 150px;
+          //   .context-adjust {
+          h1 {
+            font-weight: bold;
+            color: #2c3e50;
+            width: 150px;
+            // border-top: 1px solid #000;
+            border-bottom: 1px solid #adadad;
+            text-align: center;
+          }
+          //   }
+        }
+        li:nth-child(even) {
+          background-color: #f3f4ed;
+        }
+        li {
+          //   justify-content: space-between;
+          margin: 10px 0;
+          padding: 20px 0;
+          //   border-bottom: 1px solid #adadad;
+          //   align-items: center;
+          span {
+            padding: 0 16px;
+            align-self: flex-end;
+            margin: -15px 20px 0px;
+            font-size: 30px;
+          }
+          .MyCom_card {
+            width: 100%;
+            .MyCom_item {
+              display: flex;
+              align-items: center;
+              flex-direction: column;
+              text-align: center;
+              .compareImg {
+                height: 106px;
+                img {
+                  width: 100px;
+                  height: 99px;
+                }
+              }
+              h3 {
+                // padding-left:42px;
+                font-weight: bold;
+                // padding: 0 16px;
+                border-bottom: 1px solid #adadad;
+                width: 100%;
+              }
+            }
+          }
+          h4 {
+            font-weight: bold;
+            // padding-left: 800px;
+            padding-left: 12px;
+            // padding: 0 15vw;
+            text-align: center;
+            width: 100%;
+            border-bottom: 1px solid #adadad;
+          }
+          .MyCom_card_button {
+            align-items: center;
+            .MyCom_btn_style {
+              width: 128px;
+              height: 45px;
+              margin: 3px 3px;
+              background: transparent;
+              border: 1px solid $btn-color-l;
+              background: transparent;
+              // cursor: pointer;
+              transition: 0.3s ease-in;
+              &:hover {
+                background: $btn-color-l;
+                color: #fff;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .page {
+    padding-top: 60px;
+    text-align: center;
+    .ant-pagination-item-active {
+      background: #211e55;
+      border: #fff;
+      a {
+        color: #fff;
+      }
+    }
+  }
+}
+
+@media (min-width: 1366px) and (max-width: 1919px) {
+  main {
+    .MyCom_container {
+      width: 90%;
+    }
+  }
+} /* 電腦 */
+@media (min-width: 1024px) and (max-width: 1365px) {
+  main {
+    .MyCom_container {
+      width: 90%;
+      margin: 0 auto;
+      padding-top: 150px;
+    }
+  }
+} /* 電腦 */
+@media (min-width: 768px) and (max-width: 1023px) {
+  main {
+    .MyCom_container {
+      width: 90%;
+      margin: 0 auto;
+      padding-top: 170px;
+    }
+  }
+} /* iPad */
+@media (min-width: 414px) and (max-width: 767px) {
+  main {
+    .MyCom_container {
+      max-width: 100%;
+      margin: 0 auto;
+      padding-top: 170px;
+      .MyCom_select {
+        // padding: 0 10px;
+        padding-left: 25px;
+        .MyCom_Crumb {
+          display: none;
+        }
+      }
+    }
+  }
+}
