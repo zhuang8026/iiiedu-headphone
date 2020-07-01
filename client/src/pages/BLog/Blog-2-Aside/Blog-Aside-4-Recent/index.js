@@ -64,10 +64,19 @@ function BlogAsideRecent(props) {
             return (
               <div className="recent-post-in-one blog-d-flex" key={data.blogId}>
                 <figure className="recent-post-in-one-img">
-                  <img className="blog-cover" src={`http://localhost:3009/blogs_img/${data.blogContent01_img01}`}></img>
+                  <img className="blog-cover"
+                    src={`http://localhost:3009/blogs_img/${data.blogContent01_img01}`}
+                    onClick={() => {
+                      props.history.push(`/Blog/BlogDetail/${data.blogId}`);
+                    }}
+                  ></img>
                 </figure>
                 <div className="recent-post-in-one-txt">
-                  <h4 className="recent-post-in-one-txt-title">{data.blogTitle}</h4>
+                  <h4 className="recent-post-in-one-txt-title"
+                  onClick={() => {
+                      props.history.push(`/Blog/BlogDetail/${data.blogId}`);
+                    }}
+                  >{data.blogTitle}</h4>
                   <h5 className="recent-post-in-one-txt-date"><Moment format="DD M月, YYYY">{data.blogPublishDate}</Moment></h5>
                 </div>
               </div>

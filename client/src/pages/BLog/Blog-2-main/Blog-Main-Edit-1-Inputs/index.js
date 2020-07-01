@@ -51,13 +51,16 @@ function BlogMainEditInputs(props) {
     const [imgPoint02, setImgPoint02] = useState(1);
     useEffect(() => {
         getEditData()
-        setTimeout(() => {
-            countPoint()
-        }, 2000)
+        // setTimeout(() => {
+
+
+        // }, 2000)
     }, [])
     useEffect(() => {
         $('#blogTitle').val(detailByEditId.blogTitle)
         $('#blogContent01').val(detailByEditId.blogContent01)
+        // setEditBlogTitle(detailByEditId.blogTitle)
+        // setEditBlogContent01(detailByEditId.blogContent01)
         // $('#drag11_img').attr("src",`/blogs_img/${detailByEditId.blogContent01_img01}`)
         // $('#drag12_img').attr("src",`/blogs_img/${detailByEditId.blogContent01_img02}`)
         // $('#drag13_img').attr("src",`/blogs_img/${detailByEditId.blogContent01_img03}`)
@@ -69,17 +72,27 @@ function BlogMainEditInputs(props) {
         console.log('editId =======================> ', editId)
         console.log('editBlogTitle ================> ', editBlogTitle)
         console.log('editBlogContent01 ============> ', editBlogContent01)
-        console.log('editBlogContent01_img01 ======> ', drag11)
-        console.log('editBlogContent01_img02 ======> ', drag12)
-        console.log('editBlogContent01_img03 ======> ', drag13)
+        console.log('drag11 ======> ', drag11)
+        console.log('drag12 ======> ', drag12)
+        console.log('drag11 ======> ', drag13)
         console.log('editBlogContent02 ============> ', editBlogContent02)
-        console.log('editBlogContent02_img01 ======> ', drag21)
-        console.log('editBlogContent02_img02 ======> ', drag22)
-        console.log('editBlogContent02_img03 ======> ', drag23)
+        console.log('drag21 ======> ', drag21)
+        console.log('drag22 ======> ', drag22)
+        console.log('drag23 ======> ', drag23)
 
     }, [detailByEditId])
 
-
+    useEffect(() => {
+        console.log(editBlogTitle)
+    }, [editBlogTitle])
+    useEffect(() => {
+        countPoint()
+        
+    }, [drag11, drag12, drag13, drag21, drag22, drag23,])
+    useEffect(() => {
+        console.log('imgPoint01-2 ====> ', imgPoint01)
+        console.log('imgPoint02-2 ====> ', imgPoint02)
+    }, [imgPoint01,imgPoint02])
 
     const getEditData = () => {
         fetch('http://localhost:3009/blog/getDetail/', {
@@ -96,40 +109,58 @@ function BlogMainEditInputs(props) {
                 return response.json()
             })
             .then((response) => {
-                console.log('body -> ', response.body)
-                console.log('results -> ', response.results[0])
-                console.log('blogTitle -> ', response.results[0].blogTitle)
-                setDetailByEditId(response.results[0])
-                setEditBlogTitle(response.results[0].blogTitle)
-                setEditBlogContent01(response.results[0].blogContent01)
-                setDrag11(response.results[0].blogContent01_img01)
-                setDrag12(response.results[0].blogContent01_img02)
-                setDrag13(response.results[0].blogContent01_img03)
-                setEditBlogContent02(response.results[0].blogContent02)
-                setDrag21(response.results[0].blogContent02_img01)
-                setDrag22(response.results[0].blogContent02_img02)
-                setDrag23(response.results[0].blogContent02_img03)
+                setTimeout(() => {
+                    console.log('body -> ', response.body)
+                    console.log('results -> ', response.results[0])
+                    console.log('blogTitle -> ', response.results[0].blogTitle)
+                    console.log('blogContent01_img01 -> ', response.results[0].blogContent01_img01)
+                    setDetailByEditId(response.results[0])
+                    setEditBlogTitle(response.results[0].blogTitle)
+
+                    setEditBlogContent01(response.results[0].blogContent01)
+                    setDrag11(response.results[0].blogContent01_img01)
+                    setDrag12(response.results[0].blogContent01_img02)
+                    setDrag13(response.results[0].blogContent01_img03)
+                    setEditBlogContent02(response.results[0].blogContent02)
+                    setDrag21(response.results[0].blogContent02_img01)
+                    setDrag22(response.results[0].blogContent02_img02)
+                    setDrag23(response.results[0].blogContent02_img03)
+                }, 2000)
             })
     }
 
     const countPoint = () => {
         let temp01 = 1, temp02 = 1;
-        if ((drag13 != '') && (drag13 != 'default.jpg')) {
+        console.log('imgPoint01-1 ====> ', imgPoint01)
+        console.log('imgPoint02-1 ====> ', imgPoint02)
+        console.log('drag13 ====> ', drag13)
+        console.log('drag12 ====> ', drag12)
+        console.log('drag11 ====> ', drag11)
+        console.log('drag23 ====> ', drag23)
+        console.log('drag22 ====> ', drag22)
+        console.log('drag21 ====> ', drag21)
+
+        if ((drag13 != '') && (drag13 != 'default.jpg') && (drag13 != null)) {
             temp01 = 4;
-        } else if ((drag12 != '') && (drag12 != 'default.jpg')) {
+        } else if ((drag12 != '') && (drag12 != 'default.jpg') && (drag12 != null)) {
             temp01 = 3;
-        } else if ((drag11 != '') && (drag11 != 'default.jpg')) {
+        } else if ((drag11 != '') && (drag11 != 'default.jpg') && (drag11 != null)) {
             temp01 = 2;
         }
+        console.log('temp01 ====> ', temp01)
         setImgPoint01(temp01)
-        if ((drag23 != '') && (drag23 != 'default.jpg')) {
+        
+
+        if ((drag23 != '') && (drag23 != 'default.jpg') && (drag23 != null)) {
             temp02 = 4;
-        } else if ((drag22 != '') && (drag22 != 'default.jpg')) {
+        } else if ((drag22 != '') && (drag22 != 'default.jpg') && (drag22 != null)) {
             temp02 = 3;
-        } else if ((drag21 != '') && (drag21 != 'default.jpg')) {
+        } else if ((drag21 != '') && (drag21 != 'default.jpg') && (drag21 != null)) {
             temp02 = 2;
         }
+        console.log('temp02 ====> ', temp02)
         setImgPoint02(temp02)
+        
 
     }
 

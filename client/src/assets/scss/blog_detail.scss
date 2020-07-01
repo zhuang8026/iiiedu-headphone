@@ -473,7 +473,9 @@
                 height: 100%;
               }
             }
-
+            .recent-post-in-one-img:hover{
+              cursor: pointer;
+            }
             .recent-post-in-one-txt {
               margin-left: 10px;
               width: calc(100% - 100px);
@@ -481,6 +483,9 @@
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
+              }
+              .recent-post-in-one-txt-title:hover{
+                cursor: pointer;
               }
               .recent-post-in-one-txt-date {
                 margin-top: 10px;
