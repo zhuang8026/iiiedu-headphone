@@ -2,12 +2,27 @@
 // header {
 //     position: relative;
 // }
+.mobile_logo {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background: #070321;
+    padding: 0 10px;
+    text-align: center;
+    z-index: 10;
+    img {
+        width: 60px;
+        padding: 8px 0;
+    }
+}
 .mobile_page_header {
     display: none;
     position: fixed;
     bottom: 0;
     left: 0;
-    z-index: 99;
+    z-index: 10;
     .mobile_page_header_inner {
         width: 100vw;
         background: #070321;
@@ -98,16 +113,25 @@
 @media (min-width:1024px) and (max-width:1365px){} /* 電腦 */
 @media (min-width:768px) and (max-width:1023px){} /* iPad */
 @media (min-width:414px) and (max-width:767px){
+    .mobile_logo {
+        display: block;
+    }
     .mobile_page_header{
         display: block;
     }
 } /* iPad mini & iphone */
 @media (min-width:374px) and (max-width:413px){
+    .mobile_logo {
+        display: block;
+    }
     .mobile_page_header{
         display: block;
     }
 } /* iphone */
 @media screen and (max-width: 373px){
+    .mobile_logo {
+        display: block;
+    }
     .mobile_page_header{
         display: block;
     }

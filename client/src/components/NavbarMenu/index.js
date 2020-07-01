@@ -77,12 +77,12 @@ function MyNavBar(props) {
                         </Fragment>
                             ) : (
                                 <div className="cart_row" >
-                                <figure>
-                                    <img src={"/user_img/fail.gif"} alt="商品圖片"/>
-                                </figure>
-                                <div className="cart_price">
-                                哎呀...沒有商品...
-                                </div>
+                                    <figure>
+                                        <img src={"/user_img/fail.gif"} alt="商品圖片"/>
+                                    </figure>
+                                    <div className="cart_price">
+                                    哎呀...沒有商品...
+                                    </div>
                                 </div>
                             )
                         }

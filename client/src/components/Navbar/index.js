@@ -8,6 +8,7 @@ import { message } from 'antd';
 
 // logo 
 import OtisGif from "../../assets/img/Otis.gif";
+import OtisPng from "../../assets/img/OtisMobile.png";
 
 // nav img 
 import {NavItems} from './config';
@@ -116,7 +117,11 @@ function MyNavBar(props) {
     }
 
     const mobileMenucallback =()=>{
-        
+    
+    }
+
+    const mobileMenuClickcallback =()=>{
+        setTimeout(()=>{document.getElementById('mobile_menu').classList.remove('mobile-menu-active');},1500)
     }
 
     useEffect(()=>{
@@ -166,7 +171,6 @@ function MyNavBar(props) {
             }
             // lastScrollY = window_higth;
         });
-
     }, [])
     
 
@@ -439,14 +443,17 @@ function MyNavBar(props) {
             </div>
             
             {/* mobile navbar */}
+            <div className="mobile_logo">
+                <img src={OtisPng}/>
+            </div>
             <div className="mobile_page_header">
                 <div className="mobile_page_header_inner">
                     <div className="mobile_page_header_iconInner">
                         <ul className="mobile_iconInner_ul">
                             <li className="mobile_iconInner_li">
-                                <a>
+                                <Link to="/">
                                     <i className="iconfont icon-home mobileIcon"></i>
-                                </a>
+                                </Link>
                             </li>
                             <li className="mobile_iconInner_li mobile_iconInner_items">
                                 <a>
@@ -466,15 +473,12 @@ function MyNavBar(props) {
                                             >
                                                 <h2>頭戴式耳機</h2>
                                             </div>
-                                            <div className="mobile_menu_Inner mobile_hide">
-                                                <p><Link to="">AKG</Link></p>
-                                                <p><Link to="">Audio-Technica</Link></p>
-                                                <p><Link to="">Bang & Olufsen</Link></p>
-                                                <p><Link to="">Beats pro</Link></p>
-                                                <p><Link to="">GRADO</Link></p>
-                                                <p><Link to="">Shure</Link></p>
-                                                <p><Link to="">SONY</Link></p>
-                                                <p><Link to="">SENNHEISER</Link></p>
+                                            <div className="mobile_menu_Inner mobile_hide" onClick={()=>{ mobileMenuClickcallback() }}>
+                                                { NavIcon.map((data, index)=>{
+                                                    return (
+                                                        <p key={index}><Link to={data.linkUrl}>{data.name}</Link></p>
+                                                    )
+                                                }) }
                                             </div>
                                         </li>
                                         <li>
@@ -482,14 +486,13 @@ function MyNavBar(props) {
                                                 <h2>入耳式耳機</h2>
                                             </div>
                                             <div className="mobile_menu_Inner">
-                                                <p><Link to="">AKG</Link></p>
-                                                <p><Link to="">Audio-Technica</Link></p>
-                                                <p><Link to="">Bang & Olufsen</Link></p>
-                                                <p><Link to="">Beats pro</Link></p>
-                                                <p><Link to="">GRADO</Link></p>
-                                                <p><Link to="">Shure</Link></p>
-                                                <p><Link to="">SONY</Link></p>
-                                                <p><Link to="">SENNHEISER</Link></p>
+                                                { NavIcon.map((data, index)=>{
+                                                    return (
+                                                        <p key={index}>
+                                                            <Link to={data.linkUrl}>{data.name}</Link>
+                                                        </p>
+                                                    )
+                                                }) }
                                             </div>
                                         </li>
                                         <li>
@@ -501,19 +504,19 @@ function MyNavBar(props) {
                                 </div>
                             </li>
                             <li className="mobile_iconInner_li">
-                                <a>
+                                <Link to="/MyCart">
                                     <i className="iconfont icon-cart mobileIcon"></i>
-                                </a>
+                                </Link>
                             </li>
                             <li className="mobile_iconInner_li">
-                                <a>
+                                <Link to="/Compare">
                                     <i className="iconfont icon-like mobileIcon"></i>
-                                </a>
+                                </Link>
                             </li>
                             <li className="mobile_iconInner_li">
-                                <a>
+                                <Link to="/KMembers/MembersLogin">
                                     <i className="iconfont icon-Personal mobileIcon"></i>
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>

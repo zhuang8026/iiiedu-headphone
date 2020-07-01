@@ -36,9 +36,9 @@ export const NavIcon = [
         name: 'SONY'
     },
     {
-        linkUrl: '/YyProduct/SENNHEISER',
+        linkUrl: '/YyProduct/SENHEIER',
         picUrl: require('../../assets/img/SEN.png'),
-        name: 'SENNHEISER'
+        name: 'SENHEIER'
     }
 ];
 
