@@ -4,7 +4,7 @@ main {
     width: 80%;
     margin: 0 auto;
     padding-top: 150px;
-    .MyFav_select {
+    .MyCom_select {
       display: flex;
       justify-content: space-between;
       a {
@@ -166,11 +166,13 @@ main {
       max-width: 100%;
       margin: 0 auto;
       padding-top: 170px;
-      .MyFav_select {
+      .MyCom_select {
         // padding: 0 10px;
         padding-left: 25px;
-        .MyFav_Crumb {
+        .MyCom_Crumb {
           display: none;
         }
       }
-
+    }
+  }
+}
