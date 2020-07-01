@@ -23,43 +23,90 @@ main {
         }
       }
     }
-    .MyFav_list {
-      .MyFav_pwa_r_inner {
-        li {
+    .MyCom_list {
+      .MyCom_pwa_r_inner {
+        display: flex;
+        margin: 15px 0;
+        .comparecard_decoration {
+          //   border: 1px solid #707070;
+          //   border-radius: 5px;
+          //   width: 400px;
           display: flex;
-          justify-content: space-between;
+        }
+
+        .sty-1 {
+          display: flex;
+          flex-direction: column;
+        }
+        .comparecard_content_decoration {
+          //   border: 1px solid #707070;
+          display: flex;
+          //   padding: 0 5px;
+          width: 150px;
+          //   .context-adjust {
+          h1 {
+            font-weight: bold;
+            color: #2c3e50;
+            width: 150px;
+            // border-top: 1px solid #000;
+            border-bottom: 1px solid #adadad;
+            text-align: center;
+          }
+          //   }
+        }
+        li:nth-child(even) {
+          background-color: #f3f4ed;
+        }
+        li {
+          //   justify-content: space-between;
           margin: 10px 0;
           padding: 20px 0;
-          border-bottom: 1px solid #adadad;
-          align-items: center;
-          .MyFav_card {
-            .MyFav_item {
+          //   border-bottom: 1px solid #adadad;
+          //   align-items: center;
+          span {
+            padding: 0 16px;
+            align-self: flex-end;
+            margin: -15px 20px 0px;
+            font-size: 30px;
+          }
+          .MyCom_card {
+            width: 100%;
+            .MyCom_item {
               display: flex;
               align-items: center;
-              img {
-                width: 86px;
-                height: 85px;
+              flex-direction: column;
+              text-align: center;
+              .compareImg {
+                height: 106px;
+                img {
+                  width: 100px;
+                  height: 99px;
+                }
               }
               h3 {
                 // padding-left:42px;
                 font-weight: bold;
-                padding: 0 16px;
-              }
-              h4 {
-                font-weight: bold;
-                // padding-left: 800px;
-                // padding: 0 15vw;
-              }
-              span {
-                padding: 0 16px;
+                // padding: 0 16px;
+                border-bottom: 1px solid #adadad;
+                width: 100%;
               }
             }
           }
-          .MyFav_card_button {
-            .MyFav_btn_style {
+          h4 {
+            font-weight: bold;
+            // padding-left: 800px;
+            padding-left: 12px;
+            // padding: 0 15vw;
+            text-align: center;
+            width: 100%;
+            border-bottom: 1px solid #adadad;
+          }
+          .MyCom_card_button {
+            align-items: center;
+            .MyCom_btn_style {
               width: 128px;
               height: 45px;
-              margin: 0 3px;
+              margin: 3px 3px;
               background: transparent;
               border: 1px solid $btn-color-l;
               background: transparent;
