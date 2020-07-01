@@ -52,12 +52,12 @@ function MyNavBar(props) {
     const fuzzySearch = ( data )=> {
         // console.log(data)
         var params = new URLSearchParams();
-        params.append('getname', data);
+        params.append('keyword', data);
         // console.log(params.toString());
         // console.log(params.get('getname'));
-        let getname = params.get('getname') || ''
 
-        fetch(`http://localhost:3009/products/list/${getname}`, {
+        let keyword = params.get('keyword') || data
+        fetch(`http://localhost:3009/products/search/${keyword}`, {
             method: 'get',
             headers: new Headers({
                 'Accept': 'application/json',
@@ -69,8 +69,10 @@ function MyNavBar(props) {
             })
             .then((res)=>{
                 // console.log(res)
-                setItemsdata(res)
-                props.history.push('/YyProduct')
+                // setItemsdata(res)
+                props.history.push('/YyProduct/?keyword='+keyword)
+                // props.history.push('/YyProduct/?keyword='+keyword,{keyword})
+                // props.history.push('/YyProduct/')
             })
     }
 
@@ -162,9 +164,11 @@ function MyNavBar(props) {
                 {/* nav body */}
                 <div className="nav-containers">
                     <div className="nav-left">
-                        <figure>
-                            <img src={OtisGif} alt="logo" />
-                        </figure>
+                        <Link to="/">
+                            <figure>
+                                <img src={OtisGif} alt="logo" />
+                            </figure>
+                        </Link>
                     </div>
                     <div className="nav-right">
                         <div className="nav-inner-left">
@@ -176,9 +180,9 @@ function MyNavBar(props) {
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link to="/YyProduct" className="meaulist">
+                                        <a href="/YyProduct" className="meaulist">
                                             <span>頭戴式耳機</span>
-                                        </Link>
+                                        </a>
                                         <div className="inner hidden-meau">
                                             <ul>
                                             { NavIcon.map((data, index)=>{
@@ -309,27 +313,37 @@ function MyNavBar(props) {
                                     {/* 搜索引擎 */}
                                     <li>
                                         <div id="search">
-                                        <form
-                                            method="get"
-                                            id="searchform"
-                                            className="searchform"
-                                            action="#"
-                                        >
-                                            <label className="screen-reader-text">Search for:</label>
-                                            <div className="input-holder clearfix">
-                                            <input
-                                                type="search"
-                                                className="search-field"
-                                                required=""
-                                                name="homeNavSearch"
-                                                title="Search for:"
-                                                onChange={ (event)=>{ fuzzySearch(event.target.value) } }
-                                            />
-                                            <button type="submit" className="otis-search-submit">
-                                                <i className="iconfont icon-search"></i>
-                                            </button>
+                                            <div
+                                                method="get"
+                                                id="searchform"
+                                                className="searchform"
+                                                action="#"
+                                            >
+                                                <label className="screen-reader-text">Search for:</label>
+                                                <div className="input-holder clearfix">
+                                                <input
+                                                    type="search"
+                                                    className="search-field"
+                                                    required=""
+                                                    name="homeNavSearch"
+                                                    title="Search for:"
+                                                    // onChange={ (event)=>{ fuzzySearch(event.target.value) } }
+                                                    // onClick={ (event)=>{ fuzzySearch(event.target.value) } }
+                                                    onKeyPress={ (event)=>{ 
+                                                        if(event.which == 13 || event.keyCode == 13) {
+                                                            event.preventDefault();
+                                                            fuzzySearch(event.target.value)
+                                                        }
+                                                    } }
+                                                />
+                                                <button 
+                                                    type="sumbit" 
+                                                    className="otis-search-submit"
+                                                >
+                                                    <i className="iconfont icon-search"></i>
+                                                </button>
+                                                </div>
                                             </div>
-                                        </form>
                                         </div>
                                     </li>
                                     

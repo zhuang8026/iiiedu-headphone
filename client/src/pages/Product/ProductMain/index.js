@@ -21,6 +21,12 @@ function ProductMain(props) {
   const key = 'updatable';
   let typedata = props.match.params.type;
 
+  const searchParams = new URLSearchParams(props.location.search)
+  let keyword = searchParams.get('keyword')
+
+  console.log(itemsdata)
+  // console.log('history', props.history.location.state.getname);
+
   // 加入購物車
   const updateCartToLocalStorage = (value) => {
     // const Memberman = JSON.parse(localStorage.getItem('memberData'))|| []
@@ -197,7 +203,7 @@ function ProductMain(props) {
   
   // 分頁 點擊
   useEffect(()=>{
-    if(typedata) return
+    if(typedata) return // 如果 選擇了 某個類別
 
       fetch(`http://localhost:3009/products/listpage/${currentPage}`,  {
           method: 'get',
@@ -219,6 +225,7 @@ function ProductMain(props) {
 
   // 篩選 點擊（menu）
   useEffect(()=>{
+    if(keyword) return
     if(typedata) {
       message.loading({ content: 'Loading...', key });
       setItemsdata([])
@@ -246,6 +253,28 @@ function ProductMain(props) {
     }
     
   },[typedata, currentPage])
+          
+  useEffect(()=>{
+    console.log('keyword', keyword)
+    // console.log('history', props.history.location.state.getname);
+    if(keyword){
+      fetch(`http://localhost:3009/products/search/${keyword}`, {
+        method: 'get',
+        headers: new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        })
+    })
+      .then((res)=>{
+          return res.json()
+      })
+      .then((res)=>{
+          console.log(res)
+          setItemsdata(res)
+          // setdetailitems(res)
+      })
+    }
+  },[keyword])
 
   return (
     <>
