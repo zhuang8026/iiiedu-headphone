@@ -4,19 +4,22 @@ main {
     max-width: 80%;
     margin: 0 auto;
     padding-top: 150px;
+
     .MyFav_select {
       display: flex;
       justify-content: space-between;
+      line-height: 45px;
       a {
-        font-size: $font-size-16;
+        font-size: 14px;
         color: $font-color-s;
       }
       select {
         color: $font-color-s;
         border: 1px solid $font-color-s;
-        width: 280px;
+        width: 180px;
         height: 45px;
-        padding-left: 70px;
+        text-align: center;
+        text-align-last: center;
         background: transparent;
         option {
           background: #f4f4f5;
@@ -126,28 +129,218 @@ main {
   }
 } /* iPad */
 @media (min-width: 414px) and (max-width: 767px) {
- main{
-  .MyFav_container {
-    max-width: 99%;
-    .MyFav_select{
-      display: block;
-      text-align: center;
-      div{
-        margin-top: 1%;
+  main {
+    .MyFav_container {
+      max-width: 99%;
+      .MyFav_select {
+        display: flex;
+        width: 95%;
+        margin: 0 auto;
       }
-    }
-    .MyFav_list{
-      max-width: 100%;
-      .MyFav_pwa_r_inner{
-        li{
-          // border: 1px solid #adadad;
+      .MyFav_list {
+        max-width: 100%;
+        .MyFav_pwa_r_inner {
+          padding: 0;
+          li {
+            // margin-bottom: 10px;
+            flex-wrap: wrap;
+            width: 95%;
+            margin: 32px auto;
+            padding: 0;
+            background: #fff;
+            border-radius: 6px;
+            overflow: hidden;
+            border-bottom: transparent;
+            box-shadow: 0px 3px 3px #4444;
+            .MyFav_card {
+              width: 100%;
+              .MyFav_item {
+                display: block;
+                text-align: center;
+                position: relative;
+                span {
+                  position: absolute;
+                  top: 0;
+                  right: 0;
+                  color: $btn-color-l;
+                  font-size: 30px;
+                  padding: 0 6px;
+                }
+                img {
+                  width: 100%;
+                  height: auto;
+                }
+                h3 {
+                  font-size: 22px;
+                }
+              }
+            }
+            div {
+              width: 100%;
+              text-align: center;
+              h4 {
+                font-weight: 300;
+              }
+            }
+            .MyFav_card_button {
+              width: 100%;
+              text-align: center;
+              .MyFav_btn_style {
+                width: 90%;
+                margin-bottom: 12px;
+              }
+              .MyFav_btn_style2 {
+                width: 90%;
+                margin-bottom: 12px;
+              }
+            }
+          }
         }
       }
     }
   }
- }
 } /* iPad mini & iphone */
 @media (min-width: 374px) and (max-width: 413px) {
+  main {
+    .MyFav_container {
+      max-width: 99%;
+      .MyFav_select {
+        display: flex;
+        width: 95%;
+        margin: 0 auto;
+      }
+      .MyFav_list {
+        max-width: 100%;
+        .MyFav_pwa_r_inner {
+          padding: 0;
+          li {
+            // margin-bottom: 10px;
+            flex-wrap: wrap;
+            width: 95%;
+            margin: 32px auto;
+            padding: 0;
+            background: #fff;
+            border-radius: 6px;
+            overflow: hidden;
+            border-bottom: transparent;
+            box-shadow: 0px 3px 3px #4444;
+            .MyFav_card {
+              width: 100%;
+              .MyFav_item {
+                display: block;
+                text-align: center;
+                position: relative;
+                span {
+                  position: absolute;
+                  top: 0;
+                  right: 0;
+                  color: $btn-color-l;
+                  font-size: 30px;
+                  padding: 0 6px;
+                }
+                img {
+                  width: 100%;
+                  height: auto;
+                }
+                h3 {
+                  font-size: 22px;
+                }
+              }
+            }
+            div {
+              width: 100%;
+              text-align: center;
+              h4 {
+                font-weight: 300;
+              }
+            }
+            .MyFav_card_button {
+              width: 100%;
+              text-align: center;
+              .MyFav_btn_style {
+                width: 90%;
+                margin-bottom: 12px;
+              }
+              .MyFav_btn_style2 {
+                width: 90%;
+                margin-bottom: 12px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 } /* iphone */
 @media screen and (max-width: 373px) {
+  main {
+    .MyFav_container {
+      max-width: 99%;
+      .MyFav_select {
+        display: flex;
+        width: 95%;
+        margin: 0 auto;
+      }
+      .MyFav_list {
+        max-width: 100%;
+        .MyFav_pwa_r_inner {
+          padding: 0;
+          li {
+            // margin-bottom: 10px;
+            flex-wrap: wrap;
+            width: 95%;
+            margin: 32px auto;
+            padding: 0;
+            background: #fff;
+            border-radius: 6px;
+            overflow: hidden;
+            border-bottom: transparent;
+            box-shadow: 0px 3px 3px #4444;
+            .MyFav_card {
+              width: 100%;
+              .MyFav_item {
+                display: block;
+                text-align: center;
+                position: relative;
+                span {
+                  position: absolute;
+                  top: 0;
+                  right: 0;
+                  color: $btn-color-l;
+                  font-size: 30px;
+                  padding: 0 6px;
+                }
+                img {
+                  width: 100%;
+                  height: auto;
+                }
+                h3 {
+                  font-size: 22px;
+                }
+              }
+            }
+            div {
+              width: 100%;
+              text-align: center;
+              h4 {
+                font-weight: 300;
+              }
+            }
+            .MyFav_card_button {
+              width: 100%;
+              text-align: center;
+              .MyFav_btn_style {
+                width: 90%;
+                margin-bottom: 12px;
+              }
+              .MyFav_btn_style2 {
+                width: 90%;
+                margin-bottom: 12px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 } /* iphone */

@@ -101,6 +101,14 @@ function MyFav(props) {
       const currentCompare = JSON.parse(localStorage.getItem('compare')) || []
       const newCompare = [...currentCompare, value]
       localStorage.setItem('compare',JSON.stringify(newCompare))
+
+      currentCompare.map(element =>{
+        if(element.itemName === value.itemName){
+          window.localStorage.setItem('compare', JSON.stringify(currentCompare));
+          message.warning(`商品"${element.itemName}"重複了`)
+          return
+        }
+      });
     }
     // 點擊 css 樣式變換
     const itemsChangeFunctionTrue =()=>{
@@ -175,15 +183,14 @@ function MyFav(props) {
           <div className="MyFav_container">
             <div className="MyFav_select">
               <div className="MyFav_Crumb">
-              {/* 麵包屑 */}
-              <a href="../">首頁</a> / <a href="#">我的最愛</a>
+                <a href="../">首頁</a> / <a href="#">我的最愛</a>
               </div>
               <div>
                 <select 
-                defaultValue = {selectValue}
-                onChange={(event)=>{
+                  defaultValue = {selectValue}
+                  onChange={(event)=>{
                     handleSelect(event.target.value)
-                }}
+                  }}
                 >
                   <option value="1" >按價格排序-由低到高</option>
                   <option value="2" >按價格排序-由高到低</option>
@@ -192,33 +199,37 @@ function MyFav(props) {
             </div>
             <div className="MyFav_list">
                 <ul className="MyFav_pwa_r_inner">
-                {console.log('compareList',compareList)}
-                {compareList !== [] ? (
-                    <>
+                {/* {console.log('compareList',compareList)} */}
+                {compareList.length > 0 ? (
+                    <Fragment>
                     {compareList.map((data,index)=>{
-                    console.log(data);
-                    return(
+                      {/* console.log(data); */}
+                      return(
                         <li key={index}>
-                            <div className="MyFav_card">
-                                <div className="MyFav_item">
-                                <span className="iconfont icon-error" 
+                          <div className="MyFav_card">
+                              <div className="MyFav_item">
+                              <span 
+                                className="iconfont icon-error" 
                                 id={data.itemId} 
                                 data-id={index}
                                 onClick={()=>{        
-                                const newList = [...compareList]
-                                newList.splice(index, 1);
-                                setCompareList(newList)
-                                localStorage.setItem("love", JSON.stringify(newList)); }}></span>
-                                <img src={`/items_img/${data.itemImg}`}/>
-                                <h3>{data.itemsbrand}</h3>
-                                <h3>{data.itemName}</h3>
-                                </div>
-                            </div>
-                            <div><h4>{`$${data.itemPrice}`}</h4></div>
-                            <div className="MyFav_card_button">
-                                <button className=" MyFav_btn_style"
-                                id={data.itemId} 
-                                onClick={() =>{
+                                  const newList = [...compareList]
+                                  newList.splice(index, 1)
+                                  setCompareList(newList)
+                                  localStorage.setItem("love", JSON.stringify(newList)); 
+                                }}
+                              ></span>
+                              <img src={`/items_img/${data.itemImg}`}/>
+                              <h3>{data.itemsbrand}</h3>
+                              <h3>{data.itemName}</h3>
+                              </div>
+                          </div>
+                          <div><h4>{`$${data.itemPrice}`}</h4></div>
+                          <div className="MyFav_card_button">
+                              <button className=" MyFav_btn_style"
+                              id={data.itemId} 
+                              onClick={() =>{
+                                message.success(`商品"${data.itemName}"加入比較`)  
                                 updateCompareToLocalStorage({
                                   itemid: data.itemId,
                                   itemName:data.itemName,
@@ -242,27 +253,39 @@ function MyFav(props) {
                                   itemswatertight: data.itemswatertight,
                                   itemsweight: data.itemsweight
                                 })
-                                }}>加入比較</button>
-                                <button className=" MyFav_btn_style2"                          
+                              }}
+                              >加入比較</button>
+                              <button className=" MyFav_btn_style2"                          
                                 id={data.itemId}
                                 onClick={() => {
-                                updateCartToLocalStorage({
+                                  message.success(`商品"${data.itemName}"加入購物車`)
+                                  updateCartToLocalStorage({
                                     id:data.itemid,
                                     itemName:data.itemName,
                                     itemBrand:data.itemsbrand,
                                     itemImg:data.itemImg,
                                     itemPrice:data.itemPrice,
                                     amount:1,
-                                    })
-                                }}>加入購物車</button>
-                            </div>
+                                  })
+                                }}
+                              >加入購物車</button>
+                          </div>
                         </li>
-                    )})}
-                    </>
+                      )
+                    })}
+                    </Fragment>
                 ):(
-                    <>
-                        <div>1111111</div>
-                    </>
+                  <div className="cart_row" >
+                    <figure>
+                        <img src={"/user_img/fail.gif"} alt="商品圖片"/>
+                        <img src={"/user_img/fail.gif"} alt="商品圖片"/>
+                        <img src={"/user_img/fail.gif"} alt="商品圖片"/>
+                        <img src={"/user_img/fail.gif"} alt="商品圖片"/>
+                    </figure>
+                    <div className="cart_price">
+                      
+                    </div>
+                  </div>
                 )}
                 
             </ul>
