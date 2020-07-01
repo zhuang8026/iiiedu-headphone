@@ -25,8 +25,8 @@ function BlogMainStandardSlide(props) {
   const { userdata, setUserdata } = props
   return (
     <>
-      <div className="carouselWall">
-        <div className="imageWall">
+      <div className="carouselWall-blog">
+        <div className="imageWall-blog">
           <figure className="blog-standard-fig wallFig blog-cover">
             <img src={top} alt="" />
           </figure>

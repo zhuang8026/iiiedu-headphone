@@ -168,6 +168,7 @@
           .comment-one {
             width: 100%;
             .comment-one-in {
+              border-bottom: 2px solid $border-color-l;
               .user-post-icon {
                 /* post */
                 .user-post-fig {
@@ -473,7 +474,7 @@
                 height: 100%;
               }
             }
-            .recent-post-in-one-img:hover{
+            .recent-post-in-one-img:hover {
               cursor: pointer;
             }
             .recent-post-in-one-txt {
@@ -484,7 +485,7 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
               }
-              .recent-post-in-one-txt-title:hover{
+              .recent-post-in-one-txt-title:hover {
                 cursor: pointer;
               }
               .recent-post-in-one-txt-date {
