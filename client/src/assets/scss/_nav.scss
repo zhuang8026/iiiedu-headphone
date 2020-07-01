@@ -350,3 +350,114 @@ header {
     background: #fff;
     height: 60px !important;
 }
+
+/* 版本尺寸 */
+@media screen and (min-width: 1920px){}
+@media (min-width:1366px) and (max-width:1920px){} /* 電腦 */
+@media (min-width:1024px) and (max-width:1365px){
+    .nav-page-header .nav-containers {
+        height: 70px;
+    }
+    .nav-page-header .nav-containers .nav-right .nav-inner-left nav .menu-otis-menu {
+        height: 69px;
+    }
+    .nav-page-header .nav-containers .nav-right .nav-inner-left nav .menu_add_li {
+        height: 60px;
+    }
+    .nav-page-header .nav-containers .nav-right {
+        min-width: 70%;
+        padding: 0 20px;
+    }
+    .nav-page-header .nav-containers .nav-add-width {
+        min-width: 85%;
+    }
+    .nav-page-header .nav-containers .nav-right .nav-inner-left nav .menu-otis-menu li .meaulist {
+        padding: 0 12px;
+    }
+    .nav-page-header .nav-containers .nav-right .nav-inner-right nav .menu-otis-icon li #search {
+        margin: 0 10px;
+    }
+    .nav-page-header .nav-containers .nav-right .nav-inner-left nav .menu-otis-menu li .meaulist span {
+        font-size: 12px;
+    }
+    .nav-page-header .nav-containers .nav-right .nav-inner-left nav .menu-otis-menu li .inner ul .nav-menu-object {
+        width: 230px;
+        padding: 0 25px;
+        height: 50px;
+    }
+    .nav-page-header .nav-containers .nav-right .nav-inner-left nav .menu-otis-menu li .inner ul .nav-menu-object a {
+        font-size: 12px;
+        margin-left: 8px;
+        padding: 6px 20px;
+    }
+    .nav-page-header .nav-containers .nav-right .nav-inner-left nav .menu-otis-menu li .inner ul {
+        padding: 20px 0;
+    }
+    .nav-page-header .nav-containers .nav-right .nav-inner-left nav .menu-otis-menu li .inner .meau_img {
+        width: 270px;
+    }
+    .nav-page-header .nav-containers .nav-right .nav-inner-left nav .menu-otis-menu li .inner .meau_img a img {
+        width: 115px;
+    }
+} /* 電腦 */
+@media (min-width:768px) and (max-width:1023px){
+    .nav-page-header .nav-containers {
+        background: #fff;
+        height: 70px;
+    }
+    .nav-page-header .nav-containers .nav-left {
+        padding-left: 20px;
+    }
+    .nav-page-header .nav-containers .nav-right .nav-inner-left nav .menu-otis-menu {
+        height: 69px;
+    }
+    .nav-page-header .nav-containers .nav-right .nav-inner-left nav .menu_add_li {
+        height: 60px;
+    }
+    .nav-page-header .nav-containers .nav-right {
+        min-width: 85%;
+        padding: 0 20px;
+    }
+    .nav-page-header .nav-containers .nav-add-width {
+        min-width: 85%;
+    }
+    .nav-page-header .nav-containers .nav-right .nav-inner-left nav .menu-otis-menu li .meaulist {
+        padding: 0 6px;
+    }
+    .nav-page-header .nav-containers .nav-right .nav-inner-right nav .menu-otis-icon li #search {
+        margin: 0 10px;
+        display: none;
+    }
+    .nav-page-header .nav-containers .nav-right .nav-inner-left nav .menu-otis-menu li .meaulist span {
+        font-size: 12px;
+    }
+    .nav-page-header .nav-containers .nav-right .nav-inner-left nav .menu-otis-menu li .inner ul .nav-menu-object {
+        width: 230px;
+        padding: 0 25px;
+        height: 50px;
+    }
+    .nav-page-header .nav-containers .nav-right .nav-inner-left nav .menu-otis-menu li .inner ul .nav-menu-object a {
+        font-size: 12px;
+        margin-left: 8px;
+        padding: 6px 20px;
+    }
+    .nav-page-header .nav-containers .nav-right .nav-inner-left nav .menu-otis-menu li .inner ul {
+        padding: 20px 0;
+    }
+    .nav-page-header .nav-containers .nav-right .nav-inner-left nav .menu-otis-menu li .inner .meau_img {
+        width: 270px;
+    }
+    .nav-page-header .nav-containers .nav-right .nav-inner-left nav .menu-otis-menu li .inner .meau_img a img {
+        width: 115px;
+    }
+} /* iPad */
+
+// @media (min-width:414px) and (max-width:767px){} /* iPad mini & iphone */
+// @media (min-width:374px) and (max-width:413px){} /* iphone */
+// @media screen and (max-width: 373px){}/* iphone */
+
+@media screen and (max-width: 767px){
+    .nav-page-header {
+        display: none;
+    }
+}/* iphone */

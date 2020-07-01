@@ -69,7 +69,7 @@ function MyNavBar(props) {
             })
             .then((res)=>{
                 // console.log(res)
-                // setItemsdata(res)
+                setItemsdata(res)
                 props.history.push('/YyProduct/?keyword='+keyword)
                 // props.history.push('/YyProduct/?keyword='+keyword,{keyword})
                 // props.history.push('/YyProduct/')
@@ -110,6 +110,15 @@ function MyNavBar(props) {
         </Fragment>
     );
 
+    const mobileErrorcallback =(e)=>{
+        document.getElementById('mobile_menu').classList.remove('mobile-menu-active');
+        e.stopPropagation();  
+    }
+
+    const mobileMenucallback =()=>{
+        
+    }
+
     useEffect(()=>{
         setlovechange(love)
         setcompareschange(compares)
@@ -117,7 +126,7 @@ function MyNavBar(props) {
     },[])
 
     useEffect(() => {
-        // navbar
+        // navbar pc
         let shop_btn = document.getElementById('shopping')
         let side_menu = document.getElementsByClassName('header-side-menu')[0]
         let page_cover = document.getElementsByClassName('nav-page-cover')[0]
@@ -134,7 +143,12 @@ function MyNavBar(props) {
             side_menu.classList.remove('header-side-menu-active')
             page_cover.classList.remove('nav-page-cover-active')
         })
-    
+
+        document.getElementsByClassName('mobile_iconInner_items')[0].addEventListener('click',()=>{
+            document.getElementById('mobile_menu').classList.add('mobile-menu-active');
+        })
+
+        // navbar move
         let nav_containers= document.getElementsByClassName('nav-containers')[0].classList,
             nav_right= document.getElementsByClassName('nav-right')[0].classList,
             menu_otis_menu= document.getElementsByClassName('menu-otis-menu')[0].classList,
@@ -152,12 +166,13 @@ function MyNavBar(props) {
             }
             // lastScrollY = window_higth;
         });
+
     }, [])
     
 
     return (
         <Fragment>
-            {/* navbar */}
+            {/* pc navbar */}
             <div className="nav-page-header">
                 {/* 遮招層 */}
                 <div className="nav-page-cover"></div>
@@ -422,7 +437,88 @@ function MyNavBar(props) {
                     </div>
                 </div>
             </div>
-
+            
+            {/* mobile navbar */}
+            <div className="mobile_page_header">
+                <div className="mobile_page_header_inner">
+                    <div className="mobile_page_header_iconInner">
+                        <ul className="mobile_iconInner_ul">
+                            <li className="mobile_iconInner_li">
+                                <a>
+                                    <i className="iconfont icon-home mobileIcon"></i>
+                                </a>
+                            </li>
+                            <li className="mobile_iconInner_li mobile_iconInner_items">
+                                <a>
+                                    <i className="iconfont icon-date mobileIcon"></i>
+                                </a>
+                                {/* mobile_menu */}
+                                <div className="mobile_menu" id="mobile_menu">
+                                    <span 
+                                        className="iconfont icon-error mobileError"
+                                        onClick={(e)=>{ mobileErrorcallback(e) }}
+                                    ></span>
+                                    <ul className="mobile_menu_ul">
+                                        <li>
+                                            <div 
+                                                className="mobile_menu_title"
+                                                onClick={(e)=>{ mobileMenucallback(e) }}
+                                            >
+                                                <h2>頭戴式耳機</h2>
+                                            </div>
+                                            <div className="mobile_menu_Inner mobile_hide">
+                                                <p><Link to="">AKG</Link></p>
+                                                <p><Link to="">Audio-Technica</Link></p>
+                                                <p><Link to="">Bang & Olufsen</Link></p>
+                                                <p><Link to="">Beats pro</Link></p>
+                                                <p><Link to="">GRADO</Link></p>
+                                                <p><Link to="">Shure</Link></p>
+                                                <p><Link to="">SONY</Link></p>
+                                                <p><Link to="">SENNHEISER</Link></p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div className="mobile_menu_title">
+                                                <h2>入耳式耳機</h2>
+                                            </div>
+                                            <div className="mobile_menu_Inner">
+                                                <p><Link to="">AKG</Link></p>
+                                                <p><Link to="">Audio-Technica</Link></p>
+                                                <p><Link to="">Bang & Olufsen</Link></p>
+                                                <p><Link to="">Beats pro</Link></p>
+                                                <p><Link to="">GRADO</Link></p>
+                                                <p><Link to="">Shure</Link></p>
+                                                <p><Link to="">SONY</Link></p>
+                                                <p><Link to="">SENNHEISER</Link></p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div className="mobile_menu_title">
+                                                <h2>揚聲器</h2>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li className="mobile_iconInner_li">
+                                <a>
+                                    <i className="iconfont icon-cart mobileIcon"></i>
+                                </a>
+                            </li>
+                            <li className="mobile_iconInner_li">
+                                <a>
+                                    <i className="iconfont icon-like mobileIcon"></i>
+                                </a>
+                            </li>
+                            <li className="mobile_iconInner_li">
+                                <a>
+                                    <i className="iconfont icon-Personal mobileIcon"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </Fragment>
     )
 }

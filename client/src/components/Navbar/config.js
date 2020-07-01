@@ -1,42 +1,42 @@
 // 頭戴耳機 品牌
 export const NavIcon = [
     {
-        linkUrl: 'https://treefonts.com/',
+        linkUrl: '/YyProduct/AKG',
         picUrl: require('../../assets/img/akg.png'),
         name: 'AKG'
     },
     {
-        linkUrl: 'https://treefonts.com/',
+        linkUrl: '/YyProduct/AUDIOTECHNICA',
         picUrl: require('../../assets/img/at.png'),
         name: 'Audio-Technica'
     },
     {
-        linkUrl: 'https://treefonts.com/',
+        linkUrl: '/YyProduct/BANGOLUFSEN',
         picUrl: require('../../assets/img/b&O.png'),
         name: 'Bang & Olufsen'
     },
     {
-        linkUrl: 'https://treefonts.com/',
+        linkUrl: '/YyProduct/',
         picUrl: require('../../assets/img/beat.png'),
         name: 'Beats pro'
     },
     {
-        linkUrl: 'https://treefonts.com/',
+        linkUrl: '/YyProduct/GRADO',
         picUrl: require('../../assets/img/GRADO.png'),
         name: 'GRADO'
     },
     {
-        linkUrl: 'https://treefonts.com/',
+        linkUrl: '/YyProduct/Shure',
         picUrl: require('../../assets/img/shure.png'),
         name: 'Shure'
     },
     {
-        linkUrl: 'https://treefonts.com/',
+        linkUrl: '/YyProduct/SONY',
         picUrl: require('../../assets/img/sony.png'),
         name: 'SONY'
     },
     {
-        linkUrl: 'https://treefonts.com/',
+        linkUrl: '/YyProduct/SENNHEISER',
         picUrl: require('../../assets/img/SEN.png'),
         name: 'SENNHEISER'
     }
@@ -81,17 +81,17 @@ export const NavItemsAir = [
     {
         linkUrl: 'https://treefonts.com/',
         picUrl: require('../../assets/items_img/Beoplay_E8-01.png'),
-        name: 'Beoplay_E8-01'
+        name: 'Beoplay_E8'
     },
     {
         linkUrl: 'https://treefonts.com/',
         picUrl: require('../../assets/items_img/Beoplay_E8_3rd_Gen-02.png'),
-        name: 'Beoplay_E8_3rd_Gen-02'
+        name: 'Beoplay_E8_3rd'
     },
     {
         linkUrl: 'https://treefonts.com/',
         picUrl: require('../../assets/items_img/Beoplay_E8_2.0-01.png'),
-        name: 'Beoplay_E8_2.0-01'
+        name: 'Beoplay_E8_2.0'
     },
     {
         linkUrl: 'https://treefonts.com/',
@@ -101,11 +101,11 @@ export const NavItemsAir = [
     {
         linkUrl: 'https://treefonts.com/',
         picUrl: require('../../assets/items_img/Beoplay_H3-03.png'),
-        name: 'Beoplay_H3-03'
+        name: 'Beoplay_H3'
     },
     {
         linkUrl: 'https://treefonts.com/',
         picUrl: require('../../assets/items_img/Beoplay_E4-01.png'),
-        name: 'Beoplay_E4-01'
+        name: 'Beoplay_E4'
     }
 ];
