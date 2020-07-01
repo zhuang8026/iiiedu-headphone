@@ -148,7 +148,7 @@ function Compare(props) {
     // <Router>
       <Fragment>
         <main>
-          <div className="MyFav_container">
+          <div className="MyCom_container">
             <div className="MyFav_select">
               <div className="MyFav_Crumb">
               {/* 麵包屑 */}

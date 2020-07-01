@@ -1,6 +1,6 @@
 @import './variables.scss';
 main {
-  .MyFav_container {
+  .MyCom_container {
     width: 80%;
     margin: 0 auto;
     padding-top: 150px;
@@ -137,14 +137,14 @@ main {
 
 @media (min-width: 1366px) and (max-width: 1919px) {
   main {
-    .MyFav_container {
+    .MyCom_container {
       width: 90%;
     }
   }
 } /* 電腦 */
 @media (min-width: 1024px) and (max-width: 1365px) {
   main {
-    .MyFav_container {
+    .MyCom_container {
       width: 90%;
       margin: 0 auto;
       padding-top: 150px;
@@ -153,7 +153,7 @@ main {
 } /* 電腦 */
 @media (min-width: 768px) and (max-width: 1023px) {
   main {
-    .MyFav_container {
+    .MyCom_container {
       width: 90%;
       margin: 0 auto;
       padding-top: 170px;
@@ -162,7 +162,7 @@ main {
 } /* iPad */
 @media (min-width: 414px) and (max-width: 767px) {
   main {
-    .MyFav_container {
+    .MyCom_container {
       max-width: 100%;
       margin: 0 auto;
       padding-top: 170px;
@@ -173,27 +173,4 @@ main {
           display: none;
         }
       }
-      .MyFav_list {
-        .MyFav_pwa_r_inner {
-          li {
-            .MyFav_card {
-              span {
-                // display: none;
-              }
-              .MyFav_item {
-                // display: contents;
-              }
-            }
-            .MyFav_card_button {
-              // display: contents;
-            }
-          }
-        }
-      }
-    }
-  }
-} /* iPad mini & iphone */
-@media (min-width: 374px) and (max-width: 413px) {
-} /* iphone */
-@media screen and (max-width: 373px) {
-} /* iphone */
+
