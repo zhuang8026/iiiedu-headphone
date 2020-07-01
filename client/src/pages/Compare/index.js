@@ -3,9 +3,10 @@ import React, { Fragment, useState,useEffect} from 'react'
 import {
   BrowserRouter as Router,
   withRouter,
+  Link
 } from 'react-router-dom'
-import visa from '../../assets/img/IG_4.png';
-
+import './compare.css'
+import '../../assets/scss/Compare.scss'
 
 // components
 import { message } from 'antd';
@@ -73,22 +74,6 @@ function Compare(props) {
         console.log(e)
         setSelectValue(e)
     }
-
-    // const handleOp1 = (e)=>{
-    //     setSelectValue(e)
-    //     compareList = ascList
-    //     setCompareList(compareList)
-    // // localStorage.removeItem("compare")
-    // localStorage.setItem("compare", JSON.stringify(compareList))
-    // }
-    // const handleOp2 = ()=>{
-    //     setSelectValue(e)
-    //     compareList = descList
-    //     setCompareList(compareList)
-    //     // localStorage.removeItem("compare")
-
-    //     localStorage.setItem("compare", JSON.stringify(compareList))
-    // }
 
     //更新購物車localstorage
     const updateCartToLocalStorage = (value) => {
@@ -158,20 +143,18 @@ function Compare(props) {
       
     },[typedata])
 
-    // const handleDelete = (e,id)=>{
-    //     compareList.splice(compareList.indexOf(index), 1);
-    //     setCompareList(compareList)
-    //     localStorage.setItem("compare", JSON.stringify(compareList)); 
-    //     }
+
   return (
-    <Router>
+    // <Router>
       <Fragment>
         <main>
-          <div className="MyFav_container">
-            <div className="MyFav_select">
-              <div className="MyFav_Crumb">
+          <div className="MyCom_container">
+            <div className="MyCom_select">
+              <div className="MyCom_Crumb">
               {/* 麵包屑 */}
-              <a href="../">首頁</a> / <a href="#">我的最愛</a>
+              <a href="../">首頁</a> / <a href="#">商品比較</a>
+              {/* <Link to="/">首頁</Link> / <a href="#">商品比較</a> */}
+
               </div>
               <div>
                 <select 
@@ -185,18 +168,39 @@ function Compare(props) {
                 </select>
               </div>
             </div>
-            <div className="MyFav_list">
-                <ul className="MyFav_pwa_r_inner">
+            <div className="MyCom_list">
+                <ul className="MyCom_pwa_r_inner">
                 {console.log('compareList',compareList)}
                 {compareList !== [] ? (
                     <>
+                    <li className="sty-1 comparecard_content_decoration" >
+                            <div className="MyCom_card">
+                                <div className="MyCom_item">
+                                <span style={{height: 69 + 'px'}}></span>
+                                <div style={{height: 99 + 'px',lineheight:99+'px'}}></div>
+                                <h1 style={{height: 22 + 'px'}}>商品品牌</h1>
+                                <h1 style={{height: 22 + 'px'}}>商品名稱</h1>
+                                </div>
+                            </div>
+                            {/* <div className="context-adjust"> */}
+                            <h1 style={{height: 22 + 'px'}}>商品價格</h1>
+                            <h1 style={{height: 22 + 'px'}}>電池續航力</h1>
+                            <h1 style={{height: 22 + 'px'}}>靈敏度</h1>
+                            <h1 style={{height: 22 + 'px'}}>連結端子</h1>
+                            <h1 style={{height: 22 + 'px'}}>單體驅動</h1>
+                            <h1 style={{height: 88 + 'px'}}>重點特色</h1>
+                            <h1 style={{height: 44 + 'px'}}>頻率響應</h1>
+                            <h1 style={{height: 22 + 'px'}}>商品評等</h1>
+                            {/* </div> */}
+                        </li>
+                    {/* )})} */}
                     {compareList.map((data,index)=>{
-                    {/* console.log(data); */}
+                    console.log(data);
                     return(
-                        <li key={index}>
-                            <div className="MyFav_card">
-                                <div className="MyFav_item">
-                                <span className="iconfont icon-error" 
+                        <li className="sty-1  comparecard-decoration" key={index}>
+                        <span
+                                style={{height: 40 + 'px'}} 
+                                className="iconfont icon-error compare-iconfont" 
                                 id={data.itemId} 
                                 data-id={index}
                                 onClick={()=>{        
@@ -204,14 +208,28 @@ function Compare(props) {
                                 newList.splice(index, 1);
                                 setCompareList(newList)
                                 localStorage.setItem("compare", JSON.stringify(newList)); }}></span>
-                                <img src={visa}/>
-                                <h3>{data.itemsbrand}</h3>
-                                <h3>{data.itemName}</h3>
+                            <div className="MyCom_card">
+                                <div className="MyCom_item  sty-1">
+                                <div className="compareImg">
+                                <img src={`/items_img/${data.itemImg}`}/>
+                                </div>
+                                <div style={{height: 22 + 'px'}}></div>
+                                <h3 style={{height: 22 + 'px'}}>{data.itemBrand}</h3>
+                                <h3 style={{height: 22 + 'px'}}>{data.itemName}</h3>
                                 </div>
                             </div>
-                            <div><h4>{data.itemPrice}</h4></div>
-                            <div className="MyFav_card_button">
-                                <button className="MyFav_update MyFav_btn_style"
+                            <div>
+                            <h4 style={{height: 22 + 'px'}}>{data.itemPrice}</h4>
+                            <h4 style={{height: 22 + 'px'}}>{data.itemsEndurance}</h4>
+                            <h4 style={{height: 22 + 'px'}}>{data.itemsSensitivity}</h4>
+                            <h4 style={{height: 22 + 'px'}}>{data.itemsconnect}</h4>
+                            <h4 style={{height: 22 + 'px'}}>{data.itemsdrive}</h4>
+                            <h4 style={{height: 88 + 'px'}}>{data.itemsfeature}</h4>
+                            <h4 style={{height: 44 + 'px'}}>{data.itemsfrequency}</h4>
+                            <h4 style={{height: 22 + 'px'}}>{data.itemsstar}</h4>
+                            </div>
+                            <div className="MyCom_card_button sty-1">
+                                <button className="MyFav_update MyCom_btn_style"
                                 id={data.itemId} 
                                 onClick={e =>{
                                 setItemsid(e.target.id)  
@@ -219,7 +237,7 @@ function Compare(props) {
                                 // addCsstyle()
                                 props.history.push(`/ProductDetail/${e.target.id}`)
                                 }}>前往細節頁</button>
-                                <button className="MyFav_del MyFav_btn_style"                          
+                                <button className="MyFav_del MyCom_btn_style"                          
                                 id={data.itemId}
                                 onClick={() => {
                                 updateCartToLocalStorage({
@@ -247,7 +265,7 @@ function Compare(props) {
           </div>
         </main>
       </Fragment>
-    </Router>
+    // </Router>
   )
 }
 export default withRouter(Compare)

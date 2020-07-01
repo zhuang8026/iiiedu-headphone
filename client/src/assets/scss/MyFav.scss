@@ -46,15 +46,15 @@ main {
                 font-weight: bold;
                 padding: 0 16px;
               }
-              h4 {
-                font-weight: bold;
-                // padding-left: 800px;
-                // padding: 0 15vw;
-              }
               span {
                 padding: 0 16px;
               }
             }
+          }
+          h4 {
+            font-weight: bold;
+            // padding-left: 800px;
+            // padding: 0 15vw;
           }
           .MyFav_card_button {
             .MyFav_btn_style {
@@ -105,14 +105,14 @@ main {
 @media (min-width: 1366px) and (max-width: 1919px) {
   main {
     .MyFav_container {
-      width: 90%;
+      max-width: 90%;
     }
   }
 } /* 電腦 */
 @media (min-width: 1024px) and (max-width: 1365px) {
   main {
     .MyFav_container {
-      width: 90%;
+      max-width: 90%;
       margin: 0 auto;
       padding-top: 150px;
     }
@@ -121,47 +121,33 @@ main {
 @media (min-width: 768px) and (max-width: 1023px) {
   main {
     .MyFav_container {
-      width: 90%;
-      margin: 0 auto;
-      padding-top: 170px;
+      max-width: 95%;
     }
   }
 } /* iPad */
 @media (min-width: 414px) and (max-width: 767px) {
-  main {
-    .MyFav_container {
-      max-width: 100%;
-      margin: 0 auto;
-      padding-top: 170px;
-      .MyFav_select {
-        // padding: 0 10px;
-        padding-left: 25px;
-        .MyFav_Crumb {
-          // display: none;
-        }
+ main{
+  .MyFav_container {
+    max-width: 99%;
+    .MyFav_select{
+      display: block;
+      text-align: center;
+      div{
+        margin-top: 1%;
       }
-      .MyFav_list {
-        .MyFav_pwa_r_inner {
-          li {
-            .MyFav_card {
-              span{
-                // display: none;
-              }
-              .MyFav_item {
-                // display: contents;
-              }
-            }
-            .MyFav_card_button {
-              // display: contents;
-            }
-          }
+    }
+    .MyFav_list{
+      max-width: 100%;
+      .MyFav_pwa_r_inner{
+        li{
+          // border: 1px solid #adadad;
         }
       }
     }
   }
+ }
 } /* iPad mini & iphone */
 @media (min-width: 374px) and (max-width: 413px) {
-
 } /* iphone */
 @media screen and (max-width: 373px) {
 } /* iphone */

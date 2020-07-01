@@ -40,7 +40,8 @@ function BlogMainUserListByUser(props) {
     const [searchSort, setSearchSort] = useState('依發文日期')
 
     useEffect(() => {
-        //searchMethod()
+        searchMethod()
+        // message.success(userdata.id)
     }, [])
 
     useEffect(() => {
@@ -83,13 +84,14 @@ function BlogMainUserListByUser(props) {
 
             })
         setTimeout(() => {
-            deleteDone()
+            props.history.go(0)
+            // deleteDone()
         }, 2000)
     }
 
     // 刪除成功後重抓頁面
     const deleteDone = () => {
-        message.success(`test`);
+        // message.success(`test`);
         fetch('http://localhost:3009/blog/listUserBlog/', {
             method: 'post',
             body: JSON.stringify({
@@ -98,7 +100,7 @@ function BlogMainUserListByUser(props) {
                 blogId: userdata.blogId,
                 searchOrder: searchOrder,
                 searchSort: searchSort,
-                page: 1
+                page: currentPage
             }),
             headers: new Headers({
                 'Accept': 'application/json',
@@ -109,7 +111,7 @@ function BlogMainUserListByUser(props) {
                 return response.json()
             })
             .then((response) => {
-                setlistUserBlogdata(response.rows)
+                // setlistUserBlogdata(response.rows)
             })
     }
 
@@ -224,7 +226,7 @@ function BlogMainUserListByUser(props) {
                                     <figure>
                                         <img src={TrashBarrel}
                                             onClick={() => {
-                                                message.success(data.blogId);
+                                                // message.success(data.blogId);
                                                 goBlogDelete(data.blogId)
                                             }}></img>
                                     </figure>

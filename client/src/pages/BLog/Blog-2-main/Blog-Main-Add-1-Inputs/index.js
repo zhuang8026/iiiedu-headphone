@@ -39,8 +39,8 @@ function BlogMainAdd(props) {
     } = props;
     // ==================== 欄位資料 ==================== 
     const [addBlogTitle, setAddBlogTitle] = useState('');
-    const [addBlogContent01, setAddBlogContent01] = useState('');    
-    const [addBlogContent02, setAddBlogContent02] = useState('');    
+    const [addBlogContent01, setAddBlogContent01] = useState('');
+    const [addBlogContent02, setAddBlogContent02] = useState('');
     // ==================== 圖片欄位 ==================== 
     const [drag11, setDrag11] = useState('default.jpg');
     const [drag12, setDrag12] = useState('default.jpg');
@@ -79,7 +79,7 @@ function BlogMainAdd(props) {
     // 上傳圖片
     const goAddImg = (data) => {
         let formData = new FormData();
-        formData.append('avatar', data);        
+        formData.append('avatar', data);
         console.log('================================ datafiles ================================')
         console.log(formData.get('avatar'))
         fetch('http://localhost:3009/blog/try-upload', {
@@ -98,7 +98,7 @@ function BlogMainAdd(props) {
             })
     }
 
-    
+
 
     // 設定圖片
     const goSetImg = () => { }
@@ -162,30 +162,30 @@ function BlogMainAdd(props) {
                         multiple="multiple"
                         // defaultValue=""
                         // placeholder=""
-                        onChange={(e) => {                            
+                        onChange={(e) => {
                             if (imgPoint01 === 4) {
                                 message.success('圖片上限是 3 張')
                             } else if (imgPoint01 <= 3) {
-                                let obj01=e.target.files[0];
+                                let obj01 = e.target.files[0];
                                 goAddImg(e.target.files[0])
                                 setTimeout(() => {
                                     console.log('e.target:', e.target);
-                                    let temp=imgPoint01;
+                                    let temp = imgPoint01;
                                     if (imgPoint01 === 1) {
                                         // 兩欄是一樣的->測試用
-                                        setDrag11(obj01.name)                                        
+                                        setDrag11(obj01.name)
                                     }
                                     if (imgPoint01 === 2) {
-                                        setDrag12(obj01.name)                                       
+                                        setDrag12(obj01.name)
                                     }
                                     if (imgPoint01 === 3) {
-                                        setDrag13(obj01.name)                                       
+                                        setDrag13(obj01.name)
                                     }
-                                    temp+=1;
+                                    temp += 1;
                                     setImgPoint01(temp);
-                                    
+
                                 }, 1000)
-                            }                          
+                            }
                         }}
                     />
                     <div className="blog-add-info"></div>
@@ -208,25 +208,25 @@ function BlogMainAdd(props) {
                 <h2 className="second-h2">第二篇文章</h2>
                 <textarea name="" id="" onChange={e => setAddBlogContent02(e.target.value)}></textarea>
                 <div className="btn-and-info blog-d-flex">
-                    <input type="file" className="btn-and-info-input" name="" id="" 
-                        onChange={(e) => {                           
+                    <input type="file" className="btn-and-info-input" name="" id=""
+                        onChange={(e) => {
                             if (imgPoint02 === 4) {
                                 message.success('圖片上限是 3 張')
                             } else if (imgPoint02 <= 3) {
-                                let obj02=e.target.files[0]
+                                let obj02 = e.target.files[0]
                                 goAddImg(e.target.files[0])
                                 setTimeout(() => {
-                                    let temp=imgPoint02;
+                                    let temp = imgPoint02;
                                     if (imgPoint02 === 1) {
-                                        setDrag21(obj02.name)                                        
+                                        setDrag21(obj02.name)
                                     }
                                     if (imgPoint02 === 2) {
-                                        setDrag22(obj02.name)                                       
+                                        setDrag22(obj02.name)
                                     }
                                     if (imgPoint02 === 3) {
-                                        setDrag23(obj02.name)                                        
+                                        setDrag23(obj02.name)
                                     }
-                                    temp+=1;
+                                    temp += 1;
                                     setImgPoint02(temp);
                                 }, 1000)
                             }
@@ -253,5 +253,28 @@ function BlogMainAdd(props) {
             </div>
         </>
     )
+
+
+    const ball = $('.ball');
+    const rect2 = $('.rect:eq(1)');
+
+    ball.on('dragstart', function (event) {
+        // 設定轉移的資料
+        event.originalEvent.dataTransfer.setData('text', event.target.id);
+    });
+    rect2.on('dragover', function (event) {
+        event.preventDefault();
+    });
+    rect2.on('drop', function (event) {
+        // 取得轉移的資料
+        let id = event.originalEvent.dataTransfer.getData('text');
+        if (!id) return;
+        const b = $('#' + id).clone(); // 複製 jQuery 元素物件
+        b.removeAttr('id');
+        rect2.append(b);
+    });
+
+
+
 }
 export default withRouter(BlogMainAdd)
