@@ -48,8 +48,9 @@ function ProductMain(props) {
     
     setcompareschange(newcCompare)
   }
-  const currentLove = JSON.parse(localStorage.getItem('love')) || []
+
   // 加入最愛
+  const currentLove = JSON.parse(localStorage.getItem('love')) || []
   const updateLoveToLocalStorage = (value) => {
     const newcLove = [...currentLove, value]
     localStorage.setItem('love', JSON.stringify(newcLove))
@@ -138,6 +139,12 @@ function ProductMain(props) {
 
   }
 
+  // 點擊 手机版 menu 出现
+  const BrandSelecteCssChange = () =>{
+    let YybrandUl = document.getElementsByClassName('Yybrand_ul')[0]
+    YybrandUl.classList.toggle('Willbrand_change')
+  }
+
   // 細節頁面點擊出現
   useEffect(()=>{
     let quick_view_modal = document.getElementsByClassName('items-quick-view-modal')[0];
@@ -153,6 +160,22 @@ function ProductMain(props) {
       items_wrapper.classList.remove('items_wrapper_open')
     })
   },[])
+
+    // // 細節頁面點擊出現
+    // useEffect(()=>{
+    //   let quick_view_modal = document.getElementsByClassName('items-quick-view-modal')[0];
+    //   let items_close_head = document.getElementsByClassName('items-close-head')[0];
+    //   let items_wrapper = document.getElementsByClassName('items-wrapper')[0];
+    //   let items_quick_view_overlay = document.getElementsByClassName('items-quick-view-overlay')[0];
+    //   items_quick_view_overlay.addEventListener('click', () => {
+    //     quick_view_modal.classList.remove('quick_view_modal_open')
+    //     items_wrapper.classList.remove('items_wrapper_open')
+    //   })
+    //   items_close_head.addEventListener('click', () => {
+    //     quick_view_modal.classList.remove('quick_view_modal_open')
+    //     items_wrapper.classList.remove('items_wrapper_open')
+    //   })
+    // },[])
 
   // 商品數量
   useEffect(()=>{
@@ -232,6 +255,12 @@ function ProductMain(props) {
         <div className="Yybodyleft">
           <div className="Yybrand">
               <div className="Yywearstyle">BRAND</div>
+                  <div 
+                    className="Yywearstyle YywearstylePhone"
+                    onClick={
+                      ()=>{ BrandSelecteCssChange() }
+                    }
+                  >Brand Selecte</div>
               <ul className="Yybrand_ul">
                 <li><Link to='/YyProduct/AUDIOTECHNICA'> AUDIOTECHNICA ({howManyTotal.audioTechnica}) </Link></li>
                 <li><Link to='/YyProduct/AKG'> AKG ({howManyTotal.AKG}) </Link></li>
@@ -280,6 +309,9 @@ function ProductMain(props) {
 
           <ProductMainDrtail 
             detailitems={detailitems}
+            setlovechange={setlovechange}
+            setcompareschange={setcompareschange}
+            setcartchange={setcartchange}
           />
 
           <div className="Yyasidebody">
@@ -321,18 +353,33 @@ function ProductMain(props) {
                             onClick={() => {
                               message.success(`商品"${data.itemName}"加入最愛`)
                               updateLoveToLocalStorage({
-                                itemid: `${data.itemId}`,
-                                itemName:`${data.itemName}`,
-                                itemBrand:`${data.itemsbrand}`,
-                                itemImg:`${data.itemImg}`,
-                                itemPrice:`${data.itemPrice}`,
+                                itemid: data.itemId,
+                                itemName:data.itemName,
+                                itemBrand: data.itemsbrand,
+                                itemImg: data.itemImg,
+                                itemPrice: data.itemPrice,
+                                created_at: data.created_at,
+                                itemQty: data.itemQty,
+                                itemsEndurance: data.itemsEndurance,
+                                itemsSensitivity: data.itemsSensitivity,
+                                itemsales: data.itemsales,
+                                itemsconnect: data.itemsconnect,
+                                itemscontent: data.itemscontent,
+                                itemsdrive: data.itemsdrive,
+                                itemsfeature: data.itemsfeature,
+                                itemsfrequency: data.itemsfrequency,
+                                itemsmains: data.itemsmains,
+                                itemsstar: data.itemsstar,
+                                itemstoreNumber: data.itemstoreNumber,
+                                itemstype: data.itemstype,
+                                itemswatertight: data.itemswatertight,
+                                itemsweight: data.itemsweight
                               })
                             }}
                           >加入最愛</button>
                           <button 
                             className="item_btn_add btn-navy_s btn-fill-vert-o_s"
                             onClick={() => {
-                              console.log(data)
                               message.success(`商品"${data.itemName}"加入比較`)
                               updateCompareToLocalStorage({
                                 itemid: data.itemId,

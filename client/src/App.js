@@ -210,7 +210,7 @@ function App() {
 
           {/* 產品細節 */}
           <Route path="/ProductDetail/:id">
-            <ProductDetail />
+            <ProductDetail/>
           </Route>
 
           {/* 靜態頁面 */}

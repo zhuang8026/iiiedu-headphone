@@ -16,7 +16,7 @@ const extMap = {
 const storage = multer.diskStorage({
     // cb是callback function
     destination : (req, file, cb)=>{
-        cb(null, __dirname + '/../../client/public/blogs_img')
+        cb(null, __dirname + '/../public/blogs_img/')
     },
     filename: (req, files, cb)=>{
         //使用uuid

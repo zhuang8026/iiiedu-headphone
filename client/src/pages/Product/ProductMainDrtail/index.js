@@ -1,51 +1,73 @@
 // 函式元件
 import React from 'react';
-
 import { Link, withRouter } from 'react-router-dom';
-// 測試
-// import logo from '../../../assets/img/tw.jpg';
-// import logo2 from '../../../assets/img/usa.jpg';
 
 // Swiper
 import Swiper from 'react-id-swiper';
-// import SwiperAnimation from '@cycjimmy/swiper-animation';
-// import "animate.css/animate.min.css";
-// const swiperAnimation = new SwiperAnimation();
 
+//antd
+import { message } from 'antd';
 
 function ProductMainDrtail(props) {
-  const { detailitems } = props;
+  const { detailitems, setlovechange, setcompareschange, setcartchange} = props;
   const params = {
     slidesPerView: 1,
-    // spaceBetween: 30,
-    // effect: 'fade',
     lazy: true,
-    // loop: true,
-    // autoplay: {
-    //     delay: 7000,
-    //     disableOnInteraction: false
-    // },
     pagination: {
         el: '.swiper-pagination',
-        // clickable: true,
-        // dynamicBullets: true
         type: 'fraction',
     },
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev'
-    },
-    // swiper-animation --use--> animate.css
-    // on: {
-    //     init: function () {
-    //         swiperAnimation.init(this).animate();
-    //     },
-    //     slideChange: function () {
-    //         swiperAnimation.init(this).animate();
-    //     }
-    // }
+    }
   }
 
+  // 加入購物車
+  const updateCartToLocalStorage = (value) => {
+    // const Memberman = JSON.parse(localStorage.getItem('memberData'))|| []
+    // console.log(Memberman)
+    const currentCart = JSON.parse(localStorage.getItem('cart')) || []
+    const newCart = [...currentCart, value]
+    localStorage.setItem('cart', JSON.stringify(newCart))
+
+    setcartchange(newCart);
+  }
+  
+  // 加入最愛
+  const currentLove = JSON.parse(localStorage.getItem('love')) || []
+  const updateLoveToLocalStorage = (value) => {
+    const newcLove = [...currentLove, value]
+    localStorage.setItem('love', JSON.stringify(newcLove))
+
+    currentLove.map(element => {
+      if(element.itemName === value.itemName){
+        window.localStorage.setItem('love', JSON.stringify(currentLove));
+        message.warning(`商品"${element.itemName}"重複了`)
+        return 
+      }
+    });
+
+    setlovechange(newcLove)
+
+  }
+
+  // 加入比較
+  const updateCompareToLocalStorage = (value) => {
+    const currentCompare = JSON.parse(localStorage.getItem('compare')) || []
+    const newcCompare = [...currentCompare, value]
+    localStorage.setItem('compare', JSON.stringify(newcCompare))
+    
+    currentCompare.map(element => {
+      if(element.itemName === value.itemName){
+        window.localStorage.setItem('compare', JSON.stringify(currentCompare));
+        message.warning(`商品"${element.itemName}"重複了`)
+        return 
+      }
+    });
+    
+    setcompareschange(newcCompare)
+  }
   return (
     <div className="items-quick-view-modal">
       <div className="items-quick-view-overlay">我是遮罩層</div>
@@ -77,7 +99,7 @@ function ProductMainDrtail(props) {
                   </Swiper>
                 </div>
                 <div className="items-content">
-                  <h1>Beoplay_H3</h1>
+                  <h1>{detailitems.itemName}</h1>
                   <p className="items-price">$ {detailitems.itemPrice}</p>
                   <p className="items-text">{detailitems.itemscontent}</p>
                   <p className="items-text">品牌 ｜ {detailitems.itemsbrand}</p>
@@ -90,7 +112,20 @@ function ProductMainDrtail(props) {
                   <p className="items-text">電池續航力 ｜ {detailitems.itemsEndurance}</p>
                   <p className="items-text">防水性 ｜ {detailitems.itemswatertight}</p>
                   <div className="items-btn">
-                    <div className="items-cart-btn items-btn-margin">
+                    <div 
+                      className="items-cart-btn items-btn-margin"
+                      onClick={() => {
+                        message.success(`商品"${detailitems.itemName}"加入購物車`)
+                        updateCartToLocalStorage({
+                            id: detailitems.itemId,
+                            itemName:detailitems.itemName,
+                            itemBrand:detailitems.itemsbrand,
+                            itemImg:detailitems.itemImg,
+                            itemPrice:detailitems.itemPrice,
+                            amount:1,
+                        })
+                      }}
+                    >
                       <span className="iconfont icon-wuliu"></span>
                       <span className="items-wish-text">加入購物車</span>
                     </div>
@@ -102,11 +137,67 @@ function ProductMainDrtail(props) {
                       <span className="iconfont icon-search"></span>
                       <span className="items-wish-text">查看細節</span>
                     </Link>
-                    <div className="items-wish-btn items-btn-margin">
+                    <div 
+                      className="items-wish-btn items-btn-margin"
+                      onClick={() => {
+                        message.success(`商品"${detailitems.itemName}"加入最愛`)
+                        updateLoveToLocalStorage({
+                          itemid: detailitems.itemId,
+                          itemName:detailitems.itemName,
+                          itemBrand: detailitems.itemsbrand,
+                          itemImg: detailitems.itemImg,
+                          itemPrice: detailitems.itemPrice,
+                          created_at: detailitems.created_at,
+                          itemQty: detailitems.itemQty,
+                          itemsEndurance: detailitems.itemsEndurance,
+                          itemsSensitivity: detailitems.itemsSensitivity,
+                          itemsales: detailitems.itemsales,
+                          itemsconnect: detailitems.itemsconnect,
+                          itemscontent: detailitems.itemscontent,
+                          itemsdrive: detailitems.itemsdrive,
+                          itemsfeature: detailitems.itemsfeature,
+                          itemsfrequency: detailitems.itemsfrequency,
+                          itemsmains: detailitems.itemsmains,
+                          itemsstar: detailitems.itemsstar,
+                          itemstoreNumber: detailitems.itemstoreNumber,
+                          itemstype: detailitems.itemstype,
+                          itemswatertight: detailitems.itemswatertight,
+                          itemsweight: detailitems.itemsweight
+                        })
+                      }}
+                    >
                       <span className="iconfont icon-like"></span>
                       <span className="items-wish-text">加入最愛</span>
                     </div>
-                    <div className="items-wish-com items-btn-margin">
+                    <div 
+                      className="items-wish-com items-btn-margin"
+                      onClick={() => {
+                        message.success(`商品"${detailitems.itemName}"加入比較`)
+                        updateCompareToLocalStorage({
+                          itemid: detailitems.itemId,
+                          itemName:detailitems.itemName,
+                          itemBrand: detailitems.itemsbrand,
+                          itemImg: detailitems.itemImg,
+                          itemPrice: detailitems.itemPrice,
+                          created_at: detailitems.created_at,
+                          itemQty: detailitems.itemQty,
+                          itemsEndurance: detailitems.itemsEndurance,
+                          itemsSensitivity: detailitems.itemsSensitivity,
+                          itemsales: detailitems.itemsales,
+                          itemsconnect: detailitems.itemsconnect,
+                          itemscontent: detailitems.itemscontent,
+                          itemsdrive: detailitems.itemsdrive,
+                          itemsfeature: detailitems.itemsfeature,
+                          itemsfrequency: detailitems.itemsfrequency,
+                          itemsmains: detailitems.itemsmains,
+                          itemsstar: detailitems.itemsstar,
+                          itemstoreNumber: detailitems.itemstoreNumber,
+                          itemstype: detailitems.itemstype,
+                          itemswatertight: detailitems.itemswatertight,
+                          itemsweight: detailitems.itemsweight
+                        })
+                      }}
+                    >
                       <span className="iconfont icon-binding"></span>
                       <span className="items-wish-text">加入比較</span>
                     </div>

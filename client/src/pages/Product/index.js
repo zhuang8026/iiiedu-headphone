@@ -7,7 +7,7 @@ import ProductCrumb from './ProductCrumb';
 import ProductMain from './ProductMain';
 
 function YyProduct(props) {
-    const { itemsdata, setItemsdata, itemsid, setItemsid,setlovechange, setcompareschange, setcartchange } = props;
+    const { itemsdata, setItemsdata, itemsid, setItemsid, setlovechange, setcompareschange, setcartchange } = props;
     return (
         <main>
           <ProductCrumb />

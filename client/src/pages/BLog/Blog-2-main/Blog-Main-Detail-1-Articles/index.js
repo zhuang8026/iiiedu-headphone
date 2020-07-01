@@ -72,14 +72,14 @@ function BlogMainDetailArticles(props) {
     const doImgList01 = () => {
         // console.log('detailByBlogId.blogContent01_img01',detailByBlogId)
         let temp01 = []
-        if ((detailByBlogId.blogContent01_img01 != null) && (detailByBlogId.blogContent01_img01 != '')) {
+        if ((detailByBlogId.blogContent01_img01 != null) && (detailByBlogId.blogContent01_img01 != '')&& (detailByBlogId.blogContent01_img01 != 'default.jpg')) {
             console.log('okok')
             temp01.push(detailByBlogId.blogContent01_img01)
         }
-        if ((detailByBlogId.blogContent01_img02 != null) && (detailByBlogId.blogContent01_img02 != '')) {
+        if ((detailByBlogId.blogContent01_img02 != null) && (detailByBlogId.blogContent01_img02 != '')&& (detailByBlogId.blogContent01_img02 != 'default.jpg')) {
             temp01.push(detailByBlogId.blogContent01_img02)
         }
-        if ((detailByBlogId.blogContent01_img03 != null) && (detailByBlogId.blogContent01_img03 != '')) {
+        if ((detailByBlogId.blogContent01_img03 != null) && (detailByBlogId.blogContent01_img03 != '')&& (detailByBlogId.blogContent01_img03 != 'default.jpg')) {
             temp01.push(detailByBlogId.blogContent01_img03)
         }
         console.log('temp01->',temp01)
@@ -88,13 +88,13 @@ function BlogMainDetailArticles(props) {
     // 決定第二個map
     const doImgList02 = () => {        
         let temp02 = []
-        if ((detailByBlogId.blogContent02_img01 != null) && (detailByBlogId.blogContent02_img01 != '')) {
+        if ((detailByBlogId.blogContent02_img01 != null) && (detailByBlogId.blogContent02_img01 != '')&& (detailByBlogId.blogContent02_img01 != 'default.jpg')) {
             temp02.push(detailByBlogId.blogContent02_img01)
         }
-        if ((detailByBlogId.blogContent02_img02 != null) && (detailByBlogId.blogContent02_img02 != '')) {
+        if ((detailByBlogId.blogContent02_img02 != null) && (detailByBlogId.blogContent02_img02 != '')&& (detailByBlogId.blogContent02_img02 != 'default.jpg')) {
             temp02.push(detailByBlogId.blogContent02_img02)
         }
-        if ((detailByBlogId.blogContent02_img03 != null) && (detailByBlogId.blogContent02_img03 != '')) {
+        if ((detailByBlogId.blogContent02_img03 != null) && (detailByBlogId.blogContent02_img03 != '')&& (detailByBlogId.blogContent02_img03 != 'default.jpg')) {
             temp02.push(detailByBlogId.blogContent02_img03)
         }
         console.log('temp02->',temp02)
@@ -106,13 +106,13 @@ function BlogMainDetailArticles(props) {
             <div className="articles">
                 <div className="article-first">
                     <h2>{detailByBlogId.blogTitle}</h2>
-                    <h5><Moment format="DD M月, YYYY">{detailByBlogId.blogPublishDate}</Moment> 建立</h5>
+                    <h5><Moment format="YYYY,M月 DD">{detailByBlogId.blogPublishDate}</Moment> 建立</h5>
 
                     {imgList01.map((data, index) => {
                         console.log('===============', data)
                         return (
                             <figure key={data.index}>
-                                <img className="blog-cover" src={`/blogs_img/${data}`} alt="" />
+                                <img className="blog-cover" src={`http://localhost:3009/blogs_img/${data}`} alt="" />
                             </figure>
                         )
                     })}                    
@@ -124,13 +124,13 @@ function BlogMainDetailArticles(props) {
                         console.log('===============', data)
                         return (
                             <figure key={data.index}>
-                                <img className="blog-cover" src={`/blogs_img/${data}`} alt="" />
+                                <img className="blog-cover" src={`http://localhost:3009/blogs_img/${data}`} alt="" />
                             </figure>
 
                         )
                     })}                    
                     <p>{detailByBlogId.blogContent02}</p>
-                    <h6>最後修改 06/01,2020</h6>
+                    <h6>最後修改 <Moment format="YYYY年 M月 D日 HH時 mm分">{detailByBlogId.blogUpdateDate}</Moment></h6>
                 </div>
             </div>
         </>

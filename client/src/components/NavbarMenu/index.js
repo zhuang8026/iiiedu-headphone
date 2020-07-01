@@ -11,7 +11,7 @@ import ticket from '../../assets/img/ticket.png';
 
 function MyNavBar(props) {
     const {cartchange, setcartchange} =props;
-    console.log(cartchange);
+    // console.log(cartchange);
 
     return (
         <Fragment>

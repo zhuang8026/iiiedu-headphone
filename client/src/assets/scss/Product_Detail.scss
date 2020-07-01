@@ -3,23 +3,298 @@
   margin: 0 auto;
   display: flex;
   width: 80%;
+
+  // 左邊欄位
   .YyDetailleft {
-    width: 40%;
+    width: 60%;
     .DetailImg {
+      .swiper-container .swiper-wrapper {
+        height: 100%;
+      }
       img {
         width: 100%;
-        background: $bg-theme;
-      }
-    }
-    .DetailSmallPic {
-      width: 100%;
-      height: 80px;
-      display: flex;
-      justify-content: space-between;
-      margin-top: 15px;
-      img {
-        width: 23%;
+        // background: $bg-theme;
       }
     }
   }
+
+  // 右邊欄位
+  .YyDetailRight {
+    width: 40%;
+    .DetailContent {
+      margin-left: 32px;
+      .DetailName {
+        font-size: 46px;
+        color: #2c3e50;
+      }
+      .Detailprice {
+
+      }
+      .DetailRightText {
+        
+      }
+      .DetailText {
+        font-size: 14px;
+        span {
+          display: inline-block;
+          width: 70px;
+        }
+      }
+    }
+    
+    // 按鈕部分
+    .DetailButton {
+      margin-left: 32px;
+      margin-top: 32px;
+      .DetailButtonInner {
+        .DetailButtonGroup {
+          display: flex;
+          align-items: flex-end;
+          .DetailButtonAdd {
+            width: 150px;
+            border: 1px solid #2c3e50;     
+            display: flex;
+            justify-content: space-between;
+            .DetailBtnEdit {
+              width: 50px;
+              background: transparent;
+            }
+            .DetailBtnAdd {
+              width: 50px;
+              background: transparent;
+            }
+            span{
+              line-height: 42px;
+            }
+          }
+          p {
+            margin-bottom: 0;
+            margin-left: 16px;
+          }
+        }
+        .DetailAddbtn {
+          padding-top: 32px;
+          .addbtn {
+            width: 150px;
+            height: 42px;
+            font-size: 14px;
+            background: transparent;
+            border: 1px solid #2c3e50;
+            margin-right: 12px;
+            color: #2c3e50;
+            transition: 0.1s ease-in;
+            &:active {
+              transform: translateZ(0) scale(0.98);
+            }
+          }
+          h2 {
+            color: #2c3e50;
+          }
+          .DetailAddInput {
+            width: 150px;
+            height: 42px;
+            line-height: 42px;
+            background: transparent;
+            border: 1px solid #211E55;
+            background: #211E55;
+            margin-right: 6px;
+            text-align: center;
+            color: #fff;
+            transition: 0.3s ease-in;
+            &:hover {
+              background: transparent;
+              color: $btn-color-r;
+              border: 1px solid $btn-color-r;
+            }
+          }
+        }
+      }
+
+    }
+  }
+
 }
+
+// bottom 下面內容
+.WiDetailBottom {
+  width: 80%;
+  margin: 0 auto;
+  .ProductDetailBottom {
+
+  }
+}
+
+$bg-color: #f8f8f9;
+$orange: #211E55;
+$img-url: "https://gradolabs.com/images/Hero-Desktop-GS3000ePlants.jpg";
+
+  .card {
+    position: relative;
+    width: 500px;
+    height: 200px;
+    background-color: #fff;
+    overflow: hidden;
+    transition: 0.3s ease-in;
+    cursor: pointer;
+    &:before {
+      content: "";
+      z-index: 99;
+      position: absolute;
+      top: -10px;
+      left: 32px;
+      display: block;
+      width: 16px;
+      height: 16px;
+      border-radius: 16px;
+      background-color: $bg-color;
+    }
+    &:after {
+      content: "";
+      z-index: 99;
+      position: absolute;
+      bottom: -10px;
+      left: 32px;
+      display: block;
+      width: 16px;
+      height: 16px;
+      border-radius: 16px;
+      background-color: $bg-color;
+    }
+    ul {
+      z-index: 99;
+      position: absolute;
+      left: 39px;
+      top: 5px;
+      list-style-type: none;
+      li {
+        width: 4px;
+        height: 4px;
+        border-radius: 4px;
+        margin: 6px 0;
+        background-color: $bg-color;
+      }
+    }
+    .h2 {
+      z-index: 99;
+      font-family: "Poppins", sans-serif;
+      position: absolute;
+      bottom: 0;
+      font-size: 42px;
+      font-weight: 700;
+      background: transparent;
+      color: #fff !important;
+      padding-left: 16px;
+    }
+
+    .fa-arrow-right {
+      z-index: 100;
+      position: absolute;
+      right: 75px;
+      bottom: 15px;
+      font-size: 40px;
+    }
+    p {
+      z-index: 99;
+      position: absolute;
+      top: 20px;
+      right: 70px;
+      color: #333;
+      opacity: 0.7;
+      font-size: 12px;
+      letter-spacing: 1px;
+      writing-mode: vertical-lr;
+      -webkit-transition: all 0.2s ease;
+      transition: all 0.2s ease;
+    }
+    .pic {
+      z-index: 100;
+      width: 400px;
+      height: 200px;
+      background-image: url($img-url);
+      background-size: 100% 100%;
+      filter: grayscale(100%);
+    }
+
+    // .social {
+    //   position: absolute;
+    //   left: 60px;
+    //   top: 0;
+    //   display: -webkit-box;
+    //   display: -ms-flexbox;
+    //   display: flex;
+    //   -ms-flex-pack: distribute;
+    //   justify-content: space-around;
+    //   -webkit-box-align: center;
+    //   -ms-flex-align: center;
+    //   align-items: center;
+    //   width: 180px;
+    //   height: 64px;
+    //   border-radius: 80px;
+    // }
+
+    // .social i:nth-of-type(1) {
+    //   -webkit-transition-delay: 0.4s;
+    //   transition-delay: 0.4s;
+    // }
+
+    // .social i:nth-of-type(2) {
+    //   -webkit-transition-delay: 0.3s;
+    //   transition-delay: 0.3s;
+    // }
+
+    // .social i:nth-of-type(3) {
+    //   -webkit-transition-delay: 0.2s;
+    //   transition-delay: 0.2s;
+    // }
+
+    .social i:nth-of-type(4) {
+      -webkit-transition-delay: 0.1s;
+      transition-delay: 0.1s;
+    }
+
+    &:hover i {
+      opacity: 1;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+
+    button {
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      width: 30px;
+      height: 30px;
+      background-color: $orange;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      outline:none;
+      transition: all 0.3s ease;
+      mix-blend-mode: hard-light;
+
+      i {
+        font-size: 3rem;
+      }
+    }
+
+    &:hover button {
+      transform: scale(16.5);
+    }
+
+    &:hover p {
+      color: #fff;
+    }
+    
+    &:hover .pic {
+      filter: grayscale(0);
+      
+    }
+    &:hover {
+      box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3);
+    }
+    &:active {
+      transform: translateZ(0) scale(0.98);
+    }
+  }
+
+

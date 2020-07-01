@@ -17,8 +17,21 @@
         color: $font-color-s;
         padding-bottom: 16px;
       }
+      .YywearstylePhone {
+        display: none;
+        cursor: pointer;
+        color: #211e55;
+        border: 1px solid #211e55;
+        text-align: center;
+        padding: 10px 0;
+        transition: 0.1s ease-in;
+        &:active {
+          transform: translateZ(0) scale(0.98);
+        }
+      }
       .Yybrand_ul {
         margin-bottom: 16px;
+        
         li {
           padding-bottom: 12px;
           a {
@@ -30,6 +43,9 @@
             color: $font-color-s;
           }
         }
+      }
+      .Willbrand_change {
+        height: 1000px !important;
       }
     }
     .Yysearch_container {
@@ -118,6 +134,10 @@
             p {
               color: #8b8b8b;
               margin-bottom: 0;
+              font-size: 12px;
+            }
+            .item_inner_like {
+              font-size: 14px;
             }
           }
           .item_inner_flex {
@@ -374,17 +394,29 @@ transition: all 0.3s;
       width: 98%;
       margin: 50px auto;
       .Yybrand {
+        .Yywearstyle {
+          display: none;
+        }
+        .YywearstylePhone {
+          display: block;
+        }
         .Yybrand_ul {
+          height: 0;
+          max-height: 300px;
+          overflow: hidden;
+          transition: 0.5s ease-in;
+          margin: 16px auto;
           li {
+            padding-left: 12px;
             a {
-              font-size: 12px;
+              font-size: 16px;
             }
           }
         }
       }
       .Yysearch_container {
         input {
-          width: 80%;
+          width: 95%;
         }
       }
     }
@@ -401,10 +433,18 @@ transition: all 0.3s;
           padding: 6px;
           .item_btn_inner_all {
             .item_btn_inner {
-              width: 80%;
+              width: 100%;
               .item_btn_add {
-                padding: 10px 0;
-                width: 50%;
+                display: none;
+                width: 45%;
+                font-size: 12px;
+                padding: 22px 0;
+                margin: 2px;
+              }
+              .item_btn_search {
+                display: block;
+                width: 90%;
+                margin: 0 auto;
               }
             }
           }
@@ -413,6 +453,138 @@ transition: all 0.3s;
     }
   }
 } /* iPad mini & iphone */
-@media (min-width:374px) and (max-width:413px){} /* iphone */
-@media screen and (max-width: 373px){}/* iphone */
+@media (min-width:374px) and (max-width:413px){
+  .Yybodyin {
+    width: 99% !important;
+    display: block !important;
+    .Yybodyleft {
+      width: 98%;
+      margin: 50px auto;
+      .Yybrand {
+        .Yywearstyle {
+          display: none;
+        }
+        .YywearstylePhone {
+          display: block;
+        }
+        .Yybrand_ul {
+          height: 0;
+          max-height: 300px;
+          overflow: hidden;
+          transition: 0.5s ease-in;
+          margin: 16px auto;
+          li {
+            padding-left: 12px;
+            a {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+      .Yysearch_container {
+        input {
+          width: 95%;
+        }
+      }
+    }
+    .Yybodyright {
+      width: 100%;
+      .Yybodyheader {
+        span,select {
+          font-size: 12px;
+        }
+      }
+      .Yyasidebody {
+        .Yyaside_pro {
+          width: 50%;
+          padding: 6px;
+          .item_btn_inner_all {
+            .item_btn_inner {
+              width: 100%;
+              .item_btn_add {
+                display: none;
+                width: 45%;
+                font-size: 12px;
+                padding: 22px 0;
+                margin: 2px;
+              }
+              .item_btn_search {
+                display: block;
+                width: 90%;
+                margin: 0 auto;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+} /* iphone */
+@media screen and (max-width: 373px){
+  .Yybodyin {
+    width: 99% !important;
+    display: block !important;
+    .Yybodyleft {
+      width: 98%;
+      margin: 50px auto;
+      .Yybrand {
+        .Yywearstyle {
+          display: none;
+        }
+        .YywearstylePhone {
+          display: block;
+        }
+        .Yybrand_ul {
+          height: 0;
+          max-height: 300px;
+          overflow: hidden;
+          transition: 0.5s ease-in;
+          margin: 16px auto;
+          li {
+            padding-left: 12px;
+            a {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+      .Yysearch_container {
+        input {
+          width: 95%;
+        }
+      }
+    }
+    .Yybodyright {
+      width: 100%;
+      .Yybodyheader {
+        span,select {
+          font-size: 12px;
+        }
+      }
+      .Yyasidebody {
+        .Yyaside_pro {
+          width: 50%;
+          padding: 6px;
+          .item_btn_inner_all {
+            .item_btn_inner {
+              width: 100%;
+              .item_btn_add {
+                display: none;
+                width: 45%;
+                font-size: 12px;
+                padding: 22px 0;
+                margin: 2px;
+              }
+              .item_btn_search {
+                display: block;
+                width: 90%;
+                margin: 0 auto;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}/* iphone */
 

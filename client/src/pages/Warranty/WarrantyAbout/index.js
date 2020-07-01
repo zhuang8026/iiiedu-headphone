@@ -10,10 +10,10 @@ function WarrantyAbout() {
 
   return ( <>
 <div className="AboutWarrantyCrumb">
-<Link to="/">首頁</Link>/  <Link to="/about/WiWarranty">禮物卡</Link>
+<Link to="/">首頁</Link>/  <Link to="/about/WiWarranty">保固卡</Link>
 </div>
 <div className="AboutWarrantyCard">
-  <h1>關於禮物卡</h1>
+  <h1>關於保固卡</h1>
 
   <div>
    <p>
