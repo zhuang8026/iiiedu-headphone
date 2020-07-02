@@ -31,7 +31,7 @@ function HotTrue() {
     }
 
     const paramsMobile = {
-        slidesPerView: 4,
+        slidesPerView: 2,
         spaceBetween: 10,
         // freeMode: true,
         lazy: true,
@@ -79,7 +79,7 @@ function HotTrue() {
                         }) }
                     </Swiper>
                 </div>
-                <div className="true_items_mobile">
+                <div className="true_items true_items_mobile">
                     <Swiper {...paramsMobile}>
                         { SwiperTrue.map((data, index)=>{
                             return(

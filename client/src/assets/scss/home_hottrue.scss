@@ -2,6 +2,7 @@
 
 .MyHotTrue {
     position: relative;
+    color: $font-color-w;
     .true_title {
         background: url(../img/true.png);
         height: 500px;
@@ -100,13 +101,19 @@ section {
     }
 } /* 電腦 */
 @media (min-width:768px) and (max-width:1023px){
+    .true_items {
+        display: none;
+    }
+    .true_items_mobile {
+        display: block !important;
+    }
     .MyHotTrue .true_items {
         width: 95%;
-        bottom: calc(50% - 450px);
+        bottom: calc(50% - 610px);
         left: calc(50% - 48%);
     }
     section {
-        height: 250px;
+        height: 450px;
     }
 } /* iPad */
 @media (min-width:414px) and (max-width:767px){
@@ -114,7 +121,7 @@ section {
         display: none;
     }
     .true_items_mobile {
-        display: block;
+        display: block !important;
     }
 } /* iPad mini & iphone */
 @media (min-width:374px) and (max-width:413px){} /* iphone */
