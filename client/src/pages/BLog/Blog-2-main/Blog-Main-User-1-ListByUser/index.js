@@ -20,7 +20,7 @@ import 'moment-timezone';
 // -------------------- scss --------------------
 
 // -------------------- imgs --------------------
-import BlogCard from '../../../../assets/img/blog-img/blog-standard/Blog-card.png'
+// import BlogCard from '../../../../assets/img/blog-img/blog-standard/Blog-card.png'
 import IconSearch from '../../../../assets/img/blog-img/blog-standard/icon-search.svg'
 import NextPage from '../../../../assets/img/blog-img/blog-standard/next-page.svg'
 import PrevPage from '../../../../assets/img/blog-img/blog-standard/prev-page.svg'
@@ -258,43 +258,27 @@ function BlogMainUserListByUser(props) {
                     onClick={() => {
                         setCurrentPage(currentPage - 1)
                     }}
-                >﹤
-                    {/* <img
-                        src={PrevPage}
-                        alt=""
-                        onClick={() => {
-                            setCurrentPage(currentPage - 1)
-                        }}
-                    /> */}
+                >﹤                    
                 </div>
                 <div className="all-blog-page-list blog-d-flex">
-                    {listPage.map((data, index) => {
-                        {/* console.log(data) */ }
+                    {listPage.map((data, index) => {                       
                         return (
-                            <div
-                                className="round-effect"
+                            <div                                
                                 key={data}
+                                className={(data === currentPage ? 'round-effect activepage' : 'round-effect')}
                                 onClick={() => {
                                     setCurrentPage(data)
                                 }}
                             >{data}</div>
                         )
                     })}
-                </div>
-                {/* <div className="mores">...</div> */}
+                </div>               
                 <div
                     className="round-effect"
                     onClick={() => {
                         setCurrentPage(currentPage + 1)
                     }}
-                >﹥
-                    {/* <img
-                        src={NextPage}
-                        alt=""
-                        onClick={() => {
-                            setCurrentPage(currentPage + 1)
-                        }}
-                    /> */}
+                >﹥                    
                 </div>
             </div>
         </>

@@ -22,9 +22,14 @@ import Swiper from 'react-id-swiper';
 // import '../../../assets/scss/blog_standard.scss'
 
 // -------------------- imgs --------------------
-import slide from '../../../../assets/img/blog-img/blog-standard/slide.png'
+import slide1 from '../../../../assets/img/blog-img/blog-standard/slide1.jpg'
+import slide2 from '../../../../assets/img/blog-img/blog-standard/slide2.jpg'
+import slide3 from '../../../../assets/img/blog-img/blog-standard/slide3.jpg'
+import slide4 from '../../../../assets/img/blog-img/blog-standard/slide4.jpg'
+import slide5 from '../../../../assets/img/blog-img/blog-standard/slide5.jpg'
+import slide6 from '../../../../assets/img/blog-img/blog-standard/slide6.jpg'
 import top from '../../../../assets/img/blog-img/blog-standard/top.png'
-import { SwiperImg } from './config.js';
+// import { SwiperImg } from './config.js';
 
 // -------------------- func --------------------
 
@@ -66,22 +71,32 @@ function BlogMainStandardSlide(props) {
                                 <Swiper {...mySwiper}>
                                     <div className="swiper-slide">
                                         <figure className="s-f">
-                                            <img className="s-f-i blog-cover" src={slide} alt="" />
+                                            <img className="s-f-i blog-cover" src={slide1} alt="" />
                                         </figure>
                                     </div>
                                     <div className="swiper-slide">
                                         <figure className="s-f">
-                                            <img className="s-f-i blog-cover" src={slide} alt="" />
+                                            <img className="s-f-i blog-cover" src={slide2} alt="" />
                                         </figure>
                                     </div>
                                     <div className="swiper-slide">
                                         <figure className="s-f">
-                                            <img className="s-f-i blog-cover" src={slide} alt="" />
+                                            <img className="s-f-i blog-cover" src={slide3} alt="" />
                                         </figure>
                                     </div>
                                     <div className="swiper-slide">
                                         <figure className="s-f">
-                                            <img className="s-f-i blog-cover" src={slide} alt="" />
+                                            <img className="s-f-i blog-cover" src={slide4} alt="" />
+                                        </figure>
+                                    </div>
+                                    <div className="swiper-slide">
+                                        <figure className="s-f">
+                                            <img className="s-f-i blog-cover" src={slide5} alt="" />
+                                        </figure>
+                                    </div>
+                                    <div className="swiper-slide">
+                                        <figure className="s-f">
+                                            <img className="s-f-i blog-cover" src={slide6} alt="" />
                                         </figure>
                                     </div>
                                 </Swiper>

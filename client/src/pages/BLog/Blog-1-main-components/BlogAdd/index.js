@@ -20,7 +20,7 @@ import BlogCrumb from '../BlogCrumb'
 import BlogMainAddInputs from '../../Blog-2-main/Blog-Main-Add-1-Inputs'
 // 引入Aside
 import BlogAsidePhoto from '../../Blog-2-Aside/Blog-Aside-1-Photo'
-import BlogAsideCommunity from '../../Blog-2-Aside/Blog-Aside-2-Community'
+import BlogAsideCommunity_2 from '../../Blog-2-Aside/Blog-Aside-2-2-Community'
 
 // -------------------- scss --------------------
 import '../../../../assets/scss/blog_add.scss'
@@ -72,7 +72,9 @@ function BlogAdd(props) {
           </div>
           <div className="blog-add-aside">
             <BlogAsidePhoto />
-            <BlogAsideCommunity />
+            <BlogAsideCommunity_2 
+              userdata={userdata}
+            />
           </div>
         </div>
       </div>
