@@ -20,7 +20,7 @@ import BlogCrumb from '../BlogCrumb'
 import BlogMainStandardList from '../../Blog-2-main/Blog-Main-Standard-1-List'
 // 引入Aside
 import BlogAsidePhoto from '../../Blog-2-Aside/Blog-Aside-1-Photo'
-import BlogAsideCommunity from '../../Blog-2-Aside/Blog-Aside-2-Community'
+import BlogAsideCommunity_1 from '../../Blog-2-Aside/Blog-Aside-2-1-Community'
 import BlogAsideSubscribe from '../../Blog-2-Aside/Blog-Aside-3-subscribe'
 import BlogAsideRecent from '../../Blog-2-Aside/Blog-Aside-4-Recent'
 
@@ -67,7 +67,7 @@ function BlogStandard(props) {
 
           <div className="blog-aside">
             <BlogAsidePhoto />
-            <BlogAsideCommunity />
+            <BlogAsideCommunity_1 />
             <BlogAsideSubscribe />
             <BlogAsideRecent />
           </div>

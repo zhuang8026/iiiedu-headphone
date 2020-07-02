@@ -155,42 +155,42 @@ function BlogMainStandardList(props) {
                 </div>
             </div>
             <div className="blog-list blog-d-flex">
-                
-                    {listAllBlogdata.map((data, index) => {
-                        {/* console.log(data) */ }
-                        return (
 
-                            <div className="blog-card" key={data.blogId}>                            
-                                <div className="blog-card-in">
-                                    <figure className="blog-card-fig">
-                                        <img className="blog-cover"
-                                            src={`http://localhost:3009/blogs_img/${data.blogContent01_img01}`}
-                                            alt=""
-                                        />
-                                    </figure>
-                                    <div className="blog-card-btns"></div>
-                                    <div className="blog-card-title"><p>{data.blogTitle}</p></div>
-                                    <div className="blog-card-content"><p>{data.blogContent01}</p></div>
-                                    <div className="blog-card-calendar">
-                                        <div className="blog-card-calendar-in">
-                                            <h2><Moment format="DD">{data.blogPublishDate}</Moment></h2>
-                                            <h5><Moment format="M">{data.blogPublishDate}</Moment>月</h5>
-                                        </div>
+                {listAllBlogdata.map((data, index) => {
+                    {/* console.log(data) */ }
+                    return (
+
+                        <div className="blog-card" key={data.blogId}>
+                            <div className="blog-card-in">
+                                <figure className="blog-card-fig">
+                                    <img className="blog-cover"
+                                        src={`http://localhost:3009/blogs_img/${data.blogContent01_img01}`}
+                                        alt=""
+                                    />
+                                </figure>
+                                <div className="blog-card-btns"></div>
+                                <div className="blog-card-title"><p>{data.blogTitle}</p></div>
+                                <div className="blog-card-content"><p>{data.blogContent01}</p></div>
+                                <div className="blog-card-calendar">
+                                    <div className="blog-card-calendar-in">
+                                        <h2><Moment format="DD">{data.blogPublishDate}</Moment></h2>
+                                        <h5><Moment format="M">{data.blogPublishDate}</Moment>月</h5>
                                     </div>
-                                    <div className="read-more">
-                                        <button
-                                            className="read-more-btn"
-                                            onClick={() => {
-                                                props.history.push(`/Blog/BlogDetail/${data.blogId}`);
-                                                // goBlogDetail(data.blogId) //data有blog的資料
-                                            }}
-                                        >閱讀文章</button>
-                                    </div>
-                                </div>                               
+                                </div>
+                                <div className="read-more">
+                                    <button
+                                        className="read-more-btn"
+                                        onClick={() => {
+                                            props.history.push(`/Blog/BlogDetail/${data.blogId}`);
+                                            // goBlogDetail(data.blogId) //data有blog的資料
+                                        }}
+                                    >閱讀文章</button>
+                                </div>
                             </div>
-                        )
-                    })}
-                
+                        </div>
+                    )
+                })}
+
             </div>
             <div className="blog-standard-pages blog-d-flex">
                 <div
@@ -199,21 +199,13 @@ function BlogMainStandardList(props) {
                         setCurrentPage(currentPage - 1)
                     }}
                 >﹤
-                    {/* <img
-                        src={PrevPage}
-                        alt=""
-                        onClick={() => {
-                            setCurrentPage(currentPage - 1)
-                        }}
-                    /> */}
                 </div>
                 <div className="all-blog-page-list blog-d-flex">
                     {listPage.map((data, index) => {
-                        {/* console.log(data) */ }
                         return (
                             <div
-                                className="round-effect"
                                 key={data}
+                                className={(data === currentPage ? 'round-effect activepage' : 'round-effect')}
                                 onClick={() => {
                                     setCurrentPage(data)
                                 }}
@@ -221,21 +213,12 @@ function BlogMainStandardList(props) {
                         )
                     })}
                 </div>
-
-                {/* <div className="mores">...</div> */}
                 <div
                     className="round-effect"
                     onClick={() => {
                         setCurrentPage(currentPage + 1)
                     }}
                 >﹥
-                    {/* <img
-                        src={NextPage}
-                        alt=""
-                        onClick={() => {
-                            setCurrentPage(currentPage + 1)
-                        }}
-                    /> */}
                 </div>
             </div>
         </>

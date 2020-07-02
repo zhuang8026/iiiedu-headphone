@@ -31,9 +31,9 @@
   width: 100%;
 
   .blog-crumb {
-    width: 100%;
+    width: 90%;
     height: 90px;
-    margin-left: 5%;
+    margin: 0 auto;
     h5 {
       font-size: $font-size-16;
       line-height: 90px;
@@ -86,7 +86,7 @@
             font-size: $font-size-24;
             font-weight: $font-w;
             color: $btn-color-r;
-            background: $bg-c;
+            background: $bg-theme;
           }
           .blog-btns-left-Link:hover {
             cursor: pointer;
@@ -319,6 +319,10 @@
             text-decoration: none;
             color: #fff;
           }
+          .activepage {
+            background: #211e55;
+            color: #fff;
+          }
         }
 
         // .pages:active {
@@ -423,7 +427,7 @@
         text-align: center;
         align-content: center;
 
-        .user-icon > h2 {
+        > h2 {
           font-size: $font-size-16;
           margin: 20px auto;
         }

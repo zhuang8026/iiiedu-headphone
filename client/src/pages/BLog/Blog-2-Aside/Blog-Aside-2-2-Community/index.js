@@ -24,16 +24,17 @@ import iconLine_h from '../../../../assets/img/blog-img/blog-aside/iconLine_h.pn
 
 // -------------------- func --------------------
 
-function BlogAsideCommunity(props) {
+function BlogAsideCommunity_2(props) {
   const {userdata} = props;
   console.log(userdata)
   return (
     <>
       <div className="user-icon">
-        <h2>關於我們</h2>
+        <h2>關於我</h2>
         <figure className="user-icon-fig">
           <img src={`/user_img/${userdata.userlogo}`} alt="" />
         </figure>
+        <h2>{userdata.name}</h2>
         <div className="link-btns blog-d-flex">
           <div className="link-one-btn">            
             <figure className="linkFB">
@@ -59,4 +60,4 @@ function BlogAsideCommunity(props) {
     </>
   )
 }
-export default withRouter(BlogAsideCommunity)
+export default withRouter(BlogAsideCommunity_2)
