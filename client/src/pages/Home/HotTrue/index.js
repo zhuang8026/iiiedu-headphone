@@ -32,7 +32,7 @@ function HotTrue() {
 
     const paramsMobile = {
         slidesPerView: 2,
-        spaceBetween: 10,
+        spaceBetween: 2,
         // freeMode: true,
         lazy: true,
         loop: true,

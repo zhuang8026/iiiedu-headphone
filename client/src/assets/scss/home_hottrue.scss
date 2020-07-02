@@ -120,9 +120,98 @@ section {
     .true_items {
         display: none;
     }
+    .MyHotTrue .true_items {
+        bottom: calc(50% - 520px);
+        width: 98%;
+        left: calc(50% - 49%);
+    }
     .true_items_mobile {
         display: block !important;
     }
+    .MyHotTrue .true_title {
+        height: 400px;
+        background-size: cover;
+    }
+    .MyHotTrue .true_items .swiper-container .swiper-wrapper .true_items_inner {
+        padding: 6px 3px;
+    }
+    .MyHotTrue .true_items .swiper-container .swiper-wrapper .true_items_inner .true_items_card img {
+        margin-bottom: 16px;
+    }
+    .MyHotTrue .true_items .swiper-container .swiper-wrapper .true_items_inner .true_items_card ul {
+        width: 90%;
+        padding: 10px 0;
+    }
+    .MyHotTrue .true_items .swiper-container .swiper-wrapper .true_items_inner .true_items_card ul li {
+        font-size: 12px;
+    }
+    section {
+        height: 380px;
+    }
 } /* iPad mini & iphone */
-@media (min-width:374px) and (max-width:413px){} /* iphone */
-@media screen and (max-width: 373px){}/* iphone */
+@media (min-width:374px) and (max-width:413px){
+    .true_items {
+        display: none;
+    }
+    .MyHotTrue .true_items {
+        bottom: calc(50% - 520px);
+        width: 98%;
+        left: calc(50% - 49%);
+    }
+    .true_items_mobile {
+        display: block !important;
+    }
+    .MyHotTrue .true_title {
+        height: 400px;
+        background-size: cover;
+    }
+    .MyHotTrue .true_items .swiper-container .swiper-wrapper .true_items_inner {
+        padding: 6px 3px;
+    }
+    .MyHotTrue .true_items .swiper-container .swiper-wrapper .true_items_inner .true_items_card img {
+        margin-bottom: 16px;
+    }
+    .MyHotTrue .true_items .swiper-container .swiper-wrapper .true_items_inner .true_items_card ul {
+        width: 90%;
+        padding: 10px 0;
+    }
+    .MyHotTrue .true_items .swiper-container .swiper-wrapper .true_items_inner .true_items_card ul li {
+        font-size: 12px;
+    }
+    section {
+        height: 380px;
+    }
+} /* iphone */
+@media screen and (max-width: 373px){
+    .true_items {
+        display: none;
+    }
+    .MyHotTrue .true_items {
+        bottom: calc(50% - 520px);
+        width: 98%;
+        left: calc(50% - 49%);
+    }
+    .true_items_mobile {
+        display: block !important;
+    }
+    .MyHotTrue .true_title {
+        height: 400px;
+        background-size: cover;
+    }
+    .MyHotTrue .true_items .swiper-container .swiper-wrapper .true_items_inner {
+        padding: 6px 3px;
+    }
+    .MyHotTrue .true_items .swiper-container .swiper-wrapper .true_items_inner .true_items_card img {
+        margin-bottom: 16px;
+    }
+    .MyHotTrue .true_items .swiper-container .swiper-wrapper .true_items_inner .true_items_card ul {
+        width: 90%;
+        padding: 10px 0;
+    }
+    .MyHotTrue .true_items .swiper-container .swiper-wrapper .true_items_inner .true_items_card ul li {
+        font-size: 12px;
+    }
+    section {
+        height: 380px;
+    }
+}/* iphone */

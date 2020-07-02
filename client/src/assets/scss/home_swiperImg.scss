@@ -1,4 +1,7 @@
 @import "./_variables.scss";
+.SwiperMobile {
+    display: none;
+} 
 .swiper-container {
     .swiper-wrapper {  
         position: relative; 
@@ -158,8 +161,17 @@
     }
 } /* iPad */
 @media (min-width:414px) and (max-width:767px){
+    .SwiperPc {
+        display: none;
+    }
+    .SwiperMobile {
+        display: block;
+    }
     .swiper-container .swiper-wrapper {
-        height: auto;
+        height: 100vh;
+    }
+    .swiper-container .swiper-wrapper img {
+        height: 100%;
     }
     .swiper-container .swiper-wrapper .swiper_card .swiper_items {
         width: 250px;
@@ -167,6 +179,7 @@
     }
     .swiper-container .swiper-wrapper .swiper_card .swiper_items_title {
         width: 70%;
+        margin: 0 auto;
     }
     .swiper-container .swiper-wrapper .swiper_card .swiper_items .swiper_items_inner .items_inner_text {
         padding: 16px;
@@ -175,12 +188,100 @@
         padding: 16px;
     }
     .swiper-container .swiper-wrapper .swiper_card {
-        top: calc(50% - 100px);
+        top: calc(50% - 130px);
         left: calc(21% - 100px);
+        text-align: center;
     }
     .swiper-container .swiper-wrapper .swiper_card .swiper_items_title ul li h1 {
-        font-size: 2.2rem;
+        font-size: 1.8rem;
+    }
+    .swiper-container .swiper-wrapper .swiper_card .swiper_items_title ul .items_card_right {
+        border-left: 0px solid transparent;
+        padding: 0;
     }
 } /* iPad mini & iphone */
-@media (min-width:374px) and (max-width:413px){} /* iphone */
-@media screen and (max-width: 373px){}/* iphone */
+@media (min-width:374px) and (max-width:413px){
+    .SwiperPc {
+        display: none;
+    }
+    .SwiperMobile {
+        display: block;
+    }
+
+    .swiper-container .swiper-wrapper {
+        height: 100vh;
+    }
+    .swiper-container .swiper-wrapper img {
+        width: auto;
+        height: 100%;
+    }
+    .swiper-container .swiper-wrapper .swiper_card .swiper_items {
+        width: 250px;
+        display: none;
+    }
+    .swiper-container .swiper-wrapper .swiper_card .swiper_items_title {
+        width: 70%;
+        margin: 0 auto;
+        margin-left: 17%;
+    }
+    .swiper-container .swiper-wrapper .swiper_card .swiper_items .swiper_items_inner .items_inner_text {
+        padding: 16px;
+    }
+    .swiper-container .swiper-wrapper .swiper_card .swiper_items .swiper_items_inner .swiper_more {
+        padding: 16px;
+    }
+    .swiper-container .swiper-wrapper .swiper_card {
+        top: calc(50% - 130px);
+        left: calc(21% - 100px);
+        text-align: center;
+    }
+    .swiper-container .swiper-wrapper .swiper_card .swiper_items_title ul li h1 {
+        font-size: 1.8rem;
+    }
+    .swiper-container .swiper-wrapper .swiper_card .swiper_items_title ul .items_card_right {
+        border-left: 0px solid transparent;
+        padding: 0;
+    }
+} /* iphone */
+@media screen and (max-width: 373px){
+    .SwiperPc {
+        display: none;
+    }
+    .SwiperMobile {
+        display: block;
+    }
+
+    .swiper-container .swiper-wrapper {
+        height: 100vh;
+    }
+    .swiper-container .swiper-wrapper img {
+        width: auto;
+        height: 100%;
+    }
+    .swiper-container .swiper-wrapper .swiper_card .swiper_items {
+        width: 250px;
+        display: none;
+    }
+    .swiper-container .swiper-wrapper .swiper_card .swiper_items_title {
+        width: 70%;
+        margin: 0 auto;
+    }
+    .swiper-container .swiper-wrapper .swiper_card .swiper_items .swiper_items_inner .items_inner_text {
+        padding: 16px;
+    }
+    .swiper-container .swiper-wrapper .swiper_card .swiper_items .swiper_items_inner .swiper_more {
+        padding: 16px;
+    }
+    .swiper-container .swiper-wrapper .swiper_card {
+        top: calc(50% - 130px);
+        left: calc(21% - 100px);
+        text-align: center;
+    }
+    .swiper-container .swiper-wrapper .swiper_card .swiper_items_title ul li h1 {
+        font-size: 1.8rem;
+    }
+    .swiper-container .swiper-wrapper .swiper_card .swiper_items_title ul .items_card_right {
+        border-left: 0px solid transparent;
+        padding: 0;
+    }
+}/* iphone */
