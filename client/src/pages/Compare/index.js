@@ -211,6 +211,7 @@ function Compare(props) {
             </div>
             <div className="MyCom_list">
                 <ul className="MyCom_pwa_r_inner">
+                {/* <li> */}
                 {console.log('compareList',compareList)}
                 {compareList !== [] ? (
                     <>
@@ -300,7 +301,7 @@ function Compare(props) {
                         <div>1111111</div>
                     </>
                 )}
-                
+              {/* </li> */}
             </ul>
           {/* <div className="page"><Pagination defaultCurrent={1} total={50} /></div> */}
       </div>
