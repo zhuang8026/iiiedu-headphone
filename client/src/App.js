@@ -42,13 +42,6 @@ import MembersCartDetail from './pages/Members/MembersCartDetail'
 // import MembersForget from './pages/Members/MembersForget'
 import Compare from './pages/Compare/index'
 
-// Alice's part
-import AliceSellers from './pages/Sellers'
-import MySale from './pages/Sellers/MySale'
-import Order from './pages/Sellers/Order'
-import Refund from './pages/Sellers/Refund'
-// import SellerProduct from './pages/Sellers/SellerProduct'
-import SellerAddProduct from './pages/Sellers/AddProduct'
 
 //我的最愛
 import MyFav from './pages/MyFav'
