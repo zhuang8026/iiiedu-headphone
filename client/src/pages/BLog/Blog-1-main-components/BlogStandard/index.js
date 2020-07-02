@@ -13,6 +13,7 @@ import {
 // -------------------- components --------------------
 // 引入輪播牆
 import BlogMainStandardSlide from '../BlogStandardSlide'
+
 // 麵包削
 import BlogCrumb from '../BlogCrumb'
 // 引入Main
@@ -34,6 +35,7 @@ import '../../../../assets/scss/blog_standard.scss'
 function BlogStandard(props) {
   const { userdata, setUserdata, name, setName } = props.allprops;
   return (
+    <Fragment>
     <>
       <div className="blog-standard-spacing"></div>
 
@@ -73,6 +75,7 @@ function BlogStandard(props) {
       </div>
       <div className="blog-standard-spacing"></div>
     </>
+    </Fragment>
   )
 }
 export default withRouter(BlogStandard)
