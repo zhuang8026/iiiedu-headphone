@@ -42,13 +42,6 @@ import MembersCartDetail from './pages/Members/MembersCartDetail'
 // import MembersForget from './pages/Members/MembersForget'
 import Compare from './pages/Compare/index'
 
-// Alice's part
-import AliceSellers from './pages/Sellers'
-import MySale from './pages/Sellers/MySale'
-import Order from './pages/Sellers/Order'
-import Refund from './pages/Sellers/Refund'
-// import SellerProduct from './pages/Sellers/SellerProduct'
-import SellerAddProduct from './pages/Sellers/AddProduct'
 
 //我的最愛
 import MyFav from './pages/MyFav'
@@ -344,46 +337,6 @@ function App() {
           </Route>
           <Route path="/Blog/BlogEdit/:editId">
             <BlogEdit
-              allprops={{
-                userdata,
-                setUserdata,
-                name,
-                setName,
-              }}
-            />
-          </Route>
-
-          {/* 賣家 */}
-          <Route exact path="/AliceSellers">
-            <AliceSellers />
-          </Route>
-          <Route path="/AliceSellers/my-sale">
-            <MySale />
-          </Route>
-          <Route path="/AliceSellers/order">
-            <Order />
-          </Route>
-          <Route path="/AliceSellers/refund">
-            <Refund />
-          </Route>
-
-          {/* <Route path="/AliceSellers/seller-product">
-            <SellerProduct allprops={{
-              userdata,
-              setUserdata,
-              name,
-              setName
-            }}/>
-          </Route> */}
-
-          {/* <Route path="/AliceSellers/seller-product">
-            <SellerProduct
-              SellerProductId={SellerProductId}
-              setsellerProductId={setsellerProductId} />
-          </Route> */}
-
-          <Route path="/AliceSellers/add-product">
-            <SellerAddProduct
               allprops={{
                 userdata,
                 setUserdata,
