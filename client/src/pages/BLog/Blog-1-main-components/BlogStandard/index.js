@@ -25,7 +25,7 @@ import BlogAsideSubscribe from '../../Blog-2-Aside/Blog-Aside-3-subscribe'
 import BlogAsideRecent from '../../Blog-2-Aside/Blog-Aside-4-Recent'
 
 // -------------------- scss --------------------
-// import './_menu.scss'
+import 'swiper/swiper.scss';
 import '../../../../assets/scss/blog_standard.scss'
 
 // -------------------- imgs --------------------
