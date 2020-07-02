@@ -47,3 +47,23 @@
     }
   }
 }
+@media screen and (min-width: 1920px) {
+}
+@media (min-width: 1366px) and (max-width: 1920px) {
+} /* 電腦 */
+@media (min-width: 1024px) and (max-width: 1365px) {
+} /* 電腦 */
+@media (min-width: 768px) and (max-width: 1023px) {
+} /* iPad */
+@media (min-width: 414px) and (max-width: 767px) {
+  .GiftCardContainer {
+    flex-wrap: wrap;
+    .GiftCard {
+      width: 100%;
+    }
+  }
+} /* iPad mini & iphone */
+@media (min-width: 374px) and (max-width: 413px) {
+} /* iphone */
+@media screen and (max-width: 373px) {
+} /* iphone */

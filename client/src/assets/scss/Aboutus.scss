@@ -1,4 +1,7 @@
 @import './variables';
+.WiRWD {
+  display: none;
+}
 .WiHeader {
   .swiper-container {
     // border: red solid 2px;
@@ -21,6 +24,32 @@
     }
   }
 }
+@media screen and (min-width: 1920px) {
+}
+@media (min-width: 1366px) and (max-width: 1920px) {
+} /* 電腦 */
+@media (min-width: 1024px) and (max-width: 1365px) {
+} /* 電腦 */
+@media (min-width: 768px) and (max-width: 1023px) {
+} /* iPad */
+@media (min-width: 414px) and (max-width: 767px) {
+  .WiHeader .swiper-container .swiper-wrapper img {
+    height: 350px;
+  }
+  .WiHeader .swiper-container .swiper-wrapper .Wiheaderimg {
+    display: none;
+  }
+  .AboutgiftCrumb {
+    padding: 0px;
+  }
+  .WiRWD {
+    display: block;
+  }
+} /* iPad mini & iphone */
+@media (min-width: 374px) and (max-width: 413px) {
+} /* iphone */
+@media screen and (max-width: 373px) {
+} /* iphone */
 .Aboutcrumb {
   width: 90%;
   margin: 0 auto;
