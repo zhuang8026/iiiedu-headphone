@@ -73,7 +73,49 @@
             
         }
     }
+
+    .true_items_mobile {
+        display: none;
+    }
 }
 section {
     height: 500px;
 }
+
+/* 版本尺寸 */
+@media screen and (min-width: 1920px){}
+@media (min-width:1366px) and (max-width:1920px){
+    // .MyHotTrue .true_items {
+    //     bottom: calc(50% - 450px);
+    // }
+} /* 電腦 */
+@media (min-width:1024px) and (max-width:1365px){
+    .MyHotTrue .true_items {
+        width: 90%;
+        bottom: calc(50% - 450px);
+        left: calc(50% - 45%);
+    }
+    section {
+        height: 250px;
+    }
+} /* 電腦 */
+@media (min-width:768px) and (max-width:1023px){
+    .MyHotTrue .true_items {
+        width: 95%;
+        bottom: calc(50% - 450px);
+        left: calc(50% - 48%);
+    }
+    section {
+        height: 250px;
+    }
+} /* iPad */
+@media (min-width:414px) and (max-width:767px){
+    .true_items {
+        display: none;
+    }
+    .true_items_mobile {
+        display: block;
+    }
+} /* iPad mini & iphone */
+@media (min-width:374px) and (max-width:413px){} /* iphone */
+@media screen and (max-width: 373px){}/* iphone */

@@ -103,3 +103,60 @@
     width: 100px !important;
     color: $btn-color-s;
 }
+
+/* 版本尺寸 */
+@media screen and (min-width: 1920px){}
+@media (min-width:1366px) and (max-width:1920px){
+    .swiper-container .swiper-wrapper {
+        height: auto;
+    }
+} /* 電腦 */
+@media (min-width:1024px) and (max-width:1365px){
+    .swiper-container .swiper-wrapper {
+        height: auto;
+    }
+    .swiper-container .swiper-wrapper .swiper_card .swiper_items {
+        width: 250px;
+    }
+    .swiper-container .swiper-wrapper .swiper_card .swiper_items .swiper_items_inner .items_inner_text {
+        padding: 16px;
+    }
+    .swiper-container .swiper-wrapper .swiper_card .swiper_items .swiper_items_inner .swiper_more {
+        padding: 16px;
+    }
+    .swiper-container .swiper-wrapper .swiper_card {
+        top: calc(50% - 200px);
+        left: calc(21% - 110px);
+    }
+    .swiper-container .swiper-wrapper .swiper_card .swiper_items_title ul li h1 {
+        font-size: 2.2rem;
+    }
+} /* 電腦 */
+@media (min-width:768px) and (max-width:1023px){
+    .swiper-container .swiper-wrapper {
+        height: auto;
+    }
+    .swiper-container .swiper-wrapper .swiper_card .swiper_items {
+        width: 250px;
+        display: none;
+    }
+    .swiper-container .swiper-wrapper .swiper_card .swiper_items_title {
+        width: 70%;
+    }
+    .swiper-container .swiper-wrapper .swiper_card .swiper_items .swiper_items_inner .items_inner_text {
+        padding: 16px;
+    }
+    .swiper-container .swiper-wrapper .swiper_card .swiper_items .swiper_items_inner .swiper_more {
+        padding: 16px;
+    }
+    .swiper-container .swiper-wrapper .swiper_card {
+        top: calc(50% - 100px);
+        left: calc(21% - 100px);
+    }
+    .swiper-container .swiper-wrapper .swiper_card .swiper_items_title ul li h1 {
+        font-size: 2.2rem;
+    }
+} /* iPad */
+@media (min-width:414px) and (max-width:767px){} /* iPad mini & iphone */
+@media (min-width:374px) and (max-width:413px){} /* iphone */
+@media screen and (max-width: 373px){}/* iphone */
