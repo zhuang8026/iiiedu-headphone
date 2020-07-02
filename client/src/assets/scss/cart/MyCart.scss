@@ -1,0 +1,138 @@
+@import '../scss/_variables.scss';
+
+//購物車
+.cart-container {
+  > ul {
+    // overflow: hidden;
+    // overflow-x: auto;
+    > li {
+      > ul {
+        display: flex;
+        line-height: 50px;
+        border-bottom: 1px solid $bg-btn-l;
+        > li {
+          width: 100%;
+          padding: 10px 0;
+          text-align: center;
+          img {
+            overflow: hidden;
+            height: 40px;
+            margin-top: 2px;
+          }
+          .btn_wish {
+            background-color: #adadad;
+            color: #fafafa;
+          }
+          .btn_booking {
+            background-color: #f3f4ed;
+            color: #8b8b8b;
+          }
+          .btn_width {
+            width: 50%;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+          }
+          button {
+            transition: 0.3s ease-out;
+            border-radius: 5px;
+            &:hover {
+              background-color: #211e55;
+              color: #fafafa;
+              i {
+                color: #fafafa;
+              }
+            }
+          }
+        }
+      }
+    }
+    .cart-footer {
+      display: flex;
+      justify-content: flex-end;
+      line-height: 45px;
+      margin-top: 10px;
+      vertical-align: middle;
+      input {
+        border: 1px solid $bg-btn-l;
+      }
+      button {
+        width: 200px;
+        height: 45px;
+        margin-left: 5px;
+        border: 1px solid $link-hover-color-l;
+        border-radius: 5px;
+        text-align: center;
+        color: #fff;
+        background: $link-hover-color-l;
+        transition: 0.3s ease-in;
+        cursor: pointer;
+        a {
+          display: block;
+          color: #fff;
+        }
+        &:hover {
+          background: #fff;
+          color: $link-hover-color-l;
+          a {
+            color: #000;
+          }
+        }
+      }
+    }
+  }
+}
+
+//購物車空的時候(目前沒用到)
+
+.cart-empty {
+  width: 100%;
+  margin: 100px auto 130px auto;
+  li {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+  }
+  .border-top {
+    border-top: 1px solid #e1e1e1;
+    button {
+      width: 200px;
+      height: 45px;
+      margin-top: 32px;
+      border: 1px solid $link-hover-color-l;
+      border-radius: 5px;
+      text-align: center;
+      background: $link-hover-color-l;
+      transition: 0.3s ease-in;
+      cursor: pointer;
+      &:hover {
+        background: #fff;
+        color: $link-hover-color-l;
+      }
+    }
+  }
+}
+/* 版本尺寸 */
+@media screen and (min-width: 1920px) {
+}
+@media (min-width: 1366px) and (max-width: 1920px) {
+} /* 電腦 */
+@media (min-width: 1024px) and (max-width: 1365px) {
+} /* 電腦 */
+@media (min-width: 768px) and (max-width: 1023px) {
+} /* iPad */
+@media (min-width: 414px) and (max-width: 767px) {
+  .li-prices {
+    display: none;
+  }
+} /* iPad mini & iphone */
+@media (min-width: 374px) and (max-width: 413px) {
+  .li-prices {
+    display: none;
+  }
+} /* iphone */
+@media screen and (max-width: 373px) {
+  .li-prices {
+    display: none;
+  }
+} /* iphone */

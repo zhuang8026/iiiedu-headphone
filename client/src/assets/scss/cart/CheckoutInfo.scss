@@ -1,0 +1,69 @@
+@import '../scss/_variables.scss';
+
+//購買個人資料填寫
+.cart-buyerInfo-form {
+  width: 100%;
+  > div {
+    display: flex;
+    > div {
+      width: 100%;
+      > div {
+        margin: 10px 0;
+        label {
+          font-size: $font-size-16;
+        }
+        input {
+          width: 95%;
+          line-height: 45px;
+          border: 1px solid #aaa;
+        }
+        textarea {
+          width: 100%;
+          border: 1px solid #aaa;
+        }
+        .error {
+          font-size: $font-size-12;
+          color: $btn-color-r;
+        }
+      }
+    }
+    button {
+      width: 200px;
+      height: 45px;
+      margin-top: 32px;
+      border: 1px solid $link-hover-color-l;
+      border-radius: 5px;
+      text-align: center;
+      color: #fff;
+      background: $link-hover-color-l;
+      transition: 0.3s ease-in;
+      cursor: pointer;
+      a {
+        display: block;
+        color: #fff;
+      }
+      &:hover {
+        background: #fff;
+        color: $link-hover-color-l;
+        a {
+          color: #000;
+        }
+      }
+    }
+  }
+}
+/* 版本尺寸 */
+@media screen and (min-width: 1920px) {
+}
+@media (min-width: 1366px) and (max-width: 1920px) {
+} /* 電腦 */
+@media (min-width: 1024px) and (max-width: 1365px) {
+} /* 電腦 */
+@media (min-width: 768px) and (max-width: 1023px) {
+} /* iPad */
+@media (min-width: 414px) and (max-width: 767px) {
+} /* iPad mini & iphone */
+@media (min-width: 374px) and (max-width: 413px) {
+} /* iphone */
+@media screen and (max-width: 373px) {
+} /* iphone */
