@@ -39,6 +39,32 @@ router.post('/edit', (req, res)=>{
 
 })
 
+// 會員信用卡修改
+// http://localhost:3009/membersEdit/bank
+router.post('/bank', upload.none(), (req, res)=>{ 
+    const output = {
+        success: false,
+    }
+    let card = req.body.card;
+    let pin = req.body.pin;
+    let id = req.body.id;
+
+    const sql = "UPDATE `users` SET `card`=?, `pin`=? WHERE `id`=? "; 
+    
+    // console.log(id);
+    db.query(sql, [card, pin, id])                   
+        .then(([results])=>{
+            console.log(results)
+            output.results = results;
+            if(results.affectedRows && results.changedRows){
+                output.success = true;
+            }
+            // console.log(output);
+            res.json(output);
+        })
+
+})
+
 // 會員基本資料 修改
 // http://localhost:3009/membersEdit/userUpload
 router.post('/userUpload', upload.none() ,(req, res)=>{
