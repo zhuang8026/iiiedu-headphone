@@ -1,0 +1,122 @@
+@import '../scss/_variables.scss';
+
+//麵包屑
+.cart-crumb {
+  width: 80%;
+  margin: 0 auto;
+  div {
+    height: 100px;
+  }
+  a {
+    color: $font-color-s;
+  }
+}
+
+//購物車共用container
+.cart-container {
+  width: 80%;
+  margin: 100px auto 130px auto;
+  padding: 20px;
+  background: $bg-c;
+  border-radius: 5px;
+  box-shadow: 3px 3px #ddd;
+  //購物車步驟圖
+  .cart-step-ul {
+    display: flex;
+    max-width: 760px;
+    margin: 10px auto 60px auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    li {
+      width: 18%;
+      padding: 0 10px;
+      font-size: 50px;
+
+      .line {
+        height: 6px;
+        background: $bg-btn-l;
+      }
+      .line.done {
+        background: $btn-color-s;
+      }
+      .icon-box {
+        width: 85px;
+        height: 85px;
+        background: $bg-btn-l;
+        border-radius: 50%;
+        .iconfont {
+          font-size: 46px;
+          color: $font-color-w;
+        }
+      }
+      p {
+        color: $bg-btn-l;
+        font-size: 20px;
+      }
+    }
+    .cart-step-active {
+      .icon-box {
+        background: $btn-color-s;
+      }
+      p {
+        color: $btn-color-s;
+      }
+    }
+  }
+}
+
+/* 版本尺寸 */
+@media screen and (min-width: 1920px) {
+}
+@media (min-width: 1366px) and (max-width: 1920px) {
+  /* 電腦 */
+}
+@media (min-width: 1024px) and (max-width: 1365px) {
+  /* 電腦 */
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* iPad */
+}
+@media (min-width: 414px) and (max-width: 767px) {
+  /* iPad mini & iphone */
+  //麵包屑
+  .cart-crumb {
+    width: 100%;
+    margin: 0 16px;
+  }
+  //共用container
+  .cart-container {
+    width: 100%;
+    margin: 50px 6px 50px 6px;
+    padding: 10px;
+  }
+}
+@media (min-width: 374px) and (max-width: 413px) {
+  /* iphone */
+  //麵包屑
+  .cart-crumb {
+    width: 100%;
+    margin: 0 16px;
+  }
+  //共用container
+  .cart-container {
+    width: 100%;
+    margin: 50px 6px 50px 6px;
+    padding: 10px;
+  }
+}
+@media screen and (max-width: 373px) {
+  /* iphone */
+  //麵包屑
+  .cart-crumb {
+    width: 100%;
+    margin: 0 16px;
+  }
+  //共用container
+  .cart-container {
+    width: 100%;
+    margin: 50px 6px 50px 6px;
+    padding: 10px;
+  }
+}
