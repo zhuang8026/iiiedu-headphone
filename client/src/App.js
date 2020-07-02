@@ -40,6 +40,15 @@ import MembersAdress from './pages/Members/MembersAdress'
 import MembersCartList from './pages/Members/MembersCartList'
 import MembersCartDetail from './pages/Members/MembersCartDetail'
 // import MembersForget from './pages/Members/MembersForget'
+
+// 超級賣家
+import WiSeller from './pages/SuperSeller';
+import SuperSellerOrder from './pages/SuperSeller/SuperSellerOrder';
+import SuperSellerItems from './pages/SuperSeller/SuperSellerItems';
+import SuperSellerAddItems from './pages/SuperSeller/SuperSellerAddItems';
+import SuperSellerWallet from './pages/SuperSeller/SuperSellerWallet';
+
+// 比較功能
 import Compare from './pages/Compare/index'
 
 
@@ -237,6 +246,54 @@ function App() {
               }}
             />
           </Route>
+
+
+          {/* 超級賣家 - William - 20200703 */}
+          <Route exact path="/SuperSeller">
+            <WiSeller
+              allprops={{
+                userdata,
+                setUserdata,
+              }}
+            />
+          </Route>
+
+          <Route exact path="/SuperSeller/SuperSellerOrder">
+            <SuperSellerOrder
+              allprops={{
+                userdata,
+                setUserdata,
+              }}
+            />
+          </Route>
+
+          <Route exact path="/SuperSeller/SuperSellerItems">
+            <SuperSellerItems
+              allprops={{
+                userdata,
+                setUserdata,
+              }}
+            />
+          </Route>
+
+          <Route exact path="/SuperSeller/SuperSellerAddItems">
+            <SuperSellerAddItems
+              allprops={{
+                userdata,
+                setUserdata,
+              }}
+            />
+          </Route>
+          
+          <Route exact path="/SuperSeller/SuperSellerWallet">
+            <SuperSellerWallet
+              allprops={{
+                userdata,
+                setUserdata,
+              }}
+            />
+          </Route>
+
 
           {/* 比較頁面 */}
           <Route path="/Compare">

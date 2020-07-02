@@ -21,56 +21,50 @@ function MembersLeft(props) {
                 <div className="mem_bottom_inner">
                     <div className="men_title">
                         <div className="men_title_inner">
-                            <span className="iconfont icon-Personal"></span>
-                            <a className="men_a">我的帳戶</a>
+                            <span className="iconfont icon-wodedingdan"></span>
+                            <a className="men_a">訂單管理</a>
                         </div>
                         <ul className="men_u">
                             <li>
                                 <span className="iconfont icon-reduce_1"></span>
-                                <NavLink to="/KMembers">個人檔案</NavLink>
-                            </li>
-                            <li>
-                                <span className="iconfont icon-reduce_1"></span>
-                                <NavLink to="/KMembers/MembersPwa">更改密碼</NavLink>
-                            </li>
-                            <li>
-                                <span className="iconfont icon-reduce_1"></span>
-                                <NavLink to="/KMembers/MembersBank">銀行帳戶</NavLink>
-                            </li>
-                            <li>
-                                <span className="iconfont icon-reduce_1"></span>
-                                <NavLink to="/KMembers/MembersAdress">地址</NavLink>
+                                <NavLink to="/SuperSeller">訂單出貨</NavLink>
                             </li>
                         </ul>
                     </div>
                     <div className="men_title">
+                        <div className="men_title_inner">
+                            <span className="iconfont icon-cart"></span>
+                            <a className="men_a">商品管理</a>
+                        </div>
+                        <ul className="men_u">
+                            <li>
+                                <span className="iconfont icon-reduce_1"></span>
+                                <NavLink to="/SuperSeller/SuperSellerItems">我的商品</NavLink>
+                            </li>
+                            <li>
+                                <span className="iconfont icon-reduce_1"></span>
+                                <NavLink to="/SuperSeller/SuperSellerAddItems">新增商品</NavLink>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="men_title">
+                        <div className="men_title_inner">
+                            <span className="iconfont icon-shouye"></span>
+                            <a className="men_a">財務管理</a>
+                        </div>
+                        <ul className="men_u">
+                            <li>
+                                <span className="iconfont icon-reduce_1"></span>
+                                <NavLink to="/SuperSeller/SuperSellerWallet">我的錢包</NavLink>
+                            </li>
+                        </ul>
+                    </div>
+                    {/* <div className="men_title">
                         <div className="men_title_inner">
                             <span className="iconfont icon-date"></span>
-                            <NavLink to="/KMembers/MembersCartList" className="men_a">購買清單</NavLink>
+                            <NavLink to="/KMembers/MembersCartList" className="men_a">賣場商品</NavLink>
                         </div>
-                    </div>
-                    <div className="men_title">
-                        <div className="men_title_inner">
-                            <span className="iconfont icon-safety"></span>
-                            <NavLink className="men_a" to="/SuperSeller">我的商場</NavLink>
-                        </div>
-                    </div>
-                    <div className="men_title">
-                        <div className="men_title_inner">
-                            <span className="iconfont icon-blog"></span>
-                            <a className="men_a">我的BLOG</a>
-                            </div>
-                        <ul className="men_u">
-                            <li>
-                                <span className="iconfont icon-reduce_1"></span>
-                                <a>全部 BLOG</a>
-                            </li>
-                            <li>
-                                <span className="iconfont icon-reduce_1"></span>
-                                <a>個人 BLOG</a>
-                            </li>
-                        </ul>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
