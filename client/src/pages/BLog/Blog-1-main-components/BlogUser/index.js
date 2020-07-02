@@ -59,7 +59,9 @@ function BlogUser(props) {
           </div>
           <div className="blog-aside">
             <BlogAsidePhoto />
-            <BlogAsideCommunity />
+            <BlogAsideCommunity 
+              userdata={userdata}
+            />
             <BlogAsideSubscribe />
             <BlogAsideRecent />
           </div>

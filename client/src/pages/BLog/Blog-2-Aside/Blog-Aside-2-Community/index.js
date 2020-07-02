@@ -25,12 +25,14 @@ import iconLine_h from '../../../../assets/img/blog-img/blog-aside/iconLine_h.pn
 // -------------------- func --------------------
 
 function BlogAsideCommunity(props) {
+  const {userdata} = props;
+  console.log(userdata)
   return (
     <>
       <div className="user-icon">
         <h2>關於我們</h2>
         <figure className="user-icon-fig">
-          <img src="" alt="" />
+          <img src={`/user_img/${userdata.userlogo}`} alt="" />
         </figure>
         <div className="link-btns blog-d-flex">
           <div className="link-one-btn">            
