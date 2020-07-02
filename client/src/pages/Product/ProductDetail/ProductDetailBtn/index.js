@@ -16,7 +16,7 @@ function ProductDetailBtn(props) {
   };
   return (
     <div 
-      className=""
+      className="codeCard"
       onClick={()=>{
           openProductDetailBottom('success')
       }}

@@ -6,7 +6,7 @@
 
   // 左邊欄位
   .YyDetailleft {
-    width: 60%;
+    width: 50%;
     .DetailImg {
       .swiper-container .swiper-wrapper {
         height: 100%;
@@ -20,7 +20,7 @@
 
   // 右邊欄位
   .YyDetailRight {
-    width: 40%;
+    width: 50%;
     .DetailContent {
       margin-left: 32px;
       .DetailName {
@@ -35,9 +35,13 @@
       }
       .DetailText {
         font-size: 14px;
+        display: flex;
         span {
           display: inline-block;
           width: 70px;
+        }
+        .DetailTextSapn {
+          width: 80%;
         }
       }
     }
@@ -119,11 +123,68 @@
 .WiDetailBottom {
   width: 80%;
   margin: 0 auto;
+  margin-top: 48px;
   .ProductDetailBottom {
-
+    .ProductDetailBottomLeft {
+      h2 {
+        font-size: 24px;
+        color: #2c3e50;
+        display: flex;
+        &::after {
+          content: "";
+          display: block;
+          border-bottom: 1px dashed #7f8d9e;
+          margin-left: 12px;
+          width: 90%;
+          height: 18.5px;
+          
+        }
+      }
+      .BottomDetailTextInner {
+        display: flex;
+        padding: 24px 0;
+        .BottomDetailText {
+          width: 40%;
+        }
+        .BottomDetailImg {
+          width: 60%;
+          img {
+            width: 50%;
+          }
+        }
+      }
+    }
+    .ProductDetailBottomRight {
+      .DetailAddbtn {
+        h2 {
+          font-size: 24px;
+          color: #2c3e50;
+          display: flex;
+          &::after {
+            content: "";
+            display: block;
+            border-bottom: 1px dashed #7f8d9e;
+            margin-left: 12px;
+            width: 90%;
+            height: 18.5px;
+            
+          }
+        }
+        .BottomDetailCard {
+          padding: 24px 0;
+          display: flex;
+          flex-wrap: wrap;
+          .codeCard {
+            margin-right: 16px;
+            margin-bottom: 16px;
+          }
+        }
+      }
+    }
   }
 }
 
+// 優惠卷 
 $bg-color: #f8f8f9;
 $orange: #211E55;
 $img-url: "https://gradolabs.com/images/Hero-Desktop-GS3000ePlants.jpg";
@@ -215,38 +276,6 @@ $img-url: "https://gradolabs.com/images/Hero-Desktop-GS3000ePlants.jpg";
       filter: grayscale(100%);
     }
 
-    // .social {
-    //   position: absolute;
-    //   left: 60px;
-    //   top: 0;
-    //   display: -webkit-box;
-    //   display: -ms-flexbox;
-    //   display: flex;
-    //   -ms-flex-pack: distribute;
-    //   justify-content: space-around;
-    //   -webkit-box-align: center;
-    //   -ms-flex-align: center;
-    //   align-items: center;
-    //   width: 180px;
-    //   height: 64px;
-    //   border-radius: 80px;
-    // }
-
-    // .social i:nth-of-type(1) {
-    //   -webkit-transition-delay: 0.4s;
-    //   transition-delay: 0.4s;
-    // }
-
-    // .social i:nth-of-type(2) {
-    //   -webkit-transition-delay: 0.3s;
-    //   transition-delay: 0.3s;
-    // }
-
-    // .social i:nth-of-type(3) {
-    //   -webkit-transition-delay: 0.2s;
-    //   transition-delay: 0.2s;
-    // }
-
     .social i:nth-of-type(4) {
       -webkit-transition-delay: 0.1s;
       transition-delay: 0.1s;
@@ -298,3 +327,11 @@ $img-url: "https://gradolabs.com/images/Hero-Desktop-GS3000ePlants.jpg";
   }
 
 
+/* 版本尺寸 */
+@media screen and (min-width: 1920px){}
+@media (min-width:1366px) and (max-width:1920px){} /* 電腦 */
+@media (min-width:1024px) and (max-width:1365px){} /* 電腦 */
+@media (min-width:768px) and (max-width:1023px){} /* iPad */
+@media (min-width:414px) and (max-width:767px){} /* iPad mini & iphone */
+@media (min-width:374px) and (max-width:413px){} /* iphone */
+@media screen and (max-width: 373px){}/* iphone */

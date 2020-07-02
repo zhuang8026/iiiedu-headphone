@@ -39,14 +39,18 @@ function ProductDetail(props) {
         <ProductCrumb />
       </main>
       <div className="Yybodyin">
-        <ProductDetailLeft detaildata={detaildata}/>
+        <ProductDetailLeft 
+          detaildata={detaildata}
+        />
         <ProductDetailRight 
           detaildata={detaildata}
           userdata={userdata}
         />
       </div>
       <div className="WiDetailBottom">
-        <ProductDetailBottom/>
+        <ProductDetailBottom
+          detaildata={detaildata}
+        />
       </div>
     </Fragment>
   )
