@@ -16,7 +16,7 @@ function Compare(props) {
     //   const{userdata,setUserdata,name,setName}= props.allprops;
     const { itemsdata, setItemsdata, itemsid, setItemsid } = props;
     // const [CompareProductData, setCompareProductData] = useState([])
-    // const [detailitems, setdetailitems] = useState('');
+    const [detailitems, setdetailitems] = useState('');
     const [currentTotalPages, setCurrentTotalPages] = useState();
     const [currentPage, setCurrentPage] = useState(1); 
     const [itemchange, setitemchange] = useState(false); 
@@ -111,7 +111,48 @@ function Compare(props) {
   
     }
     
-
+    const goToDetail = ( id )=> {
+      fetch(`http://localhost:3009/products/detail/${id}`, {
+          method: 'get',
+          headers: new Headers({
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+          })
+      })
+          .then((res)=>{
+              return res.json()
+          })
+          .then((res)=>{
+              // console.log(res)
+              setdetailitems(res)
+          })
+    }
+    
+    // 模糊搜尋
+    const fuzzySearch = ( data )=> {
+      // console.log(data)
+      var params = new URLSearchParams();
+      params.append('getname', data);
+      // console.log(params.toString());
+      // console.log(params.get('getname'));
+      let getname = params.get('getname') || ''
+  
+      fetch(`http://localhost:3009/products/list/${getname}`, {
+          method: 'get',
+          headers: new Headers({
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+          })
+      })
+        .then((res)=>{
+            return res.json()
+        })
+        .then((res)=>{
+            // console.log(res)
+            setItemsdata(res)
+            // setdetailitems(res)
+        })
+    }
   
     let typedata = props.match.params.type;
     useEffect(()=>{
@@ -229,14 +270,15 @@ function Compare(props) {
                             <h4 style={{height: 22 + 'px'}}>{data.itemsstar}</h4>
                             </div>
                             <div className="MyCom_card_button sty-1">
-                                <button className="MyFav_update MyCom_btn_style"
+                                <a className="MyFav_update MyCom_btn_style a-link-style"
                                 id={data.itemId} 
+                                href={`../ProductDetail/${data.itemid}`}
                                 onClick={e =>{
                                 setItemsid(e.target.id)  
-                                // goToDetail(e.target.id)
+                                goToDetail(e.target.id)
                                 // addCsstyle()
-                                props.history.push(`/ProductDetail/${e.target.id}`)
-                                }}>前往細節頁</button>
+                                // props.history.push(`/ProductDetail/${e.target.id}`)
+                                }}>前往細節頁</a>
                                 <button className="MyFav_del MyCom_btn_style"                          
                                 id={data.itemId}
                                 onClick={() => {

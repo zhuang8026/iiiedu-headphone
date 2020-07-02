@@ -103,6 +103,11 @@ main {
           }
           .MyCom_card_button {
             align-items: center;
+            .a-link-style {
+              text-align: center;
+              line-height: 45px;
+              color: #211e55;
+            }
             .MyCom_btn_style {
               width: 128px;
               height: 45px;
@@ -157,6 +162,8 @@ main {
       width: 90%;
       margin: 0 auto;
       padding-top: 170px;
+      overflow: hidden;
+      overflow-x: auto;
     }
   }
 } /* iPad */
@@ -166,6 +173,26 @@ main {
       max-width: 100%;
       margin: 0 auto;
       padding-top: 170px;
+      overflow: hidden;
+      overflow-x: auto;
+      .MyCom_select {
+        // padding: 0 10px;
+        padding-left: 25px;
+        .MyCom_Crumb {
+          display: none;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 375px) {
+  main {
+    .MyCom_container {
+      max-width: 100%;
+      margin: 0 auto;
+      padding-top: 170px;
+      overflow: hidden;
+      overflow-x: auto;
       .MyCom_select {
         // padding: 0 10px;
         padding-left: 25px;
