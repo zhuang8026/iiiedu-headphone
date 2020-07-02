@@ -1,5 +1,5 @@
 @import './variables';
-@import 'swiper/swiper.scss';
+@import '../../../node_modules/swiper/swiper.scss';
 
 /* ============================== 共用 ============================== */
 .blog-d-flex {
@@ -25,6 +25,11 @@
 /* 其他 */
 .blog-standard-spacing {
   height: 90px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  --swiper-navigation-color: #000000;
 }
 
 /* ---------- top ---------- */
@@ -65,38 +70,15 @@
         // border: 3px solid green;
         // background-color: rgba(0, 0, 0, 0);
         .swiper-container {
-          // position: relative;
           width: 100%;
           height: 100%;
-          // margin: 0 auto;
-          // border: 13px solid green;
-
-          // 下面的padding 一定要加 （因为容器多余的部分被隐藏啦）
-          // padding-top: 50px;
-          // padding-bottom: 50px;
-          // .swiper-button-prev {
-          //   transform: translateX(-50px);
-          //   z-index: 50;
-          // }
-          // .swiper-button-next {
-          //   position: absolute;
-          //   transform: translateX(50px);
-          //   z-index: 50;
-          // }
           .swiper-wrapper {
             width: 100%;
             height: 100%;
-            // overflow: hidden;
-            // border: 13px solid green;
-            // margin: 0 auto;
             .swiper-slide {
               width: 100%;
-              // height: 100%;
-              // border: 2px solid blue;
               text-align: center;
               font-size: 18px;
-              // background: rgba(0, 0, 0, 0);
-
               display: -webkit-box;
               display: -ms-flexbox;
               display: -webkit-flex;
@@ -105,13 +87,11 @@
               -ms-flex-pack: center;
               -webkit-justify-content: center;
               justify-content: center;
-
               transition: all 1s;
-
               figure {
                 width: 60%;
                 // height: 100%;
-                overflow: hidden;
+                // overflow: hidden;
                 img {
                   width: 100%;
                   height: 100%;
@@ -120,7 +100,8 @@
               }
             }
             .swiper-slide.swiper-slide-active {
-              transform: scale(1.2);
+              transform: scale(1.6);
+              // transform: var(--swiper-theme-color);
               z-index: 2;
             }
           }
@@ -252,7 +233,6 @@
           padding: 0 20px;
           margin-bottom: 60px;
           .blog-card-in {
-            // position: relative;
             padding-bottom: 10px;
             box-shadow: 3px 5px 10px $border-color-l;
             .blog-card-fig {
@@ -262,6 +242,25 @@
               img {
                 width: 100%;
                 height: 95%;
+              }
+            }
+            .blog-card-btns {
+              line-height: $icon-size-24;
+              figure {
+                width: 32px;
+                height: 32px;
+                border: 1px solid $btn-color-l;
+                text-align: center;
+                background: $bg-c;
+                margin: 0 10px;
+                padding: 0;
+                img {
+                  width: 80%;
+                  height: 80%;
+                }
+              }
+              figure:hover {
+                cursor: pointer;
               }
             }
             .blog-card-title {
@@ -279,7 +278,6 @@
                 margin: 10px auto;
               }
             }
-
             .blog-card-content {
               width: 90%;
               margin: 0 auto;

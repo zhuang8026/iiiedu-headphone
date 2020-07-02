@@ -18,6 +18,7 @@ import Swiper from 'react-id-swiper';
 // -------------------- components --------------------
 
 // -------------------- scss --------------------
+
 // import '../../../assets/scss/blog_standard.scss'
 
 // -------------------- imgs --------------------
@@ -37,8 +38,10 @@ function BlogMainStandardSlide(props) {
         // spaceBetween: 30,
         slidesPerGroup: 1,
         loop: true,
-
-
+        autoplay:true,
+        delay:2000,
+        disableOnInteraction:false,
+        
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',

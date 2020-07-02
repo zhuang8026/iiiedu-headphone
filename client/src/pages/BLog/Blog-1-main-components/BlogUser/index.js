@@ -31,6 +31,7 @@ import '../../../../assets/scss/blog_user.scss'
 function BlogUser(props) {
   const { userdata, setUserdata, name, setName } = props.allprops;
   return (
+    <Fragment>
     <>
       <div className="blog-user-spacing"></div>
       <div className="wrap-top">
@@ -69,6 +70,7 @@ function BlogUser(props) {
       </div>
       <div className="blog-user-spacing"></div>
     </>
+    </Fragment>
   )
 }
 export default withRouter(BlogUser)

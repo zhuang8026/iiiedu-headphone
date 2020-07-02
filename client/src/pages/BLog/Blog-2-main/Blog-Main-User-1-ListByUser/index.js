@@ -231,8 +231,8 @@ function BlogMainUserListByUser(props) {
                                             }}></img>
                                     </figure>
                                 </div>
-                                <div className="blog-card-title">{data.blogTitle}</div>
-                                <div className="blog-card-content">{data.blogContent01}</div>
+                                <div className="blog-card-title"><p>{data.blogTitle}</p></div>
+                                <div className="blog-card-content"><p>{data.blogContent01}</p></div>
                                 <div className="blog-card-calendar">
                                     <div className="blog-card-calendar-in">
                                         <h2><Moment format="DD">{data.blogPublishDate}</Moment></h2>
