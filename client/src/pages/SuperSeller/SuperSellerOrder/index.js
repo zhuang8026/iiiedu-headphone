@@ -8,11 +8,12 @@ import '../../../assets/scss/SuperSellerOrder.scss'
 function SuperSellerOrder(props) {
     const key = 'updatable';
     const {userdata, setUserdata} = props.allprops;
+    const user = localStorage.getItem('memberData');
     const [SellerOrderData, setSellerOrderData] = useState([]) 
-    console.log('userdata',userdata)
-    console.log('SellerOrderData',SellerOrderData)
+    // console.log('userdata',userdata)
+    // console.log('SellerOrderData',SellerOrderData)
 
-      useEffect(()=>{
+    useEffect(()=>{
         fetch("http://localhost:3009/superseller/listSellerUserOrder",{
             method: 'post',
             body:JSON.stringify({
@@ -44,7 +45,7 @@ function SuperSellerOrder(props) {
                     <div className="SellerOrderInner">
                         {/* table */}
                         <div className="SellerOrderInner">
-                        <table class="sellerTable" cellSpacing="1">
+                        <table className="sellerTable" cellSpacing="1">
                             <thead>
                                 <tr>
                                     <th>訂單編號</th>

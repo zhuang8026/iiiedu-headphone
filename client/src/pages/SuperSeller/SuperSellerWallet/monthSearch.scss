@@ -1,0 +1,48 @@
+.sellerTableNothing {
+    width: 100%;
+    text-align: center;
+    padding: 16px 0;
+}
+.selllerTotal {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-right: 16px;
+    margin-top: 16px;
+    select#mounth {
+        width: 120px;
+        text-align-last: center;
+        border: 1px solid #d3d3d3;
+    }
+    select#year {
+        width: 120px;
+        text-align-last: center;
+        border: 1px solid #d3d3d3;
+        margin-right: 6px;
+    }
+
+    .selllerTotalAdd {
+        line-height: 30px;
+        #selllertext {
+
+        }
+        #selllerPrice {
+            font-weight: bold;
+            font-size: 36px;
+        }
+    }
+    .selllerButton {
+        margin: 0 6px;
+        padding: 0 6px;
+        background: transparent;
+        border: 1px solid #d3d3d3;
+        font-size: 14px;
+        transition: 0.3s ease-in;
+        &:hover {
+            border: 1px solid transparent;
+            background: #211e55;
+            color: #fff;
+        }
+    }
+}

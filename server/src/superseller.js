@@ -159,20 +159,23 @@ router.get('/listAllSellerOrder/:page?', async (req, res) => {
 router.post("/listSellerUserOrder", upload.none(), (req, res) => {
     // console.log('========== react(get) -> (個人)所有訂單 ==========') 
     let id = req.body.id;
-    let sql = `SELECT * FROM orders AS t1 
-    JOIN (SELECT users.id,users.username,users.name FROM users WHERE users.isActivated=1 AND users.shopopen=1 AND users.id = ?) AS t2 
-    ON t1.username=t2.username 
-    JOIN (SELECT payment_types.paymentTypeId,payment_types.paymentTypeName FROM payment_types)AS t3 
-    ON t3.paymentTypeId = t1.paymentTypeId
-    JOIN (SELECT * FROM items) AS t4
-    on t4.itemId = t1.itemsId`;
-    let output = []
-    db.query(sql, [id])
+    let username = req.body.username;
+    let sql =  `SELECT * FROM orders AS t1 
+                JOIN (SELECT users.id, users.username, users.name FROM users WHERE users.isActivated=1 AND users.shopopen=1 AND users.id = ?) AS t2 
+                ON t1.userId=t2.id 
+                JOIN (SELECT payment_types.paymentTypeId, payment_types.paymentTypeName FROM payment_types)AS t3 
+                ON t3.paymentTypeId = t1.deliveryState
+                JOIN (SELECT * FROM items) AS t4
+                on t4.itemId = t1.userId`;
+    // let output = []
+    db.query(sql, [id, username])
         .then(results => {
-            // console.log(results[0])
+            console.log(results[0])
             // output.results = results;
+            for(let i of results[0]){
+                i.created_at = moment(i.created_at).format('YYYY-MM-DD');
+            }
             res.json(results[0])
-            // return db.query(sql);
         })
 });
 
