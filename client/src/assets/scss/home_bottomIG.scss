@@ -55,9 +55,55 @@
 
 /* 版本尺寸 */
 @media screen and (min-width: 1920px){}
-@media (min-width:1366px) and (max-width:1920px){} /* 電腦 */
-@media (min-width:1024px) and (max-width:1365px){} /* 電腦 */
-@media (min-width:768px) and (max-width:1023px){} /* iPad */
-@media (min-width:414px) and (max-width:767px){} /* iPad mini & iphone */
-@media (min-width:374px) and (max-width:413px){} /* iphone */
-@media screen and (max-width: 373px){}/* iphone */
+@media (min-width:1366px) and (max-width:1920px){
+
+} /* 電腦 */
+@media (min-width:1024px) and (max-width:1365px){
+    .ig_inner_all {
+        width: 90%;
+    }
+} /* 電腦 */
+@media (min-width:768px) and (max-width:1023px){
+    .ig_inner_all .ig ul {
+        flex-wrap: wrap;
+    }
+    .ig_inner_all {
+        width: 90%;
+    }
+    .ig_inner_all .ig ul li {
+        width: 50%;
+    }
+} /* iPad */
+@media (min-width:414px) and (max-width:767px){
+    .ig_inner_all .ig ul {
+        flex-wrap: wrap;
+    }
+    .ig_inner_all {
+        width: 95%;
+    }
+    .ig_inner_all .ig ul li {
+        width: 50%;
+    }
+} /* iPad mini & iphone */
+@media (min-width:374px) and (max-width:413px){
+    .ig_inner_all .ig ul {
+        flex-wrap: wrap;
+    }
+    .ig_inner_all {
+        width: 95%;
+    }
+    .ig_inner_all .ig ul li {
+        width: 50%;
+    }
+} /* iphone */
+@media screen and (max-width: 373px){
+    .ig_inner_all .ig ul {
+        flex-wrap: wrap;
+    }
+    .ig_inner_all {
+        width: 95%;
+    }
+    .ig_inner_all .ig ul li {
+        width: 50%;
+    }
+}/* iphone */

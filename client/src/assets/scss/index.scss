@@ -28,6 +28,7 @@
 @import './home_mostPopular.scss';
 @import './home_bottomIG.scss';
 @import './home_store.sass';
+@import './home_store_rwd.scss';
 // 關於我們
 @import './Aboutus.scss';
 // 禮物卡
@@ -57,8 +58,13 @@
 // Product細細節頁
 @import './Product_Detail.scss';
 
-// Cart
-@import './cart_table.scss';
+// Cart購物流程
+@import './cart/index.scss'; //購物流程共用
+@import './cart/MyCart.scss'; //購物車頁面
+@import './cart/CheckoutInfo.scss'; //收件個人資料
+@import './cart/CheckoutDelivery.scss'; //選擇配送方法
+@import './cart/CheckoutPayment.scss'; //選擇付款方法
+@import './cart/OrderComplete.scss'; //購物完成
 
 // BLog
 

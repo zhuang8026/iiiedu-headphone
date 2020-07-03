@@ -1,4 +1,5 @@
 @import './variables';
+@import '../../../node_modules/swiper/swiper.scss';
 
 /* ============================== 共用 ============================== */
 .blog-d-flex {
@@ -26,13 +27,18 @@
   height: 90px;
 }
 
+.swiper-button-prev,
+.swiper-button-next {
+  --swiper-navigation-color: #000000;
+}
+
 /* ---------- top ---------- */
 .wrap-top {
   width: 100%;
   .carouselWall-blog {
     margin-left: 50px;
     margin-right: 50px;
-    border: 3px solid red;
+    // border: 3px solid red;
     .imageWall-blog {
       width: 100%;
       height: 100%;
@@ -40,6 +46,7 @@
       .wallFig {
         width: 100%;
         height: 100%;
+        margin: 0;
         img {
           width: 100%;
           height: 100%;
@@ -48,29 +55,69 @@
     }
     .slideWall {
       width: 100%;
-      height: 350px;
-      background-image: url(../img/blog-img/blog-standard/points.png);
-      background-size: 200px;
-      opacity: 0.3;
-
+      height: 300px;
+      background-image: url(../img/blog-img/blog-standard/slider-background.png);
+      background-repeat: no-repeat;
+      // background-size: 250px;
+      // background-color: rgba(200, 200, 200, 0.1);
+      // opacity: 0.3;
+      // border: 2px solid black;
       .slides {
-        width: 88%;
-        margin: 0 auto;
+        width: 100%;
+        // margin: 0 auto;
         height: 100%;
+        transform: translateY(-30%);
         // border: 1px solid red;
-        overflow: hidden;
+        // overflow: hidden;
+        // border: 3px solid green;
         // background-color: rgba(0, 0, 0, 0);
-
-        .slide-images {
-          opacity: 1;
+        .swiper-container {
+          width: 100%;
+          height: 100%;
+          .swiper-wrapper {
+            width: 100%;
+            height: 100%;
+            .swiper-slide {
+              width: 100%;
+              text-align: center;
+              font-size: 18px;
+              display: -webkit-box;
+              display: -ms-flexbox;
+              display: -webkit-flex;
+              display: flex;
+              -webkit-box-pack: center;
+              -ms-flex-pack: center;
+              -webkit-justify-content: center;
+              justify-content: center;
+              transition: all 1s;
+              figure {
+                width: 60%;
+                // height: 100%;
+                // overflow: hidden;
+                img {
+                  width: 100%;
+                  height: 100%;
+                  // border: 2px solid red;
+                }
+              }
+            }
+            .swiper-slide.swiper-slide-active {
+              transform: scale(1.6);
+              // transform: var(--swiper-theme-color);
+              z-index: 2;
+            }
+          }
         }
+        // .slide-images {
+        //   opacity: 1;
+        // }
       }
     }
   }
   .blog-crumb {
-    width: 100%;
+    width: 90%;
     height: 90px;
-    margin-left: 5%;
+    margin: 0 auto;
     h5 {
       font-size: $font-size-16;
       line-height: 90px;
@@ -122,7 +169,7 @@
             font-size: $font-size-24;
             font-weight: $font-w;
             color: $btn-color-r;
-            background: $bg-c;
+            background: $bg-theme;
           }
           .blog-btns-left-Link:hover {
             cursor: pointer;
@@ -188,7 +235,6 @@
           padding: 0 20px;
           margin-bottom: 60px;
           .blog-card-in {
-            // position: relative;
             padding-bottom: 10px;
             box-shadow: 3px 5px 10px $border-color-l;
             .blog-card-fig {
@@ -198,6 +244,25 @@
               img {
                 width: 100%;
                 height: 95%;
+              }
+            }
+            .blog-card-btns {
+              line-height: $icon-size-24;
+              figure {
+                width: 32px;
+                height: 32px;
+                border: 1px solid $btn-color-l;
+                text-align: center;
+                background: $bg-c;
+                margin: 0 10px;
+                padding: 0;
+                img {
+                  width: 80%;
+                  height: 80%;
+                }
+              }
+              figure:hover {
+                cursor: pointer;
               }
             }
             .blog-card-title {
@@ -215,7 +280,6 @@
                 margin: 10px auto;
               }
             }
-
             .blog-card-content {
               width: 90%;
               margin: 0 auto;
@@ -329,6 +393,10 @@
             text-decoration: none;
             color: #fff;
           }
+          .activepage {
+            background: #211e55;
+            color: #fff;
+          }
         }
         // .pages,
         // .mores,
@@ -423,7 +491,7 @@
         margin: 20px 0 0 10%;
         text-align: center;
         align-content: center;
-        .user-icon > h2 {
+        h2 {
           font-size: $font-size-16;
           margin: 20px auto;
         }

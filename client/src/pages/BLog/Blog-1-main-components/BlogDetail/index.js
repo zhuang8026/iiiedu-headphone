@@ -24,7 +24,7 @@ import BlogMainDetailLike from '../../Blog-2-main/Blog-Main-Detail-2-Like'
 import BlogMainDetailComments from '../../Blog-2-main/Blog-Main-Detail-3-Comments'
 // 引入Aside
 import BlogAsidePhoto from '../../Blog-2-Aside/Blog-Aside-1-Photo'
-import BlogAsideCommunity from '../../Blog-2-Aside/Blog-Aside-2-Community'
+import BlogAsideCommunity_2 from '../../Blog-2-Aside/Blog-Aside-2-2-Community'
 import BlogAsideSubscribe from '../../Blog-2-Aside/Blog-Aside-3-subscribe'
 import BlogAsideRecent from '../../Blog-2-Aside/Blog-Aside-4-Recent'
 
@@ -75,7 +75,9 @@ function BlogDetail(props) {
                     </div>
                     <div className="blog-detail-aside">
                         <BlogAsidePhoto />
-                        <BlogAsideCommunity />
+                        <BlogAsideCommunity_2 
+                            userdata={userdata}
+                        />
                         <BlogAsideSubscribe />
                         <BlogAsideRecent />
                     </div>

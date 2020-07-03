@@ -130,3 +130,100 @@ figure.popular_inner:hover figcaption::before {
     -webkit-transition-delay: 0s;
     transition-delay: 0s;
 }
+
+/* 版本尺寸 */
+@media screen and (min-width: 1920px){}
+@media (min-width:1366px) and (max-width:1920px){} /* 電腦 */
+@media (min-width:1024px) and (max-width:1365px){} /* 電腦 */
+@media (min-width:768px) and (max-width:1023px){
+    figure.popular_inner {
+        width: 50%;
+    }
+} /* iPad */
+@media (min-width:414px) and (max-width:767px){
+    figure.popular_inner {
+        width: 50%;
+    }
+    figure.popular_inner h2 {
+        font-size: 20px;
+    }
+    figure.popular_inner p {
+        font-size: 14px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+    figure.popular_inner figcaption {
+        padding: 25px 30px;
+    }
+    figure.popular_inner:hover figcaption p .wi_button{
+        display: none;
+    }
+    figure.popular_inner:hover figcaption::before {
+        top: 30px;
+        bottom: 30px;
+        left: 20px;
+    }
+    figure.popular_inner:hover figcaption h2 {
+        margin-top: 0;
+    }
+} /* iPad mini & iphone */
+@media (min-width:374px) and (max-width:413px){
+    figure.popular_inner {
+        width: 50%;
+    }
+    figure.popular_inner h2 {
+        font-size: 20px;
+    }
+    figure.popular_inner p {
+        font-size: 14px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+    figure.popular_inner figcaption {
+        padding: 25px 30px;
+    }
+    figure.popular_inner:hover figcaption p .wi_button{
+        display: none;
+    }
+    figure.popular_inner:hover figcaption::before {
+        top: 30px;
+        bottom: 30px;
+        left: 20px;
+    }
+    figure.popular_inner:hover figcaption h2 {
+        margin-top: 0;
+    }
+} /* iphone */
+@media screen and (max-width: 373px){
+    figure.popular_inner {
+        width: 50%;
+    }
+    figure.popular_inner h2 {
+        font-size: 20px;
+    }
+    figure.popular_inner p {
+        font-size: 14px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+    figure.popular_inner figcaption {
+        padding: 25px 30px;
+    }
+    figure.popular_inner:hover figcaption p .wi_button{
+        display: none;
+    }
+    figure.popular_inner:hover figcaption::before {
+        top: 30px;
+        bottom: 30px;
+        left: 20px;
+    }
+    figure.popular_inner:hover figcaption h2 {
+        margin-top: 0;
+    }
+}/* iphone */

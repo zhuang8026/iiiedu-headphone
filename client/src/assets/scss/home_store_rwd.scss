@@ -1,0 +1,59 @@
+/* 版本尺寸 */
+@media screen and (min-width: 1920px){}
+@media (min-width:1366px) and (max-width:1920px){} /* 電腦 */
+@media (min-width:1024px) and (max-width:1365px){
+    .store_all {
+        width: 90%;
+    }
+    .store_front .store_img {
+        height: auto;
+    }
+} /* 電腦 */
+
+@media (min-width:768px) and (max-width:1023px){
+    .store_all {
+        width: 95%;
+    }
+    .store_inner {
+        flex-wrap: wrap;
+    }
+    .cardContainer {
+        width: 48%;
+    }
+} /* iPad */
+
+@media (min-width:414px) and (max-width:767px){
+    .store_all {
+        width: 95%;
+    }
+    .store_inner {
+        flex-wrap: wrap;
+    }
+    .cardContainer {
+        width: 100%;
+    }
+} /* iPad mini & iphone */
+
+@media (min-width:374px) and (max-width:413px){
+    .store_all {
+        width: 95%;
+    }
+    .store_inner {
+        flex-wrap: wrap;
+    }
+    .cardContainer {
+        width: 100%;
+    }
+} /* iphone */
+
+@media screen and (max-width: 373px){
+    .store_all {
+        width: 95%;
+    }
+    .store_inner {
+        flex-wrap: wrap;
+    }
+    .cardContainer {
+        width: 100%;
+    }
+}/* iphone */

@@ -12,6 +12,7 @@ import 'swiper/css/swiper.css';
 // import './_swiperImg.scss';
 
 import {SwiperImg} from './config.js';
+import {SwiperImgMobile} from './config.js';
 
 // components
 import LInkButton from '../../../components/LInkButton';
@@ -51,67 +52,132 @@ const HomeSlider = () => {
         }
     }
     return (
-        <Swiper {...params}>
-            { SwiperImg.map((data, index)=>{
-                return (
-                    <div className="swiper_data" key={index}>
-                        <div className="swiper_card">
-                            <div 
-                                className="swiper_items"
-                                data-swiper-animation="animate__fadeInRight" 
-                                data-duration=".3s" 
-                                data-delay=".3s"
-                            >
-                                <div 
-                                    className="swiper_items_inner"
-                                    data-swiper-animation="animate__zoomIn" 
-                                    data-duration=".5s" 
-                                    data-delay=".5s" 
-                                    // data-swiper-out-animation="animate__fadeOut"
-                                    // data-out-duration=".2s"
-                                >
-                                    <Link to={data.itemslinkUrl}>
-                                        <img type="image" src={data.itemsUrl} className="swiper-lazy" alt="image"/>
-                                        <div className="items_inner_text">
-                                            <h2>{data.itemsName}</h2>
-                                            <p>{data.itemsText}</p>
-                                            <p>$. {data.itemsPrice} NT</p>
-                                        </div>
-                                        <span className="swiper_more">
-                                            MORE<i className="iconfont icon-right_2"></i>
-                                        </span>
-                                    </Link>
-                                </div>
-                            </div>
-                            <div 
-                                className="swiper_items_title"
-                                data-swiper-animation="animate__fadeInLeft" 
-                                data-duration=".6s" 
-                                data-delay=".6s"
-                            >
-                                <ul>
-                                    <li className="items_card_right">
-                                        <h1>{data.h1text}</h1>
-                                        <p>{data.ptext}</p>
-                                    </li>
-                                    <li 
-                                        data-swiper-animation="animate__fadeInUp" 
-                                        data-duration="1s" 
-                                        data-delay="1s"
+        <>
+            <div className="SwiperPc">
+                <Swiper {...params}>
+                    { SwiperImg.map((data, index)=>{
+                        return (
+                            <div className="swiper_data" key={index}>
+                                <div className="swiper_card">
+                                    <div 
+                                        className="swiper_items"
+                                        data-swiper-animation="animate__fadeInRight" 
+                                        data-duration=".3s" 
+                                        data-delay=".3s"
                                     >
-                                        <LInkButton 
-                                            linkUrl= {data.itemslinkUrl}
-                                        />
-                                    </li>
-                                </ul>
+                                        <div 
+                                            className="swiper_items_inner"
+                                            data-swiper-animation="animate__zoomIn" 
+                                            data-duration=".5s" 
+                                            data-delay=".5s" 
+                                            // data-swiper-out-animation="animate__fadeOut"
+                                            // data-out-duration=".2s"
+                                        >
+                                            <Link to={data.itemslinkUrl}>
+                                                <img type="image" src={data.itemsUrl} className="swiper-lazy" alt="image"/>
+                                                <div className="items_inner_text">
+                                                    <h2>{data.itemsName}</h2>
+                                                    <p>{data.itemsText}</p>
+                                                    <p>$. {data.itemsPrice} NT</p>
+                                                </div>
+                                                <span className="swiper_more">
+                                                    MORE<i className="iconfont icon-right_2"></i>
+                                                </span>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                    <div 
+                                        className="swiper_items_title"
+                                        data-swiper-animation="animate__fadeInLeft" 
+                                        data-duration=".6s" 
+                                        data-delay=".6s"
+                                    >
+                                        <ul>
+                                            <li className="items_card_right">
+                                                <h1>{data.h1text}</h1>
+                                                <p>{data.ptext}</p>
+                                            </li>
+                                            <li 
+                                                data-swiper-animation="animate__fadeInUp" 
+                                                data-duration="1s" 
+                                                data-delay="1s"
+                                            >
+                                                <LInkButton 
+                                                    linkUrl= {data.itemslinkUrl}
+                                                />
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <img src={data.picUrl} className="swiper-lazy" alt="background image"/>
                             </div>
-                        </div>
-                        <img src={data.picUrl} className="swiper-lazy" alt="background image"/>
-                    </div>
-                )
-            }) }
-        </Swiper>
-    
+                        )
+                    }) }
+                </Swiper>
+            </div>
+            <div className="SwiperMobile">
+                <Swiper {...params}>
+                    { SwiperImgMobile.map((data, index)=>{
+                        return (
+                            <div className="swiper_data" key={index}>
+                                <div className="swiper_card">
+                                    <div 
+                                        className="swiper_items"
+                                        data-swiper-animation="animate__fadeInRight" 
+                                        data-duration=".3s" 
+                                        data-delay=".3s"
+                                    >
+                                        <div 
+                                            className="swiper_items_inner"
+                                            data-swiper-animation="animate__zoomIn" 
+                                            data-duration=".5s" 
+                                            data-delay=".5s" 
+                                            // data-swiper-out-animation="animate__fadeOut"
+                                            // data-out-duration=".2s"
+                                        >
+                                            <Link to={data.itemslinkUrl}>
+                                                <img type="image" src={data.itemsUrl} className="swiper-lazy" alt="image"/>
+                                                <div className="items_inner_text">
+                                                    <h2>{data.itemsName}</h2>
+                                                    <p>{data.itemsText}</p>
+                                                    <p>$. {data.itemsPrice} NT</p>
+                                                </div>
+                                                <span className="swiper_more">
+                                                    MORE<i className="iconfont icon-right_2"></i>
+                                                </span>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                    <div 
+                                        className="swiper_items_title"
+                                        data-swiper-animation="animate__fadeInLeft" 
+                                        data-duration=".6s" 
+                                        data-delay=".6s"
+                                    >
+                                        <ul>
+                                            <li className="items_card_right">
+                                                <h1>{data.h1text}</h1>
+                                                <p>{data.ptext}</p>
+                                            </li>
+                                            <li 
+                                                data-swiper-animation="animate__fadeInUp" 
+                                                data-duration="1s" 
+                                                data-delay="1s"
+                                            >
+                                                <LInkButton 
+                                                    linkUrl= {data.itemslinkUrl}
+                                                />
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <img src={data.picUrl} className="swiper-lazy" alt="background image"/>
+                            </div>
+                        )
+                    }) }
+                </Swiper>
+            </div>
+        </>
     )
 };
 export default HomeSlider;

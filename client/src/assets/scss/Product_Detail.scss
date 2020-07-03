@@ -6,7 +6,7 @@
 
   // 左邊欄位
   .YyDetailleft {
-    width: 60%;
+    width: 50%;
     .DetailImg {
       .swiper-container .swiper-wrapper {
         height: 100%;
@@ -20,7 +20,7 @@
 
   // 右邊欄位
   .YyDetailRight {
-    width: 40%;
+    width: 50%;
     .DetailContent {
       margin-left: 32px;
       .DetailName {
@@ -35,9 +35,13 @@
       }
       .DetailText {
         font-size: 14px;
+        display: flex;
         span {
           display: inline-block;
           width: 70px;
+        }
+        .DetailTextSapn {
+          width: 80%;
         }
       }
     }
@@ -119,11 +123,68 @@
 .WiDetailBottom {
   width: 80%;
   margin: 0 auto;
+  margin-top: 48px;
   .ProductDetailBottom {
-
+    .ProductDetailBottomLeft {
+      h2 {
+        font-size: 24px;
+        color: #2c3e50;
+        display: flex;
+        &::after {
+          content: "";
+          display: block;
+          border-bottom: 1px dashed #7f8d9e;
+          margin-left: 12px;
+          width: 90%;
+          height: 18.5px;
+          
+        }
+      }
+      .BottomDetailTextInner {
+        display: flex;
+        padding: 24px 0;
+        .BottomDetailText {
+          width: 40%;
+        }
+        .BottomDetailImg {
+          width: 60%;
+          img {
+            width: 50%;
+          }
+        }
+      }
+    }
+    .ProductDetailBottomRight {
+      .DetailAddbtn {
+        h2 {
+          font-size: 24px;
+          color: #2c3e50;
+          display: flex;
+          &::after {
+            content: "";
+            display: block;
+            border-bottom: 1px dashed #7f8d9e;
+            margin-left: 12px;
+            width: 90%;
+            height: 18.5px;
+            
+          }
+        }
+        .BottomDetailCard {
+          padding: 24px 0;
+          display: flex;
+          flex-wrap: wrap;
+          .codeCard {
+            margin-right: 16px;
+            margin-bottom: 16px;
+          }
+        }
+      }
+    }
   }
 }
 
+// 優惠卷 
 $bg-color: #f8f8f9;
 $orange: #211E55;
 $img-url: "https://gradolabs.com/images/Hero-Desktop-GS3000ePlants.jpg";
@@ -138,7 +199,7 @@ $img-url: "https://gradolabs.com/images/Hero-Desktop-GS3000ePlants.jpg";
     cursor: pointer;
     &:before {
       content: "";
-      z-index: 99;
+      z-index: 9;
       position: absolute;
       top: -10px;
       left: 32px;
@@ -150,7 +211,7 @@ $img-url: "https://gradolabs.com/images/Hero-Desktop-GS3000ePlants.jpg";
     }
     &:after {
       content: "";
-      z-index: 99;
+      z-index: 9;
       position: absolute;
       bottom: -10px;
       left: 32px;
@@ -161,7 +222,7 @@ $img-url: "https://gradolabs.com/images/Hero-Desktop-GS3000ePlants.jpg";
       background-color: $bg-color;
     }
     ul {
-      z-index: 99;
+      z-index: 9;
       position: absolute;
       left: 39px;
       top: 5px;
@@ -175,7 +236,7 @@ $img-url: "https://gradolabs.com/images/Hero-Desktop-GS3000ePlants.jpg";
       }
     }
     .h2 {
-      z-index: 99;
+      z-index: 9;
       font-family: "Poppins", sans-serif;
       position: absolute;
       bottom: 0;
@@ -194,7 +255,7 @@ $img-url: "https://gradolabs.com/images/Hero-Desktop-GS3000ePlants.jpg";
       font-size: 40px;
     }
     p {
-      z-index: 99;
+      z-index: 9;
       position: absolute;
       top: 20px;
       right: 70px;
@@ -214,38 +275,6 @@ $img-url: "https://gradolabs.com/images/Hero-Desktop-GS3000ePlants.jpg";
       background-size: 100% 100%;
       filter: grayscale(100%);
     }
-
-    // .social {
-    //   position: absolute;
-    //   left: 60px;
-    //   top: 0;
-    //   display: -webkit-box;
-    //   display: -ms-flexbox;
-    //   display: flex;
-    //   -ms-flex-pack: distribute;
-    //   justify-content: space-around;
-    //   -webkit-box-align: center;
-    //   -ms-flex-align: center;
-    //   align-items: center;
-    //   width: 180px;
-    //   height: 64px;
-    //   border-radius: 80px;
-    // }
-
-    // .social i:nth-of-type(1) {
-    //   -webkit-transition-delay: 0.4s;
-    //   transition-delay: 0.4s;
-    // }
-
-    // .social i:nth-of-type(2) {
-    //   -webkit-transition-delay: 0.3s;
-    //   transition-delay: 0.3s;
-    // }
-
-    // .social i:nth-of-type(3) {
-    //   -webkit-transition-delay: 0.2s;
-    //   transition-delay: 0.2s;
-    // }
 
     .social i:nth-of-type(4) {
       -webkit-transition-delay: 0.1s;
@@ -298,3 +327,264 @@ $img-url: "https://gradolabs.com/images/Hero-Desktop-GS3000ePlants.jpg";
   }
 
 
+/* 版本尺寸 */
+@media screen and (min-width: 1920px){}
+@media (min-width:1366px) and (max-width:1920px){} /* 電腦 */
+@media (min-width:1024px) and (max-width:1365px){
+  .Yybodyin .YyDetailRight .DetailContent {
+    margin-left: 24px;
+  }
+  .Yybodyin .YyDetailRight .DetailButton {
+    margin-left: 24px;
+    margin-top: 24px;
+  }
+  .WiDetailBottom {
+    width: 90%;
+  }
+  .Yybodyin .YyDetailRight .DetailButton .DetailButtonInner .DetailButtonGroup .DetailButtonAdd {
+    width: 130px;
+  }
+  .Yybodyin .YyDetailRight .DetailButton .DetailButtonInner .DetailAddbtn .addbtn {
+    width: 130px;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomLeft h2::after {
+    width: 87%;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomRight .DetailAddbtn h2::after {
+    width: 87%;
+  }
+} /* 電腦 */
+@media (min-width:768px) and (max-width:1023px){
+  .Yybodyin .YyDetailRight .DetailContent {
+    margin-left: 20px;
+  }
+  .Yybodyin .YyDetailRight .DetailButton {
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+  .WiDetailBottom {
+    width: 95%;
+  }
+  .Yybodyin .YyDetailRight .DetailContent .DetailText span {
+    width: 40px;
+  }
+  .Yybodyin .YyDetailRight .DetailButton .DetailButtonInner .DetailButtonGroup .DetailButtonAdd {
+    width: 100px;
+  }
+  .Yybodyin .YyDetailRight .DetailButton .DetailButtonInner .DetailAddbtn .addbtn {
+    width: 100px;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomLeft h2::after {
+    width: 84%;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomRight .DetailAddbtn h2::after {
+    width: 84%;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomLeft .BottomDetailTextInner .BottomDetailText {
+    width: 35%;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomLeft .BottomDetailTextInner .BottomDetailImg {
+    width: 65%;
+  }
+} /* iPad */
+@media (min-width:414px) and (max-width:767px){
+  .Yybodyin .YyDetailleft {
+    width: 100%;
+  }
+  .Yybodyin .YyDetailRight {
+    width: 100%;
+  }
+  .Yybodyin .YyDetailRight .DetailContent {
+    width: 95%;
+    margin: 0 auto;
+  }
+  .Yybodyin .YyDetailRight .DetailButton {
+    width: 95%;
+    margin: 0 auto;
+  }
+  .WiDetailBottom {
+    width: 95%;
+  }
+  .Yybodyin .YyDetailRight .DetailContent .DetailText span {
+    width: 40px;
+  }
+  .Yybodyin .YyDetailRight .DetailButton .DetailButtonInner .DetailButtonGroup .DetailButtonAdd {
+    width: 100px;
+  }
+  .Yybodyin .YyDetailRight .DetailButton .DetailButtonInner .DetailAddbtn {
+    padding-top: 24px;
+  }
+  .Yybodyin .YyDetailRight .DetailButton .DetailButtonInner .DetailAddbtn .addbtn {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 12px;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomLeft .BottomDetailTextInner {
+    flex-wrap: wrap;
+    padding: 0;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomLeft h2::after {
+    width: 70%;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomRight .DetailAddbtn h2::after {
+    width: 70%;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomLeft .BottomDetailTextInner .BottomDetailText {
+    width: 100%;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomLeft .BottomDetailTextInner .BottomDetailImg {
+    width: 100%;
+    padding: 12px 0;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomLeft .BottomDetailTextInner .BottomDetailImg img {
+    width: 100%;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomRight {
+    margin-top: 48px;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomRight .DetailAddbtn .BottomDetailCard {
+    padding: 0;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomRight .DetailAddbtn .BottomDetailCard .codeCard {
+    margin: 0 auto;
+    margin-bottom: 16px;
+    width: 100%;
+  }
+  .card {
+    width: 100%;
+  }
+} /* iPad mini & iphone */
+@media (min-width:374px) and (max-width:413px){
+  .Yybodyin .YyDetailleft {
+    width: 100%;
+  }
+  .Yybodyin .YyDetailRight {
+    width: 100%;
+  }
+  .Yybodyin .YyDetailRight .DetailContent {
+    width: 95%;
+    margin: 0 auto;
+  }
+  .Yybodyin .YyDetailRight .DetailButton {
+    width: 95%;
+    margin: 0 auto;
+  }
+  .WiDetailBottom {
+    width: 95%;
+  }
+  .Yybodyin .YyDetailRight .DetailContent .DetailText span {
+    width: 40px;
+  }
+  .Yybodyin .YyDetailRight .DetailButton .DetailButtonInner .DetailButtonGroup .DetailButtonAdd {
+    width: 100px;
+  }
+  .Yybodyin .YyDetailRight .DetailButton .DetailButtonInner .DetailAddbtn {
+    padding-top: 24px;
+  }
+  .Yybodyin .YyDetailRight .DetailButton .DetailButtonInner .DetailAddbtn .addbtn {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 12px;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomLeft .BottomDetailTextInner {
+    flex-wrap: wrap;
+    padding: 0;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomLeft h2::after {
+    width: 70%;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomRight .DetailAddbtn h2::after {
+    width: 70%;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomLeft .BottomDetailTextInner .BottomDetailText {
+    width: 100%;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomLeft .BottomDetailTextInner .BottomDetailImg {
+    width: 100%;
+    padding: 12px 0;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomLeft .BottomDetailTextInner .BottomDetailImg img {
+    width: 100%;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomRight {
+    margin-top: 48px;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomRight .DetailAddbtn .BottomDetailCard {
+    padding: 0;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomRight .DetailAddbtn .BottomDetailCard .codeCard {
+    margin: 0 auto;
+    margin-bottom: 16px;
+    width: 100%;
+  }
+  .card {
+    width: 100%;
+  }
+} /* iphone */
+@media screen and (max-width: 373px){
+  .Yybodyin .YyDetailleft {
+    width: 100%;
+  }
+  .Yybodyin .YyDetailRight {
+    width: 100%;
+  }
+  .Yybodyin .YyDetailRight .DetailContent {
+    width: 95%;
+    margin: 0 auto;
+  }
+  .Yybodyin .YyDetailRight .DetailButton {
+    width: 95%;
+    margin: 0 auto;
+  }
+  .WiDetailBottom {
+    width: 95%;
+  }
+  .Yybodyin .YyDetailRight .DetailContent .DetailText span {
+    width: 40px;
+  }
+  .Yybodyin .YyDetailRight .DetailButton .DetailButtonInner .DetailButtonGroup .DetailButtonAdd {
+    width: 100px;
+  }
+  .Yybodyin .YyDetailRight .DetailButton .DetailButtonInner .DetailAddbtn {
+    padding-top: 24px;
+  }
+  .Yybodyin .YyDetailRight .DetailButton .DetailButtonInner .DetailAddbtn .addbtn {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 12px;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomLeft .BottomDetailTextInner {
+    flex-wrap: wrap;
+    padding: 0;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomLeft h2::after {
+    width: 70%;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomRight .DetailAddbtn h2::after {
+    width: 70%;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomLeft .BottomDetailTextInner .BottomDetailText {
+    width: 100%;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomLeft .BottomDetailTextInner .BottomDetailImg {
+    width: 100%;
+    padding: 12px 0;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomLeft .BottomDetailTextInner .BottomDetailImg img {
+    width: 100%;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomRight {
+    margin-top: 48px;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomRight .DetailAddbtn .BottomDetailCard {
+    padding: 0;
+  }
+  .WiDetailBottom .ProductDetailBottom .ProductDetailBottomRight .DetailAddbtn .BottomDetailCard .codeCard {
+    margin: 0 auto;
+    margin-bottom: 16px;
+    width: 100%;
+  }
+  .card {
+    width: 100%;
+  }
+}/* iphone */

@@ -13,18 +13,19 @@ import {
 // -------------------- components --------------------
 // 引入輪播牆
 import BlogMainStandardSlide from '../BlogStandardSlide'
+
 // 麵包削
 import BlogCrumb from '../BlogCrumb'
 // 引入Main
 import BlogMainStandardList from '../../Blog-2-main/Blog-Main-Standard-1-List'
 // 引入Aside
 import BlogAsidePhoto from '../../Blog-2-Aside/Blog-Aside-1-Photo'
-import BlogAsideCommunity from '../../Blog-2-Aside/Blog-Aside-2-Community'
+import BlogAsideCommunity_1 from '../../Blog-2-Aside/Blog-Aside-2-1-Community'
 import BlogAsideSubscribe from '../../Blog-2-Aside/Blog-Aside-3-subscribe'
 import BlogAsideRecent from '../../Blog-2-Aside/Blog-Aside-4-Recent'
 
 // -------------------- scss --------------------
-// import './_menu.scss'
+import 'swiper/swiper.scss';
 import '../../../../assets/scss/blog_standard.scss'
 
 // -------------------- imgs --------------------
@@ -34,6 +35,7 @@ import '../../../../assets/scss/blog_standard.scss'
 function BlogStandard(props) {
   const { userdata, setUserdata, name, setName } = props.allprops;
   return (
+    <Fragment>
     <>
       <div className="blog-standard-spacing"></div>
 
@@ -65,7 +67,7 @@ function BlogStandard(props) {
 
           <div className="blog-aside">
             <BlogAsidePhoto />
-            <BlogAsideCommunity />
+            <BlogAsideCommunity_1 />
             <BlogAsideSubscribe />
             <BlogAsideRecent />
           </div>
@@ -73,6 +75,7 @@ function BlogStandard(props) {
       </div>
       <div className="blog-standard-spacing"></div>
     </>
+    </Fragment>
   )
 }
 export default withRouter(BlogStandard)

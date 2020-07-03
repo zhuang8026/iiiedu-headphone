@@ -2,6 +2,7 @@
 
 .MyHotTrue {
     position: relative;
+    color: $font-color-w;
     .true_title {
         background: url(../img/true.png);
         height: 500px;
@@ -73,7 +74,144 @@
             
         }
     }
+
+    .true_items_mobile {
+        display: none;
+    }
 }
 section {
     height: 500px;
 }
+
+/* 版本尺寸 */
+@media screen and (min-width: 1920px){}
+@media (min-width:1366px) and (max-width:1920px){
+    // .MyHotTrue .true_items {
+    //     bottom: calc(50% - 450px);
+    // }
+} /* 電腦 */
+@media (min-width:1024px) and (max-width:1365px){
+    .MyHotTrue .true_items {
+        width: 90%;
+        bottom: calc(50% - 450px);
+        left: calc(50% - 45%);
+    }
+    section {
+        height: 250px;
+    }
+} /* 電腦 */
+@media (min-width:768px) and (max-width:1023px){
+    .true_items {
+        display: none;
+    }
+    .true_items_mobile {
+        display: block !important;
+    }
+    .MyHotTrue .true_items {
+        width: 95%;
+        bottom: calc(50% - 610px);
+        left: calc(50% - 48%);
+    }
+    section {
+        height: 450px;
+    }
+} /* iPad */
+@media (min-width:414px) and (max-width:767px){
+    .true_items {
+        display: none;
+    }
+    .MyHotTrue .true_items {
+        bottom: calc(50% - 520px);
+        width: 98%;
+        left: calc(50% - 49%);
+    }
+    .true_items_mobile {
+        display: block !important;
+    }
+    .MyHotTrue .true_title {
+        height: 400px;
+        background-size: cover;
+    }
+    .MyHotTrue .true_items .swiper-container .swiper-wrapper .true_items_inner {
+        padding: 6px 3px;
+    }
+    .MyHotTrue .true_items .swiper-container .swiper-wrapper .true_items_inner .true_items_card img {
+        margin-bottom: 16px;
+    }
+    .MyHotTrue .true_items .swiper-container .swiper-wrapper .true_items_inner .true_items_card ul {
+        width: 90%;
+        padding: 10px 0;
+    }
+    .MyHotTrue .true_items .swiper-container .swiper-wrapper .true_items_inner .true_items_card ul li {
+        font-size: 12px;
+    }
+    section {
+        height: 380px;
+    }
+} /* iPad mini & iphone */
+@media (min-width:374px) and (max-width:413px){
+    .true_items {
+        display: none;
+    }
+    .MyHotTrue .true_items {
+        bottom: calc(50% - 520px);
+        width: 98%;
+        left: calc(50% - 49%);
+    }
+    .true_items_mobile {
+        display: block !important;
+    }
+    .MyHotTrue .true_title {
+        height: 400px;
+        background-size: cover;
+    }
+    .MyHotTrue .true_items .swiper-container .swiper-wrapper .true_items_inner {
+        padding: 6px 3px;
+    }
+    .MyHotTrue .true_items .swiper-container .swiper-wrapper .true_items_inner .true_items_card img {
+        margin-bottom: 16px;
+    }
+    .MyHotTrue .true_items .swiper-container .swiper-wrapper .true_items_inner .true_items_card ul {
+        width: 90%;
+        padding: 10px 0;
+    }
+    .MyHotTrue .true_items .swiper-container .swiper-wrapper .true_items_inner .true_items_card ul li {
+        font-size: 12px;
+    }
+    section {
+        height: 380px;
+    }
+} /* iphone */
+@media screen and (max-width: 373px){
+    .true_items {
+        display: none;
+    }
+    .MyHotTrue .true_items {
+        bottom: calc(50% - 520px);
+        width: 98%;
+        left: calc(50% - 49%);
+    }
+    .true_items_mobile {
+        display: block !important;
+    }
+    .MyHotTrue .true_title {
+        height: 400px;
+        background-size: cover;
+    }
+    .MyHotTrue .true_items .swiper-container .swiper-wrapper .true_items_inner {
+        padding: 6px 3px;
+    }
+    .MyHotTrue .true_items .swiper-container .swiper-wrapper .true_items_inner .true_items_card img {
+        margin-bottom: 16px;
+    }
+    .MyHotTrue .true_items .swiper-container .swiper-wrapper .true_items_inner .true_items_card ul {
+        width: 90%;
+        padding: 10px 0;
+    }
+    .MyHotTrue .true_items .swiper-container .swiper-wrapper .true_items_inner .true_items_card ul li {
+        font-size: 12px;
+    }
+    section {
+        height: 380px;
+    }
+}/* iphone */

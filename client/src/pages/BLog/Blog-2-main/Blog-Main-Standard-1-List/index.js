@@ -15,6 +15,7 @@ import { message } from 'antd';
 import Moment from 'react-moment';
 import 'moment-timezone';
 
+
 // -------------------- components --------------------
 
 // -------------------- scss --------------------
@@ -154,9 +155,11 @@ function BlogMainStandardList(props) {
                 </div>
             </div>
             <div className="blog-list blog-d-flex">
+
                 {listAllBlogdata.map((data, index) => {
                     {/* console.log(data) */ }
                     return (
+
                         <div className="blog-card" key={data.blogId}>
                             <div className="blog-card-in">
                                 <figure className="blog-card-fig">
@@ -187,6 +190,7 @@ function BlogMainStandardList(props) {
                         </div>
                     )
                 })}
+
             </div>
             <div className="blog-standard-pages blog-d-flex">
                 <div
@@ -195,21 +199,13 @@ function BlogMainStandardList(props) {
                         setCurrentPage(currentPage - 1)
                     }}
                 >﹤
-                    {/* <img
-                        src={PrevPage}
-                        alt=""
-                        onClick={() => {
-                            setCurrentPage(currentPage - 1)
-                        }}
-                    /> */}
                 </div>
                 <div className="all-blog-page-list blog-d-flex">
                     {listPage.map((data, index) => {
-                        {/* console.log(data) */ }
                         return (
                             <div
-                                className="round-effect"
                                 key={data}
+                                className={(data === currentPage ? 'round-effect activepage' : 'round-effect')}
                                 onClick={() => {
                                     setCurrentPage(data)
                                 }}
@@ -217,21 +213,12 @@ function BlogMainStandardList(props) {
                         )
                     })}
                 </div>
-
-                {/* <div className="mores">...</div> */}
                 <div
                     className="round-effect"
                     onClick={() => {
                         setCurrentPage(currentPage + 1)
                     }}
                 >﹥
-                    {/* <img
-                        src={NextPage}
-                        alt=""
-                        onClick={() => {
-                            setCurrentPage(currentPage + 1)
-                        }}
-                    /> */}
                 </div>
             </div>
         </>
