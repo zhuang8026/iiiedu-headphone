@@ -66,7 +66,7 @@ function HotTrue() {
                                     <div className="true_items_card swiper-lazy">
                                         <h3>{ data.name }</h3>
                                         <a>
-                                            <img src={a} alt="商品列表"/>
+                                            <img src={data.picUrl} alt="商品列表"/>
                                         </a>
                                         <ul>
                                             <li><i className="iconfont icon-correct"></i>{ data.p1text }</li>
