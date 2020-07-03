@@ -14,8 +14,8 @@ function MembersLeft(props) {
                 <div className="mem_top_inner">
                     <img  src={`/user_img/${userdata.userlogo}`} alt="photo/icon"/>
                     <div className="men_text">
-                        <h2>Hello !</h2>
-                        <p>親愛的 <strong>{userdata.name}</strong></p>
+                        <h2>Welcome !</h2>
+                        <p><strong>{userdata.name}</strong> 的商店</p>
                     </div>
                 </div>
                 <div className="mem_bottom_inner">
