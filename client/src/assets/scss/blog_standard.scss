@@ -171,6 +171,9 @@
             color: $btn-color-r;
             background: $bg-theme;
           }
+          .blog-btns-left-Link-disable {
+            display: none;
+          }
           .blog-btns-left-Link:hover {
             cursor: pointer;
           }

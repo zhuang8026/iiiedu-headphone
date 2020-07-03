@@ -104,21 +104,34 @@ function BlogMainStandardList(props) {
 
     }
 
+    // <div className="BottomDetailCard">
+    //     {memberdatacallback ? (
+    //         <>
+    //             <ProductDetailBtn />
+    //             <ProductDetailBtn />
+    //             <ProductDetailBtn />
+    //             <ProductDetailBtn />
+    //         </>
+    //     ) : (
+    //             <Link className="DetailAddInput" type="button" to='/KMembers/MembersLogin'>請登入會員</Link>
+    //         )}
+    // </div>
+
+    // <div key={number} className={(number === currentPage ? 'round-effect activepage' : 'round-effect')} onClick={() => { setCurrentPage(number) }}>
+    //     {number}
+    // </div>
+
     return (
         <>
             <div className="blog-btns blog-d-flex blog-justify-content-between">
                 <div className="blog-btns-left">
                     <button className="blog-btns-left-Link" onClick={() => props.history.push('/Blog/YongBlog')}>
                         全部文章
-          </button>
-                    {/* <Link to="../BlogStandard" className="blog-btns-left-Link">
-            全部文章
-          </Link> */}
-                    <button className="blog-btns-left-Link" onClick={() => props.history.push('/Blog/YongMyBlog')}>
+                    </button>
+                    <button
+                        className={(userdata.id ? 'blog-btns-left-Link' : 'blog-btns-left-Link-disable')} onClick={() => props.history.push('/Blog/YongMyBlog')}>
                         個人文章
-          </button>
-                    {/* <Link to="/Blog/YongMyBlog" className="blog-btns-left-Link">個人文章</Link> */}
-
+                    </button>
                 </div>
                 <div className="blog-btns-right blog-d-flex blog-justify-content-between">
                     <select className="s1" name="" id=""

@@ -66,7 +66,9 @@ function BlogStandard(props) {
           </div>
 
           <div className="blog-aside">
-            <BlogAsidePhoto />
+            <BlogAsidePhoto 
+              userdata={userdata}
+            />
             <BlogAsideCommunity_1 />
             <BlogAsideSubscribe />
             <BlogAsideRecent />
