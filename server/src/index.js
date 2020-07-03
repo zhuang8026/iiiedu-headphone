@@ -73,7 +73,8 @@ app.use('/members', require(__dirname+'/members.js'));
 app.use('/membersRegister', require(__dirname+'/membersRegister.js'));
 // 会员修改
 app.use('/membersEdit', require(__dirname+'/membersEdit.js'));
-
+//賣家訂單
+app.use('/superseller', require(__dirname+'/superseller.js'));
 
 // 產品
 app.use('/products', require(__dirname+'/products.js'));

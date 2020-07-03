@@ -213,7 +213,7 @@ function Compare(props) {
                 <ul className="MyCom_pwa_r_inner">
                 {/* <li> */}
                 {console.log('compareList',compareList)}
-                {compareList !== [] ? (
+                {compareList.length>0 ? (
                     <>
                     <li className="sty-1 comparecard_content_decoration" >
                             <div className="MyCom_card">
@@ -297,9 +297,17 @@ function Compare(props) {
                     )})}
                     </>
                 ):(
-                    <>
-                        <div>1111111</div>
-                    </>
+                  <div className="cart_row" >
+                    <figure>
+                        <img src={"/user_img/fail.gif"} alt="商品圖片"/>
+                        <img src={"/user_img/fail.gif"} alt="商品圖片"/>
+                        <img src={"/user_img/fail.gif"} alt="商品圖片"/>
+                        <img src={"/user_img/fail.gif"} alt="商品圖片"/>
+                    </figure>
+                    <div className="cart_price">
+                      
+                    </div>
+                  </div>
                 )}
               {/* </li> */}
             </ul>
