@@ -28,16 +28,13 @@ function AboutHeader(props) {
     <div className="WiHeader">
       <Swiper {...params}>
       <div><img className="Wiheaderimg" src={Aboutimg}></img>
-      <div><img  src={Aboutimg4}></img></div>
       <h1>About us</h1>
       </div>
        <div><img  className="Wiheaderimg" src={Aboutimg2}></img>
-       <div><img src={Aboutimg5}></img></div>
        <h1>About us</h1>
        </div>
        <div id="Aboutimg3">
        <img className="Wiheaderimg" src={Aboutimg3}></img>
-       <div><img src={Aboutimg6} className="WiRWD"></img></div>
        <h1>About us</h1>
        </div>
   </Swiper>
