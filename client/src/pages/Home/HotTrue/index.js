@@ -10,7 +10,8 @@ import 'swiper/css/swiper.css';
 
 import {SwiperTrue} from './config.js';
 
-import a from '../../../assets/img/bg_6p_1.png'
+import a from '../../../assets/img/bg_6p_2.png'
+
 
 function HotTrue() {
     const params = {
