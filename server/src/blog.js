@@ -38,7 +38,10 @@ app.use('/avatar', express.static('uploads'));
 // 搜尋所有文章(分頁)的function
 const getSearchAllList = async (req) => {
     // 給資料的部分可改成接req.body的資料           
-    let searchInput = '%9%';                          // 給字串
+    let searchInput = '';
+    if (req.body.searchInput != '') {
+        searchInput = '%' + req.body.searchInput + '%';   // 給字串
+    }
     let searchSort = req.body.searchSort;             // 給排序方式
     let searchOrder = req.body.searchOrder;           // 給正逆向
     let page = req.body.page;                         // 給當前頁
@@ -56,10 +59,23 @@ const getSearchAllList = async (req) => {
     }
     //設變數，toCount給計算頁數的sql用，toSearch給找出當頁的sql用。
     let toCount = `SELECT COUNT(1) num FROM blogs`;
-    let toSearch = `SELECT * FROM blogs`;
-    //分別加上LIKE搜尋    
-    // toCount += ` WHERE blogTitle LIKE '%耳機%' OR blogContent01 LIKE '%耳機%' OR blogContent02 LIKE '%耳機%'`;
-    // toSearch += ` WHERE blogTitle LIKE '%耳機%' OR blogContent01 LIKE '%耳機%' OR blogContent02 LIKE '%耳機%'`;
+    let toSearch = `SELECT * FROM blogs LEFT JOIN users ON blogs.id=users.id`;
+    //分別加上LIKE搜尋 
+    if (searchInput != '') {
+        toCount += ` WHERE blogTitle LIKE`;
+        toCount += ` '${searchInput}'`;
+        toCount += `  OR blogContent01 LIKE`;
+        toCount += ` '${searchInput}'`;
+        toCount += ` OR blogContent02 LIKE`;
+        toCount += ` '${searchInput}'`;
+        toSearch += ` WHERE blogTitle LIKE`;
+        toSearch += ` '${searchInput}'`;
+        toSearch += ` OR blogContent01 LIKE`;
+        toSearch += ` '${searchInput}'`;
+        toSearch += ` OR blogContent02 LIKE`;
+        toSearch += ` '${searchInput}'`;
+        console.log('要找的字串是 ====> ',searchInput)
+    }    
     //依case加上ORDER BY
     if (searchSort) {
         switch (searchSort) {
@@ -131,7 +147,10 @@ const getSearchAllList = async (req) => {
 const getSearchUserList = async (req) => {
     // 給資料的部分可改成接req.body的資料
     let id = req.body.id;                             // 給id
-    let searchInput = '%9%';                          // 給字串
+    let searchInput = '';
+    if (req.body.searchInput != '') {
+        searchInput = '%' + req.body.searchInput + '%';   // 給字串
+    }
     let searchSort = req.body.searchSort;             // 給排序方式
     let searchOrder = req.body.searchOrder;           // 給正逆向
     let page = req.body.page;                         // 給當前頁
@@ -150,10 +169,23 @@ const getSearchUserList = async (req) => {
     }
     //設變數，toCount給計算頁數的sql用，toSearch給找出當頁的sql用。
     let toCount = `SELECT COUNT(1) num FROM blogs WHERE id='${id}'`;
-    let toSearch = `SELECT * FROM blogs WHERE id='${id}'`;
-    //分別加上LIKE搜尋    
-    // toCount += ` WHERE blogTitle LIKE '%9%' OR blogContent01 LIKE '%9%' OR blogContent02 LIKE '%9%'`;
-    // toSearch += ` WHERE blogTitle LIKE '%9%' OR blogContent01 LIKE '%9%' OR blogContent02 LIKE '%9%'`;
+    let toSearch = `SELECT * FROM blogs LEFT JOIN users ON blogs.id=users.id WHERE (blogs.id='${id}')`;
+    //分別加上LIKE搜尋 
+    if (searchInput != '') {
+        toCount += ` AND (blogTitle LIKE`;
+        toCount += ` '${searchInput}'`;
+        toCount += `  OR blogContent01 LIKE`;
+        toCount += ` '${searchInput}'`;
+        toCount += ` OR blogContent02 LIKE`;
+        toCount += ` '${searchInput}')`;
+        toSearch += ` AND (blogTitle LIKE`;
+        toSearch += ` '${searchInput}'`;
+        toSearch += ` OR blogContent01 LIKE`;
+        toSearch += ` '${searchInput}'`;
+        toSearch += ` OR blogContent02 LIKE`;
+        toSearch += ` '${searchInput}')`;
+        console.log('要找的字串是 ====> ',searchInput)
+    }    
     //依case加上ORDER BY
     if (searchSort) {
         switch (searchSort) {
@@ -239,6 +271,44 @@ const get_r_List = async (req) => {
     // }
     return output;
 };
+
+// 搜尋所有使用者資料的function
+const getAllMemberData = async (req) => {
+    let searchInput =req.body.searchInput;
+    const output = {
+        searchInput:searchInput,
+        rows: []
+    }
+    //設變數
+    let _r = `SELECT * FROM users`;
+    // 取出sql符合的rows
+    const [r1] = await db.query(_r);
+    if (r1) output.rows = r1;
+    return output;
+};
+
+// 查詢目前登入者資料的function
+// const getLoginUserData = async (req) => {
+//     let loginId = req.body.loginId;
+//     const output = {
+//         loginId: loginId,
+//         rows: []
+//     }
+//     //設變數
+//     let _r = `SELECT * FROM users WHERE id=${loginId}`;
+//     // 取出sql符合的rows
+//     const [r1] = await db.query(_r);
+//     if (r1) output.rows = r1;
+//     // console.log(output)
+//     // 將r2裡的Date改成正常時間格式
+//     // for (let i of r2) {
+//     //     // 要先放到moment才能使用.format('YYYY-MM-DD')
+//     //     i.blogExpectedTime = moment(i.blogExpectedTime).format('DD-YY-MM');
+//     //     i.blogPublishTime = moment(i.blogPublishTime).format('DD-YY-MM');
+//     //     i.blogUpdateTime = moment(i.blogUpdateTime).format('DD-YY-MM');
+//     // }
+//     return output;
+// };
 
 //================================================== blog root ==============================================================
 // http://localhost:3009/blog
@@ -399,7 +469,6 @@ router.post('/getDetail/', async (req, res) => {
 
 //================================================== 圖片上傳 ==============================================================
 // (可上傳)
-
 // 上傳檔案
 // http://localhost:3009/blog/try-upload/
 router.post('/try-upload/', upload.single('avatar'), async (req, res) => {
@@ -412,37 +481,54 @@ router.post('/try-upload/', upload.single('avatar'), async (req, res) => {
 
 })
 
+//================================================== 查詢會員資料 ==============================================================
+// (測試ok)
+// 查詢所有會員資料
+// http://localhost:3009/blog/searchAllMember/
+router.post('/searchAllMember/', async (req, res) => {
+    const output = await getAllMemberData(req);
+    // console.log(output.rows[0])
+    res.json(output);
+})
+
+// 查詢目前登入會員資料
+// http://localhost:3009/blog/searchLoginUserData/
+// router.post('/searchLoginUserData/', async (req, res) => {
+//     console.log('========== react(post) 目前登入者 -> 查詢目前登入者 ==========')
+//     console.log('目前登入者 = ', req.body.loginId)
+//     const output = await getLoginUserData(req);
+//     res.json(output);
+// })
+
 //================================================== 部落格回文 ==============================================================
 // (測試ok)
-// 部落格回文
+// 新增部落格回文
 // http://localhost:3009/blog/add-reply
 // router.get('/add', (req, res)=>{
 router.post('/add-reply', upload.none(), (req, res) => {
     let blogId = req.body.blogId;
-    let id = 0;
-    let r_nick = '訪客';
+    let id = req.body.id;
+    let r_nick = req.body.r_nick;
+    let r_photo = req.body.r_photo;
     let b_r_content = req.body.b_r_content;
     let b_r_replys = 0;
     const output = {
         success: false,
-        blogId: blogId,
-        id: id,
-        r_nick: r_nick,
-        b_r_content: b_r_content,
-        b_r_replys: b_r_replys,
+
         rows: []
     }
-    const sql = "INSERT INTO `blogs_reply`(`blogId`,`id`,`r_nick`,`b_r_content`,`b_r_replys`) VALUES (?, ?, ?, ?, ?)";
+    const sql = "INSERT INTO `blogs_reply`(`blogId`,`id`,`r_nick`,`r_photo`,`b_r_content`,`b_r_replys`) VALUES (?, ?, ?, ?, ?,?)";
     console.log('========== react(post) -> 部落格回文 ==========')
     console.log('req.body = ', req.body)
-    db.query(sql, [blogId, id, r_nick, b_r_content, b_r_replys])
+    db.query(sql, [blogId, id, r_nick, r_photo, b_r_content, b_r_replys])
         .then(([r]) => {
-            output.results = r;
+            output.rows = r;
             output.success = true;
             res.send(output);
         })
 })
 
+// (測試ok)
 // 搜尋回文
 // http://localhost:3009/blog/list_reply/
 router.post('/list_reply/', async (req, res) => {

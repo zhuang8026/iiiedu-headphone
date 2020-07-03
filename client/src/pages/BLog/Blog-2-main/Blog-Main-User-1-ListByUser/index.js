@@ -36,6 +36,7 @@ function BlogMainUserListByUser(props) {
     const [listPage, setListPage] = useState([])
     const [currentPage, setCurrentPage] = useState('')
     const [listUserBlogdata, setlistUserBlogdata] = useState([])
+    const [searchInput, setSearchInput] = useState('')
     const [searchOrder, setSearchOrder] = useState('DESC')
     const [searchSort, setSearchSort] = useState('依發文日期')
 
@@ -50,6 +51,9 @@ function BlogMainUserListByUser(props) {
     useEffect(() => {
 
     }, [listUserBlogdata])
+    useEffect(() => {
+        console.log('更新searchInput -> ', searchInput)
+    }, [searchInput]);
     // useEffect(() => {
     //     searchMethod()
     // }, [searchOrder])
@@ -69,7 +73,7 @@ function BlogMainUserListByUser(props) {
         fetch('http://localhost:3009/blog/del/', {
             method: 'post',
             body: JSON.stringify({
-                id: userdata.id,
+                id: userdata.id,                
                 blogId: blogId
             }),
             headers: new Headers({
@@ -135,8 +139,9 @@ function BlogMainUserListByUser(props) {
             method: 'post',
             body: JSON.stringify({
                 id: userdata.id,
-                username: userdata.username,
-                blogId: userdata.blogId,
+                // username: userdata.username,
+                // blogId: userdata.blogId,
+                searchInput: searchInput,
                 searchOrder: searchOrder,
                 searchSort: searchSort,
                 page: currentPage
@@ -200,7 +205,12 @@ function BlogMainUserListByUser(props) {
                         {/* <option value="2">依修改日期</option> */}
                         <option value="3">依部落格編號</option>
                     </select>
-                    <figure className="blog-cover">
+                    <input className="search-input" placeholder="輸入關鍵字"
+                        onChange={e => setSearchInput(e.target.value)}></input>
+                    <figure className="blog-cover"
+                        onClick={() => {
+                            searchMethod()
+                        }}>
                         <img src={IconSearch} alt="" />
                     </figure>
                 </div>
@@ -247,6 +257,13 @@ function BlogMainUserListByUser(props) {
                                         }}
                                     >閱讀文章</button>
                                 </div>
+                                <div className="user-info-list blog-d-flex">
+                                    <figure className="blod-cover">
+                                        <img src={`/user_img/${data.userlogo}`}></img>
+                                    </figure>
+                                    <h3>{data.name}</h3>
+                                    <h4><Moment format="YYYY">{data.blogPublishDate}</Moment>年</h4>
+                                </div>
                             </div>
                         </div>
                     )
@@ -258,12 +275,12 @@ function BlogMainUserListByUser(props) {
                     onClick={() => {
                         setCurrentPage(currentPage - 1)
                     }}
-                >﹤                    
+                >﹤
                 </div>
                 <div className="all-blog-page-list blog-d-flex">
-                    {listPage.map((data, index) => {                       
+                    {listPage.map((data, index) => {
                         return (
-                            <div                                
+                            <div
                                 key={data}
                                 className={(data === currentPage ? 'round-effect activepage' : 'round-effect')}
                                 onClick={() => {
@@ -272,13 +289,13 @@ function BlogMainUserListByUser(props) {
                             >{data}</div>
                         )
                     })}
-                </div>               
+                </div>
                 <div
                     className="round-effect"
                     onClick={() => {
                         setCurrentPage(currentPage + 1)
                     }}
-                >﹥                    
+                >﹥
                 </div>
             </div>
         </>

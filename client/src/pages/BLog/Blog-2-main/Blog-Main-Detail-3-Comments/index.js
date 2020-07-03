@@ -30,23 +30,33 @@ import CaretDown from '../../../../assets/img/blog-img/blog-detail/caret-down-so
 function BlogMainDetailComments(props) {
     const { userdata, setUserdata, name, setName } = props.allprops;
     const [list_r, setList_r] = useState([])
-    const [list_r_r, setList_r_r] = useState([])
+    // const [list_r_r, setList_r_r] = useState([])    
     const [b_r_content, setB_r_content] = useState('')
     const { match } = props;
     const { detailId } = match.params;
 
 
     useEffect(() => {
+        // console.log('目前使用者 ==> ',userdata);
         list_reply()
+
     }, [])
+    useEffect(() => {
+        console.log('目前使用者 ==> ', userdata);
+        console.log('當前使用者name ====> ', userdata.name);
+        console.log('當前使用者userlogo ====> ', userdata.userlogo);
+
+    }, [userdata])
     useEffect(() => {
 
     }, [list_r])
     useEffect(() => {
-        console.log(b_r_content)
+
+        // console.log('目前使用者 ==> ',userdata);
     }, [b_r_content])
     // 回文列表
     const list_reply = () => {
+
         fetch('http://localhost:3009/blog/list_reply/', {
             method: 'post',
             body: JSON.stringify({
@@ -63,18 +73,25 @@ function BlogMainDetailComments(props) {
                 return response.json()
             })
             .then((response) => {
-                console.log(response.rows)
+                console.log('查詢回文列表結果 ===> ', response.rows)
+                // console.log('目前使用者 ==> ',userdata);
                 setList_r(response.rows)
             })
     }
 
     // 新增回文
     const add_reply = () => {
+        console.log('送出 blogId =====> ', detailId);
+        console.log('送出 id ====> ', userdata.id);
+        console.log('送出 r_nick ====> ', userdata.name);
+        console.log('送出 r_photo ====> ', userdata.userlogo);
         fetch('http://localhost:3009/blog/add-reply', {
             method: 'post',
             body: JSON.stringify({
-                // id: userdata.id,
                 blogId: detailId,
+                id: userdata.id,
+                r_nick: userdata.name,
+                r_photo: userdata.userlogo,
                 b_r_content: b_r_content,
             }),
             headers: new Headers({
@@ -85,6 +102,7 @@ function BlogMainDetailComments(props) {
             .then(result => result.json())
             .then(obj => {
                 message.success(`新留言已建立！`);
+
                 setB_r_content('')
                 setTimeout(() => {
                     list_reply()
@@ -95,15 +113,17 @@ function BlogMainDetailComments(props) {
     return (
         <>
             <div className="comments">
-                <h2>3篇 評論</h2>
+                <h2>{list_r.length}篇 評論</h2>
                 {list_r.map((data, index) => {
-                    console.log('===============', data)
+                    {/* console.log('comments  評論列表  => ', data) */ }
                     return (
                         <div className="comment-one-list" key={data.b_rid}>
                             <div className="comment-one">
                                 <div className="comment-one-in blog-d-flex">
                                     <div className="user-post-icon">
-                                        <figure className="user-post-fig"></figure>
+                                        <figure className="user-post-fig blog-cover">
+                                            <img src={`/user_img/${data.r_photo}`} alt=""></img>
+                                        </figure>
 
                                     </div>
                                     <div className="user-post-content">
@@ -119,13 +139,13 @@ function BlogMainDetailComments(props) {
                 })}
             </div>
             <div className="spacing"></div>
-            <div className={(userdata.id ? 'add-comment' : 'add-comment-disable')}>
+            <div className={((userdata.id) && (userdata.id != '') ? 'add-comment' : 'add-comment-disable')}>
                 <div className="add-comment-title blog-d-flex">
                     <h2>發表評論，從</h2>
-                    <figure>
-                        <img src="" alt="" />
+                    <figure className="add-comment-title-fig blog-cover">
+                        <img src={`/user_img/${userdata.userlogo}`} alt="" />
                     </figure>
-                    <h5>乖乖</h5>
+                    <h5>{userdata.name}</h5>
                 </div>
                 <div className="add-comment-textarea">
                     <textarea name="" id=""

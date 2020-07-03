@@ -41,6 +41,7 @@ function BlogMainStandardList(props) {
     const [listAllBlogdata, setListAllBlogdata] = useState([])
     const [listPage, setListPage] = useState([])
     const [currentPage, setCurrentPage] = useState('')
+    const [searchInput, setSearchInput] = useState('')
     const [searchOrder, setSearchOrder] = useState('DESC')
     const [searchSort, setSearchSort] = useState('依發文日期')
 
@@ -53,6 +54,9 @@ function BlogMainStandardList(props) {
     useEffect(() => {
 
     }, [listAllBlogdata])
+    useEffect(() => {
+        console.log('更新searchInput -> ', searchInput)
+    }, [searchInput]);
     useEffect(() => {
         searchMethod()
     }, [searchOrder])
@@ -72,8 +76,7 @@ function BlogMainStandardList(props) {
         fetch('http://localhost:3009/blog/searchAllBlog/', {
             method: 'post',
             body: JSON.stringify({
-                // username: userdata.username,
-                // blogId: userdata.blogId,
+                searchInput: searchInput,
                 searchOrder: searchOrder,
                 searchSort: searchSort,
                 page: currentPage
@@ -129,7 +132,7 @@ function BlogMainStandardList(props) {
                         全部文章
                     </button>
                     <button
-                        className={(userdata.id ? 'blog-btns-left-Link' : 'blog-btns-left-Link-disable')} onClick={() => props.history.push('/Blog/YongMyBlog')}>
+                        className={((userdata.id) && (userdata.id != '') ? 'blog-btns-left-Link' : 'blog-btns-left-Link-disable')} onClick={() => props.history.push('/Blog/YongMyBlog')}>
                         個人文章
                     </button>
                 </div>
@@ -162,7 +165,12 @@ function BlogMainStandardList(props) {
                         <option value="4">依部落格編號</option>
                         <option value="5">依作者id</option>
                     </select>
-                    <figure className="blog-cover">
+                    <input className="search-input" placeholder="輸入關鍵字"
+                        onChange={e => setSearchInput(e.target.value)}></input>
+                    <figure className="blog-cover"
+                        onClick={() => {
+                            searchMethod()
+                        }}>
                         <img src={IconSearch} alt="" />
                     </figure>
                 </div>
@@ -198,6 +206,13 @@ function BlogMainStandardList(props) {
                                             // goBlogDetail(data.blogId) //data有blog的資料
                                         }}
                                     >閱讀文章</button>
+                                </div>
+                                <div className="user-info-list blog-d-flex">
+                                    <figure className="blod-cover">
+                                        <img src={`/user_img/${data.userlogo}`}></img>
+                                    </figure>
+                                    <h3>{data.name}</h3>
+                                    <h4><Moment format="YYYY">{data.blogPublishDate}</Moment>年</h4>
                                 </div>
                             </div>
                         </div>

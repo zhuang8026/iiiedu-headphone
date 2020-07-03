@@ -69,9 +69,18 @@ function BlogStandard(props) {
             <BlogAsidePhoto 
               userdata={userdata}
             />
-            <BlogAsideCommunity_1 />
+            <BlogAsideCommunity_1 
+              allprops={{
+                userdata,
+                setUserdata,
+                name,
+                setName
+              }}
+            />
             <BlogAsideSubscribe />
-            <BlogAsideRecent />
+            <BlogAsideRecent 
+              userdata={userdata}
+            />
           </div>
         </div>
       </div>

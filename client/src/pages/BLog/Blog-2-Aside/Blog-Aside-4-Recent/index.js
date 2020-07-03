@@ -21,14 +21,13 @@ import 'moment-timezone';
 // -------------------- func --------------------
 
 function BlogAsideRecent(props) {
+  const {userdata} = props;
   const [listRecent, setListRecent] = useState([])
   useEffect(() => {
     fetch('http://localhost:3009/blog/searchAllBlog/', {
       method: 'post',
       body: JSON.stringify({
-        // id: userdata.id,
-        // username: userdata.username,
-        // blogId: userdata.blogId,
+        searchInput: '',
         searchOrder: 'DESC',
         searchSort: '依發文日期',
         perPage: 4,

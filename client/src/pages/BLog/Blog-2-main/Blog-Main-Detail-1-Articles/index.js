@@ -41,7 +41,7 @@ function BlogMainDetailArticles(props) {
         
     }, [])
     useEffect(() => {
-        console.log('detailByBlogId',detailByBlogId)
+        // console.log('detailByBlogId',detailByBlogId)
         doImgList01()
         doImgList02()
     }, [detailByBlogId])
@@ -61,9 +61,9 @@ function BlogMainDetailArticles(props) {
                 return response.json()
             })
             .then((response) => {
-                console.log('body -> ', response.body)
-                console.log('results -> ', response.results)
-                console.log('blogTitle -> ', response.results.blogTitle)
+                // console.log('body -> ', response.body)
+                // console.log('results -> ', response.results)
+                // console.log('blogTitle -> ', response.results[0].blogTitle)
                 setDetailByBlogId(response.results[0])
 
             })
@@ -72,8 +72,7 @@ function BlogMainDetailArticles(props) {
     const doImgList01 = () => {
         // console.log('detailByBlogId.blogContent01_img01',detailByBlogId)
         let temp01 = []
-        if ((detailByBlogId.blogContent01_img01 != null) && (detailByBlogId.blogContent01_img01 != '')&& (detailByBlogId.blogContent01_img01 != 'default.jpg')) {
-            console.log('okok')
+        if ((detailByBlogId.blogContent01_img01 != null) && (detailByBlogId.blogContent01_img01 != '')&& (detailByBlogId.blogContent01_img01 != 'default.jpg')) {            
             temp01.push(detailByBlogId.blogContent01_img01)
         }
         if ((detailByBlogId.blogContent01_img02 != null) && (detailByBlogId.blogContent01_img02 != '')&& (detailByBlogId.blogContent01_img02 != 'default.jpg')) {
@@ -82,7 +81,7 @@ function BlogMainDetailArticles(props) {
         if ((detailByBlogId.blogContent01_img03 != null) && (detailByBlogId.blogContent01_img03 != '')&& (detailByBlogId.blogContent01_img03 != 'default.jpg')) {
             temp01.push(detailByBlogId.blogContent01_img03)
         }
-        console.log('temp01->',temp01)
+        // console.log('temp01->',temp01)
         setImgList01(temp01)
     }
     // 決定第二個map
@@ -97,7 +96,7 @@ function BlogMainDetailArticles(props) {
         if ((detailByBlogId.blogContent02_img03 != null) && (detailByBlogId.blogContent02_img03 != '')&& (detailByBlogId.blogContent02_img03 != 'default.jpg')) {
             temp02.push(detailByBlogId.blogContent02_img03)
         }
-        console.log('temp02->',temp02)
+        // console.log('temp02->',temp02)
         setImgList02(temp02)
     }
 
@@ -106,12 +105,12 @@ function BlogMainDetailArticles(props) {
             <div className="articles">
                 <div className="article-first">
                     <h2>{detailByBlogId.blogTitle}</h2>
-                    <h5><Moment format="YYYY,M月 DD">{detailByBlogId.blogPublishDate}</Moment> 建立</h5>
+                    <h5><Moment format="M月 DD﹐YYYY">{detailByBlogId.blogPublishDate}</Moment> 建立</h5>
 
                     {imgList01.map((data, index) => {
-                        console.log('===============', data)
+                        {/* console.log('===============', data) */}
                         return (
-                            <figure key={data.index}>
+                            <figure key={data}>
                                 <img className="blog-cover" src={`http://localhost:3009/blogs_img/${data}`} alt="" />
                             </figure>
                         )
@@ -121,16 +120,16 @@ function BlogMainDetailArticles(props) {
                 <div className="article-second">
 
                     {imgList02.map((data, index) => {
-                        console.log('===============', data)
+                        {/* console.log('===============', data) */}
                         return (
-                            <figure key={data.index}>
+                            <figure key={data}>
                                 <img className="blog-cover" src={`http://localhost:3009/blogs_img/${data}`} alt="" />
                             </figure>
 
                         )
                     })}                    
                     <p>{detailByBlogId.blogContent02}</p>
-                    <h6>最後修改 <Moment format="YYYY年 M月 D日 HH時 mm分">{detailByBlogId.blogUpdateDate}</Moment></h6>
+                    <h6>最後修改 <Moment format="YYYY年 M月 D日﹐HH:mm:ss">{detailByBlogId.blogUpdateDate}</Moment></h6>
                 </div>
             </div>
         </>

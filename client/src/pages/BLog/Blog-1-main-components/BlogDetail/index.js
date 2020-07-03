@@ -24,6 +24,7 @@ import BlogMainDetailLike from '../../Blog-2-main/Blog-Main-Detail-2-Like'
 import BlogMainDetailComments from '../../Blog-2-main/Blog-Main-Detail-3-Comments'
 // 引入Aside
 import BlogAsidePhoto from '../../Blog-2-Aside/Blog-Aside-1-Photo'
+import BlogAsideCommunity_1 from '../../Blog-2-Aside/Blog-Aside-2-1-Community'
 import BlogAsideCommunity_2 from '../../Blog-2-Aside/Blog-Aside-2-2-Community'
 import BlogAsideSubscribe from '../../Blog-2-Aside/Blog-Aside-3-subscribe'
 import BlogAsideRecent from '../../Blog-2-Aside/Blog-Aside-4-Recent'
@@ -43,6 +44,12 @@ function BlogDetail(props) {
 
     let { detailId } = useParams()
     // message.success(detailId);
+
+    useEffect(() => {
+
+
+    }, [userdata])
+    console.log('BlogDetail userdata  ===> ', userdata)
     return (
         <>
             <div className="blog-detail-spacing"></div>
@@ -63,7 +70,14 @@ function BlogDetail(props) {
                             }}
                         />
                         <div className="blog-detail-spacing"></div>
-                        <BlogMainDetailLike />
+                        <BlogMainDetailLike
+                            allprops={{
+                                userdata,
+                                setUserdata,
+                                name,
+                                setName
+                            }}
+                        />
                         <BlogMainDetailComments
                             allprops={{
                                 userdata,
@@ -72,16 +86,35 @@ function BlogDetail(props) {
                                 setName
                             }}
                         />
+
+
+
                     </div>
                     <div className="blog-detail-aside">
-                        <BlogAsidePhoto 
+                        <BlogAsidePhoto
                             userdata={userdata}
                         />
-                        <BlogAsideCommunity_2
-                            userdata={userdata}
-                        />
+
+                        {((userdata.id) && (userdata.id != '')) ? (
+                            <>
+                                <BlogAsideCommunity_2
+                                    userdata={userdata}
+                                />
+                            </>
+                        ) : (
+                                <BlogAsideCommunity_1
+                                    allprops={{
+                                        userdata,
+                                        setUserdata,
+                                        name,
+                                        setName
+                                    }}
+                                />
+                            )}                        
                         <BlogAsideSubscribe />
-                        <BlogAsideRecent />
+                        <BlogAsideRecent
+                            userdata={userdata}
+                        />
                     </div>
                 </div>
             </div>
