@@ -1,9 +1,11 @@
 // 函式元件
 import React ,{useEffect, useState} from 'react';
-import {withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom';
+
+import axios from 'axios';
 
 // antd
-// import { message } from 'antd';
+import { message } from 'antd';
 
 import ComponentSuperSellerLeft from '../ComponentSuperSellerLeft'
 
@@ -15,6 +17,26 @@ function SuperSellerItems(props) {
     const {userdata, setUserdata} = props.allprops;
     const [SellerProductData, setSellerProductData] = useState([]) 
     
+    // 賣場產品 刪除
+    const superSellerDelete =(deleteId) =>{
+        // http://localhost:3009/supersellerEdit/sellerDelete
+        axios.post('http://localhost:3009/supersellerEdit/sellerDelete',{
+            id: deleteId,
+        })
+            .then((resolve, reject)=>{
+                console.log(resolve)
+                message.loading({ content: 'Loading...', key });
+                if(resolve.data.success) {
+                    setTimeout(() => {
+                        message.success({ content: '刪除成功!', key, duration: 2 });
+                        setSellerProductData(SellerProductData); // 沒反應
+                    }, 1000)
+                } else {
+                    message.info("刪除失敗")
+                }
+            })
+    }
+
     useEffect(()=>{
             fetch("http://localhost:3009/superseller/listSellerUserProduct",{
                 method: 'post',
@@ -28,11 +50,14 @@ function SuperSellerItems(props) {
             })
             .then(result=>result.json())
             .then((response)=>{
-                console.log('response', response);
+                // console.log('response', response);
                 setSellerProductData(response)
             })
     },[userdata])
 
+    // useEffect (()=>{
+    //     setSellerProductData();
+    // },[SellerProductData])
     return (
         <main>
             <div className="members_all">
@@ -91,7 +116,14 @@ function SuperSellerItems(props) {
                                                         <td>{data.itemsales}/副</td>
                                                         <td>
                                                             <span className="iconfont icon-edit"></span>
-                                                            <span className="iconfont icon-delete"></span>
+                                                            <span 
+                                                                id={data.itemId}
+                                                                className="iconfont icon-delete"
+                                                                onClick={(event)=>{
+                                                                    console.log(event.target.id)
+                                                                    superSellerDelete(event.target.id)
+                                                                }}
+                                                            ></span>
                                                         </td>
                                                     </tr>
                                                 )

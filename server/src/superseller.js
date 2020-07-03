@@ -93,7 +93,7 @@ const getSellerOrderDataList = async (req)=>{
         totalPages: 0, //總共有幾頁
         rows: []
     }
-    console.log(output);
+    // console.log(output);
     const [r1] = await db.query("SELECT COUNT(1) num FROM `orders`");
     output.totalRows = r1[0].num;
     output.totalPages = Math.ceil(output.totalRows/perPage);
@@ -149,7 +149,7 @@ const getSellerIdOrderList = async (req) => {
 // 所有產品
 // http://localhost:3009/superseller/listAllSellerOrder/(第幾頁)
 router.get('/listAllSellerOrder/:page?', async (req, res) => {
-    console.log('========== react(get) -> 所有文章(分頁) ==========') 
+    // console.log('========== react(get) -> 所有文章(分頁) ==========') 
     const output = await getSellerOrderDataList(req);
     res.json(output);
 })
@@ -157,7 +157,7 @@ router.get('/listAllSellerOrder/:page?', async (req, res) => {
 // (個人)所有訂單
 // http://localhost:3009/superseller/listSellerUserOrder
 router.post("/listSellerUserOrder", upload.none(), (req, res) => {
-    console.log('========== react(get) -> (個人)所有訂單 ==========') 
+    // console.log('========== react(get) -> (個人)所有訂單 ==========') 
     let id = req.body.id;
     let sql = `SELECT * FROM orders AS t1 
     JOIN (SELECT users.id,users.username,users.name FROM users WHERE users.isActivated=1 AND users.shopopen=1 AND users.id = ?) AS t2 
@@ -169,7 +169,7 @@ router.post("/listSellerUserOrder", upload.none(), (req, res) => {
     let output = []
     db.query(sql, [id])
         .then(results => {
-            console.log(results[0])
+            // console.log(results[0])
             // output.results = results;
             res.json(results[0])
             // return db.query(sql);
@@ -179,8 +179,8 @@ router.post("/listSellerUserOrder", upload.none(), (req, res) => {
 // (個人)所有商品(分頁)
 // http://localhost:3009/superseller/listSellerUserOrder/(個人id編號)/(第幾頁)
 router.post('/listSellerUserOrder/:id/:page?', async (req, res) => {    
-    console.log('========== react(送會員id) -> (個人)所有文章(分頁) ==========')
-    console.log('req.body = ',req.body)
+    // console.log('========== react(送會員id) -> (個人)所有文章(分頁) ==========')
+    // console.log('req.body = ',req.body)
     const output = await getSellerIdOrderList(req);
     res.json(output);
 })
@@ -188,13 +188,13 @@ router.post('/listSellerUserOrder/:id/:page?', async (req, res) => {
 // (個人)所有商品
 // http://localhost:3009/superseller/listSellerUserProduct
 router.post("/listSellerUserProduct", upload.none(), (req, res) => {
-    console.log('========== react(get) -> (個人)所有訂單 ==========') 
+    // console.log('========== react(get) -> (個人)所有訂單 ==========') 
     let id = req.body.id;
     let sql = `SELECT *,users.id,users.username,users.name,users.shopopen FROM items LEFT JOIN users ON items.itemstoreNumber=users.id WHERE users.isActivated=1 AND users.shopopen=1 AND users.id =${id}`;
-    let output = []
+    // let output = []
     db.query(sql, [id])
         .then(results => {
-            console.log(results[0])
+            // console.log(results[0])
             // output.results = results;
             res.json(results[0])
             // return db.query(sql);
@@ -248,13 +248,13 @@ router.post('/add-product',(req,res)=>{
         }
 
         const sql = "INSERT INTO `items`(`itemName`,`itemsbrand`,`itemstype`,`itemPrice`, `itemQty`, `itemscontent`, `itemsweight`, `itemsdrive`, `itemsfrequency`, `itemsSensitivity`, `itemsconnect`, `itemsmains`, `itemsEndurance`, `itemswatertight`, `itemsfeature`) VALUES (?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?)"; 
-        console.log('req.body',[req.body])
+        // console.log('req.body',[req.body])
         db.query(sql, [itemName,itemsbrand,itemstype,itemPrice, itemQty,id ,
             itemscontent, itemsweight, itemsdrive, itemsfrequency, 
             itemsSensitivity, itemsconnect, itemsmains, itemsEndurance, 
             itemswatertight, itemsfeature ])
             .then(([r])=>{
-                console.log('result',r)
+                // console.log('result',r)
                 output.results = r;
                 if(r.affectedRows && r.insertId){
                     output.success = true;
