@@ -43,6 +43,12 @@ function BlogDetail(props) {
 
     let { detailId } = useParams()
     // message.success(detailId);
+
+    useEffect(() => {
+
+
+    }, [userdata])
+    console.log('BlogDetail userdata  ===> ', userdata)
     return (
         <>
             <div className="blog-detail-spacing"></div>
@@ -54,7 +60,7 @@ function BlogDetail(props) {
             <div className="wrap-mid">
                 <div className="blog-detail blog-d-flex">
                     <div className="blog-detail-main">
-                        <BlogMainDetailArticles
+                        {/* <BlogMainDetailArticles
                             allprops={{
                                 userdata,
                                 setUserdata,
@@ -63,25 +69,57 @@ function BlogDetail(props) {
                             }}
                         />
                         <div className="blog-detail-spacing"></div>
-                        <BlogMainDetailLike />
-                        <BlogMainDetailComments
-                            allprops={{
-                                userdata,
-                                setUserdata,
-                                name,
-                                setName
-                            }}
-                        />
+                        <BlogMainDetailLike /> */}
+                        {(userdata.id) && (userdata.id != '') ? (
+                            <>
+                                <BlogMainDetailArticles
+                                    allprops={{
+                                        userdata,
+                                        setUserdata,
+                                        name,
+                                        setName
+                                    }}
+                                />
+                                <div className="blog-detail-spacing"></div>
+                                <BlogMainDetailLike />
+                                <BlogMainDetailComments
+                                    allprops={{
+                                        userdata,
+                                        setUserdata,
+                                        name,
+                                        setName
+                                    }}
+                                />
+                            </>
+                        ) : (
+                                <>
+
+                                    <BlogMainDetailArticles
+                                        allprops={{
+                                            userdata,
+                                            setUserdata,
+                                            name,
+                                            setName
+                                        }}
+                                    />
+                                    <div className="blog-detail-spacing"></div>
+                                    <BlogMainDetailLike />
+                                </>
+                            )}
+
+
                     </div>
                     <div className="blog-detail-aside">
-                        <BlogAsidePhoto 
+                        <BlogAsidePhoto
                             userdata={userdata}
                         />
                         <BlogAsideCommunity_2
                             userdata={userdata}
                         />
                         <BlogAsideSubscribe />
-                        <BlogAsideRecent />
+                        <BlogAsideRecent
+                            userdata={userdata}
+                        />
                     </div>
                 </div>
             </div>

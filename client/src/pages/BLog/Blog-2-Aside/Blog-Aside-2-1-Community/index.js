@@ -25,8 +25,8 @@ import iconLine_h from '../../../../assets/img/blog-img/blog-aside/iconLine_h.pn
 // -------------------- func --------------------
 
 function BlogAsideCommunity_1(props) {
-  const {userdata} = props;
-  console.log(userdata)
+  // const {userdata} = props;
+  // console.log(userdata)
   return (
     <>
       <div className="user-icon">

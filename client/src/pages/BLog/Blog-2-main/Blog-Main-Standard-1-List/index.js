@@ -129,7 +129,7 @@ function BlogMainStandardList(props) {
                         全部文章
                     </button>
                     <button
-                        className={(userdata.id ? 'blog-btns-left-Link' : 'blog-btns-left-Link-disable')} onClick={() => props.history.push('/Blog/YongMyBlog')}>
+                        className={((userdata.id)&&(userdata.id!='') ? 'blog-btns-left-Link' : 'blog-btns-left-Link-disable')} onClick={() => props.history.push('/Blog/YongMyBlog')}>
                         個人文章
                     </button>
                 </div>
@@ -198,6 +198,13 @@ function BlogMainStandardList(props) {
                                             // goBlogDetail(data.blogId) //data有blog的資料
                                         }}
                                     >閱讀文章</button>
+                                </div>
+                                <div className="user-info-list blog-d-flex">
+                                    <figure className="blod-cover">
+                                        <img src={`/user_img/${data.userlogo}`}></img>
+                                    </figure>
+                                    <h3>{data.name}</h3>
+                                    <h4><Moment format="YYYY">{data.blogPublishDate}</Moment>年</h4>
                                 </div>
                             </div>
                         </div>

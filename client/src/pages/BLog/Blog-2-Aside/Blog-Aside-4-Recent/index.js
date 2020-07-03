@@ -21,6 +21,7 @@ import 'moment-timezone';
 // -------------------- func --------------------
 
 function BlogAsideRecent(props) {
+  const {userdata} = props;
   const [listRecent, setListRecent] = useState([])
   useEffect(() => {
     fetch('http://localhost:3009/blog/searchAllBlog/', {

@@ -71,7 +71,9 @@ function BlogStandard(props) {
             />
             <BlogAsideCommunity_1 />
             <BlogAsideSubscribe />
-            <BlogAsideRecent />
+            <BlogAsideRecent 
+              userdata={userdata}
+            />
           </div>
         </div>
       </div>
