@@ -65,7 +65,9 @@ function BlogEdit(props) {
             />
           </div>
           <div class="blog-edit-aside">
-            <BlogAsidePhoto />
+            <BlogAsidePhoto 
+              userdata={userdata}
+            />
             <BlogAsideCommunity_2 
               userdata={userdata}
             />

@@ -56,9 +56,10 @@
     .slideWall {
       width: 100%;
       height: 300px;
-      background-image: url(../img/blog-img/blog-standard/points.png);
-      background-size: 250px;
-      background-color: rgba(200, 200, 200, 0.1);
+      background-image: url(../img/blog-img/blog-standard/slider-background.png);
+      background-repeat: no-repeat;
+      // background-size: 250px;
+      // background-color: rgba(200, 200, 200, 0.1);
       // opacity: 0.3;
       // border: 2px solid black;
       .slides {
@@ -169,6 +170,9 @@
             font-weight: $font-w;
             color: $btn-color-r;
             background: $bg-theme;
+          }
+          .blog-btns-left-Link-disable {
+            display: none;
           }
           .blog-btns-left-Link:hover {
             cursor: pointer;

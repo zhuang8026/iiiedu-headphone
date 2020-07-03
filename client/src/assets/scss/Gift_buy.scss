@@ -54,6 +54,12 @@
 @media (min-width: 1024px) and (max-width: 1365px) {
 } /* 電腦 */
 @media (min-width: 768px) and (max-width: 1023px) {
+  .GiftCardContainer {
+    flex-wrap: wrap;
+    .GiftCard {
+      width: 100%;
+    }
+  }
 } /* iPad */
 @media (min-width: 414px) and (max-width: 767px) {
   .GiftCardContainer {
