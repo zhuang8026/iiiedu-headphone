@@ -167,15 +167,13 @@ function SuperSellerAddItems(props) {
                                     </li>
                                 </ul>
                                 <button
-                                type="submit"
-                                className="login_btn register_btn"
-                                onClick={() => {
-                                    addFormServer()
-                                    console.log('click')
-                                }}
-                                >
-                                新增
-                                </button>
+                                    type="submit"
+                                    className="login_btn register_btn"
+                                    onClick={() => {
+                                        addFormServer()
+                                        console.log('click')
+                                    }}
+                                >新增</button>
                             </div>
                         </div>
                     </div>
