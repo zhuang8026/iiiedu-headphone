@@ -25,6 +25,8 @@ main {
       }
     }
     .MyCom_list {
+      overflow: hidden;
+      overflow-x: auto;
       .MyCom_pwa_r_inner {
         display: flex;
         margin: 15px 0;
