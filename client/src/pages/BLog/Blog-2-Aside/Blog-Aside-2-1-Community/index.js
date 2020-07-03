@@ -25,13 +25,31 @@ import iconLine_h from '../../../../assets/img/blog-img/blog-aside/iconLine_h.pn
 // -------------------- func --------------------
 
 function BlogAsideCommunity_1(props) {
+  const { userdata, setUserdata, name, setName } = props.allprops;
   // const {userdata} = props;
   // console.log(userdata)
   let [memberList, setMemberList] = useState([]);
-  
+
   useEffect(() => {
+    searchAllMember()
+  }, [])
+
+  useEffect(() => {
+    searchAllMember()
+  }, [userdata])
+
+  useEffect(() => {
+
+  }, [memberList])
+
+
+  // 搜尋方法
+  const searchAllMember = () => {
     fetch('http://localhost:3009/blog/searchAllMember/', {
-      method: 'get',
+      method: 'post',
+      body: JSON.stringify({
+        searchInput: '',
+      }),
       headers: new Headers({
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -41,30 +59,38 @@ function BlogAsideCommunity_1(props) {
         return response.json()
       })
       .then((response) => {
-        console.log('response.results == >', response.rows)
-        
-        let temp=[]
-        for(let i=0;i<9;i++){
+        let temp = []
+        for (let i = 0; i < 9; i++) {
           temp.push(response.rows[i])
         }
         setMemberList(temp)
+        console.log('temp[5] ============== >', temp[5].id)
+        console.log('memberList[5] == >', temp[5].id)
       })
-  }, [])
-
-  useEffect(() => {
-    // console.log('memberList ============== >', memberList)
-    console.log('memberList[5] == >', memberList[5])
-  }, [memberList])
+  }
 
   return (
     <>
       <div className="user-icon-st">
         <h2>關於我們</h2>
         <div className="user-icon-st-in blog-d-flex">
-          <figure className="user-icon-st-fig blog-cover">
-            {/* <img src={`/user_img/${memberList.userlogo}`} alt="" /> */}
 
-          </figure>
+          {memberList.map((data, index) => {
+            {/* console.log(data) */ }
+            return (
+              <figure className="user-icon-st-fig" key={data.id}>
+                <img src={`/user_img/${data.userlogo}`} alt="" />
+                <div>
+                  <h5>{data.name}</h5>
+                </div>
+                
+              </figure>
+            )
+          })}
+
+
+
+
         </div>
 
         <h2>人氣作者</h2>

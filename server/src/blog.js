@@ -74,9 +74,8 @@ const getSearchAllList = async (req) => {
         toSearch += ` '${searchInput}'`;
         toSearch += ` OR blogContent02 LIKE`;
         toSearch += ` '${searchInput}'`;
-    }
-    console.log('要找的字串是 ====> ',searchInput)
-
+        console.log('要找的字串是 ====> ',searchInput)
+    }    
     //依case加上ORDER BY
     if (searchSort) {
         switch (searchSort) {
@@ -185,8 +184,8 @@ const getSearchUserList = async (req) => {
         toSearch += ` '${searchInput}'`;
         toSearch += ` OR blogContent02 LIKE`;
         toSearch += ` '${searchInput}')`;
-    }
-    console.log('要找的字串是 ====> ',searchInput)
+        console.log('要找的字串是 ====> ',searchInput)
+    }    
     //依case加上ORDER BY
     if (searchSort) {
         switch (searchSort) {
@@ -275,7 +274,9 @@ const get_r_List = async (req) => {
 
 // 搜尋所有使用者資料的function
 const getAllMemberData = async (req) => {
+    let searchInput =req.body.searchInput;
     const output = {
+        searchInput:searchInput,
         rows: []
     }
     //設變數
@@ -481,9 +482,10 @@ router.post('/try-upload/', upload.single('avatar'), async (req, res) => {
 })
 
 //================================================== 查詢會員資料 ==============================================================
+// (測試ok)
 // 查詢所有會員資料
 // http://localhost:3009/blog/searchAllMember/
-router.get('/searchAllMember/', async (req, res) => {
+router.post('/searchAllMember/', async (req, res) => {
     const output = await getAllMemberData(req);
     // console.log(output.rows[0])
     res.json(output);
