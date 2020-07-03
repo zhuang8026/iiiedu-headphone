@@ -26,10 +26,7 @@ function YongMyBlog(props) {
   const { userdata, setUserdata, name, setName } = props.allprops;
   const updateCheckoutInfoToLocalStorage = (value) => {
     const Blogman = JSON.parse(localStorage.getItem('memberData')) || []
-    console.log('====================', Blogman)
-    // const currentCart = JSON.parse(localStorage.getItem('CheckoutInfo')) || []
-    // const newCheckoutInfo = [...currentCart, value]
-    // localStorage.setItem('CheckoutInfo', JSON.stringify(newCheckoutInfo))
+    console.log('====================', Blogman)    
   }
   return (
     <Route>

@@ -55,7 +55,7 @@ function BlogMainAdd(props) {
     const [testtest, setTesttest] = useState('')
 
     useEffect(() => {
-    }, []);
+    }, []);    
     useEffect(() => {
         console.log('=====================================')
         console.log('addBlogTitle ==============> ', addBlogTitle)

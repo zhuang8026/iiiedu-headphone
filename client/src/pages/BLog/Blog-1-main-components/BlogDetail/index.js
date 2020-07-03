@@ -60,7 +60,7 @@ function BlogDetail(props) {
             <div className="wrap-mid">
                 <div className="blog-detail blog-d-flex">
                     <div className="blog-detail-main">
-                        {/* <BlogMainDetailArticles
+                        <BlogMainDetailArticles
                             allprops={{
                                 userdata,
                                 setUserdata,
@@ -69,43 +69,16 @@ function BlogDetail(props) {
                             }}
                         />
                         <div className="blog-detail-spacing"></div>
-                        <BlogMainDetailLike /> */}
-                        {(userdata.id) && (userdata.id != '') ? (
-                            <>
-                                <BlogMainDetailArticles
-                                    allprops={{
-                                        userdata,
-                                        setUserdata,
-                                        name,
-                                        setName
-                                    }}
-                                />
-                                <div className="blog-detail-spacing"></div>
-                                <BlogMainDetailLike />
-                                <BlogMainDetailComments
-                                    allprops={{
-                                        userdata,
-                                        setUserdata,
-                                        name,
-                                        setName
-                                    }}
-                                />
-                            </>
-                        ) : (
-                                <>
+                        <BlogMainDetailLike />
+                        <BlogMainDetailComments
+                            allprops={{
+                                userdata,
+                                setUserdata,
+                                name,
+                                setName
+                            }}
+                        />
 
-                                    <BlogMainDetailArticles
-                                        allprops={{
-                                            userdata,
-                                            setUserdata,
-                                            name,
-                                            setName
-                                        }}
-                                    />
-                                    <div className="blog-detail-spacing"></div>
-                                    <BlogMainDetailLike />
-                                </>
-                            )}
 
 
                     </div>

@@ -45,7 +45,7 @@ function BlogMainDetailComments(props) {
         console.log('目前使用者 ==> ', userdata);
         console.log('當前使用者name ====> ', userdata.name);
         console.log('當前使用者userlogo ====> ', userdata.userlogo);
-        
+
     }, [userdata])
     useEffect(() => {
 
@@ -78,7 +78,7 @@ function BlogMainDetailComments(props) {
                 setList_r(response.rows)
             })
     }
-    
+
     // 新增回文
     const add_reply = () => {
         console.log('送出 blogId =====> ', detailId);
@@ -139,7 +139,7 @@ function BlogMainDetailComments(props) {
                 })}
             </div>
             <div className="spacing"></div>
-            <div className={((userdata.id)&&(userdata.id!='') ? 'add-comment' : 'add-comment-disable')}>
+            <div className={((userdata.id) && (userdata.id != '') ? 'add-comment' : 'add-comment-disable')}>
                 <div className="add-comment-title blog-d-flex">
                     <h2>發表評論，從</h2>
                     <figure className="add-comment-title-fig blog-cover">

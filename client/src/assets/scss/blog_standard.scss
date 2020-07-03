@@ -206,6 +206,21 @@
           .s1 {
             transform: translate(-240%, -50%);
           }
+          .search-input {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 60%;
+            border-bottom: 1px solid $btn-color-r;
+            background: $bg-theme;
+          }
+          .search-input::placeholder {
+            color: $font-color-m;
+            font-size: $font-size-14;
+            font-style: italic;
+            font-weight: $font-w;
+            padding-left: 1em;
+          }
           figure {
             position: relative;
             margin-right: 80px;
@@ -519,24 +534,28 @@
           }
         }
       }
-      .user-icon {
+      .user-icon-st {
         width: 90%;
         margin: 20px 0 0 10%;
         text-align: center;
         align-content: center;
+        .user-icon-st-in {
+          width: 15vw;
+          height: 15vw;
+          margin: 0 auto;
+          .user-icon-st-fig {
+            width: 33.3%;
+            height: 33.3%;
+            overflow: hidden;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
         h2 {
           font-size: $font-size-16;
           margin: 20px auto;
-        }
-        .user-icon-fig {
-          width: 250px;
-          height: 250px;
-          margin: 0 auto;
-          background: $bg-btn-l;
-
-          img {
-            width: 100%;
-          }
         }
         .link-btns {
           width: 100%;

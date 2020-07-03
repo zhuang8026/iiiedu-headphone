@@ -25,9 +25,6 @@ import BlogStandard from '../Blog-1-main-components/BlogStandard'
 
 function YongBlog(props) {
   const { userdata, setUserdata, name, setName } = props.allprops;
-  
-
-
   return (
     <Route>
       <Fragment>

@@ -38,7 +38,10 @@ app.use('/avatar', express.static('uploads'));
 // 搜尋所有文章(分頁)的function
 const getSearchAllList = async (req) => {
     // 給資料的部分可改成接req.body的資料           
-    let searchInput = '%9%';                          // 給字串
+    let searchInput = '';
+    if (req.body.searchInput != '') {
+        searchInput = '%' + req.body.searchInput + '%';   // 給字串
+    }
     let searchSort = req.body.searchSort;             // 給排序方式
     let searchOrder = req.body.searchOrder;           // 給正逆向
     let page = req.body.page;                         // 給當前頁
@@ -57,10 +60,23 @@ const getSearchAllList = async (req) => {
     //設變數，toCount給計算頁數的sql用，toSearch給找出當頁的sql用。
     let toCount = `SELECT COUNT(1) num FROM blogs`;
     let toSearch = `SELECT * FROM blogs LEFT JOIN users ON blogs.id=users.id`;
-    //分別加上LIKE搜尋    
-    // toCount += ` WHERE blogTitle LIKE '%耳機%' OR blogContent01 LIKE '%耳機%' OR blogContent02 LIKE '%耳機%'`;
-    // toSearch += ` WHERE blogTitle LIKE '%耳機%' OR blogContent01 LIKE '%耳機%' OR blogContent02 LIKE '%耳機%'`;
-    
+    //分別加上LIKE搜尋 
+    if (searchInput != '') {
+        toCount += ` WHERE blogTitle LIKE`;
+        toCount += ` '${searchInput}'`;
+        toCount += `  OR blogContent01 LIKE`;
+        toCount += ` '${searchInput}'`;
+        toCount += ` OR blogContent02 LIKE`;
+        toCount += ` '${searchInput}'`;
+        toSearch += ` WHERE blogTitle LIKE`;
+        toSearch += ` '${searchInput}'`;
+        toSearch += ` OR blogContent01 LIKE`;
+        toSearch += ` '${searchInput}'`;
+        toSearch += ` OR blogContent02 LIKE`;
+        toSearch += ` '${searchInput}'`;
+    }
+    console.log('要找的字串是 ====> ',searchInput)
+
     //依case加上ORDER BY
     if (searchSort) {
         switch (searchSort) {
@@ -132,7 +148,10 @@ const getSearchAllList = async (req) => {
 const getSearchUserList = async (req) => {
     // 給資料的部分可改成接req.body的資料
     let id = req.body.id;                             // 給id
-    let searchInput = '%9%';                          // 給字串
+    let searchInput = '';
+    if (req.body.searchInput != '') {
+        searchInput = '%' + req.body.searchInput + '%';   // 給字串
+    }
     let searchSort = req.body.searchSort;             // 給排序方式
     let searchOrder = req.body.searchOrder;           // 給正逆向
     let page = req.body.page;                         // 給當前頁
@@ -151,10 +170,23 @@ const getSearchUserList = async (req) => {
     }
     //設變數，toCount給計算頁數的sql用，toSearch給找出當頁的sql用。
     let toCount = `SELECT COUNT(1) num FROM blogs WHERE id='${id}'`;
-    let toSearch = `SELECT * FROM blogs WHERE id='${id}'`;
-    //分別加上LIKE搜尋    
-    // toCount += ` WHERE blogTitle LIKE '%9%' OR blogContent01 LIKE '%9%' OR blogContent02 LIKE '%9%'`;
-    // toSearch += ` WHERE blogTitle LIKE '%9%' OR blogContent01 LIKE '%9%' OR blogContent02 LIKE '%9%'`;
+    let toSearch = `SELECT * FROM blogs LEFT JOIN users ON blogs.id=users.id WHERE (blogs.id='${id}')`;
+    //分別加上LIKE搜尋 
+    if (searchInput != '') {
+        toCount += ` AND (blogTitle LIKE`;
+        toCount += ` '${searchInput}'`;
+        toCount += `  OR blogContent01 LIKE`;
+        toCount += ` '${searchInput}'`;
+        toCount += ` OR blogContent02 LIKE`;
+        toCount += ` '${searchInput}')`;
+        toSearch += ` AND (blogTitle LIKE`;
+        toSearch += ` '${searchInput}'`;
+        toSearch += ` OR blogContent01 LIKE`;
+        toSearch += ` '${searchInput}'`;
+        toSearch += ` OR blogContent02 LIKE`;
+        toSearch += ` '${searchInput}')`;
+    }
+    console.log('要找的字串是 ====> ',searchInput)
     //依case加上ORDER BY
     if (searchSort) {
         switch (searchSort) {
@@ -238,6 +270,19 @@ const get_r_List = async (req) => {
     //     i.blogPublishTime = moment(i.blogPublishTime).format('DD-YY-MM');
     //     i.blogUpdateTime = moment(i.blogUpdateTime).format('DD-YY-MM');
     // }
+    return output;
+};
+
+// 搜尋所有使用者資料的function
+const getAllMemberData = async (req) => {
+    const output = {
+        rows: []
+    }
+    //設變數
+    let _r = `SELECT * FROM users`;
+    // 取出sql符合的rows
+    const [r1] = await db.query(_r);
+    if (r1) output.rows = r1;
     return output;
 };
 
@@ -435,8 +480,16 @@ router.post('/try-upload/', upload.single('avatar'), async (req, res) => {
 
 })
 
-//================================================== 查詢目前登入者資料 ==============================================================
-// 查詢目前登入者資料
+//================================================== 查詢會員資料 ==============================================================
+// 查詢所有會員資料
+// http://localhost:3009/blog/searchAllMember/
+router.get('/searchAllMember/', async (req, res) => {
+    const output = await getAllMemberData(req);
+    // console.log(output.rows[0])
+    res.json(output);
+})
+
+// 查詢目前登入會員資料
 // http://localhost:3009/blog/searchLoginUserData/
 // router.post('/searchLoginUserData/', async (req, res) => {
 //     console.log('========== react(post) 目前登入者 -> 查詢目前登入者 ==========')
@@ -459,7 +512,7 @@ router.post('/add-reply', upload.none(), (req, res) => {
     let b_r_replys = 0;
     const output = {
         success: false,
-        
+
         rows: []
     }
     const sql = "INSERT INTO `blogs_reply`(`blogId`,`id`,`r_nick`,`r_photo`,`b_r_content`,`b_r_replys`) VALUES (?, ?, ?, ?, ?,?)";
