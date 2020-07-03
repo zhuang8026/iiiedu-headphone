@@ -102,7 +102,7 @@ function MyNavBar(props) {
             <Link className="otis-login-opener" to="/KMembers/">
                 <p className="IconP">會員中心</p>
             </Link>
-            <Link className="otis-login-opener" to="/AliceSellers">
+            <Link className="otis-login-opener" to="/SuperSeller">
                 <p className="IconP">我的賣場</p>
             </Link>
             {/* <p className="IconP" onClick={goToStore}>我的賣場</p> */}
