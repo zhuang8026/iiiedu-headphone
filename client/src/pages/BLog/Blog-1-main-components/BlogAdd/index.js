@@ -71,7 +71,9 @@ function BlogAdd(props) {
             />
           </div>
           <div className="blog-add-aside">
-            <BlogAsidePhoto />
+            <BlogAsidePhoto 
+              userdata={userdata}
+            />
             <BlogAsideCommunity_2 
               userdata={userdata}
             />

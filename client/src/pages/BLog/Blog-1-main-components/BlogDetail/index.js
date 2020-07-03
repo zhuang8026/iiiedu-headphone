@@ -54,7 +54,7 @@ function BlogDetail(props) {
             <div className="wrap-mid">
                 <div className="blog-detail blog-d-flex">
                     <div className="blog-detail-main">
-                        <BlogMainDetailArticles                            
+                        <BlogMainDetailArticles
                             allprops={{
                                 userdata,
                                 setUserdata,
@@ -64,18 +64,20 @@ function BlogDetail(props) {
                         />
                         <div className="blog-detail-spacing"></div>
                         <BlogMainDetailLike />
-                        <BlogMainDetailComments                         
+                        <BlogMainDetailComments
                             allprops={{
                                 userdata,
                                 setUserdata,
                                 name,
                                 setName
-                            }}                            
+                            }}
                         />
                     </div>
                     <div className="blog-detail-aside">
-                        <BlogAsidePhoto />
-                        <BlogAsideCommunity_2 
+                        <BlogAsidePhoto 
+                            userdata={userdata}
+                        />
+                        <BlogAsideCommunity_2
                             userdata={userdata}
                         />
                         <BlogAsideSubscribe />

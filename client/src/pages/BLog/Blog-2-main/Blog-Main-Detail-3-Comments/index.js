@@ -104,32 +104,22 @@ function BlogMainDetailComments(props) {
                                 <div className="comment-one-in blog-d-flex">
                                     <div className="user-post-icon">
                                         <figure className="user-post-fig"></figure>
-                                        
+
                                     </div>
                                     <div className="user-post-content">
                                         <h3 className="user-post-name">{data.r_nick}</h3>
                                         <h5 className="user-post-date"><Moment format="DD M月, YYYY">{data.b_r_date}</Moment></h5>
                                         <p>{data.b_r_content}</p>
-                                        
+
                                     </div>
                                 </div>
                             </div>
-                            
-
-            
-
-
                         </div>
-
                     )
                 })}
-
-
-
-
             </div>
             <div className="spacing"></div>
-            <div className="add-comment">
+            <div className={(userdata.id ? 'add-comment' : 'add-comment-disable')}>
                 <div className="add-comment-title blog-d-flex">
                     <h2>發表評論，從</h2>
                     <figure>

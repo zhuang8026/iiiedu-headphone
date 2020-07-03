@@ -28,15 +28,12 @@ function GiftHeader() {
     <div className="WiHeader">
       <Swiper {...params}>
       <div><img className="Wiheaderimg" src={Aboutimg}></img>
-      <img  className="WiRWD" src={Aboutimg4}></img>
       <h1>禮物卡</h1>
       </div>
        <div><img className="Wiheaderimg" src={Aboutimg2}></img>
-      <img className="WiRWD" src={Aboutimg5}></img>
        <h1>禮物卡</h1>
        </div>
        <div  id="Aboutimg3"><img src={Aboutimg3}></img>
-        <div className="WiRWD" ><img src={Aboutimg6}></img></div>
        <h1>禮物卡</h1>
        </div>
   </Swiper>

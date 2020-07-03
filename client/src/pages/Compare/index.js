@@ -81,79 +81,7 @@ function Compare(props) {
       const newCart = [...currentCart, value]
       localStorage.setItem('cart', JSON.stringify(newCart))
     }  
-    
-    // 點擊 css 樣式變換
-    const itemsChangeFunctionTrue =()=>{
-      setitemchange(true);
-      let Yyaside_pro = document.getElementsByClassName('Yyaside_pro');
-      for(let i=0; i<Yyaside_pro.length; i++){
-        let s = Yyaside_pro[i];
-        s.classList.add('Yyaside_pro_change');
-      }
-    }
-  
-    // 點擊 css 樣式變換
-    const itemsChangeFunctionFalse =()=>{
-      setitemchange(false);
-      let Yyaside_pro = document.getElementsByClassName('Yyaside_pro');
-      for(let i=0; i<Yyaside_pro.length; i++){
-        let s = Yyaside_pro[i];
-        s.classList.remove('Yyaside_pro_change');
-      }
-    }
-  
-    // 點擊 overlay 出現（細節頁）
-    const addCsstyle =() =>{
-      let quick_view_modal = document.getElementsByClassName('items-quick-view-modal')[0];
-      let items_wrapper = document.getElementsByClassName('items-wrapper')[0];
-      quick_view_modal.classList.add('quick_view_modal_open');
-      items_wrapper.classList.add('items_wrapper_open');
-  
-    }
-    
-    const goToDetail = ( id )=> {
-      fetch(`http://localhost:3009/products/detail/${id}`, {
-          method: 'get',
-          headers: new Headers({
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-          })
-      })
-          .then((res)=>{
-              return res.json()
-          })
-          .then((res)=>{
-              // console.log(res)
-              setdetailitems(res)
-          })
-    }
-    
-    // 模糊搜尋
-    const fuzzySearch = ( data )=> {
-      // console.log(data)
-      var params = new URLSearchParams();
-      params.append('getname', data);
-      // console.log(params.toString());
-      // console.log(params.get('getname'));
-      let getname = params.get('getname') || ''
-  
-      fetch(`http://localhost:3009/products/list/${getname}`, {
-          method: 'get',
-          headers: new Headers({
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-          })
-      })
-        .then((res)=>{
-            return res.json()
-        })
-        .then((res)=>{
-            // console.log(res)
-            setItemsdata(res)
-            // setdetailitems(res)
-        })
-    }
-  
+
     let typedata = props.match.params.type;
     useEffect(()=>{
       // 左側 menu 單選按鍵
@@ -271,15 +199,10 @@ function Compare(props) {
                             <h4 style={{height: 22 + 'px'}}>{data.itemsstar}</h4>
                             </div>
                             <div className="MyCom_card_button sty-1">
-                                <a className="MyFav_update MyCom_btn_style a-link-style"
-                                id={data.itemId} 
-                                href={`../ProductDetail/${data.itemid}`}
-                                onClick={e =>{
-                                setItemsid(e.target.id)  
-                                goToDetail(e.target.id)
-                                // addCsstyle()
-                                // props.history.push(`/ProductDetail/${e.target.id}`)
-                                }}>前往細節頁</a>
+                                <Link 
+                                  className="MyFav_update MyCom_btn_style a-link-style"
+                                  to={`/ProductDetail/${data.itemid}`}
+                                >前往細節頁</Link>
                                 <button className="MyFav_del MyCom_btn_style"                          
                                 id={data.itemId}
                                 onClick={() => {
