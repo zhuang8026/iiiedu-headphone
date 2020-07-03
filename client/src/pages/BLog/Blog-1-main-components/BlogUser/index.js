@@ -17,7 +17,7 @@ import BlogCrumb from '../BlogCrumb'
 import BlogMainUserListByUser from '../../Blog-2-main/Blog-Main-User-1-ListByUser'
 // 引入Aside
 import BlogAsidePhoto from '../../Blog-2-Aside/Blog-Aside-1-Photo'
-import BlogAsideCommunity from '../../Blog-2-Aside/Blog-Aside-2-Community'
+import BlogAsideCommunity_2 from '../../Blog-2-Aside/Blog-Aside-2-2-Community'
 import BlogAsideSubscribe from '../../Blog-2-Aside/Blog-Aside-3-subscribe'
 import BlogAsideRecent from '../../Blog-2-Aside/Blog-Aside-4-Recent'
 
@@ -31,6 +31,7 @@ import '../../../../assets/scss/blog_user.scss'
 function BlogUser(props) {
   const { userdata, setUserdata, name, setName } = props.allprops;
   return (
+    <Fragment>
     <>
       <div className="blog-user-spacing"></div>
       <div className="wrap-top">
@@ -59,7 +60,9 @@ function BlogUser(props) {
           </div>
           <div className="blog-aside">
             <BlogAsidePhoto />
-            <BlogAsideCommunity />
+            <BlogAsideCommunity_2 
+              userdata={userdata}
+            />
             <BlogAsideSubscribe />
             <BlogAsideRecent />
           </div>
@@ -67,6 +70,7 @@ function BlogUser(props) {
       </div>
       <div className="blog-user-spacing"></div>
     </>
+    </Fragment>
   )
 }
 export default withRouter(BlogUser)

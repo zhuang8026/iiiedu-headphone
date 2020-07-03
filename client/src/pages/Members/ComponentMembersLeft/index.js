@@ -52,7 +52,7 @@ function MembersLeft(props) {
                     <div className="men_title">
                         <div className="men_title_inner">
                             <span className="iconfont icon-safety"></span>
-                            <NavLink className="men_a" to="/AliceSellers">我的商場</NavLink>
+                            <NavLink className="men_a" to="/SuperSeller">我的商場</NavLink>
                         </div>
                     </div>
                     <div className="men_title">

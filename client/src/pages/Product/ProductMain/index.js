@@ -24,7 +24,7 @@ function ProductMain(props) {
   const searchParams = new URLSearchParams(props.location.search)
   let keyword = searchParams.get('keyword')
 
-  console.log(itemsdata)
+  // console.log(itemsdata)
   // console.log('history', props.history.location.state.getname);
 
   // 加入購物車
