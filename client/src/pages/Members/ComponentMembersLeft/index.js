@@ -60,9 +60,9 @@ function MembersLeft(props) {
                     <div className="men_title">
                         <div className="men_title_inner">
                             <span className="iconfont icon-blog"></span>
-                            <a className="men_a">我的BLOG</a>
+                                <NavLink className="men_a" to="/SuperSeller" >我的BLOG</NavLink>
                             </div>
-                        <ul className="men_u">
+                        {/* <ul className="men_u">
                             <li>
                                 <span className="iconfont icon-reduce_1"></span>
                                 <a>全部 BLOG</a>
@@ -71,7 +71,7 @@ function MembersLeft(props) {
                                 <span className="iconfont icon-reduce_1"></span>
                                 <a>個人 BLOG</a>
                             </li>
-                        </ul>
+                        </ul> */}
                     </div>
                 </div>
             </div>
