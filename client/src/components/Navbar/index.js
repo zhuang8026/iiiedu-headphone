@@ -18,7 +18,10 @@ import {NavItemsAir} from './config';
 
 function MyNavBar(props) {
     const key = 'updatable';
-    const {lovechange, setlovechange, compareschange, setcompareschange, cartchange, setcartchange, setItemsdata} = props;
+    const {lovechange, setlovechange, compareschange, setcompareschange, cartchange, setcartchange, setItemsdata, setUserdata} = props;
+
+
+    const [refresh, setRefresh] = useState(false);
 
     const memberData = JSON.parse(localStorage.getItem('memberData'))
 
@@ -42,9 +45,13 @@ function MyNavBar(props) {
             .then(obj=>{
                 console.log(obj);
                 localStorage.removeItem('memberData');
+                // setRefresh(true)
+                
                 setTimeout(()=>{
                     message.success(`${obj['message']}`);
+                    setUserdata([]);
                     props.history.push('/')
+                    // props.history.go(0)
                 },1000)
                 // props.history.goBack()
             })
@@ -75,7 +82,6 @@ function MyNavBar(props) {
                 .then((res)=>{
                     // console.log(res)
                     setItemsdata(res)
-
                     message.success({ content: '修改成功!', key, duration: 1 });
                     props.history.push('/YyProduct/?keyword='+keyword);
                     // props.history.push('/YyProduct/?keyword='+keyword,{keyword})
@@ -136,7 +142,7 @@ function MyNavBar(props) {
         setcompareschange(compares)
         setcartchange(cart)
     },[])
-
+    
     useEffect(() => {
         // navbar pc
         let shop_btn = document.getElementById('shopping')
@@ -180,6 +186,10 @@ function MyNavBar(props) {
         });
     }, [])
     
+
+    // useEffect(() => {
+    //     refresh && setTimeout(() => setRefresh(false))
+    // }, [refresh])
 
     return (
         <Fragment>

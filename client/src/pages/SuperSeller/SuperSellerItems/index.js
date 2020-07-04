@@ -36,6 +36,7 @@ function SuperSellerItems(props) {
                         if(resolve.data.success) {
                             setTimeout(() => {
                                 message.success({ content: '刪除成功!', key, duration: 2 });
+                                props.history.go(0)
                                 setSellerProductData(SellerProductData); // 沒反應
                             }, 1000)
                         } else {

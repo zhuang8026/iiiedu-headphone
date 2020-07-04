@@ -1,5 +1,5 @@
 // 函式元件
-import React from 'react'
+import React, { useEffect } from 'react'
 import {Link, withRouter} from 'react-router-dom'
 
 import { message } from 'antd';
@@ -9,9 +9,10 @@ function MembersLogin(props) {
           setUsername,
           password,
           setPassword,
-          loginProcess} = props.allprops;
-  const loginSuccessCallback = () => {
+          loginProcess,
+          setUserdata} = props.allprops;
 
+  const loginSuccessCallback = () => {
     fetch('http://localhost:3009/members/login', {
       method: 'post',
       body:JSON.stringify({
@@ -25,7 +26,7 @@ function MembersLogin(props) {
     })
       .then(result=>result.json())
       .then(obj=>{
-        // console.log(obj);
+        console.log(obj);
 
         let userdata = obj['loginInfo'] ? obj['loginInfo']: '';
         // let userdata = obj;
@@ -34,9 +35,15 @@ function MembersLogin(props) {
           if(userdata.pwd === password){
             localStorage.setItem('memberData', JSON.stringify(userdata));
             message.success(`Hello! ${userdata.name}`);
+
+            const amemberDataInfo = JSON.parse(localStorage.getItem('memberData'))|| []
+
+            setUserdata(amemberDataInfo);
             setTimeout(()=>{
               // props.history.goBack()
+              // setUserdata(userdatainfo);
               props.history.push('/');
+              // props.history.go(0);
             },2000)
           } else {
             message.error(`密碼不正確`);
@@ -50,6 +57,9 @@ function MembersLogin(props) {
 
   }
 
+  // useEffect(()=>{
+  //   setUserdata(localStorage.getItem('memberData'));
+  // },[localStorage.getItem('memberData')])
 
   return (
       <main>

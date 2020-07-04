@@ -52,6 +52,7 @@ router.post('/login', (req, res)=>{
                     loginInfo.username = value.username;
                     loginInfo.name = value.name;
                     loginInfo.pwd = value.pwd;
+                    loginInfo.id = value.id;
                 }
             })
             
