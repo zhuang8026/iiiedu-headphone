@@ -9,8 +9,8 @@ import MembersLeft from '../ComponentMembersLeft';
 // 測試圖片
 import visa from '../../../assets/img/visa.png';
 
-// 測試圖片
-// import '../../../assets/img/visa.png';
+// css
+import './bankCard.scss';
 
 function MembersBank(props) {
     const key = 'updatable';
@@ -70,22 +70,32 @@ function MembersBank(props) {
                                 {/* 信用卡 */}
                                 <div className="card-list">
                                     <div className="card-item">
+                                    {/* <div className="card-item -active">  */}
+                                        {/* 前 */}
                                         <div className="card-item__side -front">
                                             <div className="card-item__cover">
                                                 <img className="card-item__bg" src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/9.jpeg"/>
                                             </div>
                                             <div className="card-item__wrapper">
                                                 <div className="card-item__top">
-                                                    <img className="card-item__typeImg" src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/visa.png"/>
-                                                    <div className="card-item__type"></div>
+                                                    <img className="card-item__chip" src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/chip.png"/>
+                                                    <div className="card-item__type">
+                                                        <img className="card-item__typeImg" src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/visa.png"/>
+                                                    </div>
                                                 </div>
-                                                <label className="cardNumber" className="card-item__number">
+                                                <label for="cardNumber" className="card-item__number">
+                                                    <span>
+                                                        <div class="card-item__numberItem">1</div>
+                                                    </span>
+                                                    <span>
+                                                        <div class="card-item__numberItem">1</div>
+                                                    </span>
                                                     <span>
                                                         <div class="card-item__numberItem">1</div>
                                                     </span>
                                                 </label>
                                                 <div className="card-item__content">
-                                                    <label for="cardNumber" class="card-item__number">
+                                                    <label for="cardName" class="card-item__info">
                                                         <div className="card-item__holder">Card Holder</div>
                                                         <div className="card-item__name">Full Name</div>
                                                     </label>
@@ -100,6 +110,23 @@ function MembersBank(props) {
                                                         </label> 
                                                         
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* 後 */}
+                                        <div className="card-item__side -back">
+                                            <div className="card-item__cover">
+                                                <img className="card-item__bg" src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/9.jpeg"/>
+                                            </div>
+                                            <div class="card-item__band">
+
+                                            </div>
+                                            <div class="card-item__cvv">
+                                                <div className="card-item__cvvTitle">CVV</div>
+                                                <div className="card-item__cvvBand"></div>
+                                                <div className="card-item__type">
+                                                    <img className="card-item__typeImg" src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/visa.png"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -149,6 +176,7 @@ function MembersBank(props) {
                                 </div>
                             </div>
 
+                            {/* 舊樣式 */}
                             <ul className="members_pwa_r_inner">
                                 <li>
                                     <div className="members_card">
