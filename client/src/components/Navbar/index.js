@@ -18,7 +18,7 @@ import {NavItemsAir} from './config';
 
 function MyNavBar(props) {
     const key = 'updatable';
-    const {lovechange, setlovechange, compareschange, setcompareschange, cartchange, setcartchange, setItemsdata, setUserdata} = props;
+    const {lovechange, setlovechange, compareschange, setcompareschange, cartchange, setcartchange, setItemsdata, userdata, setUserdata} = props;
 
 
     const [refresh, setRefresh] = useState(false);
@@ -333,10 +333,19 @@ function MyNavBar(props) {
                                                     <i className="iconfont icon-blog"></i>
                                                     <Link to="/Blog/YongBlog" type="button"><span>所有 Blog</span></Link>
                                                 </li>
-                                                <li className="nav-menu-object">
-                                                    <i className="iconfont icon-blog"></i>
-                                                    <Link to="/Blog/YongMyBlog" type="button"><span>我的 Blog</span></Link>
-                                                </li>
+                                                {userdata.id ? (
+                                                    <>
+                                                        <li className="nav-menu-object">
+                                                            <i className="iconfont icon-blog"></i>
+                                                            <Link to="/Blog/YongMyBlog" type="button"><span>我的 Blog</span></Link>
+                                                        </li>
+                                                    </>
+                                                ):(
+                                                    <>
+                                                        <li></li>
+                                                    </>
+                                                )}
+                                                
                                             </ul>
                                         </div>
                                     </li>

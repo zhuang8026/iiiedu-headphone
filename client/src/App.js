@@ -108,8 +108,6 @@ function App() {
   const [orderCard, setOrderCard] = useState('')
   const [orderId, setOrderId] = useState([])
 
-  console.log(userdata)
-
   // 登入 & 狀態判斷
   const loginProcess = (loginSuccessCallback) => {
     const errors = []
@@ -182,6 +180,7 @@ function App() {
           setcompareschange={setcompareschange}
           setcartchange={setcartchange}
           setItemsdata={setItemsdata}
+          userdata={userdata}
           setUserdata={setUserdata}
         />
         <MyMenu 
