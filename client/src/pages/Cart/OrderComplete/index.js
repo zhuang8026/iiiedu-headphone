@@ -48,7 +48,7 @@ function OrderComplete(props) {
             <div className="icon-box">
               <i className="iconfont icon-wancheng"></i>
             </div>
-            <p>個人資料</p>
+            <p>配送資料</p>
           </li>
           <li>
             <div className="line done"></div>
@@ -95,7 +95,7 @@ function OrderComplete(props) {
             </tr>
             <tr>
               <td>付款方式：</td>
-              <td>信用卡</td>
+              <td>編號:{orderPayment}</td>
             </tr>
             <tr>
               <td>合計:</td>

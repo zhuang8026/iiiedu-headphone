@@ -13,7 +13,7 @@ function CheckoutDelivery(props) {
     userdata,
     setUserdata,
     orderDelivery,
-    setOrderDelivery
+    setOrderDelivery,
   } = props.allprops
 
   return (
@@ -29,7 +29,7 @@ function CheckoutDelivery(props) {
             <div className="icon-box">
               <i className="iconfont icon-wancheng"></i>
             </div>
-            <p>個人資料</p>
+            <p>配送資料</p>
           </li>
           <li>
             <div className="line done"></div>
@@ -60,7 +60,7 @@ function CheckoutDelivery(props) {
           </li>
         </ul>
         {/* 選擇配送方式表單 */}
-        <form className="delivery-form">
+        <div className="delivery-form">
           <div>選擇配送方式:</div>
           <select
             className="delivery"
@@ -71,21 +71,58 @@ function CheckoutDelivery(props) {
               const v = event.target.value
               setOrderDelivery(v)
             }}
-          >           
-            <option value="1">黑貓宅急便</option>
-            <option value="2">7-11</option>
-            <option value="3">全家</option>
-            <option value="4">萊爾富</option>
+          >
+            <option value="1">宅配</option>
+            <option value="2">店到店</option>
           </select>
-           {/* <div>除錯用:{orderDelivery}</div> */}
+          {/* 選擇性顯示區塊  大於等於3個選項時 */}
+          {orderDelivery === '1' && (
+            <div>
+              <ul>
+                <li>
+                  <h1>宅配需知</h1>
+                </li>
+                <li>涵蓋台灣本島及離島，國外暫不提供本項服務</li>
+                <li>
+                  在消費者訂單下訂後，本公司需3-5個工作天處理方能配送到貴府上，若有不便之處敬請見諒。
+                </li>
+                <li>如遇颱風或不可抗拒之因素，則依官網公告為準。</li>
+                <li>欲退貨請於貨到後7天(含例假日)內提出。</li>
+                <li>退回商品須全新且包裝完整，退貨運費由店家負擔。</li>
+                <li>
+                  因商品、顏色、色差等個人主觀因素要求換貨，來回運費由買方負擔。
+                </li>
+                <li>退換貨請主動索取、保留退貨單據，避免影響權益。</li>
+              </ul>
+            </div>
+          )}
+          {orderDelivery === '2' && (
+            <div>
+              <ul>
+                <li>
+                  <h1>店到店須知</h1>
+                </li>
+                <li>涵蓋台灣本島及離島，國外暫不提供本項服務</li>
+                <li>本店寄貨，他店取貨</li>
+                <li>如遇颱風或不可抗拒之因素，則依官網公告為準。</li>
+                <li>欲退貨請於貨到後7天(含例假日)內提出。</li>
+                <li>退回商品須全新且包裝完整，退貨運費由店家負擔。</li>
+                <li>
+                  因商品、顏色、色差等個人主觀因素要求換貨，來回運費由買方負擔。
+                </li>
+                <li>退換貨請主動索取、保留退貨單據，避免影響權益。</li>
+              </ul>
+            </div>
+          )}
           <div>
-            <button 
-            type="button"            
-            >
-              <Link to="/CheckoutPayment">下一步</Link>
+            <button type="button">
+              <Link to="/CheckoutInfo">上一頁</Link>
             </button>
-          </div>          
-        </form>
+            <button type="button">
+              <Link to="/CheckoutPayment">填寫付款方式</Link>
+            </button>
+          </div>
+        </div>
       </div>
     </>
   )

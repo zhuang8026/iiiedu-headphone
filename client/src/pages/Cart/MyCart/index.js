@@ -82,72 +82,84 @@ function MyCart(props) {
   const spinner = <></>
   const display = (
     <>
-      <ul className="cart-table">
-        <li>
-          <ul>
-            <li></li>
-            <li>圖片</li>
-            <li>品名</li>
-            <li>單價</li>
-            <li>數量</li>
-            <li className="li-prices">小計</li>
-            <li></li>
-          </ul>
-        </li>
-        <li>
-          {mycartDisplay.map((value, index) => {
-            return (
-              <ul key={value.id}>
-                <li>
-                  <i className="iconfont icon-error"></i>
-                </li>
-                <li>
-                  <img src={`/items_img/${value.itemImg}`} alt="icon" />
-                </li>
-                <li>{value.itemName}</li>
-                <li>{value.itemPrice}</li>
-                <li>{value.amount}</li>
-                <li className="li-prices">{value.itemPrice * value.amount}</li>
-                <li className="li-function">
-                  <button type="button" className="btn_booking btn_width">
-                    <i className="iconfont icon-like mobileIcon"></i>
-                  </button>
-                  <button type="button" className="btn_wish btn_width">
-                    <i className="iconfont icon-binding"></i>
-                  </button>
-                </li>
-              </ul>
-            )
-          })}
-        </li>
-        <li className="cart-footer">
-          <input type="text" placeholder=" 請輸入優惠碼" />
-          <button type="button">去取得優惠卷</button>
-        </li>
-        <li className="cart-footer">
-          <span>總計</span>
-          {/* 判斷mycartDisplay是否在初次render的階段 */}
-          {mycartDisplay.length > 0 ? <span>{sum(mycartDisplay)}</span> : ''}
-        </li>
-        <li className="cart-footer">
-          <button
-            type="button"
-            onClick={() => {
-              localStorage.removeItem('cart')
-              props.history.go(0)
-            }}
-          >
-            清空購物車
-          </button>
-          <button type="button" onClick={setOrderTotal(sum(mycartDisplay))}>
-            <Link to="/CheckoutInfo">去結帳</Link>
-          </button>
-        </li>
-      </ul>
+      {mycartDisplay.length === 0 && (
+        <ul className="cart-table">
+          <li>目前購物車是空的!</li>
+          <li className="cart-footer">
+            <button type="button">
+              <Link to="/YyProduct">去商店</Link>
+            </button>
+          </li>
+        </ul>
+      )}
+      {mycartDisplay.length !== 0 && (
+        <ul className="cart-table">
+          <li>
+            <ul>
+              <li></li>
+              <li>圖片</li>
+              <li>品名</li>
+              <li>單價</li>
+              <li>數量</li>
+              <li className="li-prices">小計</li>
+              <li></li>
+            </ul>
+          </li>
+          <li>
+            {mycartDisplay.map((value, index) => {
+              return (
+                <ul key={value.id}>
+                  <li>
+                    <i className="iconfont icon-error"></i>
+                  </li>
+                  <li>
+                    <img src={`/items_img/${value.itemImg}`} alt="icon" />
+                  </li>
+                  <li>{value.itemName}</li>
+                  <li>{value.itemPrice}</li>
+                  <li>{value.amount}</li>
+                  <li className="li-prices">
+                    {value.itemPrice * value.amount}
+                  </li>
+                  <li className="li-function">
+                    <button type="button" className="btn_booking btn_width">
+                      <i className="iconfont icon-like mobileIcon"></i>
+                    </button>
+                    <button type="button" className="btn_wish btn_width">
+                      <i className="iconfont icon-binding"></i>
+                    </button>
+                  </li>
+                </ul>
+              )
+            })}
+          </li>
+          <li className="cart-footer">
+            <input type="text" placeholder=" 請輸入優惠碼" />
+            <button type="button">去取得優惠卷</button>
+          </li>
+          <li className="cart-footer">
+            <span>總計</span>
+            {/* 判斷mycartDisplay是否在初次render的階段 */}
+            {mycartDisplay.length > 0 ? <span>{sum(mycartDisplay)}</span> : ''}
+          </li>
+          <li className="cart-footer">
+            <button
+              type="button"
+              onClick={() => {
+                localStorage.removeItem('cart')
+                props.history.go(0)
+              }}
+            >
+              清空購物車
+            </button>
+            <button type="button" onClick={setOrderTotal(sum(mycartDisplay))}>
+              <Link to="/ConfirmOrder">去結帳</Link>
+            </button>
+          </li>
+        </ul>
+      )}
     </>
   )
-  //清空購物車
-  // const removeItemCart = async () => {localStorage.removeItem('cart')}
 
   return (
     <>
