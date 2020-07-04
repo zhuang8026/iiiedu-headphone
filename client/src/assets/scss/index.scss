@@ -63,11 +63,12 @@
 
 // Cart購物流程
 @import './cart/index.scss'; //購物流程共用
-@import './cart/MyCart.scss'; //購物車頁面
-@import './cart/CheckoutInfo.scss'; //收件個人資料
-@import './cart/CheckoutDelivery.scss'; //選擇配送方法
-@import './cart/CheckoutPayment.scss'; //選擇付款方法
-@import './cart/OrderComplete.scss'; //購物完成
+@import './cart/MyCart.scss'; //購物車
+@import './cart/ConfirmOrder.scss'; //確認訂單
+@import './cart/CheckoutInfo.scss'; //填寫配送資料
+@import './cart/CheckoutDelivery.scss'; //填寫配送方法
+@import './cart/CheckoutPayment.scss'; //填寫付款方法
+@import './cart/OrderComplete.scss'; //購物完成感謝頁
 
 // BLog
 

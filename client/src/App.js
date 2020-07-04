@@ -57,6 +57,7 @@ import MyFav from './pages/MyFav'
 
 // 購物車
 import MyCart from './pages/Cart/MyCart' //購物車
+import ConfirmOrder from './pages/Cart/ConfirmOrder' //確認訂單
 import CheckoutInfo from './pages/Cart/CheckoutInfo' //訂單個人資料填寫
 import CheckoutDelivery from './pages/Cart/CheckoutDelivery' //選擇配送方式
 import CheckoutPayment from './pages/Cart/CheckoutPayment' //選擇付款方式
@@ -423,6 +424,20 @@ function App() {
           <Route path="/MyCart">
             <MyCart
               allprops={{
+                mycart,
+                setMycart,
+                mycartDisplay,
+                setMycartDisplay,
+                orderTotal,
+                setOrderTotal,
+              }}
+            />
+          </Route>
+          <Route path="/ConfirmOrder">
+            <ConfirmOrder
+              allprops={{
+                userdata,
+                setUserdata,
                 mycart,
                 setMycart,
                 mycartDisplay,

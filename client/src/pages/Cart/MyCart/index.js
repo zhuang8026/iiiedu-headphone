@@ -153,7 +153,7 @@ function MyCart(props) {
               清空購物車
             </button>
             <button type="button" onClick={setOrderTotal(sum(mycartDisplay))}>
-              <Link to="/CheckoutInfo">去結帳</Link>
+              <Link to="/ConfirmOrder">去結帳</Link>
             </button>
           </li>
         </ul>

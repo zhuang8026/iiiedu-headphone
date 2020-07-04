@@ -50,7 +50,7 @@ function CheckoutInfo(props) {
             <div className="icon-box">
               <i className="iconfont icon-address"></i>
             </div>
-            <p>個人資料</p>
+            <p>配送資料</p>
           </li>
           <li>
             <div className="line"></div>
@@ -90,7 +90,7 @@ function CheckoutInfo(props) {
                   type="text"
                   id="name"
                   name="name"
-                  value={orderName?orderName:userdata.name}
+                  value={orderName ? orderName : userdata.name}
                   // defaultValue={userdata.name}
                   onChange={(event) => {
                     const v = event.target.value
@@ -105,7 +105,7 @@ function CheckoutInfo(props) {
                   type="text"
                   id="address"
                   name="address"
-                  value={orderAddress?orderAddress:userdata.address}
+                  value={orderAddress ? orderAddress : userdata.address}
                   // defaultValue={userdata.address}
                   onChange={(event) => {
                     const v = event.target.value
@@ -121,7 +121,7 @@ function CheckoutInfo(props) {
                   id="tel"
                   name="tel"
                   maxLength="10"
-                  value={orderTel?orderTel:userdata.phoneNumber}
+                  value={orderTel ? orderTel : userdata.phoneNumber}
                   // defaultValue={userdata.phoneNumber}
                   onChange={(event) => {
                     const v = event.target.value
@@ -138,7 +138,7 @@ function CheckoutInfo(props) {
                   name="remark"
                   id="remark"
                   cols="30"
-                  rows="10"                  
+                  rows="10"
                   onChange={(event) => {
                     const v = event.target.value
                     setOrderRemarks(v)
@@ -148,10 +148,9 @@ function CheckoutInfo(props) {
             </div>
           </div>
           <div>
-            {/* <div>除錯用姓名:{orderName}</div>
-            <div>除錯用地址:{orderAddress}</div>
-            <div>除錯用電話:{orderTel}</div>
-            <div>除錯用備註:{orderRemarks}</div> */}
+            <button type="button">
+              <Link to="/ConfirmOrder">上一頁</Link>
+            </button>
             <button
               type="button"
               // onClick={() => {
@@ -165,7 +164,7 @@ function CheckoutInfo(props) {
               //   })
               // }}
             >
-              <Link to="/CheckoutDelivery">下一步</Link>
+              <Link to="/CheckoutDelivery">填寫配送方式</Link>
             </button>
           </div>
         </form>
