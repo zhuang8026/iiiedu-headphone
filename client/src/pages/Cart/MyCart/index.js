@@ -83,9 +83,9 @@ function MyCart(props) {
   const display = (
     <>
       {mycartDisplay.length === 0 && (
-        <ul className="cart-table">
+        <ul className="cart-empty">
           <li>目前購物車是空的!</li>
-          <li className="cart-footer">
+          <li className="border-top">
             <button type="button">
               <Link to="/YyProduct">去商店</Link>
             </button>
@@ -138,7 +138,7 @@ function MyCart(props) {
             <button type="button">去取得優惠卷</button>
           </li>
           <li className="cart-footer">
-            <span>總計</span>
+            <span>總計$</span>
             {/* 判斷mycartDisplay是否在初次render的階段 */}
             {mycartDisplay.length > 0 ? <span>{sum(mycartDisplay)}</span> : ''}
           </li>
