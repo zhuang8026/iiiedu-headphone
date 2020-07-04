@@ -37,7 +37,11 @@ const storage = multer.diskStorage({
     }
 });
 
+// fileFilter是處理檔案類型
+// 如果傳5個檔案，則這邊會被呼叫5次，req被呼叫5次都是同一個req，file一次接一個，不在規則內就過濾掉。
 const fileFilter = (req, file, cb)=>{
+    // !!將後面的東西轉換成布林值
+    // 下面表示如果file的mime type沒有在extMap裡面，則不通過。
     cb(null, !!extMap[file.mimetype]);
 }
 
