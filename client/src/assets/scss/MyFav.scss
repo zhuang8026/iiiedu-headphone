@@ -89,20 +89,40 @@ main {
             }
           }
         }
+        .loveError {
+          width: 98%;
+          margin: 0 auto;
+          text-align: center;
+          p {
+            color: #8b8b8b;
+            border-bottom: 1px solid #a4a4a4;
+            padding-bottom: 10px;
+          }
+          button {
+            padding: 6px 32px;
+            background: transparent;
+            border: 1px solid #a4a4a4;
+            transition: 0.3s ease-in;
+            &:hover{
+              background: $btn-color-l;
+              color: #fff;
+            }
+          }
+        }
       }
     }
   }
-  .page {
-    padding-top: 60px;
-    text-align: center;
-    .ant-pagination-item-active {
-      background: #211e55;
-      border: #fff;
-      a {
-        color: #fff;
-      }
-    }
-  }
+  // .page {
+  //   padding-top: 60px;
+  //   text-align: center;
+  //   .ant-pagination-item-active {
+  //     background: #211e55;
+  //     border: #fff;
+  //     a {
+  //       color: #fff;
+  //     }
+  //   }
+  // }
 }
 
 @media (min-width: 1366px) and (max-width: 1919px) {

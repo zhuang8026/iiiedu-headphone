@@ -275,16 +275,9 @@ function MyFav(props) {
                     })}
                     </Fragment>
                 ):(
-                  <div className="cart_row" >
-                    <figure>
-                        <img src={"/user_img/fail.gif"} alt="商品圖片"/>
-                        <img src={"/user_img/fail.gif"} alt="商品圖片"/>
-                        <img src={"/user_img/fail.gif"} alt="商品圖片"/>
-                        <img src={"/user_img/fail.gif"} alt="商品圖片"/>
-                    </figure>
-                    <div className="cart_price">
-                      
-                    </div>
+                  <div className="loveError">
+                  <p>目前我的最愛是空的</p>
+                  <button><i class="iconfont icon-search"></i>去商店</button>
                   </div>
                 )}
                 
