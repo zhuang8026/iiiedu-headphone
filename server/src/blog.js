@@ -74,8 +74,8 @@ const getSearchAllList = async (req) => {
         toSearch += ` '${searchInput}'`;
         toSearch += ` OR blogContent02 LIKE`;
         toSearch += ` '${searchInput}'`;
-        console.log('要找的字串是 ====> ',searchInput)
-    }    
+        console.log('要找的字串是 ====> ', searchInput)
+    }
     //依case加上ORDER BY
     if (searchSort) {
         switch (searchSort) {
@@ -92,8 +92,8 @@ const getSearchAllList = async (req) => {
                 toSearch += " ORDER BY blogId";
                 break;
             case '依作者':
-                toCount += " ORDER BY id";
-                toSearch += " ORDER BY id";
+                toCount += " ORDER BY blogs.id";
+                toSearch += " ORDER BY blogs.id";
                 break;
             default:
                 break;
@@ -184,8 +184,8 @@ const getSearchUserList = async (req) => {
         toSearch += ` '${searchInput}'`;
         toSearch += ` OR blogContent02 LIKE`;
         toSearch += ` '${searchInput}')`;
-        console.log('要找的字串是 ====> ',searchInput)
-    }    
+        console.log('要找的字串是 ====> ', searchInput)
+    }
     //依case加上ORDER BY
     if (searchSort) {
         switch (searchSort) {
@@ -274,9 +274,9 @@ const get_r_List = async (req) => {
 
 // 搜尋所有使用者資料的function
 const getAllMemberData = async (req) => {
-    let searchInput =req.body.searchInput;
+    let searchInput = req.body.searchInput;
     const output = {
-        searchInput:searchInput,
+        searchInput: searchInput,
         rows: []
     }
     //設變數
@@ -334,16 +334,16 @@ router.post('/add', upload.none(), (req, res) => {
     let blogContent02_img03 = req.body.addBlogContent02_img03;
     const output = {
         success: false,
-        id: id,
-        blogTitle: blogTitle,
-        blogContent01: blogContent01,
-        blogContent01_img01: blogContent01_img01,
-        blogContent01_img02: blogContent01_img02,
-        blogContent01_img03: blogContent01_img03,
-        blogContent02: blogContent02,
-        blogContent02_img01: blogContent02_img01,
-        blogContent02_img02: blogContent02_img02,
-        blogContent02_img03: blogContent02_img03,
+        // id: id,
+        // blogTitle: blogTitle,
+        // blogContent01: blogContent01,
+        // blogContent01_img01: blogContent01_img01,
+        // blogContent01_img02: blogContent01_img02,
+        // blogContent01_img03: blogContent01_img03,
+        // blogContent02: blogContent02,
+        // blogContent02_img01: blogContent02_img01,
+        // blogContent02_img02: blogContent02_img02,
+        // blogContent02_img03: blogContent02_img03,
         rows: []
     }
     const sql = "INSERT INTO `blogs`(`id`,`blogTitle`,`blogContent01`,`blogContent01_img01`,`blogContent01_img02`,`blogContent01_img03`,`blogContent02`,`blogContent02_img01`,`blogContent02_img02`,`blogContent02_img03`) VALUES (?, ?, ?, ?,?,?,?,?,?,?)";
@@ -351,11 +351,10 @@ router.post('/add', upload.none(), (req, res) => {
     console.log('req.body = ', req.body)
     db.query(sql, [id, blogTitle, blogContent01, blogContent01_img01, blogContent01_img02, blogContent01_img03, blogContent02, blogContent02_img01, blogContent02_img02, blogContent02_img03])
         .then(([r]) => {
-            output.results = r;
-            if (r.affectedRows && r.insertId) {
-                output.success = true;
-            }
-            res.json(output);
+            // output.results = r;
+            // output.success = true;
+            // console.log(output);
+            // res.json(output);
         })
     // res.json(req.body);
 })
@@ -438,7 +437,7 @@ router.post('/searchUserBlog/', async (req, res) => {
 
 //================================================== blogId取文章 ==============================================================
 // (測試ok)
-// 搜尋(個人)所有文章(分頁)
+// 搜尋文章細節頁
 // http://localhost:3009/blog/getDetail/
 router.post('/getDetail/', async (req, res) => {
     const output = {

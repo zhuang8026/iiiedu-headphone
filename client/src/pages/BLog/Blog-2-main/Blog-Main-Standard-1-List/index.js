@@ -44,12 +44,14 @@ function BlogMainStandardList(props) {
     const [searchInput, setSearchInput] = useState('')
     const [searchOrder, setSearchOrder] = useState('DESC')
     const [searchSort, setSearchSort] = useState('依發文日期')
+    // const [ifLogin, setIfLogin] = useState('')
 
     useEffect(() => {
         searchMethod()
     }, [])
     useEffect(() => {
         searchMethod()
+        // setIfLogin(userdata.id)
     }, [userdata])
     useEffect(() => {
 
@@ -127,15 +129,24 @@ function BlogMainStandardList(props) {
     return (
         <>
             <div className="blog-btns blog-d-flex blog-justify-content-between">
-                <div className="blog-btns-left">
-                    <button className="blog-btns-left-Link" onClick={() => props.history.push('/Blog/YongBlog')}>
-                        全部文章
+                {((userdata.id)&&(userdata.id!='')) &&
+                    <div className="blog-btns-left">
+                        <button className="blog-btns-left-Link" onClick={() => props.history.push('/Blog/YongBlog')}>
+                            全部文章
                     </button>
-                    <button
-                        className={((userdata.id) && (userdata.id != '') ? 'blog-btns-left-Link' : 'blog-btns-left-Link-disable')} onClick={() => props.history.push('/Blog/YongMyBlog')}>
-                        個人文章
+                        <button
+                            className='blog-btns-left-Link' onClick={() => props.history.push('/Blog/YongMyBlog')}>
+                            個人文章
                     </button>
-                </div>
+                    </div>
+                }
+                {((!userdata.id)||(userdata.id=='')) &&
+                    <div className="blog-btns-left">
+                        <button className="blog-btns-left-Link" onClick={() => props.history.push('/Blog/YongBlog')}>
+                            全部文章
+                    </button>
+                    </div>
+                }
                 <div className="blog-btns-right blog-d-flex blog-justify-content-between">
                     <select className="s1" name="" id=""
                         onChange={(e) => {

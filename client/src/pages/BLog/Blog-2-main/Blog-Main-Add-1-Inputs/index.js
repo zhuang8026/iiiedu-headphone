@@ -1,8 +1,9 @@
 // 函式元件
 import React, { Fragment, useEffect, useState } from 'react'
+import ReactDOM from 'react-dom'
 import Files from 'react-files'
 import $ from 'jquery'
-import { message } from 'antd';
+import Draggable from 'react-draggable';
 
 import {
     BrowserRouter as Router,
@@ -13,7 +14,10 @@ import {
     NavLink,
     withRouter,
 } from 'react-router-dom'
-
+// antd
+import 'antd/dist/antd.css';
+import { message, Modal, Button, Space } from 'antd';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
 // import '../../../../assets/css/YongBlog/Yong-blog-add.css'
 
 // -------------------- components --------------------
@@ -27,6 +31,7 @@ import testImg from '../../../../assets/img/blog-img/blog-detail/test.png'
 // -------------------- func --------------------
 
 function BlogMainAdd(props) {
+    const { confirm } = Modal;
     const { userdata, setUserdata, name, setName } = props.allprops;
     const {
         blogTitle,
@@ -55,7 +60,8 @@ function BlogMainAdd(props) {
     const [testtest, setTesttest] = useState('')
 
     useEffect(() => {
-    }, []);    
+        // $(ReactDOM.findDOMNode($('#drag11_img'))).draggable();
+    }, []);
     useEffect(() => {
         console.log('=====================================')
         console.log('addBlogTitle ==============> ', addBlogTitle)
@@ -70,6 +76,10 @@ function BlogMainAdd(props) {
     }, [addBlogTitle, addBlogContent01, drag11, drag12, drag13,
         addBlogContent02, drag21, drag22, drag23]);
 
+    useEffect(() => {
+        console.log('更新imgPoint01 : ', imgPoint01)
+        console.log('更新imgPoint02 : ', imgPoint02)
+    }, [imgPoint01, imgPoint02]);
     // useEffect(() => {
     //     console.log('=====================================')
     //     console.log('selectedFile', selectedFile)
@@ -104,6 +114,25 @@ function BlogMainAdd(props) {
     const goSetImg = () => { }
 
 
+    // 新增文章提示
+    function showAddPromiseConfirm() {
+        confirm({
+            title: '確定要新增此篇文章?',
+            icon: <ExclamationCircleOutlined />,
+            content: '按〝確定〞進行新增，新增完畢會自動跳轉。',
+            okText: '確定',
+            // okType: 'ghost',
+            cancelText: '取消',
+            onOk() {
+                return new Promise((resolve, reject) => {
+                    setTimeout(Math.random() > 0.5 ? resolve : reject, 1500);
+                    goBlogAdd()
+                }).catch(() => console.log('Oops errors!'));
+            },
+            onCancel() { },
+        });
+    }
+    // 新增文章
     const goBlogAdd = () => {
         fetch('http://localhost:3009/blog/add', {
             method: 'POST',
@@ -124,16 +153,18 @@ function BlogMainAdd(props) {
                 'Content-Type': 'application/json',
             })
         })
-            .then(result => result.json())
-            .then(obj => {
-                console.log(obj)
-                // localStorage.setItem('memberData', JSON.stringify(obj));
-                message.success(`新增成功！`);
-                setTimeout(() => {
-                    // props.history.goBack()
-                    props.history.push('/Blog/YongMyBlog');
-                }, 2000)
+            .then((response) => {
+                return response.json()
             })
+            .then((response) => {
+                console.log(response)
+                // if (result.success == true) {
+                //     props.history.push('/Blog/YongMyBlog');
+                // }
+            })
+        setTimeout(() => {
+            props.history.push('/Blog/YongMyBlog');
+        }, 2000)
     }
 
     return (
@@ -195,7 +226,43 @@ function BlogMainAdd(props) {
                 <div className="upload-imgs">
                     <div className="drags d-flex">
                         <figure className="dragImg drag11" id="drag11" draggable="true">
-                            <img className="blog-cover" src={`http://localhost:3009/blogs_img/${drag11}`} id="drag11_img" alt="" />
+                            <img className="blog-cover" src={`http://localhost:3009/blogs_img/${drag11}`}
+                                id="drag11_img" alt=""
+                                onDoubleClick={(e) => {
+                                    // if (drag11 !== 'default.jpg') {
+                                    //     let startPoint = 1;
+                                    //     let tempPoint = imgPoint01;
+                                    //     console.log('你點了兩下 : drag11')
+                                    //     while (startPoint < tempPoint) {
+
+                                    //         let br = [];
+                                    //         (async () => {
+                                    //             br = await doSomething();
+                                    //             console.log('br:', br);
+                                    //         })();
+
+
+                                    //         if (startPoint === 1) {
+                                    //             setDrag11(drag12)
+                                    //         }
+                                    //     }
+
+
+
+                                    //     tempPoint = tempPoint - 1;
+                                    //     setImgPoint01(tempPoint)
+                                    // }
+
+                                    // console.log('點兩下之前 : ',imgPoint01)
+                                    // setDrag11('default.jpg')
+
+                                }}
+                                onDrag={(e) => {
+                                    console.log('你正在拖曳')
+                                }
+
+                                }
+                            />
                         </figure>
                         <figure className="dragImg drag12" id="drag12" draggable="true">
                             <img className="blog-cover" src={`http://localhost:3009/blogs_img/${drag12}`} id="drag12_img" alt="" />
@@ -249,32 +316,9 @@ function BlogMainAdd(props) {
                         </figure>
                     </div>
                 </div>
-                <button className="blog-add-submit" onClick={() => { goBlogAdd() }}>送出</button>
+                <button className="blog-add-submit" onClick={() => { showAddPromiseConfirm() }}>送出</button>
             </div>
         </>
     )
-
-
-    const ball = $('.ball');
-    const rect2 = $('.rect:eq(1)');
-
-    ball.on('dragstart', function (event) {
-        // 設定轉移的資料
-        event.originalEvent.dataTransfer.setData('text', event.target.id);
-    });
-    rect2.on('dragover', function (event) {
-        event.preventDefault();
-    });
-    rect2.on('drop', function (event) {
-        // 取得轉移的資料
-        let id = event.originalEvent.dataTransfer.getData('text');
-        if (!id) return;
-        const b = $('#' + id).clone(); // 複製 jQuery 元素物件
-        b.removeAttr('id');
-        rect2.append(b);
-    });
-
-
-
 }
 export default withRouter(BlogMainAdd)

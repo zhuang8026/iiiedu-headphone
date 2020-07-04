@@ -26,6 +26,7 @@
     "react": "^16.13.1",
     "react-animated-css": "^1.2.1",
     "react-dom": "^16.13.1",
+    "react-draggable": "^4.4.3",
     "react-files": "^2.4.8",
     "react-id-swiper": "^3.0.0",
     "react-leaflet": "^2.7.0",
