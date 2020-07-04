@@ -344,126 +344,143 @@ function ProductMain(props) {
           />
 
           <div className="Yyasidebody">
-            {itemsdata.map((data, index)=>{
-              {/* console.log(itemsdata) */}
-              return(
-                <div className="Yyaside_pro" key={index}>
-                    <div className="item_image">
-                      <img className="item_img" src={`/items_img/${data.itemImg}`} />
-                      <div className="item_btn_inner_all">
-                        <div className="item_btn_inner">
-                          {/* <button className="item_add item_btn"btn-navy btn-fill-vert-o */}
-                          <button className="item_btn_add btn_navy_add btn_fill_vert_add"
-                            id={data.itemId}
-                            onClick={() => {
-                              message.success(`商品"${data.itemName}"加入購物車`)
-                              updateCartToLocalStorage({
-                                  id: `${data.itemId}`,
-                                  itemName:`${data.itemName}`,
-                                  itemBrand:`${data.itemsbrand}`,
-                                  itemImg:`${data.itemImg}`,
-                                  itemPrice:`${data.itemPrice}`,
-                                  amount:1,
-                              })
-                            }}
-                          >加入購物車</button>
-                          <button 
-                            className="item_btn_add btn-navy_s btn-fill-vert-o_s item_btn_search" 
-                            id={data.itemId} 
-                            onClick={e =>{
-                              setItemsid(e.target.id)  
-                              goToDetail(e.target.id)
-                              // props.history.push(`/ProductDetail/${e.target.id}`)
-                              addCsstyle()
-                            }}
-                          >立即查看</button>
-                          <button 
-                            className="item_btn_add btn-navy_s btn-fill-vert-o_s"
-                            onClick={() => {
-                              message.success(`商品"${data.itemName}"加入最愛`)
-                              updateLoveToLocalStorage({
-                                itemid: data.itemId,
-                                itemName:data.itemName,
-                                itemBrand: data.itemsbrand,
-                                itemImg: data.itemImg,
-                                itemPrice: data.itemPrice,
-                                created_at: data.created_at,
-                                itemQty: data.itemQty,
-                                itemsEndurance: data.itemsEndurance,
-                                itemsSensitivity: data.itemsSensitivity,
-                                itemsales: data.itemsales,
-                                itemsconnect: data.itemsconnect,
-                                itemscontent: data.itemscontent,
-                                itemsdrive: data.itemsdrive,
-                                itemsfeature: data.itemsfeature,
-                                itemsfrequency: data.itemsfrequency,
-                                itemsmains: data.itemsmains,
-                                itemsstar: data.itemsstar,
-                                itemstoreNumber: data.itemstoreNumber,
-                                itemstype: data.itemstype,
-                                itemswatertight: data.itemswatertight,
-                                itemsweight: data.itemsweight
-                              })
-                            }}
-                          >加入最愛</button>
-                          <button 
-                            className="item_btn_add btn-navy_s btn-fill-vert-o_s"
-                            onClick={() => {
-                              message.success(`商品"${data.itemName}"加入比較`)
-                              updateCompareToLocalStorage({
-                                itemid: data.itemId,
-                                itemName:data.itemName,
-                                itemBrand: data.itemsbrand,
-                                itemImg: data.itemImg,
-                                itemPrice: data.itemPrice,
-                                created_at: data.created_at,
-                                itemQty: data.itemQty,
-                                itemsEndurance: data.itemsEndurance,
-                                itemsSensitivity: data.itemsSensitivity,
-                                itemsales: data.itemsales,
-                                itemsconnect: data.itemsconnect,
-                                itemscontent: data.itemscontent,
-                                itemsdrive: data.itemsdrive,
-                                itemsfeature: data.itemsfeature,
-                                itemsfrequency: data.itemsfrequency,
-                                itemsmains: data.itemsmains,
-                                itemsstar: data.itemsstar,
-                                itemstoreNumber: data.itemstoreNumber,
-                                itemstype: data.itemstype,
-                                itemswatertight: data.itemswatertight,
-                                itemsweight: data.itemsweight
-                              })
-                            }}
-                          >加入比較</button>
+            {itemsdata.length > 0 ? (
+              <>
+              {itemsdata.map((data, index)=>{
+                {/* console.log(itemsdata) */}
+                return(
+                  <div className="Yyaside_pro" key={index}>
+                      <div className="item_image">
+                        <img className="item_img" src={`/items_img/${data.itemImg}`} />
+                        <div className="item_btn_inner_all">
+                          <div className="item_btn_inner">
+                            {/* <button className="item_add item_btn"btn-navy btn-fill-vert-o */}
+                            <button className="item_btn_add btn_navy_add btn_fill_vert_add"
+                              id={data.itemId}
+                              onClick={() => {
+                                message.success(`商品"${data.itemName}"加入購物車`)
+                                updateCartToLocalStorage({
+                                    id: `${data.itemId}`,
+                                    itemName:`${data.itemName}`,
+                                    itemBrand:`${data.itemsbrand}`,
+                                    itemImg:`${data.itemImg}`,
+                                    itemPrice:`${data.itemPrice}`,
+                                    amount:1,
+                                })
+                              }}
+                            >加入購物車</button>
+                            <button 
+                              className="item_btn_add btn-navy_s btn-fill-vert-o_s item_btn_search" 
+                              id={data.itemId} 
+                              onClick={e =>{
+                                setItemsid(e.target.id)  
+                                goToDetail(e.target.id)
+                                // props.history.push(`/ProductDetail/${e.target.id}`)
+                                addCsstyle()
+                              }}
+                            >立即查看</button>
+                            <button 
+                              className="item_btn_add btn-navy_s btn-fill-vert-o_s"
+                              onClick={() => {
+                                message.success(`商品"${data.itemName}"加入最愛`)
+                                updateLoveToLocalStorage({
+                                  itemid: data.itemId,
+                                  itemName:data.itemName,
+                                  itemBrand: data.itemsbrand,
+                                  itemImg: data.itemImg,
+                                  itemPrice: data.itemPrice,
+                                  created_at: data.created_at,
+                                  itemQty: data.itemQty,
+                                  itemsEndurance: data.itemsEndurance,
+                                  itemsSensitivity: data.itemsSensitivity,
+                                  itemsales: data.itemsales,
+                                  itemsconnect: data.itemsconnect,
+                                  itemscontent: data.itemscontent,
+                                  itemsdrive: data.itemsdrive,
+                                  itemsfeature: data.itemsfeature,
+                                  itemsfrequency: data.itemsfrequency,
+                                  itemsmains: data.itemsmains,
+                                  itemsstar: data.itemsstar,
+                                  itemstoreNumber: data.itemstoreNumber,
+                                  itemstype: data.itemstype,
+                                  itemswatertight: data.itemswatertight,
+                                  itemsweight: data.itemsweight
+                                })
+                              }}
+                            >加入最愛</button>
+                            <button 
+                              className="item_btn_add btn-navy_s btn-fill-vert-o_s"
+                              onClick={() => {
+                                message.success(`商品"${data.itemName}"加入比較`)
+                                updateCompareToLocalStorage({
+                                  itemid: data.itemId,
+                                  itemName:data.itemName,
+                                  itemBrand: data.itemsbrand,
+                                  itemImg: data.itemImg,
+                                  itemPrice: data.itemPrice,
+                                  created_at: data.created_at,
+                                  itemQty: data.itemQty,
+                                  itemsEndurance: data.itemsEndurance,
+                                  itemsSensitivity: data.itemsSensitivity,
+                                  itemsales: data.itemsales,
+                                  itemsconnect: data.itemsconnect,
+                                  itemscontent: data.itemscontent,
+                                  itemsdrive: data.itemsdrive,
+                                  itemsfeature: data.itemsfeature,
+                                  itemsfrequency: data.itemsfrequency,
+                                  itemsmains: data.itemsmains,
+                                  itemsstar: data.itemsstar,
+                                  itemstoreNumber: data.itemstoreNumber,
+                                  itemstype: data.itemstype,
+                                  itemswatertight: data.itemswatertight,
+                                  itemsweight: data.itemsweight
+                                })
+                              }}
+                            >加入比較</button>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  <ul className="item_inner">
-                    <li className="item_inner_li item_inner_flex">
-                      <p>{data.itemName}</p>
-                      {/* <p className="item_inner_new">NEW</p> */}
-                      <i className="item_inner_like iconfont icon-like"></i>
-                    </li>
-                    <li className="item_inner_li">
-                      <p className="">{data.itemsbrand}</p>
-                    </li>
-                    <li className="item_inner_li">
-                      <p className="">$ {data.itemPrice}.00</p>
-                    </li>
-                  </ul>
-                  
+                    <ul className="item_inner">
+                      <li className="item_inner_li item_inner_flex">
+                        <p>{data.itemName}</p>
+                        {/* <p className="item_inner_new">NEW</p> */}
+                        <i className="item_inner_like iconfont icon-like"></i>
+                      </li>
+                      <li className="item_inner_li">
+                        <p className="">{data.itemsbrand}</p>
+                      </li>
+                      <li className="item_inner_li">
+                        <p className="">$ {data.itemPrice}.00</p>
+                      </li>
+                    </ul>
+                    
+                  </div>
+                )
+              })}
+              </>
+            ):(
+              <>
+                <div className="itemSearchError">
+                  <p>很抱歉...本店無此商品</p>
+                  <button><i class="iconfont icon-search"></i> 請重新搜索</button>
                 </div>
-              )
-            })}
+              </>
+            )}
+            
           </div>
         </div>
       </div>
-      <Pagination 
-        currentTotalPages={currentTotalPages}       // 總page
-        setCurrentTotalPages={setCurrentTotalPages} // 總page
-        currentPage={currentPage}                   // 此刻的頁數
-        setCurrentPage={setCurrentPage}             // 此刻的頁數
-      />
+      {itemsdata.length > 0?(
+        <Pagination 
+          currentTotalPages={currentTotalPages}       // 總page
+          setCurrentTotalPages={setCurrentTotalPages} // 總page
+          currentPage={currentPage}                   // 此刻的頁數
+          setCurrentPage={setCurrentPage}             // 此刻的頁數
+        />
+      ):(
+        <div/>
+      )}
+
     </>
   )
 }

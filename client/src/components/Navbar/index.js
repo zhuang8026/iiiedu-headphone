@@ -17,6 +17,7 @@ import {NavItemsAir} from './config';
 
 
 function MyNavBar(props) {
+    const key = 'updatable';
     const {lovechange, setlovechange, compareschange, setcompareschange, cartchange, setcartchange, setItemsdata} = props;
 
     const memberData = JSON.parse(localStorage.getItem('memberData'))
@@ -57,24 +58,32 @@ function MyNavBar(props) {
         // console.log(params.toString());
         // console.log(params.get('getname'));
 
-        let keyword = params.get('keyword') || data
-        fetch(`http://localhost:3009/products/search/${keyword}`, {
-            method: 'get',
-            headers: new Headers({
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
+        let keyword = params.get('keyword') || data;
+        if(keyword){
+            message.loading({ content: 'Loading...', key });
+            setTimeout(() => {
+                fetch(`http://localhost:3009/products/search/${keyword}`, {
+                method: 'get',
+                headers: new Headers({
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                })
             })
-        })
-            .then((res)=>{
-                return res.json()
-            })
-            .then((res)=>{
-                // console.log(res)
-                setItemsdata(res)
-                props.history.push('/YyProduct/?keyword='+keyword)
-                // props.history.push('/YyProduct/?keyword='+keyword,{keyword})
-                // props.history.push('/YyProduct/')
-            })
+                .then((res)=>{
+                    return res.json()
+                })
+                .then((res)=>{
+                    // console.log(res)
+                    setItemsdata(res)
+
+                    message.success({ content: '修改成功!', key, duration: 1 });
+                    props.history.push('/YyProduct/?keyword='+keyword);
+                    // props.history.push('/YyProduct/?keyword='+keyword,{keyword})
+                    // props.history.push('/YyProduct/')
+                })
+            }, 1000);
+        }
+
     }
 
     const loves = (
