@@ -1,5 +1,5 @@
 // 函式元件
-import React from 'react';
+import React, { useState } from 'react';
 import { withRouter} from 'react-router-dom';
 
 import { message } from 'antd';
@@ -14,7 +14,11 @@ import './bankCard.scss';
 
 function MembersBank(props) {
     const key = 'updatable';
+    // 父層hooks
     const {userdata, setUserdata} = props;
+
+    // 自用hooks
+    const [currentCardBackground, setCurrentCardBackground] = useState(Math.floor(Math.random()* 25 + 1))
     console.log('userdata', userdata);
 
 
@@ -74,13 +78,13 @@ function MembersBank(props) {
                                         {/* 前 */}
                                         <div className="card-item__side -front">
                                             <div className="card-item__cover">
-                                                <img className="card-item__bg" src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/9.jpeg"/>
+                                                <img className="card-item__bg" src={`/card_img/${currentCardBackground}.jpeg`}/>
                                             </div>
                                             <div className="card-item__wrapper">
                                                 <div className="card-item__top">
-                                                    <img className="card-item__chip" src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/chip.png"/>
+                                                    <img className="card-item__chip" src={`/card_img/chip.png`}/>
                                                     <div className="card-item__type">
-                                                        <img className="card-item__typeImg" src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/visa.png"/>
+                                                        <img className="card-item__typeImg" src={`/card_img/visa.png`}/>
                                                     </div>
                                                 </div>
                                                 <label for="cardNumber" className="card-item__number">
@@ -117,7 +121,7 @@ function MembersBank(props) {
                                         {/* 後 */}
                                         <div className="card-item__side -back">
                                             <div className="card-item__cover">
-                                                <img className="card-item__bg" src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/9.jpeg"/>
+                                                <img className="card-item__bg" src={`/card_img/${currentCardBackground}.jpeg`}/>
                                             </div>
                                             <div class="card-item__band">
 
@@ -126,7 +130,7 @@ function MembersBank(props) {
                                                 <div className="card-item__cvvTitle">CVV</div>
                                                 <div className="card-item__cvvBand"></div>
                                                 <div className="card-item__type">
-                                                    <img className="card-item__typeImg" src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/visa.png"/>
+                                                    <img className="card-item__typeImg" src={`/card_img/visa.png`}/>
                                                 </div>
                                             </div>
                                         </div>
