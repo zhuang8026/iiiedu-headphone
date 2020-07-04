@@ -10,7 +10,9 @@ import {
     withRouter,
 } from 'react-router-dom'
 // antd
-import { message } from 'antd';
+import 'antd/dist/antd.css';
+import { message, Modal, Button, Space } from 'antd';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
 // react-moment
 import Moment from 'react-moment';
 import 'moment-timezone';
@@ -32,6 +34,7 @@ import PrevPageHover from '../../../../assets/img/blog-img/blog-standard/prev-pa
 // -------------------- func --------------------
 
 function BlogMainUserListByUser(props) {
+    const { confirm } = Modal;
     const { userdata, setUserdata, name, setName } = props.allprops;
     const [listPage, setListPage] = useState([])
     const [currentPage, setCurrentPage] = useState('')
@@ -67,13 +70,30 @@ function BlogMainUserListByUser(props) {
         console.log('更新currentPage -> ', currentPage)
         //searchMethod()
     }, [currentPage])
-
+    // 刪除文章提示
+    const showDeletePromiseConfirm = (blogId) => {
+        confirm({
+            title: '確定要刪除此篇文章?',
+            icon: <ExclamationCircleOutlined />,
+            content: '按〝確定〞進行刪除，刪除完畢會自動跳轉。',
+            okText: '確定',
+            okType: "danger",
+            cancelText: '取消',
+            onOk() {
+                return new Promise((resolve, reject) => {
+                    setTimeout(Math.random() > 0.5 ? resolve : reject, 1500);
+                    goBlogDelete(blogId)
+                }).catch(() => console.log('Oops errors!'));
+            },
+            onCancel() { },
+        });
+    }
     // 刪除文章
     const goBlogDelete = (blogId) => {
         fetch('http://localhost:3009/blog/del/', {
             method: 'post',
             body: JSON.stringify({
-                id: userdata.id,                
+                id: userdata.id,
                 blogId: blogId
             }),
             headers: new Headers({
@@ -237,7 +257,7 @@ function BlogMainUserListByUser(props) {
                                         <img src={TrashBarrel}
                                             onClick={() => {
                                                 // message.success(data.blogId);
-                                                goBlogDelete(data.blogId)
+                                                showDeletePromiseConfirm(data.blogId)
                                             }}></img>
                                     </figure>
                                 </div>

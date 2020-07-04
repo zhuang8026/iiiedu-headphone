@@ -35,6 +35,25 @@ function OrderComplete(props) {
     setOrderId
   } = props.allprops
 
+    //取得訂單資料
+    const getNewOrderAsync = async (addOrderFormData, callback) => {
+      const request = new Request('http://localhost:3009/order/newOrder', {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'appliaction/json',
+        }),
+      })
+      const response = await fetch(request)
+      // console.log('response', response)
+      const data = await response.json()
+      // console.log('orderID data row', data.row)
+      // console.log('orderID new data', data.row[0][0].orderId)
+      await setOrderId(data.row[0][0].orderId)
+      // await console.log('orderNum',orderNum)
+    }
+
+
   return (
     <>
       <div className="cart-crumb">

@@ -76,7 +76,7 @@ function BlogAsideRecent(props) {
                   //     props.history.push(`/Blog/BlogDetail/${data.blogId}`);
                   //   }}
                   >{data.blogTitle}</h4>
-                  <h5 className="recent-post-in-one-txt-date"><Moment format="DD M月, YYYY">{data.blogPublishDate}</Moment></h5>
+                  <h5 className="recent-post-in-one-txt-date"><Moment format="M月 DD, YYYY">{data.blogPublishDate}</Moment></h5>
                 </div>
               </a>
             )

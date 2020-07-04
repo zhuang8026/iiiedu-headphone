@@ -34,20 +34,10 @@ function CartPayment(props) {
     orderId,
     setOrderId,
   } = props.allprops
-  // let newOrderId
   const [orderNum, setOrderNum] = useState([])
   console.log('setOrderId', setOrderId)
-  // console.log('mycart', mycart)
-  // console.log('mycartDisplay', mycartDisplay)
 
-  const updateCheckoutPaymentToLocalStorage = (value) => {
-    const currentCheckoutPayment =
-      JSON.parse(localStorage.getItem('CheckoutPayment')) || []
-    const newCheckoutPayment = [...currentCheckoutPayment, value]
-    localStorage.setItem('CheckoutInfo', JSON.stringify(newCheckoutPayment))
-  }
-
-  //新增到order資料表
+  //新增到order資料表(目前沒用到)
   const addOrderContentDataAsync = async (addOrderFormData, callback) => {
     const request = new Request('http://localhost:3009/order/add', {
       method: 'POST',
@@ -59,7 +49,7 @@ function CartPayment(props) {
     console.log('response data', data)
     // newOrderId = data.response
   }
-  //取得訂單編號
+  //取得訂單編號(目前沒用到)
   const getOrderIdAsync = async (addOrderFormData, callback) => {
     const request = new Request('http://localhost:3009/order/newOrderId', {
       method: 'GET',
@@ -77,8 +67,9 @@ function CartPayment(props) {
     // await console.log('orderNum',orderNum)
   }
 
-  //新增到order_details
-  const addOrderDetailsAsync = async (addOrderFormData, callback) => {
+  //新增訂單&訂單明細到資料庫
+  // const addOrderDetailsAsync = async (addOrderFormData, callback) => {
+  const addOrderDetailsAsync = async () => {
     const request = new Request('http://localhost:3009/order/addOrderDetails', {
       method: 'POST',
       body: JSON.stringify({
@@ -93,11 +84,13 @@ function CartPayment(props) {
         'Content-Type': 'application/json',
       }),
     })
-    console.log('JSON.stringify(mycartDisplay):', mycartDisplay)
+    // console.log('JSON.stringify(mycartDisplay):', mycartDisplay)
     const response = await fetch(request)
     // console.log('response', response)
     const data = await response.json()
-    console.log('response data:', data)
+    // console.log('response data:', data)   
+    // await setOrderId(data.row[0][0].orderId)
+    console.log('data:',data)
   }
 
   //Submit
@@ -109,9 +102,8 @@ function CartPayment(props) {
     addOrderFormData.append('delivery', orderDelivery)
     addOrderFormData.append('payment', orderPayment)
 
-    //  await addOrderContentDataAsync(addOrderFormData)
-    //  await getOrderIdAsync()
-    await addOrderDetailsAsync()
+    await addOrderDetailsAsync() 
+
     // 移除值 移除localStorage的購物車
     localStorage.removeItem('cart')
   }

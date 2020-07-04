@@ -22,15 +22,14 @@ import WorldMap from '../../../../assets/img/blog-img/blog-standard/world-map.pn
 // -------------------- func --------------------
 
 function BlogAsidePhoto(props) {
-  const {userdata} = props;
+  const { userdata } = props;
   return (
     <>
       <div className="post-map">
-        <button className="i-want-post" 
-        onClick=
-        {
-          (userdata.id ? () => props.history.push('/Blog/BlogAdd') : () => props.history.push('/KMembers/MembersLogin'))
-          
+        <button className="i-want-post"
+          onClick=
+          {
+            (userdata.id ? () => props.history.push('/Blog/BlogAdd') : () => props.history.push('/KMembers/MembersLogin'))
           }
         >我要發文</button>
         <figure>

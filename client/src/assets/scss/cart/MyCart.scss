@@ -10,13 +10,15 @@
         display: flex;
         line-height: 50px;
         border-bottom: 1px solid $bg-btn-l;
+        justify-content: center;
+        align-items: center;
         > li {
           width: 100%;
           padding: 10px 0;
           text-align: center;
           img {
             overflow: hidden;
-            height: 40px;
+            height: 120px;
             margin-top: 2px;
           }
           .btn_wish {
@@ -28,14 +30,18 @@
             color: #8b8b8b;
           }
           .btn_width {
-            width: 50%;
+            width: 40%;
+            height: 36px;
+            line-height: 36px;
             margin: 0;
             padding: 0;
             font-size: 14px;
+            margin-left: 6px;
+            background: transparent;
+            border: 1px solid $font-color-s;
           }
           button {
             transition: 0.3s ease-out;
-            border-radius: 5px;
             &:hover {
               background-color: #211e55;
               color: #fafafa;
@@ -51,17 +57,23 @@
       display: flex;
       justify-content: flex-end;
       line-height: 45px;
-      margin-top: 10px;
+      margin-top: 76px;
+      margin-bottom: 48px;
+      border-bottom: 1px solid $bg-btn-l;
+      padding-bottom: 16px;
       vertical-align: middle;
+      span {
+        font-size: 36px;
+      }
       input {
+        width: 200px;
         border: 1px solid $bg-btn-l;
       }
       button {
         width: 200px;
         height: 45px;
-        margin-left: 5px;
+        margin-left: 2px;
         border: 1px solid $link-hover-color-l;
-        border-radius: 5px;
         text-align: center;
         color: #fff;
         background: $link-hover-color-l;
@@ -83,7 +95,7 @@
   }
 }
 
-//購物車空的時候(目前沒用到)
+//購物車是空的
 
 .cart-empty {
   width: 100%;
@@ -98,16 +110,23 @@
     button {
       width: 200px;
       height: 45px;
-      margin-top: 32px;
+      margin-left: 5px;
       border: 1px solid $link-hover-color-l;
-      border-radius: 5px;
       text-align: center;
+      color: #fff;
       background: $link-hover-color-l;
       transition: 0.3s ease-in;
       cursor: pointer;
+      a {
+        display: block;
+        color: #fff;
+      }
       &:hover {
         background: #fff;
         color: $link-hover-color-l;
+        a {
+          color: #000;
+        }
       }
     }
   }
