@@ -26,7 +26,8 @@ router.use((req,res,next)=>{
 router.post('/login', (req, res)=>{
     //登入邏輯
     // const sql = "SELECT * FROM `users` WHERE `username`=? AND `pwd`=SHA1(?)";
-    const sql = "SELECT `id`, `username`, `name`, `pwd` FROM `users`";
+    // const sql = "SELECT `id`, `username`, `name`, `pwd` FROM `users`";
+    const sql = "SELECT * FROM `users`";
 
     let username = req.body.username;
     let pwd = req.body.pwd;
@@ -44,15 +45,26 @@ router.post('/login', (req, res)=>{
             // res.json(result);
             //使用者從前端傳過來的資料進行與資料庫比對
             result[0].forEach((value, index)=>{
-                // console.log(value)
+                console.log(value)
                 if(username === value.username && pwd === value.pwd){
                     // console.log("yes!");
                     loginInfo.success = true;
                     loginInfo.access = "擁有使用權限";
+                    loginInfo.id = value.id;
                     loginInfo.username = value.username;
                     loginInfo.name = value.name;
                     loginInfo.pwd = value.pwd;
-                    loginInfo.id = value.id;
+                    loginInfo.address = value.address;
+                    loginInfo.birthday = value.birthday;
+                    loginInfo.card = value.card;
+                    loginInfo.created_at = value.created_at;
+                    loginInfo.gender = value.gender;
+                    loginInfo.isActivated = value.isActivated;
+                    loginInfo.phoneNumber = value.phoneNumber;
+                    loginInfo.pin = value.pin;
+                    loginInfo.shopopen = value.shopopen;
+                    loginInfo.userlogo = value.userlogo;
+                    
                 }
             })
             
