@@ -2,6 +2,8 @@
 import React from 'react';
 import { NavLink, withRouter} from 'react-router-dom'
 
+// import { message } from 'antd';
+
 // http://localhost:3009/members/user/s001
 
 
@@ -52,7 +54,7 @@ function MembersLeft(props) {
                     <div className="men_title">
                         <div className="men_title_inner">
                             <span className="iconfont icon-safety"></span>
-                            <NavLink className="men_a" to="/SuperSeller">我的商場</NavLink>
+                            <NavLink className="men_a" to="/SuperSeller" >我的商場</NavLink>
                         </div>
                     </div>
                     <div className="men_title">

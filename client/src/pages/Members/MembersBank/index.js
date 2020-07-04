@@ -62,6 +62,24 @@ function MembersBank(props) {
                         </div>
                         {/* 主要內容 */}
                         <div className="members_pwa_r_bottom">
+                            <div className="card-form">
+                                <div className="card-list">
+                                    <div className="card-item">
+                                        <div className="card-item__side -front">
+                                            <div className="card-item__cover">
+                                                <img/>
+                                            </div>
+                                            <div className="card-item__wrapper">
+                                                <div className="card-item__top"></div>
+                                                <div className="cardNumber"></div>
+                                                <div className="card-item__content"></div>
+                                            </div>
+                                        </div>
+                                        <div className="card-item__side -back"></div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
                             <ul className="members_pwa_r_inner">
                                 <li>
                                     <div className="members_card">

@@ -17,7 +17,7 @@ function SuperSellerItems(props) {
     const {userdata, setUserdata} = props.allprops;
     const [SellerProductData, setSellerProductData] = useState([]) 
     console.log(SellerProductData)
-    
+
     // 賣場產品 刪除
     const superSellerDelete =(deleteIdData) =>{
         Modal.confirm({
