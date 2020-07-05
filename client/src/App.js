@@ -213,7 +213,11 @@ function App() {
 
           {/* 產品細節 */}
           <Route path="/ProductDetail/:id">
-            <ProductDetail/>
+            <ProductDetail
+              setlovechange={setlovechange}
+              setcompareschange={setcompareschange}
+              setcartchange={setcartchange}
+            />
           </Route>
 
           {/* 會員 */}

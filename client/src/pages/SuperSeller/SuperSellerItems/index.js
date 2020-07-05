@@ -16,7 +16,7 @@ function SuperSellerItems(props) {
     const key = 'updatable';
     const {userdata, setUserdata} = props.allprops;
     const [SellerProductData, setSellerProductData] = useState([]) 
-    console.log(SellerProductData)
+    // console.log(SellerProductData)
 
     // 賣場產品 刪除
     const superSellerDelete =(deleteIdData) =>{
@@ -28,21 +28,22 @@ function SuperSellerItems(props) {
             cancelText: '取消',
             onOk() { // yes function 
                 return new Promise((res, rej) => {
-                setTimeout(Math.random() > 0.5 ? res : rej, 1000);
-                axios.post('http://localhost:3009/supersellerEdit/sellerDelete',{
-                    id: deleteIdData,
-                })
-                    .then((resolve, reject)=>{
-                        if(resolve.data.success) {
-                            setTimeout(() => {
-                                message.success({ content: '刪除成功!', key, duration: 2 });
-                                props.history.go(0)
-                                setSellerProductData(SellerProductData); // 沒反應
-                            }, 1000)
-                        } else {
-                            message.info("刪除失敗")
-                        }
+                    setTimeout(Math.random() > 0.5 ? res : rej, 1000);
+                    axios.post('http://localhost:3009/supersellerEdit/sellerDelete',{
+                        id: deleteIdData,
                     })
+                        .then((resolve, reject)=>{
+                            if(resolve.data.success) {
+                                // console.log(resolve);
+                                setTimeout(() => {
+                                    message.success({ content: '刪除成功!', key, duration: 2 });
+                                    props.history.go(0); // Question ：強行跳轉 不得已才這樣做 
+                                    setSellerProductData(SellerProductData); // 沒反應
+                                }, 1000)
+                            } else {
+                                message.info("刪除失敗")
+                            }
+                        })
                     
                 }).catch(() => console.log('Oops errors!'));
             },

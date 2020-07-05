@@ -56,7 +56,7 @@ router.post("/sellerOrder", upload.none(), (req, res) => {
                     LEFT JOIN 
                         payment_types AS pay
                     ON 
-                        pay.paymentTypeId = orders.deliveryState
+                        pay.payment = orders.deliveryState
                     INNER JOIN  
                         order_details AS details
                     ON 
