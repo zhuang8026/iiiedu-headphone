@@ -105,6 +105,7 @@
           height: 100px;
         }
         .btn-and-info {
+          position: relative;
           .btn-and-info-input {
             /* width: 100px; */
             height: 32px;
@@ -113,12 +114,43 @@
             /* margin-bottom: .5rem; */
           }
           .blog-add-info {
-            width: 100px;
-            height: 24px;
+            position: relative;
+            width: 50px;
+            height: 28px;
             margin-top: 1rem;
             margin-right: 20px;
             border: 1px solid $btn-color-r;
             border-radius: 8px;
+            text-align: center;
+            color: black;
+            overflow: hidden;
+            h5 {
+              position: absolute;
+              left: 50%;
+              transform: translateX(-50%);
+              color: blue;
+              font-weight: $font-w;
+              z-index: 5;
+              // border: 1px solid gray;
+            }
+            .add-box {
+              transition: 0.5s;
+              width: 100%;
+              height: 100%;
+              // background: grey;
+              transform: translateX(-50px);
+            }
+            .add-box.active {
+              transition: 1s;
+              background: orange;
+              transform: translateX(0px);
+            }
+          }
+          h6 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -40%);
           }
         }
 
