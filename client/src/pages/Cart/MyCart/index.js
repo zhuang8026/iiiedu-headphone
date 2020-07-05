@@ -61,7 +61,7 @@ function MyCart(props) {
           <>
             <ul className="cart-table">
               <li>
-                <ul>
+                <ul className="wi-ul" >
                   <li>刪除</li>
                   <li>圖片</li>
                   <li>品名</li>
@@ -93,23 +93,25 @@ function MyCart(props) {
                       <li>{data.itemName}</li>
                       <li>{data.itemPrice}</li>
                       
-                      {/* 數量加減 */}
+                      {/* 數量加減 - williams */}
                       <li>
-                        <button
-                          className="DetailBtnEdit"
-                          onClick={() => {
-                            data.amount--;
-                            changeQuantity(data.id, data.amount, data.itemQty);
-                          }}
-                        ><i className="iconfont icon-reduce_1"></i></button>
-                        <span>{data.amount}</span>
-                        <button
-                          className="DetailBtnAdd"
-                          onClick={() => {
-                            data.amount++;
-                            changeQuantity(data.id, data.amount, data.itemQty);              
-                          }}
-                        ><i className="iconfont icon-add_1"></i></button>
+                        <div className = "willCart">
+                          <button
+                            className="DetailBtnEdit"
+                            onClick={() => {
+                              data.amount--;
+                              changeQuantity(data.id, data.amount, data.itemQty);
+                            }}
+                          ><i className="iconfont icon-reduce_1"></i></button>
+                          <span>{data.amount}</span>
+                          <button
+                            className="DetailBtnAdd"
+                            onClick={() => {
+                              data.amount++;
+                              changeQuantity(data.id, data.amount, data.itemQty);              
+                            }}
+                          ><i className="iconfont icon-add_1"></i></button>
+                        </div>
                       </li>
 
                       <li className="li-prices">{data.itemPrice * data.amount}</li>
@@ -126,19 +128,20 @@ function MyCart(props) {
                 })}
               </li>
               <li className="cart-footer">
-                <input type="text" placeholder=" 請輸入優惠碼" />
-                <button type="button">去取得優惠卷</button>
+                <input className="codeInput" type="text" placeholder="請輸入優惠碼"/>
+                <button className="codebutton" type="button">送出</button>
               </li>
-              <li className="cart-footer">
-                <span>總計$</span>
+              <li className="cart-footer wi-num">
+                <h2>商品總計: </h2>
                 {mycart.length > 0 ? (
-                  <span>{sum(mycart)}</span>
+                  <span> $ {sum(mycart)}</span>
                 ) : (
                   <span>0</span>
                 )}
               </li>
-              <li className="cart-footer">
+              <li className="cart-footer wi-footer">
                 <button
+                  className = "wi-footer-cart"
                   type="button"
                   onClick={() => {
                     localStorage.removeItem('cart')
@@ -147,7 +150,11 @@ function MyCart(props) {
                 >
                   清空購物車
                 </button>
-                <button type="button" onClick={setOrderTotal(sum(mycart))}>
+                <button 
+                  className = "wi-footer-set"
+                  type="button" 
+                  onClick={setOrderTotal(sum(mycart))}
+                >
                   <Link to="/ConfirmOrder">去結帳</Link>
                 </button>
               </li>

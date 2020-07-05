@@ -2,6 +2,9 @@
 
 //購物車
 .cart-container {
+  .wi-ul {
+    border-bottom: 1px solid #cacaca;
+  }
   > ul {
     // overflow: hidden;
     // overflow-x: auto;
@@ -9,13 +12,16 @@
       > ul {
         display: flex;
         line-height: 50px;
-        border-bottom: 1px solid $bg-btn-l;
+        border-bottom: 1px dashed #cacaca;
         justify-content: center;
         align-items: center;
         > li {
           width: 100%;
           padding: 10px 0;
           text-align: center;
+          .icon-error {
+            cursor: pointer;
+          }
           img {
             overflow: hidden;
             height: 120px;
@@ -56,12 +62,12 @@
     .cart-footer {
       display: flex;
       justify-content: flex-end;
-      line-height: 45px;
-      margin-top: 76px;
-      margin-bottom: 48px;
-      border-bottom: 1px solid $bg-btn-l;
-      padding-bottom: 16px;
-      vertical-align: middle;
+      align-items: flex-end;
+      padding-top: 32px;
+      // line-height: 45px;
+      // border-bottom: 1px solid $bg-btn-l;
+      // padding-bottom: 16px;
+      // vertical-align: middle;
       span {
         font-size: 36px;
       }
@@ -90,6 +96,86 @@
             color: #000;
           }
         }
+      }
+      .codeInput {
+        height: 36px;
+        line-height: 36px;
+        text-align-last: center;
+        margin-right: 5px;
+      }
+      .codebutton {
+        width: 83px;
+        height: 36px;
+        line-height: 36px;
+        margin-right: 14px;
+        border: 1px solid #211e55;
+      }
+    }
+    .wi-num {
+      padding-right: 14px;
+      h2 {
+        font-size: 14px;
+        color: #2c3e50;
+      }
+      span {
+        font-weight: bold !important;
+      }
+    }
+  }
+
+  .willCart {
+    width: 100px;
+    height: 36px;
+    margin: 0 auto;
+    border: 1px solid #2c3e50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+
+    .DetailBtnEdit {
+      width: 50px;
+      background: transparent;
+      cursor: pointer;
+      &:hover i{
+        color: #2c3e50;
+      }
+    }
+  
+    .DetailBtnAdd {
+      width: 50px;
+      background: transparent;
+      cursor: pointer;
+      &:hover i{
+        color: #2c3e50;
+      }
+    }
+    span {
+      // line-height: 32px;
+    }
+  }
+
+  .wi-footer {
+    border-top: 1px solid #cacaca;
+    border-bottom: 1px solid transparent !important;
+    padding-right: 14px;
+    
+    .wi-footer-cart {
+      width: 100px;
+      height: 36px;
+      border: 1px solid #211e55;
+      background: transparent;
+      color: #211e55;
+      margin: 0;
+      margin-right: 6px;
+    }
+    .wi-footer-set {
+      width: 100px;
+      height: 36px;
+      border: 1px solid #211e55;
+      background: transparent;
+      a {
+        color: #211e55 !important;
       }
     }
   }

@@ -4,18 +4,16 @@
 .cart-crumb {
   width: 80%;
   margin: 0 auto;
-  div {
-    height: 100px;
-  }
+  padding-top: 140px;
   a {
-    color: $font-color-s;
+    color: #8b8b8b;
   }
 }
 
 //購物車共用container
 .cart-container {
   width: 80%;
-  margin: 100px auto 130px auto;
+  margin: 40px auto 150px auto;
   padding: 20px;
   background: $bg-c;
   border-radius: 5px;
