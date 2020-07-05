@@ -51,8 +51,9 @@ function SuperSellerOrder(props) {
                                     <tr>
                                         <th>訂單編號</th>
                                         <th>商品名稱</th>
+                                        <th>付款方式</th>
+                                        <th>付款狀態</th>
                                         <th>配送方式</th>
-                                        {/* <th>付款狀態</th> */}
                                         <th>配送狀態</th>
                                         <th>訂單備註</th>
                                         <th>新增時間</th>
@@ -71,8 +72,9 @@ function SuperSellerOrder(props) {
                                                             <td>{data.orderId}</td>
                                                             <td>{data.itemName}</td>
                                                             <td>{data.paymentTypeName}</td>
-                                                            {/* <td>{data.payment}</td> */}
-                                                            <td>{data.deliverytypeName}</td>
+                                                            <td>{data.paymentStateTypeName}</td>
+                                                            <td>{data.deliveryTypeName}</td>
+                                                            <td>{data.deliveryStateTypeName}</td>
                                                             <td>{data.orderRemark}</td>
                                                             <td>{data.created_at}</td>
                                                         </tr>

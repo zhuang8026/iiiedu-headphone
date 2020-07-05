@@ -160,22 +160,44 @@ router.post("/listSellerUserOrder", upload.none(), (req, res) => {
     // console.log('========== react(get) -> (個人)所有訂單 ==========') 
     let id = req.body.id;
     let username = req.body.username;
-    let sql =  `SELECT *,t2.id, t2.username, t2.name,t3.paymentTypeId, 
-    t3.paymentTypeName,t4.deliverytypeId, t4.deliverytypeName,
-    t5.itemId, t5.itemName, t5.itemImg, t5.colorid, t5.itemsbrand, t5.itemstype, t5.itemPrice, 
-    t5.itemQty, t5.itemsales, t5.itemsstar, t5.itemstoreNumber, t5.itemscontent, t5.itemsweight, 
-    t5.itemsdrive, t5.itemsfrequency, t5.itemsSensitivity, t5.itemsconnect, t5.itemsmains, 
-    t5.itemsEndurance, t5.itemswatertight, t5.itemsfeature
-     FROM orders AS t1 
-     JOIN users  AS t2 
-     ON t1.userId=t2.id 
-    INNER JOIN payment_types AS t3 
-    ON t3.paymentTypeId = t1.deliveryState 
-    INNER JOIN delivery_type AS t4 
-    ON t4.deliverytypeId = t1.delivery 
-    JOIN  items AS t5 
-    ON t5.itemId = t1.userId
-    WHERE t2.isActivated=1 AND t2.shopopen=1 AND t2.id = ?`;
+    // let sql =  `SELECT *,t2.id, t2.username, t2.name,t3.payment, 
+    // t3.paymentTypeName,t4.delivery, t4.deliveryTypeName,
+    // t5.itemId, t5.itemName, t5.itemImg, t5.colorid, t5.itemsbrand, t5.itemstype, t5.itemPrice, 
+    // t5.itemQty, t5.itemsales, t5.itemsstar, t5.itemstoreNumber, t5.itemscontent, t5.itemsweight, 
+    // t5.itemsdrive, t5.itemsfrequency, t5.itemsSensitivity, t5.itemsconnect, t5.itemsmains, 
+    // t5.itemsEndurance, t5.itemswatertight, t5.itemsfeature,t6.deliveryState,t6.deliveryStateTypeName,
+    // t7.paymentState,t7.paymentStateTypeName
+    //  FROM orders AS t1 
+    //  JOIN users  AS t2 
+    //  ON t1.userId=t2.id 
+    // INNER JOIN payment_types AS t3 
+    // ON t3.payment = t1.payment
+    // INNER JOIN delivery_types AS t4 
+    // ON t4.delivery = t1.delivery 
+    // JOIN  items AS t5 
+    // ON t5.itemId = t1.userId
+    // INNER JOIN deliverystate_types AS t6
+    // ON t6.deliveryState = t1.deliveryState     
+    // INNER JOIN paymentstate_types AS t7
+    // ON t7.paymentState = t1.paymentState 
+    // WHERE t2.isActivated=1 AND t2.shopopen=1 AND t2.id = ?`;
+    let sql =  `SELECT *
+    FROM orders AS t1 
+    JOIN users  AS t2 
+    ON t1.userId=t2.id 
+   INNER JOIN payment_types AS t3 
+   ON t3.payment = t1.payment
+   INNER JOIN delivery_types AS t4 
+   ON t4.delivery = t1.delivery 
+   JOIN  items AS t5 
+   ON t5.itemId = t1.userId
+   INNER JOIN deliverystate_types AS t6
+   ON t6.deliveryState = t1.deliveryState     
+   INNER JOIN paymentstate_types AS t7
+   ON t7.paymentState = t1.paymentState 
+   INNER JOIN order_details AS t8
+   ON t8.orderId = t1.orderId
+   WHERE t2.isActivated=1 AND t2.shopopen=1 AND t2.id = 1`;
     // let output = []
     db.query(sql, [id, username])
         .then(results => {
