@@ -1,6 +1,6 @@
 // 函式元件
 import React from 'react';
-import { NavLink, withRouter} from 'react-router-dom'
+import { NavLink, withRouter, Link} from 'react-router-dom'
 
 // http://localhost:3009/members/user/s001
 
@@ -12,7 +12,9 @@ function MembersLeft(props) {
         <div className="members_left">
             <div className="members_header">
                 <div className="mem_top_inner">
-                    <img  src={`/user_img/${userdata.userlogo}`} alt="photo/icon"/>
+                    <Link to="/KMembers">
+                        <img src={`/user_img/${userdata.userlogo}`} alt="photo/icon"/>
+                    </Link>
                     <div className="men_text">
                         <h2>Welcome !</h2>
                         <p><strong>{userdata.name}</strong> 的商店</p>

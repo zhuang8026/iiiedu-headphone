@@ -82,25 +82,31 @@ router.post("/sellerWallet", upload.none(), (req, res) => {
                     ON 
                         orders.userId = user.id 
                     LEFT JOIN 
-                        payment_types
+                        paymentstate_types
                     ON 
-                        payment_types.paymentTypeId = orders.paymentState
+                        paymentstate_types.paymentState = orders.paymentState
                     LEFT JOIN 
                         payment_types AS pay
                     ON 
-                        pay.paymentTypeId = orders.deliveryState
+                        pay.payment = orders.deliveryState
+                    LEFT JOIN 
+                        delivery_types
+                    ON
+                        delivery_types.delivery = orders.delivery
                     INNER JOIN  
                         order_details AS details
                     ON 
                         details.orderId = orders.orderId
                     WHERE
-                        user.username = ?`;
+                        user.username = ?
+                    AND
+                        paymentstate_types.paymentState = 2`;
     db.query(sql, [id, username])
         .then(results => {
             // console.log(results)
-            // for(let i of results[0]){
-            //     i.created_at = moment(i.created_at).format('YYYY-MM-DD');
-            // }
+            for(let i of results[0]){
+                i.created_at = moment(i.created_at).format('YYYY-MM-DD');
+            }
             res.json(results[0])
         })
 });
@@ -120,13 +126,17 @@ router.post("/sellerWalletData", upload.none(), (req, res) => {
                     ON 
                         orders.userId = user.id 
                     LEFT JOIN 
-                        payment_types
+                        paymentstate_types
                     ON 
-                        payment_types.paymentTypeId = orders.paymentState
+                        paymentstate_types.paymentState = orders.paymentState
                     LEFT JOIN 
                         payment_types AS pay
                     ON 
-                        pay.paymentTypeId = orders.deliveryState
+                        pay.payment = orders.deliveryState
+                    LEFT JOIN 
+                        delivery_types
+                    ON
+                        delivery_types.delivery = orders.delivery
                     INNER JOIN  
                         order_details AS details
                     ON 
@@ -134,15 +144,17 @@ router.post("/sellerWalletData", upload.none(), (req, res) => {
                     WHERE
                         user.username = ?
                     AND
-                        YEAR(orders.created_at)= ? 
+                        paymentstate_types.paymentState = 2
+                    AND
+                        YEAR(details.created_at)= ? 
                     AND 
-                        MONTH(orders.created_at)= ? `;
+                        MONTH(details.created_at)= ? `;
     db.query(sql, [id, username, years, months])
         .then(results => {
             // console.log(results)
-            // for(let i of results[0]){
-            //     i.created_at = moment(i.created_at).format('YYYY-MM-DD');
-            // }
+            for(let i of results[0]){
+                i.created_at = moment(i.created_at).format('YYYY-MM-DD');
+            }
             res.json(results[0])
         })
 });

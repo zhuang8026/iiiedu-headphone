@@ -113,16 +113,16 @@ function SuperSellerWallet(props) {
                                                 {SellerProductData.map((data,index)=>{
                                                     return(
                                                         <tr key={index}>
-                                                            <td>00{index+1}</td>
+                                                            <td>{data.created_at}</td>
                                                             <td>{data.orderId}</td>
                                                             <td>N000{data.itemId}</td>
-                                                            <td>{data.paymentTypeName}</td>
+                                                            <td>{data.deliveryTypeName}</td>
                                                             <td>{data.checkPrice}.00</td>
                                                             <td>{data.checkQty}/副</td>
                                                             <td>{data.checkPrice * data.checkQty}.00</td>
 
                                                             {/* 等雅芳 製作 付款方式 table */}
-                                                            <td>{data.paymentTypeName}</td> 
+                                                            <td>{data.paymentStateTypeName}</td> 
                                                             
                                                         </tr>
                                                     )
