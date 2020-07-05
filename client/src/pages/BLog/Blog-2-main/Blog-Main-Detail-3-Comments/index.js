@@ -12,7 +12,10 @@ import {
 // react-moment
 import Moment from 'react-moment';
 import 'moment-timezone';
-import { message } from 'antd';
+
+import 'antd/dist/antd.css';
+import { notification } from 'antd';
+import { CheckCircleFilled } from '@ant-design/icons';
 // import '../../../../assets/css/YongBlog/Yong-blog-edit.css'
 
 // -------------------- components --------------------
@@ -101,7 +104,7 @@ function BlogMainDetailComments(props) {
         })
             .then(result => result.json())
             .then(obj => {
-                message.success(`新留言已建立！`);
+                openReplySuccessNotification()
 
                 setB_r_content('')
                 setTimeout(() => {
@@ -109,7 +112,16 @@ function BlogMainDetailComments(props) {
                 }, 1000)
             })
     }
-
+    const openReplySuccessNotification = () => {
+        const args = {
+          message: '評論成功',
+          description:
+            '您剛發表一篇評論。',
+          duration: 5,
+          icon: <CheckCircleFilled style={{ color: '#28a745' }} />,
+        };
+        notification.open(args);
+      };
     return (
         <>
             <div className="comments">
@@ -158,7 +170,7 @@ function BlogMainDetailComments(props) {
                             add_reply()
                         }}
                     >發表評論</button>
-                    <button>登出</button>
+                    {/* <button>登出</button> */}
                 </div>
             </div>
         </>
