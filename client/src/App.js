@@ -318,23 +318,6 @@ function App() {
             />
           </Route>
 
-
-          {/* 比較頁面 */}
-          <Route path="/Compare">
-            <Compare
-              itemsdata={itemsdata}
-              setItemsdata={setItemsdata}
-              itemsid={itemsid}
-              setItemsid={setItemsid}
-              allprops={{
-                userdata,
-                setUserdata,
-                name,
-                setName,
-              }}
-            />
-          </Route>
-
           {/* <Route path="/KMembers/MembersForget">
             <MembersForget userdata={userdata} setUserdata={setUserdata} />
           </Route> */}
@@ -429,22 +412,6 @@ function App() {
                 setName,
               }}
             />
-          </Route>
-
-          {/* 我的最愛 */}
-          <Route path="/MyFav">
-          <MyFav    
-              itemsdata={itemsdata}
-              setItemsdata={setItemsdata}
-              itemsid={itemsid}
-              setItemsid={setItemsid}
-              allprops={{
-                userdata,
-                setUserdata,
-                name,
-                setName
-              }}
-          />
           </Route>
 
           {/* 購物車 */}
@@ -587,6 +554,16 @@ function App() {
           </Route>
           <Route path="/about/WiOurClients">
             <WiOurClients />
+          </Route>
+          
+          {/* 比較頁面 */}
+          <Route path="/Compare">
+            <Compare setcompareschange={setcompareschange} />
+          </Route>
+          
+          {/* 我的最愛 */}
+          <Route path="/MyFav">
+            <MyFav setlovechange={setlovechange}/>
           </Route>
 
           {/* ProtectdRoute 這是 utils */}

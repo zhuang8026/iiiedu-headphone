@@ -54,6 +54,22 @@ function ProductDetailRight(props) {
 
   }
 
+  // 產品數量加減
+  const changeQuantity = (total, PQty)=>{
+    // const detailDataInner = [...detaildata]
+    if(total < 1){
+      setTotal(1)
+      message.warning("數量不能小於1")
+    }
+
+    if(total > PQty){
+      // total = PQty;
+      setTotal(PQty)
+      message.warning(`數量最多:${PQty}/副`)
+    }
+    
+  }
+
   return (
     <>
       <div className="YyDetailRight">
@@ -74,6 +90,7 @@ function ProductDetailRight(props) {
                   className="DetailBtnEdit"
                   onClick={() => {
                     setTotal(total - 1)
+                    changeQuantity(total, detaildata.itemQty);  
                   }}
                 > 
                   <i className="iconfont icon-reduce_1"></i> 
@@ -83,6 +100,7 @@ function ProductDetailRight(props) {
                   className="DetailBtnAdd"
                   onClick={() => {
                     setTotal(total + 1)
+                    changeQuantity(total, detaildata.itemQty);              
                   }}
                 > 
                   <i className="iconfont icon-add_1"></i> 
@@ -164,7 +182,7 @@ function ProductDetailRight(props) {
                         itemBrand: detaildata.itemsbrand,
                         itemImg: detaildata.itemImg,
                         itemPrice: detaildata.itemPrice,
-                        amount:total,
+                        amount: total,
                     })
                   }}
               >加入購物車</button>
