@@ -166,6 +166,16 @@ function App() {
     getUserData(localUser['username'], localUser['pwd'])
   }, [])
 
+  // 從localStorage獲取-購物車資料
+  // const cartData = JSON.parse(localStorage.getItem('cart')); 
+  // useEffect(()=>{
+  //   if (cartData === null) {
+  //     return
+  //   } else {
+  //     setMycart(cartData)
+  //   } 
+  // },[]) 
+
   return (
     <Router>
       {/* 過場動畫 */}
@@ -521,6 +531,7 @@ function App() {
                 setOrderCard,
                 orderId,
                 setOrderId,
+                setcartchange
               }}
             />
           </Route>

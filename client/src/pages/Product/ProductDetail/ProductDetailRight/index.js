@@ -75,14 +75,18 @@ function ProductDetailRight(props) {
                   onClick={() => {
                     setTotal(total - 1)
                   }}
-                > <i className="iconfont icon-reduce_1"></i> </button>
+                > 
+                  <i className="iconfont icon-reduce_1"></i> 
+                </button>
                 <span>{total}</span>
                 <button
                   className="DetailBtnAdd"
                   onClick={() => {
                     setTotal(total + 1)
                   }}
-                > <i className="iconfont icon-add_1"></i> </button>
+                > 
+                  <i className="iconfont icon-add_1"></i> 
+                </button>
               </div>
               <p>庫存：{ detaildata.itemQty } / 副</p>
             </div>
@@ -160,7 +164,7 @@ function ProductDetailRight(props) {
                         itemBrand: detaildata.itemsbrand,
                         itemImg: detaildata.itemImg,
                         itemPrice: detaildata.itemPrice,
-                        amount:1,
+                        amount:total,
                     })
                   }}
               >加入購物車</button>

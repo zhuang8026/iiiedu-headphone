@@ -8,64 +8,38 @@ import {
 } from 'react-router-dom'
 
 function CartPayment(props) {
-  const {
-    userdata,
-    setUserdata,
-    mycart,
-    setMycart,
-    mycartDisplay,
-    setMycartDisplay,
-    orderTotal,
-    setOrderTotal,
-    orderName,
-    setOrderName,
-    orderAddress,
-    setOrderAddress,
-    orderTel,
-    setOrderTel,
-    orderRemarks,
-    setOrderRemarks,
-    orderDelivery,
-    setOrderDelivery,
-    orderPayment,
-    setOrderPayment,
-    orderCard,
-    setOrderCard,
-    orderId,
-    setOrderId,
-  } = props.allprops
-  const [orderNum, setOrderNum] = useState([])
-  console.log('setOrderId', setOrderId)
+  const { userdata, mycartDisplay, orderTotal, orderName, setOrderName, orderAddress, orderTel, orderRemarks, orderDelivery, orderPayment, setOrderPayment, orderCard, setOrderCard, setcartchange} = props.allprops
+  // console.log('setOrderId', setOrderId)
 
   //新增到order資料表(目前沒用到)
-  const addOrderContentDataAsync = async (addOrderFormData, callback) => {
-    const request = new Request('http://localhost:3009/order/add', {
-      method: 'POST',
-      body: addOrderFormData,
-    })
-    const response = await fetch(request)
-    console.log('response', response)
-    const data = await response.json()
-    console.log('response data', data)
-    // newOrderId = data.response
-  }
+  // const addOrderContentDataAsync = async (addOrderFormData, callback) => {
+  //   const request = new Request('http://localhost:3009/order/add', {
+  //     method: 'POST',
+  //     body: addOrderFormData,
+  //   })
+  //   const response = await fetch(request)
+  //   console.log('response', response)
+  //   const data = await response.json()
+  //   console.log('response data', data)
+  //   // newOrderId = data.response
+  // }
   //取得訂單編號(目前沒用到)
-  const getOrderIdAsync = async (addOrderFormData, callback) => {
-    const request = new Request('http://localhost:3009/order/newOrderId', {
-      method: 'GET',
-      headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'appliaction/json',
-      }),
-    })
-    const response = await fetch(request)
-    // console.log('response', response)
-    const data = await response.json()
-    // console.log('orderID data row', data.row)
-    // console.log('orderID new data', data.row[0][0].orderId)
-    await setOrderId(data.row[0][0].orderId)
-    // await console.log('orderNum',orderNum)
-  }
+  // const getOrderIdAsync = async (addOrderFormData, callback) => {
+  //   const request = new Request('http://localhost:3009/order/newOrderId', {
+  //     method: 'GET',
+  //     headers: new Headers({
+  //       Accept: 'application/json',
+  //       'Content-Type': 'appliaction/json',
+  //     }),
+  //   })
+  //   const response = await fetch(request)
+  //   // console.log('response', response)
+  //   const data = await response.json()
+  //   // console.log('orderID data row', data.row)
+  //   // console.log('orderID new data', data.row[0][0].orderId)
+  //   await setOrderId(data.row[0][0].orderId)
+  //   // await console.log('orderNum',orderNum)
+  // }
 
   //新增訂單&訂單明細到資料庫
   // const addOrderDetailsAsync = async (addOrderFormData, callback) => {
@@ -105,7 +79,8 @@ function CartPayment(props) {
     await addOrderDetailsAsync() 
 
     // 移除值 移除localStorage的購物車
-    localStorage.removeItem('cart')
+    let cartdata = localStorage.removeItem('cart')
+    setcartchange(cartdata)
   }
 
   return (
