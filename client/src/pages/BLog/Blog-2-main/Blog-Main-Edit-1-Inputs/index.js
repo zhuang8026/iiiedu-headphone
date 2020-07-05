@@ -12,7 +12,7 @@ import {
 } from 'react-router-dom'
 // antd
 import 'antd/dist/antd.css';
-import { message, Modal,notification } from 'antd';
+import { message, Modal, notification, Spin } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { CheckCircleFilled } from '@ant-design/icons';
 // import '../../../../assets/css/YongBlog/Yong-blog-edit.css'
@@ -22,6 +22,7 @@ import { CheckCircleFilled } from '@ant-design/icons';
 // -------------------- scss --------------------
 
 // -------------------- imgs --------------------
+import editPic from '../../../../assets/img/blog-img/blog-add-and-edit/edit-blog-pic.jpg'
 
 // -------------------- func --------------------
 
@@ -43,12 +44,12 @@ function BlogMainEditInputs(props) {
     const [editBlogContent01, setEditBlogContent01] = useState('');
     const [editBlogContent02, setEditBlogContent02] = useState('');
     // ==================== 圖片欄位 ==================== 
-    const [drag11, setDrag11] = useState('default.jpg');
-    const [drag12, setDrag12] = useState('default.jpg');
-    const [drag13, setDrag13] = useState('default.jpg');
-    const [drag21, setDrag21] = useState('default.jpg');
-    const [drag22, setDrag22] = useState('default.jpg');
-    const [drag23, setDrag23] = useState('default.jpg');
+    const [drag11, setDrag11] = useState('');
+    const [drag12, setDrag12] = useState('');
+    const [drag13, setDrag13] = useState('');
+    const [drag21, setDrag21] = useState('');
+    const [drag22, setDrag22] = useState('');
+    const [drag23, setDrag23] = useState('');
     // ==================== 指標 ==================== 
     const [imgPoint01, setImgPoint01] = useState(1);
     const [imgPoint02, setImgPoint02] = useState(1);
@@ -146,10 +147,13 @@ function BlogMainEditInputs(props) {
 
         if ((drag13 != '') && (drag13 != 'default.jpg') && (drag13 != null)) {
             temp01 = 4;
+            $("#edit-info-13 .edit-box").addClass("active")
         } else if ((drag12 != '') && (drag12 != 'default.jpg') && (drag12 != null)) {
             temp01 = 3;
+            $("#edit-info-12 .edit-box").addClass("active")
         } else if ((drag11 != '') && (drag11 != 'default.jpg') && (drag11 != null)) {
             temp01 = 2;
+            $("#edit-info-11 .edit-box").addClass("active")
         }
         console.log('temp01 ====> ', temp01)
         setImgPoint01(temp01)
@@ -157,10 +161,13 @@ function BlogMainEditInputs(props) {
 
         if ((drag23 != '') && (drag23 != 'default.jpg') && (drag23 != null)) {
             temp02 = 4;
+            $("#edit-info-23 .edit-box").addClass("active")
         } else if ((drag22 != '') && (drag22 != 'default.jpg') && (drag22 != null)) {
             temp02 = 3;
+            $("#edit-info-22 .edit-box").addClass("active")
         } else if ((drag21 != '') && (drag21 != 'default.jpg') && (drag21 != null)) {
             temp02 = 2;
+            $("#edit-info-21 .edit-box").addClass("active")
         }
         console.log('temp02 ====> ', temp02)
         setImgPoint02(temp02)
@@ -210,19 +217,32 @@ function BlogMainEditInputs(props) {
     }
     // 進行修改
     const goBlogEdit = () => {
+        let temp11, temp12, temp13, temp21, temp22, temp23;
+        if (drag11 == 'default.jpg') { temp11 = '' }
+        else { temp11 = drag11 }
+        if (drag12 == 'default.jpg') { temp12 = '' }
+        else { temp12 = drag12 }
+        if (drag13 == 'default.jpg') { temp13 = '' }
+        else { temp13 = drag13 }
+        if (drag21 == 'default.jpg') { temp21 = '' }
+        else { temp21 = drag21 }
+        if (drag22 == 'default.jpg') { temp22 = '' }
+        else { temp22 = drag22 }
+        if (drag23 == 'default.jpg') { temp23 = '' }
+        else { temp23 = drag23 }
         fetch('http://localhost:3009/blog/edit/', {
             method: 'post',
             body: JSON.stringify({
                 blogId: editId,
                 editBlogTitle: editBlogTitle,
                 editBlogContent01: editBlogContent01,
-                editBlogContent01_img01: drag11,
-                editBlogContent01_img02: drag12,
-                editBlogContent01_img03: drag13,
+                editBlogContent01_img01: temp11,
+                editBlogContent01_img02: temp12,
+                editBlogContent01_img03: temp13,
                 editBlogContent02: editBlogContent02,
-                editBlogContent02_img01: drag21,
-                editBlogContent02_img02: drag22,
-                editBlogContent02_img03: drag23,
+                editBlogContent02_img01: temp21,
+                editBlogContent02_img02: temp22,
+                editBlogContent02_img03: temp23,
             }),
             headers: new Headers({
                 'Accept': 'application/json',
@@ -248,10 +268,15 @@ function BlogMainEditInputs(props) {
         };
         notification.open(args);
     };
+
+
+
+
     return (
         <>
             <figure className="blog-edit-top-img">
-                <h1>部落格編輯頁</h1>
+                <img className="blog-cover" src={editPic}></img>
+                {/* <h1>部落格編輯頁</h1> */}
             </figure>
             <div className="blog-edit-in">
                 <h1>編輯部落格</h1>
@@ -281,12 +306,15 @@ function BlogMainEditInputs(props) {
                                     let temp = imgPoint01;
                                     if (imgPoint01 === 1) {
                                         setDrag11(obj01.name)
+                                        $("#edit-info-11 .edit-box").addClass("active")
                                     }
                                     if (imgPoint01 === 2) {
                                         setDrag12(obj01.name)
+                                        $("#edit-info-12 .edit-box").addClass("active")
                                     }
                                     if (imgPoint01 === 3) {
                                         setDrag13(obj01.name)
+                                        $("#edit-info-13 .edit-box").addClass("active")
                                     }
                                     temp += 1;
                                     setImgPoint01(temp);
@@ -294,20 +322,96 @@ function BlogMainEditInputs(props) {
                             }
                         }}
                     />
-                    <div className="blog-edit-info"></div>
-                    <div className="blog-edit-info"></div>
-                    <div className="blog-edit-info"></div>
+                    <div className="blog-edit-info" id="edit-info-11">
+                        <h5>v</h5>
+                        <div className="edit-box"></div>
+                    </div>
+                    <div className="blog-edit-info" id="edit-info-12">
+                        <h5>V</h5>
+                        <div className="edit-box"></div>
+                    </div>
+                    <div className="blog-edit-info" id="edit-info-13">
+                        <h5>V</h5>
+                        <div className="edit-box"></div>
+                    </div>
+                    <h6>註 : 點兩下圖片可以取消</h6>
                 </div>
                 <div className="upload-imgs">
                     <div className="drags d-flex">
                         <figure className="dragImg drag11" id="drag11" draggable="true">
-                            <img className="blog-cover" src={`http://localhost:3009/blogs_img/${drag11}`} id="drag11_img" alt="" />
+                            <img className="blog-cover"
+                                src={(drag11 == '' ? `http://localhost:3009/blogs_img/default.jpg` : `http://localhost:3009/blogs_img/${drag11}`)}
+                                id="drag11_img" alt=""
+                                onDoubleClick={(e) => {
+                                    if (drag11 !== 'default.jpg') {
+                                        let startPoint = 1;
+                                        let tempPoint = imgPoint01;
+                                        console.log('你點了兩下 : drag11')
+                                        setDrag11(drag12)
+                                        startPoint = startPoint + 1;
+                                        if (startPoint == tempPoint) {
+                                            tempPoint = tempPoint - 1;
+                                            setImgPoint01(tempPoint)
+                                            $("#edit-info-11 .edit-box").removeClass("active")
+                                        } else {
+                                            setDrag12(drag13)
+                                            startPoint = startPoint + 1;
+                                            if (startPoint == tempPoint) {
+                                                tempPoint = tempPoint - 1;
+                                                setImgPoint01(tempPoint)
+                                                $("#edit-info-12 .edit-box").removeClass("active")
+                                            }
+                                            else {
+                                                setDrag13('default.jpg')
+                                                tempPoint = tempPoint - 1;
+                                                setImgPoint01(tempPoint)
+                                                $("#edit-info-13 .edit-box").removeClass("active")
+                                            }
+                                        }
+                                    }
+                                }}
+                            />
                         </figure>
                         <figure className="dragImg drag12" id="drag12" draggable="true">
-                            <img className="blog-cover" src={`http://localhost:3009/blogs_img/${drag12}`} id="drag12_img" alt="" />
+                            <img className="blog-cover"
+                                src={(drag12 == '' ? `http://localhost:3009/blogs_img/default.jpg` : `http://localhost:3009/blogs_img/${drag12}`)}
+                                id="drag12_img" alt=""
+                                onDoubleClick={(e) => {
+                                    if (drag12 !== 'default.jpg') {
+                                        let startPoint = 2;
+                                        let tempPoint = imgPoint01;
+                                        console.log('你點了兩下 : drag12')
+                                        setDrag12(drag13)
+                                        startPoint = startPoint + 1;
+                                        if (startPoint == tempPoint) {
+                                            tempPoint = tempPoint - 1;
+                                            setImgPoint01(tempPoint)
+                                            $("#edit-info-12 .edit-box").removeClass("active")
+                                        } else {
+                                            setDrag13('default.jpg')
+                                            tempPoint = tempPoint - 1;
+                                            setImgPoint01(tempPoint)
+                                            $("#edit-info-13 .edit-box").removeClass("active")
+                                        }
+                                    }
+                                }}
+                            />
                         </figure>
                         <figure className="dragImg drag13" id="drag13" draggable="true">
-                            <img className="blog-cover" src={`http://localhost:3009/blogs_img/${drag13}`} id="drag13_img" alt="" />
+                            <img className="blog-cover"
+                                src={(drag13 == '' ? `http://localhost:3009/blogs_img/default.jpg` : `http://localhost:3009/blogs_img/${drag13}`)}
+                                id="drag13_img" alt=""
+                                onDoubleClick={(e) => {
+                                    if (drag13 !== 'default.jpg') {
+                                        let tempPoint = imgPoint01;
+                                        console.log('你點了兩下 : drag13')
+                                        setDrag13('default.jpg')
+                                        tempPoint = tempPoint - 1;
+                                        setImgPoint01(tempPoint)
+                                        $("#edit-info-13 .edit-box").removeClass("active")
+                                    }
+                                }}
+                            />
                         </figure>
                     </div>
                 </div>
@@ -327,12 +431,15 @@ function BlogMainEditInputs(props) {
                                     let temp = imgPoint02;
                                     if (imgPoint02 === 1) {
                                         setDrag21(obj02.name)
+                                        $("#edit-info-21 .edit-box").addClass("active")
                                     }
                                     if (imgPoint02 === 2) {
                                         setDrag22(obj02.name)
+                                        $("#edit-info-22 .edit-box").addClass("active")
                                     }
                                     if (imgPoint02 === 3) {
                                         setDrag23(obj02.name)
+                                        $("#edit-info-23 .edit-box").addClass("active")
                                     }
                                     temp += 1;
                                     setImgPoint02(temp);
@@ -340,24 +447,103 @@ function BlogMainEditInputs(props) {
                             }
                         }}
                     />
-                    <div className="blog-edit-info"></div>
-                    <div className="blog-edit-info"></div>
-                    <div className="blog-edit-info"></div>
+                    <div className="blog-edit-info" id="edit-info-21">
+                        <h5>V</h5>
+                        <div className="edit-box"></div>
+                    </div>
+                    <div className="blog-edit-info" id="edit-info-22">
+                        <h5>V</h5>
+                        <div className="edit-box"></div>
+                    </div>
+                    <div className="blog-edit-info" id="edit-info-23">
+                        <h5>V</h5>
+                        <div className="edit-box"></div>
+                    </div>
+                    <h6>註 : 點兩下圖片可以取消</h6>
                 </div>
                 <div className="upload-imgs">
                     <div className="drags d-flex">
                         <figure className="dragImg drag21" id="drag21" draggable="true">
-                            <img className="blog-cover" src={`http://localhost:3009/blogs_img/${drag21}`} id="drag21_img" alt="" />
+                            <img className="blog-cover"
+                                src={(drag21 == '' ? `http://localhost:3009/blogs_img/default.jpg` : `http://localhost:3009/blogs_img/${drag21}`)}
+                                id="drag21_img" alt=""
+                                onDoubleClick={(e) => {
+                                    if (drag21 !== 'default.jpg') {
+                                        let startPoint = 1;
+                                        let tempPoint = imgPoint02;
+                                        console.log('你點了兩下 : drag21')
+                                        setDrag21(drag22)
+                                        startPoint = startPoint + 1;
+                                        if (startPoint == tempPoint) {
+                                            tempPoint = tempPoint - 1;
+                                            setImgPoint02(tempPoint)
+                                            $("#edit-info-21 .edit-box").removeClass("active")
+                                        } else {
+                                            setDrag22(drag23)
+                                            startPoint = startPoint + 1;
+                                            if (startPoint == tempPoint) {
+                                                tempPoint = tempPoint - 1;
+                                                setImgPoint02(tempPoint)
+                                                $("#edit-info-22 .edit-box").removeClass("active")
+                                            }
+                                            else {
+                                                setDrag23('default.jpg')
+                                                tempPoint = tempPoint - 1;
+                                                setImgPoint02(tempPoint)
+                                                $("#edit-info-23 .edit-box").removeClass("active")
+                                            }
+                                        }
+                                    }
+                                }}
+                            />
                         </figure>
                         <figure className="dragImg drag22" id="drag22" draggable="true">
-                            <img className="blog-cover" src={`http://localhost:3009/blogs_img/${drag22}`} id="drag22_img" alt="" />
+                            <img className="blog-cover"
+                                src={(drag22 == '' ? `http://localhost:3009/blogs_img/default.jpg` : `http://localhost:3009/blogs_img/${drag22}`)}
+                                id="drag22_img" alt=""
+                                onDoubleClick={(e) => {
+                                    if (drag22 !== 'default.jpg') {
+                                        let startPoint = 2;
+                                        let tempPoint = imgPoint02;
+                                        console.log('你點了兩下 : drag22')
+                                        setDrag22(drag23)
+                                        startPoint = startPoint + 1;
+                                        if (startPoint == tempPoint) {
+                                            tempPoint = tempPoint - 1;
+                                            setImgPoint02(tempPoint)
+                                            $("#edit-info-22 .edit-box").removeClass("active")
+                                        } else {
+                                            setDrag23('default.jpg')
+                                            tempPoint = tempPoint - 1;
+                                            setImgPoint02(tempPoint)
+                                            $("#edit-info-23 .edit-box").removeClass("active")
+                                        }
+                                    }
+                                }}
+                            />
                         </figure>
                         <figure className="dragImg drag23" id="drag23" draggable="true">
-                            <img className="blog-cover" src={`http://localhost:3009/blogs_img/${drag23}`} id="drag23_img" alt="" />
+                            <img className="blog-cover"
+                                src={(drag23 == '' ? `http://localhost:3009/blogs_img/default.jpg` : `http://localhost:3009/blogs_img/${drag23}`)}
+                                id="drag23_img" alt=""
+                                onDoubleClick={(e) => {
+                                    if (drag23 !== 'default.jpg') {
+                                        let tempPoint = imgPoint02;
+                                        console.log('你點了兩下 : drag23')
+                                        setDrag23('default.jpg')
+                                        tempPoint = tempPoint - 1;
+                                        setImgPoint02(tempPoint)
+                                        $("#edit-info-23 .edit-box").removeClass("active")
+                                    }
+                                }}
+                            />
                         </figure>
                     </div>
                 </div>
                 <button className="blog-edit-submit" onClick={() => { showEditPromiseConfirm() }}>送出</button>
+            </div>
+            <div className="blog-edit-loading">
+                <Spin />
             </div>
         </>
     )

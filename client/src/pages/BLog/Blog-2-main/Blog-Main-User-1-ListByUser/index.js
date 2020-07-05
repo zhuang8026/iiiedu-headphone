@@ -253,7 +253,9 @@ function BlogMainUserListByUser(props) {
                         <div className="blog-card" key={data.blogId}>
                             <div className="blog-card-in">
                                 <figure className="blog-card-fig">
-                                    <img className="blog-cover" src={`http://localhost:3009/blogs_img/${data.blogContent01_img01}`} alt="" />
+                                    <img className="blog-cover" 
+                                    src={(data.blogContent01_img01 == '' ? `http://localhost:3009/blogs_img/default.jpg` : `http://localhost:3009/blogs_img/${data.blogContent01_img01}`)}                                    
+                                    />
                                 </figure>
                                 <div className="blog-card-btns blog-d-flex blog-justify-content-between">
                                     <figure>
