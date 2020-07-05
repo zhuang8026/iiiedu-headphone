@@ -1,0 +1,120 @@
+main
+  .members_all
+  .members_right
+  .members_right_inner
+  .members_r_bottom
+  span.iconfont {
+  padding: 0 8px;
+}
+.blog_bottom_left {
+  .tbl-header {
+    background-color: #211e55;
+    .blogTable {
+      width: 100%;
+      table-layout: fixed;
+      thead {
+        tr {
+          th {
+            padding: 20px 0;
+            text-align: center;
+            font-weight: 500;
+            font-size: 14px;
+            color: #fff;
+            text-transform: uppercase;
+            .blog_memb_checkbox {
+              width: 15px;
+              height: 15px;
+              border: 1px solid #211e55;
+              color: #211e55;
+              -webkit-appearance: auto;
+            }
+          }
+          .blog_memb_Title_head {
+            width: 10vw;
+          }
+          .blog_memb_content_head {
+            width: 10vw;
+          }
+          .blog_memb_publish_head {
+            width: 8vw;
+          }
+          .blog_memb_update_head {
+            width: 8vw;
+          }
+        }
+      }
+    }
+  }
+  .tbl-content {
+    height: auto;
+    overflow-x: auto;
+    margin-top: 0px;
+    border: 1px solid #d3d3d3;
+    .blogTable {
+      width: 100%;
+      table-layout: fixed;
+      tbody {
+        width: 100%;
+        .blog_memb_tr_list {
+          transition: 0.3s ease-in;
+          &:hover {
+            background: #f8f8f9;
+          }
+          width: 100%;
+          td {
+            padding: 15px 0;
+            text-align: center;
+            vertical-align: middle;
+            font-weight: 300;
+            font-size: 14px;
+            border-bottom: 1px dashed #d3d3d3;
+            .blog_memb_checkbox {
+              width: 15px;
+              height: 15px;
+              border: 1px solid #adadad;
+              color: #211e55;
+              -webkit-appearance: auto;
+            }
+            .blog-memb-icon-edit:hover {
+              cursor: pointer;
+            }
+          }
+          .blog_memb_Title_body {
+            width: 10vw;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            // -webkit-appearance: auto;
+          }
+          .blog_memb_content_body {
+            position: relative;
+            width: 10vw;
+            // -webkit-appearance: auto;
+            p {
+              position: absolute;
+              width: 100%;
+              top: 50%;
+              transform: translateY(-50%);
+              overflow: hidden;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 2;
+              word-wrap: break-word;
+            }
+          }
+          .blog_memb_publish_body {
+            width: 8vw;
+          }
+          .blog_memb_update_body {
+            width: 8vw;
+          }
+        }
+      }
+    }
+  }
+
+  img {
+    width: 100px;
+    border: 1px dashed #d3d3d3;
+  }
+}

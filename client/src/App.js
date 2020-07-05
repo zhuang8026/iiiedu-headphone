@@ -39,6 +39,7 @@ import MembersBank from './pages/Members/MembersBank'
 import MembersAdress from './pages/Members/MembersAdress'
 import MembersCartList from './pages/Members/MembersCartList'
 import MembersCartDetail from './pages/Members/MembersCartDetail'
+import MembersBlog from './pages/Members/MembersBlog'
 // import MembersForget from './pages/Members/MembersForget'
 
 // 超級賣家
@@ -353,6 +354,10 @@ function App() {
                 setName,
               }}
             />
+          </Route>
+
+          <Route path="/KMembers/MembersBlog">
+            <MembersBlog userdata={userdata} setUserdata={setUserdata} />
           </Route>
 
           {/* Blog */}

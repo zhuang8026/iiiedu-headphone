@@ -60,7 +60,7 @@ function MembersLeft(props) {
                     <div className="men_title">
                         <div className="men_title_inner">
                             <span className="iconfont icon-blog"></span>
-                                <NavLink className="men_a" to="/MembersBlog" >我的BLOG</NavLink>
+                                <NavLink className="men_a" to="/KMembers/MembersBlog" >我的BLOG</NavLink>
                             </div>
                         {/* <ul className="men_u">
                             <li>
