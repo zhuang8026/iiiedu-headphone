@@ -16,17 +16,17 @@ function Compare(props) {
     //   const{userdata,setUserdata,name,setName}= props.allprops;
     const { itemsdata, setItemsdata, itemsid, setItemsid } = props;
     // const [CompareProductData, setCompareProductData] = useState([])
-    const [detailitems, setdetailitems] = useState('');
-    const [currentTotalPages, setCurrentTotalPages] = useState();
-    const [currentPage, setCurrentPage] = useState(1); 
-    const [itemchange, setitemchange] = useState(false); 
+    // const [detailitems, setdetailitems] = useState('');
+    // const [currentTotalPages, setCurrentTotalPages] = useState();
+    // const [currentPage, setCurrentPage] = useState(1); 
+    // const [itemchange, setitemchange] = useState(false); 
     let [compareList,setCompareList] = useState([])
     const key = 'updatable';
     //打開會員的localstorage
     const Memberman = JSON.parse(localStorage.getItem('memberData'))|| []
     // console.log(Memberman)
     let id = Memberman.id;
-    var CompareProductDataInner=[];
+    // var CompareProductDataInner=[];
     const[selectValue,setSelectValue] = useState([])
 
     // console.log('selectValue',selectValue)
@@ -82,35 +82,35 @@ function Compare(props) {
       localStorage.setItem('cart', JSON.stringify(newCart))
     }  
 
-    let typedata = props.match.params.type;
-    useEffect(()=>{
-      // 左側 menu 單選按鍵
-      if(typedata) {
-        message.loading({ content: 'Loading...', key });
-        setItemsdata([])
-        console.log(itemsdata);
-        setTimeout(() => {
-          message.success({ content: '修改成功!', key, duration: 1 });
-          fetch(`http://localhost:3009/products/${typedata}`,  {
-            method: 'get',
-            headers: new Headers({
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            }),
-          })
-          .then((response)=>{
-              return response.json()
-          })
-          .then((response)=>{
-            console.log(response)
-            setItemsdata(response)
-            // setCurrentTotalPages(response.totalPages) //總page
-            // setCurrentPage(response.page) //此刻的頁數
-          })
-        }, 1000);
-      }
+    // let typedata = props.match.params.type;
+    // useEffect(()=>{
+    //   // 左側 menu 單選按鍵
+    //   if(typedata) {
+    //     message.loading({ content: 'Loading...', key });
+    //     setItemsdata([])
+    //     console.log(itemsdata);
+    //     setTimeout(() => {
+    //       message.success({ content: '修改成功!', key, duration: 1 });
+    //       fetch(`http://localhost:3009/products/${typedata}`,  {
+    //         method: 'get',
+    //         headers: new Headers({
+    //             'Accept': 'application/json',
+    //             'Content-Type': 'application/json',
+    //         }),
+    //       })
+    //       .then((response)=>{
+    //           return response.json()
+    //       })
+    //       .then((response)=>{
+    //         console.log(response)
+    //         setItemsdata(response)
+    //         // setCurrentTotalPages(response.totalPages) //總page
+    //         // setCurrentPage(response.page) //此刻的頁數
+    //       })
+    //     }, 1000);
+    //   }
       
-    },[typedata])
+    // },[typedata])
 
 
   return (
@@ -168,16 +168,18 @@ function Compare(props) {
                     console.log(data);
                     return(
                         <li className="sty-1  comparecard-decoration" key={index}>
-                        <span
-                                style={{height: 40 + 'px'}} 
-                                className="iconfont icon-error compare-iconfont" 
-                                id={data.itemId} 
-                                data-id={index}
-                                onClick={()=>{        
-                                const newList = [...compareList]
-                                newList.splice(index, 1);
-                                setCompareList(newList)
-                                localStorage.setItem("compare", JSON.stringify(newList)); }}></span>
+                          <span
+                            style={{height: 40 + 'px'}} 
+                            className="iconfont icon-error compare-iconfont" 
+                            id={data.itemId} 
+                            data-id={index}
+                            onClick={()=>{        
+                              const newList = [...compareList]
+                              newList.splice(index, 1);
+                              setCompareList(newList)
+                              localStorage.setItem("compare", JSON.stringify(newList)); 
+                            }}
+                          ></span>
                             <div className="MyCom_card">
                                 <div className="MyCom_item  sty-1">
                                 <div className="compareImg">

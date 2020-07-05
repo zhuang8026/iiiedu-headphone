@@ -109,7 +109,16 @@ function MyCart(props) {
             {mycartDisplay.map((value, index) => {
               return (
                 <ul key={value.id}>
-                  <li>
+                  <li
+                    id={value.itemId} 
+                    data-id={index}
+                    onClick={()=>{        
+                      const cartList = [...mycartDisplay]
+                      cartList.splice(index, 1);
+                      setMycart(cartList)
+                      localStorage.setItem("cart", JSON.stringify(cartList)); 
+                    }}
+                  >
                     <i className="iconfont icon-error"></i>
                   </li>
                   <li>
