@@ -161,7 +161,7 @@ router.post("/listSellerUserOrder", upload.none(), (req, res) => {
     let id = req.body.id;
     let username = req.body.username;
     let sql =  `SELECT * FROM orders AS t1 
-        JOIN (SELECT users.id, users.username, users.name FROM users WHERE users.isActivated=1 AND users.shopopen=1 AND users.id = 1) AS t2 
+        JOIN (SELECT users.id, users.username, users.name FROM users WHERE users.isActivated=1 AND users.shopopen=1 AND users.id = ?) AS t2 
         ON t1.userId=t2.id 
         INNER JOIN (SELECT payment_types.paymentTypeId, payment_types.paymentTypeName FROM payment_types)AS t3 
         ON t3.paymentTypeId = t1.deliveryState 
