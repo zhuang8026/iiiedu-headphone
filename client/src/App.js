@@ -92,9 +92,8 @@ function App() {
   const [itemsdata, setItemsdata] = useState([])
   const [itemsid, setItemsid] = useState('')
 
-  //賣家中心 - 暫不使用
-  // const [SellerData, setSellerData] = useState([])
-  // const [SellerProductId, setsellerProductId] = useState([])
+  // 賣家中心 
+  const [sellerOrderData, setSellerOrderData] = useState([])
 
   //購物流程
   const [mycart, setMycart] = useState([])
@@ -255,22 +254,28 @@ function App() {
 
           {/* 超級賣家 - William - 20200703 */}
           <Route exact path="/SuperSeller">
+          
+            {/* order組件 在 這裡面  */}
             <WiSeller
               allprops={{
                 userdata,
                 setUserdata,
+                sellerOrderData, 
+                setSellerOrderData
               }}
             />
           </Route>
 
-          <Route exact path="/SuperSeller/SuperSellerOrder">
+          {/* <Route exact path="/SuperSeller/SuperSellerOrder">
             <SuperSellerOrder
               allprops={{
                 userdata,
                 setUserdata,
+                sellerOrderData, 
+                setSellerOrderData
               }}
             />
-          </Route>
+          </Route> */}
 
           <Route exact path="/SuperSeller/SuperSellerItems">
             <SuperSellerItems

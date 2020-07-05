@@ -7,12 +7,12 @@ import { Switch } from 'antd';
 import '../../../assets/scss/SuperSellerOrder.scss'
 function SuperSellerOrder(props) {
     const key = 'updatable';
-    const { userdata, setUserdata } = props.allprops;
+    // 父層 傳入 hooks
+    const { userdata, setUserdata, sellerOrderData, setSellerOrderData } = props.allprops;
     const user = localStorage.getItem('memberData');
-    const [SellerOrderData, setSellerOrderData] = useState([])
     // console.log('userdata',userdata)
     // console.log('SellerOrderData',SellerOrderData)
-
+    
     useEffect(() => {
         fetch("http://localhost:3009/superseller/listSellerUserOrder", {
             method: 'post',
@@ -64,19 +64,21 @@ function SuperSellerOrder(props) {
                         <div class="tbl-content">
                             <table className="sellerOrderTable" cellSpacing="1">
                                 <tbody>
-                                    {SellerOrderData.length > 0 ? (
+                                    {sellerOrderData.length > 0 ? (
                                         <>
-                                            {SellerOrderData.map((data, index) => {
+                                            {sellerOrderData.map((data, index) => {
                                                 return (
                                                         <tr key={index}>
                                                             <td>{data.orderId}</td>
                                                             <td>{data.itemName}</td>
                                                             <td>{data.paymentTypeName}</td>
+
                                                             <td><Switch checkedChildren="已付" unCheckedChildren="未付" defaultChecked={data.paymentState !==1?  true : false} /></td>
-                                                            {/* <td>{data.paymentStateTypeName}</td> */}
+                                                            
                                                             <td>{data.deliveryTypeName}</td>
+
                                                             <td><Switch checkedChildren="出貨" unCheckedChildren="未出" defaultChecked={data.deliveryState !==1?  true : false} /></td>
-                                                            {/* <td>{data.deliveryStateTypeName}</td> */}
+                                                            
                                                             <td>{data.orderRemark}</td>
                                                             <td>{data.created_at}</td>
                                                         </tr>

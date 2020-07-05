@@ -6,7 +6,7 @@ import ComponentSuperSellerLeft from './ComponentSuperSellerLeft'
 import SuperSellerOrder from './SuperSellerOrder'
 
 function KMembers(props) {
-  const {userdata, setUserdata} = props.allprops;
+  const {userdata, setUserdata, sellerOrderData, setSellerOrderData} = props.allprops;
   return (
       <main>
         <div className="members_all">
@@ -17,7 +17,9 @@ function KMembers(props) {
           <SuperSellerOrder 
             allprops={{
               userdata,
-              setUserdata
+              setUserdata,
+              sellerOrderData, 
+              setSellerOrderData
             }}
           />
         </div>
