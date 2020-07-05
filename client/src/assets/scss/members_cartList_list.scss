@@ -16,6 +16,7 @@
                     padding: 24px;
                     span{
                         color: #fff;
+                        font-weight: bold;
                         margin-right: 12px;
                         letter-spacing: 2px;
                     }
@@ -52,20 +53,20 @@
 
                 }
                 .cart_r_list_total_li_price {
-                    color: $btn-color-r;
+                    // color: $btn-color-r;
                     font-weight: bold;
                     font-size: $font-size-24+12;
                 }
             }
             .cart_r_list_total_search {
-                margin-top: 24px;
+                margin-top: 36px;
                 a {
-                    width: 150px;
+                    width: 120px;
                     height: 32px;
                     padding: 8px 64px;
                     border: 1px solid $border-color-l;
-                    background: $border-color-l;
-                    color: #fff;
+                    background: transparent;
+                    color: #2c3e50;
                     cursor: pointer;
                 }
             }

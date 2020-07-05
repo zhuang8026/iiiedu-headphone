@@ -87,6 +87,7 @@ function App() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [loginErrors, setLoginErrors] = useState([])
+  const [membersCartOrderData, setMembersCartOrderData] = useState([])
 
   // 產品列表
   const [itemsdata, setItemsdata] = useState([])
@@ -344,7 +345,12 @@ function App() {
           </Route>
 
           <Route path="/KMembers/MembersCartList">
-            <MembersCartList userdata={userdata} setUserdata={setUserdata} />
+            <MembersCartList 
+              userdata={userdata} 
+              setUserdata={setUserdata} 
+              membersCartOrderData={membersCartOrderData} 
+              setMembersCartOrderData={setMembersCartOrderData}
+            />
           </Route>
 
           <Route path="/KMembers/MembersCartDetail">
@@ -353,7 +359,8 @@ function App() {
                 userdata,
                 setUserdata,
                 name,
-                setName,
+                setName,membersCartOrderData, 
+                setMembersCartOrderData
               }}
             />
           </Route>

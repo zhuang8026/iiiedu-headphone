@@ -1,5 +1,5 @@
 // 函式元件
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Link, withRouter} from 'react-router-dom'
 
 
@@ -10,7 +10,28 @@ import MembersLeft from '../ComponentMembersLeft'
 import logo from '../../../assets/img/tw.jpg';
 
 function MembersCartDetail(props) {
-    const {userdata, setUserdata} = props.allprops;
+    const {userdata, setUserdata, membersCartOrderData, setMembersCartOrderData} = props.allprops;
+
+    console.log(membersCartOrderData)
+
+    // useEffect(() => {
+    //     fetch("http://localhost:3009/superseller/listSellerUserOrder", {
+    //         method: 'post',
+    //         body: JSON.stringify({
+    //             id: userdata.id,
+    //         }),
+    //         headers: new Headers({
+    //             'Accept': 'application/json',
+    //             'Content-Type': 'application/json',
+    //         }),
+    //     })
+    //         .then(result => result.json())
+    //         .then((response) => {
+    //             console.log('response', response);
+    //             setMembersCartOrderData(response)
+    //         })
+    // }, [userdata])
+
     return (
         <main>
             <div className="members_all">
@@ -88,7 +109,7 @@ function MembersCartDetail(props) {
                                         <span className="cart_r_list_total_li_price">$ 31346</span>
                                     </li>
                                     <li className="cart_r_list_total_search">
-                                        <Link to="/KMembers/MembersCartDetail/">返回上一步</Link>
+                                        <Link to="/KMembers/MembersCartList">返回上一步</Link>
                                     </li>
                                 </ul>
                             </div>
