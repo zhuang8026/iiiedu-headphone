@@ -16,8 +16,9 @@ import {
 } from 'react-router-dom'
 // antd
 import 'antd/dist/antd.css';
-import { message, Modal, Button, Space } from 'antd';
+import { message, Modal,notification } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
+import { CheckCircleFilled } from '@ant-design/icons';
 // import '../../../../assets/css/YongBlog/Yong-blog-add.css'
 
 // -------------------- components --------------------
@@ -115,7 +116,7 @@ function BlogMainAdd(props) {
 
 
     // 新增文章提示
-    function showAddPromiseConfirm() {
+    const showAddPromiseConfirm=()=> {
         confirm({
             title: '確定要新增此篇文章?',
             icon: <ExclamationCircleOutlined />,
@@ -163,10 +164,21 @@ function BlogMainAdd(props) {
                 // }
             })
         setTimeout(() => {
+            openAddArticleNotification()
             props.history.push('/Blog/YongMyBlog');
         }, 2000)
     }
-
+    // 新增成功提示
+    const openAddArticleNotification = () => {
+        const args = {
+          message: '新增成功',
+          description:
+            '您剛新增了一篇文章',
+          duration: 5,
+          icon: <CheckCircleFilled style={{ color: '#28a745' }} />,
+        };
+        notification.open(args);
+      };
     return (
         <>
             <figure className="blog-add-top-img">

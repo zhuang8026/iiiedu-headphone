@@ -12,8 +12,9 @@ import {
 } from 'react-router-dom'
 // antd
 import 'antd/dist/antd.css';
-import { message, Modal, Button, Space } from 'antd';
+import { message, Modal,notification } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
+import { CheckCircleFilled } from '@ant-design/icons';
 // import '../../../../assets/css/YongBlog/Yong-blog-edit.css'
 
 // -------------------- components --------------------
@@ -89,13 +90,13 @@ function BlogMainEditInputs(props) {
     }, [editBlogTitle])
     useEffect(() => {
         countPoint()
-        
+
     }, [drag11, drag12, drag13, drag21, drag22, drag23,])
     useEffect(() => {
         console.log('imgPoint01-2 ====> ', imgPoint01)
         console.log('imgPoint02-2 ====> ', imgPoint02)
-    }, [imgPoint01,imgPoint02])
-    
+    }, [imgPoint01, imgPoint02])
+
     // 取得文章內容
     const getEditData = () => {
         fetch('http://localhost:3009/blog/getDetail/', {
@@ -152,7 +153,7 @@ function BlogMainEditInputs(props) {
         }
         console.log('temp01 ====> ', temp01)
         setImgPoint01(temp01)
-        
+
 
         if ((drag23 != '') && (drag23 != 'default.jpg') && (drag23 != null)) {
             temp02 = 4;
@@ -163,7 +164,7 @@ function BlogMainEditInputs(props) {
         }
         console.log('temp02 ====> ', temp02)
         setImgPoint02(temp02)
-        
+
 
     }
 
@@ -229,13 +230,24 @@ function BlogMainEditInputs(props) {
             })
         })
             .then(result => result.json())
-            .then(obj => {                                            
-                setTimeout(() => {                   
+            .then(obj => {
+                setTimeout(() => {
+                    openEditArticleNotification()
                     props.history.push('/Blog/YongMyBlog');
-                }, 2000)                
+                }, 2000)
             })
     }
-
+    // 修改成功提示
+    const openEditArticleNotification = () => {
+        const args = {
+            message: '修改成功',
+            description:
+                '您剛修改了一篇文章',
+            duration: 5,
+            icon: <CheckCircleFilled style={{ color: '#28a745' }} />,
+        };
+        notification.open(args);
+    };
     return (
         <>
             <figure className="blog-edit-top-img">

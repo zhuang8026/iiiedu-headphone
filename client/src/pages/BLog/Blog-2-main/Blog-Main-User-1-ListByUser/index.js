@@ -11,8 +11,9 @@ import {
 } from 'react-router-dom'
 // antd
 import 'antd/dist/antd.css';
-import { message, Modal, Button, Space } from 'antd';
+import { message, Modal,notification } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
+import { CheckCircleFilled } from '@ant-design/icons';
 // react-moment
 import Moment from 'react-moment';
 import 'moment-timezone';
@@ -81,7 +82,7 @@ function BlogMainUserListByUser(props) {
             cancelText: '取消',
             onOk() {
                 return new Promise((resolve, reject) => {
-                    setTimeout(Math.random() > 0.5 ? resolve : reject, 1500);
+                    setTimeout(Math.random() > 0.5 ? resolve : reject, 1500);                    
                     goBlogDelete(blogId)
                 }).catch(() => console.log('Oops errors!'));
             },
@@ -108,8 +109,8 @@ function BlogMainUserListByUser(props) {
 
             })
         setTimeout(() => {
-            props.history.go(0)
-            // deleteDone()
+            openDeleteArticleNotification()
+            props.history.go(0)            
         }, 2000)
     }
 
@@ -138,7 +139,17 @@ function BlogMainUserListByUser(props) {
                 // setlistUserBlogdata(response.rows)
             })
     }
-
+// 刪除完畢提示
+    const openDeleteArticleNotification = () => {
+        const args = {
+          message: '刪除完畢',
+          description:
+            '您剛刪除了一篇文章',
+          duration: 5,
+          icon: <CheckCircleFilled style={{ color: '#28a745' }} />,
+        };
+        notification.open(args);
+      };
     // 去編輯
     const goBlogEdit = (blogId) => {
         props.history.push('/Blog/BlogEdit');
