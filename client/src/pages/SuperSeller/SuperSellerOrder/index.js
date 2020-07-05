@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { withRouter, BrowserRouter as Router } from 'react-router-dom'
 
 // antd
-import { message } from 'antd';
+import { Switch } from 'antd';
 import '../../../assets/scss/SuperSellerOrder.scss'
 function SuperSellerOrder(props) {
     const key = 'updatable';
@@ -72,9 +72,11 @@ function SuperSellerOrder(props) {
                                                             <td>{data.orderId}</td>
                                                             <td>{data.itemName}</td>
                                                             <td>{data.paymentTypeName}</td>
-                                                            <td>{data.paymentStateTypeName}</td>
+                                                            <td><Switch checkedChildren="已付" unCheckedChildren="未付" defaultChecked={data.paymentState !==1?  true : false} /></td>
+                                                            {/* <td>{data.paymentStateTypeName}</td> */}
                                                             <td>{data.deliveryTypeName}</td>
-                                                            <td>{data.deliveryStateTypeName}</td>
+                                                            <td><Switch checkedChildren="出貨" unCheckedChildren="未出" defaultChecked={data.deliveryState !==1?  true : false} /></td>
+                                                            {/* <td>{data.deliveryStateTypeName}</td> */}
                                                             <td>{data.orderRemark}</td>
                                                             <td>{data.created_at}</td>
                                                         </tr>

@@ -1,6 +1,6 @@
 // 函式元件
 import React ,{useEffect, useState} from 'react';
-import {withRouter} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 
 import axios from 'axios';
 
@@ -53,7 +53,7 @@ function SuperSellerItems(props) {
     }
 
     useEffect(()=>{
-            fetch("http://localhost:3009/superseller/listSellerUserProduct",{
+            fetch("http://localhost:3009/supersellerEdit/sellerProduct",{
                 method: 'post',
                 body:JSON.stringify({
                     id: userdata.id,
@@ -123,9 +123,11 @@ function SuperSellerItems(props) {
                                                                 <td>{data.itemName}</td>
                                                                 <td>N000{data.itemId}</td>
                                                                 <td>
-                                                                    <img src={`/items_img/${data.itemImg}`} alt="image"/>
+                                                                    <Link to={"/ProductDetail/"+data.itemId}>
+                                                                        <img src={`/items_img/${data.itemImg}`} alt="image"/>
+                                                                    </Link>
                                                                 </td>
-                                                                <td>{data.itemstype}</td>
+                                                                <td>{data.typename}</td>
                                                                 <td>{data.itemPrice}.00 NT</td>
                                                                 <td>{data.itemQty}/副</td>
                                                                 <td>{data.itemsales}/副</td>
