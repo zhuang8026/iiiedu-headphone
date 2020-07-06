@@ -95,7 +95,15 @@ function MembersCartList(props) {
                                     })}
                                 </>
                             ):(
-                                <div>無訂單</div>
+                                <>
+                                    <div className="cartBtnError">
+                                        <p>很抱歉...請您還沒購買任何商品</p>
+                                        <Link to="/YyProduct">
+                                            <i class="iconfont icon-search"></i>
+                                            去商店
+                                        </Link>
+                                    </div>
+                                </>
                             )}
                             
 

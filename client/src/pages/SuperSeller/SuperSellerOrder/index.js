@@ -145,9 +145,8 @@ const superSellerCheck = (orderId)=> {
                                                                         id={data.orderId}
                                                                         className="iconfont icon-search"
                                                                         onClick={(event)=>{
-                                                                            console.log(event.target.id)
+                                                                            // console.log(event.target.id)
                                                                             superSellerCheck(event.target.id)
-                                                                            //  addCsstyle()
                                                                         }}
                                                                     >查看</span>
                                                             </td>
