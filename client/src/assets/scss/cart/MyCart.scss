@@ -137,21 +137,18 @@
       width: 50px;
       background: transparent;
       cursor: pointer;
-      &:hover i{
+      &:hover i {
         color: #2c3e50;
       }
     }
-  
+
     .DetailBtnAdd {
       width: 50px;
       background: transparent;
       cursor: pointer;
-      &:hover i{
+      &:hover i {
         color: #2c3e50;
       }
-    }
-    span {
-      // line-height: 32px;
     }
   }
 
@@ -159,7 +156,7 @@
     border-top: 1px solid #cacaca;
     border-bottom: 1px solid transparent !important;
     padding-right: 14px;
-    
+
     .wi-footer-cart {
       width: 100px;
       height: 36px;
@@ -168,14 +165,40 @@
       color: #211e55;
       margin: 0;
       margin-right: 6px;
+      transition: 0.3s ease-in;
+      cursor: pointer;
+      a {
+        color: #211e55;
+        display: block;
+      }
+      &:hover {
+        background: $link-hover-color-l;
+        color: #fff;
+        a {
+          color: #fff;
+        }
+      }
     }
     .wi-footer-set {
       width: 100px;
       height: 36px;
       border: 1px solid #211e55;
       background: transparent;
+      // a {
+      //   color: #211e55 !important;
+      // }
+      transition: 0.3s ease-in;
+      cursor: pointer;
       a {
-        color: #211e55 !important;
+        color: #211e55;
+        display: block;
+      }
+      &:hover {
+        background: $link-hover-color-l;
+        color: #fff;
+        a {
+          color: #fff;
+        }
       }
     }
   }
