@@ -58,12 +58,12 @@ function SuperSellerAddItems(props) {
         .then((result) => result.json())
         .then((obj) => {
           console.log(obj)
-          // localStorage.setItem('memberData', JSON.stringify(obj));
-          message.success(`新增成功！`)
-          setTimeout(() => {
-            // props.history.goBack()
-            props.history.push('SuperSeller/SuperSellerItems')
-          }, 2000)
+          localStorage.setItem('memberData', JSON.stringify(obj));
+        //   message.success(`新增成功！`)
+        //   setTimeout(() => {
+        //     // props.history.goBack()
+        //     props.history.push('SuperSeller/SuperSellerItems')
+        //   }, 2000)
         })
     }
     useEffect(()=>{

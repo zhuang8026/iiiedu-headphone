@@ -139,7 +139,7 @@ function SuperSellerOrder(props) {
                                                                         className="iconfont icon-search"
                                                                         onClick={(event)=>{
                                                                             console.log(event.target.id)
-                                                                            // superSellerDelete(event.target.id)
+                                                                            superSellerDelete(event.target.id)
                                                                         }}
                                                                     >查看</span>
                                                             </td>
