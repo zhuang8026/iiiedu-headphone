@@ -38,26 +38,26 @@ router.get('/', (req, res) => {
 // http://localhost:3009/superseller_plus/add
 router.post('/add', upload.none(), (req, res) => {
     // 有資料過來就改成 req.body.XXXXXXXXX;
-    let itemName = 'testName';
-    let itemImg = 'test.png';
-    let colorid = 8;
-    let itemsbrand = 'BangOlufsen';
-    let itemstype = '2';
-    let itemPrice = 100;
-    let itemQty = 150;
-    let itemsales = 10;
-    let itemsstar = 5;
-    let itemstoreNumber = 1;
-    let itemscontent = '測試中隨便亂打的，你知道的............';
-    let itemsweight = '10公克';
-    let itemsdrive = '動圈式';
-    let itemsfrequency = '20 – 20,000  Hz';
-    let itemsSensitivity = '100dB/mW';
-    let itemsconnect = '藍芽';
-    let itemsmains = '無線充電';
-    let itemsEndurance = '36小時';
-    let itemswatertight = '防水';
-    let itemsfeature = '什麼功能都有';
+    let itemName = req.body.itemName;
+    let itemImg = req.body.itemImg;
+    let colorid = req.body.colorid;
+    let itemsbrand = req.body.itemsbrand;
+    let itemstype = req.body.itemstype;
+    let itemPrice = req.body.itemPrice;
+    let itemQty = req.body.itemQty;
+    let itemsales = req.body.itemsales;
+    let itemsstar = req.body.itemsstar;
+    let itemstoreNumber = req.body.itemstoreNumber;
+    let itemscontent = req.body.itemscontent;
+    let itemsweight = req.body.itemsweight;
+    let itemsdrive = req.body.itemsdrive;
+    let itemsfrequency = req.body.itemsfrequency;
+    let itemsSensitivity = req.body.itemsSensitivity;
+    let itemsconnect = req.body.itemsconnect;
+    let itemsmains = req.body.itemsmains;
+    let itemsEndurance = req.body.itemsEndurance;
+    let itemswatertight = req.body.itemswatertight;
+    let itemsfeature = req.body.itemsfeature;
     const output = {
         success: false,
         rows: []
@@ -69,11 +69,11 @@ router.post('/add', upload.none(), (req, res) => {
         itemscontent, itemsweight, itemsdrive, itemsfrequency, itemsSensitivity,
         itemsconnect, itemsmains, itemsEndurance, itemswatertight, itemsfeature
     ])
-        .then(([r]) => {
-            output.rows = r;
+        .then(([results]) => {
+            output.results = results;
             output.success = true;
             console.log(output);
-            res.json(output);
+            // res.json(output);
         })
     // res.json(req.body);
 })

@@ -37,8 +37,9 @@ function SuperSellerItems(props) {
                                 // console.log(resolve);
                                 setTimeout(() => {
                                     message.success({ content: '刪除成功!', key, duration: 2 });
-                                    props.history.go(0); // Question ：強行跳轉 不得已才這樣做 
-                                    setSellerProductData(SellerProductData); // 沒反應
+                                    // props.history.go(0); // Question ：強行跳轉 不得已才這樣做 
+                                    // setSellerProductData(SellerProductData); // 沒反應
+                                    sellerProductcallback()
                                 }, 1000)
                             } else {
                                 message.info("刪除失敗")
@@ -51,6 +52,24 @@ function SuperSellerItems(props) {
                 message.info("刪除失敗")
             },
         })
+    }
+
+    const sellerProductcallback = () => {
+        fetch("http://localhost:3009/supersellerEdit/sellerProduct",{
+                method: 'post',
+                body:JSON.stringify({
+                    id: userdata.id,
+                }),
+                headers: new Headers({
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                }),
+            })
+            .then(result=>result.json())
+            .then((response)=>{
+                // console.log('response', response);
+                setSellerProductData(response)
+            })
     }
 
     useEffect(()=>{
