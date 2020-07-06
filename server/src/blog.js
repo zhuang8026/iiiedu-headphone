@@ -350,9 +350,9 @@ router.post('/add', upload.none(), (req, res) => {
     db.query(sql, [id, blogTitle, blogContent01, blogContent01_img01, blogContent01_img02, blogContent01_img03, blogContent02, blogContent02_img01, blogContent02_img02, blogContent02_img03])
         .then(([r]) => {
             // output.results = r;
-            // output.success = true;
+            output.success = true;
             // console.log(output);
-            // res.json(output);
+            res.json(output);
         })
     // res.json(req.body);
 })
@@ -367,11 +367,14 @@ router.post('/del/', async (req, res) => {
     let referer = 1;
     let id = req.body.id;
     let blogId = req.body.blogId;
-
+    const output = {
+        success: false,                
+    }
     const sql = `DELETE FROM blogs WHERE blogId=${blogId}`;
     db.query(sql, [req.params.blogId])
         .then(([r]) => {
-
+            output.success = true;
+            res.json(output);
         })
 })
 
@@ -409,10 +412,11 @@ router.post('/edit/', upload.none(), (req, res) => {
     delete req.body.blogId;
     db.query(sql, [blogTitle, blogContent01, blogContent01_img01, blogContent01_img02, blogContent01_img03, blogContent02, blogContent02_img01, blogContent02_img02, blogContent02_img03, blogId])
         .then(([r]) => {
-            output.results = r;
-            if (r.affectedRows && r.changedRows) {
-                output.success = true;
-            }
+            // output.results = r;            
+            // if (r.affectedRows && r.changedRows) {
+            //     output.success = true;
+            // }
+            output.success = true;
             res.json(output);
         })
 })

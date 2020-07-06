@@ -138,17 +138,17 @@ function BlogMainAdd(props) {
     // 新增文章
     const goBlogAdd = () => {
         let temp11, temp12, temp13, temp21, temp22, temp23;
-        if (drag11 == 'img-empty.jpg') { temp11 = '' }
+        if (drag11 == 'img-empty.png') { temp11 = '' }
         else { temp11 = drag11 }
-        if (drag12 == 'img-empty.jpg') { temp12 = '' }
+        if (drag12 == 'img-empty.png') { temp12 = '' }
         else { temp12 = drag12 }
-        if (drag13 == 'img-empty.jpg') { temp13 = '' }
+        if (drag13 == 'img-empty.png') { temp13 = '' }
         else { temp13 = drag13 }
-        if (drag21 == 'img-empty.jpg') { temp21 = '' }
+        if (drag21 == 'img-empty.png') { temp21 = '' }
         else { temp21 = drag21 }
-        if (drag22 == 'img-empty.jpg') { temp22 = '' }
+        if (drag22 == 'img-empty.png') { temp22 = '' }
         else { temp22 = drag22 }
-        if (drag23 == 'img-empty.jpg') { temp23 = '' }
+        if (drag23 == 'img-empty.png') { temp23 = '' }
         else { temp23 = drag23 }
         fetch('http://localhost:3009/blog/add', {
             method: 'POST',
@@ -173,15 +173,13 @@ function BlogMainAdd(props) {
                 return response.json()
             })
             .then((response) => {
-                console.log(response)
-                // if (result.success == true) {
-                //     props.history.push('/Blog/YongMyBlog');
-                // }
+                if (response.success == true) {                    
+                    setTimeout(() => {
+                        openAddArticleNotification()
+                        props.history.push('/Blog/YongMyBlog');
+                    }, 1500)
+                }
             })
-        setTimeout(() => {
-            openAddArticleNotification()
-            props.history.push('/Blog/YongMyBlog');
-        }, 2000)
     }
     // 新增成功提示
     const openAddArticleNotification = () => {
@@ -189,7 +187,7 @@ function BlogMainAdd(props) {
             message: '新增成功',
             description:
                 '您剛新增了一篇文章',
-            duration: 5,
+            duration: 3,
             icon: <CheckCircleFilled style={{ color: '#28a745' }} />,
         };
         notification.open(args);
@@ -298,7 +296,7 @@ function BlogMainAdd(props) {
                                                 $("#add-info-12 .add-box").removeClass("active")
                                             }
                                             else {
-                                                setDrag13('default.jpg')
+                                                setDrag13('img-empty.png')
                                                 tempPoint = tempPoint - 1;
                                                 setImgPoint01(tempPoint)
                                                 $("#add-info-13 .add-box").removeClass("active")
@@ -324,7 +322,7 @@ function BlogMainAdd(props) {
                                             setImgPoint01(tempPoint)
                                             $("#add-info-12 .add-box").removeClass("active")
                                         } else {
-                                            setDrag13('default.jpg')
+                                            setDrag13('img-empty.png')
                                             tempPoint = tempPoint - 1;
                                             setImgPoint01(tempPoint)
                                             $("#add-info-13 .add-box").removeClass("active")
@@ -342,7 +340,7 @@ function BlogMainAdd(props) {
                                     if (drag13 !== '') {
                                         let tempPoint = imgPoint01;
                                         console.log('你點了兩下 : drag13')
-                                        setDrag13('default.jpg')
+                                        setDrag13('img-empty.png')
                                         tempPoint = tempPoint - 1;
                                         setImgPoint01(tempPoint)
                                         $("#add-info-13 .add-box").removeClass("active")
@@ -426,7 +424,7 @@ function BlogMainAdd(props) {
                                                 $("#add-info-22 .add-box").removeClass("active")
                                             }
                                             else {
-                                                setDrag23('default.jpg')
+                                                setDrag23('img-empty.png')
                                                 tempPoint = tempPoint - 1;
                                                 setImgPoint02(tempPoint)
                                                 $("#add-info-23 .add-box").removeClass("active")
@@ -453,7 +451,7 @@ function BlogMainAdd(props) {
                                             setImgPoint02(tempPoint)
                                             $("#add-info-22 .add-box").removeClass("active")
                                         } else {
-                                            setDrag23('default.jpg')
+                                            setDrag23('img-empty.png')
                                             tempPoint = tempPoint - 1;
                                             setImgPoint02(tempPoint)
                                             $("#add-info-23 .add-box").removeClass("active")
@@ -471,7 +469,7 @@ function BlogMainAdd(props) {
                                     if (drag23 !== '') {
                                         let tempPoint = imgPoint02;
                                         console.log('你點了兩下 : drag23')
-                                        setDrag23('default.jpg')
+                                        setDrag23('img-empty.png')
                                         tempPoint = tempPoint - 1;
                                         setImgPoint02(tempPoint)
                                         $("#add-info-23 .add-box").removeClass("active")
