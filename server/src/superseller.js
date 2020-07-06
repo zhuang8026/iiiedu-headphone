@@ -188,6 +188,33 @@ router.post("/listSellerUserOrder", upload.none(), (req, res) => {
         })
 });
 
+// (個人)所有訂單細節
+// http://localhost:3009/superseller/listSellerUserOrderDetail
+router.post("/listSellerUserOrderDetail", upload.none(), (req, res) => {
+    // console.log('========== react(get) -> (個人)所有訂單 ==========') 
+    let id = req.body.id;
+    let username = req.body.username;
+    let sql =  `SELECT *
+    FROM order_details AS t1 
+    JOIN  items AS t2 
+    ON t2.itemId = t1.itemId
+    JOIN  orders AS t3 
+    ON t3.orderId = t1.orderId
+    WHERE t1.orderId = ?
+    ORDER BY t1.orderId ASC`;
+    // let output = []
+    db.query(sql, [id])
+        .then(results => {
+            console.log(results[0])
+            // output.results = results;
+            // for(let i of results[0]){
+            //     i.created_at = moment(i.created_at).format('YYYY-MM-DD');
+            // }
+            res.json(results[0])
+        })
+});
+
+
 // (個人)所有商品(分頁)
 // http://localhost:3009/superseller/listSellerUserOrder/(個人id編號)/(第幾頁)
 router.post('/listSellerUserOrder/:id/:page?', async (req, res) => {    
