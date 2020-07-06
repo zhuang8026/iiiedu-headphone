@@ -340,10 +340,10 @@ function BlogMainEditInputs(props) {
                     <div className="drags d-flex">
                         <figure className="dragImg drag11" id="drag11" draggable="true">
                             <img className="blog-cover"
-                                src={(drag11 == '' ? `http://localhost:3009/blogs_img/default.jpg` : `http://localhost:3009/blogs_img/${drag11}`)}
+                                src={(drag11 == '' ? `http://localhost:3009/blogs_img/img-empty.png` : `http://localhost:3009/blogs_img/${drag11}`)}
                                 id="drag11_img" alt=""
                                 onDoubleClick={(e) => {
-                                    if (drag11 !== 'default.jpg') {
+                                    if (drag11 !== '') {
                                         let startPoint = 1;
                                         let tempPoint = imgPoint01;
                                         console.log('你點了兩下 : drag11')
@@ -374,10 +374,10 @@ function BlogMainEditInputs(props) {
                         </figure>
                         <figure className="dragImg drag12" id="drag12" draggable="true">
                             <img className="blog-cover"
-                                src={(drag12 == '' ? `http://localhost:3009/blogs_img/default.jpg` : `http://localhost:3009/blogs_img/${drag12}`)}
+                                src={(drag12 == '' ? `http://localhost:3009/blogs_img/img-empty.png` : `http://localhost:3009/blogs_img/${drag12}`)}
                                 id="drag12_img" alt=""
                                 onDoubleClick={(e) => {
-                                    if (drag12 !== 'default.jpg') {
+                                    if (drag12 !== '') {
                                         let startPoint = 2;
                                         let tempPoint = imgPoint01;
                                         console.log('你點了兩下 : drag12')
@@ -399,10 +399,10 @@ function BlogMainEditInputs(props) {
                         </figure>
                         <figure className="dragImg drag13" id="drag13" draggable="true">
                             <img className="blog-cover"
-                                src={(drag13 == '' ? `http://localhost:3009/blogs_img/default.jpg` : `http://localhost:3009/blogs_img/${drag13}`)}
+                                src={(drag13 == '' ? `http://localhost:3009/blogs_img/img-empty.png` : `http://localhost:3009/blogs_img/${drag13}`)}
                                 id="drag13_img" alt=""
                                 onDoubleClick={(e) => {
-                                    if (drag13 !== 'default.jpg') {
+                                    if (drag13 !== '') {
                                         let tempPoint = imgPoint01;
                                         console.log('你點了兩下 : drag13')
                                         setDrag13('default.jpg')
@@ -465,10 +465,10 @@ function BlogMainEditInputs(props) {
                     <div className="drags d-flex">
                         <figure className="dragImg drag21" id="drag21" draggable="true">
                             <img className="blog-cover"
-                                src={(drag21 == '' ? `http://localhost:3009/blogs_img/default.jpg` : `http://localhost:3009/blogs_img/${drag21}`)}
+                                src={(drag21 == '' ? `http://localhost:3009/blogs_img/img-empty.png` : `http://localhost:3009/blogs_img/${drag21}`)}
                                 id="drag21_img" alt=""
                                 onDoubleClick={(e) => {
-                                    if (drag21 !== 'default.jpg') {
+                                    if (drag21 !== '') {
                                         let startPoint = 1;
                                         let tempPoint = imgPoint02;
                                         console.log('你點了兩下 : drag21')
@@ -499,10 +499,10 @@ function BlogMainEditInputs(props) {
                         </figure>
                         <figure className="dragImg drag22" id="drag22" draggable="true">
                             <img className="blog-cover"
-                                src={(drag22 == '' ? `http://localhost:3009/blogs_img/default.jpg` : `http://localhost:3009/blogs_img/${drag22}`)}
+                                src={(drag22 == '' ? `http://localhost:3009/blogs_img/img-empty.png` : `http://localhost:3009/blogs_img/${drag22}`)}
                                 id="drag22_img" alt=""
                                 onDoubleClick={(e) => {
-                                    if (drag22 !== 'default.jpg') {
+                                    if (drag22 !== '') {
                                         let startPoint = 2;
                                         let tempPoint = imgPoint02;
                                         console.log('你點了兩下 : drag22')
@@ -524,10 +524,10 @@ function BlogMainEditInputs(props) {
                         </figure>
                         <figure className="dragImg drag23" id="drag23" draggable="true">
                             <img className="blog-cover"
-                                src={(drag23 == '' ? `http://localhost:3009/blogs_img/default.jpg` : `http://localhost:3009/blogs_img/${drag23}`)}
+                                src={(drag23 == '' ? `http://localhost:3009/blogs_img/img-empty.png` : `http://localhost:3009/blogs_img/${drag23}`)}
                                 id="drag23_img" alt=""
                                 onDoubleClick={(e) => {
-                                    if (drag23 !== 'default.jpg') {
+                                    if (drag23 !== '') {
                                         let tempPoint = imgPoint02;
                                         console.log('你點了兩下 : drag23')
                                         setDrag23('default.jpg')

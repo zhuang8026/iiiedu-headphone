@@ -23,7 +23,7 @@ import 'moment-timezone';
 
 // -------------------- imgs --------------------
 
-
+import logoEmpty from '../../../../assets/img/blog-img/blog-standard/member-empty.jpg'
 // import BlogCard from '../../../../../public/blogs_img/s001-9-01-001.jpg'
 // import BlogCard from '../../../../assets/img/blog-img/blog-standard/Blog-card.png'
 import IconSearch from '../../../../assets/img/blog-img/blog-standard/icon-search.svg'
@@ -220,7 +220,7 @@ function BlogMainStandardList(props) {
                                 </div>
                                 <div className="user-info-list blog-d-flex">
                                     <figure className="blod-cover">
-                                        <img src={`/user_img/${data.userlogo}`}></img>
+                                        <img src={(data.userlogo ? `/user_img/${data.userlogo}` : `/blogs_img/member-empty.jpg`)} alt="" />
                                     </figure>
                                     <h3>{data.name}</h3>
                                     <h4><Moment format="YYYY">{data.blogPublishDate}</Moment>年</h4>

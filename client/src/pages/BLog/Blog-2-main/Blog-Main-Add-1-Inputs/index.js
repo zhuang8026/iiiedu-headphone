@@ -138,17 +138,17 @@ function BlogMainAdd(props) {
     // 新增文章
     const goBlogAdd = () => {
         let temp11, temp12, temp13, temp21, temp22, temp23;
-        if (drag11 == 'default.jpg') { temp11 = '' }
+        if (drag11 == 'img-empty.jpg') { temp11 = '' }
         else { temp11 = drag11 }
-        if (drag12 == 'default.jpg') { temp12 = '' }
+        if (drag12 == 'img-empty.jpg') { temp12 = '' }
         else { temp12 = drag12 }
-        if (drag13 == 'default.jpg') { temp13 = '' }
+        if (drag13 == 'img-empty.jpg') { temp13 = '' }
         else { temp13 = drag13 }
-        if (drag21 == 'default.jpg') { temp21 = '' }
+        if (drag21 == 'img-empty.jpg') { temp21 = '' }
         else { temp21 = drag21 }
-        if (drag22 == 'default.jpg') { temp22 = '' }
+        if (drag22 == 'img-empty.jpg') { temp22 = '' }
         else { temp22 = drag22 }
-        if (drag23 == 'default.jpg') { temp23 = '' }
+        if (drag23 == 'img-empty.jpg') { temp23 = '' }
         else { temp23 = drag23 }
         fetch('http://localhost:3009/blog/add', {
             method: 'POST',
@@ -276,10 +276,10 @@ function BlogMainAdd(props) {
                     <div className="drags d-flex">
                         <figure className="dragImg drag11" id="drag11" draggable="true">
                             <img className="blog-cover"
-                                src={(drag11 == '' ? `http://localhost:3009/blogs_img/default.jpg` : `http://localhost:3009/blogs_img/${drag11}`)}
+                                src={(drag11 == '' ? `http://localhost:3009/blogs_img/img-empty.png` : `http://localhost:3009/blogs_img/${drag11}`)}
                                 id="drag11_img" alt=""
                                 onDoubleClick={(e) => {
-                                    if (drag11 !== 'default.jpg') {
+                                    if (drag11 !== '') {
                                         let startPoint = 1;
                                         let tempPoint = imgPoint01;
                                         console.log('你點了兩下 : drag11')
@@ -310,10 +310,10 @@ function BlogMainAdd(props) {
                         </figure>
                         <figure className="dragImg drag12" id="drag12" draggable="true">
                             <img className="blog-cover"
-                                src={(drag12 == '' ? `http://localhost:3009/blogs_img/default.jpg` : `http://localhost:3009/blogs_img/${drag12}`)}
+                                src={(drag12 == '' ? `http://localhost:3009/blogs_img/img-empty.png` : `http://localhost:3009/blogs_img/${drag12}`)}
                                 id="drag12_img" alt=""
                                 onDoubleClick={(e) => {
-                                    if (drag12 !== 'default.jpg') {
+                                    if (drag12 !== '') {
                                         let startPoint = 2;
                                         let tempPoint = imgPoint01;
                                         console.log('你點了兩下 : drag12')
@@ -336,10 +336,10 @@ function BlogMainAdd(props) {
                         </figure>
                         <figure className="dragImg drag13" id="drag13" draggable="true">
                             <img className="blog-cover"
-                                src={(drag13 == '' ? `http://localhost:3009/blogs_img/default.jpg` : `http://localhost:3009/blogs_img/${drag13}`)}
+                                src={(drag13 == '' ? `http://localhost:3009/blogs_img/img-empty.png` : `http://localhost:3009/blogs_img/${drag13}`)}
                                 id="drag13_img" alt=""
                                 onDoubleClick={(e) => {
-                                    if (drag13 !== 'default.jpg') {
+                                    if (drag13 !== '') {
                                         let tempPoint = imgPoint01;
                                         console.log('你點了兩下 : drag13')
                                         setDrag13('default.jpg')
@@ -404,10 +404,10 @@ function BlogMainAdd(props) {
                     <div className="drags d-flex">
                         <figure className="dragImg drag21" id="drag21" draggable="true">
                             <img className="blog-cover"
-                                src={(drag21 == '' ? `http://localhost:3009/blogs_img/default.jpg` : `http://localhost:3009/blogs_img/${drag21}`)}
+                                src={(drag21 == '' ? `http://localhost:3009/blogs_img/img-empty.png` : `http://localhost:3009/blogs_img/${drag21}`)}
                                 id="drag21_img" alt=""
                                 onDoubleClick={(e) => {
-                                    if (drag21 !== 'default.jpg') {
+                                    if (drag21 !== '') {
                                         let startPoint = 1;
                                         let tempPoint = imgPoint02;
                                         console.log('你點了兩下 : drag21')
@@ -439,10 +439,10 @@ function BlogMainAdd(props) {
                         </figure>
                         <figure className="dragImg drag22" id="drag22" draggable="true">
                             <img className="blog-cover"
-                                src={(drag22 == '' ? `http://localhost:3009/blogs_img/default.jpg` : `http://localhost:3009/blogs_img/${drag22}`)}
+                                src={(drag22 == '' ? `http://localhost:3009/blogs_img/img-empty.png` : `http://localhost:3009/blogs_img/${drag22}`)}
                                 id="drag22_img" alt=""
                                 onDoubleClick={(e) => {
-                                    if (drag22 !== 'default.jpg') {
+                                    if (drag22 !== '') {
                                         let startPoint = 2;
                                         let tempPoint = imgPoint02;
                                         console.log('你點了兩下 : drag22')
@@ -465,10 +465,10 @@ function BlogMainAdd(props) {
                         </figure>
                         <figure className="dragImg drag23" id="drag23" draggable="true">
                             <img className="blog-cover"
-                                src={(drag23 == '' ? `http://localhost:3009/blogs_img/default.jpg` : `http://localhost:3009/blogs_img/${drag23}`)}
+                                src={(drag23 == '' ? `http://localhost:3009/blogs_img/img-empty.png` : `http://localhost:3009/blogs_img/${drag23}`)}
                                 id="drag23_img" alt=""
                                 onDoubleClick={(e) => {
-                                    if (drag23 !== 'default.jpg') {
+                                    if (drag23 !== '') {
                                         let tempPoint = imgPoint02;
                                         console.log('你點了兩下 : drag23')
                                         setDrag23('default.jpg')
