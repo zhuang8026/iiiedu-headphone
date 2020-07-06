@@ -2,7 +2,7 @@
 ## 第六組 耳機購物平台
 - 基礎技術支持: html5(websocket) + sass 
 - 前端技術支持: react.js + redux + javaScript(ES6) + jquery + bootstrap
-- 後端技術支持: node.js + mysql + php 
+- 後端技術支持: node.js + express.js + mysql + php 
 - 前端套件支持: [react-id-swiper](https://kidjp85.github.io/example/default/) + [animate.css](https://animate.style/) + [antd](https://ant.design/index-cn)
 - git技術: git (github / bitbucket)
 - 編輯器技術: vscode
@@ -12,6 +12,7 @@
 - 指定項目   /   cd client
 - 安裝      /   npm install
 - 啟動      /   npm start
+- [詳情請洽詢](https://treefonts.com/)
 
 ### 如何擁有? ###
 * 圖片不合法，完全只是demo使用
