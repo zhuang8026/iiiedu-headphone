@@ -2,25 +2,25 @@
 import React, {useState ,useEffect} from 'react';
 import { Link, useParams, withRouter} from 'react-router-dom'
 
-
-
 import MembersLeft from '../ComponentMembersLeft'
 
-// 測試圖片
-// import logo from '../../../assets/img/tw.jpg';
 
 function MembersCartDetail(props) {
     const {userdata, setUserdata, membersCartOrderData, setMembersCartOrderData} = props.allprops;
     const [membersCartOrderDetail, setMembersCartOrderDetail] = useState([])
-    const [detailPriceInner, setDetailPriceInner] = useState()
-    console.log('membersCartOrderDetail', membersCartOrderDetail)
-    // console.log('membersCartOrderData', membersCartOrderData)
 
     let { orderId } = useParams()
-    // console.log(orderId)
-    let DetailPrice = 0;
-    console.log(detailPriceInner)
     
+    // console.log(membersCartOrderDetail[0]['checkPrice'])
+    
+    const membersCartOrderDetailTotal = () =>{
+        let DetailPrice = 0;
+        membersCartOrderDetail.map((data, index)=>{
+            DetailPrice += parseInt(data['checkPrice'] * data['checkQty'])
+        })
+        return DetailPrice
+    }
+
     useEffect(() => {
         fetch(`http://localhost:3009/membersEdit/membersOrderDetail/${orderId}`, {
             method: 'get',
@@ -31,17 +31,12 @@ function MembersCartDetail(props) {
         })
             .then(result => result.json())
             .then((response) => {
-                console.log('response', response);
+                // console.log('response', response);
                 setMembersCartOrderDetail(response['results'])
             })
-        
-        membersCartOrderDetail.map((data, index)=>{
-            console.log(data[index])
-            DetailPrice += parseInt(data[index].checkPrice * data[index].checkQty)
-        })
-        setDetailPriceInner(DetailPrice)
     }, [])
 
+        
     return (
         <main>
             <div className="members_all">
@@ -117,7 +112,7 @@ function MembersCartDetail(props) {
                                         <ul className="cart_r_list_total">
                                             <li className="cart_r_list_total_li">
                                                 <span className="cart_r_list_total_li_span">訂單金額：</span>
-                                                <span className="cart_r_list_total_li_price">$ {detailPriceInner}</span>
+                                                <span className="cart_r_list_total_li_price">$ {membersCartOrderDetailTotal(membersCartOrderDetail)}</span>
                                             </li>
                                             <li className="cart_r_list_total_search">
                                                 <Link to="/KMembers/MembersCartList">返回上一步</Link>
