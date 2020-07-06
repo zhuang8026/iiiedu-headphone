@@ -26,10 +26,8 @@ function MembersLeft(props) {
                 onOk() { // yes function 
                     return new Promise((res, rej) => {
                         setTimeout(Math.random() > 0.5 ? res : rej, 1000);
-                        axios.post('',{
-                            // id: deleteIdData,
-                            // isActivated: isActivated,
-                            // shopopen: shopopen
+                        axios.post('http://localhost:3009/membersEdit/membersChangeSeller',{
+                            id: userdata.id,
                         })
                             .then((resolve, reject)=>{
                                 if(resolve.data.success) {
@@ -47,7 +45,7 @@ function MembersLeft(props) {
                     }).catch(() => console.log('Oops errors!'));
                 },
                 onCancel() { // Cancel function 
-                    message.info("刪除失敗")
+                    message.info("升級失敗")
                 },
             })
         }
@@ -97,16 +95,19 @@ function MembersLeft(props) {
                     </div>
                     <div className="men_title">
                         <div className="men_title_inner">
-                            <span className="iconfont icon-safety"></span>
                             {userdata.isActivated==1 && userdata.shopopen==1 ? (
-                                <NavLink className="men_a men_ok" to="/SuperSeller" >我的商場</NavLink>
+                                <>
+                                    <span className="iconfont icon-correct"></span>
+                                    <NavLink className="men_a men_ok" to="/SuperSeller" >我的商場 (已開通)</NavLink>
+                                </>
                             ):(
-                                <span 
-                                    className="men_a men_no"
-                                    onClick={
-                                        changeSuperSeller()
-                                    }
-                                >我的商場</span>
+                                <>
+                                    <span className="iconfont icon-safety"></span>
+                                    <span 
+                                        className="men_a men_no"
+                                        onClick={ ()=>{changeSuperSeller()} }
+                                    >申請賣場</span>
+                                </>
                             )}
                         </div>
                     </div>

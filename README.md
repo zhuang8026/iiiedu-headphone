@@ -6,7 +6,7 @@
 - 前端套件支持: [react-id-swiper](https://kidjp85.github.io/example/default/) + [animate.css](https://animate.style/) + [antd](https://ant.design/index-cn)
 - git技術: git (github / bitbucket)
 - 編輯器技術: vscode
-- 功能說明： 會員管理 / 賣家管理 / 購物車系統 / 願望清單系統 / 比較系統 / 部落格系統 / 結帳系統
+- 功能說明： 會員系統 / 賣家系統 / 購物車系統 / 願望清單系統 / 比較系統 / 部落格系統 / 結帳系統 / 全站搜尋系統 / 地圖定位系統
 
 ### 如何使用? ###
 - 指定項目   /   cd client
@@ -15,8 +15,9 @@
 
 ### 如何擁有? ###
 * 圖片不合法，完全只是demo使用
-* 0.0 Version / bug 修復進行中
-    - 20200701 1.0 Version / 修復賣家訂單查詢功能
-    - 20200706 2.0 Version / 修復會員購物清單
+* Version / bug 修復進行中
+    * 20200701 1.0 Version / 修復賣家訂單查詢功能
+    * 20200706 2.0 Version / 修復會員購物清單
+        * 20200706 2.1 Version / 修復賣家權限升級功能
 * 可購買 code 版權
 * [聯繫方式](https://treefonts.com/)

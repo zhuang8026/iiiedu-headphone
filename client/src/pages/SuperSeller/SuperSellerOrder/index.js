@@ -124,24 +124,6 @@ const superSellerCheck = (orderId)=> {
                                 </thead>
                             </table>
                         </div>
-                            {/* <SuperSellerOrderDetail 
-                            orderdetailitems={orderdetailitems}
-                            setlovechange={setlovechange}
-                            setcompareschange={setcompareschange}
-                            setcartchange={setcartchange}
-                        /> */}
-                         {orderdetailitems.map((data,index)=>{
-                            return(
-                        <div key={index} className="items-content">
-                        <h1>{data.itemName}</h1>
-                        <p className="items-text">商品品牌 ｜ {data.itemsbrand}</p>
-                        <p className="items-text">購買數量 ｜ {data.checkQty}</p>
-                        <p className="items-text">購買總額 ｜ $ {data.checkPrice}</p>
-                        <p className="items-text">訂單備註 ｜ {data.orderRemark}</p>
-                        <p className="items-text">訂單新增時間 ｜ {data.created_at}</p>
-                         </div>
-                            )
-                        })} 
                         <div class="tbl-content">
                             <table className="sellerOrderTable" cellSpacing="1">
                                 <tbody>
@@ -174,13 +156,25 @@ const superSellerCheck = (orderId)=> {
                                             })}
                                         </>
                                     ) : (
-                                            <>
-                                                <div className="sellerTableNothing">此時此刻...你還沒有任何訂單</div>
-                                            </>
-                                        )}
+                                        <>
+                                            <div className="sellerTableNothing">此時此刻...你還沒有任何訂單</div>
+                                        </>
+                                    )}
                                 </tbody>
                             </table>
                         </div>
+                        {orderdetailitems.map((data,index)=>{
+                            return(
+                                <div key={index} className="items-content">
+                                    <h1>{data.itemName}</h1>
+                                    <p className="items-text">商品品牌 ｜ {data.itemsbrand}</p>
+                                    <p className="items-text">購買數量 ｜ {data.checkQty}</p>
+                                    <p className="items-text">購買總額 ｜ $ {data.checkPrice}</p>
+                                    <p className="items-text">訂單備註 ｜ {data.orderRemark}</p>
+                                    <p className="items-text">訂單新增時間 ｜ {data.created_at}</p>
+                                </div>
+                            )
+                        })} 
                     </div>
                 </div>
             </div>

@@ -253,14 +253,14 @@ router.post('/membersChangeSeller', upload.none(), (req, res)=>{
     db.query(sql, [id])                   
         .then(([results])=>{
             console.log(results)
-            // output.results = results;
-            // if(results.affectedRows && results.changedRows){
-            //     output.success = true;
-            // }
+            output.results = results;
+            if(results.affectedRows && results.changedRows){
+                output.success = true;
+            }
             // for(let i of results){
             //     i.created_at = moment(i.created_at).format('YYYY-MM-DD');
             // }
-            res.json(results);
+            res.json(output);
         })
 })
 

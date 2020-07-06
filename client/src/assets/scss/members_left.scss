@@ -56,6 +56,14 @@ main {
                                 border: 1px solid #2C3E50;
                                 border-radius: 50%;
                             }
+                            span.icon-safety {
+                                color: #cb4042;
+                                border: 1px solid #cb4042;
+                            }
+                            span.icon-correct {
+                                color: #4a9256;
+                                border: 1px solid #4a9256;
+                            }
                             a {
                                 color: #2C3E50;
                                 font-weight: 500;
@@ -69,6 +77,7 @@ main {
                             }
                             .men_ok {
                                 cursor: pointer;
+                                color: #4a9256;
                             }
                         }
 
