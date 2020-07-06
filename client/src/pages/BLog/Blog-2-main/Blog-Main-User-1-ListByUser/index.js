@@ -104,15 +104,24 @@ function BlogMainUserListByUser(props) {
             })
         })
             .then((response) => {
-                // return response.json()
+                return response.json()
             })
             .then((response) => {
-
+                if(response.success==true){
+                    // openDeleteArticleNotification()
+                    setTimeout(() => {
+                        openDeleteArticleNotification()
+                        searchMethod()
+                        // props.history.go(0)
+                        // props.history.push('/Blog/YongMyBlog');
+                    }, 1500)
+                    // searchMethod()
+                }
             })
-        setTimeout(() => {
-            openDeleteArticleNotification()
-            props.history.go(0)
-        }, 2000)
+        // setTimeout(() => {
+        //     openDeleteArticleNotification()
+        //     props.history.go(0)
+        // }, 2000)
     }
 
     // 刪除成功後重抓頁面
@@ -137,7 +146,7 @@ function BlogMainUserListByUser(props) {
                 return response.json()
             })
             .then((response) => {
-                // setlistUserBlogdata(response.rows)
+                setlistUserBlogdata(response.rows)
             })
     }
     // 刪除完畢提示
@@ -146,7 +155,7 @@ function BlogMainUserListByUser(props) {
             message: '刪除完畢',
             description:
                 '您剛刪除了一篇文章',
-            duration: 5,
+            duration: 3,
             icon: <CheckCircleFilled style={{ color: '#28a745' }} />,
         };
         notification.open(args);
@@ -255,7 +264,7 @@ function BlogMainUserListByUser(props) {
                             <div className="blog-card-in">
                                 <figure className="blog-card-fig">
                                     <img className="blog-cover"
-                                        src={(data.blogContent01_img01 == '' ? `http://localhost:3009/blogs_img/default.jpg` : `http://localhost:3009/blogs_img/${data.blogContent01_img01}`)}
+                                        src={(data.blogContent01_img01 == '' ? `http://localhost:3009/blogs_img/img-empty.png` : `http://localhost:3009/blogs_img/${data.blogContent01_img01}`)}
                                     />
                                 </figure>
                                 <div className="blog-card-btns blog-d-flex blog-justify-content-between">

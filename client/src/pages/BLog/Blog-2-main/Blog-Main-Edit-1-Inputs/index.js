@@ -249,12 +249,16 @@ function BlogMainEditInputs(props) {
                 'Content-Type': 'application/json',
             })
         })
-            .then(result => result.json())
-            .then(obj => {
-                setTimeout(() => {
-                    openEditArticleNotification()
-                    props.history.push('/Blog/YongMyBlog');
-                }, 2000)
+            .then((response) => {
+                return response.json()
+            })
+            .then((response) => {
+                if (response.success == true) {                    
+                    setTimeout(() => {
+                        openEditArticleNotification()
+                        props.history.push('/Blog/YongMyBlog');
+                    }, 1500)
+                }
             })
     }
     // 修改成功提示
@@ -263,7 +267,7 @@ function BlogMainEditInputs(props) {
             message: '修改成功',
             description:
                 '您剛修改了一篇文章',
-            duration: 5,
+            duration: 3,
             icon: <CheckCircleFilled style={{ color: '#28a745' }} />,
         };
         notification.open(args);

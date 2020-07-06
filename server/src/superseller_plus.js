@@ -34,7 +34,7 @@ router.get('/', (req, res) => {
 
 //================================================== 新增 ==============================================================
 // (測試ok)
-// 新增產品文章
+// 新增產品
 // http://localhost:3009/superseller_plus/add
 router.post('/add', upload.none(), (req, res) => {
     // 有資料過來就改成 req.body.XXXXXXXXX;
