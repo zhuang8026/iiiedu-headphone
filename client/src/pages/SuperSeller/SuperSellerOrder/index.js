@@ -14,58 +14,58 @@ function SuperSellerOrder(props) {
     // console.log('SellerOrderData',SellerOrderData)
     
  // 賣場訂單 查看
- const superSellerCheck =(deleteIdData) =>{
-    Modal.confirm({
-        title: '',
-        icon: <ExclamationCircleOutlined />,
-        content: '真的要和此商品說再見了嗎 ?',
-        okText: '確定',
-        cancelText: '取消',
-        onOk() { // yes function 
-            return new Promise((res, rej) => {
-                setTimeout(Math.random() > 0.5 ? res : rej, 1000);
-                axios.post('http://localhost:3009/supersellerEdit/sellerDelete',{
-                    id: deleteIdData,
-                })
-                    .then((resolve, reject)=>{
-                        if(resolve.data.success) {
-                            // console.log(resolve);
-                            setTimeout(() => {
-                                message.success({ content: '刪除成功!', key, duration: 2 });
-                                props.history.go(0); // Question ：強行跳轉 不得已才這樣做 
-                                setSellerProductData(SellerProductData); // 沒反應
-                            }, 1000)
-                        } else {
-                            message.info("刪除失敗")
-                        }
-                    })
+//  const superSellerCheck =(deleteIdData) =>{
+//     Modal.confirm({
+//         title: '',
+//         icon: <ExclamationCircleOutlined />,
+//         content: '真的要和此商品說再見了嗎 ?',
+//         okText: '確定',
+//         cancelText: '取消',
+//         onOk() { // yes function 
+//             return new Promise((res, rej) => {
+//                 setTimeout(Math.random() > 0.5 ? res : rej, 1000);
+//                 axios.post('http://localhost:3009/supersellerEdit/sellerDelete',{
+//                     id: deleteIdData,
+//                 })
+//                     .then((resolve, reject)=>{
+//                         if(resolve.data.success) {
+//                             // console.log(resolve);
+//                             setTimeout(() => {
+//                                 message.success({ content: '刪除成功!', key, duration: 2 });
+//                                 props.history.go(0); // Question ：強行跳轉 不得已才這樣做 
+//                                 setSellerProductData(SellerProductData); // 沒反應
+//                             }, 1000)
+//                         } else {
+//                             message.info("刪除失敗")
+//                         }
+//                     })
                 
-            }).catch(() => console.log('Oops errors!'));
-        },
-        onCancel() { // Cancel function 
-            message.info("刪除失敗")
-        },
-    })
-}
+//             }).catch(() => console.log('Oops errors!'));
+//         },
+//         onCancel() { // Cancel function 
+//             message.info("刪除失敗")
+//         },
+//     })
+// }
 
-useEffect(()=>{
-        fetch("http://localhost:3009/supersellerEdit/sellerProduct",{
-            method: 'post',
-            body:JSON.stringify({
-                id: userdata.id,
-            }),
-            headers: new Headers({
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            }),
-        })
-        .then(result=>result.json())
-        .then((response)=>{
-            // console.log('response', response);
-            setSellerProductData(response)
-        })
+// useEffect(()=>{
+//         fetch("http://localhost:3009/supersellerEdit/sellerProduct",{
+//             method: 'post',
+//             body:JSON.stringify({
+//                 id: userdata.id,
+//             }),
+//             headers: new Headers({
+//                 'Accept': 'application/json',
+//                 'Content-Type': 'application/json',
+//             }),
+//         })
+//         .then(result=>result.json())
+//         .then((response)=>{
+//             // console.log('response', response);
+//             setSellerProductData(response)
+//         })
 
-},[userdata])
+// },[userdata])
 
     useEffect(() => {
         fetch("http://localhost:3009/superseller/listSellerUserOrder", {

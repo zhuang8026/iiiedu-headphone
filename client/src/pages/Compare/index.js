@@ -184,14 +184,14 @@ function Compare(props) {
                 )})}
                 </>
             ):(
-              <div className="cart_row" >
-                <figure>
-                    <img src={"/user_img/fail.gif"} alt="商品圖片"/>
-                </figure>
-                <div className="cart_price">
-                  
-                </div>
-              </div>
+              <ul className="cart-empty">
+            <li>目前購物車是空的!</li>
+            <li className="border-top">
+              <button type="button">
+                <Link to="/YyProduct">去商店</Link>
+              </button>
+            </li>
+          </ul>
             )}
           </ul>
         </div>
