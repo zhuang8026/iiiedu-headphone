@@ -99,13 +99,18 @@ main {
             padding-bottom: 10px;
           }
           button {
-            padding: 6px 32px;
-            background: transparent;
-            border: 1px solid #a4a4a4;
+            width: 200px;
+            height: 45px;
+            margin-left: 5px;
+            border: 1px solid #211e55;
+            text-align: center;
+            color: #fff;
+            background: #211e55;
             transition: 0.3s ease-in;
+            cursor: pointer;
             &:hover{
-              background: $btn-color-l;
-              color: #fff;
+              background: #fff;
+              color: $btn-color-l;
             }
           }
         }

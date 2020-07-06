@@ -220,8 +220,9 @@ function MyFav(props) {
                                 }}
                               ></span>
                               <img src={`/items_img/${data.itemImg}`}/>
-                              <h3>{data.itemsbrand}</h3>
+                              <h3>{data.itemBrand}</h3>
                               <h3>{data.itemName}</h3>
+                              <h3>{data.itemstype}</h3>
                               </div>
                           </div>
                           <div><h4>{`$${data.itemPrice}`}</h4></div>
@@ -277,7 +278,8 @@ function MyFav(props) {
                 ):(
                   <div className="loveError">
                   <p>目前我的最愛是空的</p>
-                  <button><i class="iconfont icon-search"></i>去商店</button>
+                  <button >去商店</button>
+                  {/* <Link to="/YyProduct">去商店</Link> */}
                   </div>
                 )}
                 
