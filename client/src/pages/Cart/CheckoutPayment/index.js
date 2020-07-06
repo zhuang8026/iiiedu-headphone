@@ -11,6 +11,8 @@ function CartPayment(props) {
   const {
     userdata,
     mycartDisplay,
+    mycart,
+    setMycart,
     orderTotal,
     orderName,
     setOrderName,
@@ -36,11 +38,13 @@ function CartPayment(props) {
     const request = new Request('http://localhost:3009/order/addOrderDetails', {
       method: 'POST',
       body: JSON.stringify({
-        mycartDisplay,
+        // mycartDisplay,
+        mycart,
         userId: userdata.id,
         orderRemark: orderRemarks,
         delivery: orderDelivery,
         payment: orderPayment,
+        total: orderTotal,
       }),
       headers: new Headers({
         Accept: 'application/json',
@@ -68,6 +72,12 @@ function CartPayment(props) {
     let cartdata = localStorage.removeItem('cart')
     setcartchange(cartdata)
   }
+
+  useEffect(() => {
+    // setOrderName(userdata.name)
+    setCardNumber(userdata.card)
+    setCardHolders(userdata.name)
+  }, [userdata])
 
   return (
     <>
@@ -236,14 +246,14 @@ function CartPayment(props) {
                         name="creditCardNum"
                         id="creditCardNum"
                         maxLength="19"
-                        // defaultValue={userdata.card}
-                        value={cardNumber ? cardNumber : userdata.card}
+                        value={cardNumber}
                         onChange={(event) => {
                           const v = event.target.value
                           setCardNumber(v)
                         }}
                       />
                     </li>
+                    {cardNumber ? <></> : <li className="error">必填*</li>}
                     <li>
                       <label htmlFor="Name">姓名</label>
                     </li>
@@ -252,13 +262,14 @@ function CartPayment(props) {
                         type="text"
                         id="name"
                         name="name"
-                        value={cardHolders ? cardHolders : userdata.name}
+                        value={cardHolders}
                         onChange={(event) => {
                           const v = event.target.value
                           setCardHolders(v)
                         }}
                       />
                     </li>
+                    {cardHolders ? <></> : <li className="error">必填*</li>}
                     <li>
                       <label>有效時間</label>
                     </li>
@@ -288,6 +299,11 @@ function CartPayment(props) {
                       />
                       <label htmlFor="cardYear">年</label>
                     </li>
+                    {cardMonth && cardYear ? (
+                      <></>
+                    ) : (
+                      <li className="error">必填*</li>
+                    )}
                     <li>
                       <label htmlFor="cardPin">背面末三碼</label>
                     </li>
@@ -304,6 +320,7 @@ function CartPayment(props) {
                         }}
                       />
                     </li>
+                    {cardCSC ? <></> : <li className="error">必填*</li>}
                     <li></li>
                   </ul>
                 </div>
@@ -339,34 +356,9 @@ function CartPayment(props) {
                     尚有資料必填!!!
                   </button>
                 )}
-
-                {/* <button
-                  type="button"
-                  onClick={(e) => {
-                    e.preventDefault()
-                    handleSubmit()
-                  }}
-                >
-                  <Link to="/OrderComplete">確定結帳</Link>
-                </button> */}
               </div>
             </>
           )}
-
-          {/* <div>
-            <button type="button">
-              <Link to="/CheckoutDelivery">上一頁</Link>
-            </button>
-            <button
-              type="button"
-              onClick={(e) => {
-                e.preventDefault()
-                handleSubmit()
-              }}
-            >
-              <Link to="/OrderComplete">確定結帳</Link>
-            </button>
-          </div> */}
         </div>
       </div>
     </>
