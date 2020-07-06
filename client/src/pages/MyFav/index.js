@@ -1,6 +1,7 @@
 // 函式元件
 import React, { Fragment, useState} from 'react';
 import { BrowserRouter as Router, withRouter} from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 import { message } from 'antd';
 
@@ -62,7 +63,6 @@ function MyFav(props) {
   }
 
   return (
-    <Router>
       <Fragment>
         <main>
           <div className="MyFav_container">
@@ -107,7 +107,10 @@ function MyFav(props) {
                               ></span>
                               <img src={`/items_img/${data.itemImg}`}/>
                               <h3>{data.itemBrand}</h3>
-                              <h3>{data.itemName}</h3>
+                              <h3><Link 
+                              className="love-a"
+                              to={`/ProductDetail/${data.itemid}`}
+                            >{data.itemName}</Link></h3>
                               <h3>{data.itemstype}</h3>
                               </div>
                           </div>
@@ -164,8 +167,9 @@ function MyFav(props) {
                 ):(
                   <div className="loveError">
                   <p>目前我的最愛是空的</p>
-                  <button >去商店</button>
-                  {/* <Link to="/YyProduct">去商店</Link> */}
+                  <button className="MyFav_btn_style2" >
+                  <Link  className="button-a" to="/YyProduct">去商店</Link>
+                  </button>
                   </div>
                 )}
                 
@@ -175,7 +179,6 @@ function MyFav(props) {
           </div>
         </main>
       </Fragment>
-    </Router>
   )
 }
 export default withRouter(MyFav)
