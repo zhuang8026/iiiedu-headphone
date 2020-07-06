@@ -136,27 +136,35 @@ main {
 }
 
 .file-upload {
-	position: relative;
+    width: 200px;
     display: inline-block;
-    padding: 16px 0;
-}
-
-.file-upload__label {
-    display: block;
-    padding: 6px 12px;
-    color: #211e55;
-    font-size: 14px;
-    background: #fff;
-    border-radius: 2px;
-    border: 1px solid #211e55;
-    transition: background .3s;
-    
-    &:hover {
-        cursor: pointer;
-        color: #fff;
-        background: #211e55;
+    margin: 16px 0;
+    .file-upload__label {
+        position: relative;
+        display: block;
+        padding: 6px 12px;
+        color: #211e55;
+        font-size: 14px;
+        background: #fff;
+        border-radius: 2px;
+        border: 1px solid #211e55;
+        transition: background .3s;
+        
+        &:hover {
+            cursor: pointer;
+            color: #fff;
+            background: #211e55;
+        }
+    }
+    #file_upload {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
     }
 }
+
+
     
 .file-upload__input {
     position: absolute;

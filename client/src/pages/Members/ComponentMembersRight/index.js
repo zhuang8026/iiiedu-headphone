@@ -224,7 +224,7 @@ function KMembers(props) {
                     <div className="r_bottom_right">
                         <img src={`/user_img/${userdata.userlogo}`} alt="image"/>
                         <div className="file-upload">
-                            {/* <label htmlFor="file_upload" className="file-upload__label">上傳圖片</label> */}
+                            <label htmlFor="file_upload" className="file-upload__label">上傳圖片</label>
                             <input 
                                 type="file" 
                                 id="file_upload" 
