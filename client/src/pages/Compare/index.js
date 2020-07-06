@@ -69,14 +69,7 @@ function Compare(props) {
       const currentCart = JSON.parse(localStorage.getItem('cart')) || []
       const newCart = [...currentCart, value]
       localStorage.setItem('cart', JSON.stringify(newCart))
-      currentCart.map(element => {
-        if(element.itemName === value.itemName){
-          window.localStorage.setItem('compare', JSON.stringify(currentCart));
-          message.warning(`商品"${element.itemName}"重複了`)
-          return 
-        }
-      });
-      setcartchange(newCart)
+
     }  
 
   return (
@@ -184,14 +177,12 @@ function Compare(props) {
                 )})}
                 </>
             ):(
-              <ul className="cart-empty">
-            <li>目前購物車是空的!</li>
-            <li className="border-top">
-              <button type="button">
-                <Link to="/YyProduct">去商店</Link>
-              </button>
-            </li>
-          </ul>
+              <div className="loveError">
+                  <p>目前商品比較是空的</p>
+                  <button className="MyFav_btn_style2" >
+                  <Link  className="button-a" to="/YyProduct">去商店</Link>
+                  </button>
+                  </div>
             )}
           </ul>
         </div>
