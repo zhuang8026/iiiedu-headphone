@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import './compare.css';
 
-// import { message } from 'antd';
+import { message } from 'antd';
 
 function Compare(props) {
     const key = 'updatable';
-    const { setcompareschange } = props;
+    const { setcompareschange,setcartchange } = props;
 
     let [compareList,setCompareList] = useState([])
     
@@ -69,6 +69,14 @@ function Compare(props) {
       const currentCart = JSON.parse(localStorage.getItem('cart')) || []
       const newCart = [...currentCart, value]
       localStorage.setItem('cart', JSON.stringify(newCart))
+      currentCart.map(element => {
+        if(element.itemName === value.itemName){
+          window.localStorage.setItem('compare', JSON.stringify(currentCart));
+          message.warning(`商品"${element.itemName}"重複了`)
+          return 
+        }
+      });
+      setcartchange(newCart)
     }  
 
   return (
@@ -157,9 +165,10 @@ function Compare(props) {
                               to={`/ProductDetail/${data.itemid}`}
                             >前往細節頁</Link>
                             <button 
-                              className="MyFav_del MyCom_btn_style"                          
+                              className="MyCom_del MyCom_btn_style"                          
                               id={data.itemId}
                               onClick={() => {
+                                message.success(`商品"${data.itemName}"已加入購物車`)
                                 updateCartToLocalStorage({
                                   id:data.itemid,
                                   itemName:data.itemName,
