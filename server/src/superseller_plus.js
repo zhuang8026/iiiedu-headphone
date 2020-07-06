@@ -96,7 +96,7 @@ router.post('/try-upload/', upload.array('avatar'), async (req, res) => {
     // }
 
     let multiple_Image, multiple_Image01, multiple_Image02, multiple_Image03, multiple_Image04;
-    let sql = "INSERT INTO items (`itemId`,`multiple_Image`, `multiple_Image01`, `multiple_Image02`, `multiple_Image03`, `multiple_Image04`) VALUES (?,?,?,?,?,?)";
+    let sql = "INSERT INTO multiple_images (`itemId`,`multiple_Image`, `multiple_Image01`, `multiple_Image02`, `multiple_Image03`, `multiple_Image04`) VALUES (?,?,?,?,?,?)";
     for (let i = 0; i < 5; i++) {
         if (i < req.files.length) {
             if (i == 0) multiple_Image = req.files[i].originalname;
@@ -111,21 +111,14 @@ router.post('/try-upload/', upload.array('avatar'), async (req, res) => {
             if (i == 3) multiple_Image03 = '';
             if (i == 4) multiple_Image04 = '';
         }
-
     }
     db.query(sql, [itemId,multiple_Image, multiple_Image01, multiple_Image02, multiple_Image03, multiple_Image04])
         .then(([r]) => {
             output.rows = r;
             output.success = true;
-            console.log(output);
-            res.json(output);
+            console.log(output.rows);
+            res.json(output.rows);
         })
-
-    res.json({
-        filename: req.files,
-        body: req.body
-    });
-
 })
 
 //================================================== 測試區 ==============================================================
