@@ -107,11 +107,13 @@ function MyFav(props) {
                               ></span>
                               <img src={`/items_img/${data.itemImg}`}/>
                               <h3>{data.itemBrand}</h3>
-                              <h3><Link 
-                              className="love-a"
-                              to={`/ProductDetail/${data.itemid}`}
-                            >{data.itemName}</Link></h3>
-                              <h3>{data.itemstype}</h3>
+                              <h3>
+                                <Link 
+                                  className="love-a"
+                                  to={`/ProductDetail/${data.itemid}`}
+                                  >{data.itemName}</Link>
+                                </h3>
+                              <h3>{data.itemstype == 1 ? 'Bluetooth': 'Wired'}</h3>
                               </div>
                           </div>
                           <div><h4>{`$${data.itemPrice}`}</h4></div>
