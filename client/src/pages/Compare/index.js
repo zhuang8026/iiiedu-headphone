@@ -161,7 +161,7 @@ function Compare(props) {
                         </div>
                         <div className="MyCom_card_button sty-1">
                             <Link 
-                              className="MyFav_update MyCom_btn_style a-link-style"
+                              className="MyCom_update MyCom_btn_style"
                               to={`/ProductDetail/${data.itemid}`}
                             >前往細節頁</Link>
                             <button 

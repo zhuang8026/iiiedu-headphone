@@ -48,6 +48,9 @@ main {
                 // padding-left:42px;
                 font-weight: bold;
                 padding: 0 16px;
+                .love-a{
+                  color: $btn-color-l;
+                }
               }
               span {
                 padding: 0 16px;
@@ -108,9 +111,22 @@ main {
             background: #211e55;
             transition: 0.3s ease-in;
             cursor: pointer;
-            &:hover{
+            &:hover {
               background: #fff;
               color: $btn-color-l;
+            }
+            .button-a {
+              display: block;
+              width: 200px;
+              height: 45px;
+              line-height: 45px;
+              margin-left: -5px;
+              text-align: center;
+              color: #fff;
+              cursor: pointer;
+              &:hover {
+                color: $btn-color-l;
+              }
             }
           }
         }
