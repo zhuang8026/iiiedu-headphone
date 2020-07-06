@@ -1,13 +1,12 @@
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const upload = require(__dirname + '/upload-module-blogs');
-// const upload2 = require(__dirname + '/upload');
 const moment = require('moment-timezone');
 const session = require('express-session');
 const MysqlStore = require('express-mysql-session')(session);
 const multer = require('multer');
 const db = require(__dirname + '/db_connect');
-// const cors = require('cors');
+const cors = require('cors');
 const fs = require('fs');
 const bodyParser = require('body-parser');
 // const morgan = require('morgan');
@@ -320,7 +319,6 @@ router.get('/', (req, res) => {
 // (測試ok)
 // 新增部落格文章
 // http://localhost:3009/blog/add
-// router.get('/add', (req, res)=>{
 router.post('/add', upload.none(), (req, res) => {
     let id = req.body.id;
     let blogTitle = req.body.addBlogTitle;
@@ -516,7 +514,7 @@ router.post('/add-reply', upload.none(), (req, res) => {
 
         rows: []
     }
-    const sql = "INSERT INTO `blogs_reply`(`blogId`,`id`,`r_nick`,`r_photo`,`b_r_content`,`b_r_replys`) VALUES (?, ?, ?, ?, ?,?)";
+    const sql = "INSERT INTO blogs_reply (`blogId`,`id`,`r_nick`,`r_photo`,`b_r_content`,`b_r_replys`) VALUES (?, ?, ?, ?, ?,?)";
     console.log('========== react(post) -> 部落格回文 ==========')
     console.log('req.body = ', req.body)
     db.query(sql, [blogId, id, r_nick, r_photo, b_r_content, b_r_replys])

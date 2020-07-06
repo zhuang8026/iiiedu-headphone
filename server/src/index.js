@@ -77,6 +77,7 @@ app.use('/membersEdit', require(__dirname+'/membersEdit.js'));
 //賣家訂單
 app.use('/superseller', require(__dirname+'/superseller.js'));
 app.use('/supersellerEdit', require(__dirname+'/supersellerEdit.js'));
+app.use('/superseller_plus', require(__dirname+'/superseller_plus.js'));
 
 // 產品
 app.use('/products', require(__dirname+'/products.js'));
