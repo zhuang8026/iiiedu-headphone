@@ -56,7 +56,7 @@ function MembersCartList(props) {
                             </ul>
                             
                             {/* 模板 start */}
-                            {membersCartOrderData ? (
+                            {membersCartOrderData.length>0 ? (
                                 <>
                                     {membersCartOrderData.map((data, index)=>{
                                         return (<div className="members_cart_r_num">

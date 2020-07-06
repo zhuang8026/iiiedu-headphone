@@ -1,20 +1,64 @@
 // 函式元件
 import React from 'react';
-import { NavLink, withRouter} from 'react-router-dom'
+import { NavLink, Link, withRouter} from 'react-router-dom'
 
-// import { message } from 'antd';
+// antd
+import { message } from 'antd';
+import { Modal } from 'antd';
+import { QuestionCircleOutlined } from '@ant-design/icons';
 
-// http://localhost:3009/members/user/s001
-
+import axios from 'axios';
 
 function MembersLeft(props) {
     const {userdata} = props;
+    const key = 'updatable';
+
+    console.log(userdata)
+
+        // 是否要成為賣家 ？
+        const changeSuperSeller =() =>{
+            Modal.confirm({
+                title: '權限升級提示',
+                icon: <QuestionCircleOutlined />,
+                content: '您想成為我們OTIS的賣家嗎?',
+                okText: '確定',
+                cancelText: '取消',
+                onOk() { // yes function 
+                    return new Promise((res, rej) => {
+                        setTimeout(Math.random() > 0.5 ? res : rej, 1000);
+                        axios.post('',{
+                            // id: deleteIdData,
+                            // isActivated: isActivated,
+                            // shopopen: shopopen
+                        })
+                            .then((resolve, reject)=>{
+                                if(resolve.data.success) {
+                                    // console.log(resolve);
+                                    setTimeout(() => {
+                                        message.success({ content: '刪除成功!', key, duration: 2 });
+                                        props.history.go(0); // Question ：強行跳轉 不得已才這樣做 
+                                        // setSellerProductData(SellerProductData); // 沒反應
+                                    }, 1000)
+                                } else {
+                                    message.info("刪除失敗")
+                                }
+                            })
+                        
+                    }).catch(() => console.log('Oops errors!'));
+                },
+                onCancel() { // Cancel function 
+                    message.info("刪除失敗")
+                },
+            })
+        }
 
     return (
         <div className="members_left">
             <div className="members_header">
                 <div className="mem_top_inner">
-                    <img  src={`/user_img/${userdata.userlogo}`} alt="photo/icon"/>
+                    <Link to="/KMembers">
+                        <img src={`/user_img/${userdata.userlogo}`} alt="photo/icon"/>
+                    </Link>
                     <div className="men_text">
                         <h2>Hello !</h2>
                         <p>親愛的 <strong>{userdata.name}</strong></p>
@@ -48,13 +92,22 @@ function MembersLeft(props) {
                     <div className="men_title">
                         <div className="men_title_inner">
                             <span className="iconfont icon-date"></span>
-                            <NavLink to="/KMembers/MembersCartList" className="men_a">購買清單</NavLink>
+                                <NavLink to="/KMembers/MembersCartList">購買清單</NavLink>
                         </div>
                     </div>
                     <div className="men_title">
                         <div className="men_title_inner">
                             <span className="iconfont icon-safety"></span>
-                            <NavLink className="men_a" to="/SuperSeller" >我的商場</NavLink>
+                            {userdata.isActivated==1 && userdata.shopopen==1 ? (
+                                <NavLink className="men_a men_ok" to="/SuperSeller" >我的商場</NavLink>
+                            ):(
+                                <span 
+                                    className="men_a men_no"
+                                    onClick={
+                                        changeSuperSeller()
+                                    }
+                                >我的商場</span>
+                            )}
                         </div>
                     </div>
                     <div className="men_title">
@@ -62,16 +115,6 @@ function MembersLeft(props) {
                             <span className="iconfont icon-blog"></span>
                                 <NavLink className="men_a" to="/KMembers/MembersBlog" >我的BLOG</NavLink>
                             </div>
-                        {/* <ul className="men_u">
-                            <li>
-                                <span className="iconfont icon-reduce_1"></span>
-                                <a>全部 BLOG</a>
-                            </li>
-                            <li>
-                                <span className="iconfont icon-reduce_1"></span>
-                                <a>個人 BLOG</a>
-                            </li>
-                        </ul> */}
                     </div>
                 </div>
             </div>
