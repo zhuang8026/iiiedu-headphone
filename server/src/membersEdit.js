@@ -149,24 +149,103 @@ router.post('/newpassword', (req, res)=>{
         })
 })
 
-// 會員訂單查詢
+// 會員訂單查詢 父層
 // http://localhost:3009/membersEdit/membersOrder
-router.post('/membersOrder', (req, res)=>{ 
+router.post('/membersOrder', upload.none(), (req, res)=>{ 
     const output = {
         success: false,
     }
     let id = req.body.id;
+    let username = req.body.username;
 
-    const sql = "UPDATE `users` SET `pwd` = ? WHERE `users`.`id` = ?"; 
+    let sql =  `SELECT *
+                    FROM orders
+                    LEFT JOIN 
+                        users 
+                    ON 
+                        orders.userId = users.id
+                    LEFT JOIN 
+                        paymentstate_types
+                    ON 
+                        paymentstate_types.paymentState = orders.paymentState
+                    LEFT JOIN 
+                        delivery_types
+                    ON
+                        delivery_types.delivery = orders.delivery
+                    LEFT JOIN 
+                        payment_types AS pay
+                    ON 
+                        pay.payment = orders.deliveryState
+                    WHERE
+                        users.id = ?
+                    And
+                        users.username = ?`;
 
-    db.query(sql, [pwd, id])                   
+    db.query(sql, [id, username])                   
         .then(([results])=>{
-            // console.log(results)
             output.results = results;
-            if(results.affectedRows && results.changedRows){
-                output.success = true;
+            output.success = true;
+            for(let i of results){
+                i.created_at = moment(i.created_at).format('YYYY-MM-DD');
             }
-            // console.log(output);
+            res.json(output);
+        })
+})
+
+// 會員訂單查詢 子層
+// http://localhost:3009/membersEdit/membersOrderDetail/1000520522
+router.get('/membersOrderDetail/:orderId', (req, res)=>{ 
+    let orderId = req.params.orderId;
+    const output = {
+        success: false,
+    }
+    let sql =  `SELECT 
+                    orders.orderId, orders.total, orders.created_at, 
+                    users.username, users.phoneNumber, users.address,
+                    paymentstate_types.paymentStateTypeName,
+                    pay.paymentTypeName,
+                    delivery_types.deliveryTypeName,
+                    details.checkQty, details.checkPrice,
+                    items.itemName, items.itemImg, items.itemsbrand, items.itemstype, 
+                    items.itemQty, items.itemsweight, items.itemsdrive, items.itemsfrequency, 
+                    items.itemQty, items.itemsweight, items.itemsdrive, items.itemsfrequency, 
+                    items.itemsSensitivity, items.itemsconnect, items.itemsmains, items.itemsEndurance, 
+                    items.itemswatertight, items.itemsfeature 
+                FROM orders
+                INNER JOIN 
+                    users 
+                ON 
+                    orders.userId = users.id 
+                INNER JOIN 
+                    paymentstate_types
+                ON 
+                    paymentstate_types.paymentState = orders.paymentState
+                LEFT JOIN 
+                    payment_types AS pay
+                ON 
+                    pay.payment = orders.deliveryState
+                LEFT JOIN 
+                    delivery_types
+                ON
+                    delivery_types.delivery = orders.delivery
+                INNER JOIN  
+                    order_details AS details
+                ON 
+                    details.orderId = orders.orderId
+                LEFT JOIN  
+                    items
+                ON 
+                    details.itemId = items.itemId
+                WHERE
+                    orders.orderId = ?`;
+
+    db.query(sql, [orderId])                   
+        .then(([results])=>{
+            output.results = results;
+            output.success = true;
+            for(let i of results){
+                i.created_at = moment(i.created_at).format('YYYY-MM-DD');
+            }
             res.json(output);
         })
 })

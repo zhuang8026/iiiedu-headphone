@@ -2,6 +2,9 @@
 import React, { useState, useEffect } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 
+//antd
+import { message } from 'antd'
+
 function CheckoutInfo(props) {
   const {
     userdata,
@@ -16,32 +19,13 @@ function CheckoutInfo(props) {
     setOrderRemarks,
   } = props.allprops
 
-  // const { userdata, setUserdata } = props
-  // const { orderName, setOrderName } = props
-  // const { orderAddress, setOrderAddress } = props
-  // const { orderTel, setOrderTel } = props
-  // const { orderRemarks, setOrderRemarks } = props
-
-  // const [orderName, setName] = useState('')
-  // const [address, setAddress] = useState('')
-  // const [tel, setTel] = useState('')
-  // const [remarks, setRemarks] = useState('')
-  const updateCheckoutInfoToLocalStorage = (value) => {
-    const currentCheckoutInfo =
-      JSON.parse(localStorage.getItem('checkoutInfo')) || []
-    const newCheckoutInfo = [...currentCheckoutInfo, value]
-    localStorage.setItem('checkoutInfo', JSON.stringify(newCheckoutInfo))
-  }
-
-  useEffect(() => {
-    localStorage.removeItem('checkoutInfo')
-  }, [])
+  useEffect(() => {}, [])
 
   return (
     <>
       <div className="cart-crumb">
         <div></div>
-        <Link to="/">首頁</Link> / <Link to="/MyCart">購物車</Link>
+        <Link to="/">首頁</Link> / <Link to="/MyCart">返回 購物車</Link>
       </div>
       <div className="cart-container">
         {/* 購物車步驟圖 */}
@@ -81,7 +65,7 @@ function CheckoutInfo(props) {
           </li>
         </ul>
         {/* 購買個人資訊填寫 */}
-        <form action="" className="cart-buyerInfo-form">
+        <div action="" className="cart-buyerInfo-form">
           <div>
             <div>
               <div>
@@ -91,13 +75,20 @@ function CheckoutInfo(props) {
                   id="name"
                   name="name"
                   value={orderName ? orderName : userdata.name}
-                  // defaultValue={userdata.name}
                   onChange={(event) => {
                     const v = event.target.value
                     setOrderName(v)
                   }}
+                  onBlur={(event) => {
+                    const v = event.target.value
+                    setOrderName(v)
+                  }}
                 />
-                <div className="error">姓名必填*</div>
+                {orderName ? (
+                  <></>
+                ) : (
+                  <div className="error">點擊修改或確認*</div>
+                )}
               </div>
               <div>
                 <label htmlFor="address">地址*</label>
@@ -106,13 +97,20 @@ function CheckoutInfo(props) {
                   id="address"
                   name="address"
                   value={orderAddress ? orderAddress : userdata.address}
-                  // defaultValue={userdata.address}
                   onChange={(event) => {
                     const v = event.target.value
                     setOrderAddress(v)
                   }}
+                  onBlur={(event) => {
+                    const v = event.target.value
+                    setOrderAddress(v)
+                  }}
                 />
-                <div className="error">地址必填*</div>
+                {orderAddress ? (
+                  <></>
+                ) : (
+                  <div className="error">點擊修改或確認*</div>
+                )}
               </div>
               <div>
                 <label htmlFor="tel">電話*</label>
@@ -120,15 +118,23 @@ function CheckoutInfo(props) {
                   type="tel"
                   id="tel"
                   name="tel"
+                  pattern="[0-9]{2}[0-9]{8}"
                   maxLength="10"
                   value={orderTel ? orderTel : userdata.phoneNumber}
-                  // defaultValue={userdata.phoneNumber}
                   onChange={(event) => {
                     const v = event.target.value
                     setOrderTel(v)
                   }}
+                  onBlur={(event) => {
+                    const v = event.target.value
+                    setOrderTel(v)
+                  }}
                 />
-                <div className="error">電話必填*</div>
+                {orderTel ? (
+                  <></>
+                ) : (
+                  <div className="error">點擊修改或確認*</div>
+                )}                
               </div>
             </div>
             <div className="buyer-detail">
@@ -143,6 +149,10 @@ function CheckoutInfo(props) {
                     const v = event.target.value
                     setOrderRemarks(v)
                   }}
+                  onBlur={(event) => {
+                    const v = event.target.value
+                    setOrderRemarks(v)
+                  }}
                 ></textarea>
               </div>
             </div>
@@ -151,23 +161,23 @@ function CheckoutInfo(props) {
             <button type="button">
               <Link to="/ConfirmOrder">上一頁</Link>
             </button>
-            <button
-              type="button"
-              // onClick={() => {
-              //   updateCheckoutInfoToLocalStorage({
-              //     orderName: `${orderName ? orderName : userdata.name}`,
-              //     orderAddress: `${
-              //       orderAddress ? orderAddress : userdata.address
-              //     }`,
-              //     orderTel: `${orderTel ? orderTel : userdata.phoneNumber}`,
-              //     orderRemarks: `${orderRemarks}`,
-              //   })
-              // }}
-            >
-              <Link to="/CheckoutDelivery">填寫配送方式</Link>
-            </button>
+            {orderName && orderAddress && orderTel ? (
+              <button type="button">
+                <Link to="/CheckoutDelivery">填寫配送方式</Link>
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="btn_warning"
+                onClick={() => {
+                  message.warning('尚有資料必填!!!')
+                }}
+              >
+                尚有資料必填!!!
+              </button>
+            )}
           </div>
-        </form>
+        </div>
       </div>
     </>
   )

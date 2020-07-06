@@ -13,12 +13,12 @@
           font-size: $font-size-16;
         }
         input {
-          width: 95%;
+          width: 98%;
           line-height: 45px;
           border: 1px solid #aaa;
         }
         textarea {
-          width: 100%;
+          width: 98%;
           border: 1px solid #aaa;
         }
         .error {
@@ -39,14 +39,28 @@
       transition: 0.3s ease-in;
       cursor: pointer;
       a {
-        display: block;
         color: #fff;
+        display: block;
       }
       &:hover {
         background: #fff;
         color: $link-hover-color-l;
         a {
           color: #000;
+        }
+      }
+    }
+    .btn_warning {
+      background: $btn-color-r;
+      border: 1px solid $btn-color-r;
+      a {
+        color: #fff;
+      }
+      &:hover {
+        background: #fff;
+        color: $btn-color-r;
+        a {
+          color: $btn-color-r;
         }
       }
     }
@@ -62,8 +76,56 @@
 @media (min-width: 768px) and (max-width: 1023px) {
 } /* iPad */
 @media (min-width: 414px) and (max-width: 767px) {
+  .cart-buyerInfo-form {
+    > div {
+      display: block;
+      > div {
+        > div {
+          margin: 10px;
+          input {
+            width: 100%;
+          }
+          textarea {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
 } /* iPad mini & iphone */
 @media (min-width: 374px) and (max-width: 413px) {
+  .cart-buyerInfo-form {
+    > div {
+      display: block;
+      > div {
+        > div {
+          margin: 10px;
+          input {
+            width: 100%;
+          }
+          textarea {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
 } /* iphone */
 @media screen and (max-width: 373px) {
+  .cart-buyerInfo-form {
+    > div {
+      display: block;
+      > div {
+        > div {
+          margin: 10px;
+          input {
+            width: 100%;
+          }
+          textarea {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
 } /* iphone */

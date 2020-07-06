@@ -15,6 +15,8 @@
 
 ### 如何擁有? ###
 * 圖片不合法，完全只是demo使用
-* 這是2.0 Version / bug 修復
+* 0.0 Version / bug 修復進行中
+    - 20200701 1.0 Version / 修復賣家訂單查詢功能
+    - 20200706 2.0 Version / 修復會員購物清單
 * 可購買 code 版權
 * [聯繫方式](https://treefonts.com/)

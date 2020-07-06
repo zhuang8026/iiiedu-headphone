@@ -106,7 +106,7 @@ main {
           }
           .MyCom_card_button {
             align-items: center;
-            .a-link-style {
+            .MyCom_update {
               text-align: center;
               line-height: 45px;
               color: #211e55;
@@ -118,11 +118,49 @@ main {
               background: transparent;
               border: 1px solid $btn-color-l;
               background: transparent;
-              // cursor: pointer;
+              cursor: pointer;
               transition: 0.3s ease-in;
               &:hover {
                 background: $btn-color-l;
                 color: #fff;
+              }
+            }
+          }
+        }
+        .loveError {
+          width: 98%;
+          margin: 0 auto;
+          text-align: center;
+          p {
+            color: #8b8b8b;
+            border-bottom: 1px solid #a4a4a4;
+            padding-bottom: 10px;
+          }
+          button {
+            width: 200px;
+            height: 45px;
+            margin-left: 5px;
+            border: 1px solid #211e55;
+            text-align: center;
+            color: #fff;
+            background: #211e55;
+            transition: 0.3s ease-in;
+            cursor: pointer;
+            &:hover {
+              background: #fff;
+              color: $btn-color-l;
+            }
+            .button-a {
+              display: block;
+              width: 200px;
+              height: 45px;
+              line-height: 45px;
+              margin-left: -5px;
+              text-align: center;
+              color: #fff;
+              cursor: pointer;
+              &:hover {
+                color: $btn-color-l;
               }
             }
           }

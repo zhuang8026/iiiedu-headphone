@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import './compare.css';
 
-// import { message } from 'antd';
+import { message } from 'antd';
 
 function Compare(props) {
     const key = 'updatable';
-    const { setcompareschange } = props;
+    const { setcompareschange,setcartchange } = props;
 
     let [compareList,setCompareList] = useState([])
     
@@ -69,6 +69,7 @@ function Compare(props) {
       const currentCart = JSON.parse(localStorage.getItem('cart')) || []
       const newCart = [...currentCart, value]
       localStorage.setItem('cart', JSON.stringify(newCart))
+
     }  
 
   return (
@@ -153,13 +154,14 @@ function Compare(props) {
                         </div>
                         <div className="MyCom_card_button sty-1">
                             <Link 
-                              className="MyFav_update MyCom_btn_style a-link-style"
+                              className="MyCom_update MyCom_btn_style"
                               to={`/ProductDetail/${data.itemid}`}
                             >前往細節頁</Link>
                             <button 
-                              className="MyFav_del MyCom_btn_style"                          
+                              className="MyCom_del MyCom_btn_style"                          
                               id={data.itemId}
                               onClick={() => {
+                                message.success(`商品"${data.itemName}"已加入購物車`)
                                 updateCartToLocalStorage({
                                   id:data.itemid,
                                   itemName:data.itemName,
@@ -175,14 +177,12 @@ function Compare(props) {
                 )})}
                 </>
             ):(
-              <div className="cart_row" >
-                <figure>
-                    <img src={"/user_img/fail.gif"} alt="商品圖片"/>
-                </figure>
-                <div className="cart_price">
-                  
-                </div>
-              </div>
+              <div className="loveError">
+                  <p>目前商品比較是空的</p>
+                  <button className="MyFav_btn_style2" >
+                  <Link  className="button-a" to="/YyProduct">去商店</Link>
+                  </button>
+                  </div>
             )}
           </ul>
         </div>

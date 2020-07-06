@@ -6,40 +6,29 @@ import {
   Link,
   withRouter,
 } from 'react-router-dom'
-
+import { message } from 'antd'
 function CartPayment(props) {
-  const { userdata, mycartDisplay, orderTotal, orderName, setOrderName, orderAddress, orderTel, orderRemarks, orderDelivery, orderPayment, setOrderPayment, orderCard, setOrderCard, setcartchange} = props.allprops
-  // console.log('setOrderId', setOrderId)
-
-  //新增到order資料表(目前沒用到)
-  // const addOrderContentDataAsync = async (addOrderFormData, callback) => {
-  //   const request = new Request('http://localhost:3009/order/add', {
-  //     method: 'POST',
-  //     body: addOrderFormData,
-  //   })
-  //   const response = await fetch(request)
-  //   console.log('response', response)
-  //   const data = await response.json()
-  //   console.log('response data', data)
-  //   // newOrderId = data.response
-  // }
-  //取得訂單編號(目前沒用到)
-  // const getOrderIdAsync = async (addOrderFormData, callback) => {
-  //   const request = new Request('http://localhost:3009/order/newOrderId', {
-  //     method: 'GET',
-  //     headers: new Headers({
-  //       Accept: 'application/json',
-  //       'Content-Type': 'appliaction/json',
-  //     }),
-  //   })
-  //   const response = await fetch(request)
-  //   // console.log('response', response)
-  //   const data = await response.json()
-  //   // console.log('orderID data row', data.row)
-  //   // console.log('orderID new data', data.row[0][0].orderId)
-  //   await setOrderId(data.row[0][0].orderId)
-  //   // await console.log('orderNum',orderNum)
-  // }
+  const {
+    userdata,
+    mycartDisplay,
+    orderTotal,
+    orderName,
+    setOrderName,
+    orderAddress,
+    orderTel,
+    orderRemarks,
+    orderDelivery,
+    orderPayment,
+    setOrderPayment,
+    orderCard,
+    setOrderCard,
+    setcartchange,
+  } = props.allprops
+  const [cardNumber, setCardNumber] = useState('')
+  const [cardHolders, setCardHolders] = useState('')
+  const [cardMonth, setCardMonth] = useState('')
+  const [cardYear, setCardYear] = useState('')
+  const [cardCSC, setCardCSC] = useState('')
 
   //新增訂單&訂單明細到資料庫
   // const addOrderDetailsAsync = async (addOrderFormData, callback) => {
@@ -58,25 +47,22 @@ function CartPayment(props) {
         'Content-Type': 'application/json',
       }),
     })
-    // console.log('JSON.stringify(mycartDisplay):', mycartDisplay)
     const response = await fetch(request)
-    // console.log('response', response)
     const data = await response.json()
-    // console.log('response data:', data)   
+    // console.log('data:', data)
     // await setOrderId(data.row[0][0].orderId)
-    console.log('data:',data)
   }
 
   //Submit
   const handleSubmit = async (event) => {
-    const addOrderFormData = new FormData()
-    addOrderFormData.append('userId', userdata.id)
-    addOrderFormData.append('total', orderTotal)
-    addOrderFormData.append('orderRemark', orderRemarks)
-    addOrderFormData.append('delivery', orderDelivery)
-    addOrderFormData.append('payment', orderPayment)
+    // const addOrderFormData = new FormData()
+    // addOrderFormData.append('userId', userdata.id)
+    // addOrderFormData.append('total', orderTotal)
+    // addOrderFormData.append('orderRemark', orderRemarks)
+    // addOrderFormData.append('delivery', orderDelivery)
+    // addOrderFormData.append('payment', orderPayment)
 
-    await addOrderDetailsAsync() 
+    await addOrderDetailsAsync()
 
     // 移除值 移除localStorage的購物車
     let cartdata = localStorage.removeItem('cart')
@@ -87,7 +73,7 @@ function CartPayment(props) {
     <>
       <div className="cart-crumb">
         <div></div>
-        <Link to="/">首頁</Link> / <Link to="/MyCart">購物車</Link>
+        <Link to="/">首頁</Link> / <Link to="/MyCart">返回 購物車</Link>
       </div>
       <div className="cart-container">
         {/* 購物車步驟圖 */}
@@ -127,7 +113,7 @@ function CartPayment(props) {
           </li>
         </ul>
         {/* 選擇配送方式表單 */}
-        <form className="payment-form">
+        <div className="payment-form">
           <div>請選擇付款方式:</div>
           <select
             value={orderPayment}
@@ -144,7 +130,7 @@ function CartPayment(props) {
 
           {/* 選擇性顯示區塊  大於等於3個選項時 */}
           {orderPayment === '1' && (
-            <div>
+            <>
               <ul>
                 <li>
                   <h1>貨到付款服務說明</h1>
@@ -162,10 +148,24 @@ function CartPayment(props) {
                 </li>
                 <li></li>
               </ul>
-            </div>
+              <div>
+                <button type="button">
+                  <Link to="/CheckoutDelivery">上一頁</Link>
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    handleSubmit()
+                  }}
+                >
+                  <Link to="/OrderComplete">確定結帳</Link>
+                </button>
+              </div>
+            </>
           )}
           {orderPayment === '2' && (
-            <div>
+            <>
               <ul>
                 <li>
                   <h1>自動提款機(ATM)轉帳付款的流程</h1>
@@ -205,10 +205,24 @@ function CartPayment(props) {
                   配合銀行相關作業，轉帳完成後估計約需二至三個工作天(不含例假日)，待我們確認收到您的款項後，立即啟動您的加值付費服務。
                 </li>
               </ul>
-            </div>
+              <div>
+                <button type="button">
+                  <Link to="/CheckoutDelivery">上一頁</Link>
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    handleSubmit()
+                  }}
+                >
+                  <Link to="/OrderComplete">確定結帳</Link>
+                </button>
+              </div>
+            </>
           )}
           {orderPayment === '3' && (
-            <div>
+            <>
               <div className="payment-form-flex">
                 <div>
                   <ul>
@@ -223,10 +237,10 @@ function CartPayment(props) {
                         id="creditCardNum"
                         maxLength="19"
                         // defaultValue={userdata.card}
-                        value={orderCard ? orderCard : userdata.card}
+                        value={cardNumber ? cardNumber : userdata.card}
                         onChange={(event) => {
                           const v = event.target.value
-                          setOrderCard(v)
+                          setCardNumber(v)
                         }}
                       />
                     </li>
@@ -238,11 +252,10 @@ function CartPayment(props) {
                         type="text"
                         id="name"
                         name="name"
-                        // defaultValue={userdata.name}
-                        value={orderName ? orderName : userdata.name}
+                        value={cardHolders ? cardHolders : userdata.name}
                         onChange={(event) => {
                           const v = event.target.value
-                          setOrderName(v)
+                          setCardHolders(v)
                         }}
                       />
                     </li>
@@ -255,6 +268,11 @@ function CartPayment(props) {
                         name="cardMonth"
                         id="cardMonth"
                         maxLength="2"
+                        value={cardMonth}
+                        onChange={(event) => {
+                          const v = event.target.value
+                          setCardMonth(v)
+                        }}
                       />
                       <label htmlFor="cardMonth">月</label>
                       <input
@@ -262,6 +280,11 @@ function CartPayment(props) {
                         name="cardYear"
                         id="cardYearr"
                         maxLength="2"
+                        value={cardYear}
+                        onChange={(event) => {
+                          const v = event.target.value
+                          setCardYear(v)
+                        }}
                       />
                       <label htmlFor="cardYear">年</label>
                     </li>
@@ -274,179 +297,63 @@ function CartPayment(props) {
                         name="cardPin"
                         id="cardPin"
                         maxLength="3"
+                        value={cardCSC}
+                        onChange={(event) => {
+                          const v = event.target.value
+                          setCardCSC(v)
+                        }}
                       />
                     </li>
                     <li></li>
                   </ul>
                 </div>
               </div>
-            </div>
+              <div>
+                <button type="button">
+                  <Link to="/CheckoutDelivery">上一頁</Link>
+                </button>
+                {cardNumber &&
+                cardHolders &&
+                cardMonth &&
+                cardYear &&
+                cardCSC ? (
+                  <>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.preventDefault()
+                        handleSubmit()
+                      }}
+                    >
+                      <Link to="/OrderComplete">確定結帳</Link>
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    type="button"
+                    className="btn_warning"
+                    onClick={() => {
+                      message.warning('尚有資料必填!!!')
+                    }}
+                  >
+                    尚有資料必填!!!
+                  </button>
+                )}
+
+                {/* <button
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    handleSubmit()
+                  }}
+                >
+                  <Link to="/OrderComplete">確定結帳</Link>
+                </button> */}
+              </div>
+            </>
           )}
-          {/* <div className="payment-form-flex">
-            <div>
-              <img src={creditCardImg} alt="" />
-            </div>
-            <div>
-              <ul>
-                <li>信用卡資料:</li>
-                <li>
-                  <label htmlFor="creditCardNum">卡號</label>
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="creditCardNum"
-                    id="creditCardNum"
-                    maxLength="19"
-                    // defaultValue={userdata.card}
-                    value={orderCard ? orderCard : userdata.card}
-                    onChange={(event) => {
-                      const v = event.target.value
-                      setOrderCard(v)
-                    }}
-                  />
-                </li>
-                <li>
-                  <label htmlFor="Name">姓名</label>
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    // defaultValue={userdata.name}
-                    value={orderName ? orderName : userdata.name}
-                    onChange={(event) => {
-                      const v = event.target.value
-                      setOrderName(v)
-                    }}
-                  />
-                </li>
-                <li>
-                  <label>有效時間</label>
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="cardMonth"
-                    id="cardMonth"
-                    maxLength="2"
-                  />
-                  <label htmlFor="cardMonth">月</label>
-                  <input
-                    type="text"
-                    name="cardYear"
-                    id="cardYearr"
-                    maxLength="2"
-                  />
-                  <label htmlFor="cardYear">年</label>
-                </li>
-                <li>
-                  <label htmlFor="cardPin">背面末三碼</label>
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="cardPin"
-                    id="cardPin"
-                    maxLength="3"
-                  />
-                </li>
-                <li></li>
-              </ul>
-            </div>
-          </div>
-           */}
-          {/* {orderPayment==="1"? (
-              <>
-                <div></div>
-              </>
-            ):(
-              <div className="payment-form-flex">
-            <div>
-              <img src={creditCardImg} alt="" />
-            </div>
-            <div>
-              <ul>
-                <li>信用卡資料:</li>
-                <li>
-                  <label htmlFor="creditCardNum">卡號</label>
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="creditCardNum"
-                    id="creditCardNum"
-                    maxLength="19"
-                    // defaultValue={userdata.card}
-                    value={orderCard ? orderCard : userdata.card}
-                    onChange={(event) => {
-                      const v = event.target.value
-                      setOrderCard(v)
-                    }}
-                  />
-                </li>
-                <li>
-                  <label htmlFor="Name">姓名</label>
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    // defaultValue={userdata.name}
-                    value={orderName ? orderName : userdata.name}
-                    onChange={(event) => {
-                      const v = event.target.value
-                      setOrderName(v)
-                    }}
-                  />
-                </li>
-                <li>
-                  <label>有效時間</label>
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="cardMonth"
-                    id="cardMonth"
-                    maxLength="2"
-                  />
-                  <label htmlFor="cardMonth">月</label>
-                  <input
-                    type="text"
-                    name="cardYear"
-                    id="cardYearr"
-                    maxLength="2"
-                  />
-                  <label htmlFor="cardYear">年</label>
-                </li>
-                <li>
-                  <label htmlFor="cardPin">背面末三碼</label>
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="cardPin"
-                    id="cardPin"
-                    maxLength="3"
-                  />
-                </li>
-                <li></li>
-              </ul>
-            </div>
-          </div>
-            )} */}
-          <div>除錯用姓名:{orderName}</div>
-          <div>除錯用地址:{orderAddress}</div>
-          <div>除錯用電話:{orderTel}</div>
-          <div>除錯用備註:{orderRemarks}</div>
-          <div>除錯用配送方式:{orderDelivery}</div>
-          <div>除錯用付款方式:{orderPayment}</div>
-          <div>除錯用卡號:{orderCard}</div>
-          <div>除錯用總計:{orderTotal}</div>
-          {/* <div>除錯用:{orderNum}</div> */}
-          <div>
+
+          {/* <div>
             <button type="button">
               <Link to="/CheckoutDelivery">上一頁</Link>
             </button>
@@ -459,8 +366,8 @@ function CartPayment(props) {
             >
               <Link to="/OrderComplete">確定結帳</Link>
             </button>
-          </div>
-        </form>
+          </div> */}
+        </div>
       </div>
     </>
   )

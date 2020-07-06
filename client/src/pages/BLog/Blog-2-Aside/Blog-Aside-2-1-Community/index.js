@@ -15,6 +15,7 @@ import {
 // -------------------- scss --------------------
 
 // -------------------- imgs --------------------
+import logoEmpty from '../../../../assets/img/blog-img/blog-standard/member-empty.jpg'
 import iconFb from '../../../../assets/img/blog-img/blog-aside/iconFb.png'
 import iconFb_h from '../../../../assets/img/blog-img/blog-aside/iconFb_h.png'
 import iconIg from '../../../../assets/img/blog-img/blog-aside/iconIg.png'
@@ -79,11 +80,11 @@ function BlogAsideCommunity_1(props) {
             {/* console.log(data) */ }
             return (
               <figure className="user-icon-st-fig" key={data.id}>
-                <img src={`/user_img/${data.userlogo}`} alt="" />
+                <img src={(data.userlogo  ? `/user_img/${data.userlogo}` : `/blogs_img/member-empty.jpg`)} alt="" />
                 <div>
                   <h5>{data.name}</h5>
                 </div>
-                
+
               </figure>
             )
           })}

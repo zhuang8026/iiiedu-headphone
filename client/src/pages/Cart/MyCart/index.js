@@ -57,7 +57,7 @@ function MyCart(props) {
       </div>
 
       <div className="cart-container">
-        {mycart ? (
+        {mycart.length>0 ? (
           <>
             <ul className="cart-table">
               <li>
