@@ -20,9 +20,48 @@
 #williammap {
   margin: 0 auto;
   padding-top: 90px;
+  position: relative;
 }
-.select-input {
-  height: 60px;
-  border: blue solid 2px;
-  width: 50%;
+
+.wiheaderna {
+  width: 33%;
+  margin: 50px auto;
+  background: white;
+  img {
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+  }
+  h1 {
+    padding: 0 20px;
+    padding-top: 10px;
+  }
+
+  p {
+    padding: 0px 20px;
+  }
+  .wistorep {
+    padding-bottom: 30px;
+  }
+}
+.storeselect {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 30px;
+
+  .select-input {
+    border-radius: 5px;
+    line-height: 32px;
+    background: transparent;
+    border: #4e4f97 solid 1.5px;
+    width: 30%;
+    display: block;
+    padding-left: 30px;
+    option {
+      width: 100%;
+      padding: 30px 0;
+    }
+  }
 }
