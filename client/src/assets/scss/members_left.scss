@@ -111,3 +111,21 @@ main {
 //     opacity: 1;
 //     color: $btn-color-r;
 // }
+
+/* 版本尺寸 */
+@media screen and (min-width: 1920px){}
+@media (min-width:1600px) and (max-width:1920px){} /* 電腦 */
+@media (min-width:1366px) and (max-width:1599px){
+    main .members_all {
+        width: 90%;
+    }
+} /* 電腦 */
+@media (min-width:1024px) and (max-width:1365px){
+    main .members_all {
+        width: 90%;
+    }
+} /* 電腦 */
+@media (min-width:768px) and (max-width:1023px){} /* iPad */
+@media (min-width:414px) and (max-width:767px){} /* iPad mini & iphone */
+@media (min-width:374px) and (max-width:413px){} /* iphone */
+@media screen and (max-width: 373px){}/* iphone */
