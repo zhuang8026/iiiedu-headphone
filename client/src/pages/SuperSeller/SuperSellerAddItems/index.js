@@ -102,16 +102,30 @@ function SuperSellerAddItems(props) {
                                                 />
                                             </div>
                                             <div className="updata_itemImg">
-                                                <div  className="updata_itemImg_inner">
-                                                    <label htmlFor="itemImg">商品圖片: </label>
-                                                    <input 
-                                                        type="file"
-                                                        id="itemImg"
-                                                        // multiple={true}
-                                                        onChange={(event) => setItemImg(event.target.value)}
-                                                    />
+                                                <div className="updata_itemImg_contaienr">
+                                                    <div className="updata_itemImg_inner">
+                                                        <label htmlFor="itemImg">主要圖片: </label>
+                                                        <input 
+                                                            type="file"
+                                                            id="itemImg"
+                                                            // multiple={true}
+                                                            onChange={(event) => setItemImg(event.target.value)}
+                                                        />
+                                                    </div>
+                                                    <img src="/logo512.png" alt="圖片上傳"/>
                                                 </div>
-                                                <img src="/logo512.png" alt="圖片上傳"/>
+                                                <div className="updata_itemImg_contaienr">
+                                                    <div className="updata_itemImg_inner">
+                                                        <label htmlFor="itemImg">細節圖片: </label>
+                                                        <input 
+                                                            type="file"
+                                                            id="itemImg"
+                                                            // multiple={true}
+                                                            onChange={(event) => setItemImg(event.target.value)}
+                                                        />
+                                                    </div>
+                                                    <img src="/logo512.png" alt="圖片上傳"/>
+                                                </div>
                                             </div>
                                         </div>
                                         
