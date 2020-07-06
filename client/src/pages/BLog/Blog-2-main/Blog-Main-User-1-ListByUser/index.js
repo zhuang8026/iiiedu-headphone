@@ -11,7 +11,7 @@ import {
 } from 'react-router-dom'
 // antd
 import 'antd/dist/antd.css';
-import { message, Modal,notification } from 'antd';
+import { message, Modal, notification } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { CheckCircleFilled } from '@ant-design/icons';
 // react-moment
@@ -23,6 +23,7 @@ import 'moment-timezone';
 // -------------------- scss --------------------
 
 // -------------------- imgs --------------------
+import logoEmpty from '../../../../assets/img/blog-img/blog-standard/member-empty.jpg'
 // import BlogCard from '../../../../assets/img/blog-img/blog-standard/Blog-card.png'
 import IconSearch from '../../../../assets/img/blog-img/blog-standard/icon-search.svg'
 import NextPage from '../../../../assets/img/blog-img/blog-standard/next-page.svg'
@@ -82,7 +83,7 @@ function BlogMainUserListByUser(props) {
             cancelText: '取消',
             onOk() {
                 return new Promise((resolve, reject) => {
-                    setTimeout(Math.random() > 0.5 ? resolve : reject, 1500);                    
+                    setTimeout(Math.random() > 0.5 ? resolve : reject, 1500);
                     goBlogDelete(blogId)
                 }).catch(() => console.log('Oops errors!'));
             },
@@ -110,7 +111,7 @@ function BlogMainUserListByUser(props) {
             })
         setTimeout(() => {
             openDeleteArticleNotification()
-            props.history.go(0)            
+            props.history.go(0)
         }, 2000)
     }
 
@@ -139,17 +140,17 @@ function BlogMainUserListByUser(props) {
                 // setlistUserBlogdata(response.rows)
             })
     }
-// 刪除完畢提示
+    // 刪除完畢提示
     const openDeleteArticleNotification = () => {
         const args = {
-          message: '刪除完畢',
-          description:
-            '您剛刪除了一篇文章',
-          duration: 5,
-          icon: <CheckCircleFilled style={{ color: '#28a745' }} />,
+            message: '刪除完畢',
+            description:
+                '您剛刪除了一篇文章',
+            duration: 5,
+            icon: <CheckCircleFilled style={{ color: '#28a745' }} />,
         };
         notification.open(args);
-      };
+    };
     // 去編輯
     const goBlogEdit = (blogId) => {
         props.history.push('/Blog/BlogEdit');
@@ -253,8 +254,8 @@ function BlogMainUserListByUser(props) {
                         <div className="blog-card" key={data.blogId}>
                             <div className="blog-card-in">
                                 <figure className="blog-card-fig">
-                                    <img className="blog-cover" 
-                                    src={(data.blogContent01_img01 == '' ? `http://localhost:3009/blogs_img/default.jpg` : `http://localhost:3009/blogs_img/${data.blogContent01_img01}`)}                                    
+                                    <img className="blog-cover"
+                                        src={(data.blogContent01_img01 == '' ? `http://localhost:3009/blogs_img/default.jpg` : `http://localhost:3009/blogs_img/${data.blogContent01_img01}`)}
                                     />
                                 </figure>
                                 <div className="blog-card-btns blog-d-flex blog-justify-content-between">
@@ -292,7 +293,7 @@ function BlogMainUserListByUser(props) {
                                 </div>
                                 <div className="user-info-list blog-d-flex">
                                     <figure className="blod-cover">
-                                        <img src={`/user_img/${data.userlogo}`}></img>
+                                        <img src={(data.userlogo ? `/user_img/${data.userlogo}` : `/blogs_img/member-empty.jpg`)} alt="" />
                                     </figure>
                                     <h3>{data.name}</h3>
                                     <h4><Moment format="YYYY">{data.blogPublishDate}</Moment>年</h4>

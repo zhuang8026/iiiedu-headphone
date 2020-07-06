@@ -1,19 +1,14 @@
 // 函式元件
+// william - 20200706 - 全部重寫
 import React, { useState, useEffect } from 'react'
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-  Link,
-  NavLink,
-  withRouter,
-} from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
+
+//antd
+import { message } from 'antd'
 
 function ConfirmOrder(props) {
   const {
     userdata,
-    setUserdata,
     mycart,
     setMycart,
     mycartDisplay,
@@ -21,128 +16,82 @@ function ConfirmOrder(props) {
     orderTotal,
     setOrderTotal,
   } = props.allprops
-  const [dataLoading, setDataLoading] = useState(false)
-  // 模擬componentDidMount
-  useEffect(() => {
-    // 開啟指示(spinner)
-    setDataLoading(true)
-
-    // 得到值(字串) !!重要
-    const initCart = localStorage.getItem('cart') || '[]'
-    setMycart(JSON.parse(initCart))
-
-    // 1000ms(一秒後)關閉指示(spinner)
-    setTimeout(() => {
-      setDataLoading(false)
-    }, 1000)
-  }, [])
-
-  // 模擬componentDidUpdate
-  useEffect(() => {
-    //console.log(mycart)
-    let newMycartDisplay = []
-
-    //console.log('mycartDisplay', mycartDisplay)
-    console.log('mycart', mycart)
-
-    //尋找mycartDisplay
-    for (let i = 0; i < mycart.length; i++) {
-      //尋找mycartDisplay中有沒有此mycart[i].id
-      //有找到會返回陣列成員的索引值
-      //沒找到會返回-1
-      const index = newMycartDisplay.findIndex(
-        (value) => value.id === mycart[i].id
-      )
-
-      //有的話就數量+1
-      if (index !== -1) {
-        //console.log('findindex', index)
-        //每次只有加1個數量
-        //newMycartDisplay[index].amount++
-        //假設是加數量的
-        newMycartDisplay[index].amount += mycart[i].amount
-      } else {
-        //沒有的話就把項目加入，數量為1
-        const newItem = { ...mycart[i] }
-        newMycartDisplay = [...newMycartDisplay, newItem]
-      }
-    }
-
-    console.log('newMycartDisplay', newMycartDisplay)
-    setMycartDisplay(newMycartDisplay)
-  }, [mycart])
-
+  const CartInner = JSON.parse(localStorage.getItem('cart')) || ''
   // 計算總價用的函式
-  function sum(items) {
+  const sum = (data) => {
     let total = 0
-    for (let i = 0; i < items.length; i++) {
-      total += items[i].amount * items[i].itemPrice
+    for (let i = 0; i < data.length; i++) {
+      total += data[i].amount * data[i].itemPrice
     }
     return total
   }
 
-  const spinner = <></>
-  const display = (
-    <>
-      <ul className="cart-table">
-        <li>
-          <ul>
-            <li>圖片</li>
-            <li>品名</li>
-            <li>單價</li>
-            <li>數量</li>
-            <li className="li-prices">小計</li>
-          </ul>
-        </li>
-        <li>
-          {mycartDisplay.map((value, index) => {
-            return (
-              <ul key={value.id}>
-                <li>
-                  <img src={`/items_img/${value.itemImg}`} alt="icon" />
-                </li>
-                <li>{value.itemName}</li>
-                <li>{value.itemPrice}</li>
-                <li>{value.amount}</li>
-                <li className="li-prices">{value.itemPrice * value.amount}</li>
-              </ul>
-            )
-          })}
-        </li>
-        {/* <li className="cart-footer">
-          <input type="text" placeholder=" 請輸入優惠碼" />
-          <button type="button">去取得優惠卷</button>
-        </li> */}
-        <li className="cart-footer">
-          <span>總計</span>
-          {/* 判斷mycartDisplay是否在初次render的階段 */}
-          {mycartDisplay.length > 0 ? <span>{sum(mycartDisplay)}</span> : ''}
-        </li>
-        <li className="cart-footer">
-          <button type="button">
-            <Link to="/MyCart">上一頁</Link>
-          </button>
-          {userdata.id ? (
-            <button type="button" onClick={setOrderTotal(sum(mycartDisplay))}>
-              <Link to="/CheckoutInfo">填寫配送資料</Link>
-            </button>
-          ) : (
-            <button type="button">
-              <Link to="/KMembers/MembersLogin">請登入</Link>
-            </button>
-          )}
-        </li>
-      </ul>
-    </>
-  )
+  useEffect(() => {
+    setMycart(CartInner)
+  }, [])
 
   return (
     <>
       <div className="cart-crumb">
         <div></div>
-        <Link to="/">首頁</Link> / <Link to="/MyCart">購物車</Link>
+        <Link to="/">首頁</Link> / <Link to="/ConfirmOrder">確認訂單</Link>
       </div>
-      <div className="cart-container">{dataLoading ? spinner : display}</div>
+
+      <div className="cart-container">
+        <>
+          <ul className="cart-table">
+            <li>
+              <ul className="wi-ul">
+                <li>圖片</li>
+                <li>品名</li>
+                <li>單價</li>
+                <li>數量</li>
+                <li className="li-prices">小計</li>
+              </ul>
+            </li>
+            <li>
+              {mycart.map((data, index) => {
+                return (
+                  <ul key={index}>
+                    <li>
+                      <img src={`/items_img/${data.itemImg}`} alt="icon" />
+                    </li>
+                    <li>{data.itemName}</li>
+                    <li>{data.itemPrice}</li>
+                    <li>{data.amount}</li>
+                    <li className="li-prices">
+                      {data.itemPrice * data.amount}
+                    </li>
+                  </ul>
+                )
+              })}
+            </li>
+            <li className="cart-footer wi-num">
+              <h2>商品總計: </h2>
+              {mycart.length > 0 ? (
+                <span> $ {sum(mycart)}</span>
+              ) : (
+                <span>0</span>
+              )}
+            </li>
+            <li className="cart-footer">
+              <button type="button">
+                <Link to="/MyCart">上一頁</Link>
+              </button>
+              {/* {三元判斷是否登入} */}
+              {userdata.id ? (
+                <button>
+                  <Link to="/CheckoutInfo">填寫配送資料</Link>
+                </button>
+              ) : (
+                <button type="button">
+                  <Link to="/KMembers/MembersLogin">請登入</Link>
+                </button>
+              )}
+            </li>
+          </ul>
+        </>
+      </div>
     </>
   )
 }
