@@ -4,69 +4,55 @@ import { withRouter, BrowserRouter as Router } from 'react-router-dom'
 
 // antd
 import { Switch } from 'antd';
+import { message } from 'antd';
+import axios from 'axios';
+import { Modal } from 'antd';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
+import SuperSellerOrderDetail from '../SuperSellerOrderDetail/index'
+
 import '../../../assets/scss/SuperSellerOrder.scss'
 function SuperSellerOrder(props) {
     const key = 'updatable';
     // 父層 傳入 hooks
     const { userdata, setUserdata, sellerOrderData, setSellerOrderData } = props.allprops;
+    const [SellerProductData, setSellerProductData] = useState([]) 
     const user = localStorage.getItem('memberData');
     // console.log('userdata',userdata)
     // console.log('SellerOrderData',SellerOrderData)
-    
- // 賣場訂單 查看
-//  const superSellerCheck =(deleteIdData) =>{
-//     Modal.confirm({
-//         title: '',
-//         icon: <ExclamationCircleOutlined />,
-//         content: '真的要和此商品說再見了嗎 ?',
-//         okText: '確定',
-//         cancelText: '取消',
-//         onOk() { // yes function 
-//             return new Promise((res, rej) => {
-//                 setTimeout(Math.random() > 0.5 ? res : rej, 1000);
-//                 axios.post('http://localhost:3009/supersellerEdit/sellerDelete',{
-//                     id: deleteIdData,
-//                 })
-//                     .then((resolve, reject)=>{
-//                         if(resolve.data.success) {
-//                             // console.log(resolve);
-//                             setTimeout(() => {
-//                                 message.success({ content: '刪除成功!', key, duration: 2 });
-//                                 props.history.go(0); // Question ：強行跳轉 不得已才這樣做 
-//                                 setSellerProductData(SellerProductData); // 沒反應
-//                             }, 1000)
-//                         } else {
-//                             message.info("刪除失敗")
-//                         }
-//                     })
-                
-//             }).catch(() => console.log('Oops errors!'));
-//         },
-//         onCancel() { // Cancel function 
-//             message.info("刪除失敗")
-//         },
-//     })
-// }
+    const { detailitems, setlovechange, setcompareschange, setcartchange} = props;
+    const [SellerOrderDetailData,setSellerOrderDetailData] =useState();
+    const [orderdetailitems, setorderdetailitems] = useState([]);
+    const [itemchange, setitemchange] = useState(false); 
+    console.log(sellerOrderData)
+const superSellerCheck = (orderId)=> {
+    fetch("http://localhost:3009/superseller/listSellerUserOrderDetail", {
+        method: 'post',
+        body:JSON.stringify({
+            id: orderId
+        }),
+        headers: new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        })
+    })
+        .then((res)=>{
+            return res.json()
+        })
+        .then((res)=>{
+            console.log(res)
+            setorderdetailitems(res)
+            console.log(orderdetailitems)
+        })
 
-// useEffect(()=>{
-//         fetch("http://localhost:3009/supersellerEdit/sellerProduct",{
-//             method: 'post',
-//             body:JSON.stringify({
-//                 id: userdata.id,
-//             }),
-//             headers: new Headers({
-//                 'Accept': 'application/json',
-//                 'Content-Type': 'application/json',
-//             }),
-//         })
-//         .then(result=>result.json())
-//         .then((response)=>{
-//             // console.log('response', response);
-//             setSellerProductData(response)
-//         })
+          }
 
-// },[userdata])
 
+    useEffect(() => {
+        superSellerCheck()
+    }, [userdata])
+
+
+  
     useEffect(() => {
         fetch("http://localhost:3009/superseller/listSellerUserOrder", {
             method: 'post',
@@ -84,8 +70,33 @@ function SuperSellerOrder(props) {
                 setSellerOrderData(response)
             })
     }, [userdata])
+// // 點擊 css 樣式變換
+// const itemsChangeFunctionTrue =()=>{
+//     setitemchange(true);
+//     let Yyaside_pro = document.getElementsByClassName('Yyaside_pro');
+//     for(let i=0; i<Yyaside_pro.length; i++){
+//       let s = Yyaside_pro[i];
+//       s.classList.add('Yyaside_pro_change');
+//     }
+//   }
 
+//   // 點擊 css 樣式變換
+//   const itemsChangeFunctionFalse =()=>{
+//     setitemchange(false);
+//     let Yyaside_pro = document.getElementsByClassName('Yyaside_pro');
+//     for(let i=0; i<Yyaside_pro.length; i++){
+//       let s = Yyaside_pro[i];
+//       s.classList.remove('Yyaside_pro_change');
+//     }
+//   }
+//   // 點擊 overlay 出現（細節頁）
+//   const addCsstyle =() =>{
+//     let quick_view_modal = document.getElementsByClassName('orders-quick-view-modal')[0];
+//     let items_wrapper = document.getElementsByClassName('orders-wrapper')[0];
+//     quick_view_modal.classList.add('quick_view_modal_open');
+//     items_wrapper.classList.add('items_wrapper_open');
 
+//   }
     return (
         <div className="members_right">
             <div className="members_right_inner">
@@ -104,18 +115,33 @@ function SuperSellerOrder(props) {
                                 <thead>
                                     <tr>
                                         <th>訂單編號</th>
-                                        {/* <th>商品名稱</th> */}
                                         <th>付款方式</th>
                                         <th>付款狀態</th>
                                         <th>配送方式</th>
                                         <th>配送狀態</th>
                                         <th>操作</th>
-                                        {/* <th>訂單備註</th> */}
-                                        {/* <th>新增時間</th> */}
                                     </tr>
                                 </thead>
                             </table>
                         </div>
+                            {/* <SuperSellerOrderDetail 
+                            orderdetailitems={orderdetailitems}
+                            setlovechange={setlovechange}
+                            setcompareschange={setcompareschange}
+                            setcartchange={setcartchange}
+                        /> */}
+                         {orderdetailitems.map((data,index)=>{
+                            return(
+                        <div key={index} className="items-content">
+                        <h1>{data.itemName}</h1>
+                        <p className="items-text">商品品牌 ｜ {data.itemsbrand}</p>
+                        <p className="items-text">購買數量 ｜ {data.checkQty}</p>
+                        <p className="items-text">購買總額 ｜ $ {data.checkPrice}</p>
+                        <p className="items-text">訂單備註 ｜ {data.orderRemark}</p>
+                        <p className="items-text">訂單新增時間 ｜ {data.created_at}</p>
+                         </div>
+                            )
+                        })} 
                         <div class="tbl-content">
                             <table className="sellerOrderTable" cellSpacing="1">
                                 <tbody>
@@ -125,7 +151,6 @@ function SuperSellerOrder(props) {
                                                 return (
                                                         <tr key={index}>
                                                             <td>{data.orderId}</td>
-                                                            {/* <td>{data.itemName}</td> */}
                                                             <td>{data.paymentTypeName}</td>
 
                                                             <td><Switch checkedChildren="已付" unCheckedChildren="未付" defaultChecked={data.paymentState !==1?  true : false} /></td>
@@ -135,16 +160,15 @@ function SuperSellerOrder(props) {
                                                             <td><Switch checkedChildren="出貨" unCheckedChildren="未出" defaultChecked={data.deliveryState !==1?  true : false} /></td>
                                                             <td>
                                                                     <span 
-                                                                        id={data.itemId}
+                                                                        id={data.orderId}
                                                                         className="iconfont icon-search"
                                                                         onClick={(event)=>{
                                                                             console.log(event.target.id)
-                                                                            // superSellerDelete(event.target.id)
+                                                                            superSellerCheck(event.target.id)
+                                                                            //  addCsstyle()
                                                                         }}
                                                                     >查看</span>
                                                             </td>
-                                                            {/* <td>{data.orderRemark}</td> */}
-                                                            {/* <td>{data.created_at}</td> */}
                                                         </tr>
                                                 )
                                             })}
