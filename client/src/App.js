@@ -353,7 +353,7 @@ function App() {
             />
           </Route>
 
-          <Route path="/KMembers/MembersCartDetail">
+          <Route path="/KMembers/MembersCartDetail/:orderId">
             <MembersCartDetail
               allprops={{
                 userdata,

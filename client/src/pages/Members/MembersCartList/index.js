@@ -14,10 +14,11 @@ function MembersCartList(props) {
     console.log(membersCartOrderData)
 
     useEffect(() => {
-        fetch("http://localhost:3009/superseller/listSellerUserOrder", {
+        fetch("http://localhost:3009/membersEdit/membersOrder", {
             method: 'post',
             body: JSON.stringify({
                 id: userdata.id,
+                username: userdata.username,
             }),
             headers: new Headers({
                 'Accept': 'application/json',
@@ -27,7 +28,7 @@ function MembersCartList(props) {
             .then(result => result.json())
             .then((response) => {
                 console.log('response', response);
-                setMembersCartOrderData(response)
+                setMembersCartOrderData(response['results'])
             })
     }, [userdata])
 
@@ -69,37 +70,25 @@ function MembersCartList(props) {
                                                 {/* 模板 內 */}
                                                 <div className="cart_r_list_row">
                                                     <div className="cart_r_list_row_p_all">
-                                                        <img src={logo}/>
+                                                        <img src={`/user_img/${data.userlogo}`} alt="頭像"/>
                                                         <div className="cart_r_list_row_p">
-                                                            <p>超級貴耳機 Apple pro 無聲耳機</p>
-                                                            <p>顏色：黑色</p>
-                                                            <p>數量： 1</p>
+                                                            <p>{data.paymentTypeName}</p>
+                                                            <p>{data.deliveryTypeName}</p>
+                                                            <p>{data.created_at}</p>
                                                         </div>
                                                     </div>
-                                                    <span className="cart_r_list_price">$ 15673</span>
-                                                </div>
-
-                                                <div className="cart_r_list_row">
-                                                    <div className="cart_r_list_row_p_all">
-                                                        <img src={logo}/>
-                                                        <div className="cart_r_list_row_p">
-                                                            <p>超級貴耳機 Apple pro 無聲耳機</p>
-                                                            <p>顏色：黑色</p>
-                                                            <p>數量： 1</p>
-                                                        </div>
-                                                    </div>
-                                                    <span className="cart_r_list_price">$ 15673</span>
+                                                    <span className="cart_r_list_price">{data.paymentStateTypeName}</span>
                                                 </div>
                                             </li>
                                         </ul>
                                         <ul className="cart_r_list_total">
                                             <li className="cart_r_list_total_li">
-                                                <span className="cart_r_list_total_li_span">訂單金額：</span>
-                                                <span className="cart_r_list_total_li_price">$ 31346</span>
+                                                <span className="iconfont icon-safety"></span>
+                                                <span className="cart_r_list_total_li_span">需付金額：</span>
+                                                <span className="cart_r_list_total_li_price">$ {data.total}</span>
                                             </li>
                                             <li className="cart_r_list_total_search">
-                                                <Link to="/KMembers/MembersCartDetail">查看詳情</Link>
-
+                                                <Link to={"/KMembers/MembersCartDetail/"+data.orderId}>查看訂單詳情</Link>
                                             </li>
                                         </ul>
                                     </div>)
