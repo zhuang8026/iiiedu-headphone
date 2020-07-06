@@ -8,32 +8,7 @@ import {
 } from 'react-router-dom'
 
 function OrderComplete(props) {
-  const {
-    userdata,
-    setUserdata,
-    mycart,
-    setMycart,
-    mycartDisplay,
-    setMycartDisplay,
-    orderTotal,
-    setOrderTotal,
-    orderName,
-    setOrderName,
-    orderAddress,
-    setOrderAddress,
-    orderTel,
-    setOrderTel,
-    orderRemarks,
-    setOrderRemarks,
-    orderDelivery,
-    setOrderDelivery,
-    orderPayment,
-    setOrderPayment,
-    orderCard,
-    setOrderCard,
-    orderId,
-    setOrderId
-  } = props.allprops
+  const { orderTotal, orderPayment, orderId, setOrderId} = props.allprops;
 
     //取得訂單資料
     const getNewOrderAsync = async (addOrderFormData, callback) => {

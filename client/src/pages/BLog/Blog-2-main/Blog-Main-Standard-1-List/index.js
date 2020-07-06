@@ -129,7 +129,7 @@ function BlogMainStandardList(props) {
     return (
         <>
             <div className="blog-btns blog-d-flex blog-justify-content-between">
-                {((userdata.id)&&(userdata.id!='')) &&
+                {((userdata.id) && (userdata.id != '')) &&
                     <div className="blog-btns-left">
                         <button className="blog-btns-left-Link" onClick={() => props.history.push('/Blog/YongBlog')}>
                             全部文章
@@ -140,7 +140,7 @@ function BlogMainStandardList(props) {
                     </button>
                     </div>
                 }
-                {((!userdata.id)||(userdata.id=='')) &&
+                {((!userdata.id) || (userdata.id == '')) &&
                     <div className="blog-btns-left">
                         <button className="blog-btns-left-Link" onClick={() => props.history.push('/Blog/YongBlog')}>
                             全部文章
@@ -196,7 +196,7 @@ function BlogMainStandardList(props) {
                             <div className="blog-card-in">
                                 <figure className="blog-card-fig">
                                     <img className="blog-cover"
-                                        src={`http://localhost:3009/blogs_img/${data.blogContent01_img01}`}
+                                        src={(data.blogContent01_img01 == '' ? `http://localhost:3009/blogs_img/default.jpg` : `http://localhost:3009/blogs_img/${data.blogContent01_img01}`)}
                                         alt=""
                                     />
                                 </figure>

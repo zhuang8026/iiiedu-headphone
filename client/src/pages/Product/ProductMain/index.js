@@ -358,13 +358,15 @@ function ProductMain(props) {
                             <button className="item_btn_add btn_navy_add btn_fill_vert_add"
                               id={data.itemId}
                               onClick={() => {
+                                // console.log(data);
                                 message.success(`商品"${data.itemName}"加入購物車`)
                                 updateCartToLocalStorage({
-                                    id: `${data.itemId}`,
-                                    itemName:`${data.itemName}`,
-                                    itemBrand:`${data.itemsbrand}`,
-                                    itemImg:`${data.itemImg}`,
-                                    itemPrice:`${data.itemPrice}`,
+                                    id: data.itemId,
+                                    itemName: data.itemName,
+                                    itemBrand: data.itemsbrand,
+                                    itemImg: data.itemImg,
+                                    itemPrice: data.itemPrice,
+                                    itemQty: data.itemQty,
                                     amount:1,
                                 })
                               }}

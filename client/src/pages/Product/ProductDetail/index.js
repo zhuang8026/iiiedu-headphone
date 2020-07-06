@@ -11,7 +11,7 @@ import ProductDetailBottom from '../ProductDetail/ProductDetailBottom'
 function ProductDetail(props) {
   let { id } = useParams()
   // console.log(id);
-  const { userdata }=props;
+  const { userdata , setlovechange, setcompareschange, setcartchange}=props;
   const [detaildata, setDetaildata] = useState([]);
   // console.log('detaildata-16', detaildata)
 
@@ -45,6 +45,9 @@ function ProductDetail(props) {
         <ProductDetailRight 
           detaildata={detaildata}
           userdata={userdata}
+          setlovechange={setlovechange}
+          setcompareschange={setcompareschange}
+          setcartchange={setcartchange}
         />
       </div>
       <div className="WiDetailBottom">

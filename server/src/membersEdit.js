@@ -124,34 +124,51 @@ router.post('/upload',function(req, res) {
 });
 
 
-
-
-
-
 // 會員密碼修改
 // http://localhost:3009/membersEdit/newpassword
 router.post('/newpassword', (req, res)=>{ 
-        const output = {
-            success: false,
-        }
+    const output = {
+        success: false,
+    }
 
-        let pwd = req.body.pwd;
-        let id = req.body.id;
+    let pwd = req.body.pwd;
+    let id = req.body.id;
 
-        const sql = "UPDATE `users` SET `pwd` = ? WHERE `users`.`id` = ?"; 
-        // console.log(id);
+    const sql = "UPDATE `users` SET `pwd` = ? WHERE `users`.`id` = ?"; 
+    // console.log(id);
 
-        db.query(sql, [pwd, id])                   
-            .then(([results])=>{
-                // console.log(results)
-                output.results = results;
-                if(results.affectedRows && results.changedRows){
-                    output.success = true;
-                }
-                // console.log(output);
-                res.json(output);
-            })
-    
-    })
+    db.query(sql, [pwd, id])                   
+        .then(([results])=>{
+            // console.log(results)
+            output.results = results;
+            if(results.affectedRows && results.changedRows){
+                output.success = true;
+            }
+            // console.log(output);
+            res.json(output);
+        })
+})
+
+// 會員訂單查詢
+// http://localhost:3009/membersEdit/membersOrder
+router.post('/membersOrder', (req, res)=>{ 
+    const output = {
+        success: false,
+    }
+    let id = req.body.id;
+
+    const sql = "UPDATE `users` SET `pwd` = ? WHERE `users`.`id` = ?"; 
+
+    db.query(sql, [pwd, id])                   
+        .then(([results])=>{
+            // console.log(results)
+            output.results = results;
+            if(results.affectedRows && results.changedRows){
+                output.success = true;
+            }
+            // console.log(output);
+            res.json(output);
+        })
+})
 
 module.exports = router;

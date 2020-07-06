@@ -87,6 +87,7 @@ function App() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [loginErrors, setLoginErrors] = useState([])
+  const [membersCartOrderData, setMembersCartOrderData] = useState([])
 
   // 產品列表
   const [itemsdata, setItemsdata] = useState([])
@@ -166,6 +167,16 @@ function App() {
     getUserData(localUser['username'], localUser['pwd'])
   }, [])
 
+  // 從localStorage獲取-購物車資料
+  // const cartData = JSON.parse(localStorage.getItem('cart')); 
+  // useEffect(()=>{
+  //   if (cartData === null) {
+  //     return
+  //   } else {
+  //     setMycart(cartData)
+  //   } 
+  // },[]) 
+
   return (
     <Router>
       {/* 過場動畫 */}
@@ -213,7 +224,11 @@ function App() {
 
           {/* 產品細節 */}
           <Route path="/ProductDetail/:id">
-            <ProductDetail/>
+            <ProductDetail
+              setlovechange={setlovechange}
+              setcompareschange={setcompareschange}
+              setcartchange={setcartchange}
+            />
           </Route>
 
           {/* 會員 */}
@@ -304,23 +319,6 @@ function App() {
             />
           </Route>
 
-
-          {/* 比較頁面 */}
-          <Route path="/Compare">
-            <Compare
-              itemsdata={itemsdata}
-              setItemsdata={setItemsdata}
-              itemsid={itemsid}
-              setItemsid={setItemsid}
-              allprops={{
-                userdata,
-                setUserdata,
-                name,
-                setName,
-              }}
-            />
-          </Route>
-
           {/* <Route path="/KMembers/MembersForget">
             <MembersForget userdata={userdata} setUserdata={setUserdata} />
           </Route> */}
@@ -347,7 +345,12 @@ function App() {
           </Route>
 
           <Route path="/KMembers/MembersCartList">
-            <MembersCartList userdata={userdata} setUserdata={setUserdata} />
+            <MembersCartList 
+              userdata={userdata} 
+              setUserdata={setUserdata} 
+              membersCartOrderData={membersCartOrderData} 
+              setMembersCartOrderData={setMembersCartOrderData}
+            />
           </Route>
 
           <Route path="/KMembers/MembersCartDetail">
@@ -356,7 +359,8 @@ function App() {
                 userdata,
                 setUserdata,
                 name,
-                setName,
+                setName,membersCartOrderData, 
+                setMembersCartOrderData
               }}
             />
           </Route>
@@ -415,22 +419,6 @@ function App() {
                 setName,
               }}
             />
-          </Route>
-
-          {/* 我的最愛 */}
-          <Route path="/MyFav">
-          <MyFav    
-              itemsdata={itemsdata}
-              setItemsdata={setItemsdata}
-              itemsid={itemsid}
-              setItemsid={setItemsid}
-              allprops={{
-                userdata,
-                setUserdata,
-                name,
-                setName
-              }}
-          />
           </Route>
 
           {/* 購物車 */}
@@ -517,6 +505,7 @@ function App() {
                 setOrderCard,
                 orderId,
                 setOrderId,
+                setcartchange
               }}
             />
           </Route>
@@ -572,6 +561,16 @@ function App() {
           </Route>
           <Route path="/about/WiOurClients">
             <WiOurClients />
+          </Route>
+          
+          {/* 比較頁面 */}
+          <Route path="/Compare">
+            <Compare setcompareschange={setcompareschange} />
+          </Route>
+          
+          {/* 我的最愛 */}
+          <Route path="/MyFav">
+            <MyFav setlovechange={setlovechange}/>
           </Route>
 
           {/* ProtectdRoute 這是 utils */}
