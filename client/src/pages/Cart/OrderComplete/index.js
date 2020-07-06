@@ -33,7 +33,7 @@ function OrderComplete(props) {
     <>
       <div className="cart-crumb">
         <div></div>
-        <Link to="/">首頁</Link> / <Link to="/MyCart">購物車</Link>
+        <Link to="/">首頁</Link> / <Link to="/MyCart">返回 購物車</Link>
       </div>
       <div className="cart-container">
         {/* 購物車步驟圖 */}
