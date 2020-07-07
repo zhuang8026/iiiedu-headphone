@@ -78,6 +78,7 @@ app.use('/membersEdit', require(__dirname+'/membersEdit.js'));
 app.use('/superseller', require(__dirname+'/superseller.js'));
 app.use('/supersellerEdit', require(__dirname+'/supersellerEdit.js'));
 app.use('/superseller_plus', require(__dirname+'/superseller_plus.js'));
+app.use('/superseller_callback', require(__dirname+'/superseller_callback.js'));
 
 // 產品
 app.use('/products', require(__dirname+'/products.js'));
