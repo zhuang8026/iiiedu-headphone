@@ -1,13 +1,12 @@
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const upload = require(__dirname + '/upload-module-blogs');
-// const upload2 = require(__dirname + '/upload');
 const moment = require('moment-timezone');
 const session = require('express-session');
 const MysqlStore = require('express-mysql-session')(session);
 const multer = require('multer');
 const db = require(__dirname + '/db_connect');
-// const cors = require('cors');
+const cors = require('cors');
 const fs = require('fs');
 const bodyParser = require('body-parser');
 // const morgan = require('morgan');
@@ -320,7 +319,6 @@ router.get('/', (req, res) => {
 // (測試ok)
 // 新增部落格文章
 // http://localhost:3009/blog/add
-// router.get('/add', (req, res)=>{
 router.post('/add', upload.none(), (req, res) => {
     let id = req.body.id;
     let blogTitle = req.body.addBlogTitle;
@@ -352,9 +350,9 @@ router.post('/add', upload.none(), (req, res) => {
     db.query(sql, [id, blogTitle, blogContent01, blogContent01_img01, blogContent01_img02, blogContent01_img03, blogContent02, blogContent02_img01, blogContent02_img02, blogContent02_img03])
         .then(([r]) => {
             // output.results = r;
-            // output.success = true;
+            output.success = true;
             // console.log(output);
-            // res.json(output);
+            res.json(output);
         })
     // res.json(req.body);
 })
@@ -369,11 +367,14 @@ router.post('/del/', async (req, res) => {
     let referer = 1;
     let id = req.body.id;
     let blogId = req.body.blogId;
-
+    const output = {
+        success: false,                
+    }
     const sql = `DELETE FROM blogs WHERE blogId=${blogId}`;
     db.query(sql, [req.params.blogId])
         .then(([r]) => {
-
+            output.success = true;
+            res.json(output);
         })
 })
 
@@ -411,10 +412,11 @@ router.post('/edit/', upload.none(), (req, res) => {
     delete req.body.blogId;
     db.query(sql, [blogTitle, blogContent01, blogContent01_img01, blogContent01_img02, blogContent01_img03, blogContent02, blogContent02_img01, blogContent02_img02, blogContent02_img03, blogId])
         .then(([r]) => {
-            output.results = r;
-            if (r.affectedRows && r.changedRows) {
-                output.success = true;
-            }
+            // output.results = r;            
+            // if (r.affectedRows && r.changedRows) {
+            //     output.success = true;
+            // }
+            output.success = true;
             res.json(output);
         })
 })
@@ -516,7 +518,7 @@ router.post('/add-reply', upload.none(), (req, res) => {
 
         rows: []
     }
-    const sql = "INSERT INTO `blogs_reply`(`blogId`,`id`,`r_nick`,`r_photo`,`b_r_content`,`b_r_replys`) VALUES (?, ?, ?, ?, ?,?)";
+    const sql = "INSERT INTO blogs_reply (`blogId`,`id`,`r_nick`,`r_photo`,`b_r_content`,`b_r_replys`) VALUES (?, ?, ?, ?, ?,?)";
     console.log('========== react(post) -> 部落格回文 ==========')
     console.log('req.body = ', req.body)
     db.query(sql, [blogId, id, r_nick, r_photo, b_r_content, b_r_replys])

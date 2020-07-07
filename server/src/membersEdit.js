@@ -193,39 +193,44 @@ router.post('/membersOrder', upload.none(), (req, res)=>{
 })
 
 
-// 會員訂單查詢 父層
-// http://localhost:3009/membersEdit/membersOrder
-router.post('/membersOrder', upload.none(), (req, res)=>{ 
+// 會員訂單查詢 子層
+// http://localhost:3009/membersEdit/membersOrderDetail/1000520522
+router.get('/membersOrderDetail/:orderId', upload.none(), (req, res)=>{ 
     const output = {
         success: false,
     }
-    let id = req.body.id;
-    let username = req.body.username;
+    let orderId = req.params.orderId;
 
     let sql =  `SELECT *
                     FROM orders
                     LEFT JOIN 
                         users 
                     ON 
-                        orders.userId = users.id
+                        orders.userId = users.id 
                     LEFT JOIN 
                         paymentstate_types
                     ON 
                         paymentstate_types.paymentState = orders.paymentState
                     LEFT JOIN 
-                        delivery_types
-                    ON
-                        delivery_types.delivery = orders.delivery
-                    LEFT JOIN 
                         payment_types AS pay
                     ON 
                         pay.payment = orders.deliveryState
+                    LEFT JOIN 
+                        delivery_types
+                    ON
+                        delivery_types.delivery = orders.delivery
+                    INNER JOIN  
+                        order_details AS details
+                    ON 
+                        details.orderId = orders.orderId
+                    LEFT JOIN  
+                        items
+                    ON 
+                        details.itemId = items.itemId
                     WHERE
-                        users.id = ?
-                    And
-                        users.username = ?`;
+                        orders.orderId = ?`;
 
-    db.query(sql, [id, username])                   
+    db.query(sql, [orderId])                   
         .then(([results])=>{
             output.results = results;
             output.success = true;

@@ -24,7 +24,7 @@ function ProductMain(props) {
   const searchParams = new URLSearchParams(props.location.search)
   let keyword = searchParams.get('keyword')
 
-  // console.log(itemsdata)
+  console.log(itemsdata)
   // console.log('history', props.history.location.state.getname);
 
   // 加入購物車
@@ -243,7 +243,7 @@ function ProductMain(props) {
             return response.json()
         })
         .then((response)=>{
-          // console.log(response.rows)
+          console.log('response',response.rows)
           setItemsdata(response.rows)
           setCurrentTotalPages(response.totalPages) // 總page
           setCurrentPage(response.page)             // 此刻的頁數
@@ -291,7 +291,7 @@ function ProductMain(props) {
                     }
                   >Brand Selecte</div>
               <ul className="Yybrand_ul">
-                <li><Link to='/YyProduct/AUDIOTECHNICA'> AUDIOTECHNICA ({howManyTotal.audioTechnica}) </Link></li>
+                <li><Link to='/YyProduct/audioTechnica'> AUDIOTECHNICA ({howManyTotal.audioTechnica}) </Link></li>
                 <li><Link to='/YyProduct/AKG'> AKG ({howManyTotal.AKG}) </Link></li>
                 <li><Link to='/YyProduct/BANGOLUFSEN'> BANGOLUFSEN ({howManyTotal.BangOlufsen}) </Link></li>
                 <li><Link to='/YyProduct/FINAL'> FINAL ({howManyTotal.Final}) </Link></li>

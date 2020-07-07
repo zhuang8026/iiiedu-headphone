@@ -28,51 +28,52 @@ router.get("/list", async (req, res) => {
 
 // router.post("/addOrderDetails", upload.none(), async (req, res) => {
 router.post("/addOrderDetails", async (req, res) => {
-
-  const mycart = req.body.mycartDisplay;
-  let total = 0;
-  mycart.forEach(el=>{
-    total += parseInt(el.itemPrice);
-  });
+  // const mycart = req.body.mycartDisplay;
+  const mycart = req.body.req.body.mycart;
+  // let total = 0;
+  // mycart.forEach(el=>{
+  //   total += parseInt(el.itemPrice);
+  // });
 
   const sql1 =
     "INSERT INTO `orders`(`userId`,`total`,`orderRemark`,`delivery`,`payment`) VALUES(?,?,?,?,?)";
-    const [rr] = await db.query(sql1, [
-      req.body.userId,
-      total,
-      req.body.orderRemark,
-      req.body.delivery,
-      req.body.payment,
-    ]);
+  const [rr] = await db.query(sql1, [
+    req.body.userId,
+    // total,
+    req.body.total,
+    req.body.orderRemark,
+    req.body.delivery,
+    req.body.payment,
+  ]);
 
-    const order_id = rr.insertId;
-    const sql2 =
+  const order_id = rr.insertId;
+  const sql2 =
     "INSERT INTO `order_details`(`orderId`,`itemId`,`checkPrice`,`checkQty`) VALUES(?,?,?,?)";
 
-    const orderDetailIds = [];
-    for(let el of mycart){
-      let [r2] = await db.query(sql2, [
-        order_id,
-        el.id,
-        el.itemPrice,
-        el.amount
-      ]);
-      orderDetailIds.push(r2.insertId);
-    }  
+  const orderDetailIds = [];
+  for (let el of mycart) {
+    let [r2] = await db.query(sql2, [order_id, el.id, el.itemPrice, el.amount]);
+    orderDetailIds.push(r2.insertId);
+  }
   return res.json(orderDetailIds);
 });
 
-//取最新訂單router
-//http://localhost:3009/order/newOrderId
-router.get("/newOrder", async (req, res) => {
+//取得最新訂單function
+const getNewOrder = async (req) => {
   const output = {
-    success: false,
-    error: "",
+    rows: [],
   };
-  const sql = "SELECT `orderId` FROM `orders` ORDER BY `orderId` DESC LIMIT 1";
 
-  const r = await db.query(sql);
-  if (r) output.row = r;
+  const sql = "SELECT * FROM `orders` ORDER BY `orderId` DESC LIMIT 1";
+  const [r] = await db.query(sql);
+  output.rows = r;
+  return output;
+};
+
+//取最新訂單router
+//http://localhost:3009/order/newOrder
+router.get("/newOrder", async (req, res) => {
+  const output = await getNewOrder(req);
   res.json(output);
 });
 

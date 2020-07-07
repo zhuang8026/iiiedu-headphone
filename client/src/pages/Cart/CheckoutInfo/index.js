@@ -19,7 +19,14 @@ function CheckoutInfo(props) {
     setOrderRemarks,
   } = props.allprops
 
-  useEffect(() => {}, [])
+  // useEffect(() => {
+  // }, [])
+
+  useEffect(() => {
+    setOrderName(userdata.name)
+    setOrderAddress(userdata.address)
+    setOrderTel(userdata.phoneNumber)
+  }, [userdata])
 
   return (
     <>
@@ -74,7 +81,7 @@ function CheckoutInfo(props) {
                   type="text"
                   id="name"
                   name="name"
-                  value={orderName ? orderName : userdata.name}
+                  value={orderName}
                   onChange={(event) => {
                     const v = event.target.value
                     setOrderName(v)
@@ -87,7 +94,7 @@ function CheckoutInfo(props) {
                 {orderName ? (
                   <></>
                 ) : (
-                  <div className="error">點擊修改或確認*</div>
+                  <div className="error">必填*</div>
                 )}
               </div>
               <div>
@@ -96,7 +103,8 @@ function CheckoutInfo(props) {
                   type="text"
                   id="address"
                   name="address"
-                  value={orderAddress ? orderAddress : userdata.address}
+                  // value={orderAddress ? orderAddress : userdata.address}
+                  value={orderAddress}
                   onChange={(event) => {
                     const v = event.target.value
                     setOrderAddress(v)
@@ -109,7 +117,7 @@ function CheckoutInfo(props) {
                 {orderAddress ? (
                   <></>
                 ) : (
-                  <div className="error">點擊修改或確認*</div>
+                  <div className="error">必填*</div>
                 )}
               </div>
               <div>
@@ -120,7 +128,7 @@ function CheckoutInfo(props) {
                   name="tel"
                   pattern="[0-9]{2}[0-9]{8}"
                   maxLength="10"
-                  value={orderTel ? orderTel : userdata.phoneNumber}
+                  value={orderTel}
                   onChange={(event) => {
                     const v = event.target.value
                     setOrderTel(v)
@@ -133,8 +141,8 @@ function CheckoutInfo(props) {
                 {orderTel ? (
                   <></>
                 ) : (
-                  <div className="error">點擊修改或確認*</div>
-                )}                
+                  <div className="error">必填*</div>
+                )}
               </div>
             </div>
             <div className="buyer-detail">
@@ -145,6 +153,7 @@ function CheckoutInfo(props) {
                   id="remark"
                   cols="30"
                   rows="10"
+                  value={orderRemarks}
                   onChange={(event) => {
                     const v = event.target.value
                     setOrderRemarks(v)

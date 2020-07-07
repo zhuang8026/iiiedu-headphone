@@ -5,7 +5,7 @@
     .cart_r_change {
         display: flex;
         .cart_r_changeBtn {
-            width: 200px;
+            width: 25%;
             font-size: 16px;
             text-align: center;
         }
@@ -16,4 +16,29 @@
 }
 .changeBtn_NoActive {
     border-bottom: 4px solid $bg-btn-s;
+}
+
+.cartBtnError {
+    width: 100%;
+    text-align: center;
+    margin-top: 32px;
+    p {
+        color: #8b8b8b;
+        border-bottom: 1px solid #cacaca;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+    a { 
+        padding: 6px 32px;
+        background: transparent;
+        color: #a4a4a4;
+        border: 1px solid #a4a4a4;
+        transition: 0.3s ease-in;
+        .icon-search {
+            font-size: 14px;
+        }
+        &:hover {
+            color: #211e55;
+        }
+    }
 }
