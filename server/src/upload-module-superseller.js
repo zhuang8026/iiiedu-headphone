@@ -20,13 +20,15 @@ const extMap = {
 const storage = multer.diskStorage({
     // cb是callback function
     destination : (req, file, cb)=>{
-        cb(null, __dirname + '/../public/superseller_img/')
+        // cb(null, __dirname + '/../public/superseller_img/')
+        cb(null, __dirname + '/../../client/public/items_img')
     },
     filename: (req, files, cb)=>{
         //使用uuid
         let ext = extMap[files.mimetype];
         // let filename = uuidv4() + ext;
-        cb(null, files.originalname)
+        // cb(null, files.originalname)
+        cb(null, Date.now()+'-'+files.originalname)
 
         // cb(null, req.file.originalname)
         // cb(null, filename)

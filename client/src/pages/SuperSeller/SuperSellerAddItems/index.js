@@ -69,12 +69,12 @@ function SuperSellerAddItems(props) {
         console.log(moreDataFiles)
         fetch('http://localhost:3009/superseller_callback/try-upload/', {
         // fetch('http://localhost:3009/supersellerEdit/uploadMore', {
-            method: 'POST',
+            method: 'post',
             body: moreDataFiles,
-            headers: new Headers({
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            })
+            // headers: new Headers({
+            //     'Accept': 'application/json',
+            //     'Content-Type': 'application/json',
+            // })
         })
             .then((res)=>{
                 console.log(res)
@@ -83,7 +83,10 @@ function SuperSellerAddItems(props) {
             })
             .then(obj=>{
                 console.log(obj);
-                // setitemMoreImg(obj.filename)
+                for(let s = 0; s<obj.length; s++) {
+                    // moreDataFiles.append('file', data[i])
+                }
+                setitemMoreImg(obj.filename)
             })
     }
 

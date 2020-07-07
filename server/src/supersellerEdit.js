@@ -4,7 +4,7 @@ const upload = require(__dirname + '/upload-module');
 const db = require(__dirname + '/db_connect');
 
 const uploadOne = require(__dirname + '/suppersellerUpload');
-const uploadMore = require(__dirname + '/suppersellerUploadMore');
+// const uploadMore = require(__dirname + '/suppersellerUploadMore'); // 多圖上傳失敗
 
 const router = express.Router();
 
@@ -205,16 +205,17 @@ router.post('/upload',function(req, res) {
 });
 
 
-// 產品 多圖上傳 api
-router.post('/uploadMore',function(req, res) {
-    uploadMore(req, res, function (err) {
-            if (err instanceof multer.MulterError) {
-                return res.status(500).json(err)
-            } else if (err) {
-                return res.status(500).json(err)
-            }
-        // return res.status(200).send(req.file)
-        return res.status(200).json(req.file)
-    })
-});
+// 產品 多圖上傳 api - 失敗
+// router.post('/uploadMore',function(req, res) {
+//     uploadMore(req, res, function (err) {
+//             if (err instanceof multer.MulterError) {
+//                 return res.status(500).json(err)
+//             } else if (err) {
+//                 return res.status(500).json(err)
+//             }
+//         // return res.status(200).send(req.file)
+//         return res.status(200).json(req.file)
+//     })
+// });
+
 module.exports = router;
