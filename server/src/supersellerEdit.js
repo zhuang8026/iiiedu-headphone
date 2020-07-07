@@ -3,7 +3,7 @@ const moment = require('moment-timezone');
 const upload = require(__dirname + '/upload-module');
 const db = require(__dirname + '/db_connect');
 
-const upload2 = require(__dirname + '/upload');
+const upload2 = require(__dirname + '/suppersellerUpload');
 
 const router = express.Router();
 
@@ -187,4 +187,19 @@ router.post("/sellerWalletData", upload.none(), (req, res) => {
         })
 });
 
+
+// 測試  ok  可使用 圖片上傳 - 20200625 / 會員圖片 修改 
+// http://localhost:3009/supersellerEdit/upload
+// https://programmingwithmosh.com/javascript/react-file-upload-proper-server-side-nodejs-easy/
+router.post('/upload',function(req, res) {
+    upload2(req, res, function (err) {
+            if (err instanceof multer.MulterError) {
+                return res.status(500).json(err)
+            } else if (err) {
+                return res.status(500).json(err)
+            }
+        // return res.status(200).send(req.file)
+        return res.status(200).json(req.file)
+    })
+});
 module.exports = router;
