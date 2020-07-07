@@ -173,7 +173,7 @@ router.post('/add', async (req, res) => {
 router.post('/try-upload/', upload.array('avatar'), async (req, res) => {
     console.log('========== react(post) superseller_plus -> 上傳檔案 ==========')
     // let point = 0;
-    
+    res.json(req.files)
 })
 
 //================================================== 測試區 ==============================================================
