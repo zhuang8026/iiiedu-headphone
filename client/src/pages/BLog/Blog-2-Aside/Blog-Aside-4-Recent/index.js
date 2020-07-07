@@ -21,9 +21,16 @@ import 'moment-timezone';
 // -------------------- func --------------------
 
 function BlogAsideRecent(props) {
-  const {userdata} = props;
-  const [listRecent, setListRecent] = useState([])
+  const { userdata, setUserdata, name, setName, listUpdate, setListUpdate } = props.allprops;
+  const [listRecent, setListRecent] = useState([]);
   useEffect(() => {
+    searchMethodRecent()
+  }, [])
+  useEffect(() => {
+    searchMethodRecent()
+  }, [listUpdate])
+
+  const searchMethodRecent = () => {
     fetch('http://localhost:3009/blog/searchAllBlog/', {
       method: 'post',
       body: JSON.stringify({
@@ -51,7 +58,7 @@ function BlogAsideRecent(props) {
         // setListPage(pageArr)
         // setCurrentPage(response.page)
       })
-  }, [])
+  }
 
   return (
     <>
@@ -65,9 +72,9 @@ function BlogAsideRecent(props) {
                 <figure className="recent-post-in-one-img">
                   <img className="blog-cover"
                     src={`http://localhost:3009/blogs_img/${data.blogContent01_img01}`}
-                    // onClick={() => {
-                    //   props.history.push(`/Blog/BlogDetail/${data.blogId}`);
-                    // }}
+                  // onClick={() => {
+                  //   props.history.push(`/Blog/BlogDetail/${data.blogId}`);
+                  // }}
                   ></img>
                 </figure>
                 <div className="recent-post-in-one-txt">
@@ -85,7 +92,7 @@ function BlogAsideRecent(props) {
 
         </div>
       </div>
-      
+
     </>
   )
 }
