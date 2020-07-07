@@ -240,6 +240,31 @@ router.post("/listSellerUserProduct", upload.none(), (req, res) => {
         })
 });
 
+//http://localhost:3009/superseller/listSellerUserOrderToggle
+router.post("/listSellerUserOrderToggle",upload.none(),(req,res)=>{
+    let paymentState = req.body.paymentState;
+    let orderId = req.body.orderId;
+    let sql = `UPDATE orders SET paymentState=? WHERE orderId=?`
+    db.query(sql, [paymentState,orderId])
+    .then(results => {
+        // console.log(results[0])
+        // output.results = results;
+        res.json(results[0])
+        // return db.query(sql);
+    })
+})
+
+//http://localhost:3009/superseller/listSellerUserOrderDeliveryToggle
+router.post("/listSellerUserOrderDeliveryToggle",upload.none(),(req,res)=>{
+    let deliveryState = req.body.deliveryState;
+    let orderId = req.body.orderId;
+    let sql=`UPDATE orders SET deliveryState=? WHERE orderId=?`
+    db.query(sql,[deliveryState,orderId])
+    .then(results=>{
+        res.json(results[0])
+    })
+})
+
 //http://localhost:3009/superseller/add-product
 router.post('/add-product',(req,res)=>{
         let id = req.body.id;
