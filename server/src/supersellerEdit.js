@@ -3,7 +3,8 @@ const moment = require('moment-timezone');
 const upload = require(__dirname + '/upload-module');
 const db = require(__dirname + '/db_connect');
 
-const upload2 = require(__dirname + '/suppersellerUpload');
+const uploadOne = require(__dirname + '/suppersellerUpload');
+const uploadMore = require(__dirname + '/suppersellerUploadMore');
 
 const router = express.Router();
 
@@ -192,7 +193,21 @@ router.post("/sellerWalletData", upload.none(), (req, res) => {
 // http://localhost:3009/supersellerEdit/upload
 // https://programmingwithmosh.com/javascript/react-file-upload-proper-server-side-nodejs-easy/
 router.post('/upload',function(req, res) {
-    upload2(req, res, function (err) {
+    uploadOne(req, res, function (err) {
+            if (err instanceof multer.MulterError) {
+                return res.status(500).json(err)
+            } else if (err) {
+                return res.status(500).json(err)
+            }
+        // return res.status(200).send(req.file)
+        return res.status(200).json(req.file)
+    })
+});
+
+
+// 產品 多圖上傳 api
+router.post('/uploadMore',function(req, res) {
+    uploadMore(req, res, function (err) {
             if (err instanceof multer.MulterError) {
                 return res.status(500).json(err)
             } else if (err) {

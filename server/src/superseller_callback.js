@@ -157,7 +157,7 @@ router.post('/add', async (req, res) => {
 // (可上傳)
 // 上傳檔案
 // http://localhost:3009/superseller_callback/try-upload/
-router.post('/try-upload/', upload.array('avatar'), async (req, res) => {
+router.post('/try-upload/', upload.array('file'), async (req, res) => {
     console.log('========== react(post) superseller_plus -> 上傳檔案 ==========')
     // let point = 0;
     res.json(req.files)
@@ -165,7 +165,7 @@ router.post('/try-upload/', upload.array('avatar'), async (req, res) => {
 
 //================================================== 測試區 ==============================================================
 
-
+// http://localhost:3009/superseller_callback/try-post
 router.post('/try-post', (req, res) => {
     req.body.contentType = req.get('Content-Type'); // 取得檔頭  
     req.body.pageTitle = '測試表單-Json'

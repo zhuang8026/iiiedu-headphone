@@ -8,38 +8,38 @@ import {withRouter} from 'react-router-dom'
 import ComponentSuperSellerLeft from '../ComponentSuperSellerLeft'
 
 import './sellerAddItems.scss';
-// import { use } from '../../../../../server/src/superseller_plus';
 
 function SuperSellerAddItems(props) {
     const key = 'updatable';
     const {userdata, setUserdata} = props.allprops;
 
-    const [itemName,setItemName] = useState()                   // 商品名稱
-    const [itemImg,setItemImg] = useState()                     // 商品圖片
-    const [colorid,setColorId] = useState()                     // 商品顏色
-    const [itemsbrand,setItemsBrand] = useState()               // 商品品牌
-    const [itemstype,setItemstype] = useState()                 // 商品類型
-    const [itemPrice,setItemPrice] = useState()                 // 商品價格
-    const [itemQty,setItemQty] = useState()                     // 商品數量
-    const [itemscontent,setItemscontent] = useState()           // 商品描述
-    const [itemsweight,setItemsweight] = useState()             // 商品重量
-    const [itemsdrive,setItemsDrive] = useState()               // 商品 單體驅動
-    const [itemsfrequency,setitemsfrequency] = useState()       // 商品 頻率響應
-    const [itemsSensitivity,setItemsSensitivity] = useState()   // 商品 頻率響應
-    const [itemsconnect,setItemsconnect] = useState()           // 商品 連結端子
-    const [itemsmains,setItemsmains] = useState()               // 商品 電源類型
-    const [itemsEndurance,setItemsEndurance] = useState()       // 商品 電池續航
-    const [itemswatertight,setItemswatertight] = useState()     // 商品 防水
-    const [itemsfeature,setItemsFeature] = useState()           // 商品 重點特色
+    const [itemName, setItemName] = useState()                   // 商品名稱
+    const [itemImg, setItemImg] = useState()                     // 商品圖片
+    const [itemMoreImg, setitemMoreImg] = useState([])           // 商品圖片
+    const [colorid, setColorId] = useState()                     // 商品顏色
+    const [itemsbrand, setItemsBrand] = useState()               // 商品品牌
+    const [itemstype, setItemstype] = useState()                 // 商品類型
+    const [itemPrice, setItemPrice] = useState()                 // 商品價格
+    const [itemQty, setItemQty] = useState()                     // 商品數量
+    const [itemscontent, setItemscontent] = useState()           // 商品描述
+    const [itemsweight, setItemsweight] = useState()             // 商品重量
+    const [itemsdrive, setItemsDrive] = useState()               // 商品 單體驅動
+    const [itemsfrequency, setitemsfrequency] = useState()       // 商品 頻率響應
+    const [itemsSensitivity, setItemsSensitivity] = useState()   // 商品 頻率響應
+    const [itemsconnect, setItemsconnect] = useState()           // 商品 連結端子
+    const [itemsmains, setItemsmains] = useState()               // 商品 電源類型
+    const [itemsEndurance, setItemsEndurance] = useState()       // 商品 電池續航
+    const [itemswatertight, setItemswatertight] = useState()     // 商品 防水
+    const [itemsfeature, setItemsFeature] = useState()           // 商品 重點特色
 
     // console.log(itemsbrand);
+    // console.log('itemMoreImg:', itemMoreImg)
 
-
-    // 商品單張圖片上傳 （one）
+    // setItemImg 商品單張圖片上傳 （one）
     const myImgEditCallback = (data) =>{
         const datafiles = new FormData();
         datafiles.append('file', data);
-        // console.log(data);
+        // console.log(datafiles);
 
         fetch('http://localhost:3009/supersellerEdit/upload', {
             method: 'POST',
@@ -59,6 +59,33 @@ function SuperSellerAddItems(props) {
                 setItemImg(obj.filename)
             })
     }  
+
+    // setitemMoreImg 商品多張圖片上傳 （more）
+    const moreImgEditCallback = (data) =>{
+        const moreDataFiles = new FormData();
+        for(let i = 0; i<data.length; i++) {
+            moreDataFiles.append('file', data[i])
+        }
+        console.log(moreDataFiles)
+        fetch('http://localhost:3009/superseller_callback/try-upload/', {
+        // fetch('http://localhost:3009/supersellerEdit/uploadMore', {
+            method: 'POST',
+            body: moreDataFiles,
+            headers: new Headers({
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            })
+        })
+            .then((res)=>{
+                console.log(res)
+                console.log(res.statusText)
+                return res.json() // json()	返回 Promise，resolves 是 JSON 物件
+            })
+            .then(obj=>{
+                console.log(obj);
+                // setitemMoreImg(obj.filename)
+            })
+    }
 
     // 商品資料上傳 （文字）
     const SuperSellerAddItemsCallback = () => {
@@ -139,6 +166,7 @@ function SuperSellerAddItems(props) {
                                                             // multiple={true}
                                                             // onChange={(event) => setItemImg(event.target.value)}
                                                             onChange={(event) => {
+                                                                // console.log(event.target.files)
                                                                 setItemImg(event.target.files[0].name)
                                                                 myImgEditCallback(event.target.files[0])
                                                             }}
@@ -158,8 +186,14 @@ function SuperSellerAddItems(props) {
                                                         <input 
                                                             type="file"
                                                             id="itemImg"
+                                                            name="avatar"
                                                             multiple={true}
-                                                            onChange={(event) => setItemImg(event.target.value)}
+                                                            onChange={(event) => {
+                                                                // console.log(event.target.files)
+                                                                moreImgEditCallback(event.target.files)
+                                                                // setitemMoreImg(event.target.files)
+                                                            }
+                                                            }
                                                         />
                                                     </div>
                                                     <img src="/logo512.png" alt="圖片上傳"/>
@@ -174,7 +208,7 @@ function SuperSellerAddItems(props) {
                                         <h2>基本資料</h2>
                                         <div className="itemselectInnerAll">
                                             <div className="itemselectInner">
-                                                <label for="itemsbrand">品牌: </label>
+                                                <label htmlFor="itemsbrand">品牌: </label>
                                                 <select 
                                                     name="itemsType"
                                                     value = {itemsbrand}
@@ -196,7 +230,7 @@ function SuperSellerAddItems(props) {
                                                 onChange={(e) => setItemsBrand(e.target.value)}
                                             /> */}
                                             <div className="itemselectInner">
-                                                <label for="itemsType">類型: </label>
+                                                <label htmlFor="itemsType">類型: </label>
                                                 <select 
                                                     name="itemsType"
                                                     value = {itemstype}
@@ -212,7 +246,7 @@ function SuperSellerAddItems(props) {
                                                 onChange={(e) => setItemstype(e.target.value)}
                                             /> */}
                                             <div className="itemselectInner">
-                                                <label for="itemsType">顏色: </label>
+                                                <label htmlFor="itemsType">顏色: </label>
                                                 <select 
                                                     name="itemsType"
                                                     value = {colorid}
