@@ -68,7 +68,8 @@ const doAddItems = async (req) => {
             output.results = results;
             // doSearchItems(itemName,_files);
             // output.rows = outputWithId.rows;
-            let _r = `SELECT LAST_INSERT_ID()`;            
+            
+            let _r = `SELECT LAST_INSERT_ID()`;                      
             const [r1] = await db.query(_r);
             if (r1) output.insertId = r1[0]['LAST_INSERT_ID()'];
             console.log('結果 ======> ', r1[0]['LAST_INSERT_ID()'])
@@ -107,9 +108,9 @@ const doAddImgsOnDatabase = async (_id, _files) => {
         }
     }
     db.query(sql, [itemId, multiple_Image, multiple_Image01, multiple_Image02, multiple_Image03, multiple_Image04])
-        .then(([r]) => {
-            output.rows = r;
-            output.success = true;
+        .then(([results]) => {
+            output.rows = results;
+            // output.success = true;
             console.log('output3 =========> ', output);
             // return output;
             // res.json(output.rows);

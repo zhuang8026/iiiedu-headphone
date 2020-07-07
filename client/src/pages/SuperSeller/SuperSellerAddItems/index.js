@@ -33,7 +33,22 @@ function SuperSellerAddItems(props) {
     const [itemsfeature, setItemsFeature] = useState()           // 商品 重點特色
 
     // console.log(itemsbrand);
+    console.log('itemName:', itemName);
+    console.log('itemImg:', itemImg);
     console.log('itemMoreImg:', itemMoreImg);
+    console.log('colorid:', colorid);
+    console.log('itemsbrand:', itemsbrand);
+    console.log('itemstype:', itemstype);
+    console.log('itemPrice:', itemPrice);
+    console.log('itemQty:', itemQty);
+    console.log('itemscontent:', itemscontent);
+    console.log('itemsdrive:', itemsdrive);
+    console.log('itemsfrequency:', itemsfrequency);
+    console.log('itemsSensitivity:', itemsSensitivity);
+    console.log('itemsconnect:', itemsconnect);
+    console.log('itemsmains:', itemsmains);
+    console.log('itemsEndurance:', itemsEndurance);
+    console.log('itemsfeature:', itemsfeature);
 
     // setItemImg 商品單張圖片上傳 （one）
     const myImgEditCallback = (data) =>{
@@ -95,8 +110,12 @@ function SuperSellerAddItems(props) {
 
     // 商品資料上傳 （文字）
     const SuperSellerAddItemsCallback = () => {
-        fetch('http://localhost:3009/superseller_plus/add', {
+        fetch('http://localhost:3009/superseller_callback/add', {
             method: 'post',
+            headers: new Headers({
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }),
             body: JSON.stringify({
                 itemName :itemName,
                 itemImg :itemImg,
@@ -119,11 +138,7 @@ function SuperSellerAddItems(props) {
                 itemswatertight :itemswatertight,
                 itemsfeature :itemsfeature,
                 itemMoreImg: itemMoreImg,
-            }),
-            headers: new Headers({
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            }),
+            })
         })
             .then((result) => result.json())
             .then((response) => {
