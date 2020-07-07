@@ -4,12 +4,15 @@ import { Link, NavLink, withRouter } from 'react-router-dom'
 
 // scss
 // import './_menu.scss'
-
+import WiProblemheader from './WiProblemheader'
+import WiProblemcenter from './Wiproblemcenter'
 function WiProblem(props) {
     return (
-        <Fragment>
-        常見問題
-        </Fragment>
+<>
+   <WiProblemheader />
+   <WiProblemcenter />
+</>
+
     )
 
 }

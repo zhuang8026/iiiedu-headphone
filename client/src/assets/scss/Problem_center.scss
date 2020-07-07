@@ -1,0 +1,30 @@
+.WiA {
+  display: none;
+}
+.WiA1 {
+  display: none;
+}
+.Wiappear {
+  display: block;
+}
+.commonquestion {
+  margin: 30px auto;
+  width: 80%;
+  ul {
+    li {
+      border: #6864af solid 1.5px;
+      border-bottom: none;
+      padding: 20px;
+      .wiQ {
+        font-size: 18px;
+        font-weight: bold;
+        span {
+          font-size: 20px;
+        }
+      }
+    }
+    .WiQuestion {
+      border-bottom: #6864af solid 1.5px;
+    }
+  }
+}
