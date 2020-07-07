@@ -20,5 +20,7 @@
     * 20200701 - 1.0 Version - 修復賣家訂單查詢功能
     * 20200706 - 2.0 Version - 修復會員購物清單
         * 20200706 - 2.1 Version - 修復賣家權限升級功能
+        * 20200707 - 2.2 Version - 購物車client bug 修復 / 購物車server api 修復
+        
 * 可購買 code 版權
 * [聯繫方式](https://treefonts.com/)
