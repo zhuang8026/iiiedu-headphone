@@ -33,7 +33,7 @@ function SuperSellerAddItems(props) {
     const [itemsfeature, setItemsFeature] = useState()           // 商品 重點特色
 
     // console.log(itemsbrand);
-    // console.log('itemMoreImg:', itemMoreImg)
+    console.log('itemMoreImg:', itemMoreImg);
 
     // setItemImg 商品單張圖片上傳 （one）
     const myImgEditCallback = (data) =>{
@@ -85,7 +85,8 @@ function SuperSellerAddItems(props) {
                 console.log(obj);
                 let datafilesName = [];
                 for(let s = 0; s<obj.length; s++) {
-                    datafilesName.push(obj[s])
+                    console.log(obj[s].filename)
+                    datafilesName.push(obj[s].filename)
                     // moreDataFiles.append('file', data[i])
                 }
                 setitemMoreImg(datafilesName)
@@ -117,6 +118,7 @@ function SuperSellerAddItems(props) {
                 itemsEndurance :itemsEndurance,
                 itemswatertight :itemswatertight,
                 itemsfeature :itemsfeature,
+                itemMoreImg: itemMoreImg,
             }),
             headers: new Headers({
                 'Accept': 'application/json',
