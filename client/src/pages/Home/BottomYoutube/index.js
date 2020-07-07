@@ -19,10 +19,11 @@ function BottomYoutube(props) {
                         return (
                             <li key={index}>
                                 <Link to={data.piclinkUrl}>
-                                    <div className="imgCover">
+                                    {/* <div className="imgCover">
                                         <i className="iconfont icon-search"></i>
-                                    </div>
-                                    <img src={data.picUrl} alt="product"/>
+                                    </div> */}
+                                    {/* <img src={data.picUrl} alt="product"/> */}
+                                    <iframe width="100%" height="280px" src={data.picUrl} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </Link>
                             </li>
                         )

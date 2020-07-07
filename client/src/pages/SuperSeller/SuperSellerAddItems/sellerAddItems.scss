@@ -31,11 +31,12 @@
         .updata_itemImg {
             padding: 16px 0;
             display: flex;
+            justify-content: space-between;
             .updata_itemImg_contaienr {
-                // width: 50%;
+                width: 49%;
                 border: 1px solid #e8e9e2;
                 padding: 16px;
-                margin-right: 16px;
+                // margin-right: 16px;
                 img {
                     width: 100px;
                     height: 100px;

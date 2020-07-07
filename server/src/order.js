@@ -29,14 +29,13 @@ router.get("/list", async (req, res) => {
 // router.post("/addOrderDetails", upload.none(), async (req, res) => {
 router.post("/addOrderDetails", async (req, res) => {
   // const mycart = req.body.mycartDisplay;
-  const mycart = req.body.req.body.mycart;
+  const mycart = req.body.mycart;
   // let total = 0;
   // mycart.forEach(el=>{
   //   total += parseInt(el.itemPrice);
   // });
 
-  const sql1 =
-    "INSERT INTO `orders`(`userId`,`total`,`orderRemark`,`delivery`,`payment`) VALUES(?,?,?,?,?)";
+  const sql1 = "INSERT INTO `orders`(`userId`,`total`,`orderRemark`,`delivery`,`payment`) VALUES(?,?,?,?,?)";
   const [rr] = await db.query(sql1, [
     req.body.userId,
     // total,

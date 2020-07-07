@@ -119,6 +119,9 @@ main {
     main .members_all {
         width: 90%;
     }
+    main .members_all .members_left .members_header .mem_top_inner .men_text {
+        padding-left: 18px;
+    }
 } /* 電腦 */
 @media (min-width:1024px) and (max-width:1365px){
     main .members_all {
