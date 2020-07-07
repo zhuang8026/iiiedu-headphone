@@ -29,48 +29,28 @@ app.use('/avatar', express.static('uploads'));
 // function
 // 新增商品
 const doAddItems = async (req) => {
-    let itemName = '111';
-    let itemImg = '111';
-    let colorid = 1;
-    let itemsbrand = '111';
-    let itemstype = '111';
-    let itemPrice = 1;
-    let itemQty = 1;
-    let itemsales = 1;
-    let itemsstar = 1;
-    let itemstoreNumber = 1;
-    let itemscontent = '111';
-    let itemsweight = '111';
-    let itemsdrive = '111';
-    let itemsfrequency = '111';
-    let itemsSensitivity = '111';
-    let itemsconnect = '111';
-    let itemsmains = '111';
-    let itemsEndurance = '111';
-    let itemswatertight = '111';
-    let itemsfeature = '111';
-    let _files = ['cgdkddkdpv.jpeg', 'coknhlkgdv.png', 'coknhlkocv.jpeg'];
-    // 有資料過來就改成 req.body.XXXXXXXXX;
-    // let itemName = req.body.itemName;
-    // let itemImg = req.body.itemImg;
-    // let colorid = req.body.colorid;
-    // let itemsbrand = req.body.itemsbrand;
-    // let itemstype = req.body.itemstype;
-    // let itemPrice = req.body.itemPrice;
-    // let itemQty = req.body.itemQty;
-    // let itemsales = req.body.itemsales;
-    // let itemsstar = req.body.itemsstar;
-    // let itemstoreNumber = req.body.itemstoreNumber;
-    // let itemscontent = req.body.itemscontent;
-    // let itemsweight = req.body.itemsweight;
-    // let itemsdrive = req.body.itemsdrive;
-    // let itemsfrequency = req.body.itemsfrequency;
-    // let itemsSensitivity = req.body.itemsSensitivity;
-    // let itemsconnect = req.body.itemsconnect;
-    // let itemsmains = req.body.itemsmains;
-    // let itemsEndurance = req.body.itemsEndurance;
-    // let itemswatertight = req.body.itemswatertight;
-    // let itemsfeature = req.body.itemsfeature;
+    let itemName = req.body.itemName;
+    let itemImg = req.body.itemImg;
+    let colorid = req.body.colorid;
+    let itemsbrand = req.body.itemsbrand;
+    let itemstype = req.body.itemstype;
+    let itemPrice = req.body.itemPrice;
+    let itemQty = req.body.itemQty;
+    let itemsales = req.body.itemsales;
+    let itemsstar = req.body.itemsstar;
+    let itemstoreNumber = req.body.itemstoreNumber;
+    let itemscontent = req.body.itemscontent;
+    let itemsweight = req.body.itemsweight;
+    let itemsdrive = req.body.itemsdrive;
+    let itemsfrequency = req.body.itemsfrequency;
+    let itemsSensitivity = req.body.itemsSensitivity;
+    let itemsconnect = req.body.itemsconnect;
+    let itemsmains = req.body.itemsmains;
+    let itemsEndurance = req.body.itemsEndurance;
+    let itemswatertight = req.body.itemswatertight;
+    let itemsfeature = req.body.itemsfeature;
+    let _files = req.body.itemMoreImg;
+
     const output = {
         success: false,
         insertId:null,
@@ -88,13 +68,15 @@ const doAddItems = async (req) => {
             output.results = results;
             // doSearchItems(itemName,_files);
             // output.rows = outputWithId.rows;
-            let _r = `SELECT LAST_INSERT_ID()`;            
+            
+            let _r = `SELECT LAST_INSERT_ID()`;                      
             const [r1] = await db.query(_r);
             if (r1) output.insertId = r1[0]['LAST_INSERT_ID()'];
             console.log('結果 ======> ', r1[0]['LAST_INSERT_ID()'])
-            doAddImgsOnDatabase(r1[0]['LAST_INSERT_ID()'], _files);            
-        })
+            doAddImgsOnDatabase(r1[0]['LAST_INSERT_ID()'], _files);    
 
+        })
+        return output;
 }
 
 // 新增資料庫圖片
@@ -127,8 +109,8 @@ const doAddImgsOnDatabase = async (_id, _files) => {
         }
     }
     db.query(sql, [itemId, multiple_Image, multiple_Image01, multiple_Image02, multiple_Image03, multiple_Image04])
-        .then(([r]) => {
-            output.rows = r;
+        .then(([results]) => {
+            output.rows = results;
             output.success = true;
             console.log('output3 =========> ', output);
             // return output;
@@ -157,7 +139,7 @@ router.post('/add', async (req, res) => {
 // (可上傳)
 // 上傳檔案
 // http://localhost:3009/superseller_callback/try-upload/
-router.post('/try-upload/', upload.array('avatar'), async (req, res) => {
+router.post('/try-upload/', upload.array('file'), async (req, res) => {
     console.log('========== react(post) superseller_plus -> 上傳檔案 ==========')
     // let point = 0;
     res.json(req.files)
@@ -165,7 +147,7 @@ router.post('/try-upload/', upload.array('avatar'), async (req, res) => {
 
 //================================================== 測試區 ==============================================================
 
-
+// http://localhost:3009/superseller_callback/try-post
 router.post('/try-post', (req, res) => {
     req.body.contentType = req.get('Content-Type'); // 取得檔頭  
     req.body.pageTitle = '測試表單-Json'

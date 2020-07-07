@@ -15,7 +15,7 @@ var storage = multer.diskStorage({
   }
 })
 
-var uploadOne = multer({ storage: storage }).single('file')
-// var upload = multer({ storage: storage }).array('file')
+// var upload = multer({ storage: storage }).single('file'); // 單個
+var uploadMore = multer({ storage: storage }).array('file'); // 多個
 
-module.exports = uploadOne;
+module.exports = uploadMore;

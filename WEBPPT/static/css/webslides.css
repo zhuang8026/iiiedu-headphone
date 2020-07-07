@@ -773,6 +773,8 @@ Auto-fill & Equal height === */
       width: 30%; }
     .grid.sm .column:nth-child(2) {
       width: 70%; }
+    .grid.sma .column:nth-child(2) {
+        width: 80%; }
     .grid.ms .column:nth-child(1) {
       width: 70%; }
     .grid.ms .column:nth-child(2) {

@@ -33,7 +33,7 @@ import '../../../../assets/scss/blog_standard.scss'
 // -------------------- func --------------------
 
 function BlogStandard(props) {
-  const { userdata, setUserdata, name, setName } = props.allprops;
+  const { userdata, setUserdata, name, setName, listUpdate, setListUpdate } = props.allprops;
   return (
     <Fragment>
     <>
@@ -79,7 +79,14 @@ function BlogStandard(props) {
             />
             <BlogAsideSubscribe />
             <BlogAsideRecent 
-              userdata={userdata}
+              allprops={{
+                userdata,
+                setUserdata,
+                name,
+                setName,
+                listUpdate,
+                setListUpdate,
+              }}
             />
           </div>
         </div>

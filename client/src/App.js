@@ -77,9 +77,9 @@ import MyLoading from './components/Loading'
 
 function App() {
   // navbar 
-  const [lovechange, setlovechange]=useState([]);
-  const [compareschange, setcompareschange]=useState([]);
-  const [cartchange, setcartchange]=useState([]);
+  const [lovechange, setlovechange] = useState([]);
+  const [compareschange, setcompareschange] = useState([]);
+  const [cartchange, setcartchange] = useState([]);
 
   // 會員
   const [userdata, setUserdata] = useState([])
@@ -108,6 +108,9 @@ function App() {
   const [orderPayment, setOrderPayment] = useState('1')
   const [orderCard, setOrderCard] = useState('')
   const [orderId, setOrderId] = useState([])
+
+  // BLOG
+  const [listUpdate, setListUpdate] = useState([]);
 
   // 登入 & 狀態判斷
   const loginProcess = (loginSuccessCallback) => {
@@ -181,9 +184,9 @@ function App() {
     <Router>
       {/* 過場動畫 */}
       {/* <MyLoading/> */}
-      
+
       <header>
-        <MyNavBar 
+        <MyNavBar
           lovechange={lovechange}
           compareschange={compareschange}
           cartchange={cartchange}
@@ -194,7 +197,7 @@ function App() {
           userdata={userdata}
           setUserdata={setUserdata}
         />
-        <MyMenu 
+        <MyMenu
           cartchange={cartchange}
           setcartchange={setcartchange}
         />
@@ -216,6 +219,7 @@ function App() {
               setItemsdata={setItemsdata}
               itemsid={itemsid}
               setItemsid={setItemsid}
+              lovechange={lovechange}
               setlovechange={setlovechange}
               setcompareschange={setcompareschange}
               setcartchange={setcartchange}
@@ -228,6 +232,7 @@ function App() {
               setlovechange={setlovechange}
               setcompareschange={setcompareschange}
               setcartchange={setcartchange}
+              lovechange={lovechange}
             />
           </Route>
 
@@ -269,13 +274,13 @@ function App() {
 
           {/* 超級賣家 - William - 20200703 */}
           <Route exact path="/SuperSeller">
-          
+
             {/* order組件 在 這裡面  */}
             <WiSeller
               allprops={{
                 userdata,
                 setUserdata,
-                sellerOrderData, 
+                sellerOrderData,
                 setSellerOrderData
               }}
             />
@@ -309,7 +314,7 @@ function App() {
               }}
             />
           </Route>
-          
+
           <Route exact path="/SuperSeller/SuperSellerWallet">
             <SuperSellerWallet
               allprops={{
@@ -345,10 +350,10 @@ function App() {
           </Route>
 
           <Route path="/KMembers/MembersCartList">
-            <MembersCartList 
-              userdata={userdata} 
-              setUserdata={setUserdata} 
-              membersCartOrderData={membersCartOrderData} 
+            <MembersCartList
+              userdata={userdata}
+              setUserdata={setUserdata}
+              membersCartOrderData={membersCartOrderData}
               setMembersCartOrderData={setMembersCartOrderData}
             />
           </Route>
@@ -359,7 +364,7 @@ function App() {
                 userdata,
                 setUserdata,
                 name,
-                setName,membersCartOrderData, 
+                setName, membersCartOrderData,
                 setMembersCartOrderData
               }}
             />
@@ -377,6 +382,8 @@ function App() {
                 setUserdata,
                 name,
                 setName,
+                listUpdate,
+                setListUpdate,
               }}
             />
           </Route>
@@ -387,6 +394,8 @@ function App() {
                 setUserdata,
                 name,
                 setName,
+                listUpdate,
+                setListUpdate,
               }}
             />
           </Route>
@@ -397,6 +406,8 @@ function App() {
                 setUserdata,
                 name,
                 setName,
+                listUpdate,
+                setListUpdate,
               }}
             />
           </Route>
@@ -407,6 +418,8 @@ function App() {
                 setUserdata,
                 name,
                 setName,
+                listUpdate,
+                setListUpdate,
               }}
             />
           </Route>
@@ -417,6 +430,8 @@ function App() {
                 setUserdata,
                 name,
                 setName,
+                listUpdate,
+                setListUpdate,
               }}
             />
           </Route>
@@ -562,15 +577,15 @@ function App() {
           <Route path="/about/WiOurClients">
             <WiOurClients />
           </Route>
-          
+
           {/* 比較頁面 */}
           <Route path="/Compare">
             <Compare setcompareschange={setcompareschange} />
           </Route>
-          
+
           {/* 我的最愛 */}
           <Route path="/MyFav">
-            <MyFav setlovechange={setlovechange}/>
+            <MyFav setlovechange={setlovechange} />
           </Route>
 
           {/* ProtectdRoute 這是 utils */}

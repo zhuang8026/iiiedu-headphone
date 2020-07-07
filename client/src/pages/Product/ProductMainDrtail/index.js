@@ -85,6 +85,9 @@ function ProductMainDrtail(props) {
                       <img src={`/items_img/${detailitems.itemImg}`} className="swiper-lazy" alt="商品圖片"/>
                     </div>
                     <div className="items-img-swiper">
+                      <img src={`/items_img/${detailitems.multiple_Image}`} className="swiper-lazy" alt="商品圖片"/>
+                    </div>
+                    <div className="items-img-swiper">
                       <img src={`/items_img/${detailitems.multiple_Image01}`} className="swiper-lazy" alt="商品圖片"/>
                     </div>
                     <div className="items-img-swiper">
@@ -92,9 +95,6 @@ function ProductMainDrtail(props) {
                     </div>
                     <div className="items-img-swiper">
                       <img src={`/items_img/${detailitems.multiple_Image03}`} className="swiper-lazy" alt="商品圖片"/>
-                    </div>
-                    <div className="items-img-swiper">
-                      <img src={`/items_img/${detailitems.multiple_Image04}`} className="swiper-lazy" alt="商品圖片"/>
                     </div>
                   </Swiper>
                 </div>
