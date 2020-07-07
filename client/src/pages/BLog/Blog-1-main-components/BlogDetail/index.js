@@ -37,7 +37,7 @@ import '../../../../assets/scss/blog_detail.scss'
 // -------------------- func --------------------
 
 function BlogDetail(props) {
-    const { userdata, setUserdata, name, setName } = props.allprops;
+    const { userdata, setUserdata, name, setName, listUpdate, setListUpdate } = props.allprops;
     // const { match } = props;
     // let {id} = match.params;
     // let { id } = useParams()
@@ -110,10 +110,17 @@ function BlogDetail(props) {
                                         setName
                                     }}
                                 />
-                            )}                        
+                            )}
                         <BlogAsideSubscribe />
                         <BlogAsideRecent
-                            userdata={userdata}
+                            allprops={{
+                                userdata,
+                                setUserdata,
+                                name,
+                                setName,
+                                listUpdate,
+                                setListUpdate,
+                            }}
                         />
                     </div>
                 </div>

@@ -79,7 +79,14 @@ function BlogStandard(props) {
             />
             <BlogAsideSubscribe />
             <BlogAsideRecent 
-              userdata={userdata}
+              allprops={{
+                userdata,
+                setUserdata,
+                name,
+                setName,
+                listUpdate,
+                setListUpdate,
+              }}
             />
           </div>
         </div>
