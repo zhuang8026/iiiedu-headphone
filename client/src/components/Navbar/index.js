@@ -30,7 +30,7 @@ function MyNavBar(props) {
     const cart = JSON.parse(localStorage.getItem('cart'))
 
     // console.log('love',love);
-    // console.log('compare',compares);
+    // console.log('lovechange',lovechange);
 
     // 登出
     const logoutCallback = () => {
@@ -117,9 +117,18 @@ function MyNavBar(props) {
             <Link className="otis-login-opener" to="/KMembers/">
                 <p className="IconP">會員中心</p>
             </Link>
-            <Link className="otis-login-opener" to="/SuperSeller">
+            {userdata.isActivated==1 && userdata.shopopen==1 ? (
+                <>
+                    <Link className="otis-login-opener" to="/SuperSeller">
+                        <p className="IconP">我的賣場</p>
+                    </Link>
+                </>
+            ):(
+                <> </>
+            )}
+            {/* <Link className="otis-login-opener" to="/SuperSeller">
                 <p className="IconP">我的賣場</p>
-            </Link>
+            </Link> */}
             <p className="IconP" onClick={logoutCallback}>登出</p>
         </Fragment>
     );

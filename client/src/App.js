@@ -219,6 +219,7 @@ function App() {
               setItemsdata={setItemsdata}
               itemsid={itemsid}
               setItemsid={setItemsid}
+              lovechange={lovechange}
               setlovechange={setlovechange}
               setcompareschange={setcompareschange}
               setcartchange={setcartchange}
@@ -231,6 +232,7 @@ function App() {
               setlovechange={setlovechange}
               setcompareschange={setcompareschange}
               setcartchange={setcartchange}
+              lovechange={lovechange}
             />
           </Route>
 

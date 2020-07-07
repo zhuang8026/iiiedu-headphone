@@ -73,9 +73,10 @@ const doAddItems = async (req) => {
             const [r1] = await db.query(_r);
             if (r1) output.insertId = r1[0]['LAST_INSERT_ID()'];
             console.log('結果 ======> ', r1[0]['LAST_INSERT_ID()'])
-            doAddImgsOnDatabase(r1[0]['LAST_INSERT_ID()'], _files);            
-        })
+            doAddImgsOnDatabase(r1[0]['LAST_INSERT_ID()'], _files);    
 
+        })
+        return output;
 }
 
 // 新增資料庫圖片
@@ -110,7 +111,7 @@ const doAddImgsOnDatabase = async (_id, _files) => {
     db.query(sql, [itemId, multiple_Image, multiple_Image01, multiple_Image02, multiple_Image03, multiple_Image04])
         .then(([results]) => {
             output.rows = results;
-            // output.success = true;
+            output.success = true;
             console.log('output3 =========> ', output);
             // return output;
             // res.json(output.rows);

@@ -10,7 +10,7 @@ import ProductMainDrtail from '../ProductMainDrtail';
 import Pagination from '../Pagination';
 
 function ProductMain(props) {
-  const { itemsdata, setItemsdata, itemsid, setItemsid, setlovechange, setcompareschange, setcartchange} = props;
+  const { itemsdata, setItemsdata, itemsid, setItemsid, lovechange, setlovechange, setcompareschange, setcartchange} = props;
   const [detailitems, setdetailitems] = useState('');
   const [currentTotalPages, setCurrentTotalPages] = useState(); // 總page
   const [currentPage, setCurrentPage] = useState();             // 此刻的頁數
@@ -24,7 +24,8 @@ function ProductMain(props) {
   const searchParams = new URLSearchParams(props.location.search)
   let keyword = searchParams.get('keyword')
 
-  console.log(itemsdata)
+  // console.log(itemsdata)
+  console.log('lovechange:',lovechange)
   // console.log('history', props.history.location.state.getname);
 
   // 加入購物車
@@ -447,6 +448,8 @@ function ProductMain(props) {
                         <p>{data.itemName}</p>
                         {/* <p className="item_inner_new">NEW</p> */}
                         <i className="item_inner_like iconfont icon-like"></i>
+                        {/* <i className="item_inner_like iconfont icon-like" className={(lovechange.map((obj, index)=>obj.itemid == data.itemId ? 'icon-like':''))}></i> */}
+                        {/* <div key={number} className={(number === currentPage ? 'round-effect activepage' : 'round-effect')} onClick={()=>{ setCurrentPage(number)}}></div> */}
                       </li>
                       <li className="item_inner_li">
                         <p className="">{data.itemsbrand}</p>

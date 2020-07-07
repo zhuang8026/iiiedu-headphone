@@ -218,7 +218,20 @@ function SuperSellerAddItems(props) {
                                                             }
                                                         />
                                                     </div>
-                                                    <img src="/logo512.png" alt="圖片上傳"/>
+                                                    {itemMoreImg.length>0 ?(
+                                                        <>
+                                                            {itemMoreImg.map((data, index)=>{
+                                                                return(
+                                                                    <img src={`/items_img/${data}`} alt="圖片上傳" key={index}/>
+                                                                )   
+                                                            })}
+                                                        </>
+                                                    ):(
+                                                        <>
+                                                            <img src="/logo512.png" alt="圖片上傳"/>
+                                                        </>
+                                                    )}
+                                                    
                                                 </div>
                                             </div>
                                         </div>
