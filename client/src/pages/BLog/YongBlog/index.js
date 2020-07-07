@@ -24,18 +24,20 @@ import BlogStandard from '../Blog-1-main-components/BlogStandard'
 // -------------------- func --------------------
 
 function YongBlog(props) {
-  const { userdata, setUserdata, name, setName } = props.allprops;
+  const { userdata, setUserdata, name, setName, listUpdate, setListUpdate } = props.allprops;
   return (
     <Route>
       <Fragment>
         <main>
           <BlogStandard
             allprops={{
-              userdata,
-              setUserdata,
-              name,
-              setName
-            }}
+                userdata,
+                setUserdata,
+                name,
+                setName,
+                listUpdate,
+                setListUpdate,
+              }}
           />
         </main>
       </Fragment>

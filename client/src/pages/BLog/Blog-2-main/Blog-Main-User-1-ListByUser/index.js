@@ -37,7 +37,7 @@ import PrevPageHover from '../../../../assets/img/blog-img/blog-standard/prev-pa
 
 function BlogMainUserListByUser(props) {
     const { confirm } = Modal;
-    const { userdata, setUserdata, name, setName } = props.allprops;
+    const { userdata, setUserdata, name, setName, listUpdate, setListUpdate } = props.allprops;
     const [listPage, setListPage] = useState([])
     const [currentPage, setCurrentPage] = useState('')
     const [listUserBlogdata, setlistUserBlogdata] = useState([])
@@ -54,7 +54,7 @@ function BlogMainUserListByUser(props) {
         searchMethod()
     }, [userdata, searchOrder, searchSort, currentPage])
     useEffect(() => {
-
+        
     }, [listUserBlogdata])
     useEffect(() => {
         console.log('更新searchInput -> ', searchInput)
@@ -197,6 +197,7 @@ function BlogMainUserListByUser(props) {
             })
             .then((response) => {
                 setlistUserBlogdata(response.rows)
+                setListUpdate(response.rows)
                 let pageArr = [];
                 for (let i = 1; i <= response.totalPages; i++) {
                     pageArr.push(i);

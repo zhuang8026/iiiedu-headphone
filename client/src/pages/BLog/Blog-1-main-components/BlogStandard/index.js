@@ -33,7 +33,7 @@ import '../../../../assets/scss/blog_standard.scss'
 // -------------------- func --------------------
 
 function BlogStandard(props) {
-  const { userdata, setUserdata, name, setName } = props.allprops;
+  const { userdata, setUserdata, name, setName, listUpdate, setListUpdate } = props.allprops;
   return (
     <Fragment>
     <>
