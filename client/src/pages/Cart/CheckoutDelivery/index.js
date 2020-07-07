@@ -7,6 +7,16 @@ import {
   withRouter,
 } from 'react-router-dom'
 
+import HDHCT from '../../../assets/img/cart/新竹物流.png'
+import HDTPE from '../../../assets/img/cart/台灣宅配通.jpg'
+import HDTCat from '../../../assets/img/cart/黑貓宅急便.jpg'
+import HDKerry from '../../../assets/img/cart/嘉里大榮物流公司.png'
+
+import STS711 from '../../../assets/img/cart/711.png' //7-11圖
+import STSFamilyMart from '../../../assets/img/cart/FamilyMart.jpg' //全家圖
+import STSHiLife from '../../../assets/img/cart/Hi-Life.png' //萊爾富圖
+import STSOK from '../../../assets/img/cart/OKmart.jpg' //OK圖
+
 function CheckoutDelivery(props) {
   // const [orderDelivery, setOrderDelivery] = useState('1')
   const {
@@ -79,9 +89,38 @@ function CheckoutDelivery(props) {
           {orderDelivery === '1' && (
             <div>
               <ul>
-                <li>
+                {/* <li>
                   <h1>宅配需知</h1>
+                </li> */}
+                <li>
+                  <label htmlFor="HCT">
+                    <input type="radio" name="HD" id="HCT" value="HCT" />
+                    新竹物流
+                    <img src={HDHCT} />
+                  </label>
                 </li>
+                <li>
+                  <label htmlFor="TPE">
+                    <input type="radio" name="HD" id="TPE" value="TPE" />
+                    台灣宅配通
+                    <img src={HDTPE} />
+                  </label>
+                </li>
+                <li>
+                  <label htmlFor="TCat">
+                    <input type="radio" name="HD" id="TCat" value="TCat" />
+                    黑貓宅急便
+                    <img src={HDTCat} />
+                  </label>
+                </li>
+                <li>
+                  <label htmlFor="Kerry">
+                    <input type="radio" name="HD" id="Kerry" value="Kerry" />
+                    嘉里大榮物流公司
+                    <img src={HDKerry} />
+                  </label>
+                </li>
+
                 <li>涵蓋台灣本島及離島，國外暫不提供本項服務</li>
                 <li>
                   在消費者訂單下訂後，本公司需3-5個工作天處理方能配送到貴府上，若有不便之處敬請見諒。
@@ -99,8 +138,51 @@ function CheckoutDelivery(props) {
           {orderDelivery === '2' && (
             <div>
               <ul>
-                <li>
+                {/* <li>
                   <h1>店到店須知</h1>
+                </li> */}
+                <li>
+                  <label htmlFor="711">
+                    <input
+                      type="radio"
+                      name="shopToShop"
+                      id="711"
+                      value="711"
+                    />
+                    7-11
+                    <img src={STS711} />
+                  </label>
+                </li>
+                <li>
+                  <label htmlFor="FamilyMart">
+                    <input
+                      type="radio"
+                      name="shopToShop"
+                      id="FamilyMart"
+                      value="FamilyMart"
+                    />
+                    全家
+                    <img src={STSFamilyMart} />
+                  </label>
+                </li>
+                <li>
+                  <label htmlFor="HiLife">
+                    <input
+                      type="radio"
+                      name="shopToShop"
+                      id="HiLife"
+                      value="HiLife"
+                    />
+                    萊爾富
+                    <img src={STSHiLife} />
+                  </label>
+                </li>
+                <li>
+                  <label htmlFor="OK">
+                    <input type="radio" name="shopToShop" id="OK" value="OK" />
+                    OKmart
+                    <img src={STSOK} />
+                  </label>
                 </li>
                 <li>涵蓋台灣本島及離島，國外暫不提供本項服務</li>
                 <li>本店寄貨，他店取貨</li>
