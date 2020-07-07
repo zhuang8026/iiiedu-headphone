@@ -105,7 +105,9 @@ function MyFav(props) {
                                   setlovechange(newList)
                                 }}
                               ></span>
-                              <img src={`/items_img/${data.itemImg}`}/>
+                                <Link to={`/ProductDetail/${data.itemid}`}>
+                                  <img src={`/items_img/${data.itemImg}`} alt="image"/>
+                                </Link>
                               <h3>{data.itemBrand}</h3>
                               <h3>
                                 <Link 
@@ -113,7 +115,7 @@ function MyFav(props) {
                                   to={`/ProductDetail/${data.itemid}`}
                                   >{data.itemName}</Link>
                                 </h3>
-                              <h3>{data.itemstype == 1 ? 'Bluetooth': 'Wired'}</h3>
+                              <h3>{data.itemstype == 1 ? '耳罩式': '入耳式'}</h3>
                               </div>
                           </div>
                           <div><h4>{`$${data.itemPrice}`}</h4></div>
