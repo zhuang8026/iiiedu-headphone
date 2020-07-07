@@ -83,10 +83,12 @@ function SuperSellerAddItems(props) {
             })
             .then(obj=>{
                 console.log(obj);
+                let datafilesName = [];
                 for(let s = 0; s<obj.length; s++) {
+                    datafilesName.push(obj[s])
                     // moreDataFiles.append('file', data[i])
                 }
-                setitemMoreImg(obj.filename)
+                setitemMoreImg(datafilesName)
             })
     }
 
