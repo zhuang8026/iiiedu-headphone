@@ -34,6 +34,33 @@ function SuperSellerAddItems(props) {
 
     // console.log(itemsbrand);
 
+
+    // 商品單張圖片上傳 （one）
+    const myImgEditCallback = (data) =>{
+        const datafiles = new FormData();
+        datafiles.append('file', data);
+        // console.log(data);
+
+        fetch('http://localhost:3009/supersellerEdit/upload', {
+            method: 'POST',
+            body: datafiles,
+            // headers: new Headers({
+            //     'Accept': 'application/json',
+            //     'Content-Type': 'application/json',
+            // })
+        })
+            .then((res)=>{
+                console.log(res)
+                console.log(res.statusText)
+                return res.json() // json()	返回 Promise，resolves 是 JSON 物件
+            })
+            .then(obj=>{
+                console.log(obj);
+                setItemImg(obj.filename)
+            })
+    }  
+
+    // 商品資料上傳 （文字）
     const SuperSellerAddItemsCallback = () => {
         fetch('http://localhost:3009/superseller_plus/add', {
             method: 'post',
@@ -69,6 +96,7 @@ function SuperSellerAddItems(props) {
                 console.log('response', response);
             })
     }
+
 
     return (
         <main>
@@ -109,10 +137,20 @@ function SuperSellerAddItems(props) {
                                                             type="file"
                                                             id="itemImg"
                                                             // multiple={true}
-                                                            onChange={(event) => setItemImg(event.target.value)}
+                                                            // onChange={(event) => setItemImg(event.target.value)}
+                                                            onChange={(event) => {
+                                                                setItemImg(event.target.files[0].name)
+                                                                myImgEditCallback(event.target.files[0])
+                                                            }}
                                                         />
                                                     </div>
-                                                    <img src="/logo512.png" alt="圖片上傳"/>
+
+                                                    {itemImg? (
+                                                        <img src={`/items_img/${itemImg}`} alt="image"/>
+                                                    ):(
+                                                        <img src="/logo512.png" alt="圖片上傳"/>
+                                                    )}
+                                                    
                                                 </div>
                                                 <div className="updata_itemImg_contaienr">
                                                     <div className="updata_itemImg_inner">
@@ -120,7 +158,7 @@ function SuperSellerAddItems(props) {
                                                         <input 
                                                             type="file"
                                                             id="itemImg"
-                                                            // multiple={true}
+                                                            multiple={true}
                                                             onChange={(event) => setItemImg(event.target.value)}
                                                         />
                                                     </div>

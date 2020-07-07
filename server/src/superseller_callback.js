@@ -49,7 +49,7 @@ const doAddItems = async (req) => {
     let itemsEndurance = '111';
     let itemswatertight = '111';
     let itemsfeature = '111';
-    let _files=['cgdkddkdpv.jpeg','coknhlkgdv.png','coknhlkocv.jpeg'];
+    let _files = ['cgdkddkdpv.jpeg', 'coknhlkgdv.png', 'coknhlkocv.jpeg'];
     // 有資料過來就改成 req.body.XXXXXXXXX;
     // let itemName = req.body.itemName;
     // let itemImg = req.body.itemImg;
@@ -73,45 +73,32 @@ const doAddItems = async (req) => {
     // let itemsfeature = req.body.itemsfeature;
     const output = {
         success: false,
+        insertId:null,
         rows: []
     }
-    const sql = "INSERT INTO items (`itemName`,`itemImg`, `colorid`, `itemsbrand`, `itemstype`,`itemPrice`, `itemQty`, `itemsales`, `itemsstar`, `itemstoreNumber`,`itemscontent`, `itemsweight`, `itemsdrive`, `itemsfrequency`, `itemsSensitivity`,`itemsconnect`, `itemsmains`, `itemsEndurance`, `itemswatertight`, `itemsfeature`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    const sql = "INSERT INTO items (`itemName`,`itemImg`, `colorid`, `itemsbrand`, `itemstype`,`itemPrice`, `itemQty`, `itemsales`, `itemsstar`, `itemstoreNumber`,`itemscontent`, `itemsweight`, `itemsdrive`, `itemsfrequency`, `itemsSensitivity`,`itemsconnect`, `itemsmains`, `itemsEndurance`, `itemswatertight`, `itemsfeature`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
     db.query(sql, [
         itemName, itemImg, colorid, itemsbrand, itemstype,
         itemPrice, itemQty, itemsales, itemsstar, itemstoreNumber,
         itemscontent, itemsweight, itemsdrive, itemsfrequency, itemsSensitivity,
         itemsconnect, itemsmains, itemsEndurance, itemswatertight, itemsfeature
     ])
-        .then(([results]) => {
+        .then(async ([results]) => {
             output.success = true;
-            
-            doSearchItems(itemName,_files);
+            output.results = results;
+            // doSearchItems(itemName,_files);
             // output.rows = outputWithId.rows;
-            // console.log('結果 ======> ', outputWithId)
-            // return output;
-            // res.json(output);
+            let _r = `SELECT LAST_INSERT_ID()`;            
+            const [r1] = await db.query(_r);
+            if (r1) output.insertId = r1[0]['LAST_INSERT_ID()'];
+            console.log('結果 ======> ', r1[0]['LAST_INSERT_ID()'])
+            doAddImgsOnDatabase(r1[0]['LAST_INSERT_ID()'], _files);            
         })
 
 }
 
-// 查詢商品id
-const doSearchItems = async (_itemName,_files) => {
-    let itemName = _itemName;
-    const output = {
-        success: false,
-        rows: []
-    }
-    let _r = `SELECT LAST_INSERT_ID();`;
-    const [r1] = await db.query(_r);
-    if (r1) output.rows = r1;
-    console.log('last ====> ', output.rows[0]['LAST_INSERT_ID()']);
-    doAddImgsOnDatabase(output.rows[0]['LAST_INSERT_ID()'],_files);
-    
-    // return output_2;
-}
-
 // 新增資料庫圖片
-const doAddImgsOnDatabase = async (_id,_files) => {
+const doAddImgsOnDatabase = async (_id, _files) => {
     const output = {
         success: false,
         rows: []
@@ -143,7 +130,7 @@ const doAddImgsOnDatabase = async (_id,_files) => {
         .then(([r]) => {
             output.rows = r;
             output.success = true;
-            console.log('output3 =========> ',output);
+            console.log('output3 =========> ', output);
             // return output;
             // res.json(output.rows);
         })
@@ -151,25 +138,25 @@ const doAddImgsOnDatabase = async (_id,_files) => {
 }
 
 //================================================== root ==============================================================
-// http://localhost:3009/superseller_plus/
+// http://localhost:3009/superseller_callback/
 router.get('/', (req, res) => {
-    res.send('superseller_plus root 測試ok');
+    res.send('superseller_callback root 測試ok');
 });
 
 //================================================== 新增 ==============================================================
 // (測試ok)
-// 新增產品
-// http://localhost:3009/superseller_plus/add
+// 新增產品+圖片檔名寫入資料庫
+// http://localhost:3009/superseller_callback/add
 router.post('/add', async (req, res) => {
     const output = await doAddItems(req);
-    
+
     res.json(output);
 })
 
 //================================================== 圖片上傳 ==============================================================
 // (可上傳)
 // 上傳檔案
-// http://localhost:3009/superseller_plus/try-upload/
+// http://localhost:3009/superseller_callback/try-upload/
 router.post('/try-upload/', upload.array('avatar'), async (req, res) => {
     console.log('========== react(post) superseller_plus -> 上傳檔案 ==========')
     // let point = 0;

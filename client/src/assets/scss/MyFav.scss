@@ -46,9 +46,10 @@ main {
               }
               h3 {
                 // padding-left:42px;
+                width: 100%;
                 font-weight: bold;
                 padding: 0 16px;
-                .love-a{
+                .love-a {
                   color: $btn-color-s;
                 }
               }
@@ -166,6 +167,13 @@ main {
   main {
     .MyFav_container {
       max-width: 95%;
+      .MyFav_list {
+        .MyFav_pwa_r_inner {
+          .MyFav_card {
+            width: 55%;
+          }
+        }
+      }
     }
   }
 } /* iPad */
