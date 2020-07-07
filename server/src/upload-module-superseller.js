@@ -1,8 +1,12 @@
-const multer = require('multer');
+var express = require('express');
+var app = express();
+var multer = require('multer')
+var cors = require('cors');
 
 const {v4: uuidv4 } = require('uuid');
 
 console.log(uuidv4());
+app.use(cors())
 
 // 自訂檔案類型規則
 const extMap = {
