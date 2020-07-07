@@ -1,6 +1,8 @@
 // 函式元件
 import React, { Fragment } from 'react';
 import { withRouter } from 'react-router-dom'
+import ConnectHeader from './Connectheader'
+import Connectus from './Connectus'
 
 // scss
 // import './_menu.scss'
@@ -8,7 +10,8 @@ import { withRouter } from 'react-router-dom'
 function WiConnect(props) {
     return (
         <Fragment>
-        聯繫我們
+       <ConnectHeader />
+       <Connectus />
         </Fragment>
     )
 

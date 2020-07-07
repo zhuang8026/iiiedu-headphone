@@ -35,6 +35,11 @@ Wiq[5].addEventListener('click',()=>{
 
 
     return (
+        <>
+        <div className="AboutWarrantyCrumb">
+
+        <Link to="/">首頁</Link>/  <Link to="/about/WiProblem">常見問題</Link>
+        </div>
         
   <div className="commonquestion">
       <ul>
@@ -43,7 +48,7 @@ Wiq[5].addEventListener('click',()=>{
                 搬不動家具怎麼半 <span class="iconfont icon-down_3"></span>
                 </div>
                 <div className="WiA">
-                大部份的商品都是平整包裝，你可以在商品頁面找到包裝的尺寸大小、重量等相關資訊，方便你在購買後自己搬回家，同時省下更多費用。
+               大部份的商品都是平整包裝，你可以在商品頁面找到包裝的尺寸大小、重量等相關資訊，方便你在購買後自己搬回家，同時省下更多費用。
                 </div>
             </li>
             <li>
@@ -92,7 +97,7 @@ Wiq[5].addEventListener('click',()=>{
   
 
   
-  
+  </>
     )     
 }
   

@@ -2,7 +2,7 @@ import React, { useEffect,useState } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 // import Aboutimg from '../../../assets/img/About/A01.jpg'
 //antd
-// import { message } from 'antd';
+import { message } from 'antd';
 import {GiftcardImg} from './Config'
 function GiftBuy() {
     const updateCardToLocalStorage = (value) => {
@@ -24,6 +24,7 @@ function GiftBuy() {
  <div className="WiGiftButton">
       <button id={data.CardId} 
       onClick={() => {
+        message.success(`商品"${data.CardName}"加入購物車`)
         updateCardToLocalStorage({
          id: `${data.CardId}`,
          itemName:`${data.CardName}`,

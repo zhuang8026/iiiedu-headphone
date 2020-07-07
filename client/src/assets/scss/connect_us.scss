@@ -1,0 +1,53 @@
+.WiconnectUs {
+  width: 80%;
+  margin: 15px auto;
+  text-align: center;
+  p {
+    padding-top: 15px;
+  }
+}
+.shopphone {
+  width: 80%;
+  margin: 0px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .shopphoneinner {
+    width: 25%;
+    padding: 15px;
+    margin-top: 25px;
+    .shopperphoneinner {
+      padding-top: 15px;
+    }
+    img {
+      width: 100%;
+      border-radius: 6px;
+      box-shadow: 3px 3px 12px gray;
+      padding: 3px;
+    }
+    h1 {
+      font-size: 18px;
+      font-weight: bold;
+      //   text-align: center;
+    }
+  }
+}
+.Wicallus {
+  margin: 15px auto;
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 18px;
+  font-weight: 400;
+  border-top: 1.5px rgb(209, 209, 209) solid;
+  border-bottom: 1.5px rgb(209, 209, 209) solid;
+  h1 {
+    padding-top: 15px;
+  }
+  p {
+    font-size: 16px;
+  }
+}

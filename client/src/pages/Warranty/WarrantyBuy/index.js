@@ -1,6 +1,7 @@
 import React, { useEffect,useState } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import {WarrantyImg} from './Config'
+import { message } from 'antd';
 function WarrantyBuy() {
     const updateCardToLocalStorage = (value) => {
         const currentCart = JSON.parse(localStorage.getItem('cart')) || []
@@ -20,6 +21,7 @@ function WarrantyBuy() {
         <div className="WiWarrantyButton">
             <button id={data.CardId} 
             onClick={() => {
+                message.success(`商品"${data.CardName}"加入購物車`)
                 updateCardToLocalStorage({
                 id: `${data.CardId}`,
                 itemName:`${data.CardName}`,
