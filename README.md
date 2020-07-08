@@ -6,16 +6,16 @@
 - 前端套件支持: [react-id-swiper](https://kidjp85.github.io/example/default/) + [animate.css](https://animate.style/) + [antd](https://ant.design/index-cn)
 - git技術: git (github / bitbucket)
 - 編輯器技術: vscode
-- 功能說明：  - 會員系統 (CRUD)
-            - 賣家系統 (CRUD)
-            - 購物車系統 (包括訂單系統) 
-            - 願望清單系統 (localstorage)
-            - 比較系統 (localstorage)
-            - 部落格系統 (CRUD)
-            - 結帳系統 (CR)
-            - 全站搜尋系統 (模糊搜尋)
-            - 地圖定位系統 (react-leaflet)
-
+- 功能說明：  
+    - 會員系統 (CRUD)
+    - 賣家系統 (CRUD)
+    - 購物車系統 (包括訂單系統) 
+    - 願望清單系統 (localstorage)
+    - 比較系統 (localstorage)
+    - 部落格系統 (CRUD)
+    - 結帳系統 (CR)
+    - 全站搜尋系統 (模糊搜尋)
+    - 地圖定位系統 (react-leaflet)
 ## Version Control
 * Version - bug 修復進行中
     - 20200701 - 1.0 Version - 修復賣家訂單查詢功能
