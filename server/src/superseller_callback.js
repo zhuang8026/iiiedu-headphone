@@ -53,31 +53,24 @@ const doAddItems = async (req) => {
 
     const output = {
         success: false,
-        insertId:null,
+        insertId: null,
         rows: []
     }
     const sql = "INSERT INTO items (`itemName`,`itemImg`, `colorid`, `itemsbrand`, `itemstype`,`itemPrice`, `itemQty`, `itemsales`, `itemsstar`, `itemstoreNumber`,`itemscontent`, `itemsweight`, `itemsdrive`, `itemsfrequency`, `itemsSensitivity`,`itemsconnect`, `itemsmains`, `itemsEndurance`, `itemswatertight`, `itemsfeature`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
-    db.query(sql, [
+    const [rr] = await db.query(sql, [
         itemName, itemImg, colorid, itemsbrand, itemstype,
         itemPrice, itemQty, itemsales, itemsstar, itemstoreNumber,
         itemscontent, itemsweight, itemsdrive, itemsfrequency, itemsSensitivity,
         itemsconnect, itemsmains, itemsEndurance, itemswatertight, itemsfeature
     ])
-        .then(async ([results]) => {
-            output.success = true;
-            output.results = results;
-            // doSearchItems(itemName,_files);
-            // output.rows = outputWithId.rows;
-            
-            let _r = `SELECT LAST_INSERT_ID()`; 
-            // let _r = `SELECT @@IDENTITY`;                     
-            const [r1] = await db.query(_r);
-            if (r1) output.insertId = r1[0]['LAST_INSERT_ID()'];
-            console.log('結果 ======> ', r1[0]['LAST_INSERT_ID()'])
-            doAddImgsOnDatabase(r1[0]['LAST_INSERT_ID()'], _files);    
-
-        })
-        return output;
+    // 抓剛剛新增的id
+    const items_id = rr.insertId;
+    // 自己設值
+    output.success = true;
+    output.insertId = items_id;
+    console.log('結果 ======> ', items_id)
+    doAddImgsOnDatabase(items_id, _files);
+    return output;
 }
 
 // 新增資料庫圖片
