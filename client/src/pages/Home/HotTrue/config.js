@@ -1,7 +1,7 @@
 // 頭戴耳機 品牌
 export const SwiperTrue = [
     {
-        piclinkUrl: 'http://localhost:3000/ProductDetail/111',
+        piclinkUrl: '/ProductDetail/111',
         picUrl: require('../../../assets/img/bg_6p_1.png'),
         name: 'bRS2e',
         p1text: '非常適合運動',
