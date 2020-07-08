@@ -9,26 +9,12 @@ function WiProblemcenter(props) {
  useEffect(()=>{
 let Wiq = document.querySelectorAll('.wiQ');
 let WiA = document.querySelectorAll('.WiA');
-var i;
-console.log(Wiq[1])
-Wiq[0].addEventListener('click',()=>{
-    WiA[0].classList.toggle('Wiappear');
-})
-Wiq[1].addEventListener('click',()=>{
-    WiA[1].classList.toggle('Wiappear');
-})
-Wiq[2].addEventListener('click',()=>{
-    WiA[2].classList.toggle('Wiappear');
-})
-Wiq[3].addEventListener('click',()=>{
-    WiA[3].classList.toggle('Wiappear');
-})
-Wiq[4].addEventListener('click',()=>{
-    WiA[4].classList.toggle('Wiappear');
-})
-Wiq[5].addEventListener('click',()=>{
-    WiA[5].classList.toggle('Wiappear');
-})
+console.log(Wiq.length)
+for(let i=0;i<Wiq.length;i++){
+    Wiq[i].addEventListener('click',()=>{
+        WiA[i].classList.toggle('Wiappear');
+    })
+}
 },[])
 
 

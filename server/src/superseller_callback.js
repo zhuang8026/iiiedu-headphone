@@ -69,7 +69,8 @@ const doAddItems = async (req) => {
             // doSearchItems(itemName,_files);
             // output.rows = outputWithId.rows;
             
-            let _r = `SELECT LAST_INSERT_ID()`;                      
+            let _r = `SELECT LAST_INSERT_ID()`; 
+            // let _r = `SELECT @@IDENTITY`;                     
             const [r1] = await db.query(_r);
             if (r1) output.insertId = r1[0]['LAST_INSERT_ID()'];
             console.log('結果 ======> ', r1[0]['LAST_INSERT_ID()'])
