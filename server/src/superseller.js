@@ -177,6 +177,8 @@ router.post("/listSellerUserOrder", upload.none(), (req, res) => {
    ON paymentstate_types.paymentState = orders.paymentState
    INNER JOIN users
    ON users.id = items.itemstoreNumber
+
+   
    WHERE users.id =?
    GROUP BY orders.orderId
    ORDER BY orders.orderId ASC`;

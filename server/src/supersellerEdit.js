@@ -130,7 +130,7 @@ router.post("/sellerWallet", upload.none(), (req, res) => {
     //                     user.username = ?
     //                 AND
     //                     paymentstate_types.paymentState = 2`;
-    let sql =  `SELECT *
+    let sql =  `SELECT *, orders.created_at
                 FROM 
                     order_details
                 INNER JOIN 
@@ -166,7 +166,7 @@ router.post("/sellerWallet", upload.none(), (req, res) => {
                 AND
                     paymentstate_types.paymentState = 2
                 ORDER BY 
-                orders.orderId ASC`;
+                    orders.orderId ASC`;
     db.query(sql, [id])
         .then(results => {
             // console.log(results)
@@ -217,7 +217,7 @@ router.post("/sellerWalletData", upload.none(), (req, res) => {
                         MONTH(details.created_at)= ? `;
     db.query(sql, [id, username, years, months])
         .then(results => {
-            // console.log(results)
+            console.log(results)
             for(let i of results[0]){
                 i.created_at = moment(i.created_at).format('YYYY-MM-DD');
             }

@@ -296,7 +296,7 @@ function MyNavBar(props) {
                                         </div>
                                     </li>
                                     <li>
-                                        <Link to="@" className="meaulist">
+                                        <Link to="/about/WiAbout" className="meaulist">
                                             <span>關於我們</span>
                                         </Link>
                                         <div className="inner hidden-meau">

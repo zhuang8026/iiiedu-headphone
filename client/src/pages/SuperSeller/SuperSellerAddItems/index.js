@@ -375,7 +375,7 @@ function SuperSellerAddItems(props) {
                                                 />
                                             </div>
                                             <div className="itemInputInner">
-                                                <label htmlFor="itemsSensitivity">頻率響應</label>
+                                                <label htmlFor="itemsSensitivity">靈敏度</label>
                                                 <input 
                                                     className="itemInput"
                                                     id="itemsSensitivity"
