@@ -76,8 +76,8 @@
         line-height: 60px;
         margin-top: 40px;
         margin-bottom: 40px;
-        border-top: 2px solid $btn-color-r;
-        border-bottom: 2px solid $btn-color-r;
+        border-top: 1px solid $bg-btn-l;
+        border-bottom: 1px solid $bg-btn-l;
 
         .blog-btns-left {
           .blog-btns-left-Link {
@@ -85,11 +85,15 @@
             margin-left: 40px;
             font-size: $font-size-24;
             font-weight: $font-w;
-            color: $btn-color-r;
+            color: $bg-btn-l;
             background: $bg-theme;
           }
           .blog-btns-left-Link:hover {
             cursor: pointer;
+            color: $font-color-s;
+          }
+          .blog-btns-left-Link-disable {
+            display: none;
           }
         }
 
@@ -97,27 +101,43 @@
           position: relative;
           select {
             position: absolute;
-            width: 10rem;
+            width: 6rem;
             height: 60%;
             top: 50%;
             transform: translate(-120%, -50%);
             // margin-top: auto;
-            color: $btn-color-r;
+            color: $font-color-m;
             font-size: $font-size-16;
             font-weight: $font-w;
-            border: 2px solid $btn-color-r;
+            border: 1px solid $bg-btn-l;
             border-radius: 10px;
             // margin-right: 80px;
             line-height: $font-size-16;
             text-align: center;
             text-align-last: center;
             option {
-              color: $btn-color-r;
+              color: $font-color-s;
               font-weight: $font-w;
+              text-align: center;
             }
           }
           .s1 {
             transform: translate(-240%, -50%);
+          }
+          .search-input {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 60%;
+            border-bottom: 1px solid $font-color-m;
+            background: $bg-theme;
+          }
+          .search-input::placeholder {
+            color: $font-color-m;
+            font-size: $font-size-14;
+            font-style: italic;
+            font-weight: $font-w;
+            padding-left: 1em;
           }
           figure {
             position: relative;
@@ -136,6 +156,7 @@
           figure:hover,
           select > option:hover {
             cursor: pointer;
+            color: $font-color-s;
           }
         }
       }

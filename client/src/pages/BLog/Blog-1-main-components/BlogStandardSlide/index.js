@@ -43,10 +43,10 @@ function BlogMainStandardSlide(props) {
         // spaceBetween: 30,
         slidesPerGroup: 1,
         loop: true,
-        autoplay:true,
-        delay:2000,
-        disableOnInteraction:false,
-        
+        autoplay: true,
+        delay: 2000,
+        disableOnInteraction: false,
+
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
@@ -60,55 +60,57 @@ function BlogMainStandardSlide(props) {
             <div className="carouselWall-blog">
                 <div className="imageWall-blog">
                     <figure className="blog-standard-fig wallFig blog-cover">
-                        <img src={top} alt="" />
+                        <img className="blog-cover" src={top} alt="" />
                     </figure>
                 </div>
                 <div className="slideWall">
-                    <div className="slides slider-container" id="sliderContainer">
 
-                        <div className="swiper-container">
-                            <div className="swiper-wrapper">
-                                <Swiper {...mySwiper}>
-                                    <div className="swiper-slide">
-                                        <figure className="s-f">
-                                            <img className="s-f-i blog-cover" src={slide1} alt="" />
-                                        </figure>
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <figure className="s-f">
-                                            <img className="s-f-i blog-cover" src={slide2} alt="" />
-                                        </figure>
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <figure className="s-f">
-                                            <img className="s-f-i blog-cover" src={slide3} alt="" />
-                                        </figure>
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <figure className="s-f">
-                                            <img className="s-f-i blog-cover" src={slide4} alt="" />
-                                        </figure>
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <figure className="s-f">
-                                            <img className="s-f-i blog-cover" src={slide5} alt="" />
-                                        </figure>
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <figure className="s-f">
-                                            <img className="s-f-i blog-cover" src={slide6} alt="" />
-                                        </figure>
-                                    </div>
-                                </Swiper>
-                            </div>
+                </div>
+                <div className="slides slider-container" id="sliderContainer">
 
-
+                    <div className="swiper-container">
+                        <div className="swiper-wrapper">
+                            <Swiper {...mySwiper}>
+                                <div className="swiper-slide">
+                                    <figure className="s-f">
+                                        <img className="s-f-i blog-cover" src={slide1} alt="" />
+                                    </figure>
+                                </div>
+                                <div className="swiper-slide">
+                                    <figure className="s-f">
+                                        <img className="s-f-i blog-cover" src={slide2} alt="" />
+                                    </figure>
+                                </div>
+                                <div className="swiper-slide">
+                                    <figure className="s-f">
+                                        <img className="s-f-i blog-cover" src={slide3} alt="" />
+                                    </figure>
+                                </div>
+                                <div className="swiper-slide">
+                                    <figure className="s-f">
+                                        <img className="s-f-i blog-cover" src={slide4} alt="" />
+                                    </figure>
+                                </div>
+                                <div className="swiper-slide">
+                                    <figure className="s-f">
+                                        <img className="s-f-i blog-cover" src={slide5} alt="" />
+                                    </figure>
+                                </div>
+                                <div className="swiper-slide">
+                                    <figure className="s-f">
+                                        <img className="s-f-i blog-cover" src={slide6} alt="" />
+                                    </figure>
+                                </div>
+                            </Swiper>
                         </div>
 
 
-
                     </div>
+
+
+
                 </div>
+
             </div>
         </>
     )

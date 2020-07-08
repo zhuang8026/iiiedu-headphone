@@ -245,8 +245,8 @@ function BlogMainUserListByUser(props) {
                             }
                         }}
                     >
-                        <option value="1">DESC</option>
-                        <option value="2">ASC</option>
+                        <option value="1">新到舊</option>
+                        <option value="2">舊到新</option>
                     </select>
                     <select className="s2" name="" id=""
                         onChange={(e) => {
