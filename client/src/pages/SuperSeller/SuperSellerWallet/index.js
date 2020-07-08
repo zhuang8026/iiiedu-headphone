@@ -30,8 +30,8 @@ function SuperSellerWallet(props) {
     const sellerWalletData = ()=>{
         let year = document.getElementById("year").value || '';
         let mounth = document.getElementById("mounth").value || '';
-        console.log(year)
-        console.log(mounth)
+        // console.log(year)
+        // console.log(mounth)
         fetch("http://localhost:3009/supersellerEdit/sellerWalletData",{
             method: 'post',
             body:JSON.stringify({
@@ -93,7 +93,7 @@ function SuperSellerWallet(props) {
                                     <table className="sellerProductTable" cellPadding="0" cellSpacing="0" border="0">
                                         <thead>
                                             <tr>
-                                                <th>編號</th>
+                                                <th>訂單時間</th>
                                                 <th>訂單編號</th>
                                                 <th>商品貨號</th>
                                                 <th>運送方式</th>

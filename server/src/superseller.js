@@ -178,6 +178,7 @@ router.post("/listSellerUserOrder", upload.none(), (req, res) => {
     INNER JOIN users
     ON users.id = items.itemstoreNumber
     WHERE users.id =?
+    GROUP BY orders.orderId
     ORDER BY orders.orderId ASC`;
     // let output = []
     db.query(sql, [id, username])
