@@ -79,12 +79,12 @@ function MembersLogin(props) {
           <div className="form_all">
             <div className="login_form">
               <label htmlFor="" className="gray">郵箱地址 *</label>
-              <input className="input01" type="text" placeholder="請輸入帳號" onChange={e => setUsername(e.target.value)}/>
+              <input className="input01" type="text" placeholder="請輸入帳號" autocomplete="true" onChange={e => setUsername(e.target.value)}/>
               {/* <p className="login_err">用戶名或郵箱地址 錯誤</p> */}
               <p className="login_err"></p>
 
               <label htmlFor="" className="gray">密碼 *</label>
-              <input className="input01" type="password" placeholder="請輸入密碼" onChange={e => setPassword(e.target.value)} maxLength="6"/>
+              <input className="input01" type="password" placeholder="請輸入密碼" autocomplete="true" onChange={e => setPassword(e.target.value)} maxLength="6"/>
               <p className="login_err"></p>
 
               <div className="login_form_pwa">

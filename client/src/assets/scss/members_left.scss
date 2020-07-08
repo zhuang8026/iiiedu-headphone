@@ -26,6 +26,12 @@ main {
                         height: 80px;
                         border-radius: 50%;
                     }
+                    .sellerImg {
+                        width: 80px;
+                        height: 80px;
+                        border: 2px dashed #2C3E50;
+                        padding: 4px;
+                    }
                     .men_text{
                         padding-left: 32px;
                         h2 {
@@ -39,6 +45,7 @@ main {
                         }
                     }
                 }
+
                 .mem_bottom_inner {
                     padding-top: 32px;
                     .men_title {

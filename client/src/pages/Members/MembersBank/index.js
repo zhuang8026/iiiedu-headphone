@@ -126,11 +126,11 @@ function MembersBank(props) {
                                                         {/* <img className="card-item__typeImg" src={`/card_img/visa.png`}/> */}
                                                     </div>
                                                 </div>
-                                                <label for="cardNumber" className="card-item__number">
+                                                <label htmlFor="cardNumber" className="card-item__number">
                                                     {String(userdata.card).split('').map((data, index)=>{
                                                         return(
-                                                            <span>
-                                                                <div class="card-item__numberItem">{data}</div>
+                                                            <span key={index}>
+                                                                <div className="card-item__numberItem">{data}</div>
                                                             </span>
                                                         )
                                                     })}
@@ -140,17 +140,17 @@ function MembersBank(props) {
 
                                                 </label>
                                                 <div className="card-item__content">
-                                                    <label for="cardName" class="card-item__info">
+                                                    <label htmlFor="cardName" className="card-item__info">
                                                         <div className="card-item__holder">Card Holder</div>
                                                         <div className="card-item__name">{cardUser.cardName?cardUser.cardName : 'Full Name'}</div>
                                                     </label>
-                                                    <div class="card-item__date">
-                                                        <label for="cardMonth" class="card-item__dateTitle">Expires</label>
-                                                        <label for="cardMonth" class="card-item__dateItem">
+                                                    <div className="card-item__date">
+                                                        <label htmlFor="cardMonth" className="card-item__dateTitle">Expires</label>
+                                                        <label htmlFor="cardMonth" className="card-item__dateItem">
                                                             <span>{cardUser.Month ? cardUser.Month:'MM'}</span>
                                                         </label> 
                                                         /
-                                                        <label for="cardYear" class="card-item__dateItem">
+                                                        <label htmlFor="cardYear" className="card-item__dateItem">
                                                             <span>{cardUser.Year ? cardUser.Year:'YY'}</span>
                                                         </label> 
                                                         
@@ -164,10 +164,10 @@ function MembersBank(props) {
                                             <div className="card-item__cover">
                                                 <img className="card-item__bg" src={`/card_img/${currentCardBackground}.jpeg`}/>
                                             </div>
-                                            <div class="card-item__band">
+                                            <div className="card-item__band">
 
                                             </div>
-                                            <div class="card-item__cvv">
+                                            <div className="card-item__cvv">
                                                 <div className="card-item__cvvTitle">CVV</div>
                                                 <div className="card-item__cvvBand">{userdata.pin}</div>
                                                 <div className="card-item__type">
@@ -190,16 +190,16 @@ function MembersBank(props) {
                                 </div>
 
                                 {/* 信用卡表單 */}
-                                <div class="card-form__inner">
-                                    <div class="card-input">
-                                        <label for="cardNumber" class="card-input__label">Card Number</label>
+                                <div className="card-form__inner">
+                                    <div className="card-input">
+                                        <label htmlFor="cardNumber" className="card-input__label">Card Number</label>
                                         <input 
                                             type="text" 
                                             id="cardNumber" 
-                                            class="card-input__input" 
+                                            className="card-input__input" 
                                             data-ref="cardNumber" 
                                             maxLength="16"
-                                            autocomplete="off"
+                                            autoComplete="off"
                                             placeholder="EX: 4444 5555 6666 7777"
                                             onChange = {(event)=>{
                                                 cardNameCallback(event.target.value);
@@ -210,14 +210,14 @@ function MembersBank(props) {
                                             }}
                                             />
                                     </div>
-                                    <div class="card-input">
-                                        <label for="cardName" class="card-input__label">Card Holders</label>
+                                    <div className="card-input">
+                                        <label htmlFor="cardName" className="card-input__label">Card Holders</label>
                                         <input 
                                             type="text" 
                                             id="cardName" 
-                                            class="card-input__input"
+                                            className="card-input__input"
                                             data-ref="cardName" 
-                                            autocomplete="off"
+                                            autoComplete="off"
                                             placeholder="EX: WANG XIAO MING"
                                             onChange = {(event)=>{
                                                 setCardUser({
@@ -227,12 +227,12 @@ function MembersBank(props) {
                                             }}
                                         />
                                     </div>
-                                    <div class="card-form__row">
-                                        <div class="card-form__col">
-                                            <div class="card-form__group">
-                                                <label for="cardMonth" class="card-input__label">Expiration Date</label>
+                                    <div className="card-form__row">
+                                        <div className="card-form__col">
+                                            <div className="card-form__group">
+                                                <label htmlFor="cardMonth" className="card-input__label">Expiration Date</label>
                                                 <select 
-                                                    class="card-input__input -select" 
+                                                    className="card-input__input -select" 
                                                     id="cardMonth" 
                                                     data-ref="cardDate"
                                                     // defaultValue={cardUser.Month}
@@ -259,7 +259,7 @@ function MembersBank(props) {
                                                     <option value="12">12</option>
                                                 </select>
                                                 <select 
-                                                    class="card-input__input -select" 
+                                                    className="card-input__input -select" 
                                                     id="cardYear" 
                                                     data-ref="cardDate"
                                                     onChange = {(event)=>{
@@ -281,15 +281,15 @@ function MembersBank(props) {
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="card-form__col -cvv">
-                                            <div class="card-input">
-                                                <label for="cardCvv" class="card-input__label">CVV</label>
+                                        <div className="card-form__col -cvv">
+                                            <div className="card-input">
+                                                <label htmlFor="cardCvv" className="card-input__label">CVV</label>
                                                 <input 
                                                     type="text" 
-                                                    class="card-input__input" 
+                                                    className="card-input__input" 
                                                     id="cardCvv" 
-                                                    maxlength="3" 
-                                                    autocomplete="off"
+                                                    maxLength="3" 
+                                                    autoComplete="off"
                                                     placeholder="EX: 000"
                                                     onChange={
                                                         (event)=>{ 
@@ -316,7 +316,7 @@ function MembersBank(props) {
 
                                     {/* 送出按鍵 */}
                                     <button 
-                                        class="card-form__button"
+                                        className="card-form__button"
                                         onClick={()=>membersEditBankCallback()}
                                     >Submit</button>
                                 </div>

@@ -33,22 +33,22 @@ function SuperSellerAddItems(props) {
     const [itemsfeature, setItemsFeature] = useState()           // 商品 重點特色
 
     // console.log(itemsbrand);
-    console.log('itemName:', itemName);
-    console.log('itemImg:', itemImg);
-    console.log('itemMoreImg:', itemMoreImg);
-    console.log('colorid:', colorid);
-    console.log('itemsbrand:', itemsbrand);
-    console.log('itemstype:', itemstype);
-    console.log('itemPrice:', itemPrice);
-    console.log('itemQty:', itemQty);
-    console.log('itemscontent:', itemscontent);
-    console.log('itemsdrive:', itemsdrive);
-    console.log('itemsfrequency:', itemsfrequency);
-    console.log('itemsSensitivity:', itemsSensitivity);
-    console.log('itemsconnect:', itemsconnect);
-    console.log('itemsmains:', itemsmains);
-    console.log('itemsEndurance:', itemsEndurance);
-    console.log('itemsfeature:', itemsfeature);
+    // console.log('itemName:', itemName);
+    // console.log('itemImg:', itemImg);
+    // console.log('itemMoreImg:', itemMoreImg);
+    // console.log('colorid:', colorid);
+    // console.log('itemsbrand:', itemsbrand);
+    // console.log('itemstype:', itemstype);
+    // console.log('itemPrice:', itemPrice);
+    // console.log('itemQty:', itemQty);
+    // console.log('itemscontent:', itemscontent);
+    // console.log('itemsdrive:', itemsdrive);
+    // console.log('itemsfrequency:', itemsfrequency);
+    // console.log('itemsSensitivity:', itemsSensitivity);
+    // console.log('itemsconnect:', itemsconnect);
+    // console.log('itemsmains:', itemsmains);
+    // console.log('itemsEndurance:', itemsEndurance);
+    // console.log('itemsfeature:', itemsfeature);
 
     // setItemImg 商品單張圖片上傳 （one）
     const myImgEditCallback = (data) =>{
@@ -175,6 +175,7 @@ function SuperSellerAddItems(props) {
                                                 <input 
                                                     className="itemInput"
                                                     id="itemName"
+                                                    placeholder="ex：SONY E211"
                                                     onChange={(event) => setItemName(event.target.value)}
                                                 />
                                             </div>
@@ -331,6 +332,7 @@ function SuperSellerAddItems(props) {
                                                 <input 
                                                     className="itemInput"
                                                     id="itemPrice"
+                                                    placeholder="ex：1899"
                                                     onChange={(e) => setItemPrice(e.target.value)}
                                                 />
                                             </div>                                    
@@ -339,6 +341,7 @@ function SuperSellerAddItems(props) {
                                                 <input 
                                                     className="itemInput"
                                                     id="itemQty"
+                                                    placeholder="ex：10"
                                                     onChange={(e) => setItemQty(e.target.value)}
                                                 />
                                             </div>                                    
@@ -347,6 +350,7 @@ function SuperSellerAddItems(props) {
                                                 <input 
                                                     className="itemInput"
                                                     id="itemscontent"
+                                                    placeholder="ex：防水性極高，是一個適合外出旅遊的好伴侶"
                                                     onChange={(e) => setItemscontent(e.target.value)}
                                                 />
                                             </div>                                    
@@ -355,6 +359,7 @@ function SuperSellerAddItems(props) {
                                                 <input 
                                                     className="itemInput"
                                                     id="itemsweight"
+                                                    placeholder="ex：防水性極高，是一個適合外出旅遊的好伴侶"
                                                     onChange={(e) => setItemsweight(e.target.value)}
                                                 />
                                             </div>                                    
@@ -363,6 +368,7 @@ function SuperSellerAddItems(props) {
                                                 <input 
                                                     className="itemInput"
                                                     id="itemsdrive"
+                                                    placeholder="ex：密閉式動圈型"
                                                     onChange={(e) => setItemsDrive(e.target.value)}
                                                 />
                                             </div>
@@ -371,6 +377,7 @@ function SuperSellerAddItems(props) {
                                                 <input 
                                                     className="itemInput"
                                                     id="itemsfrequency"
+                                                    placeholder="ex：03 – 40,000 Hz"
                                                     onChange={(e) => setitemsfrequency(e.target.value)}
                                                 />
                                             </div>
@@ -379,6 +386,7 @@ function SuperSellerAddItems(props) {
                                                 <input 
                                                     className="itemInput"
                                                     id="itemsSensitivity"
+                                                    placeholder="ex：102dB/mW"
                                                     onChange={(e) => setItemsSensitivity(e.target.value)}
                                                 />
                                             </div>
@@ -387,6 +395,7 @@ function SuperSellerAddItems(props) {
                                                 <input 
                                                     className="itemInput"
                                                     id="itemsconnect"
+                                                    placeholder="ex：3.5 mm"
                                                     onChange={(e) => setItemsconnect(e.target.value)}
                                                 />
                                             </div>
@@ -395,6 +404,7 @@ function SuperSellerAddItems(props) {
                                                 <input 
                                                     className="itemInput"
                                                     id="itemsmains"
+                                                    placeholder="充電式"
                                                     onChange={(e) => setItemsmains(e.target.value)}
                                                 />
                                             </div>
@@ -403,6 +413,7 @@ function SuperSellerAddItems(props) {
                                                 <input 
                                                     className="itemInput"
                                                     id="itemsEndurance"
+                                                    placeholder="20 小時"
                                                     onChange={(e) => setItemsEndurance(e.target.value)}
                                                 />
                                             </div>
@@ -411,6 +422,7 @@ function SuperSellerAddItems(props) {
                                                 <textarea 
                                                     className="itemInput"
                                                     id="itemsfeature"
+                                                    placeholder="高解析音質播放，忠實重現原音"
                                                     onChange={(e) => setItemsFeature(e.target.value)}
                                                 />
                                             </div>

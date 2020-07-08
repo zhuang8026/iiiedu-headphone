@@ -17,13 +17,14 @@ main .members_all .members_right .members_right_inner .members_r_bottom span.ico
         overflow-x:auto;
         margin-top: 0px;
         border: 1px solid #d3d3d3;
-    }
-    tr {
-        transition: 0.3s ease-in;
-        &:hover {
-            background: #f8f8f9;
+        tr {
+            transition: 0.3s ease-in;
+            &:hover {
+                background: #f8f8f9;
+            }
         }
     }
+    
     th{
         padding: 20px 0;
         text-align: center;
