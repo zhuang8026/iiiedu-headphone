@@ -167,6 +167,14 @@ router.post("/listSellerUserOrder", upload.none(), (req, res) => {
     ON order_details.itemId = items.itemId
     INNER JOIN orders
     ON order_details.orderId = orders.orderId
+    INNER JOIN payment_types
+    ON payment_types.payment = orders.payment
+    INNER JOIN delivery_types
+    ON delivery_types.delivery = orders.delivery
+    INNER JOIN deliverystate_types
+    ON deliverystate_types.deliveryState = orders.deliveryState
+    INNER JOIN paymentstate_types
+    ON paymentstate_types.paymentState = orders.paymentState
     INNER JOIN users
     ON users.id = items.itemstoreNumber
     WHERE users.id =?
@@ -240,8 +248,8 @@ router.post("/listSellerUserOrderToggle",upload.none(),(req,res)=>{
     let userId = req.body.userId;
     let paymentState = req.body.paymentState;
     let orderId = req.body.orderId;
-    let sql = `UPDATE orders SET paymentState=? WHERE orderId=? AND userId=?`
-    db.query(sql, [paymentState,orderId,userId])
+    let sql = `UPDATE orders SET paymentState=? WHERE orderId=?`
+    db.query(sql, [paymentState,orderId])
     .then(results => {
         // console.log(results[0])
         // output.results = results;
@@ -255,8 +263,8 @@ router.post("/listSellerUserOrderDeliveryToggle",upload.none(),(req,res)=>{
     let userId = req.body.userId;
     let deliveryState = req.body.deliveryState;
     let orderId = req.body.orderId;
-    let sql=`UPDATE orders SET deliveryState=? WHERE orderId=? AND userId=?`
-    db.query(sql,[deliveryState,orderId,userId])
+    let sql=`UPDATE orders SET deliveryState=? WHERE orderId=?`
+    db.query(sql,[deliveryState,orderId])
     .then(results=>{
         res.json(results[0])
     })

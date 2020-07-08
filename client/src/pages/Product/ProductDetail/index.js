@@ -24,9 +24,9 @@ function ProductDetail(props) {
           'Content-Type': 'application/json',
       },
     })
-    .then((response)=>{
+    .then((response) => {
       return response.json()
-    })
+  })
     .then((response)=>{
       // console.log(response)
       setDetaildata(response);
