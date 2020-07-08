@@ -7,7 +7,7 @@ import { Link, withRouter } from 'react-router-dom'
 import { message } from 'antd'
 
 function MyCart(props) {
-  const key = 'updatable';
+  const key = 'updatable'
   const {
     mycart,
     setMycart,
@@ -85,7 +85,6 @@ function MyCart(props) {
   const compares = JSON.parse(localStorage.getItem('compare'))
   const cart = JSON.parse(localStorage.getItem('cart'))
 
-
   // 計算總價用的函式
   const sum = (data) => {
     let total = 0
@@ -96,20 +95,19 @@ function MyCart(props) {
   }
 
   // william - 20200709 - 優惠卷
-  const setDiscountCodecallback =()=>{
+  const setDiscountCodecallback = () => {
     // console.log(discountCode)
-    
-    if(discountCode === "MFEE0706NICE") {
-        message.loading({ content: 'Loading...', key });
-        setTimeout(() => {
-            message.success({ content: '修改成功!', key, duration: 2 });
-        }, 1000);
-        setOrderTotal(true)
+
+    if (discountCode === 'MFEE0706NICE') {
+      message.loading({ content: 'Loading...', key })
+      setTimeout(() => {
+        message.success({ content: '修改成功!', key, duration: 2 })
+      }, 1000)
+      setOrderTotal(true)
     } else {
       message.warning('請輸入正確的優惠碼!')
     }
   }
-
 
   useEffect(() => {
     //實驗把設定總數放在這裡
@@ -289,12 +287,14 @@ function MyCart(props) {
                   }}
                 />
                 <button
-                    className="codebutton"
-                    type="button"
-                    onClick={() => {
-                      setDiscountCodecallback()
-                    }}
-                  >送出</button>
+                  className="codebutton"
+                  type="button"
+                  onClick={() => {
+                    setDiscountCodecallback()
+                  }}
+                >
+                  送出
+                </button>
                 {/* {discountCode == 'MFEE0706NICE' ? (
                   <button
                     className="codebutton"
@@ -322,7 +322,12 @@ function MyCart(props) {
                 <h2>商品總計: </h2>
                 {mycart.length > 0 ? (
                   <>
-                    <span> $ {parseInt(sum() * (orderTotal? (0.8) : (1)))}</span>
+                    <span>
+                      $
+                      {discountCode === 'MFEE0706NICE'
+                        ? (parseInt(sum() * 0.9))+`(10% OFF)`
+                        : parseInt(sum())}
+                    </span>
                     {/* <span> $ {orderTotal}</span> */}
                   </>
                 ) : (
@@ -340,13 +345,45 @@ function MyCart(props) {
                 >
                   清空購物車
                 </button>
-                <button
+                {/* <button
                   className="wi-footer-set"
                   type="button"
-                  // onClick={setOrderTotal(sum(mycart))}
+                  onClick={() => {
+                    setOrderTotal(sum(mycart))
+                  }}
                 >
                   <Link to="/ConfirmOrder">去結帳</Link>
-                </button>
+                </button> */}
+                {/* <button
+                  className="wi-footer-set"
+                  type="button"
+                  onClick={() => {
+                    setOrderTotal(sum(mycart) * 0.9)
+                  }}
+                >
+                  <Link to="/ConfirmOrder">實驗80%去結帳</Link>
+                </button> */}
+                {discountCode === 'MFEE0706NICE' ? (
+                  <button
+                    className="wi-footer-set"
+                    type="button"
+                    onClick={() => {
+                      setOrderTotal(sum(mycart) * 0.9)
+                    }}
+                  >
+                    <Link to="/ConfirmOrder">去結帳</Link>
+                  </button>
+                ) : (
+                  <button
+                    className="wi-footer-set"
+                    type="button"
+                    onClick={() => {
+                      setOrderTotal(sum(mycart))
+                    }}
+                  >
+                    <Link to="/ConfirmOrder">去結帳</Link>
+                  </button>
+                )}
               </li>
             </ul>
           </>

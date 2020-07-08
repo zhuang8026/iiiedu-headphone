@@ -68,11 +68,12 @@ function ConfirmOrder(props) {
             </li>
             <li className="cart-footer wi-num">
               <h2>商品總計: </h2>
-              {mycart.length > 0 ? (
+              <span>${orderTotal}</span>
+              {/* {mycart.length > 0 ? (
                 <span> $ {sum(mycart)}</span>
               ) : (
                 <span>0</span>
-              )}
+              )} */}
             </li>
             <li className="cart-footer">
               <button type="button">
