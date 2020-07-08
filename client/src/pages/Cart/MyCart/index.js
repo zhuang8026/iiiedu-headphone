@@ -14,6 +14,12 @@ function MyCart(props) {
     setMycartDisplay,
     orderTotal,
     setOrderTotal,
+    lovechange,
+    setlovechange,
+    compareschange,
+    setcompareschange,
+    cartchange,
+    setcartchange,
   } = props.allprops
   const CartInner = JSON.parse(localStorage.getItem('cart')) || ''
 
@@ -79,10 +85,28 @@ function MyCart(props) {
       }
     })
   }
+  //更新nav數量
+  const love = JSON.parse(localStorage.getItem('love'))
+  const compares = JSON.parse(localStorage.getItem('compare'))
+  const cart = JSON.parse(localStorage.getItem('cart'))
 
   useEffect(() => {
     setMycart(CartInner)
+    //更新nav數量
+    setlovechange(love)
+    setcompareschange(compares)
+    setcartchange(cart)
   }, [])
+
+  //更新nav數量
+  useEffect(() => {
+    setcartchange(cart)
+  }, [mycart])
+
+  // useEffect(() => {
+  //   //更新nav數量
+  //   // setlovechange(love)
+  // }, [lovechange])
 
   return (
     <>
@@ -184,6 +208,7 @@ function MyCart(props) {
                               itemswatertight: data.itemswatertight,
                               itemsweight: data.itemsweight,
                             })
+                            setlovechange(love)
                             message.success(`商品"${data.itemName}"加入最愛`)
                           }}
                         >
@@ -216,6 +241,7 @@ function MyCart(props) {
                               itemswatertight: data.itemswatertight,
                               itemsweight: data.itemsweight,
                             })
+                            setcompareschange(compares)
                             message.success(`商品"${data.itemName}"已加入比較`)
                           }}
                         >
