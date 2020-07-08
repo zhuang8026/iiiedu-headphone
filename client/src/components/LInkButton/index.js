@@ -8,7 +8,7 @@ const LInkButton = (props) => {
     const {linkUrl} = props;
     return (
         <Fragment>
-            <a href={linkUrl} className="wi_button btn btn-navy btn-fill-vert-o" type="button" >DISCOVER</a>
+            <Link to={linkUrl} className="wi_button btn btn-navy btn-fill-vert-o" type="button" >DISCOVER</Link>
         </Fragment>
     )
 };

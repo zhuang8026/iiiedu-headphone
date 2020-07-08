@@ -8,7 +8,7 @@ import { Link, withRouter } from "react-router-dom"
 // import './discover.scss'
 
 // imove
-import BgImovie from '../../../assets/imove/bg_movie_2.mp4';
+// import BgImovie from '../../../assets/imove/bg_movie_2.mp4';
 
 function MyDiscover() {
     useEffect(()=>{
@@ -22,7 +22,7 @@ function MyDiscover() {
                 <div className="MyDiscover_inner">
                     <div className="MyVideo">
                         <video width="560" height="280" autoPlay playsInline muted loop>
-                            <source src={BgImovie} type="video/mp4"/>
+                            <source src={`/imove/bg_movie_2.mp4`} type="video/mp4"/>
                         </video>
                     </div>
                     <article>

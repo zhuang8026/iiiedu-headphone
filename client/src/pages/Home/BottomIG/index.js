@@ -18,12 +18,13 @@ function BottomIG(props) {
                     {IGImg.map((data, index)=>{
                         return (
                             <li key={index}>
-                                <Link to={data.piclinkUrl}>
+                                <a href={data.piclinkUrl}>
+                                    
                                     <div className="imgCover">
-                                        <i className="iconfont icon-search"></i>
+                                        <i className="iconfont icon-instagram"></i>
                                     </div>
                                     <img src={data.picUrl} alt="product"/>
-                                </Link>
+                                </a>
                             </li>
                         )
                     })}

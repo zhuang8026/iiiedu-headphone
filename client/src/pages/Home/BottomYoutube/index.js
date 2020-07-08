@@ -2,11 +2,11 @@ import React from 'react';
 import { Link, withRouter } from "react-router-dom"
 
 // scss
-// import './BottomIG.scss';
+import {YoutubeImg} from './config';
 
 
 function BottomYoutube(props) {
-    const { YoutubeImg } = props;
+    // const { YoutubeImg } = props;
     return (
         <div className="ig_inner_all">
             <div className="true_title">
@@ -18,13 +18,12 @@ function BottomYoutube(props) {
                     {YoutubeImg.map((data, index)=>{
                         return (
                             <li key={index}>
-                                <Link to={data.piclinkUrl}>
-                                    {/* <div className="imgCover">
-                                        <i className="iconfont icon-search"></i>
-                                    </div> */}
-                                    {/* <img src={data.picUrl} alt="product"/> */}
-                                    <iframe width="100%" height="280px" src={data.picUrl} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                </Link>
+                                {/* <div className="imgCover">
+                                    <i className="iconfont icon-search"></i>
+                                </div> */}
+                                {/* <img src={data.picUrl} alt="product"/> */}
+                                {/* <iframe width="100%" height="280px" src={data.picUrl} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
+                                <iframe width="100%" height="100%" src={data.picUrl} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </li>
                         )
                     })}

@@ -20,19 +20,19 @@ export const StoreImg = [
 
 export const IGImg = [
     {
-        piclinkUrl: '/*****',
+        piclinkUrl: 'https://www.instagram.com/p/CA1RMBLj0Q7/?utm_source=ig_web_button_share_sheet',
         picUrl: require('../img/IG_1.png'),
     },
     {
-        piclinkUrl: '/*****',
+        piclinkUrl: 'https://www.instagram.com/p/CAFN_7WDdM-/?utm_source=ig_web_button_share_sheet',
         picUrl: require('../img/IG_2.png'),
     },
     {
-        piclinkUrl: '/*****',
+        piclinkUrl: 'https://www.instagram.com/p/B5iTedLg_6W/?utm_source=ig_web_button_share_sheet',
         picUrl: require('../img/IG_3.png'),
     },
     {
-        piclinkUrl: '/*****',
+        piclinkUrl: 'https://www.instagram.com/p/B5eMQ2LDYtH/?utm_source=ig_web_button_share_sheet',
         picUrl: require('../img/IG_4.png'),
     }
 ];

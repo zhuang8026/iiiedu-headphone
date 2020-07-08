@@ -1,5 +1,5 @@
 import React ,{ Fragment } from 'react';
-import { withRouter } from "react-router-dom"
+import { Link, withRouter } from "react-router-dom"
 
 // Swiper
 import Swiper from 'react-id-swiper';
@@ -65,9 +65,9 @@ function HotTrue() {
                                 <div className="true_items_inner">
                                     <div className="true_items_card swiper-lazy">
                                         <h3>{ data.name }</h3>
-                                        <a>
+                                        <Link to={data.piclinkUrl}>
                                             <img src={data.picUrl} alt="商品列表"/>
-                                        </a>
+                                        </Link>
                                         <ul>
                                             <li><i className="iconfont icon-correct"></i>{ data.p1text }</li>
                                             <li><i className="iconfont icon-correct"></i>{ data.p2text }</li>

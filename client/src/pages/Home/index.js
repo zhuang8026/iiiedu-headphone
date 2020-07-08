@@ -19,7 +19,7 @@ import BottomStore from './BottomStore'
 import BottomIG from './BottomIG'
 import BottomYoutube from './BottomYoutube'
 
-import { StoreImg, IGImg, YoutubeImg } from '../../assets/js/config'
+import { StoreImg, IGImg} from '../../assets/js/config'
 
 function WiHome() {
   return (
@@ -33,7 +33,7 @@ function WiHome() {
           <OurConnected />
           <BottomStore StoreImg={StoreImg} />
           <BottomIG IGImg={IGImg} />
-          <BottomYoutube YoutubeImg={YoutubeImg} />
+          <BottomYoutube/>
         </div>
       </Fragment>
     
