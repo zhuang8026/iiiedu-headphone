@@ -24,9 +24,12 @@
 }
 
 .Aboutcrumb {
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
   padding: 30px;
+  a {
+    color: gray;
+  }
 }
 .WiIntroduce {
   width: 80%;

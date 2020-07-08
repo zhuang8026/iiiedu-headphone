@@ -54,13 +54,21 @@
 .Wicooperate {
   margin: 30px auto;
   width: 80%;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  img {
-    width: 15%;
-    border-radius: 50%;
-    box-shadow: 3px 3px 12px gray;
-    margin: 15px;
+  .WiBrand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: rgb(167, 167, 167) solid 2px;
+    padding: 20px 0;
+    .Wicopic {
+      width: 50%;
+      img {
+        width: 350px;
+        box-shadow: 3px 3px 12px gray;
+      }
+    }
+    .Wicoinner {
+      width: 50%;
+    }
   }
 }

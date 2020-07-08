@@ -15,7 +15,7 @@ for(let i=0;i<Wiq.length;i++){
         WiA[i].classList.toggle('Wiappear');
     })
 }
-},[])
+},[])   
 
 
 
