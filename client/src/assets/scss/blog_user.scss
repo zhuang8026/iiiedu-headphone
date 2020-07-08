@@ -1612,7 +1612,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:100,300,400');
 @import url('https://fonts.googleapis.com/css?family=Roboto:100');
 
-@mixin button($bcolor,
+@mixin button-ani($bcolor,
 $url,
 $x1,
 $y1,
@@ -1651,11 +1651,11 @@ $col) {
   //  letter-spacing: 1px;
    font-weight: bold;
  
-   @include button(#000, "https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/urban-sprite.png",
+   @include button-ani(#8f8f8f, "https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/urban-sprite.png",
    3000%,
    100%,
    none,
-   #fff);
+   #FFF);
    cursor: pointer;
    -webkit-animation: ani2 0.7s steps(29) forwards;
    animation: ani2 0.7s steps(29) forwards;
@@ -1731,6 +1731,8 @@ $col) {
   }
  }
  
- a{
-   color:#00ff95;
- }
+//  &:hover {
+//   -webkit-animation: ani 0.7s steps(70) forwards;
+//   animation: ani 0.7s steps(70) forwards;
+//  }
+ 
