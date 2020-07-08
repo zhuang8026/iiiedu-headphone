@@ -322,13 +322,21 @@ function MyCart(props) {
                 <h2>商品總計: </h2>
                 {mycart.length > 0 ? (
                   <>
-                    <span>
+                  <span>
+                      $
+                      {discountCode === 'MFEE0706NICE'
+                        ? (<> {parseInt(sum() * 0.9)} <span className="MFEE0706NICE">(10% OFF)</span> </>)
+                        : parseInt(sum())}
+                    </span>
+
+
+                    {/* <span>
                       $
                       {discountCode === 'MFEE0706NICE'
                         ? (parseInt(sum() * 0.9))+`(10% OFF)`
                         : parseInt(sum())}
-                    </span>
-                    {/* <span> $ {orderTotal}</span> */}
+                    </span> */}
+                  
                   </>
                 ) : (
                   <span>0</span>
