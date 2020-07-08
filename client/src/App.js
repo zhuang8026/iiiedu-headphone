@@ -98,7 +98,7 @@ function App() {
   //購物流程
   const [mycart, setMycart] = useState([])
   const [mycartDisplay, setMycartDisplay] = useState([])
-  const [orderTotal, setOrderTotal] = useState('')
+  const [orderTotal, setOrderTotal] = useState(false)
   const [orderName, setOrderName] = useState('')
   const [orderAddress, setOrderAddress] = useState('')
   const [orderTel, setOrderTel] = useState('')

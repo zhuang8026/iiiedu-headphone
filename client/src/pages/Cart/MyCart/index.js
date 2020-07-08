@@ -7,6 +7,7 @@ import { Link, withRouter } from 'react-router-dom'
 import { message } from 'antd'
 
 function MyCart(props) {
+  const key = 'updatable';
   const {
     mycart,
     setMycart,
@@ -23,6 +24,8 @@ function MyCart(props) {
   } = props.allprops
   const CartInner = JSON.parse(localStorage.getItem('cart')) || ''
   const [discountCode, setDiscountCode] = useState('')
+
+  // console.log(mycart)
 
   // william - 20200705 - 數量加減
   const changeQuantity = (id, amount, PQty) => {
@@ -46,15 +49,6 @@ function MyCart(props) {
 
     localStorage.setItem('cart', JSON.stringify(mycartdata))
     setMycart(mycartdata)
-  }
-
-  // 計算總價用的函式
-  const sum = (data) => {
-    let total = 0
-    for (let i = 0; i < data.length; i++) {
-      total += data[i].amount * data[i].itemPrice
-    }
-    return total
   }
 
   // 加入最愛
@@ -91,9 +85,36 @@ function MyCart(props) {
   const compares = JSON.parse(localStorage.getItem('compare'))
   const cart = JSON.parse(localStorage.getItem('cart'))
 
+
+  // 計算總價用的函式
+  const sum = (data) => {
+    let total = 0
+    for (let i = 0; i < mycart.length; i++) {
+      total += mycart[i].amount * mycart[i].itemPrice
+    }
+    return total
+  }
+
+  // william - 20200709 - 優惠卷
+  const setDiscountCodecallback =()=>{
+    // console.log(discountCode)
+    
+    if(discountCode === "MFEE0706NICE") {
+        message.loading({ content: 'Loading...', key });
+        setTimeout(() => {
+            message.success({ content: '修改成功!', key, duration: 2 });
+        }, 1000);
+        setOrderTotal(true)
+    } else {
+      message.warning('請輸入正確的優惠碼!')
+    }
+  }
+
+
   useEffect(() => {
     //實驗把設定總數放在這裡
-    setOrderTotal(sum(mycart))
+    // setOrderTotal(sum(mycart))
+    // setDiscountCodecallback()
 
     setMycart(CartInner)
     //更新nav數量
@@ -263,11 +284,18 @@ function MyCart(props) {
                   placeholder="請輸入優惠碼"
                   value={discountCode}
                   onChange={(event) => {
-                    const v = event.target.value
-                    setDiscountCode(v)
+                    const Codevalue = event.target.value
+                    setDiscountCode(Codevalue)
                   }}
                 />
-                {discountCode == 'MFEE0706NICE' ? (
+                <button
+                    className="codebutton"
+                    type="button"
+                    onClick={() => {
+                      setDiscountCodecallback()
+                    }}
+                  >送出</button>
+                {/* {discountCode == 'MFEE0706NICE' ? (
                   <button
                     className="codebutton"
                     type="button"
@@ -288,12 +316,15 @@ function MyCart(props) {
                   >
                     送出
                   </button>
-                )}
+                )} */}
               </li>
               <li className="cart-footer wi-num">
                 <h2>商品總計: </h2>
                 {mycart.length > 0 ? (
-                  <span> $ {sum(mycart)}</span>
+                  <>
+                    <span> $ {parseInt(sum() * (orderTotal? (0.8) : (1)))}</span>
+                    {/* <span> $ {orderTotal}</span> */}
+                  </>
                 ) : (
                   <span>0</span>
                 )}
