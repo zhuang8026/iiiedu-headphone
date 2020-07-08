@@ -162,23 +162,24 @@ router.post("/listSellerUserOrder", upload.none(), (req, res) => {
     let username = req.body.username;
     let sql =  `
     SELECT *
-     FROM order_details
-    INNER JOIN items
-    ON order_details.itemId = items.itemId
-    INNER JOIN orders
-    ON order_details.orderId = orders.orderId
-    INNER JOIN payment_types
-    ON payment_types.payment = orders.payment
-    INNER JOIN delivery_types
-    ON delivery_types.delivery = orders.delivery
-    INNER JOIN deliverystate_types
-    ON deliverystate_types.deliveryState = orders.deliveryState
-    INNER JOIN paymentstate_types
-    ON paymentstate_types.paymentState = orders.paymentState
-    INNER JOIN users
-    ON users.id = items.itemstoreNumber
-    WHERE users.id =?
-    ORDER BY orders.orderId ASC`;
+    FROM order_details
+   INNER JOIN items
+   ON order_details.itemId = items.itemId
+   INNER JOIN orders
+   ON order_details.orderId = orders.orderId
+   INNER JOIN payment_types
+   ON payment_types.payment = orders.payment
+   INNER JOIN delivery_types
+   ON delivery_types.delivery = orders.delivery
+   INNER JOIN deliverystate_types
+   ON deliverystate_types.deliveryState = orders.deliveryState
+   INNER JOIN paymentstate_types
+   ON paymentstate_types.paymentState = orders.paymentState
+   INNER JOIN users
+   ON users.id = items.itemstoreNumber
+   WHERE users.id =?
+   GROUP BY orders.orderId
+   ORDER BY orders.orderId ASC`;
     // let output = []
     db.query(sql, [id, username])
         .then(results => {
