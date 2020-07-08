@@ -7,12 +7,17 @@ import { notification } from 'antd';
 
 function ProductDetailBtn(props) {
 
+  // 點擊 新增優惠卷
   const openProductDetailBottom = type => {
     notification[type]({
       message: '優惠卷權限消息',
       description:
         '您已經是本站會員，請請用 "MFEE0706NICE" 優惠碼',
     });
+    localStorage.setItem('code',JSON.stringify({
+      "code": "MFEE0706NICE",
+      "discount": 0.9
+    }))
   };
   return (
     <div 
