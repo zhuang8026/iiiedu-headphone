@@ -16,9 +16,9 @@ export const NavIcon = [
         name: 'Bang & Olufsen'
     },
     {
-        linkUrl: '/YyProduct/',
-        picUrl: require('../../assets/img/beat.png'),
-        name: 'Beats pro'
+        linkUrl: '/YyProduct/FINAL',
+        picUrl: require('../../assets/img/FINAL.png'),
+        name: 'FINAL'
     },
     {
         linkUrl: '/YyProduct/GRADO',
@@ -45,67 +45,67 @@ export const NavIcon = [
 // 頭戴耳機 商品
 export const NavItems = [
     {
-        linkUrl: 'https://treefonts.com/',
+        linkUrl: 'http://localhost:3000/ProductDetail/20/',
         picUrl: require('../../assets/items_img/SRH1840-01.png'),
-        name: 'SRH1840-01'
+        name: 'SRH1840'
     },
     {
-        linkUrl: 'https://treefonts.com/',
+        linkUrl: 'http://localhost:3000/ProductDetail/21',
         picUrl: require('../../assets/items_img/SRH240A-01.png'),
-        name: 'SRH240A-01'
+        name: 'SRH240A'
     },
     {
-        linkUrl: 'https://treefonts.com/',
+        linkUrl: 'http://localhost:3000/ProductDetail/26',
         picUrl: require('../../assets/items_img/SRH940-02.png'),
-        name: 'SRH940-02'
+        name: 'SRH940'
     },
     {
-        linkUrl: 'https://treefonts.com/',
+        linkUrl: 'http://localhost:3000/ProductDetail/27',
         picUrl: require('../../assets/items_img/MDR-XB950N1-01.png'),
-        name: 'MDR-XB950N1-01'
+        name: 'MDR-XB950N1'
     },
     {
-        linkUrl: 'https://treefonts.com/',
+        linkUrl: 'http://localhost:3000/ProductDetail/33',
         picUrl: require('../../assets/items_img/MDR-Z7M2-01.png'),
-        name: 'MDR-Z7M2-01'
+        name: 'MDR-Z7M2 '
     },
     {
-        linkUrl: 'https://treefonts.com/',
+        linkUrl: 'http://localhost:3000/ProductDetail/34',
         picUrl: require('../../assets/items_img/WH-H810-01.png'),
-        name: 'WH-H810-01'
+        name: 'WH-H810'
     }
 ];
 
 // 耳戴式耳機 商品
 export const NavItemsAir = [
     {
-        linkUrl: 'https://treefonts.com/',
+        linkUrl: 'http://localhost:3000/ProductDetail/4',
         picUrl: require('../../assets/items_img/Beoplay_E8-01.png'),
-        name: 'Beoplay_E8'
+        name: 'Beoplay E8'
     },
     {
-        linkUrl: 'https://treefonts.com/',
+        linkUrl: 'http://localhost:3000/ProductDetail/6',
         picUrl: require('../../assets/items_img/Beoplay_E8_3rd_Gen-02.png'),
-        name: 'Beoplay_E8_3rd'
+        name: 'Beoplay E8 3rd'
     },
     {
-        linkUrl: 'https://treefonts.com/',
+        linkUrl: 'http://localhost:3000/ProductDetail/5',
         picUrl: require('../../assets/items_img/Beoplay_E8_2.0-01.png'),
-        name: 'Beoplay_E8_2.0'
+        name: 'Beoplay E8 2.0'
     },
     {
-        linkUrl: 'https://treefonts.com/',
+        linkUrl: 'http://localhost:3000/ProductDetail/12',
         picUrl: require('../../assets/items_img/SE846-04.png'),
-        name: 'SE846-04'
+        name: 'KSE1500'
     },
     {
-        linkUrl: 'https://treefonts.com/',
+        linkUrl: 'http://localhost:3000/ProductDetail/1',
         picUrl: require('../../assets/items_img/Beoplay_H3-03.png'),
-        name: 'Beoplay_H3'
+        name: 'Beoplay H3'
     },
     {
-        linkUrl: 'https://treefonts.com/',
+        linkUrl: 'http://localhost:3000/ProductDetail/2',
         picUrl: require('../../assets/items_img/Beoplay_E4-01.png'),
-        name: 'Beoplay_E4'
+        name: 'Beoplay E4'
     }
 ];
