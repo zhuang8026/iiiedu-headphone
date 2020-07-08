@@ -32,6 +32,7 @@ function SuperSellerOrder(props) {
         fetch("http://localhost:3009/superseller/listSellerUserOrderToggle", {
             method: 'post',
             body: JSON.stringify({
+                userId:userdata.userId,
                 orderId: selectedorderid,
                 paymentState: togglevalue + 1
             }),
@@ -58,6 +59,7 @@ function SuperSellerOrder(props) {
         fetch("http://localhost:3009/superseller/listSellerUserOrderDeliveryToggle", {
             method: 'post',
             body: JSON.stringify({
+                userId:userdata.userId,
                 orderId: selectedorderid,
                 deliveryState: togglevalue + 1
             }),

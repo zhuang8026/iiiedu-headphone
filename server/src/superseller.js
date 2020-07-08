@@ -160,22 +160,17 @@ router.post("/listSellerUserOrder", upload.none(), (req, res) => {
     // console.log('========== react(get) -> (個人)所有訂單 ==========') 
     let id = req.body.id;
     let username = req.body.username;
-    let sql =  `SELECT *
-    FROM orders AS t1 
-    JOIN users  AS t2 
-    ON t1.userId=t2.id 
-   INNER JOIN payment_types AS t3 
-   ON t3.payment = t1.payment
-   INNER JOIN delivery_types AS t4 
-   ON t4.delivery = t1.delivery 
-   JOIN  items AS t5 
-   ON t5.itemId = t1.userId
-   INNER JOIN deliverystate_types AS t6
-   ON t6.deliveryState = t1.deliveryState     
-   INNER JOIN paymentstate_types AS t7
-   ON t7.paymentState = t1.paymentState 
-   WHERE t2.isActivated=1 AND t2.shopopen=1 AND t2.id = ?
-   ORDER BY t1.orderId ASC`;
+    let sql =  `
+    SELECT *
+     FROM order_details
+    INNER JOIN items
+    ON order_details.itemId = items.itemId
+    INNER JOIN orders
+    ON order_details.orderId = orders.orderId
+    INNER JOIN users
+    ON users.id = items.itemstoreNumber
+    WHERE users.id =?
+    ORDER BY orders.orderId ASC`;
     // let output = []
     db.query(sql, [id, username])
         .then(results => {
@@ -242,10 +237,11 @@ router.post("/listSellerUserProduct", upload.none(), (req, res) => {
 
 //http://localhost:3009/superseller/listSellerUserOrderToggle
 router.post("/listSellerUserOrderToggle",upload.none(),(req,res)=>{
+    let userId = req.body.userId;
     let paymentState = req.body.paymentState;
     let orderId = req.body.orderId;
-    let sql = `UPDATE orders SET paymentState=? WHERE orderId=?`
-    db.query(sql, [paymentState,orderId])
+    let sql = `UPDATE orders SET paymentState=? WHERE orderId=? AND userId=?`
+    db.query(sql, [paymentState,orderId,userId])
     .then(results => {
         // console.log(results[0])
         // output.results = results;
@@ -256,10 +252,11 @@ router.post("/listSellerUserOrderToggle",upload.none(),(req,res)=>{
 
 //http://localhost:3009/superseller/listSellerUserOrderDeliveryToggle
 router.post("/listSellerUserOrderDeliveryToggle",upload.none(),(req,res)=>{
+    let userId = req.body.userId;
     let deliveryState = req.body.deliveryState;
     let orderId = req.body.orderId;
-    let sql=`UPDATE orders SET deliveryState=? WHERE orderId=?`
-    db.query(sql,[deliveryState,orderId])
+    let sql=`UPDATE orders SET deliveryState=? WHERE orderId=? AND userId=?`
+    db.query(sql,[deliveryState,orderId,userId])
     .then(results=>{
         res.json(results[0])
     })
@@ -311,7 +308,7 @@ router.post('/add-product',(req,res)=>{
             rows:[]
         }
 
-        const sql = "INSERT INTO `items`(`itemName`,`itemsbrand`,`itemstype`,`itemPrice`, `itemQty`, `itemscontent`, `itemsweight`, `itemsdrive`, `itemsfrequency`, `itemsSensitivity`, `itemsconnect`, `itemsmains`, `itemsEndurance`, `itemswatertight`, `itemsfeature`) VALUES (?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?)"; 
+        const sql = "INSERT INTO `items`(`itemName`,`itemsbrand`,`itemstype`,`itemPrice`, `itemQty`,`itemstoreNumber` `itemscontent`, `itemsweight`, `itemsdrive`, `itemsfrequency`, `itemsSensitivity`, `itemsconnect`, `itemsmains`, `itemsEndurance`, `itemswatertight`, `itemsfeature`) VALUES (?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?)"; 
         // console.log('req.body',[req.body])
         db.query(sql, [itemName,itemsbrand,itemstype,itemPrice, itemQty,id ,
             itemscontent, itemsweight, itemsdrive, itemsfrequency, 
