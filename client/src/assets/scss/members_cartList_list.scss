@@ -14,7 +14,7 @@
             .cart_r_list_inner {
                 .cart_r_title {
                     background: $btn-color-s;
-                    padding: 24px;
+                    padding: 12px 24px;
                     span{
                         color: #fff;
                         font-weight: bold;
@@ -47,7 +47,7 @@
             }
         }
         .cart_r_list_total {
-            padding: 22px;
+            padding: 14px 24px;
             text-align: right;
             .cart_r_list_total_li {
                 .icon-safety {

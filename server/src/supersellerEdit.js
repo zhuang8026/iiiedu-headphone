@@ -208,16 +208,16 @@ router.post("/sellerWalletData", upload.none(), (req, res) => {
                     ON 
                         details.orderId = orders.orderId
                     WHERE
-                        user.username = ?
+                        user.id = ?
                     AND
                         paymentstate_types.paymentState = 2
                     AND
-                        YEAR(details.created_at)= ? 
+                        YEAR(orders.created_at)= ? 
                     AND 
-                        MONTH(details.created_at)= ? `;
-    db.query(sql, [id, username, years, months])
+                        MONTH(orders.created_at)= ? `;
+    db.query(sql, [id, id, years, months])
         .then(results => {
-            console.log(results)
+            console.log(results[0])
             for(let i of results[0]){
                 i.created_at = moment(i.created_at).format('YYYY-MM-DD');
             }
