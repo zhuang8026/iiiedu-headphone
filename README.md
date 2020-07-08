@@ -25,8 +25,8 @@
     - 20200707 - 2.2 Version - 購物車client bug 修復
         * 20200707 - 2.3 Version - 購物車server api 修復
     - 20200708 - 2.4 Version - 信用卡功能新增 bug 修復
-    - 20200708 - 2.5 Version - 產品新增功能 bug 修復
-    - 20200708 - 2.7 Version - 賣家訂單查詢 bug 修復完成
+        * 20200708 - 2.5 Version - 產品新增功能 bug 修復
+        * 20200708 - 2.7 Version - 賣家訂單查詢 bug 修復完成
         * 20200708 - 2.8 Version - 賣家新增商品 bug 修復完成
         * 20200708 - 2.9 Version - 購物車hooks bug 修復完成
         * 20200708 - 3.0 Version - 財務管理 bug 修復完成
