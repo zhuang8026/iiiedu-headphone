@@ -23,7 +23,7 @@ import { StoreImg, IGImg, YoutubeImg } from '../../assets/js/config'
 
 function WiHome() {
   return (
-    <Router>
+    
       <Fragment>
         <div>
           <HomeSlider />
@@ -36,7 +36,7 @@ function WiHome() {
           <BottomYoutube YoutubeImg={YoutubeImg} />
         </div>
       </Fragment>
-    </Router>
+    
   )
 }
 
