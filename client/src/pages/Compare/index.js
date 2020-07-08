@@ -7,7 +7,7 @@ import { message } from 'antd';
 
 function Compare(props) {
     const key = 'updatable';
-    const { setcompareschange,setcartchange } = props;
+    const { setcompareschange, setcartchange } = props;
 
     let [compareList,setCompareList] = useState([])
     
@@ -69,7 +69,7 @@ function Compare(props) {
       const currentCart = JSON.parse(localStorage.getItem('cart')) || []
       const newCart = [...currentCart, value]
       localStorage.setItem('cart', JSON.stringify(newCart))
-
+      setcartchange(newCart)
     }  
 
   return (

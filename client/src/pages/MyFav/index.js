@@ -1,5 +1,5 @@
 // 函式元件
-import React, { Fragment, useState} from 'react';
+import React, { Fragment, useState, useEffect} from 'react';
 import { BrowserRouter as Router, withRouter} from 'react-router-dom';
 import { Link } from 'react-router-dom'
 
@@ -8,10 +8,11 @@ import { message } from 'antd';
 function MyFav(props) {
   const key = 'updatable';
 
-  const { setlovechange } = props;
+  const { setlovechange, setcartchange } = props;
   let [compareList, setCompareList] = useState([])
   const[selectValue, setSelectValue] = useState([])
 
+  const cart = JSON.parse(localStorage.getItem('cart'))
   const objcompare = JSON.parse(localStorage.getItem('love'))|| []
   compareList = [...objcompare]
   // itemPrice
@@ -45,6 +46,7 @@ function MyFav(props) {
     const currentCart = JSON.parse(localStorage.getItem('cart')) || []
     const newCart = [...currentCart, value]
     localStorage.setItem('cart', JSON.stringify(newCart))
+    setcartchange(newCart)
   }  
 
   //更新比較功能localstorage
@@ -61,6 +63,10 @@ function MyFav(props) {
       }
     });
   }
+
+  // useEffect(()=>{
+    
+  // },[])
 
   return (
       <Fragment>

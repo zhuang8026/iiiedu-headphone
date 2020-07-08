@@ -583,12 +583,18 @@ function App() {
 
           {/* 比較頁面 */}
           <Route path="/Compare">
-            <Compare setcompareschange={setcompareschange} />
+            <Compare 
+              setcompareschange={setcompareschange} 
+              setcartchange={setcartchange}
+            />
           </Route>
 
           {/* 我的最愛 */}
           <Route path="/MyFav">
-            <MyFav setlovechange={setlovechange} />
+            <MyFav 
+              setlovechange={setlovechange} 
+              setcartchange={setcartchange}
+            />
           </Route>
 
           {/* ProtectdRoute 這是 utils */}
