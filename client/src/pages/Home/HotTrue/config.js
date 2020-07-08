@@ -1,9 +1,9 @@
 // 頭戴耳機 品牌
 export const SwiperTrue = [
     {
-        piclinkUrl: '/*****',
+        piclinkUrl: 'http://localhost:3000/ProductDetail/111',
         picUrl: require('../../../assets/img/bg_6p_1.png'),
-        name: 'GS1000e',
+        name: 'bRS2e',
         p1text: '非常適合運動',
         p2text: '電池續航時間長達 15 小時 *',
         p3text: '運動傳感器',

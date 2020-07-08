@@ -20,11 +20,11 @@ export const SwiperImg = [
         h1text: 'ALL DREAMLIKE',
         ptext: 'A breath of fresh air arrives to your jewelry box – browse our new collection, brought to you by OTIS.',
 
-        itemslinkUrl: '/*****',
+        itemslinkUrl: 'ProductDetail/111',
         itemsUrl: require('../../../assets/img/bg_5p.png'),
         itemsName: 'GS1000e',
         itemsText: 'Statement Series',
-        itemsPrice: 99999,
+        itemsPrice: 15000,
     },
     {
         linkUrl: 'b/*****',
@@ -33,11 +33,11 @@ export const SwiperImg = [
         h1text: "THE ONLY HEADPHONES YOU'LL EVER NEED",
         ptext: 'A breath of fresh air arrives to your jewelry box – browse our new collection, brought to you by OTIS.',
 
-        itemslinkUrl: '/*****',
+        itemslinkUrl: '/ProductDetail/110',
         itemsUrl: require('../../../assets/img/bg_6p.png'),
-        itemsName: 'SR225e',
+        itemsName: 'GS2000e',
         itemsText: 'Prestige Series',
-        itemsPrice: 99999,
+        itemsPrice: 15000,
     }
 ];
 
@@ -50,7 +50,7 @@ export const SwiperImgMobile = [
         h1text: 'NEW HEADPHONES',
         ptext: 'A breath of fresh air arrives to your jewelry box – browse our new collection, brought to you by OTIS.',
 
-        itemslinkUrl: '/*****',
+        itemslinkUrl: '/ProductDetail/106',
         itemsUrl: require('../../../assets/img/bg_4p.png'),
         itemsName: 'RS2e',
         itemsText: 'Reference Series',
@@ -63,7 +63,7 @@ export const SwiperImgMobile = [
         h1text: 'ALL DREAMLIKE',
         ptext: 'A breath of fresh air arrives to your jewelry box – browse our new collection, brought to you by OTIS.',
 
-        itemslinkUrl: '/*****',
+        itemslinkUrl: '/ProductDetail/111',
         itemsUrl: require('../../../assets/img/bg_5p.png'),
         itemsName: 'GS1000e',
         itemsText: 'Statement Series',
@@ -76,7 +76,7 @@ export const SwiperImgMobile = [
         h1text: "THE ONLY HEADPHONES YOU'LL EVER NEED",
         ptext: 'A breath of fresh air arrives to your jewelry box – browse our new collection, brought to you by OTIS.',
 
-        itemslinkUrl: '/*****',
+        itemslinkUrl: '/ProductDetail/110',
         itemsUrl: require('../../../assets/img/bg_6p.png'),
         itemsName: 'SR225e',
         itemsText: 'Prestige Series',
