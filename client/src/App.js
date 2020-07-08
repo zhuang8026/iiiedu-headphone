@@ -43,15 +43,14 @@ import MembersBlog from './pages/Members/MembersBlog'
 // import MembersForget from './pages/Members/MembersForget'
 
 // 超級賣家
-import WiSeller from './pages/SuperSeller';
-import SuperSellerOrder from './pages/SuperSeller/SuperSellerOrder';
-import SuperSellerItems from './pages/SuperSeller/SuperSellerItems';
-import SuperSellerAddItems from './pages/SuperSeller/SuperSellerAddItems';
-import SuperSellerWallet from './pages/SuperSeller/SuperSellerWallet';
+import WiSeller from './pages/SuperSeller'
+import SuperSellerOrder from './pages/SuperSeller/SuperSellerOrder'
+import SuperSellerItems from './pages/SuperSeller/SuperSellerItems'
+import SuperSellerAddItems from './pages/SuperSeller/SuperSellerAddItems'
+import SuperSellerWallet from './pages/SuperSeller/SuperSellerWallet'
 
 // 比較功能
 import Compare from './pages/Compare/index'
-
 
 //我的最愛
 import MyFav from './pages/MyFav'
@@ -76,10 +75,10 @@ import NotFoundPage404 from './pages/404'
 import MyLoading from './components/Loading'
 
 function App() {
-  // navbar 
-  const [lovechange, setlovechange] = useState([]);
-  const [compareschange, setcompareschange] = useState([]);
-  const [cartchange, setcartchange] = useState([]);
+  // navbar
+  const [lovechange, setlovechange] = useState([])
+  const [compareschange, setcompareschange] = useState([])
+  const [cartchange, setcartchange] = useState([])
 
   // 會員
   const [userdata, setUserdata] = useState([])
@@ -93,7 +92,7 @@ function App() {
   const [itemsdata, setItemsdata] = useState([])
   const [itemsid, setItemsid] = useState('')
 
-  // 賣家中心 
+  // 賣家中心
   const [sellerOrderData, setSellerOrderData] = useState([])
 
   //購物流程
@@ -110,7 +109,7 @@ function App() {
   const [orderId, setOrderId] = useState([])
 
   // BLOG
-  const [listUpdate, setListUpdate] = useState([]);
+  const [listUpdate, setListUpdate] = useState([])
 
   // 登入 & 狀態判斷
   const loginProcess = (loginSuccessCallback) => {
@@ -171,14 +170,14 @@ function App() {
   }, [])
 
   // 從localStorage獲取-購物車資料
-  // const cartData = JSON.parse(localStorage.getItem('cart')); 
+  // const cartData = JSON.parse(localStorage.getItem('cart'));
   // useEffect(()=>{
   //   if (cartData === null) {
   //     return
   //   } else {
   //     setMycart(cartData)
-  //   } 
-  // },[]) 
+  //   }
+  // },[])
 
   return (
     <Router>
@@ -197,10 +196,7 @@ function App() {
           userdata={userdata}
           setUserdata={setUserdata}
         />
-        <MyMenu
-          cartchange={cartchange}
-          setcartchange={setcartchange}
-        />
+        <MyMenu cartchange={cartchange} setcartchange={setcartchange} />
       </header>
 
       {/* ScrollToTop是為了讓連到另一頁內容時，頁面回到最上方 */}
@@ -271,17 +267,15 @@ function App() {
             />
           </Route>
 
-
           {/* 超級賣家 - William - 20200703 */}
           <Route exact path="/SuperSeller">
-
             {/* order組件 在 這裡面  */}
             <WiSeller
               allprops={{
                 userdata,
                 setUserdata,
                 sellerOrderData,
-                setSellerOrderData
+                setSellerOrderData,
               }}
             />
           </Route>
@@ -364,8 +358,9 @@ function App() {
                 userdata,
                 setUserdata,
                 name,
-                setName, membersCartOrderData,
-                setMembersCartOrderData
+                setName,
+                membersCartOrderData,
+                setMembersCartOrderData,
               }}
             />
           </Route>
@@ -440,6 +435,12 @@ function App() {
           <Route path="/MyCart">
             <MyCart
               allprops={{
+                lovechange,
+                setlovechange,
+                compareschange,
+                setcompareschange,
+                cartchange,
+                setcartchange,
                 mycart,
                 setMycart,
                 mycartDisplay,
@@ -498,6 +499,8 @@ function App() {
               allprops={{
                 userdata,
                 setUserdata,
+                cartchange,
+                setcartchange,
                 mycart,
                 setMycart,
                 mycartDisplay,
@@ -520,7 +523,7 @@ function App() {
                 setOrderCard,
                 orderId,
                 setOrderId,
-                setcartchange
+                setcartchange,
               }}
             />
           </Route>
