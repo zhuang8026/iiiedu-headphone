@@ -7,11 +7,11 @@ export const SwiperImg = [
         h1text: 'NEW HEADPHONES',
         ptext: 'A breath of fresh air arrives to your jewelry box – browse our new collection, brought to you by OTIS.',
 
-        itemslinkUrl: '/*****',
+        itemslinkUrl: '/ProductDetail/106',
         itemsUrl: require('../../../assets/img/bg_4p.png'),
-        itemsName: 'RS2e',
+        itemsName: 'sr125e',
         itemsText: 'Reference Series',
-        itemsPrice: 99999,
+        itemsPrice: 8900,
     },
     {
         linkUrl: '/*****',

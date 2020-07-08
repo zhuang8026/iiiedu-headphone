@@ -3,7 +3,7 @@ export const SwiperTrue = [
     {
         piclinkUrl: '/*****',
         picUrl: require('../../../assets/img/bg_6p_1.png'),
-        name: 'bRS2e',
+        name: 'GS1000e',
         p1text: '非常適合運動',
         p2text: '電池續航時間長達 15 小時 *',
         p3text: '運動傳感器',
