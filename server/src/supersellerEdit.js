@@ -185,37 +185,78 @@ router.post("/sellerWalletData", upload.none(), (req, res) => {
     let years = req.body.years;
     let months = req.body.months;
 
-    let sql =  `SELECT *
-                    FROM orders
-                    LEFT JOIN 
-                        (SELECT users.id, users.username, users.name FROM users WHERE users.isActivated=1 AND users.shopopen=1 AND users.id = ?) AS user 
-                    ON 
-                        orders.userId = user.id 
-                    LEFT JOIN 
-                        paymentstate_types
-                    ON 
-                        paymentstate_types.paymentState = orders.paymentState
-                    LEFT JOIN 
-                        payment_types AS pay
-                    ON 
-                        pay.payment = orders.deliveryState
-                    LEFT JOIN 
-                        delivery_types
-                    ON
-                        delivery_types.delivery = orders.delivery
-                    INNER JOIN  
-                        order_details AS details
-                    ON 
-                        details.orderId = orders.orderId
-                    WHERE
-                        user.id = ?
-                    AND
-                        paymentstate_types.paymentState = 2
-                    AND
-                        YEAR(orders.created_at)= ? 
-                    AND 
-                        MONTH(orders.created_at)= ? `;
-    db.query(sql, [id, id, years, months])
+    // let sql =  `SELECT *
+    //                 FROM orders
+    //                 LEFT JOIN 
+    //                     (SELECT users.id, users.username, users.name FROM users WHERE users.isActivated=1 AND users.shopopen=1 AND users.id = ?) AS user 
+    //                 ON 
+    //                     orders.userId = user.id 
+    //                 LEFT JOIN 
+    //                     paymentstate_types
+    //                 ON 
+    //                     paymentstate_types.paymentState = orders.paymentState
+    //                 LEFT JOIN 
+    //                     payment_types AS pay
+    //                 ON 
+    //                     pay.payment = orders.deliveryState
+    //                 LEFT JOIN 
+    //                     delivery_types
+    //                 ON
+    //                     delivery_types.delivery = orders.delivery
+    //                 INNER JOIN  
+    //                     order_details AS details
+    //                 ON 
+    //                     details.orderId = orders.orderId
+    //                 WHERE
+    //                     user.id = ?
+    //                 AND
+    //                     paymentstate_types.paymentState = 2
+    //                 AND
+    //                     YEAR(orders.created_at)= ? 
+    //                 AND 
+    //                     MONTH(orders.created_at)= ? `;
+    let sql =  `SELECT *, orders.created_at
+                FROM 
+                    order_details
+                INNER JOIN 
+                    items
+                ON 
+                    order_details.itemId = items.itemId
+                INNER JOIN 
+                    orders
+                ON 
+                    order_details.orderId = orders.orderId
+                INNER JOIN
+                    payment_types
+                ON 
+                    payment_types.payment = orders.payment
+                INNER JOIN
+                    delivery_types
+                ON 
+                    delivery_types.delivery = orders.delivery
+                INNER JOIN 
+                    deliverystate_types
+                ON 
+                    deliverystate_types.deliveryState = orders.deliveryState
+                INNER JOIN 
+                    paymentstate_types
+                ON 
+                    paymentstate_types.paymentState = orders.paymentState
+                INNER JOIN 
+                    users
+                ON 
+                    users.id = items.itemstoreNumber
+                WHERE 
+                    users.id =?
+                AND
+                    paymentstate_types.paymentState = 2
+                AND
+                    YEAR(orders.created_at)= ? 
+                AND 
+                    MONTH(orders.created_at)= ?
+                ORDER BY 
+                    orders.orderId ASC`;
+    db.query(sql, [id, years, months])
         .then(results => {
             console.log(results[0])
             for(let i of results[0]){
