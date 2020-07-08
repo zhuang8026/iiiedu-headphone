@@ -223,7 +223,7 @@ function KMembers(props) {
                     {/* 右側圖片 */}
                     <div className="r_bottom_right">
                         {userdata.userlogo==null ? (
-                            <img src={`/user_img/${userdata.userlogo}`} alt="image"/>
+                            <img src={`/user_noimg/noimg.jpg`} alt="image"/>
                         ):(
                             <img src={`/user_img/${userdata.userlogo}`} alt="image"/>
                         )}

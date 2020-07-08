@@ -12,6 +12,11 @@ main
     .blogTable {
       width: 100%;
       table-layout: fixed;
+      .blogTableNothing {
+        width: 100%;
+        text-align: center;
+        padding: 16px 0;
+      }
       thead {
         tr {
           th {

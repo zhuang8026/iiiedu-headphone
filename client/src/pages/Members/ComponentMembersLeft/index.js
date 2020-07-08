@@ -55,7 +55,11 @@ function MembersLeft(props) {
             <div className="members_header">
                 <div className="mem_top_inner">
                     <Link to="/KMembers">
-                        <img src={`/user_img/${userdata.userlogo}`} alt="photo/icon"/>
+                        {userdata.userlogo==null ? (
+                            <img src={`/user_noimg/noimg.jpg`} alt="photo/icon"/>
+                        ):(
+                            <img src={`/user_img/${userdata.userlogo}`} alt="photo/icon"/>
+                        )}
                     </Link>
                     <div className="men_text">
                         <h2>Hello !</h2>

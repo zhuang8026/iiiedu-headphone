@@ -37,6 +37,25 @@
                 border: 1px solid #e8e9e2;
                 padding: 16px;
                 // margin-right: 16px;
+                .updata_itemImg_inner {
+                    .itemImgstyle {
+                        position: relative;
+                        margin: 0 0 0 8px;
+                        background: #fff;
+                        color: #211e55;
+                        border: 1px solid #211e55;
+                        padding: 8px 19px;
+                        transition: 0.3s ease-in;
+                        &:hover {
+                            background: #211e55;
+                            color: #fff;
+                        }
+                    }
+                    .updata_itemImg_files {
+                        position: absolute;
+                        opacity: 0;
+                    }
+                }
                 img {
                     width: 100px;
                     height: 100px;
@@ -44,6 +63,8 @@
                     border: 1px dashed #211e55;
                     margin: 16px 8px;
                 }
+
+                
             }
             
         }
