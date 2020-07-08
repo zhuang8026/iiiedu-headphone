@@ -22,6 +22,7 @@ function MyCart(props) {
     setcartchange,
   } = props.allprops
   const CartInner = JSON.parse(localStorage.getItem('cart')) || ''
+  const [discountCode, setDiscountCode] = useState('')
 
   // william - 20200705 - 數量加減
   const changeQuantity = (id, amount, PQty) => {
@@ -91,6 +92,9 @@ function MyCart(props) {
   const cart = JSON.parse(localStorage.getItem('cart'))
 
   useEffect(() => {
+    //實驗把設定總數放在這裡
+    setOrderTotal(sum(mycart))
+
     setMycart(CartInner)
     //更新nav數量
     setlovechange(love)
@@ -257,10 +261,34 @@ function MyCart(props) {
                   className="codeInput"
                   type="text"
                   placeholder="請輸入優惠碼"
+                  value={discountCode}
+                  onChange={(event) => {
+                    const v = event.target.value
+                    setDiscountCode(v)
+                  }}
                 />
-                <button className="codebutton" type="button">
-                  送出
-                </button>
+                {discountCode == 'MFEE0706NICE' ? (
+                  <button
+                    className="codebutton"
+                    type="button"
+                    onClick={() => {
+                      setOrderTotal(orderTotal - 1000)
+                      message.success('成功使用優惠碼!')
+                    }}
+                  >
+                    送出
+                  </button>
+                ) : (
+                  <button
+                    className="codebutton"
+                    type="button"
+                    onClick={() => {
+                      message.warning('請輸入正確的優惠碼!')
+                    }}
+                  >
+                    送出
+                  </button>
+                )}
               </li>
               <li className="cart-footer wi-num">
                 <h2>商品總計: </h2>
@@ -284,7 +312,7 @@ function MyCart(props) {
                 <button
                   className="wi-footer-set"
                   type="button"
-                  onClick={setOrderTotal(sum(mycart))}
+                  // onClick={setOrderTotal(sum(mycart))}
                 >
                   <Link to="/ConfirmOrder">去結帳</Link>
                 </button>
