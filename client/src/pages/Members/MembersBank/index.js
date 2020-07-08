@@ -16,10 +16,13 @@ function MembersBank(props) {
     const key = 'updatable';
     // 父層hooks
     const {userdata, setUserdata} = props;
+    const [cardUser, setCardUser] = useState({});
 
     // 自用hooks
     const [currentCardBackground, setCurrentCardBackground] = useState(Math.floor(Math.random()* 25 + 1))
-    console.log('userdata', userdata);
+    // console.log('cardUser', cardUser);
+    // console.log('userdata.card', 5234555588888888, typeof(5234555588888888));
+    // console.log('userdata.card.String', String(userdata.card).split(''));
 
 
     const membersEditBankCallback = () => {
@@ -53,6 +56,31 @@ function MembersBank(props) {
             })
     }
 
+    const cardCvvCallback = (event) =>{
+        let cardItem = document.getElementsByClassName('card-item')[0];
+        cardItem.classList.toggle('-active');
+    }
+
+
+    // function replacer(match, p1, p2, p3, p4, offset, string) {
+    //     return [p1, p2, p3, p4].join(' ');
+    // }
+    // 輸出 'abc - 12345 - #$*%'
+    // console.log('abc12345#$*%'.replace(/([^\d]*)(\d*)([^\w]*)/, replacer));
+
+    const cardNameCallback =(data) =>{
+        // console.log('cardNameCallback:',replacer(/([^\d]*)(\d*)([^\w]*)/, data))
+        // console.log(data.replace(/\D/g, '').replace(/(\s)/g, '').replace(/(\d{4})/g, '$1 ').replace(/\s*$/, ''))
+        let cardNumber = data.replace(/\D/g, '').replace(/(\s)/g, '').replace(/(\d{4})/g, '$1 ').replace(/\s*$/, '')
+        setUserdata({
+            ...userdata,
+            card: cardNumber
+        })
+
+    }
+
+
+
     return (
         <main>
             <div className="members_all">
@@ -84,33 +112,46 @@ function MembersBank(props) {
                                                 <div className="card-item__top">
                                                     <img className="card-item__chip" src={`/card_img/chip.png`}/>
                                                     <div className="card-item__type">
-                                                        <img className="card-item__typeImg" src={`/card_img/visa.png`}/>
+                                                        {
+                                                            (String(userdata.card).match(new RegExp("^44"))?(
+                                                                <img className="card-item__typeImg" src={`/card_img/visa.png`}/>
+                                                            ):(
+                                                                (String(userdata.card).match(new RegExp("^33"))?(
+                                                                    <img className="card-item__typeImg" src={`/card_img/mater.png`}/>
+                                                                ):(
+                                                                    <> </>
+                                                                ))
+                                                            ))
+                                                        }
+                                                        {/* <img className="card-item__typeImg" src={`/card_img/visa.png`}/> */}
                                                     </div>
                                                 </div>
                                                 <label for="cardNumber" className="card-item__number">
-                                                    <span>
-                                                        <div class="card-item__numberItem">1</div>
-                                                    </span>
-                                                    <span>
-                                                        <div class="card-item__numberItem">1</div>
-                                                    </span>
-                                                    <span>
-                                                        <div class="card-item__numberItem">1</div>
-                                                    </span>
+                                                    {String(userdata.card).split('').map((data, index)=>{
+                                                        return(
+                                                            <span>
+                                                                <div class="card-item__numberItem">{data}</div>
+                                                            </span>
+                                                        )
+                                                    })}
+                                                    {/* <span>
+                                                        <div class="card-item__numberItem">{userdata.card}</div>
+                                                    </span> */}
+
                                                 </label>
                                                 <div className="card-item__content">
                                                     <label for="cardName" class="card-item__info">
                                                         <div className="card-item__holder">Card Holder</div>
-                                                        <div className="card-item__name">Full Name</div>
+                                                        <div className="card-item__name">{cardUser.cardName?cardUser.cardName : 'Full Name'}</div>
                                                     </label>
                                                     <div class="card-item__date">
                                                         <label for="cardMonth" class="card-item__dateTitle">Expires</label>
                                                         <label for="cardMonth" class="card-item__dateItem">
-                                                            <span>MM</span>
+                                                            <span>{cardUser.Month ? cardUser.Month:'MM'}</span>
                                                         </label> 
                                                         /
                                                         <label for="cardYear" class="card-item__dateItem">
-                                                            <span>YY</span>
+                                                            <span>{cardUser.Year ? cardUser.Year:'YY'}</span>
                                                         </label> 
                                                         
                                                     </div>
@@ -128,9 +169,20 @@ function MembersBank(props) {
                                             </div>
                                             <div class="card-item__cvv">
                                                 <div className="card-item__cvvTitle">CVV</div>
-                                                <div className="card-item__cvvBand"></div>
+                                                <div className="card-item__cvvBand">{userdata.pin}</div>
                                                 <div className="card-item__type">
-                                                    <img className="card-item__typeImg" src={`/card_img/visa.png`}/>
+                                                    {
+                                                        (String(userdata.card).match(new RegExp("^44"))?(
+                                                            <img className="card-item__typeImg" src={`/card_img/visa.png`}/>
+                                                        ):(
+                                                            (String(userdata.card).match(new RegExp("^33"))?(
+                                                                <img className="card-item__typeImg" src={`/card_img/mater.png`}/>
+                                                            ):(
+                                                                <> </>
+                                                            ))
+                                                        ))
+                                                    }
+                                                    {/* <img className="card-item__typeImg" src={`/card_img/visa.png`}/> */}
                                                 </div>
                                             </div>
                                         </div>
@@ -141,42 +193,132 @@ function MembersBank(props) {
                                 <div class="card-form__inner">
                                     <div class="card-input">
                                         <label for="cardNumber" class="card-input__label">Card Number</label>
-                                        <input type="text" id="cardNumber" class="card-input__input" data-ref="cardNumber" autocomplete="off"/>
+                                        <input 
+                                            type="text" 
+                                            id="cardNumber" 
+                                            class="card-input__input" 
+                                            data-ref="cardNumber" 
+                                            maxLength="16"
+                                            autocomplete="off"
+                                            placeholder="EX: 4444 5555 6666 7777"
+                                            onChange = {(event)=>{
+                                                cardNameCallback(event.target.value);
+                                                // setUserdata({
+                                                //     ...userdata,
+                                                //     card: event.target.value
+                                                // })
+                                            }}
+                                            />
                                     </div>
                                     <div class="card-input">
                                         <label for="cardName" class="card-input__label">Card Holders</label>
-                                        <input type="text" id="cardName" class="card-input__input" data-ref="cardName" autocomplete="off"/>
+                                        <input 
+                                            type="text" 
+                                            id="cardName" 
+                                            class="card-input__input"
+                                            data-ref="cardName" 
+                                            autocomplete="off"
+                                            placeholder="EX: WANG XIAO MING"
+                                            onChange = {(event)=>{
+                                                setCardUser({
+                                                    ...cardUser,
+                                                    cardName:event.target.value
+                                                })
+                                            }}
+                                        />
                                     </div>
                                     <div class="card-form__row">
                                         <div class="card-form__col">
                                             <div class="card-form__group">
                                                 <label for="cardMonth" class="card-input__label">Expiration Date</label>
-                                                <select class="card-input__input -select" id="cardMonth" data-ref="cardDate">
-                                                    <option value="" disabled selected>Month</option>
-                                                    <option value="n < 10 ? '0' + n : n">
-                                                        {/* {{n < 10 ? '0' + n : n}} */}
-                                                    </option>
+                                                <select 
+                                                    class="card-input__input -select" 
+                                                    id="cardMonth" 
+                                                    data-ref="cardDate"
+                                                    // defaultValue={cardUser.Month}
+                                                    onChange = {(event)=>{
+                                                        console.log(event)
+                                                        setCardUser({
+                                                            ...cardUser,
+                                                            Month:event.target.value
+                                                        })
+                                                    }}
+                                                >
+                                                    <option value="00" disabled selected>Month</option>
+                                                    <option value="01">01</option>
+                                                    <option value="02">02</option>
+                                                    <option value="03">03</option>
+                                                    <option value="04">04</option>
+                                                    <option value="05">05</option>
+                                                    <option value="06">06</option>
+                                                    <option value="07">07</option>
+                                                    <option value="08">08</option>
+                                                    <option value="09">09</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
                                                 </select>
-                                                <select class="card-input__input -select" id="cardYear" data-ref="cardDate">
-                                                    <option value="" disabled selected>Year</option>
-                                                    <option value="$index + minCardYear">
-                                                        {/* {{$index + minCardYear}} */}
-                                                    </option>
+                                                <select 
+                                                    class="card-input__input -select" 
+                                                    id="cardYear" 
+                                                    data-ref="cardDate"
+                                                    onChange = {(event)=>{
+                                                        console.log(event)
+                                                        setCardUser({
+                                                            ...cardUser,
+                                                            Year:event.target.value
+                                                        })
+                                                    }}
+                                                >
+                                                    <option value="0000" disabled selected>Year</option>
+                                                    <option value="25">2025</option>
+                                                    <option value="24">2024</option>
+                                                    <option value="23">2023</option>
+                                                    <option value="22">2022</option>
+                                                    <option value="21">2021</option>
+                                                    <option value="20">2020</option>
+                                                    <option value="19">2019</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="card-form__col -cvv">
                                             <div class="card-input">
                                                 <label for="cardCvv" class="card-input__label">CVV</label>
-                                                <input type="text" class="card-input__input" id="cardCvv" maxlength="4" autocomplete="off"/>
+                                                <input 
+                                                    type="text" 
+                                                    class="card-input__input" 
+                                                    id="cardCvv" 
+                                                    maxlength="3" 
+                                                    autocomplete="off"
+                                                    placeholder="EX: 000"
+                                                    onChange={
+                                                        (event)=>{ 
+                                                            setUserdata({
+                                                                ...userdata,
+                                                                pin: event.target.value
+                                                            })
+                                                        }
+                                                    }
+                                                    onBlur={
+                                                        (event)=>{
+                                                            cardCvvCallback(event) 
+                                                        }
+                                                    }
+                                                    onClick={
+                                                        (event)=>{
+                                                            cardCvvCallback(event) 
+                                                        }
+                                                    }
+                                                />
                                             </div>
                                         </div>
                                     </div>
 
                                     {/* 送出按鍵 */}
-                                    <button class="card-form__button">
-                                        Submit
-                                    </button>
+                                    <button 
+                                        class="card-form__button"
+                                        onClick={()=>membersEditBankCallback()}
+                                    >Submit</button>
                                 </div>
                             </div>
 

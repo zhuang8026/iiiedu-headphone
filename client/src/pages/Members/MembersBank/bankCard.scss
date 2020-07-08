@@ -1,6 +1,7 @@
 .card-form {
     max-width: 570px;
     margin: auto;
+    padding-bottom: 64px;
     width: 100%;
 
     // 信用卡
@@ -277,7 +278,8 @@
                 font-size: 18px;
                 padding: 5px 15px;
                 background: none;
-                color: #1a3b5d;
+                color: #4e4f97;
+                font-size: 14px;
                 font-family: "Source Sans Pro", sans-serif;
             }
         }
@@ -322,7 +324,7 @@
                         font-size: 18px;
                         padding: 5px 15px;
                         background: none;
-                        color: #1a3b5d;
+                        color: #4e4f97;
                         font-family: "Source Sans Pro", sans-serif;
                     }
                 }
@@ -350,7 +352,7 @@
                         font-size: 18px;
                         padding: 5px 15px;
                         background: none;
-                        color: #1a3b5d;
+                        color: #4e4f97;
                         font-family: "Source Sans Pro", sans-serif;
                     }
                 }
@@ -364,7 +366,7 @@
         .card-form__button {
             width: 100%;
             height: 55px;
-            background: #2364d2;
+            background: #211e55;
             border: none;
             border-radius: 5px;
             font-size: 22px;
