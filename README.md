@@ -16,7 +16,8 @@
     - 結帳系統 (CR)
     - 全站搜尋系統 (模糊搜尋)
     - 地圖定位系統 (react-leaflet)
-## Version Control
+
+## 版本控制 更新中
 * Version - bug 修復進行中
     - 20200701 - 1.0 Version - 修復賣家訂單查詢功能
     - 20200706 - 2.0 Version - 修復會員購物清單
