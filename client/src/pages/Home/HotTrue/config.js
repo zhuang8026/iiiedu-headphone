@@ -3,14 +3,14 @@ export const SwiperTrue = [
     {
         piclinkUrl: '/ProductDetail/111',
         picUrl: require('../../../assets/img/bg_6p_1.png'),
-        name: 'bRS2e',
+        name: 'GS1000e',
         p1text: '非常適合運動',
         p2text: '電池續航時間長達 15 小時 *',
         p3text: '運動傳感器',
         p4text: '防汗防塵',
     },
     {
-        piclinkUrl: '/*****',
+        piclinkUrl: '/ProductDetail/109',
         picUrl: require('../../../assets/img/bg_6p_2.png'),
         name: 'GS3000e',
         p1text: '純手工打造',
@@ -19,7 +19,7 @@ export const SwiperTrue = [
         p4text: '釹動態驅動單體',
     },
     {
-        piclinkUrl: '/*****',
+        piclinkUrl: '/ProductDetail/110',
         picUrl: require('../../../assets/img/bg_6p_3.png'),
         name: 'GS2000e',
         p1text: '純手工打造',
@@ -28,7 +28,7 @@ export const SwiperTrue = [
         p4text: '既美觀又耐用',
     },
     {
-        piclinkUrl: '/*****',
+        piclinkUrl: '/ProductDetail/114',
         picUrl: require('../../../assets/img/bg_6p_4.png'),
         name: 'PS2000e',
         p1text: '純手工打造',
@@ -37,7 +37,7 @@ export const SwiperTrue = [
         p4text: '極限重低音',
     },
     {
-        piclinkUrl: '/*****',
+        piclinkUrl: '/ProductDetail/113',
         picUrl: require('../../../assets/img/bg_6p_5.png'),
         name: 'PS1000e',
         p1text: '手工製的楓木耳桶造',
