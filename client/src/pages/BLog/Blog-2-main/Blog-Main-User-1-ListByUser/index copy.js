@@ -13,7 +13,6 @@ import {
 import 'antd/dist/antd.css';
 import { message, Modal, notification } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
-import { ExclamationCircleFilled } from '@ant-design/icons';
 import { CheckCircleFilled } from '@ant-design/icons';
 // react-moment
 import Moment from 'react-moment';
@@ -55,7 +54,7 @@ function BlogMainUserListByUser(props) {
         searchMethod()
     }, [userdata, searchOrder, searchSort, currentPage])
     useEffect(() => {
-
+        
     }, [listUserBlogdata])
     useEffect(() => {
         console.log('更新searchInput -> ', searchInput)
@@ -108,7 +107,7 @@ function BlogMainUserListByUser(props) {
                 return response.json()
             })
             .then((response) => {
-                if (response.success == true) {
+                if(response.success==true){
                     // openDeleteArticleNotification()
                     setTimeout(() => {
                         openDeleteArticleNotification()
@@ -161,19 +160,6 @@ function BlogMainUserListByUser(props) {
         };
         notification.open(args);
     };
-    // 尚未登入提示
-    const openLoginNotification = () => {
-        const args = {
-            message: '您尚未登入',
-            description:
-                '只有會員身分，才能新增和編輯部落格文章',
-            duration: 5,
-            icon: <ExclamationCircleFilled style={{ color: '#ffc107' }} />,
-        };
-        notification.open(args);
-    };
-
-
     // 去編輯
     const goBlogEdit = (blogId) => {
         props.history.push('/Blog/BlogEdit');
@@ -272,64 +258,64 @@ function BlogMainUserListByUser(props) {
                 </div>
             </div>
             <div className="blog-list blog-d-flex">
-                {listUserBlogdata.length>0 && (
-                    <>
-                        {listUserBlogdata.map((data, index) => {
-                            {/* console.log(data) */ }
-                            return (
-                                <div className="blog-card" key={data.blogId}>
-                                    <div className="blog-card-in">
-                                        <figure className="blog-card-fig">
-                                            <img className="blog-cover"
-                                                src={(data.blogContent01_img01 == '' ? `http://localhost:3009/blogs_img/img-empty.png` : `http://localhost:3009/blogs_img/${data.blogContent01_img01}`)}
-                                            />
-                                        </figure>
-                                        <div className="blog-card-btns blog-d-flex blog-justify-content-between">
-                                            <figure>
-                                                <img
-                                                    src={Pan}
-                                                    onClick={() => {
-                                                        props.history.push(`/Blog/BlogEdit/${data.blogId}`);
-                                                    }}
-                                                ></img>
-                                            </figure>
-                                            <figure>
-                                                <img src={TrashBarrel}
-                                                    onClick={() => {
-                                                        // message.success(data.blogId);
-                                                        showDeletePromiseConfirm(data.blogId)
-                                                    }}></img>
-                                            </figure>
-                                        </div>
-                                        <div className="blog-card-title"><p>{data.blogTitle}</p></div>
-                                        <div className="blog-card-content"><p>{data.blogContent01}</p></div>
-                                        <div className="blog-card-calendar">
-                                            <div className="blog-card-calendar-in">
-                                                <h2><Moment format="DD">{data.blogPublishDate}</Moment></h2>
-                                                <h5><Moment format="M">{data.blogPublishDate}</Moment>月</h5>
-                                            </div>
-                                        </div>
-                                        <div className="read-more">
-                                            <button
-                                                className="read-more-btn"
-                                                name="Hover"
-                                                onClick={() => {
-                                                    props.history.push(`/Blog/BlogDetail/${data.blogId}`);
-                                                }}
-                                            >閱讀文章</button>
-                                        </div>
-                                        <div className="user-info-list blog-d-flex">
-                                            <figure className="blod-cover">
-                                                <img src={(data.userlogo ? `/user_img/${data.userlogo}` : `/blogs_img/member-empty.jpg`)} alt="" />
-                                            </figure>
-                                            <h3>{data.name}</h3>
-                                            <h4><Moment format="YYYY">{data.blogPublishDate}</Moment>年</h4>
-                                        </div>
+                
+                {listUserBlogdata.map((data, index) => {
+                    {/* console.log(data) */ }
+                    return (
+                        <div className="blog-card" key={data.blogId}>
+                            <div className="blog-card-in">
+                                <figure className="blog-card-fig">
+                                    <img className="blog-cover"
+                                        src={(data.blogContent01_img01 == '' ? `http://localhost:3009/blogs_img/img-empty.png` : `http://localhost:3009/blogs_img/${data.blogContent01_img01}`)}
+                                    />
+                                </figure>
+                                <div className="blog-card-btns blog-d-flex blog-justify-content-between">
+                                    <figure>
+                                        <img
+                                            src={Pan}
+                                            onClick={() => {
+                                                props.history.push(`/Blog/BlogEdit/${data.blogId}`);
+                                            }}
+                                        ></img>
+                                    </figure>
+                                    <figure>
+                                        <img src={TrashBarrel}
+                                            onClick={() => {
+                                                // message.success(data.blogId);
+                                                showDeletePromiseConfirm(data.blogId)
+                                            }}></img>
+                                    </figure>
+                                </div>
+                                <div className="blog-card-title"><p>{data.blogTitle}</p></div>
+                                <div className="blog-card-content"><p>{data.blogContent01}</p></div>
+                                <div className="blog-card-calendar">
+                                    <div className="blog-card-calendar-in">
+                                        <h2><Moment format="DD">{data.blogPublishDate}</Moment></h2>
+                                        <h5><Moment format="M">{data.blogPublishDate}</Moment>月</h5>
                                     </div>
                                 </div>
-                            )
-                        })}
-                        <div className="blog-standard-pages blog-d-flex">
+                                <div className="read-more">
+                                    <button
+                                        className="read-more-btn"
+                                        name="Hover"
+                                        onClick={() => {
+                                            props.history.push(`/Blog/BlogDetail/${data.blogId}`);
+                                        }}
+                                    >閱讀文章</button>
+                                </div>
+                                <div className="user-info-list blog-d-flex">
+                                    <figure className="blod-cover">
+                                        <img src={(data.userlogo ? `/user_img/${data.userlogo}` : `/blogs_img/member-empty.jpg`)} alt="" />
+                                    </figure>
+                                    <h3>{data.name}</h3>
+                                    <h4><Moment format="YYYY">{data.blogPublishDate}</Moment>年</h4>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                })}
+            </div>
+            <div className="blog-standard-pages blog-d-flex">
                 <div
                     className="round-effect"
                     onClick={() => {
@@ -358,35 +344,6 @@ function BlogMainUserListByUser(props) {
                 >﹥
                 </div>
             </div>
-
-
-                    </>
-                )}
-
-                {listUserBlogdata.length<=0 && (
-                    <>
-                        <h2>您尚未發布任何文章。</h2>
-                        <button
-                            onClick=
-                            {
-                                (userdata.id ? () => {
-                                    props.history.push('/Blog/BlogAdd')
-                                } : () => {
-                                    openLoginNotification()
-                                    props.history.push('/KMembers/MembersLogin')
-                                }
-                                )
-                            }
-                        >馬上發文</button>
-                    </>
-                )}
-
-
-
-
-
-            </div>
-            
         </>
     )
 }
