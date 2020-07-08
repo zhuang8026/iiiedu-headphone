@@ -35,6 +35,20 @@
       }
     }
   }
+  .btn_warning {
+    background: $btn-color-r;
+    border: 1px solid $btn-color-r;
+    a {
+      color: #fff;
+    }
+    &:hover {
+      background: #fff;
+      color: $btn-color-r;
+      a {
+        color: $btn-color-r;
+      }
+    }
+  }
   ul {
     li {
       label {

@@ -1,42 +1,48 @@
 // 函式元件
 // william - 20200706 - 全部重寫
-import React, { useState, useEffect } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import { Link, withRouter } from 'react-router-dom'
 
 //antd
-import { message } from 'antd';
+import { message } from 'antd'
 
 function MyCart(props) {
-  const { mycart, setMycart, mycartDisplay, setMycartDisplay, orderTotal, setOrderTotal } = props.allprops;
-  const CartInner = JSON.parse(localStorage.getItem('cart')) || '';
+  const {
+    mycart,
+    setMycart,
+    mycartDisplay,
+    setMycartDisplay,
+    orderTotal,
+    setOrderTotal,
+  } = props.allprops
+  const CartInner = JSON.parse(localStorage.getItem('cart')) || ''
 
   // william - 20200705 - 數量加減
-  const changeQuantity = (id, amount, PQty)=>{
+  const changeQuantity = (id, amount, PQty) => {
     const mycartdata = [...mycart]
-    mycartdata.forEach(el=>{
-      if(el.id===id){
+    mycartdata.forEach((el) => {
+      if (el.id === id) {
         el.amount = amount
         // 購物車商品數量不得小於1
         if (el.amount < 1) {
-          el.amount = 1;
-          alert('el.amount < 1');
-          message.warning("數量不能小於1")
+          el.amount = 1
+          alert('el.amount < 1')
+          message.warning('數量不能小於1')
         }
         // 購物車商品數量不得大於庫存
         if (el.amount > PQty) {
-          el.amount = PQty;
+          el.amount = PQty
           message.warning(`商品數量:${PQty}`)
         }
       }
-    })      
-    
-    localStorage.setItem('cart', JSON.stringify(mycartdata));
-    setMycart(mycartdata);
+    })
 
+    localStorage.setItem('cart', JSON.stringify(mycartdata))
+    setMycart(mycartdata)
   }
 
   // 計算總價用的函式
-  const sum =(data)=>{
+  const sum = (data) => {
     let total = 0
     for (let i = 0; i < data.length; i++) {
       total += data[i].amount * data[i].itemPrice
@@ -44,10 +50,39 @@ function MyCart(props) {
     return total
   }
 
-  useEffect(()=>{
-    setMycart(CartInner)
-  },[])
+  // 加入最愛
+  const currentLove = JSON.parse(localStorage.getItem('love')) || []
+  const updateLoveToLocalStorage = (value) => {
+    const newcLove = [...currentLove, value]
+    localStorage.setItem('love', JSON.stringify(newcLove))
 
+    currentLove.map((element) => {
+      if (element.itemName === value.itemName) {
+        window.localStorage.setItem('love', JSON.stringify(currentLove))
+        message.warning(`商品"${element.itemName}"重複了`)
+        return
+      }
+    })
+  }
+
+  //更新比較功能localstorage
+  const updateCompareToLocalStorage = (value) => {
+    const currentCompare = JSON.parse(localStorage.getItem('compare')) || []
+    const newCompare = [...currentCompare, value]
+    localStorage.setItem('compare', JSON.stringify(newCompare))
+
+    currentCompare.map((element) => {
+      if (element.itemName === value.itemName) {
+        window.localStorage.setItem('compare', JSON.stringify(currentCompare))
+        message.warning(`商品"${element.itemName}"重複了`)
+        return
+      }
+    })
+  }
+
+  useEffect(() => {
+    setMycart(CartInner)
+  }, [])
 
   return (
     <>
@@ -57,11 +92,11 @@ function MyCart(props) {
       </div>
 
       <div className="cart-container">
-        {mycart.length>0 ? (
+        {mycart.length > 0 ? (
           <>
             <ul className="cart-table">
               <li>
-                <ul className="wi-ul" >
+                <ul className="wi-ul">
                   <li>刪除</li>
                   <li>圖片</li>
                   <li>品名</li>
@@ -76,13 +111,13 @@ function MyCart(props) {
                   return (
                     <ul key={index}>
                       <li
-                        id={data.itemId} 
+                        id={data.itemId}
                         data-id={index}
-                        onClick={()=>{        
+                        onClick={() => {
                           const cartList = [...mycart]
-                          cartList.splice(index, 1);
+                          cartList.splice(index, 1)
                           setMycart(cartList)
-                          localStorage.setItem("cart", JSON.stringify(cartList)); 
+                          localStorage.setItem('cart', JSON.stringify(cartList))
                         }}
                       >
                         <i className="iconfont icon-error"></i>
@@ -92,34 +127,98 @@ function MyCart(props) {
                       </li>
                       <li>{data.itemName}</li>
                       <li>{data.itemPrice}</li>
-                      
+
                       {/* 數量加減 - williams */}
                       <li>
-                        <div className = "willCart">
+                        <div className="willCart">
                           <button
                             className="DetailBtnEdit"
                             onClick={() => {
-                              data.amount--;
-                              changeQuantity(data.id, data.amount, data.itemQty);
+                              data.amount--
+                              changeQuantity(data.id, data.amount, data.itemQty)
                             }}
-                          ><i className="iconfont icon-reduce_1"></i></button>
+                          >
+                            <i className="iconfont icon-reduce_1"></i>
+                          </button>
                           <span>{data.amount}</span>
                           <button
                             className="DetailBtnAdd"
                             onClick={() => {
-                              data.amount++;
-                              changeQuantity(data.id, data.amount, data.itemQty);              
+                              data.amount++
+                              changeQuantity(data.id, data.amount, data.itemQty)
                             }}
-                          ><i className="iconfont icon-add_1"></i></button>
+                          >
+                            <i className="iconfont icon-add_1"></i>
+                          </button>
                         </div>
                       </li>
 
-                      <li className="li-prices">{data.itemPrice * data.amount}</li>
+                      <li className="li-prices">
+                        {data.itemPrice * data.amount}
+                      </li>
                       <li className="li-function">
-                        <button type="button" className="btn_booking btn_width">
+                        <button
+                          type="button"
+                          className="btn_booking btn_width"
+                          onClick={() => {
+                            updateLoveToLocalStorage({
+                              itemid: data.itemId,
+                              itemName: data.itemName,
+                              itemBrand: data.itemsbrand,
+                              itemImg: data.itemImg,
+                              itemPrice: data.itemPrice,
+                              created_at: data.created_at,
+                              itemQty: data.itemQty,
+                              itemsEndurance: data.itemsEndurance,
+                              itemsSensitivity: data.itemsSensitivity,
+                              itemsales: data.itemsales,
+                              itemsconnect: data.itemsconnect,
+                              itemscontent: data.itemscontent,
+                              itemsdrive: data.itemsdrive,
+                              itemsfeature: data.itemsfeature,
+                              itemsfrequency: data.itemsfrequency,
+                              itemsmains: data.itemsmains,
+                              itemsstar: data.itemsstar,
+                              itemstoreNumber: data.itemstoreNumber,
+                              itemstype: data.itemstype,
+                              itemswatertight: data.itemswatertight,
+                              itemsweight: data.itemsweight,
+                            })
+                            message.success(`商品"${data.itemName}"加入最愛`)
+                          }}
+                        >
                           <i className="iconfont icon-like mobileIcon"></i>
                         </button>
-                        <button type="button" className="btn_wish btn_width">
+                        <button
+                          type="button"
+                          className="btn_wish btn_width"
+                          onClick={() => {
+                            updateCompareToLocalStorage({
+                              itemid: data.itemId,
+                              itemName: data.itemName,
+                              itemBrand: data.itemsbrand,
+                              itemImg: data.itemImg,
+                              itemPrice: data.itemPrice,
+                              created_at: data.created_at,
+                              itemQty: data.itemQty,
+                              itemsEndurance: data.itemsEndurance,
+                              itemsSensitivity: data.itemsSensitivity,
+                              itemsales: data.itemsales,
+                              itemsconnect: data.itemsconnect,
+                              itemscontent: data.itemscontent,
+                              itemsdrive: data.itemsdrive,
+                              itemsfeature: data.itemsfeature,
+                              itemsfrequency: data.itemsfrequency,
+                              itemsmains: data.itemsmains,
+                              itemsstar: data.itemsstar,
+                              itemstoreNumber: data.itemstoreNumber,
+                              itemstype: data.itemstype,
+                              itemswatertight: data.itemswatertight,
+                              itemsweight: data.itemsweight,
+                            })
+                            message.success(`商品"${data.itemName}"已加入比較`)
+                          }}
+                        >
                           <i className="iconfont icon-binding"></i>
                         </button>
                       </li>
@@ -128,8 +227,14 @@ function MyCart(props) {
                 })}
               </li>
               <li className="cart-footer">
-                <input className="codeInput" type="text" placeholder="請輸入優惠碼"/>
-                <button className="codebutton" type="button">送出</button>
+                <input
+                  className="codeInput"
+                  type="text"
+                  placeholder="請輸入優惠碼"
+                />
+                <button className="codebutton" type="button">
+                  送出
+                </button>
               </li>
               <li className="cart-footer wi-num">
                 <h2>商品總計: </h2>
@@ -141,7 +246,7 @@ function MyCart(props) {
               </li>
               <li className="cart-footer wi-footer">
                 <button
-                  className = "wi-footer-cart"
+                  className="wi-footer-cart"
                   type="button"
                   onClick={() => {
                     localStorage.removeItem('cart')
@@ -150,9 +255,9 @@ function MyCart(props) {
                 >
                   清空購物車
                 </button>
-                <button 
-                  className = "wi-footer-set"
-                  type="button" 
+                <button
+                  className="wi-footer-set"
+                  type="button"
                   onClick={setOrderTotal(sum(mycart))}
                 >
                   <Link to="/ConfirmOrder">去結帳</Link>
@@ -160,7 +265,7 @@ function MyCart(props) {
               </li>
             </ul>
           </>
-        ):(
+        ) : (
           <ul className="cart-empty">
             <li>目前購物車是空的!</li>
             <li className="border-top">

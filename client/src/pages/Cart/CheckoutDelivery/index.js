@@ -7,6 +7,9 @@ import {
   withRouter,
 } from 'react-router-dom'
 
+//antd
+import { message } from 'antd'
+
 import HDHCT from '../../../assets/img/cart/新竹物流.png'
 import HDTPE from '../../../assets/img/cart/台灣宅配通.jpg'
 import HDTCat from '../../../assets/img/cart/黑貓宅急便.jpg'
@@ -25,6 +28,8 @@ function CheckoutDelivery(props) {
     orderDelivery,
     setOrderDelivery,
   } = props.allprops
+  const [deliveryHD, setDeliveryHD] = useState('')
+  const [deliverySTS, setDeliverySTS] = useState('')
 
   return (
     <>
@@ -87,35 +92,71 @@ function CheckoutDelivery(props) {
           </select>
           {/* 選擇性顯示區塊  大於等於3個選項時 */}
           {orderDelivery === '1' && (
-            <div>
+            <>
               <ul>
                 {/* <li>
                   <h1>宅配需知</h1>
                 </li> */}
                 <li>
                   <label htmlFor="HCT">
-                    <input type="radio" name="HD" id="HCT" value="HCT" />
+                    <input
+                      type="radio"
+                      name="HD"
+                      id="HCT"
+                      value="HCT"
+                      onClick={(event) => {
+                        const v = event.target.value
+                        setDeliveryHD(v)
+                      }}
+                    />
                     新竹物流
                     <img src={HDHCT} />
                   </label>
                 </li>
                 <li>
                   <label htmlFor="TPE">
-                    <input type="radio" name="HD" id="TPE" value="TPE" />
+                    <input
+                      type="radio"
+                      name="HD"
+                      id="TPE"
+                      value="TPE"
+                      onClick={(event) => {
+                        const v = event.target.value
+                        setDeliveryHD(v)
+                      }}
+                    />
                     台灣宅配通
                     <img src={HDTPE} />
                   </label>
                 </li>
                 <li>
                   <label htmlFor="TCat">
-                    <input type="radio" name="HD" id="TCat" value="TCat" />
+                    <input
+                      type="radio"
+                      name="HD"
+                      id="TCat"
+                      value="TCat"
+                      onClick={(event) => {
+                        const v = event.target.value
+                        setDeliveryHD(v)
+                      }}
+                    />
                     黑貓宅急便
                     <img src={HDTCat} />
                   </label>
                 </li>
                 <li>
                   <label htmlFor="Kerry">
-                    <input type="radio" name="HD" id="Kerry" value="Kerry" />
+                    <input
+                      type="radio"
+                      name="HD"
+                      id="Kerry"
+                      value="Kerry"
+                      onClick={(event) => {
+                        const v = event.target.value
+                        setDeliveryHD(v)
+                      }}
+                    />
                     嘉里大榮物流公司
                     <img src={HDKerry} />
                   </label>
@@ -133,10 +174,30 @@ function CheckoutDelivery(props) {
                 </li>
                 <li>退換貨請主動索取、保留退貨單據，避免影響權益。</li>
               </ul>
-            </div>
+              <div>
+                <button type="button">
+                  <Link to="/CheckoutInfo">上一頁</Link>
+                </button>
+                {deliveryHD ? (
+                  <button type="button">
+                    <Link to="/CheckoutPayment">填寫付款方式</Link>
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="btn_warning"
+                    onClick={() => {
+                      message.warning('尚有資料必填!!!')
+                    }}
+                  >
+                    尚有資料必填!!!
+                  </button>
+                )}
+              </div>
+            </>
           )}
           {orderDelivery === '2' && (
-            <div>
+            <>
               <ul>
                 {/* <li>
                   <h1>店到店須知</h1>
@@ -148,6 +209,10 @@ function CheckoutDelivery(props) {
                       name="shopToShop"
                       id="711"
                       value="711"
+                      onClick={(event) => {
+                        const v = event.target.value
+                        setDeliverySTS(v)
+                      }}
                     />
                     7-11
                     <img src={STS711} />
@@ -160,6 +225,10 @@ function CheckoutDelivery(props) {
                       name="shopToShop"
                       id="FamilyMart"
                       value="FamilyMart"
+                      onClick={(event) => {
+                        const v = event.target.value
+                        setDeliverySTS(v)
+                      }}
                     />
                     全家
                     <img src={STSFamilyMart} />
@@ -172,6 +241,10 @@ function CheckoutDelivery(props) {
                       name="shopToShop"
                       id="HiLife"
                       value="HiLife"
+                      onClick={(event) => {
+                        const v = event.target.value
+                        setDeliverySTS(v)
+                      }}
                     />
                     萊爾富
                     <img src={STSHiLife} />
@@ -179,7 +252,16 @@ function CheckoutDelivery(props) {
                 </li>
                 <li>
                   <label htmlFor="OK">
-                    <input type="radio" name="shopToShop" id="OK" value="OK" />
+                    <input
+                      type="radio"
+                      name="shopToShop"
+                      id="OK"
+                      value="OK"
+                      onClick={(event) => {
+                        const v = event.target.value
+                        setDeliverySTS(v)
+                      }}
+                    />
                     OKmart
                     <img src={STSOK} />
                   </label>
@@ -194,16 +276,28 @@ function CheckoutDelivery(props) {
                 </li>
                 <li>退換貨請主動索取、保留退貨單據，避免影響權益。</li>
               </ul>
-            </div>
+              <div>
+                <button type="button">
+                  <Link to="/CheckoutInfo">上一頁</Link>
+                </button>
+                {deliverySTS ? (
+                  <button type="button">
+                    <Link to="/CheckoutPayment">填寫付款方式</Link>
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="btn_warning"
+                    onClick={() => {
+                      message.warning('尚有資料必填!!!')
+                    }}
+                  >
+                    尚有資料必填!!!
+                  </button>
+                )}
+              </div>
+            </>
           )}
-          <div>
-            <button type="button">
-              <Link to="/CheckoutInfo">上一頁</Link>
-            </button>
-            <button type="button">
-              <Link to="/CheckoutPayment">填寫付款方式</Link>
-            </button>
-          </div>
         </div>
       </div>
     </>
