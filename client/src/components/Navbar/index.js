@@ -226,7 +226,7 @@ function MyNavBar(props) {
                                     </li>
                                     <li>
                                         <a href="/YyProduct" className="meaulist">
-                                            <span>頭戴式耳機</span>
+                                            <span>耳罩式耳機</span>
                                         </a>
                                         <div className="inner hidden-meau">
                                             <ul>
@@ -253,7 +253,7 @@ function MyNavBar(props) {
                                     </li>
                                     <li>
                                         <Link to="/YyProduct" className="meaulist">
-                                            <span>耳戴式耳機</span>
+                                            <span>入耳式耳機</span>
                                         </Link>
                                         <div className="inner hidden-meau">
                                             <ul>
