@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import io from 'socket.io-client';
-// import io from 'socket.io/node_modules/socket.io-client';
+import React, { useState, useEffect } from 'react'
+import io from 'socket.io-client'
 
-function Chat() {
+function SocketChat() {
     const [ws, setWs] = useState(null)
 
     const connectWebSocket = () => {
@@ -59,7 +58,7 @@ function Chat() {
         </select>
         <button
             type="button"
-            class="btn btn-primary"
+            className="btn btn-primary"
             onClick={() => {
             connectWebSocket()
             }}
@@ -68,7 +67,7 @@ function Chat() {
         </button>
         <button
             type="button"
-            class="btn btn-primary"
+            className="btn btn-primary"
             onClick={() => {
             sendMessage()
             }}
@@ -77,18 +76,18 @@ function Chat() {
         </button>
         <button
             type="button"
-            class="btn btn-primary"
+            className="btn btn-primary"
             onClick={() => {
             sendMessageAll()
             }}
         >
             送出給所有人
         </button>
-        <button type="button" class="btn btn-primary">
+        <button type="button" className="btn btn-primary">
             斷線
         </button>
         </>
     )
 }
 
-export default Chat
+export default SocketChat;

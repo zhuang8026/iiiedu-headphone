@@ -1,6 +1,7 @@
 const express = require("express");
 const upload = require(__dirname + "/upload-module");
 const db = require(__dirname + "/db_connect");
+const moment = require('moment-timezone');
 const router = express.Router();
 
 //取得訂單資料列表function
@@ -60,12 +61,16 @@ router.post("/addOrderDetails", async (req, res) => {
 //取得最新訂單function
 const getNewOrder = async (req) => {
   const output = {
-    rows: [],
+    dataOrderRow: [],
   };
 
-  const sql = "SELECT * FROM `orders` ORDER BY `orderId` DESC LIMIT 1";
+  // const sql = "SELECT * FROM `orders` ORDER BY `orderId` DESC LIMIT 1";
+  const sql = "SELECT `orderId`,`total`,`orderRemark`,`deliveryTypeName`,`paymentTypeName` FROM `orders` LEFT JOIN  `delivery_types` ON  `orders`.`delivery` = `delivery_types`.`delivery` LEFT JOIN `payment_types` ON `orders` .`payment`= `payment_types`.`payment` ORDER BY `orderId` DESC LIMIT 1";
   const [r] = await db.query(sql);
-  output.rows = r;
+  output.dataOrderRow = r;
+  for(let i of r){
+     i.created_at = moment(i.created_at).format('YYYY年MM月DD日')
+  }
   return output;
 };
 
