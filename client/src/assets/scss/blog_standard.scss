@@ -270,7 +270,8 @@
           margin-bottom: 60px;
           .blog-card-in {
             padding-bottom: 10px;
-            box-shadow: 3px 5px 10px $border-color-l;
+           border: 1px solid $border-color-l;
+           transition: 1s;
             .blog-card-fig {
               // position: absolute;
               width: 100%;
@@ -336,7 +337,7 @@
               width: 25%;
               height: 20%;
               top: 0px;
-              left: 40px;
+              left: 10%;
               background: $bg-c;
               transform: translateY(-30%);
               /* z-index: 20; */
@@ -420,6 +421,12 @@
               }
             }
           }
+          
+          // .blog-card-in:hover .blog-card-calendar{
+          //   left: 60px;
+             
+          //     // transform: scale(1.1);
+          // }
         }
       }
 
