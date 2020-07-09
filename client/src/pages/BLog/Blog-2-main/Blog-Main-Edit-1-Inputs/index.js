@@ -145,13 +145,13 @@ function BlogMainEditInputs(props) {
         console.log('drag22 ====> ', drag22)
         console.log('drag21 ====> ', drag21)
 
-        if ((drag13 != '') && (drag13 != 'default.jpg') && (drag13 != null)) {
+        if ((drag13 != '') && (drag13 != 'img-empty.png') && (drag13 != null)) {
             temp01 = 4;
             $("#edit-info-13 .edit-box").addClass("active")
-        } else if ((drag12 != '') && (drag12 != 'default.jpg') && (drag12 != null)) {
+        } else if ((drag12 != '') && (drag12 != 'img-empty.png') && (drag12 != null)) {
             temp01 = 3;
             $("#edit-info-12 .edit-box").addClass("active")
-        } else if ((drag11 != '') && (drag11 != 'default.jpg') && (drag11 != null)) {
+        } else if ((drag11 != '') && (drag11 != 'img-empty.png') && (drag11 != null)) {
             temp01 = 2;
             $("#edit-info-11 .edit-box").addClass("active")
         }
@@ -159,13 +159,13 @@ function BlogMainEditInputs(props) {
         setImgPoint01(temp01)
 
 
-        if ((drag23 != '') && (drag23 != 'default.jpg') && (drag23 != null)) {
+        if ((drag23 != '') && (drag23 != 'img-empty.png') && (drag23 != null)) {
             temp02 = 4;
             $("#edit-info-23 .edit-box").addClass("active")
-        } else if ((drag22 != '') && (drag22 != 'default.jpg') && (drag22 != null)) {
+        } else if ((drag22 != '') && (drag22 != 'img-empty.png') && (drag22 != null)) {
             temp02 = 3;
             $("#edit-info-22 .edit-box").addClass("active")
-        } else if ((drag21 != '') && (drag21 != 'default.jpg') && (drag21 != null)) {
+        } else if ((drag21 != '') && (drag21 != 'img-empty.png') && (drag21 != null)) {
             temp02 = 2;
             $("#edit-info-21 .edit-box").addClass("active")
         }
@@ -218,17 +218,17 @@ function BlogMainEditInputs(props) {
     // 進行修改
     const goBlogEdit = () => {
         let temp11, temp12, temp13, temp21, temp22, temp23;
-        if (drag11 == 'default.jpg') { temp11 = '' }
+        if (drag11 == 'img-empty.png') { temp11 = '' }
         else { temp11 = drag11 }
-        if (drag12 == 'default.jpg') { temp12 = '' }
+        if (drag12 == 'img-empty.png') { temp12 = '' }
         else { temp12 = drag12 }
-        if (drag13 == 'default.jpg') { temp13 = '' }
+        if (drag13 == 'img-empty.png') { temp13 = '' }
         else { temp13 = drag13 }
-        if (drag21 == 'default.jpg') { temp21 = '' }
+        if (drag21 == 'img-empty.png') { temp21 = '' }
         else { temp21 = drag21 }
-        if (drag22 == 'default.jpg') { temp22 = '' }
+        if (drag22 == 'img-empty.png') { temp22 = '' }
         else { temp22 = drag22 }
-        if (drag23 == 'default.jpg') { temp23 = '' }
+        if (drag23 == 'img-empty.png') { temp23 = '' }
         else { temp23 = drag23 }
         fetch('http://localhost:3009/blog/edit/', {
             method: 'post',
@@ -366,7 +366,7 @@ function BlogMainEditInputs(props) {
                                                 $("#edit-info-12 .edit-box").removeClass("active")
                                             }
                                             else {
-                                                setDrag13('default.jpg')
+                                                setDrag13('img-empty.png')
                                                 tempPoint = tempPoint - 1;
                                                 setImgPoint01(tempPoint)
                                                 $("#edit-info-13 .edit-box").removeClass("active")
@@ -392,7 +392,7 @@ function BlogMainEditInputs(props) {
                                             setImgPoint01(tempPoint)
                                             $("#edit-info-12 .edit-box").removeClass("active")
                                         } else {
-                                            setDrag13('default.jpg')
+                                            setDrag13('img-empty.png')
                                             tempPoint = tempPoint - 1;
                                             setImgPoint01(tempPoint)
                                             $("#edit-info-13 .edit-box").removeClass("active")

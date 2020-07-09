@@ -124,9 +124,15 @@
               text-align: center;
             }
           }
+          select:hover {
+            color: $font-color-s;
+            border: 1px solid $font-color-s;
+            background:white;
+          }
           .s1 {
             transform: translate(-240%, -50%);
           }
+          
           .search-input {
             position: relative;
             top: 50%;
@@ -141,6 +147,9 @@
             font-style: italic;
             font-weight: $font-w;
             padding-left: 1em;
+          }
+          .search-input-input{
+            font-size: 24px;
           }
           figure {
             position: relative;
