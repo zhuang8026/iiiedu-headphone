@@ -8,8 +8,11 @@ import './loading.scss'
 
 function MyLoading(props) {
     setTimeout(()=>{
-        document.getElementById('lodingInner').style.visibility = 'hidden'
+        document.getElementById('lodingInner').style.opacity = '0'
     },5000)
+    setTimeout(()=>{
+        document.getElementById('lodingInner').style.visibility = 'hidden'
+    },6000)
 
     return (
         <div class="lodingInner" id="lodingInner">

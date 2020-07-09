@@ -159,12 +159,13 @@
         h2 {
           text-align: center;
           font-size: $font-size-24;
-          font-weight: $font-w;
+          font-weight: bold;
           margin-bottom: 20px;
         }
         p {
           margin-bottom: 20px;
           font-size: $font-size-16;
+          font-weight: 300;
         }
       }
       .blog-btns {
@@ -182,8 +183,9 @@
             margin-left: 40px;
             font-size: $font-size-24;
             font-weight: $font-w;
-            color: $font-color-m;
+            color: #696969;
             background: rgba(0, 0, 0, 0);
+            transition: 0.3s ease-in;
           }
           .blog-btns-left-Link:hover {
             cursor: pointer;
@@ -279,7 +281,7 @@
 
         .blog-card {
           width: 25%;
-          padding: 0 20px;
+          padding: 0 12px;
           margin-bottom: 60px;
           .blog-card-in {
             padding-bottom: 10px;
@@ -412,7 +414,7 @@
               figure {
                 width: $icon-size-45;
                 height: $icon-size-45;
-                border: 1px solid #0072e3;
+                border: 1px solid #211e55;
                 border-radius: 50%;
                 overflow: hidden;
                 // transform: translateY(-2px);
@@ -424,7 +426,7 @@
               h3 {
                 font-size: $font-size-16;
                 font-weight: $font-w;
-                color: #0072e3;
+                color: #211e55;
                 margin-left: 3%;
               }
               h4 {
@@ -591,7 +593,7 @@
             height: 33.3%;
             overflow: hidden;
             margin: 0;
-            border: 1px solid $border-color-l;
+            // border: 1px solid $border-color-l;
             img {
               width: 100%;
               height: 100%;
@@ -656,12 +658,13 @@
               width: 80%;
               text-align: center;
               border: 1px solid $font-color-m;
+              background: transparent;
             }
             button {
               width: 15%;
               color: $font-color-s;
               border: 1px solid $font-color-m;
-              background: $bg-theme;
+              background: transparent;
               img {
                 width: 40%;
               }
@@ -681,7 +684,7 @@
             margin: 20px 0;
           }
           .recent-post-in-one {
-            margin-bottom: 20px;
+            // margin-bottom: 20px;
             transition: .3s;
             .recent-post-in-one-img {
               width: 100px;

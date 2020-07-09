@@ -64,8 +64,9 @@
         h2 {
           text-align: center;
           font-size: $font-size-24;
-          font-weight: $font-w;
+          font-weight: bold;
           margin-bottom: 20px;
+          color: #211e55;
         }
         p {
           margin-bottom: 20px;
@@ -88,7 +89,7 @@
             margin-left: 40px;
             font-size: $font-size-24;
             font-weight: $font-w;
-            color: $bg-btn-l;
+            color: #696969;
             background: rgba(0, 0, 0, 0);
           }
           .blog-btns-left-Link:hover {
@@ -185,7 +186,7 @@
         .blog-card {
           position: relative;
           width: 25%;
-          padding: 0 20px;
+          padding: 0 12px;
           margin-bottom: 60px;
           .blog-card-in {
             // border: 1px solid $border-color-l;
@@ -323,7 +324,7 @@
               figure {
                 width: $icon-size-45;
                 height: $icon-size-45;
-                border: 1px solid #0072e3;
+                border: 1px solid #211e55;
                 border-radius: 50%;
                 overflow: hidden;
                 // transform: translateY(-2px);
@@ -335,7 +336,7 @@
               h3 {
                 font-size: $font-size-16;
                 font-weight: $font-w;
-                color: #0072e3;
+                color: #211e55;
                 margin-left: 3%;
               }
               h4 {
@@ -352,7 +353,7 @@
           .blog-card-in:hover{
             box-shadow: 3px 5px 10px $bg-btn-l;
               
-              transform: translateZ(0) scale(1.05);
+              transform: translateZ(0) scale(1.02);
           }
         
           
@@ -360,7 +361,7 @@
             //   left: 40px;
             
             transition: .3s;
-            transform: translateZ(0) scale(1.05);
+            transform: translateZ(0) scale(1.02);
 
 
 
@@ -612,12 +613,13 @@
               width: 80%;
               text-align: center;
               border: 1px solid $font-color-m;
+              background: transparent;
             }
             button {
               width: 15%;
               color: $font-color-s;
               border: 1px solid $font-color-m;
-              background: $bg-theme;
+              background: transparent;
               img {
                 width: 40%;
               }
@@ -638,7 +640,7 @@
             margin: 20px 0;
           }
           .recent-post-in-one {
-            margin-bottom: 20px;
+            // margin-bottom: 20px;
             transition: .3s;
             .recent-post-in-one-img {
               width: 100px;

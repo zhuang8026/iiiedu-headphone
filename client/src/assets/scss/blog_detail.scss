@@ -460,7 +460,7 @@
             height: 33.3%;
             overflow: hidden;
             margin: 0;
-            border: 1px solid $border-color-l;
+            // border: 1px solid $border-color-l;
             img {
               width: 100%;
               height: 100%;
@@ -528,13 +528,14 @@
               width: 80%;
               text-align: center;
               border: 1px solid $font-color-m;
+              background: transparent;
             }
 
             button {
               width: 15%;
               color: $font-color-s;
               border: 1px solid $font-color-m;
-              background: $bg-theme;
+              background: transparent;
 
               img {
                 width: 40%;
@@ -559,7 +560,7 @@
           }
 
           .recent-post-in-one {
-            margin-bottom: 20px;
+            // margin-bottom: 20px;
             transition: .3s;
             .recent-post-in-one-img {
               width: 100px;

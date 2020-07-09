@@ -58,8 +58,9 @@
     /* ---------- main ---------- */
     .blog-add-main {
       width: 80%;
-      border: 1px solid $border-color-s;
-      box-shadow: 5px 5px 10px rgb(56, 56, 56);
+      // border: 1px solid $border-color-s;
+      box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.1);
+      background: #fff;
       .blog-add-top-img {
         width: 100%;
         height: 193px;
@@ -74,8 +75,10 @@
         }
       }
       .blog-add-in {
-        width: 96%;
-        margin: 0 auto;
+        width: 100%;
+        // margin: 0 auto;
+        padding: 28px;
+        padding-bottom: 56px;
         h1 {
           font-size: $font-size-24;
           margin-top: 1rem;
@@ -83,26 +86,30 @@
         .underline-1 {
           width: 7.5rem;
           margin-bottom: 2rem;
-          border-bottom: 2px solid $btn-color-r;
+          border-bottom: 2px solid #c0c0c0;
         }
         .title-h2 {
           font-size: $font-size-16;
+          font-weight: 400;
           margin-top: 1.5rem;
           margin-bottom: 0.5rem;
+          color: #8b8b8b;
         }
         .first-h2 {
           font-size: $font-size-16;
+          font-weight: 400;
           margin-top: 1.5rem;
           margin-bottom: 0.5rem;
+          color: #8b8b8b;
         }
         .input-title {
           width: 100%;
           height: 32px;
-          border: 1px solid $border-color-l;
+          border: 1px solid #c0c0c0;
         }
         textarea {
           width: 100%;
-          border: 1px solid $border-color-l;
+          border: 1px solid #c0c0c0;
           margin-bottom: 1rem;
           height: 100px;
         }
@@ -110,6 +117,7 @@
           position: relative;
           .btn-and-info-input {
             /* width: 100px; */
+            width: 200px;
             height: 32px;
             /* line-height: 45px; */
             margin-top: 1rem;
@@ -152,6 +160,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
+            color: #8b8b8b;
             transform: translate(-50%, -40%);
           }
         }
@@ -160,19 +169,24 @@
           font-size: $font-size-16;
           margin-top: 2.5rem;
           margin-bottom: 0.5rem;
+          font-weight: 400;
+          color: #8b8b8b;
         }
         input {
         }
         .upload-imgs {
           width: 100%;
-          border: 1px solid $border-color-l;
+          margin-bottom: 32px;
+          margin-top: 32px;
+          // border: 1px solid $border-color-l;
           .drags {
             width: 100%;
             .dragImg {
-              width: 33%;
+              width: 33.3%;
               height: 200px;
-              margin: 5px auto;
-              border: 1px solid $border-color-l;
+              margin: 0 6px;
+              // margin: 0;
+              border: 1px dashed $border-color-l;
               img {
                 width: 100%;
                 height: 100%;
@@ -182,12 +196,12 @@
           }
         }
         .blog-add-submit {
-          // width: 100px;
-          // height: 45px;
+          width: 33%;
+          height: 45px;
           background: $btn-color-s;
           border: 1px solid $border-color-l;
           // border-radius: 10px;
-          margin: 10px 0;
+          // margin: 10px 0;
         }
         .blog-add-submit:hover {
           cursor: pointer;

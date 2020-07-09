@@ -225,9 +225,9 @@ function MyNavBar(props) {
                                         </Link>
                                     </li>
                                     <li>
-                                        <a href="/YyProduct" className="meaulist">
+                                        <Link href="/YyProduct" className="meaulist">
                                             <span>耳罩式耳機</span>
-                                        </a>
+                                        </Link>
                                         <div className="inner hidden-meau">
                                             <ul>
                                             { NavIcon.map((data, index)=>{

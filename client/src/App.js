@@ -72,7 +72,7 @@ import WiWarranty from './pages/Warranty'
 import SocketChat from './pages/SocketChat'
 
 // import NotFoundPage404 from './pages/404'
-// import MyLoading from './components/Loading'
+import MyLoading from './components/Loading'
 
 
 
@@ -183,9 +183,6 @@ function App() {
 
   return (
     <Router>
-      {/* 過場動畫 */}
-      {/* <MyLoading/> */}
-
       <header>
         <MyNavBar
           lovechange={lovechange}
@@ -206,6 +203,8 @@ function App() {
         <Switch>
           {/* 首頁 */}
           <Route exact path="/">
+            {/* 過場動畫 */}
+            <MyLoading/>
             <WiHome />
           </Route>
 
