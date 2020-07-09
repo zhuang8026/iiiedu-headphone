@@ -109,10 +109,7 @@ function MyCart(props) {
     }
   }
 
-  useEffect(() => {
-    //實驗把設定總數放在這裡
-    // setOrderTotal(sum(mycart))
-    // setDiscountCodecallback()
+  useEffect(() => {     
 
     setMycart(CartInner)
     //更新nav數量
@@ -125,12 +122,7 @@ function MyCart(props) {
   useEffect(() => {
     setcartchange(cart)
   }, [mycart])
-
-  // useEffect(() => {
-  //   //更新nav數量
-  //   // setlovechange(love)
-  // }, [lovechange])
-
+  
   return (
     <>
       <div className="cart-crumb">
@@ -290,10 +282,11 @@ function MyCart(props) {
                   className="codebutton"
                   type="button"
                   onClick={() => {
-                    setDiscountCodecallback()
+                    // setDiscountCodecallback()
+                    setDiscountCode('MFEE0706NICE')
                   }}
                 >
-                  送出
+                  使用優惠碼
                 </button>
                 {/* {discountCode == 'MFEE0706NICE' ? (
                   <button
