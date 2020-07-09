@@ -270,8 +270,10 @@
           margin-bottom: 60px;
           .blog-card-in {
             padding-bottom: 10px;
-           border: 1px solid $border-color-l;
-           transition: 1s;
+          //  border: 1px solid $border-color-l;
+           transition: .3s;
+           position: relative;
+           background:white;
             .blog-card-fig {
               // position: absolute;
               width: 100%;
@@ -628,7 +630,7 @@
         .link-subscribe-border {
           width: 90%;
           margin: 0 auto;
-          border: 1px solid $btn-color-r;
+          border: 1px solid $font-color-m;
           h5 {
             margin: 20px auto;
             text-align: center;
@@ -640,7 +642,7 @@
             input {
               width: 80%;
               text-align: center;
-              border: 1px solid $btn-color-r;
+              border: 1px solid $font-color-m;
             }
             button {
               width: 15%;

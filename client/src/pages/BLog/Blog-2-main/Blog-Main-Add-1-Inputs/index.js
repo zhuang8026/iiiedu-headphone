@@ -480,7 +480,7 @@ function BlogMainAdd(props) {
                         </figure>
                     </div>
                 </div>
-                <button className="blog-add-submit" onClick={() => { showAddPromiseConfirm() }}>送出</button>
+                <button className="blog-add-submit wi_button btn btn-navy btn-fill-vert-o" onClick={() => { showAddPromiseConfirm() }}>送出</button>
             </div>
         </>
     )

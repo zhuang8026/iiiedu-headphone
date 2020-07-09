@@ -166,6 +166,7 @@ function BlogMainDetailComments(props) {
 
                 <div className="add-comment-btns d-flex blog-justify-content-between">
                     <button
+                        className="wi_button btn btn-navy btn-fill-vert-o"
                         onClick={() => {
                             add_reply()
                         }}

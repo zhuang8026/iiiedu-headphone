@@ -544,11 +544,11 @@ function BlogMainEditInputs(props) {
                         </figure>
                     </div>
                 </div>
-                <button className="blog-edit-submit" onClick={() => { showEditPromiseConfirm() }}>送出</button>
+                <button className="blog-edit-submit wi_button btn btn-navy btn-fill-vert-o" onClick={() => { showEditPromiseConfirm() }}>送出</button>
             </div>
-            <div className="blog-edit-loading">
+            {/* <div className="blog-edit-loading">
                 <Spin />
-            </div>
+            </div> */}
         </>
     )
 }

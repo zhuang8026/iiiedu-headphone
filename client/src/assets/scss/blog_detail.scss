@@ -350,15 +350,19 @@
           width: 96%;
           margin: 20px auto;
           button {
-            width: 100px;
+            // width: 100px;
             height: 45px;
             color: $font-color-w;
             background: $btn-color-l;
             border-radius: 10px;
             border: 1px solid $border-color-s;
           }
+
+
+
           button:hover {
             cursor: pointer;
+            color: $font-color-s;
           }
         }
       }
@@ -505,7 +509,7 @@
         .link-subscribe-border {
           width: 90%;
           margin: 0 auto;
-          border: 1px solid $btn-color-r;
+          border: 1px solid $font-color-m;
 
           h5 {
             margin: 20px auto;
@@ -520,7 +524,7 @@
             input {
               width: 80%;
               text-align: center;
-              border: 1px solid $btn-color-r;
+              border: 1px solid $font-color-m;
             }
 
             button {
