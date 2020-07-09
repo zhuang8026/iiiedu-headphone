@@ -114,6 +114,10 @@ main {
             height: 5vh;
             line-height: 5vh;
             margin: 0;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
           }
           .MyCom_card_button {
             align-items: center;
