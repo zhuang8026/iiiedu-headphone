@@ -350,15 +350,19 @@
           width: 96%;
           margin: 20px auto;
           button {
-            width: 100px;
+            // width: 100px;
             height: 45px;
             color: $font-color-w;
             background: $btn-color-l;
             border-radius: 10px;
             border: 1px solid $border-color-s;
           }
+
+
+
           button:hover {
             cursor: pointer;
+            color: $font-color-s;
           }
         }
       }
@@ -368,8 +372,11 @@
     }
     /* ---------- aside ---------- */
     .blog-detail-aside {
-      width: 20%;
+      width: 30%;
       height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
       .post-map {
         width: 90%;
         margin: 0 0 0 10%;
@@ -380,7 +387,7 @@
           height: 45px;
           line-height: 32px;
           color: $font-color-x;
-          background: $btn-color-s;
+          background: $bg-theme;
         }
         .i-want-post:hover {
           cursor: pointer;
@@ -505,7 +512,7 @@
         .link-subscribe-border {
           width: 90%;
           margin: 0 auto;
-          border: 1px solid $btn-color-r;
+          border: 1px solid $font-color-m;
 
           h5 {
             margin: 20px auto;
@@ -520,13 +527,14 @@
             input {
               width: 80%;
               text-align: center;
-              border: 1px solid $btn-color-r;
+              border: 1px solid $font-color-m;
             }
 
             button {
               width: 15%;
-              border: 1px solid $btn-color-r;
-              background: $btn-color-r;
+              color: $font-color-s;
+              border: 1px solid $font-color-m;
+              background: $bg-theme;
 
               img {
                 width: 40%;
@@ -552,7 +560,7 @@
 
           .recent-post-in-one {
             margin-bottom: 20px;
-
+            transition: .3s;
             .recent-post-in-one-img {
               width: 100px;
               height: 100px;
@@ -582,6 +590,10 @@
                 color: $font-color-m;
               }
             }
+          }
+          .recent-post-in-one:hover{
+            transition: .3s;
+            transform: scale(1.05);
           }
         }
       }

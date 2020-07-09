@@ -18,6 +18,9 @@ function ClientInside(props) {
   
     return (
    <>
+    <div className="Aboutcrumb">
+    <Link to="/">首頁</Link>/  <Link to="/WiAbout">合作廠商</Link>
+    </div>
   <div className="Wicooperate">
    <div className="WiBrand">
       <div className="Wicopic">
@@ -32,7 +35,7 @@ function ClientInside(props) {
         <img src={brand2}></img>
       </div>
       <div className="Wicoinner">
-        <p>索尼公司是世界上民用/專業視聽產品、游戲產品、通訊產品和信息技術等領域的先導之一。</p>
+        <p>Shure公司是世界上民用/專業視聽產品、游戲產品、通訊產品和信息技術等領域的先導之一。</p>
       </div>
    </div>
    <div className="WiBrand">
@@ -40,7 +43,7 @@ function ClientInside(props) {
         <img src={brand3}></img>
       </div>
       <div className="Wicoinner">
-        <p>索尼公司是世界上民用/專業視聽產品、游戲產品、通訊產品和信息技術等領域的先導之一。</p>
+        <p>Senheiser是世界上民用/專業視聽產品、游戲產品、通訊產品和信息技術等領域的先導之一。</p>
       </div>
    </div>
    <div className="WiBrand">
@@ -48,7 +51,7 @@ function ClientInside(props) {
         <img src={brand4}></img>
       </div>
       <div className="Wicoinner">
-        <p>索尼公司是世界上民用/專業視聽產品、游戲產品、通訊產品和信息技術等領域的先導之一。</p>
+        <p>Akg公司是世界上民用/專業視聽產品、游戲產品、通訊產品和信息技術等領域的先導之一。</p>
       </div>
    </div>
    <div className="WiBrand">

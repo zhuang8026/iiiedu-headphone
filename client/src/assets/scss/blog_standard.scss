@@ -216,11 +216,20 @@
               color: $font-color-s;
               font-weight: $font-w;
               text-align: center;
+              text-align-last: center;
             }
+          }
+          select:hover {
+            color: $font-color-s;
+            border: 1px solid $font-color-s;
+            background:white;
           }
           .s1 {
             transform: translate(-240%, -50%);
+            text-align: center;
+            text-align-last: center;
           }
+          
           .search-input {
             position: relative;
             top: 50%;
@@ -235,6 +244,9 @@
             font-style: italic;
             font-weight: $font-w;
             padding-left: 1em;
+          }
+          .search-input-input{
+            font-size: 24px;
           }
           figure {
             position: relative;
@@ -270,8 +282,10 @@
           margin-bottom: 60px;
           .blog-card-in {
             padding-bottom: 10px;
-           border: 1px solid $border-color-l;
-           transition: 1s;
+          //  border: 1px solid $border-color-l;
+           transition: .3s;
+           position: relative;
+           background:white;
             .blog-card-fig {
               // position: absolute;
               width: 100%;
@@ -628,7 +642,7 @@
         .link-subscribe-border {
           width: 90%;
           margin: 0 auto;
-          border: 1px solid $btn-color-r;
+          border: 1px solid $font-color-m;
           h5 {
             margin: 20px auto;
             text-align: center;
@@ -640,12 +654,13 @@
             input {
               width: 80%;
               text-align: center;
-              border: 1px solid $btn-color-r;
+              border: 1px solid $font-color-m;
             }
             button {
               width: 15%;
-              border: 1px solid $btn-color-l;
-              background: $btn-color-r;
+              color: $font-color-s;
+              border: 1px solid $font-color-m;
+              background: $bg-theme;
               img {
                 width: 40%;
               }
@@ -666,6 +681,7 @@
           }
           .recent-post-in-one {
             margin-bottom: 20px;
+            transition: .3s;
             .recent-post-in-one-img {
               width: 100px;
               height: 100px;
@@ -695,6 +711,10 @@
                 color: $font-color-m;
               }
             }
+          }
+          .recent-post-in-one:hover{
+            transition: .3s;
+            transform: scale(1.05);
           }
         }
       }

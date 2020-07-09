@@ -263,11 +263,13 @@ function BlogMainUserListByUser(props) {
                     </select>
                     <input className="search-input" placeholder="輸入關鍵字"
                         onChange={e => setSearchInput(e.target.value)}></input>
+                    
                     <figure className="blog-cover"
                         onClick={() => {
                             searchMethod()
                         }}>
-                        <img src={IconSearch} alt="" />
+                        <i className="search-input-input iconfont icon-search"></i>
+                        {/* <img src={IconSearch} alt="" /> */}
                     </figure>
                 </div>
             </div>
