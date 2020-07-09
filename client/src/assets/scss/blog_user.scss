@@ -89,7 +89,7 @@
             font-size: $font-size-24;
             font-weight: $font-w;
             color: $bg-btn-l;
-            background: $bg-theme;
+            background: rgba(0, 0, 0, 0);
           }
           .blog-btns-left-Link:hover {
             cursor: pointer;
@@ -108,6 +108,7 @@
             height: 60%;
             top: 50%;
             transform: translate(-120%, -50%);
+            background: rgba(0, 0, 0, 0);
             // margin-top: auto;
             color: $font-color-m;
             font-size: $font-size-16;
@@ -134,6 +135,7 @@
             transform: translate(-240%, -50%);
             text-align: center;
             text-align-last: center;
+            
           }
           
           .search-input {
@@ -142,7 +144,7 @@
             transform: translateY(-50%);
             height: 60%;
             border-bottom: 1px solid $font-color-m;
-            background: $bg-theme;
+            background: rgba(0, 0, 0, 0);
           }
           .search-input::placeholder {
             color: $font-color-m;
@@ -378,20 +380,24 @@
         .no-art{
           margin: 0 auto;
           display: block;
+          text-align: center;
           h2{
             font-size: $font-size-16;
             font-weight: $font-w;
           }
           button{
-            width: 150px;
+            // width: 150px;
+            margin: 0 auto;
             height: 45px;
-            color: $bg-btn-s;
+            color: $font-color-x;
             background: $btn-color-s;
             font-size: $font-size-16;
             font-weight: $font-w;
           }
           button:hover{
             cursor: pointer;
+            color: $font-color-s;
+          border: 1px solid $font-color-s;
           }
         }
 

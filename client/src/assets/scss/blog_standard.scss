@@ -183,7 +183,7 @@
             font-size: $font-size-24;
             font-weight: $font-w;
             color: $font-color-m;
-            background: $bg-theme;
+            background: rgba(0, 0, 0, 0);
           }
           .blog-btns-left-Link:hover {
             cursor: pointer;
@@ -201,7 +201,7 @@
             height: 60%;
             top: 50%;
             transform: translate(-120%, -50%);
-
+            background: rgba(0, 0, 0, 0);
             // margin-top: 2.5%;
             color: $font-color-m;
             font-size: $font-size-16;
@@ -228,6 +228,7 @@
             transform: translate(-240%, -50%);
             text-align: center;
             text-align-last: center;
+            
           }
           
           .search-input {
@@ -236,7 +237,7 @@
             transform: translateY(-50%);
             height: 60%;
             border-bottom: 1px solid $font-color-m;
-            background: $bg-theme;
+            background: rgba(0, 0, 0, 0);
           }
           .search-input::placeholder {
             color: $font-color-m;

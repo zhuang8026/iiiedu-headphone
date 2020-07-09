@@ -263,7 +263,7 @@ function BlogMainUserListByUser(props) {
                     </select>
                     <input className="search-input" placeholder="輸入關鍵字"
                         onChange={e => setSearchInput(e.target.value)}></input>
-                    
+
                     <figure className="blog-cover"
                         onClick={() => {
                             searchMethod()
@@ -320,7 +320,7 @@ function BlogMainUserListByUser(props) {
                                                     props.history.push(`/Blog/BlogDetail/${data.blogId}`);
                                                 }}
                                             >閱讀文章</button>
-                                            
+
                                         </div>
                                         <div className="user-info-list blog-d-flex">
                                             <figure className="blod-cover">
@@ -372,6 +372,7 @@ function BlogMainUserListByUser(props) {
                         <div className="no-art">
                             <h2>您尚未發布任何文章。</h2>
                             <button
+                                className="wi_button btn btn-navy btn-fill-vert-o"
                                 onClick=
                                 {
                                     (userdata.id ? () => {

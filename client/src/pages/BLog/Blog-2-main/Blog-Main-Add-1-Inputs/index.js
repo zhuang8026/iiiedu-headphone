@@ -203,10 +203,9 @@ function BlogMainAdd(props) {
 
     return (
         <>
-            <figure className="blog-add-top-img">
-                <img className="blog-cover" src={addPic}></img>
-                {/* <h1>部落格新增頁</h1> */}
-            </figure>
+            {/* <figure className="blog-add-top-img">
+                <img className="blog-cover" src={addPic}></img>               
+            </figure> */}
             <div className="blog-add-in">
                 <h1>撰寫部落格</h1>
                 <div className="underline-1"></div>

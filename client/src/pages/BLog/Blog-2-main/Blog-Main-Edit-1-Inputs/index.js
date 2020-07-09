@@ -278,10 +278,9 @@ function BlogMainEditInputs(props) {
 
     return (
         <>
-            <figure className="blog-edit-top-img">
-                <img className="blog-cover" src={editPic}></img>
-                {/* <h1>部落格編輯頁</h1> */}
-            </figure>
+            {/* <figure className="blog-edit-top-img">
+                <img className="blog-cover" src={editPic}></img>               
+            </figure> */}
             <div className="blog-edit-in">
                 <h1>編輯部落格</h1>
                 <div className="underline-1"></div>
