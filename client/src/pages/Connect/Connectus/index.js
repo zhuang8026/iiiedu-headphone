@@ -20,7 +20,7 @@ function Connectus() {
   <CommentOutlined style={{ fontSize: '46px', color: '#08c' }}/>
   <br></br>
  <p >
-     需要協助？有任何問題？歡迎先看看我們的【常見問題】，為你快速解答！
+     需要協助？有任何問題？歡迎先看看我們的<Link to="/about/WiProblem">【常見問題】</Link>，為你快速解答！
 關於商品及服務相關問題，可透過客服專線或客服信箱聯繫原購買之OTIS分店，我們將盡速提供協助！<br></br>
 Otis客服專線 412-8869 (手機用戶，需加上02)
 

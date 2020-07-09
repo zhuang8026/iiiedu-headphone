@@ -1,8 +1,8 @@
 import React, { useEffect,useState } from 'react';
 
 import { withRouter, Link } from 'react-router-dom';
-import Aboutimg4 from '../../../assets/img/About/A04.jpg'
-import Aboutimg5 from '../../../assets/img/About/A05.jpg'
+import Aboutimg4 from '../../../assets/img/About/BRAND.png'
+import Aboutimg5 from '../../../assets/img/About/ques.jpg'
 import Aboutimg6 from '../../../assets/img/About/A06.jpg'
 import BlogA1 from '../../../assets/img/About/BlogA1.jpg'
 //antd
@@ -18,15 +18,13 @@ function AboutIntroduce(props) {
     </div>
  <div className="WiIntroduce">
  <p>
- 我們與每一位滿懷理想的人徜徉在音樂的海洋裡。
- 你可以帶著我們的耳機，聽著你最喜歡的音樂去欣賞大自然做所有你喜歡的事情並享受人生的旅程。
- <br></br>
- 我們團隊整合了跨品牌的資訊，並且將買家、賣家以及產品的庫存之間的關聯進行數據分析，讓消費者能夠快速了解產品的差異性並找出符合自己需求的產品。
-
+ 我們團隊整合了跨品牌的資訊，並且將買家、賣家以及產品的庫存之間的關聯進行數據分析，讓消費者能夠快速了解產品的差異性並找出符合自己需求的產品。 <br></br>
+ {/* <Link to="/WiOurClients">我們的合作客戶</Link> */}
  </p>
+
  <div className="Introduce_pic">
-<img src={Aboutimg4}></img>
-<img src={Aboutimg5}></img>
+ <a href="/about/WiOurClients"><img src={Aboutimg4}></img></a>
+ <a href="/about/WiProblem"><img src={Aboutimg5}></img></a>
  </div>
 
  </div>
