@@ -3,7 +3,7 @@ import React , {useEffect, useState} from 'react';
 import {withRouter} from 'react-router-dom'
 
 // antd
-// import { message } from 'antd';
+import { message } from 'antd';
 
 import ComponentSuperSellerLeft from '../ComponentSuperSellerLeft'
 
@@ -436,6 +436,7 @@ function SuperSellerAddItems(props) {
                                             type="button"
                                             className="itemInputbutton"
                                             onClick={() => {
+                                                message.success(`上架商品成功`)
                                                 SuperSellerAddItemsCallback()
                                             }}
                                         >新增</button>
