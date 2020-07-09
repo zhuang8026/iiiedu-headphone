@@ -98,21 +98,21 @@ function Compare(props) {
                 <li className="sty-1 comparecard_content_decoration" >
                         <div className="MyCom_card">
                             <div className="MyCom_item">
-                            <span style={{height: 69 + 'px'}}></span>
+                            <span style={{height: 47 + 'px'}}></span>
                             <div style={{height: 99 + 'px',lineheight:99+'px'}}></div>
-                            <h1 style={{height: 22 + 'px'}}>商品品牌</h1>
-                            <h1 style={{height: 22 + 'px'}}>商品名稱</h1>
+                            <h1 >商品品牌</h1>
+                            <h1 >商品名稱</h1>
                             </div>
                         </div>
                         {/* <div className="context-adjust"> */}
-                        <h1 style={{height: 22 + 'px'}}>商品價格</h1>
-                        <h1 style={{height: 22 + 'px'}}>電池續航力</h1>
-                        <h1 style={{height: 22 + 'px'}}>靈敏度</h1>
-                        <h1 style={{height: 22 + 'px'}}>連結端子</h1>
-                        <h1 style={{height: 22 + 'px'}}>單體驅動</h1>
-                        <h1 style={{height: 88 + 'px'}}>重點特色</h1>
-                        <h1 style={{height: 44 + 'px'}}>頻率響應</h1>
-                        <h1 style={{height: 22 + 'px'}}>商品評等</h1>
+                        <h1 >商品價格</h1>
+                        <h1 >電池續航力</h1>
+                        <h1 >靈敏度</h1>
+                        <h1 >連結端子</h1>
+                        <h1 >單體驅動</h1>
+                        <h1 >重點特色</h1>
+                        <h1 >頻率響應</h1>
+                        <h1 >商品評等</h1>
                         {/* </div> */}
                     </li>
                 {/* )})} */}
@@ -137,20 +137,20 @@ function Compare(props) {
                                 <div className="compareImg">
                                   <img src={`/items_img/${data.itemImg}`}/>
                                 </div>
-                                <div style={{height: 22 + 'px'}}></div>
-                                <h3 style={{height: 22 + 'px'}}>{data.itemBrand}</h3>
-                                <h3 style={{height: 22 + 'px'}}>{data.itemName}</h3>
+                                <div ></div>
+                                <h3 >{data.itemBrand}</h3>
+                                <h3 >{data.itemName}</h3>
                             </div>
                         </div>
                         <div>
-                          <h4 style={{height: 22 + 'px'}}>{data.itemPrice}</h4>
-                          <h4 style={{height: 22 + 'px'}}>{data.itemsEndurance}</h4>
-                          <h4 style={{height: 22 + 'px'}}>{data.itemsSensitivity}</h4>
-                          <h4 style={{height: 22 + 'px'}}>{data.itemsconnect}</h4>
-                          <h4 style={{height: 22 + 'px'}}>{data.itemsdrive}</h4>
-                          <h4 style={{height: 88 + 'px'}}>{data.itemsfeature}</h4>
-                          <h4 style={{height: 44 + 'px'}}>{data.itemsfrequency}</h4>
-                          <h4 style={{height: 22 + 'px'}}>{data.itemsstar}</h4>
+                          <h4 >{data.itemPrice}</h4>
+                          <h4 >{data.itemsEndurance}</h4>
+                          <h4 >{data.itemsSensitivity}</h4>
+                          <h4 >{data.itemsconnect}</h4>
+                          <h4 >{data.itemsdrive}</h4>
+                          <h4 >{data.itemsfeature}</h4>
+                          <h4 >{data.itemsfrequency}</h4>
+                          <h4 >{data.itemsstar}</h4>
                         </div>
                         <div className="MyCom_card_button sty-1">
                             <Link 
