@@ -31,6 +31,8 @@
         * 20200708 - 2.9 Version - 購物車hooks bug 修復完成
         * 20200708 - 3.0 Version - 財務管理 bug 修復完成
     - 20200709 - 3.1 Version - 比較和最愛 未能與購物車 連動 bug 修復
+        * 20200709 - 3.2 Version - socket.io 修复失败
+        * 20200709 - 3.3 Version - blog css 样式修改
 
 ### 如何使用? ###
 - 指定項目   /   cd client
