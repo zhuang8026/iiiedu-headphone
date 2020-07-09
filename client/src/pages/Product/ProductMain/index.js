@@ -36,6 +36,14 @@ function ProductMain(props) {
     const newCart = [...currentCart, value]
     localStorage.setItem('cart', JSON.stringify(newCart))
 
+    currentCart.map(element => {
+      if(element.itemName === value.itemName){
+        window.localStorage.setItem('cart', JSON.stringify(currentCart));
+        message.warning(`商品"${element.itemName}"重複了`)
+        return 
+      }
+    });
+
     setcartchange(newCart);
   }
 

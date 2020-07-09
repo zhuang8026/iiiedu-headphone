@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import io from 'socket.io-client'
 
+import './socket.scss';
+
 function SocketChat() {
     const [ws, setWs] = useState(null)
 
@@ -45,48 +47,43 @@ function SocketChat() {
     const changeRoom = event => {
         let room = event.target.value
         if (room !== '') {
-        ws.emit('addRoom', room)
+            ws.emit('addRoom', room)
         }
     }
 
     return (
-        <>
-        <select onChange={changeRoom}>
-            <option value="">請選擇房間</option>
-            <option value="room1">房間一</option>
-            <option value="room2">房間二</option>
-        </select>
-        <button
-            type="button"
-            className="btn btn-primary"
-            onClick={() => {
-            connectWebSocket()
-            }}
-        >
-            連線
-        </button>
-        <button
-            type="button"
-            className="btn btn-primary"
-            onClick={() => {
-            sendMessage()
-            }}
-        >
-            送出訊息
-        </button>
-        <button
-            type="button"
-            className="btn btn-primary"
-            onClick={() => {
-            sendMessageAll()
-            }}
-        >
-            送出給所有人
-        </button>
-        <button type="button" className="btn btn-primary">
-            斷線
-        </button>
-        </>
+        <div className="socketchat">
+            <div className="heightInner"></div>
+            <div className="socketChatInner">
+                <select onChange={changeRoom}>
+                    <option value="">請選擇房間</option>
+                    <option value="room1">房間一</option>
+                    <option value="room2">房間二</option>
+                </select>
+                <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={() => {
+                        connectWebSocket()
+                    }}
+                > 連線 </button>
+                <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={() => {
+                        sendMessage()
+                    }}
+                > 送出訊息 </button>
+                <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={() => {
+                        sendMessageAll()
+                    }}
+                > 送出給所有人 </button>
+                <button type="button" className="btn btn-primary"> 斷線 </button>
+            </div>
+        </div>
     )
 }
 

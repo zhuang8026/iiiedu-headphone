@@ -1,0 +1,8 @@
+安装 
+    -> npm install socket.io-client
+使用
+    -> https://www.npmjs.com/package/socket.io-client
+写入
+    -> // with ES6 import
+    -> import io from 'socket.io-client';
+    -> const socket = io('http://localhost');
