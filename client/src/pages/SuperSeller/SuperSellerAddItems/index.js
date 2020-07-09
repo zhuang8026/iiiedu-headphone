@@ -182,10 +182,10 @@ function SuperSellerAddItems(props) {
                                             <div className="updata_itemImg">
                                                 <div className="updata_itemImg_contaienr">
                                                     <div className="updata_itemImg_inner">
-                                                        <label htmlFor="itemImg" className="itemImgstyle">主要圖片: </label>
+                                                        <label htmlFor="itemImgs" className="itemImgstyle">主要圖片: </label>
                                                         <input 
                                                             type="file"
-                                                            id="itemImg"
+                                                            id="itemImgs"
                                                             className="updata_itemImg_files"
                                                             // multiple={true}
                                                             // onChange={(event) => setItemImg(event.target.value)}
