@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
 
+// antd
 import { message } from 'antd'
 
 // ScrollToTop
@@ -44,7 +40,7 @@ import MembersBlog from './pages/Members/MembersBlog'
 
 // 超級賣家
 import WiSeller from './pages/SuperSeller'
-import SuperSellerOrder from './pages/SuperSeller/SuperSellerOrder'
+// import SuperSellerOrder from './pages/SuperSeller/SuperSellerOrder'
 import SuperSellerItems from './pages/SuperSeller/SuperSellerItems'
 import SuperSellerAddItems from './pages/SuperSeller/SuperSellerAddItems'
 import SuperSellerWallet from './pages/SuperSeller/SuperSellerWallet'
@@ -71,8 +67,14 @@ import WiGift from './pages/Gift'
 import WiProblem from './pages/Problem'
 import WiOurClients from './pages/OurClients'
 import WiWarranty from './pages/Warranty'
-import NotFoundPage404 from './pages/404'
-import MyLoading from './components/Loading'
+
+// socket.io
+import SocketChat from './pages/SocketChat'
+
+// import NotFoundPage404 from './pages/404'
+// import MyLoading from './components/Loading'
+
+
 
 function App() {
   // navbar
@@ -580,6 +582,11 @@ function App() {
           <Route path="/about/WiOurClients">
             <WiOurClients />
           </Route>
+          
+          {/* socket */}
+          <Route path="/SocketChat">
+            <SocketChat />
+          </Route>
 
           {/* 比較頁面 */}
           <Route path="/Compare">
@@ -596,7 +603,7 @@ function App() {
               setcartchange={setcartchange}
             />
           </Route>
-
+          
           {/* ProtectdRoute 這是 utils */}
           {/* <ProtectedRoute path="/todoapp">
               <TodoApp todos={todos} setTodos={setTodos} isAuth={auth}/>

@@ -102,5 +102,5 @@ app.use((req, res)=>{
 
 // server 侦听
 app.listen(3009, ()=>{
-    console.log('server started use 3009 please, William control')
+    console.log('server work - please use localhost:3009, William control')
 })
