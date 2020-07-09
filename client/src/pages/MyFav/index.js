@@ -1,7 +1,7 @@
 // 函式元件
 import React, { Fragment, useState, useEffect} from 'react';
-import { BrowserRouter as Router, withRouter} from 'react-router-dom';
-import { Link } from 'react-router-dom'
+import { BrowserRouter as Router, withRouter, Link} from 'react-router-dom';
+
 
 import { message } from 'antd';
 

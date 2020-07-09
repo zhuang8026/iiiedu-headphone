@@ -245,8 +245,8 @@ function BlogMainUserListByUser(props) {
                             }
                         }}
                     >
-                        <option value="1">DESC</option>
-                        <option value="2">ASC</option>
+                        <option value="1">新到舊</option>
+                        <option value="2">舊到新</option>
                     </select>
                     <select className="s2" name="" id=""
                         onChange={(e) => {
@@ -272,7 +272,7 @@ function BlogMainUserListByUser(props) {
                 </div>
             </div>
             <div className="blog-list blog-d-flex">
-                {listUserBlogdata.length>0 && (
+                {listUserBlogdata.length > 0 && (
                     <>
                         {listUserBlogdata.map((data, index) => {
                             {/* console.log(data) */ }
@@ -330,54 +330,60 @@ function BlogMainUserListByUser(props) {
                             )
                         })}
                         <div className="blog-standard-pages blog-d-flex">
-                <div
-                    className="round-effect"
-                    onClick={() => {
-                        setCurrentPage(currentPage - 1)
-                    }}
-                >﹤
-                </div>
-                <div className="all-blog-page-list blog-d-flex">
-                    {listPage.map((data, index) => {
-                        return (
                             <div
-                                key={data}
-                                className={(data === currentPage ? 'round-effect activepage' : 'round-effect')}
+                                className="round-effect"
                                 onClick={() => {
-                                    setCurrentPage(data)
+                                    setCurrentPage(currentPage - 1)
                                 }}
-                            >{data}</div>
-                        )
-                    })}
+                            >﹤
                 </div>
-                <div
-                    className="round-effect"
-                    onClick={() => {
-                        setCurrentPage(currentPage + 1)
-                    }}
-                >﹥
+                            <div className="all-blog-page-list blog-d-flex">
+                                {listPage.map((data, index) => {
+                                    return (
+                                        <div
+                                            key={data}
+                                            className={(data === currentPage ? 'round-effect activepage' : 'round-effect')}
+                                            onClick={() => {
+                                                setCurrentPage(data)
+                                            }}
+                                        >{data}</div>
+                                    )
+                                })}
+                            </div>
+                            <div
+                                className="round-effect"
+                                onClick={() => {
+                                    setCurrentPage(currentPage + 1)
+                                }}
+                            >﹥
                 </div>
-            </div>
+                        </div>
 
 
                     </>
                 )}
 
-                {listUserBlogdata.length<=0 && (
+                {listUserBlogdata.length <= 0 && (
                     <>
-                        <h2>您尚未發布任何文章。</h2>
-                        <button
-                            onClick=
-                            {
-                                (userdata.id ? () => {
-                                    props.history.push('/Blog/BlogAdd')
-                                } : () => {
-                                    openLoginNotification()
-                                    props.history.push('/KMembers/MembersLogin')
+                        <div className="no-art">
+                            <h2>您尚未發布任何文章。</h2>
+                            <button
+                                onClick=
+                                {
+                                    (userdata.id ? () => {
+                                        props.history.push('/Blog/BlogAdd')
+                                    } : () => {
+                                        openLoginNotification()
+                                        props.history.push('/KMembers/MembersLogin')
+                                    }
+                                    )
                                 }
-                                )
-                            }
-                        >馬上發文</button>
+                            >馬上發文</button>
+                        </div>
+
+
+
+
                     </>
                 )}
 
@@ -386,7 +392,7 @@ function BlogMainUserListByUser(props) {
 
 
             </div>
-            
+
         </>
     )
 }

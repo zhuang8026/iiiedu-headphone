@@ -3,7 +3,7 @@ import React , {useEffect, useState} from 'react';
 import {withRouter} from 'react-router-dom'
 
 // antd
-// import { message } from 'antd';
+import { message } from 'antd';
 
 import ComponentSuperSellerLeft from '../ComponentSuperSellerLeft'
 
@@ -276,8 +276,8 @@ function SuperSellerAddItems(props) {
                                                     onChange={(event)=>{ setItemstype(event.target.value) }}
                                                 >
                                                     <option value="0">商品類型</option>
-                                                    <option value="1">頭戴式</option>
-                                                    <option value="2">耳戴式</option>
+                                                    <option value="1">耳罩式</option>
+                                                    <option value="2">入耳式</option>
                                                 </select>
                                             </div>
                                             {/* <input 
@@ -362,7 +362,7 @@ function SuperSellerAddItems(props) {
                                                 <input 
                                                     className="itemInput"
                                                     id="itemsweight"
-                                                    placeholder="ex：防水性極高，是一個適合外出旅遊的好伴侶"
+                                                    placeholder="ex：300公克"
                                                     onChange={(e) => setItemsweight(e.target.value)}
                                                 />
                                             </div>                                    
@@ -436,6 +436,7 @@ function SuperSellerAddItems(props) {
                                             type="button"
                                             className="itemInputbutton"
                                             onClick={() => {
+                                                message.success(`上架商品成功`)
                                                 SuperSellerAddItemsCallback()
                                             }}
                                         >新增</button>
