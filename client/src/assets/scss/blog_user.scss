@@ -122,6 +122,7 @@
               color: $font-color-s;
               font-weight: $font-w;
               text-align: center;
+              text-align-last: center;
             }
           }
           select:hover {
@@ -131,6 +132,8 @@
           }
           .s1 {
             transform: translate(-240%, -50%);
+            text-align: center;
+            text-align-last: center;
           }
           
           .search-input {
@@ -606,8 +609,9 @@
             }
             button {
               width: 15%;
-              border: 1px solid $border-color-l;
-              background: $btn-color-r;
+              color: $font-color-s;
+              border: 1px solid $font-color-m;
+              background: $bg-theme;
               img {
                 width: 40%;
               }
@@ -622,13 +626,14 @@
         .recent-post-in {
           width: 90%;
           margin: 0 auto;
+          transition: .3s;
           h2 {
             font-size: $font-size-16;
             margin: 20px 0;
           }
           .recent-post-in-one {
             margin-bottom: 20px;
-
+            transition: .3s;
             .recent-post-in-one-img {
               width: 100px;
               height: 100px;
@@ -658,6 +663,10 @@
                 color: $font-color-m;
               }
             }
+          }
+          .recent-post-in-one:hover{
+            transition: .3s;
+            transform: scale(1.05);
           }
         }
       }

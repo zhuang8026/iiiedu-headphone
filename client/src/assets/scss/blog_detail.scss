@@ -372,8 +372,11 @@
     }
     /* ---------- aside ---------- */
     .blog-detail-aside {
-      width: 20%;
+      width: 30%;
       height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
       .post-map {
         width: 90%;
         margin: 0 0 0 10%;
@@ -384,7 +387,7 @@
           height: 45px;
           line-height: 32px;
           color: $font-color-x;
-          background: $btn-color-s;
+          background: $bg-theme;
         }
         .i-want-post:hover {
           cursor: pointer;
@@ -529,8 +532,9 @@
 
             button {
               width: 15%;
-              border: 1px solid $btn-color-r;
-              background: $btn-color-r;
+              color: $font-color-s;
+              border: 1px solid $font-color-m;
+              background: $bg-theme;
 
               img {
                 width: 40%;
@@ -556,7 +560,7 @@
 
           .recent-post-in-one {
             margin-bottom: 20px;
-
+            transition: .3s;
             .recent-post-in-one-img {
               width: 100px;
               height: 100px;
@@ -586,6 +590,10 @@
                 color: $font-color-m;
               }
             }
+          }
+          .recent-post-in-one:hover{
+            transition: .3s;
+            transform: scale(1.05);
           }
         }
       }

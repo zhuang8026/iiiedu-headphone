@@ -257,16 +257,22 @@ function BlogMainAdd(props) {
                         }}
                     />
                     <div className="blog-add-info" id="add-info-11">
-                        <h5>V</h5>
-                        <div className="add-box"></div>
+                    
+                        <div className="add-box">
+                            <i className="iconfont icon-replace"></i>
+                        </div>
                     </div>
                     <div className="blog-add-info" id="add-info-12">
-                        <h5>V</h5>
-                        <div className="add-box"></div>
+                        {/* <h5>V</h5> */}
+                        <div className="add-box">
+                        <i className="iconfont icon-replace"></i>
+                        </div>
                     </div>
                     <div className="blog-add-info" id="add-info-13">
-                        <h5>V</h5>
-                        <div className="add-box"></div>
+                        {/* <h5>V</h5> */}
+                        <div className="add-box">
+                        <i className="iconfont icon-replace"></i>
+                        </div>
                     </div>
                     <h6>註 : 點兩下圖片可以取消</h6>
                 </div>
@@ -382,16 +388,22 @@ function BlogMainAdd(props) {
                         }}
                     />
                     <div className="blog-add-info" id="add-info-21">
-                        <h5>V</h5>
-                        <div className="add-box"></div>
+                        {/* <h5>V</h5> */}
+                        <div className="add-box">
+                        <i className="iconfont icon-replace"></i>
+                        </div>
                     </div>
                     <div className="blog-add-info" id="add-info-22">
-                        <h5>V</h5>
-                        <div className="add-box"></div>
+                        {/* <h5>V</h5> */}
+                        <div className="add-box">
+                        <i className="iconfont icon-replace"></i>
+                        </div>
                     </div>
                     <div className="blog-add-info" id="add-info-23">
-                        <h5>V</h5>
-                        <div className="add-box"></div>
+                        {/* <h5>V</h5> */}
+                        <div className="add-box">
+                        <i className="iconfont icon-replace"></i>
+                        </div>
                     </div>
 
                     <h6>註 : 點兩下圖片可以取消</h6>

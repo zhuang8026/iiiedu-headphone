@@ -253,7 +253,7 @@ function BlogMainEditInputs(props) {
                 return response.json()
             })
             .then((response) => {
-                if (response.success == true) {                    
+                if (response.success == true) {
                     setTimeout(() => {
                         openEditArticleNotification()
                         props.history.push('/Blog/YongMyBlog');
@@ -327,16 +327,22 @@ function BlogMainEditInputs(props) {
                         }}
                     />
                     <div className="blog-edit-info" id="edit-info-11">
-                        <h5>v</h5>
-                        <div className="edit-box"></div>
+                        {/* <h5>v</h5> */}
+                        <div className="edit-box">
+                            <i className="iconfont icon-replace"></i>
+                        </div>
                     </div>
                     <div className="blog-edit-info" id="edit-info-12">
-                        <h5>V</h5>
-                        <div className="edit-box"></div>
+                        {/* <h5>V</h5> */}
+                        <div className="edit-box">
+                            <i className="iconfont icon-replace"></i>
+                        </div>
                     </div>
                     <div className="blog-edit-info" id="edit-info-13">
-                        <h5>V</h5>
-                        <div className="edit-box"></div>
+                        {/* <h5>V</h5> */}
+                        <div className="edit-box">
+                            <i className="iconfont icon-replace"></i>
+                        </div>
                     </div>
                     <h6>註 : 點兩下圖片可以取消</h6>
                 </div>
@@ -452,16 +458,21 @@ function BlogMainEditInputs(props) {
                         }}
                     />
                     <div className="blog-edit-info" id="edit-info-21">
-                        <h5>V</h5>
-                        <div className="edit-box"></div>
+                        {/* <h5>V</h5> */}
+                        <div className="edit-box">
+                            <i className="iconfont icon-replace"></i>
+                        </div>
                     </div>
                     <div className="blog-edit-info" id="edit-info-22">
-                        <h5>V</h5>
-                        <div className="edit-box"></div>
+                        {/* <h5>V</h5> */}
+                        <div className="edit-box">
+                            <i className="iconfont icon-replace"></i></div>
                     </div>
                     <div className="blog-edit-info" id="edit-info-23">
-                        <h5>V</h5>
-                        <div className="edit-box"></div>
+                        {/* <h5>V</h5> */}
+                        <div className="edit-box">
+                            <i className="iconfont icon-replace"></i>
+                        </div>
                     </div>
                     <h6>註 : 點兩下圖片可以取消</h6>
                 </div>
