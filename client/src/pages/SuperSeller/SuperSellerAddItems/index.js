@@ -117,32 +117,37 @@ function SuperSellerAddItems(props) {
                 'Content-Type': 'application/json',
             }),
             body: JSON.stringify({
-                itemName :itemName,
+                itemName :itemName || 'otis 耳機',
                 itemImg :itemImg,
                 colorid :colorid,
                 itemsbrand :itemsbrand,
                 itemstype :itemstype,
-                itemPrice :itemPrice,
-                itemQty :itemQty,
+                itemPrice :itemPrice || 9999,
+                itemQty :itemQty|| 9,
                 itemsales :0,
                 itemsstar :5,
                 itemstoreNumber :userdata.id,
-                itemscontent :itemscontent,
-                itemsweight :itemsweight,
-                itemsdrive :itemsdrive,
-                itemsfrequency :itemsfrequency,
-                itemsSensitivity :itemsSensitivity,
-                itemsconnect :itemsconnect,
-                itemsmains :itemsmains,
-                itemsEndurance :itemsEndurance,
+                itemscontent :itemscontent || '防水性極高，是一個適合外出旅遊的好伴侶',
+                itemsweight :itemsweight || '300公克',
+                itemsdrive :itemsdrive || '密閉式動圈型',
+                itemsfrequency :itemsfrequency || '03 – 40,000 Hz',
+                itemsSensitivity :itemsSensitivity || '102dB/mW',
+                itemsconnect :itemsconnect || '3.5 mm',
+                itemsmains :itemsmains || '充電式',
+                itemsEndurance :itemsEndurance || '20 小時',
                 itemswatertight :itemswatertight,
-                itemsfeature :itemsfeature,
+                itemsfeature :itemsfeature || '高解析音質播放，忠實重現原音',
                 itemMoreImg: itemMoreImg,
             })
         })
             .then((result) => result.json())
             .then((response) => {
                 console.log('response', response);
+                if(response.success) {
+                    message.success(`上架商品成功`)
+                } else {
+                    message.info(`上架商品失败`)
+                }
             })
     }
 
@@ -436,7 +441,6 @@ function SuperSellerAddItems(props) {
                                             type="button"
                                             className="itemInputbutton"
                                             onClick={() => {
-                                                message.success(`上架商品成功`)
                                                 SuperSellerAddItemsCallback()
                                             }}
                                         >新增</button>
