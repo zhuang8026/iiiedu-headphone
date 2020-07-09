@@ -71,7 +71,8 @@ function BlogAsideRecent(props) {
               <a href={`/Blog/BlogDetail/${data.blogId}`} className="recent-post-in-one blog-d-flex" key={data.blogId}>
                 <figure className="recent-post-in-one-img">
                   <img className="blog-cover"
-                    src={`http://localhost:3009/blogs_img/${data.blogContent01_img01}`}
+                    src={(data.blogContent01_img01 == '' ? `http://localhost:3009/blogs_img/img-empty.png` : `http://localhost:3009/blogs_img/${data.blogContent01_img01}`)}
+                  // src={`http://localhost:3009/blogs_img/${data.blogContent01_img01}`}
                   // onClick={() => {
                   //   props.history.push(`/Blog/BlogDetail/${data.blogId}`);
                   // }}

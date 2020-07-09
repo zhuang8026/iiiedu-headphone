@@ -210,6 +210,7 @@ function BlogMainStandardList(props) {
                                     </div>
                                 </div>
                                 <div className="read-more">
+                                    <button class="read-more-mas">閱讀文章</button>
                                     <button
                                         className="read-more-btn"
                                         onClick={() => {
@@ -217,6 +218,7 @@ function BlogMainStandardList(props) {
                                             // goBlogDetail(data.blogId) //data有blog的資料
                                         }}
                                     >閱讀文章</button>
+
                                 </div>
                                 <div className="user-info-list blog-d-flex">
                                     <figure className="blod-cover">

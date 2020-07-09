@@ -310,6 +310,7 @@ function BlogMainUserListByUser(props) {
                                             </div>
                                         </div>
                                         <div className="read-more">
+                                            <button class="read-more-mas">閱讀文章</button>
                                             <button
                                                 className="read-more-btn"
                                                 name="Hover"
@@ -317,6 +318,7 @@ function BlogMainUserListByUser(props) {
                                                     props.history.push(`/Blog/BlogDetail/${data.blogId}`);
                                                 }}
                                             >閱讀文章</button>
+                                            
                                         </div>
                                         <div className="user-info-list blog-d-flex">
                                             <figure className="blod-cover">

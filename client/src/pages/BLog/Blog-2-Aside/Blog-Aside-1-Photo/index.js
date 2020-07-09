@@ -42,7 +42,7 @@ function BlogAsidePhoto(props) {
   return (
     <>
       <div className="post-map">
-        <button className="i-want-post"
+        <button className="i-want-post wi_button btn btn-navy btn-fill-vert-o"
           onClick=
           {
             (userdata.id ? () => {
