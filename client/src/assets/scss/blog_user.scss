@@ -38,11 +38,13 @@
       font-size: $font-size-16;
       line-height: 90px;
       margin-left: 50px;
+      
     }
-    Link {
+    a {
       font-size: $font-size-16;
       line-height: 90px;
-      margin-left: 50px;
+      margin-right: 10px;
+      color: #8b8b8b;
     }
   }
 }
@@ -172,8 +174,9 @@
           padding: 0 20px;
           margin-bottom: 60px;
           .blog-card-in {
-            box-shadow: 3px 5px 10px $border-color-l;
+            border: 1px solid $border-color-l;
             padding-bottom: 10px;
+            transition: 1s;
             .blog-card-fig {
               width: 100%;
               height: 200px;
@@ -241,11 +244,12 @@
               width: 25%;
               height: 20%;
               top: 0px;
-              left: 40px;
+              left: 10%;
               background: $bg-c;
               transform: translateY(-30%);
               /* z-index: 20; */
               text-align: center;
+              transition: 1s;
               .blog-card-calendar-in {
                 position: absolute;
                 width: 90%;
@@ -256,6 +260,7 @@
                 padding-top: 10%;
                 color: $bg-c;
                 background: $border-color-l;
+                transition: 1s;
                 h2 {
                   position: absolute;
                   font-size: $font-size-24;
@@ -325,6 +330,64 @@
                 margin-left: 2%;
               }
             }
+          }
+
+        
+          .blog-card-in:hover{
+            box-shadow: 3px 5px 10px $border-color-l;
+              
+              transform: scale(1.1);
+          }
+        
+          
+          .blog-card-in:hover .blog-card-calendar{
+            //   left: 40px;
+            
+            transition: 1s;
+              transform: scale(1.1);
+
+
+
+              position: absolute;
+              width: 25%;
+              height: 20%;
+              top: 0px;
+              left: 10%;
+            //   left: 40px;
+              background: $bg-c;
+              transform: translateY(-30%);
+              /* z-index: 20; */
+              text-align: center;
+              .blog-card-calendar-in {
+                position: absolute;
+                width: 90%;
+                height: 90%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                padding-top: 10%;
+                color: $bg-c;
+                background: $border-color-l;
+                transition: 1s;
+                h2 {
+                  position: absolute;
+                  font-size: $font-size-24;
+                  color: $font-color-w;
+                  top: 35%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                }
+
+                h5 {
+                  position: absolute;
+                  font-size: $font-size-16;
+                  color: $font-color-w;
+                  top: 75%;
+                  left: 50%;
+                  width: $icon-size-45;
+                  transform: translate(-50%, -50%);
+                }
+              }
           }
         }
         .no-art{
@@ -480,9 +543,12 @@
           line-height: 32px;
           color: $font-color-x;
           background: $btn-color-s;
+          font-size: $font-size-16;
         }
         .i-want-post:hover {
           cursor: pointer;
+          color: $font-color-s;
+          border: 1px solid $font-color-s;
         }
         figure {
           width: 100%;
@@ -1667,6 +1733,7 @@ $col) {
  -webkit-mask-size: $x1 $y1;
  mask-size: $x1 $y1;
  border: $bor;
+//  color:blue;
  color: $col;
 }
 
@@ -1682,8 +1749,23 @@ $col) {
   font-family: 'Lato', sans-serif;
   font-weight: 300;
   transition: 0.5s;
+  
+  
   // letter-spacing: 1px;
   border-radius: 8px;
+  &:hover{
+    background: #fff;
+    color: $font-color-s;
+    
+    
+    // border: 1px solid $btn-color-l;
+    border-radius: 5px;
+    // border: 1px solid $font-color-s;
+    .read-more-mas{
+        display: inline-block;
+    }
+  }
+  
  
   .read-more-btn {
    width: 101%;
@@ -1693,7 +1775,9 @@ $col) {
   //  font-size: 11px;
   //  letter-spacing: 1px;
    font-weight: bold;
+   
  
+   
    @include button-ani(#8f8f8f, "https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/urban-sprite.png",
    3000%,
    100%,
@@ -1702,27 +1786,90 @@ $col) {
    cursor: pointer;
    -webkit-animation: ani2 0.7s steps(29) forwards;
    animation: ani2 0.7s steps(29) forwards;
- 
-   &:hover {
+   
+
+  &:hover {
     -webkit-animation: ani 0.7s steps(29) forwards;
     animation: ani 0.7s steps(29) forwards;
+    // color: $font-color-x;
+    background: #fff;
+    color:$font-color-s;
    }
+
+
+   
+   
   }
+
+// @include button-ani(#8f8f8f, "https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/urban-sprite.png",
+//    3000%,
+//    100%,
+//    none,
+//    #FFF);
+//    cursor: pointer;
+//    -webkit-animation: ani2 0.7s steps(29) forwards;
+//    animation: ani2 0.7s steps(29) forwards;
+
+//   &:hover {
+//     -webkit-animation: ani 0.7s steps(29) forwards;
+//     animation: ani 0.7s steps(29) forwards;
+//     // color: #FFF;
+//     // background: red;
+//    }
  }
  
  
- .mas {
+ .read-more-mas {
      position: absolute;
-     color: #000;
-     text-align: center;
-     width: 101%;
-     font-family: 'Lato', sans-serif;
-     font-weight: 300;
-     position: absolute;
-     font-size: 11px;
-     margin-top: 17px;
-     overflow: hidden;
-     font-weight: bold;
+     display: none;
+    //  transition: 1s;
+     width: 100px;
+                height: 45px;
+                font-size: $font-size-16;
+                font-weight: $font-w;
+                background: #FFF;
+                color: $font-color-s;
+                border: 1px solid $btn-color-l;
+                border-radius: 5px;
+line-height: 43px;
+text-align: center;
+// margin: auto 0;
+                // top: 35%;
+            //   left: 50%;
+            //   transform: translateY(-50%);
+//      position: absolute;
+//      text-align: center;
+//      width: 100%;
+// line-height: 44px;
+//     // width: 100px;
+//     // height: 100%;
+//     font-size: $font-size-16;
+//     font-weight: 300;
+//     background: #FFF;
+//     color: $font-color-s;
+//     border: 1px solid $font-color-s;
+//     border-radius: 5px;
+
+     
+     
+     
+    //  color: $font-color-s;
+     
+     
+    //  height: 100%;
+    //  font-family: 'Lato', sans-serif;
+    //  font-weight: 300;
+    //  position: absolute;
+    //  font-size: 11px;
+    //  margin-top: 17px;
+    //  overflow: hidden;
+    //  font-weight: bold;
+    //  color: $font-color-s;
+    
+    
+    // // border: 1px solid $btn-color-l;
+    // border-radius: 5px;
+    // border: 1px solid $font-color-s;
  
  }
  
@@ -1779,3 +1926,59 @@ $col) {
 //   animation: ani 0.7s steps(70) forwards;
 //  }
  
+
+
+
+// .post-map{
+//   .btn-fill-vert-o {
+//     background-color: transparent;
+//     border: 1px solid $bg-btn-s;
+//     color: $bg-btn-s;
+//     overflow: hidden;
+// }
+// // .btn-fill-vert-o.btn-navy:before, .btn-fill-vert-o.btn-navy:after {
+// //     background-color: #34495e;
+// // }
+// .btn-fill-vert-o:before {
+//     top: 50%;
+// }
+// .btn-fill-vert-o:before, .btn-fill-vert-o:after {
+//     content: '';
+//     width: 100%;
+//     height: 0;
+//     opacity: 0;
+//     position: absolute;
+//     left: 0;
+//     z-index: -1;
+//     transition: all 0.3s;
+// }
+// .btn-fill-vert-o:hover {
+//     color: $border-color-s;
+//     // color: red;
+// }
+
+// .btn-fill-vert-o:hover:before, .btn-fill-vert-o:hover:after {
+//     height: 50%;
+//     opacity: 1;
+// }
+// .btn-fill-vert-o.btn-navy:before, .btn-fill-vert-o.btn-navy:after {
+//     background-color: $bg-c;
+// }
+// .btn-fill-vert-o:after {
+//     bottom: 50%;
+// }
+// .btn-fill-vert-o:before, .btn-fill-vert-o:after {
+//     content: '';
+//     width: 100%;
+//     height: 0;
+//     opacity: 0;
+//     position: absolute;
+//     left: 0;
+//     z-index: -1;
+// }
+// .btn-fill-vert-o:after {
+//     transition: all 0.3s;
+// }
+// }
+
+// ============================================================================

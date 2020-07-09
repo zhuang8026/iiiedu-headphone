@@ -55,7 +55,7 @@ function BlogDetail(props) {
             <div className="blog-detail-spacing"></div>
             <div className="wrap-top">
                 <div className="blog-crumb">
-                    <Link to="/">首頁</Link>/<Link to="../YongBlog">部落格個人頁</Link>/<Link to="/BlogDetail">文章內容</Link>
+                    <Link to="/">首頁</Link>/<Link to="/Blog/YongMyBlog">部落格個人頁</Link>/<Link to="/BlogDetail">文章內容</Link>
                 </div>
             </div>
             <div className="wrap-mid">

@@ -47,10 +47,12 @@
       line-height: 90px;
       margin-left: 50px;
     }
-    Link {
+    a {
       font-size: $font-size-16;
       line-height: 90px;
-      margin-left: 50px;
+      margin-right: 10px;
+      color: #8b8b8b;
+
     }
   }
 }
@@ -209,6 +211,7 @@
         text-align: center;
         .i-want-post {
           width: 90%;
+          height: 45px;
           margin: 0 auto;
           line-height: 32px;
           color: $font-color-x;
@@ -216,6 +219,8 @@
         }
         .i-want-post:hover {
           cursor: pointer;
+          color: $font-color-s;
+          border: 1px solid $font-color-s;
         }
         figure {
           width: 100%;
