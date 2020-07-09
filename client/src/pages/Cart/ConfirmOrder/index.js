@@ -16,15 +16,8 @@ function ConfirmOrder(props) {
     orderTotal,
     setOrderTotal,
   } = props.allprops
+
   const CartInner = JSON.parse(localStorage.getItem('cart')) || ''
-  // 計算總價用的函式
-  const sum = (data) => {
-    let total = 0
-    for (let i = 0; i < data.length; i++) {
-      total += data[i].amount * data[i].itemPrice
-    }
-    return total
-  }
 
   useEffect(() => {
     setMycart(CartInner)
@@ -69,11 +62,6 @@ function ConfirmOrder(props) {
             <li className="cart-footer wi-num">
               <h2>商品總計: </h2>
               <span>${orderTotal}</span>
-              {/* {mycart.length > 0 ? (
-                <span> $ {sum(mycart)}</span>
-              ) : (
-                <span>0</span>
-              )} */}
             </li>
             <li className="cart-footer">
               <button type="button">

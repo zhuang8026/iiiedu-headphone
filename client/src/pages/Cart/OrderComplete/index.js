@@ -8,26 +8,32 @@ import {
 } from 'react-router-dom'
 
 function OrderComplete(props) {
-  const { orderTotal, orderPayment, orderId, setOrderId} = props.allprops;
+  const { orderTotal, orderPayment, orderId, setOrderId } = props.allprops
+  const [dataOrder, setDataOrder] = useState([])
 
-    //取得訂單資料
-    const getNewOrderAsync = async (addOrderFormData, callback) => {
-      const request = new Request('http://localhost:3009/order/newOrder', {
-        method: 'GET',
-        headers: new Headers({
-          Accept: 'application/json',
-          'Content-Type': 'appliaction/json',
-        }),
-      })
-      const response = await fetch(request)
-      // console.log('response', response)
-      const data = await response.json()
-      // console.log('orderID data row', data.row)
-      // console.log('orderID new data', data.row[0][0].orderId)
-      await setOrderId(data.row[0][0].orderId)
-      // await console.log('orderNum',orderNum)
-    }
+  //取得訂單資料
+  const getNewOrderAsync = async (addOrderFormData, callback) => {
+    const request = new Request('http://localhost:3009/order/newOrder', {
+      method: 'GET',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'appliaction/json',
+      }),
+    })
+    const response = await fetch(request)
+    // console.log('response', response)
+    const data = await response.json()
+    console.log('data', data)
+    // console.log('orderID data row', data.row)
+    console.log('data.dataOrderRow[0].orderId:', data.dataOrderRow[0].orderId)
+    // await setOrderId(data.dataOrderRow[0].orderId)
+    await setDataOrder(data.dataOrderRow[0])
+    // await console.log('orderNum',orderNum)
+  }
 
+  useEffect(() => {
+    getNewOrderAsync()
+  }, [])
 
   return (
     <>
@@ -81,19 +87,25 @@ function OrderComplete(props) {
             </tr>
             <tr>
               <td>訂單號:</td>
-              <td>{orderId}</td>
+              <td>{dataOrder.orderId}</td>
             </tr>
             <tr>
               <td>日期：</td>
-              <td>2020年7月10日</td>
+
+              {/* <td>2020年7月10日</td> */}
+              <td>{dataOrder.created_at}</td>
+            </tr>
+            <tr>
+              <td>配送方式：</td>
+              <td>{dataOrder.deliveryTypeName}</td>
             </tr>
             <tr>
               <td>付款方式：</td>
-              <td>編號:{orderPayment}</td>
+              <td>{dataOrder.paymentTypeName}</td>
             </tr>
             <tr>
               <td>合計:</td>
-              <td>{orderTotal}</td>
+              <td>{dataOrder.total}</td>
             </tr>
           </tbody>
 
@@ -101,13 +113,13 @@ function OrderComplete(props) {
             <tr>
               <td>
                 <button type="button">
-                  <Link to="/">回首頁</Link>
+                  <Link to="/KMembers/MembersCartList">查看訂單</Link>
                 </button>
               </td>
             </tr>
           </tfoot>
         </table>
-      </div>     
+      </div>
     </>
   )
 }
