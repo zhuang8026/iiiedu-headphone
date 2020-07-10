@@ -228,6 +228,12 @@ const CountrySelect = Place.map((data, index) =>
      {CountrySelect}
      </select>
    </div> 
+   <div className="moremore">
+        <p className="wimoreproblem">還有問題  
+   </p>
+   <Link className="morelink"to="/about/WiConnect">聯繫我們</Link>
+   </div>
+
   </>
   )
 }
