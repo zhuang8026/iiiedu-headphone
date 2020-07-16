@@ -539,18 +539,18 @@ function MyNavBar(props) {
                                 </div>
                             </li>
                             <li className="mobile_iconInner_li">
-                                <Link to="/MyCart">
-                                    <i className="iconfont icon-cart mobileIcon"></i>
+                                <Link to="/Compare">
+                                    <i className="iconfont icon-binding mobileIcon"></i>
                                 </Link>
                             </li>
                             <li className="mobile_iconInner_li">
-                                <Link to="/Compare">
+                                <Link to="/MyFav">
                                     <i className="iconfont icon-like mobileIcon"></i>
                                 </Link>
                             </li>
                             <li className="mobile_iconInner_li">
-                                <Link to="/KMembers/MembersLogin">
-                                    <i className="iconfont icon-Personal mobileIcon"></i>
+                                <Link to="/Blog/YongBlog">
+                                    <i className="iconfont icon-blog mobileIcon"></i>
                                 </Link>
                             </li>
                         </ul>
