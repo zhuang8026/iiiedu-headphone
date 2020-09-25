@@ -1,0 +1,25 @@
+Node.js: 使用 Nodemailer 傳送 Email
+    -> 官網 : https://github.com/nodemailer/nodemailer
+
+    -> 安裝 : npm install --save nodemailer
+
+        -> 在 app.js 載入模組並設定使用的服務、帳號、密碼。這裡使用方便的 Gmail。
+            ->  var nodemailer = require('nodemailer');
+                var mailTransport = nodemailer.createTransport('SMTP', {
+                    service: 'Gmail',
+                    auth: {
+                        user: credentials.gmail.user,
+                        pass: credentials.gmail.password,
+                    },
+                });
+            -> 或者 或需要直接連到 SMTP 伺服器，也是可以的。
+                var mailTransport = nodemailer.createTransport('SMTP', {
+                    host: 'smtp.mailservice.com',
+                    secureConnecton: true,
+                    port: 587,
+                    auth: {
+                        user: credentials.mailservice.user,
+                        pass: credentials.mailservice.pass,
+                    },
+                });
+    -> 

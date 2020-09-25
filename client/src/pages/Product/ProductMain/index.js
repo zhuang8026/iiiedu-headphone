@@ -225,7 +225,7 @@ function ProductMain(props) {
           return response.json()
       })
       .then((response)=>{
-        // console.log(response)
+        console.log(response)
         setItemsdata(response.rows)
         setCurrentTotalPages(response.totalPages) // 總page
         setCurrentPage(response.page)             // 此刻的頁數

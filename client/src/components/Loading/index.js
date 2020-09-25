@@ -15,16 +15,16 @@ function MyLoading(props) {
     },6000)
 
     return (
-        <div class="lodingInner" id="lodingInner">
-            <div class="box">
+        <div className="lodingInner" id="lodingInner">
+            <div className="box">
 
-                <div class="title">
-                    <span class="block"></span>
+                <div className="title">
+                    <span className="block"></span>
                     <h1>OTIS' STORE<span></span></h1>
                 </div>
 
-                <div class="role">
-                    <div class="block"></div>
+                <div className="role">
+                    <div className="block"></div>
                     <p>Professional Headphones</p>
                 </div>
 

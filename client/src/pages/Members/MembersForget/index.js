@@ -8,44 +8,30 @@ function MembersForget() {
     <main>
       <div className="login_container">
         {/* 登入 */}
-        <a href="../">首頁</a> / <a href="#">登入</a>
+        <a href="/">首頁</a> / <a href="#">忘記密碼</a>
         <div className="login_inner">
           <h1 className="login_inner_p1">MembersForget</h1>
           <p className="login_inner_p2">
-            <a href="#">沒有帳號了?在此註冊</a>
+            <a href="/KMembers/MembersLogin">沒有帳號了?在此註冊</a>
           </p>
         </div>
-        {/* form input */}
-        <form action="#">
+
+        <div className="form_all">
           <div className="login_form">
-            <label htmlFor="" className="gray">
-              用戶名或郵箱地址 *
+            <label htmlFor="ForgetInputName" className="gray">
+              用戶名稱 :
+              <input id="ForgetInputName" className="ForgetInputName input01" type="text" placeholder="用戶名稱"/>
+              <p className="ForgetInputName_err login_err"> * 用戶名</p>
             </label>
-            <input className="input01" type="email" placeholder="Email" />
-            <p className="login_err">用戶名或郵箱地址 錯誤</p>
-
-            <label htmlFor="" className="gray">
-              密碼 *
+            <label htmlFor="ForgetInputEmail" className="gray">
+              郵箱地址 :
+              <input id="ForgetInputEmail" className="ForgetInputEmail input01" type="email" placeholder="郵箱地址"/>
+              <p className="ForgetInputEmail_err login_err"> * 郵箱地址</p>
             </label>
-            <input
-              className="input01"
-              type="password"
-              placeholder="Password"
-            />
-            <p className="login_err">密碼錯誤</p>
 
-            <div className="login_form_pwa">
-              <input type="checkbox" id="a" />
-              <label for="a">記住帳號</label>
-              <p>
-                <a href="">忘記密碼?</a>
-              </p>
-            </div>
-            <button type="submit" className="login_btn">
-              登入
-            </button>
+            <button type="submit" className="Forget_btn login_btn"> 確認送出 </button>
           </div>
-        </form>
+        </div>
       </div>
     </main>
   )

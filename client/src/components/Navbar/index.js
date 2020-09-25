@@ -70,12 +70,12 @@ function MyNavBar(props) {
             message.loading({ content: 'Loading...', key });
             setTimeout(() => {
                 fetch(`http://localhost:3009/products/search/${keyword}`, {
-                method: 'get',
-                headers: new Headers({
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
+                    method: 'get',
+                    headers: new Headers({
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    })
                 })
-            })
                 .then((res)=>{
                     return res.json()
                 })

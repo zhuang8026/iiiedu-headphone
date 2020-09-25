@@ -23,7 +23,7 @@ function BottomYoutube(props) {
                                 </div> */}
                                 {/* <img src={data.picUrl} alt="product"/> */}
                                 {/* <iframe width="100%" height="280px" src={data.picUrl} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
-                                <iframe width="100%" height="100%" src={data.picUrl} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe width="100%" height="100%" src={data.picUrl} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             </li>
                         )
                     })}

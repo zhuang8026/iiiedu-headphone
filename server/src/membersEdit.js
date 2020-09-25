@@ -1,13 +1,15 @@
-const express = require('express');
-const moment = require('moment-timezone');
-const upload = require(__dirname + '/upload-module');
-const db = require(__dirname + '/db_connect');
+const express = require('express');                     // router
+const moment = require('moment-timezone');              // 時間修改
+const upload = require(__dirname + '/upload-module');   // 圖片上傳
+const db = require(__dirname + '/db_connect');          // mysql 連結
 
-const upload2 = require(__dirname + '/upload');
+const upload2 = require(__dirname + '/upload');         // 圖片上傳
 
-const router = express.Router();
+const router = express.Router();                        // router
 
-var multer = require('multer')
+var multer = require('multer');                         // 圖片上傳 
+
+var nodemailer = require('nodemailer');                 // gmail api 
 
 router.get('/', (req, res)=>{
     res.send('會員修改 api')
@@ -148,6 +150,76 @@ router.post('/newpassword', (req, res)=>{
             res.json(output);
         })
 })
+
+// 會員gmail api 找回密碼 驗證 
+// http://localhost:3009/membersEdit/membersForget
+router.post('/membersForget', (req, res)=>{ 
+    // const output = {
+    //     success: false,
+    // }
+
+    let email = req.body.username;
+    let randomNum = parseInt(Math.random()*1000000);
+    // let name = req.body.name;
+
+    // let name = req.body.name || '';
+    // let email = req.body.email;
+    console.log(email)
+
+    let transporter = nodemailer.createTransport({ // 宣告發信物件
+        service: 'Gmail',
+        // host: 'smtp.gmail.com',
+        // port: 465,
+        // secure: true,
+        auth: {
+            // type: 'OAuth2',
+            user: 'zhuang8026@gmail.com',
+            pass: 'zj199126h',
+            // serviceClient: '896736742121-60o5vgegttum1r3oub83ubjlkvhkfbhj.apps.googleusercontent.com',
+            // privateKey: 'XYYv27ZXhwKKp5piYdcQdpix',
+        }
+    });
+
+    let options = {
+        //寄件者
+        from: 'zhuang8026@gmail.com',
+        //收件者
+        to: `${email}`, 
+        //副本
+        // cc: 'account3@gmail.com',
+        //密件副本
+        // bcc: 'account4@gmail.com',
+        //主旨
+        subject: '這是 node.js 發送的測試信件 - 來自 otis store', // Subject line
+        //純文字
+        text: 'wiliam test', // plaintext body
+        //嵌入 html 的內文
+        html: '<h2>wiliam test</h2> <a href="https://treefonts.com/"> treefonts </a> <img src="https://img1.wsimg.com/isteam/ip/aad4bbdc-98b2-4a8c-8dc9-14912aca6db0/treefonts_logo.png/:/rs=h:400/qt=q:95"><p>驗證碼:'+ randomNum +'</p>', 
+        //附件檔案
+        // attachments: [ {
+        //     filename: 'text01.txt',
+        //     content: ''
+        // }, {
+        //     filename: 'unnamed.jpg',
+        //     path: '../public/blogs_img/logo.png'
+        // }]
+    };
+
+    //發送信件方法
+    transporter.sendMail(options, function(error, info){
+        if(error){
+            console.log(error);
+        }else{
+            console.log('訊息發送: ' + info.response);
+            res.send('訊息發送: ' + info.response)
+        }
+    });
+
+
+    // return res.redirect(303, '/thankyou');
+
+})
+
 
 // 會員訂單查詢 父層
 // http://localhost:3009/membersEdit/membersOrder

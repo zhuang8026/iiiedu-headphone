@@ -34,6 +34,7 @@
         * 20200709 - 3.2 Version - socket.io 修复失败
         * 20200709 - 3.3 Version - blog css 样式修改
     - 20200710 - 3.2 Version - 大专发表 
+    - 20200717 - 3.3 Version - Gmail api 製作 完成 
 
 ### 如何使用? ###
 - 指定項目   /   cd client

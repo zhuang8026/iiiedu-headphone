@@ -36,7 +36,7 @@ import MembersAdress from './pages/Members/MembersAdress'
 import MembersCartList from './pages/Members/MembersCartList'
 import MembersCartDetail from './pages/Members/MembersCartDetail'
 import MembersBlog from './pages/Members/MembersBlog'
-// import MembersForget from './pages/Members/MembersForget'
+import MembersForget from './pages/Members/MembersForget'
 
 // 超級賣家
 import WiSeller from './pages/SuperSeller'
@@ -268,6 +268,58 @@ function App() {
             />
           </Route>
 
+          <Route path="/KMembers/MembersForget">
+            <MembersForget userdata={userdata} setUserdata={setUserdata} />
+          </Route>
+
+          <Route path="/KMembers/MembersRegister">
+            <MembersRegister userdata={userdata} setUserdata={setUserdata} />
+          </Route>
+
+          <Route path="/KMembers/MembersPwa">
+            <MembersPwa userdata={userdata} setUserdata={setUserdata} />
+          </Route>
+
+          <Route path="/KMembers/MembersBank">
+            <MembersBank userdata={userdata} setUserdata={setUserdata} />
+          </Route>
+
+          <Route path="/KMembers/MembersAdress">
+            <MembersAdress
+              allprops={{
+                userdata,
+                setUserdata,
+              }}
+            />
+          </Route>
+
+          <Route path="/KMembers/MembersCartList">
+            <MembersCartList
+              userdata={userdata}
+              setUserdata={setUserdata}
+              membersCartOrderData={membersCartOrderData}
+              setMembersCartOrderData={setMembersCartOrderData}
+            />
+          </Route>
+
+          <Route path="/KMembers/MembersCartDetail/:orderId">
+            <MembersCartDetail
+              allprops={{
+                userdata,
+                setUserdata,
+                name,
+                setName,
+                membersCartOrderData,
+                setMembersCartOrderData,
+              }}
+            />
+          </Route>
+
+          <Route path="/KMembers/MembersBlog">
+            <MembersBlog userdata={userdata} setUserdata={setUserdata} />
+          </Route>
+          
+
           {/* 超級賣家 - William - 20200703 */}
           <Route exact path="/SuperSeller">
             {/* order組件 在 這裡面  */}
@@ -319,56 +371,6 @@ function App() {
             />
           </Route>
 
-          {/* <Route path="/KMembers/MembersForget">
-            <MembersForget userdata={userdata} setUserdata={setUserdata} />
-          </Route> */}
-
-          <Route path="/KMembers/MembersRegister">
-            <MembersRegister userdata={userdata} setUserdata={setUserdata} />
-          </Route>
-
-          <Route path="/KMembers/MembersPwa">
-            <MembersPwa userdata={userdata} setUserdata={setUserdata} />
-          </Route>
-
-          <Route path="/KMembers/MembersBank">
-            <MembersBank userdata={userdata} setUserdata={setUserdata} />
-          </Route>
-
-          <Route path="/KMembers/MembersAdress">
-            <MembersAdress
-              allprops={{
-                userdata,
-                setUserdata,
-              }}
-            />
-          </Route>
-
-          <Route path="/KMembers/MembersCartList">
-            <MembersCartList
-              userdata={userdata}
-              setUserdata={setUserdata}
-              membersCartOrderData={membersCartOrderData}
-              setMembersCartOrderData={setMembersCartOrderData}
-            />
-          </Route>
-
-          <Route path="/KMembers/MembersCartDetail/:orderId">
-            <MembersCartDetail
-              allprops={{
-                userdata,
-                setUserdata,
-                name,
-                setName,
-                membersCartOrderData,
-                setMembersCartOrderData,
-              }}
-            />
-          </Route>
-
-          <Route path="/KMembers/MembersBlog">
-            <MembersBlog userdata={userdata} setUserdata={setUserdata} />
-          </Route>
 
           {/* Blog */}
           <Route path="/Blog/YongBlog">

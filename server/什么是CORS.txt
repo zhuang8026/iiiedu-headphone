@@ -1,0 +1,6 @@
+1.  https://developer.mozilla.org/zh-TW/docs/Web/HTTP/CORS
+2.  Cross-Origin Resource Sharing === 跨域資源共享
+3.  跨來源資源共用（Cross-Origin Resource Sharing，簡稱 CORS）機制提供了網頁伺服器 跨 網域的存取控制，增加 跨網域資料 傳輸 的安全性。
+    現代瀏覽器支援在 API 容器（如 XMLHttpRequest 或 Fetch）中使用 CORS 以降低 跨网域 HTTP 請求的風險。
+4.  跨來源資源共用（Cross-Origin Resource Sharing (CORS)）是一種使用額外 HTTP 標頭令目前瀏覽網站的 使用者 取得存取其他來源（網域）伺服器特定資源權限的機制。
+    當 使用者 請求一個不是目前文件來源 <——> 例如來自於不同網域（domain）、通訊協定（protocol）或通訊埠（port）的資源時，會建立一個跨域 HTTP 請求（cross-origin HTTP request）
