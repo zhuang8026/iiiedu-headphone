@@ -165,6 +165,7 @@ router.post('/membersForget', (req, res)=>{
     // let name = req.body.name || '';
     // let email = req.body.email;
     console.log(email)
+    console.log(randomNum)
 
     let transporter = nodemailer.createTransport({ // 宣告發信物件
         service: 'Gmail',
