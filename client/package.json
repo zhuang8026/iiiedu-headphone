@@ -33,7 +33,7 @@
     "react-leaflet-markercluster": "^2.0.0",
     "react-moment": "^0.9.7",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.1",
+    "react-scripts": "^5.0.1",
     "socket.io-client": "^2.3.0",
     "sweetalert2": "^9.15.1",
     "swiper": "^5.4.3"
